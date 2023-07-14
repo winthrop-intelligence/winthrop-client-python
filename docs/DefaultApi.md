@@ -1,0 +1,2804 @@
+# winthrop_client_python.DefaultApi
+
+All URIs are relative to *http://api-gateway.default.svc.cluster.local*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
+[**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
+[**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
+[**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
+[**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
+[**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
+[**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
+[**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
+[**get_coach**](DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
+[**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
+[**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
+[**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
+[**get_deal_status**](DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} | 
+[**get_deal_statuses**](DefaultApi.md#get_deal_statuses) | **GET** /api/v1/deal_statuses | 
+[**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} | 
+[**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
+[**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
+[**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
+[**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
+[**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games | 
+[**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
+[**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
+[**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
+[**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
+[**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
+[**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
+[**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
+[**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
+[**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
+[**get_users**](DefaultApi.md#get_users) | **GET** /api/v1/users | 
+[**summarizer_post_qa_s3**](DefaultApi.md#summarizer_post_qa_s3) | **POST** /summarizer/qa_s3 | Answer questions over a file from S3
+[**summarizer_post_summarize_s3**](DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3
+[**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
+[**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
+[**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
+
+
+# **create_foia_label**
+> FoiaLabel create_foia_label(foia_label)
+
+
+
+Create a new foia label
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.foia_label import FoiaLabel
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    foia_label = winthrop_client_python.FoiaLabel() # FoiaLabel | Foia label to create
+
+    try:
+        api_response = api_instance.create_foia_label(foia_label)
+        print("The response of DefaultApi->create_foia_label:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_foia_label: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_label** | [**FoiaLabel**](FoiaLabel.md)| Foia label to create | 
+
+### Return type
+
+[**FoiaLabel**](FoiaLabel.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Foia label was created |  -  |
+**401** | Unauthorized |  -  |
+**422** | Unable to create foia label |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_foia_request**
+> FoiaRequest create_foia_request(foia_request)
+
+
+
+Create a new foia request
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.foia_request import FoiaRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    foia_request = winthrop_client_python.FoiaRequest() # FoiaRequest | Foia request to create
+
+    try:
+        api_response = api_instance.create_foia_request(foia_request)
+        print("The response of DefaultApi->create_foia_request:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_foia_request: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_request** | [**FoiaRequest**](FoiaRequest.md)| Foia request to create | 
+
+### Return type
+
+[**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Foia request was created |  -  |
+**401** | Unauthorized |  -  |
+**422** | Unable to create foia request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_requested_item**
+> RequestedItem create_requested_item(requested_item)
+
+
+
+Create a new requested item
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.requested_item import RequestedItem
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item = winthrop_client_python.RequestedItem() # RequestedItem | Requested item to create
+
+    try:
+        api_response = api_instance.create_requested_item(requested_item)
+        print("The response of DefaultApi->create_requested_item:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_requested_item: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item** | [**RequestedItem**](RequestedItem.md)| Requested item to create | 
+
+### Return type
+
+[**RequestedItem**](RequestedItem.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Requested item was created |  -  |
+**401** | Unauthorized |  -  |
+**422** | Unable to create requested item |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_foia_label**
+> delete_foia_label(foia_label_id)
+
+
+
+Delete a single foia label
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    foia_label_id = 56 # int | ID of foia label to delete
+
+    try:
+        api_instance.delete_foia_label(foia_label_id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_foia_label: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_label_id** | **int**| ID of foia label to delete | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Foia label was deleted |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_foia_request**
+> delete_foia_request(foia_request_id)
+
+
+
+Delete a single foia request
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    foia_request_id = 56 # int | ID of foia request to delete
+
+    try:
+        api_instance.delete_foia_request(foia_request_id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_foia_request: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_request_id** | **int**| ID of foia request to delete | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Foia request was deleted |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_requested_item**
+> delete_requested_item(requested_item_id)
+
+
+
+Delete a single requested item
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | ID of requested item to delete
+
+    try:
+        api_instance.delete_requested_item(requested_item_id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_requested_item: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**| ID of requested item to delete | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Requested item was deleted |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_audited_financial_report_status**
+> AuditedFinancialReportStatus get_audited_financial_report_status(audited_financial_report_status_id)
+
+
+
+Retrieve a single audited financial report status
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.audited_financial_report_status import AuditedFinancialReportStatus
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    audited_financial_report_status_id = 56 # int | ID of audited financial report status to retrieve
+
+    try:
+        api_response = api_instance.get_audited_financial_report_status(audited_financial_report_status_id)
+        print("The response of DefaultApi->get_audited_financial_report_status:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_audited_financial_report_status: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **audited_financial_report_status_id** | **int**| ID of audited financial report status to retrieve | 
+
+### Return type
+
+[**AuditedFinancialReportStatus**](AuditedFinancialReportStatus.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Audited financial report status was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_audited_financial_report_statuses**
+> AuditedFinancialReportStatusCollection get_audited_financial_report_statuses(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all audited financial report statuses
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.audited_financial_report_status_collection import AuditedFinancialReportStatusCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_audited_financial_report_statuses(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_audited_financial_report_statuses:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_audited_financial_report_statuses: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**AuditedFinancialReportStatusCollection**](AuditedFinancialReportStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Audited financial report statuses were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_coach**
+> Coach get_coach(coach_id)
+
+
+
+Retrieve a single coach
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.coach import Coach
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    coach_id = 56 # int | ID of coach to retrieve
+
+    try:
+        api_response = api_instance.get_coach(coach_id)
+        print("The response of DefaultApi->get_coach:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_coach: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coach_id** | **int**| ID of coach to retrieve | 
+
+### Return type
+
+[**Coach**](Coach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Coach was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_coaches**
+> CoachCollection get_coaches(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all coaches
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.coach_collection import CoachCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_coaches(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_coaches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_coaches: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**CoachCollection**](CoachCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Coaches were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_compensation**
+> Compensation get_compensation(compensation_id)
+
+
+
+Retrieve a single compensation
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.compensation import Compensation
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    compensation_id = 56 # int | ID of compensation to retrieve
+
+    try:
+        api_response = api_instance.get_compensation(compensation_id)
+        print("The response of DefaultApi->get_compensation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_compensation: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **compensation_id** | **int**| ID of compensation to retrieve | 
+
+### Return type
+
+[**Compensation**](Compensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Compensation was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_compensations**
+> CompensationCollection get_compensations(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all compensations
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.compensation_collection import CompensationCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_compensations(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_compensations:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_compensations: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**CompensationCollection**](CompensationCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Compensations were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_deal_status**
+> DealStatus get_deal_status(deal_status_id)
+
+
+
+Retrieve a single deal status
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.deal_status import DealStatus
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    deal_status_id = 56 # int | ID of deal status to retrieve
+
+    try:
+        api_response = api_instance.get_deal_status(deal_status_id)
+        print("The response of DefaultApi->get_deal_status:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_deal_status: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deal_status_id** | **int**| ID of deal status to retrieve | 
+
+### Return type
+
+[**DealStatus**](DealStatus.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Deal status was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_deal_statuses**
+> DealStatusCollection get_deal_statuses(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all deal statuses
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.deal_status_collection import DealStatusCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_deal_statuses(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_deal_statuses:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_deal_statuses: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**DealStatusCollection**](DealStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Deal statuses were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_foia_label**
+> FoiaLabel get_foia_label(foia_label_id)
+
+
+
+Retrieve a single foia label
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.foia_label import FoiaLabel
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    foia_label_id = 56 # int | ID of foia label to retrieve
+
+    try:
+        api_response = api_instance.get_foia_label(foia_label_id)
+        print("The response of DefaultApi->get_foia_label:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_foia_label: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_label_id** | **int**| ID of foia label to retrieve | 
+
+### Return type
+
+[**FoiaLabel**](FoiaLabel.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Foia label was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_foia_labels**
+> FoiaLabelCollection get_foia_labels(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all foia labels
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.foia_label_collection import FoiaLabelCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_foia_labels(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_foia_labels:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_foia_labels: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**FoiaLabelCollection**](FoiaLabelCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Foia labels were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_foia_request**
+> FoiaRequest get_foia_request(foia_request_id)
+
+
+
+Retrieve a single foia request
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.foia_request import FoiaRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    foia_request_id = 56 # int | ID of foia request to retrieve
+
+    try:
+        api_response = api_instance.get_foia_request(foia_request_id)
+        print("The response of DefaultApi->get_foia_request:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_foia_request: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_request_id** | **int**| ID of foia request to retrieve | 
+
+### Return type
+
+[**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Foia request was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_foia_requests**
+> FoiaRequestCollection get_foia_requests(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all foia requests
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.foia_request_collection import FoiaRequestCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_foia_requests(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_foia_requests:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_foia_requests: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**FoiaRequestCollection**](FoiaRequestCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Foia requests were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_game**
+> Game get_game(game_id)
+
+
+
+Retrieve a single game
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.game import Game
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    game_id = 56 # int | ID of game to retrieve
+
+    try:
+        api_response = api_instance.get_game(game_id)
+        print("The response of DefaultApi->get_game:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_game: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **game_id** | **int**| ID of game to retrieve | 
+
+### Return type
+
+[**Game**](Game.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Game was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_games**
+> GameCollection get_games(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all games
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.game_collection import GameCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_games(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_games:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_games: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**GameCollection**](GameCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Games were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_income_report**
+> IncomeReport get_income_report(income_report_id)
+
+
+
+Retrieve a single income report
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.income_report import IncomeReport
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    income_report_id = 56 # int | ID of income report to retrieve
+
+    try:
+        api_response = api_instance.get_income_report(income_report_id)
+        print("The response of DefaultApi->get_income_report:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_income_report: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **income_report_id** | **int**| ID of income report to retrieve | 
+
+### Return type
+
+[**IncomeReport**](IncomeReport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Income report was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_income_reports**
+> IncomeReportCollection get_income_reports(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all income reports
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.income_report_collection import IncomeReportCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_income_reports(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_income_reports:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_income_reports: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**IncomeReportCollection**](IncomeReportCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Income reports were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_ncaa_financial_report_status**
+> NcaaFinancialReportStatus get_ncaa_financial_report_status(ncaa_financial_report_status_id)
+
+
+
+Retrieve a single ncaa financial report status
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.ncaa_financial_report_status import NcaaFinancialReportStatus
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    ncaa_financial_report_status_id = 56 # int | ID of ncaa financial report status to retrieve
+
+    try:
+        api_response = api_instance.get_ncaa_financial_report_status(ncaa_financial_report_status_id)
+        print("The response of DefaultApi->get_ncaa_financial_report_status:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_ncaa_financial_report_status: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ncaa_financial_report_status_id** | **int**| ID of ncaa financial report status to retrieve | 
+
+### Return type
+
+[**NcaaFinancialReportStatus**](NcaaFinancialReportStatus.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ncaa financial report status was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_ncaa_financial_report_statuses**
+> NcaaFinancialReportStatusCollection get_ncaa_financial_report_statuses(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all ncaa financial report statuses
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.ncaa_financial_report_status_collection import NcaaFinancialReportStatusCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_ncaa_financial_report_statuses(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_ncaa_financial_report_statuses:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_ncaa_financial_report_statuses: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**NcaaFinancialReportStatusCollection**](NcaaFinancialReportStatusCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ncaa financial report statuses were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_requested_item**
+> RequestedItem get_requested_item(requested_item_id)
+
+
+
+Retrieve a single requested item
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.requested_item import RequestedItem
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | ID of requested item to retrieve
+
+    try:
+        api_response = api_instance.get_requested_item(requested_item_id)
+        print("The response of DefaultApi->get_requested_item:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_requested_item: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**| ID of requested item to retrieve | 
+
+### Return type
+
+[**RequestedItem**](RequestedItem.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Requested item was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_requested_items**
+> RequestedItemCollection get_requested_items(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all requested items
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.requested_item_collection import RequestedItemCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_requested_items(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_requested_items:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_requested_items: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**RequestedItemCollection**](RequestedItemCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Requested items were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_school**
+> School get_school(school_id)
+
+
+
+Retrieve a single school
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.school import School
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_id = 56 # int | ID of school to retrieve
+
+    try:
+        api_response = api_instance.get_school(school_id)
+        print("The response of DefaultApi->get_school:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_school: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_id** | **int**| ID of school to retrieve | 
+
+### Return type
+
+[**School**](School.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | School was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_schools**
+> SchoolCollection get_schools(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all schools
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.school_collection import SchoolCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_schools(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_schools:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_schools: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**SchoolCollection**](SchoolCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Schools were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_user**
+> User get_user(user_id)
+
+
+
+Retrieve a single user
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.user import User
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    user_id = 56 # int | ID of user to retrieve
+
+    try:
+        api_response = api_instance.get_user(user_id)
+        print("The response of DefaultApi->get_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_user: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **int**| ID of user to retrieve | 
+
+### Return type
+
+[**User**](User.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | User was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_users**
+> UserCollection get_users(page=page, per_page=per_page, q=q)
+
+
+
+Retrieve some or all users
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.user_collection import UserCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_users(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_users:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_users: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**UserCollection**](UserCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Users were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **summarizer_post_qa_s3**
+> str summarizer_post_qa_s3(summarizer_post_qa_s3_request=summarizer_post_qa_s3_request)
+
+Answer questions over a file from S3
+
+Answer questions a file from S3.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.summarizer_post_qa_s3_request import SummarizerPostQaS3Request
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    summarizer_post_qa_s3_request = winthrop_client_python.SummarizerPostQaS3Request() # SummarizerPostQaS3Request |  (optional)
+
+    try:
+        # Answer questions over a file from S3
+        api_response = api_instance.summarizer_post_qa_s3(summarizer_post_qa_s3_request=summarizer_post_qa_s3_request)
+        print("The response of DefaultApi->summarizer_post_qa_s3:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->summarizer_post_qa_s3: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **summarizer_post_qa_s3_request** | [**SummarizerPostQaS3Request**](SummarizerPostQaS3Request.md)|  | [optional] 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: text/plain
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | question response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **summarizer_post_summarize_s3**
+> str summarizer_post_summarize_s3(summarizer_post_summarize_s3_request=summarizer_post_summarize_s3_request)
+
+Summarize a file from S3
+
+Summarizes a file from S3.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.summarizer_post_summarize_s3_request import SummarizerPostSummarizeS3Request
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    summarizer_post_summarize_s3_request = winthrop_client_python.SummarizerPostSummarizeS3Request() # SummarizerPostSummarizeS3Request |  (optional)
+
+    try:
+        # Summarize a file from S3
+        api_response = api_instance.summarizer_post_summarize_s3(summarizer_post_summarize_s3_request=summarizer_post_summarize_s3_request)
+        print("The response of DefaultApi->summarizer_post_summarize_s3:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->summarizer_post_summarize_s3: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **summarizer_post_summarize_s3_request** | [**SummarizerPostSummarizeS3Request**](SummarizerPostSummarizeS3Request.md)|  | [optional] 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: text/plain
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | summary response |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_foia_label**
+> FoiaLabel update_foia_label(foia_label_id, foia_label)
+
+
+
+Update a single foia label
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.foia_label import FoiaLabel
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    foia_label_id = 56 # int | ID of foia label to update
+    foia_label = winthrop_client_python.FoiaLabel() # FoiaLabel | Foia label to update
+
+    try:
+        api_response = api_instance.update_foia_label(foia_label_id, foia_label)
+        print("The response of DefaultApi->update_foia_label:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_foia_label: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_label_id** | **int**| ID of foia label to update | 
+ **foia_label** | [**FoiaLabel**](FoiaLabel.md)| Foia label to update | 
+
+### Return type
+
+[**FoiaLabel**](FoiaLabel.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Foia label was updated |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_foia_request**
+> FoiaRequest update_foia_request(foia_request_id, foia_request)
+
+
+
+Update a single foia request
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.foia_request import FoiaRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    foia_request_id = 56 # int | ID of foia request to update
+    foia_request = winthrop_client_python.FoiaRequest() # FoiaRequest | Foia request to update
+
+    try:
+        api_response = api_instance.update_foia_request(foia_request_id, foia_request)
+        print("The response of DefaultApi->update_foia_request:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_foia_request: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_request_id** | **int**| ID of foia request to update | 
+ **foia_request** | [**FoiaRequest**](FoiaRequest.md)| Foia request to update | 
+
+### Return type
+
+[**FoiaRequest**](FoiaRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Foia request was updated |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_requested_item**
+> RequestedItem update_requested_item(requested_item_id, requested_item)
+
+
+
+Update a single requested item
+
+### Example
+
+* Api Key Authentication (ApiKey):
+```python
+import time
+import os
+import winthrop_client_python
+from winthrop_client_python.models.requested_item import RequestedItem
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | ID of requested item to update
+    requested_item = winthrop_client_python.RequestedItem() # RequestedItem | Requested item to update
+
+    try:
+        api_response = api_instance.update_requested_item(requested_item_id, requested_item)
+        print("The response of DefaultApi->update_requested_item:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_requested_item: %s\n" % e)
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**| ID of requested item to update | 
+ **requested_item** | [**RequestedItem**](RequestedItem.md)| Requested item to update | 
+
+### Return type
+
+[**RequestedItem**](RequestedItem.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Requested item was updated |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
