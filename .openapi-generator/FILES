@@ -34,7 +34,6 @@ docs/SummarizerPostSummarizeS3Request.md
 docs/UnprocessableEntity.md
 docs/User.md
 docs/UserCollection.md
-git_push.sh
 pyproject.toml
 requirements.txt
 setup.cfg
