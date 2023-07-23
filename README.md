@@ -129,14 +129,14 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
-*ReportingApi* | [**api_v1_reports_coach_contract_requests_get**](docs/ReportingApi.md#api_v1_reports_coach_contract_requests_get) | **GET** /api/v1/reports/coach_contract_requests | 
-*ReportingApi* | [**api_v1_reports_coach_history_get**](docs/ReportingApi.md#api_v1_reports_coach_history_get) | **GET** /api/v1/reports/coach_history | 
-*ReportingApi* | [**api_v1_reports_conferenceships_get**](docs/ReportingApi.md#api_v1_reports_conferenceships_get) | **GET** /api/v1/reports/conferenceships | 
-*ReportingApi* | [**api_v1_reports_foia_details_get**](docs/ReportingApi.md#api_v1_reports_foia_details_get) | **GET** /api/v1/reports/foia_details | 
-*ReportingApi* | [**api_v1_reports_games_get**](docs/ReportingApi.md#api_v1_reports_games_get) | **GET** /api/v1/reports/games | 
-*ReportingApi* | [**api_v1_reports_invoices_get**](docs/ReportingApi.md#api_v1_reports_invoices_get) | **GET** /api/v1/reports/invoices | 
-*ReportingApi* | [**api_v1_reports_school_contract_requests_get**](docs/ReportingApi.md#api_v1_reports_school_contract_requests_get) | **GET** /api/v1/reports/school_contract_requests | 
-*ReportingApi* | [**api_v1_reports_subscriptions_get**](docs/ReportingApi.md#api_v1_reports_subscriptions_get) | **GET** /api/v1/reports/subscriptions | 
+*ReportingApi* | [**get_coach_contract_requests**](docs/ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests | 
+*ReportingApi* | [**get_coach_history**](docs/ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history | 
+*ReportingApi* | [**get_conferenceships**](docs/ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships | 
+*ReportingApi* | [**get_foia_details**](docs/ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details | 
+*ReportingApi* | [**get_games**](docs/ReportingApi.md#get_games) | **GET** /api/v1/reports/games | 
+*ReportingApi* | [**get_invoices**](docs/ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices | 
+*ReportingApi* | [**get_school_contract_requests**](docs/ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests | 
+*ReportingApi* | [**get_subscriptions**](docs/ReportingApi.md#get_subscriptions) | **GET** /api/v1/reports/subscriptions | 
 
 
 ## Documentation For Models

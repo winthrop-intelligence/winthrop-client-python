@@ -4,18 +4,18 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**api_v1_reports_coach_contract_requests_get**](ReportingApi.md#api_v1_reports_coach_contract_requests_get) | **GET** /api/v1/reports/coach_contract_requests | 
-[**api_v1_reports_coach_history_get**](ReportingApi.md#api_v1_reports_coach_history_get) | **GET** /api/v1/reports/coach_history | 
-[**api_v1_reports_conferenceships_get**](ReportingApi.md#api_v1_reports_conferenceships_get) | **GET** /api/v1/reports/conferenceships | 
-[**api_v1_reports_foia_details_get**](ReportingApi.md#api_v1_reports_foia_details_get) | **GET** /api/v1/reports/foia_details | 
-[**api_v1_reports_games_get**](ReportingApi.md#api_v1_reports_games_get) | **GET** /api/v1/reports/games | 
-[**api_v1_reports_invoices_get**](ReportingApi.md#api_v1_reports_invoices_get) | **GET** /api/v1/reports/invoices | 
-[**api_v1_reports_school_contract_requests_get**](ReportingApi.md#api_v1_reports_school_contract_requests_get) | **GET** /api/v1/reports/school_contract_requests | 
-[**api_v1_reports_subscriptions_get**](ReportingApi.md#api_v1_reports_subscriptions_get) | **GET** /api/v1/reports/subscriptions | 
+[**get_coach_contract_requests**](ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests | 
+[**get_coach_history**](ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history | 
+[**get_conferenceships**](ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships | 
+[**get_foia_details**](ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details | 
+[**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games | 
+[**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices | 
+[**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests | 
+[**get_subscriptions**](ReportingApi.md#get_subscriptions) | **GET** /api/v1/reports/subscriptions | 
 
 
-# **api_v1_reports_coach_contract_requests_get**
-> api_v1_reports_coach_contract_requests_get(page=page, q=q)
+# **get_coach_contract_requests**
+> object get_coach_contract_requests(page=page, q=q)
 
 
 
@@ -56,9 +56,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     q = None # object | Ransack query (optional)
 
     try:
-        api_instance.api_v1_reports_coach_contract_requests_get(page=page, q=q)
+        api_response = api_instance.get_coach_contract_requests(page=page, q=q)
+        print("The response of ReportingApi->get_coach_contract_requests:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->api_v1_reports_coach_contract_requests_get: %s\n" % e)
+        print("Exception when calling ReportingApi->get_coach_contract_requests: %s\n" % e)
 ```
 
 
@@ -71,7 +73,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -89,8 +91,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_v1_reports_coach_history_get**
-> api_v1_reports_coach_history_get(page=page, q=q)
+# **get_coach_history**
+> object get_coach_history(page=page, q=q)
 
 
 
@@ -131,9 +133,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     q = None # object | Ransack query (optional)
 
     try:
-        api_instance.api_v1_reports_coach_history_get(page=page, q=q)
+        api_response = api_instance.get_coach_history(page=page, q=q)
+        print("The response of ReportingApi->get_coach_history:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->api_v1_reports_coach_history_get: %s\n" % e)
+        print("Exception when calling ReportingApi->get_coach_history: %s\n" % e)
 ```
 
 
@@ -146,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -164,8 +168,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_v1_reports_conferenceships_get**
-> api_v1_reports_conferenceships_get(page=page, q=q)
+# **get_conferenceships**
+> object get_conferenceships(page=page, q=q)
 
 
 
@@ -206,9 +210,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     q = None # object | Ransack query (optional)
 
     try:
-        api_instance.api_v1_reports_conferenceships_get(page=page, q=q)
+        api_response = api_instance.get_conferenceships(page=page, q=q)
+        print("The response of ReportingApi->get_conferenceships:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->api_v1_reports_conferenceships_get: %s\n" % e)
+        print("Exception when calling ReportingApi->get_conferenceships: %s\n" % e)
 ```
 
 
@@ -221,7 +227,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -239,8 +245,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_v1_reports_foia_details_get**
-> api_v1_reports_foia_details_get(page=page, q=q)
+# **get_foia_details**
+> object get_foia_details(page=page, q=q)
 
 
 
@@ -281,9 +287,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     q = None # object | Ransack query (optional)
 
     try:
-        api_instance.api_v1_reports_foia_details_get(page=page, q=q)
+        api_response = api_instance.get_foia_details(page=page, q=q)
+        print("The response of ReportingApi->get_foia_details:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->api_v1_reports_foia_details_get: %s\n" % e)
+        print("Exception when calling ReportingApi->get_foia_details: %s\n" % e)
 ```
 
 
@@ -296,7 +304,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -314,8 +322,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_v1_reports_games_get**
-> api_v1_reports_games_get(page=page, q=q)
+# **get_games**
+> object get_games(page=page, q=q)
 
 
 
@@ -356,9 +364,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     q = None # object | Ransack query (optional)
 
     try:
-        api_instance.api_v1_reports_games_get(page=page, q=q)
+        api_response = api_instance.get_games(page=page, q=q)
+        print("The response of ReportingApi->get_games:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->api_v1_reports_games_get: %s\n" % e)
+        print("Exception when calling ReportingApi->get_games: %s\n" % e)
 ```
 
 
@@ -371,7 +381,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -389,8 +399,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_v1_reports_invoices_get**
-> api_v1_reports_invoices_get(page=page, q=q)
+# **get_invoices**
+> object get_invoices(page=page, q=q)
 
 
 
@@ -431,9 +441,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     q = None # object | Ransack query (optional)
 
     try:
-        api_instance.api_v1_reports_invoices_get(page=page, q=q)
+        api_response = api_instance.get_invoices(page=page, q=q)
+        print("The response of ReportingApi->get_invoices:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->api_v1_reports_invoices_get: %s\n" % e)
+        print("Exception when calling ReportingApi->get_invoices: %s\n" % e)
 ```
 
 
@@ -446,7 +458,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -464,8 +476,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_v1_reports_school_contract_requests_get**
-> api_v1_reports_school_contract_requests_get(page=page, q=q)
+# **get_school_contract_requests**
+> object get_school_contract_requests(page=page, q=q)
 
 
 
@@ -506,9 +518,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     q = None # object | Ransack query (optional)
 
     try:
-        api_instance.api_v1_reports_school_contract_requests_get(page=page, q=q)
+        api_response = api_instance.get_school_contract_requests(page=page, q=q)
+        print("The response of ReportingApi->get_school_contract_requests:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->api_v1_reports_school_contract_requests_get: %s\n" % e)
+        print("Exception when calling ReportingApi->get_school_contract_requests: %s\n" % e)
 ```
 
 
@@ -521,7 +535,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 
@@ -539,8 +553,8 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **api_v1_reports_subscriptions_get**
-> api_v1_reports_subscriptions_get(page=page, q=q)
+# **get_subscriptions**
+> object get_subscriptions(page=page, q=q)
 
 
 
@@ -581,9 +595,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     q = None # object | Ransack query (optional)
 
     try:
-        api_instance.api_v1_reports_subscriptions_get(page=page, q=q)
+        api_response = api_instance.get_subscriptions(page=page, q=q)
+        print("The response of ReportingApi->get_subscriptions:\n")
+        pprint(api_response)
     except Exception as e:
-        print("Exception when calling ReportingApi->api_v1_reports_subscriptions_get: %s\n" % e)
+        print("Exception when calling ReportingApi->get_subscriptions: %s\n" % e)
 ```
 
 
@@ -596,7 +612,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**object**
 
 ### Authorization
 

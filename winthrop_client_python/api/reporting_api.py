@@ -42,7 +42,7 @@ class ReportingApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def api_v1_reports_coach_contract_requests_get(
+    def get_coach_contract_requests(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -51,14 +51,14 @@ class ReportingApi(object):
             Optional[Dict[str, Dict[str, Any]]], Field(description="Ransack query")
         ] = None,
         **kwargs
-    ) -> None:  # noqa: E501
-        """api_v1_reports_coach_contract_requests_get  # noqa: E501
+    ) -> object:  # noqa: E501
+        """get_coach_contract_requests  # noqa: E501
 
         Retrieve some or all coach contract requests  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_coach_contract_requests_get(page, q, async_req=True)
+        >>> thread = api.get_coach_contract_requests(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -74,19 +74,19 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: object
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             raise ValueError(
-                "Error! Please call the api_v1_reports_coach_contract_requests_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
+                "Error! Please call the get_coach_contract_requests_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.api_v1_reports_coach_contract_requests_get_with_http_info(
+        return self.get_coach_contract_requests_with_http_info(
             page, q, **kwargs
         )  # noqa: E501
 
     @validate_arguments
-    def api_v1_reports_coach_contract_requests_get_with_http_info(
+    def get_coach_contract_requests_with_http_info(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -96,13 +96,13 @@ class ReportingApi(object):
         ] = None,
         **kwargs
     ) -> ApiResponse:  # noqa: E501
-        """api_v1_reports_coach_contract_requests_get  # noqa: E501
+        """get_coach_contract_requests  # noqa: E501
 
         Retrieve some or all coach contract requests  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_coach_contract_requests_get_with_http_info(page, q, async_req=True)
+        >>> thread = api.get_coach_contract_requests_with_http_info(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -131,7 +131,7 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -154,7 +154,7 @@ class ReportingApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_v1_reports_coach_contract_requests_get" % _key
+                    " to method get_coach_contract_requests" % _key
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -187,7 +187,9 @@ class ReportingApi(object):
         # authentication setting
         _auth_settings = ["ApiKey"]  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            "200": "object",
+        }
 
         return self.api_client.call_api(
             "/api/v1/reports/coach_contract_requests",
@@ -209,7 +211,7 @@ class ReportingApi(object):
         )
 
     @validate_arguments
-    def api_v1_reports_coach_history_get(
+    def get_coach_history(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -218,14 +220,14 @@ class ReportingApi(object):
             Optional[Dict[str, Dict[str, Any]]], Field(description="Ransack query")
         ] = None,
         **kwargs
-    ) -> None:  # noqa: E501
-        """api_v1_reports_coach_history_get  # noqa: E501
+    ) -> object:  # noqa: E501
+        """get_coach_history  # noqa: E501
 
         Retrieve some or all coach history  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_coach_history_get(page, q, async_req=True)
+        >>> thread = api.get_coach_history(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -241,19 +243,17 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: object
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             raise ValueError(
-                "Error! Please call the api_v1_reports_coach_history_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
+                "Error! Please call the get_coach_history_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.api_v1_reports_coach_history_get_with_http_info(
-            page, q, **kwargs
-        )  # noqa: E501
+        return self.get_coach_history_with_http_info(page, q, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_v1_reports_coach_history_get_with_http_info(
+    def get_coach_history_with_http_info(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -263,13 +263,13 @@ class ReportingApi(object):
         ] = None,
         **kwargs
     ) -> ApiResponse:  # noqa: E501
-        """api_v1_reports_coach_history_get  # noqa: E501
+        """get_coach_history  # noqa: E501
 
         Retrieve some or all coach history  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_coach_history_get_with_http_info(page, q, async_req=True)
+        >>> thread = api.get_coach_history_with_http_info(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -298,7 +298,7 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -321,7 +321,7 @@ class ReportingApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_v1_reports_coach_history_get" % _key
+                    " to method get_coach_history" % _key
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -354,7 +354,9 @@ class ReportingApi(object):
         # authentication setting
         _auth_settings = ["ApiKey"]  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            "200": "object",
+        }
 
         return self.api_client.call_api(
             "/api/v1/reports/coach_history",
@@ -376,7 +378,7 @@ class ReportingApi(object):
         )
 
     @validate_arguments
-    def api_v1_reports_conferenceships_get(
+    def get_conferenceships(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -385,14 +387,14 @@ class ReportingApi(object):
             Optional[Dict[str, Dict[str, Any]]], Field(description="Ransack query")
         ] = None,
         **kwargs
-    ) -> None:  # noqa: E501
-        """api_v1_reports_conferenceships_get  # noqa: E501
+    ) -> object:  # noqa: E501
+        """get_conferenceships  # noqa: E501
 
         Retrieve some or all conferenceships  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_conferenceships_get(page, q, async_req=True)
+        >>> thread = api.get_conferenceships(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -408,19 +410,17 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: object
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             raise ValueError(
-                "Error! Please call the api_v1_reports_conferenceships_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
+                "Error! Please call the get_conferenceships_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.api_v1_reports_conferenceships_get_with_http_info(
-            page, q, **kwargs
-        )  # noqa: E501
+        return self.get_conferenceships_with_http_info(page, q, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_v1_reports_conferenceships_get_with_http_info(
+    def get_conferenceships_with_http_info(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -430,13 +430,13 @@ class ReportingApi(object):
         ] = None,
         **kwargs
     ) -> ApiResponse:  # noqa: E501
-        """api_v1_reports_conferenceships_get  # noqa: E501
+        """get_conferenceships  # noqa: E501
 
         Retrieve some or all conferenceships  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_conferenceships_get_with_http_info(page, q, async_req=True)
+        >>> thread = api.get_conferenceships_with_http_info(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -465,7 +465,7 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -488,7 +488,7 @@ class ReportingApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_v1_reports_conferenceships_get" % _key
+                    " to method get_conferenceships" % _key
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -521,7 +521,9 @@ class ReportingApi(object):
         # authentication setting
         _auth_settings = ["ApiKey"]  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            "200": "object",
+        }
 
         return self.api_client.call_api(
             "/api/v1/reports/conferenceships",
@@ -543,7 +545,7 @@ class ReportingApi(object):
         )
 
     @validate_arguments
-    def api_v1_reports_foia_details_get(
+    def get_foia_details(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -552,14 +554,14 @@ class ReportingApi(object):
             Optional[Dict[str, Dict[str, Any]]], Field(description="Ransack query")
         ] = None,
         **kwargs
-    ) -> None:  # noqa: E501
-        """api_v1_reports_foia_details_get  # noqa: E501
+    ) -> object:  # noqa: E501
+        """get_foia_details  # noqa: E501
 
         Retrieve some or all foia details  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_foia_details_get(page, q, async_req=True)
+        >>> thread = api.get_foia_details(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -575,19 +577,17 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: object
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             raise ValueError(
-                "Error! Please call the api_v1_reports_foia_details_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
+                "Error! Please call the get_foia_details_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.api_v1_reports_foia_details_get_with_http_info(
-            page, q, **kwargs
-        )  # noqa: E501
+        return self.get_foia_details_with_http_info(page, q, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_v1_reports_foia_details_get_with_http_info(
+    def get_foia_details_with_http_info(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -597,13 +597,13 @@ class ReportingApi(object):
         ] = None,
         **kwargs
     ) -> ApiResponse:  # noqa: E501
-        """api_v1_reports_foia_details_get  # noqa: E501
+        """get_foia_details  # noqa: E501
 
         Retrieve some or all foia details  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_foia_details_get_with_http_info(page, q, async_req=True)
+        >>> thread = api.get_foia_details_with_http_info(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -632,7 +632,7 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -655,7 +655,7 @@ class ReportingApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_v1_reports_foia_details_get" % _key
+                    " to method get_foia_details" % _key
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -688,7 +688,9 @@ class ReportingApi(object):
         # authentication setting
         _auth_settings = ["ApiKey"]  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            "200": "object",
+        }
 
         return self.api_client.call_api(
             "/api/v1/reports/foia_details",
@@ -710,7 +712,7 @@ class ReportingApi(object):
         )
 
     @validate_arguments
-    def api_v1_reports_games_get(
+    def get_games(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -719,14 +721,14 @@ class ReportingApi(object):
             Optional[Dict[str, Dict[str, Any]]], Field(description="Ransack query")
         ] = None,
         **kwargs
-    ) -> None:  # noqa: E501
-        """api_v1_reports_games_get  # noqa: E501
+    ) -> object:  # noqa: E501
+        """get_games  # noqa: E501
 
         Retrieve some or all games  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_games_get(page, q, async_req=True)
+        >>> thread = api.get_games(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -742,19 +744,17 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: object
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             raise ValueError(
-                "Error! Please call the api_v1_reports_games_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
+                "Error! Please call the get_games_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.api_v1_reports_games_get_with_http_info(
-            page, q, **kwargs
-        )  # noqa: E501
+        return self.get_games_with_http_info(page, q, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_v1_reports_games_get_with_http_info(
+    def get_games_with_http_info(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -764,13 +764,13 @@ class ReportingApi(object):
         ] = None,
         **kwargs
     ) -> ApiResponse:  # noqa: E501
-        """api_v1_reports_games_get  # noqa: E501
+        """get_games  # noqa: E501
 
         Retrieve some or all games  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_games_get_with_http_info(page, q, async_req=True)
+        >>> thread = api.get_games_with_http_info(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -799,7 +799,7 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -822,7 +822,7 @@ class ReportingApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_v1_reports_games_get" % _key
+                    " to method get_games" % _key
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -855,7 +855,9 @@ class ReportingApi(object):
         # authentication setting
         _auth_settings = ["ApiKey"]  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            "200": "object",
+        }
 
         return self.api_client.call_api(
             "/api/v1/reports/games",
@@ -877,7 +879,7 @@ class ReportingApi(object):
         )
 
     @validate_arguments
-    def api_v1_reports_invoices_get(
+    def get_invoices(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -886,14 +888,14 @@ class ReportingApi(object):
             Optional[Dict[str, Dict[str, Any]]], Field(description="Ransack query")
         ] = None,
         **kwargs
-    ) -> None:  # noqa: E501
-        """api_v1_reports_invoices_get  # noqa: E501
+    ) -> object:  # noqa: E501
+        """get_invoices  # noqa: E501
 
         Retrieve some or all client invoices  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_invoices_get(page, q, async_req=True)
+        >>> thread = api.get_invoices(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -909,19 +911,17 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: object
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             raise ValueError(
-                "Error! Please call the api_v1_reports_invoices_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
+                "Error! Please call the get_invoices_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.api_v1_reports_invoices_get_with_http_info(
-            page, q, **kwargs
-        )  # noqa: E501
+        return self.get_invoices_with_http_info(page, q, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_v1_reports_invoices_get_with_http_info(
+    def get_invoices_with_http_info(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -931,13 +931,13 @@ class ReportingApi(object):
         ] = None,
         **kwargs
     ) -> ApiResponse:  # noqa: E501
-        """api_v1_reports_invoices_get  # noqa: E501
+        """get_invoices  # noqa: E501
 
         Retrieve some or all client invoices  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_invoices_get_with_http_info(page, q, async_req=True)
+        >>> thread = api.get_invoices_with_http_info(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -966,7 +966,7 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -989,7 +989,7 @@ class ReportingApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_v1_reports_invoices_get" % _key
+                    " to method get_invoices" % _key
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1022,7 +1022,9 @@ class ReportingApi(object):
         # authentication setting
         _auth_settings = ["ApiKey"]  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            "200": "object",
+        }
 
         return self.api_client.call_api(
             "/api/v1/reports/invoices",
@@ -1044,7 +1046,7 @@ class ReportingApi(object):
         )
 
     @validate_arguments
-    def api_v1_reports_school_contract_requests_get(
+    def get_school_contract_requests(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -1053,14 +1055,14 @@ class ReportingApi(object):
             Optional[Dict[str, Dict[str, Any]]], Field(description="Ransack query")
         ] = None,
         **kwargs
-    ) -> None:  # noqa: E501
-        """api_v1_reports_school_contract_requests_get  # noqa: E501
+    ) -> object:  # noqa: E501
+        """get_school_contract_requests  # noqa: E501
 
         Retrieve some or all school contract requests  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_school_contract_requests_get(page, q, async_req=True)
+        >>> thread = api.get_school_contract_requests(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -1076,19 +1078,19 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: object
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             raise ValueError(
-                "Error! Please call the api_v1_reports_school_contract_requests_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
+                "Error! Please call the get_school_contract_requests_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.api_v1_reports_school_contract_requests_get_with_http_info(
+        return self.get_school_contract_requests_with_http_info(
             page, q, **kwargs
         )  # noqa: E501
 
     @validate_arguments
-    def api_v1_reports_school_contract_requests_get_with_http_info(
+    def get_school_contract_requests_with_http_info(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -1098,13 +1100,13 @@ class ReportingApi(object):
         ] = None,
         **kwargs
     ) -> ApiResponse:  # noqa: E501
-        """api_v1_reports_school_contract_requests_get  # noqa: E501
+        """get_school_contract_requests  # noqa: E501
 
         Retrieve some or all school contract requests  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_school_contract_requests_get_with_http_info(page, q, async_req=True)
+        >>> thread = api.get_school_contract_requests_with_http_info(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -1133,7 +1135,7 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -1156,7 +1158,7 @@ class ReportingApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_v1_reports_school_contract_requests_get" % _key
+                    " to method get_school_contract_requests" % _key
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1189,7 +1191,9 @@ class ReportingApi(object):
         # authentication setting
         _auth_settings = ["ApiKey"]  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            "200": "object",
+        }
 
         return self.api_client.call_api(
             "/api/v1/reports/school_contract_requests",
@@ -1211,7 +1215,7 @@ class ReportingApi(object):
         )
 
     @validate_arguments
-    def api_v1_reports_subscriptions_get(
+    def get_subscriptions(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -1220,14 +1224,14 @@ class ReportingApi(object):
             Optional[Dict[str, Dict[str, Any]]], Field(description="Ransack query")
         ] = None,
         **kwargs
-    ) -> None:  # noqa: E501
-        """api_v1_reports_subscriptions_get  # noqa: E501
+    ) -> object:  # noqa: E501
+        """get_subscriptions  # noqa: E501
 
         Retrieve subscriptions  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_subscriptions_get(page, q, async_req=True)
+        >>> thread = api.get_subscriptions(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -1243,19 +1247,17 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: object
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
             raise ValueError(
-                "Error! Please call the api_v1_reports_subscriptions_get_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
+                "Error! Please call the get_subscriptions_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.api_v1_reports_subscriptions_get_with_http_info(
-            page, q, **kwargs
-        )  # noqa: E501
+        return self.get_subscriptions_with_http_info(page, q, **kwargs)  # noqa: E501
 
     @validate_arguments
-    def api_v1_reports_subscriptions_get_with_http_info(
+    def get_subscriptions_with_http_info(
         self,
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
@@ -1265,13 +1267,13 @@ class ReportingApi(object):
         ] = None,
         **kwargs
     ) -> ApiResponse:  # noqa: E501
-        """api_v1_reports_subscriptions_get  # noqa: E501
+        """get_subscriptions  # noqa: E501
 
         Retrieve subscriptions  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.api_v1_reports_subscriptions_get_with_http_info(page, q, async_req=True)
+        >>> thread = api.get_subscriptions_with_http_info(page, q, async_req=True)
         >>> result = thread.get()
 
         :param page: results page to retrieve.
@@ -1300,7 +1302,7 @@ class ReportingApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: None
+        :rtype: tuple(object, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -1323,7 +1325,7 @@ class ReportingApi(object):
             if _key not in _all_params:
                 raise ApiTypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method api_v1_reports_subscriptions_get" % _key
+                    " to method get_subscriptions" % _key
                 )
             _params[_key] = _val
         del _params["kwargs"]
@@ -1356,7 +1358,9 @@ class ReportingApi(object):
         # authentication setting
         _auth_settings = ["ApiKey"]  # noqa: E501
 
-        _response_types_map = {}
+        _response_types_map = {
+            "200": "object",
+        }
 
         return self.api_client.call_api(
             "/api/v1/reports/subscriptions",
