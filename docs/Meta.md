@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **total_pages** | **int** |  | [optional] 
 **total_entries** | **int** |  | [optional] 
 **next_page** | **int** |  | [optional] 
-**previous_page** | **str** |  | [optional] 
+**previous_page** | **int** |  | [optional] 
 
 ## Example
 
