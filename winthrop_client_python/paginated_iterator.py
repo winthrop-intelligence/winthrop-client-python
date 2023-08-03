@@ -26,6 +26,8 @@ class PaginatedIterator:
     def __next__(self):
         if not self.current_data:
             self.kwargs["page"] = self.current_page
+            if not self.kwargs["page"]:
+                raise StopIteration
             collection = self.api_func(*self.args, **self.kwargs)
             if not collection.data:
                 raise StopIteration
