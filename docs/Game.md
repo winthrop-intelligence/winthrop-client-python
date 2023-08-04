@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
-**home_school_id** | **int** |  | 
-**away_school_id** | **int** |  | 
+**home_school_id** | **int** |  | [optional] 
+**away_school_id** | **int** |  | [optional] 
 **sport_id** | **int** |  | 
-**game_date** | **datetime** |  | 
+**game_date** | **date** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **neutral** | **bool** |  | [optional] 
