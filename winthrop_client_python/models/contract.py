@@ -17,45 +17,51 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Optional
-from pydantic import BaseModel, StrictInt, StrictStr, validator
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, validator
 
 
-class User(BaseModel):
+class Contract(BaseModel):
     """
-    User
+    Contract
     """
 
     id: Optional[StrictInt] = None
-    email: Optional[StrictStr] = None
-    first_name: Optional[StrictStr] = None
-    last_name: Optional[StrictStr] = None
+    executed_on: Optional[date] = None
+    expires_on: Optional[date] = None
+    start_on: Optional[date] = None
+    end_on: Optional[date] = None
+    at_will: Optional[StrictBool] = None
+    verified: Optional[StrictBool] = None
+    contractable_type: Optional[StrictStr] = None
+    contractable_id: Optional[StrictInt] = None
+    raw_contract_id: Optional[StrictInt] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    state: Optional[StrictStr] = None
-    title: Optional[StrictStr] = None
     __properties = [
         "id",
-        "email",
-        "first_name",
-        "last_name",
+        "executed_on",
+        "expires_on",
+        "start_on",
+        "end_on",
+        "at_will",
+        "verified",
+        "contractable_type",
+        "contractable_id",
+        "raw_contract_id",
         "created_at",
         "updated_at",
-        "state",
-        "title",
     ]
 
-    @validator("state")
-    def state_validate_enum(cls, value):
+    @validator("contractable_type")
+    def contractable_type_validate_enum(cls, value):
         """Validates the enum"""
         if value is None:
             return value
 
-        if value not in ("created", "suspended", "active", "pending"):
-            raise ValueError(
-                "must be one of enum values ('created', 'suspended', 'active', 'pending')"
-            )
+        if value not in ("Coach", "Person"):
+            raise ValueError("must be one of enum values ('Coach', 'Person')")
         return value
 
     class Config:
@@ -73,8 +79,8 @@ class User(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> User:
-        """Create an instance of User from a JSON string"""
+    def from_json(cls, json_str: str) -> Contract:
+        """Create an instance of Contract from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -83,24 +89,28 @@ class User(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> User:
-        """Create an instance of User from a dict"""
+    def from_dict(cls, obj: dict) -> Contract:
+        """Create an instance of Contract from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return User.parse_obj(obj)
+            return Contract.parse_obj(obj)
 
-        _obj = User.parse_obj(
+        _obj = Contract.parse_obj(
             {
                 "id": obj.get("id"),
-                "email": obj.get("email"),
-                "first_name": obj.get("first_name"),
-                "last_name": obj.get("last_name"),
+                "executed_on": obj.get("executed_on"),
+                "expires_on": obj.get("expires_on"),
+                "start_on": obj.get("start_on"),
+                "end_on": obj.get("end_on"),
+                "at_will": obj.get("at_will"),
+                "verified": obj.get("verified"),
+                "contractable_type": obj.get("contractable_type"),
+                "contractable_id": obj.get("contractable_id"),
+                "raw_contract_id": obj.get("raw_contract_id"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
-                "state": obj.get("state"),
-                "title": obj.get("title"),
             }
         )
         return _obj

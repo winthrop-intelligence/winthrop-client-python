@@ -20,16 +20,16 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, conlist
-from winthrop_client_python.models.compensation import Compensation
+from winthrop_client_python.models.contract import Contract
 from winthrop_client_python.models.meta import Meta
 
 
-class CompensationCollection(BaseModel):
+class ContractCollection(BaseModel):
     """
-    CompensationCollection
+    ContractCollection
     """
 
-    data: Optional[conlist(Compensation)] = None
+    data: Optional[conlist(Contract)] = None
     meta: Optional[Meta] = None
     __properties = ["data", "meta"]
 
@@ -48,8 +48,8 @@ class CompensationCollection(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CompensationCollection:
-        """Create an instance of CompensationCollection from a JSON string"""
+    def from_json(cls, json_str: str) -> ContractCollection:
+        """Create an instance of ContractCollection from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -68,17 +68,17 @@ class CompensationCollection(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CompensationCollection:
-        """Create an instance of CompensationCollection from a dict"""
+    def from_dict(cls, obj: dict) -> ContractCollection:
+        """Create an instance of ContractCollection from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CompensationCollection.parse_obj(obj)
+            return ContractCollection.parse_obj(obj)
 
-        _obj = CompensationCollection.parse_obj(
+        _obj = ContractCollection.parse_obj(
             {
-                "data": [Compensation.from_dict(_item) for _item in obj.get("data")]
+                "data": [Contract.from_dict(_item) for _item in obj.get("data")]
                 if obj.get("data") is not None
                 else None,
                 "meta": Meta.from_dict(obj.get("meta"))

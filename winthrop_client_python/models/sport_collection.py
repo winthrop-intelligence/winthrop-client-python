@@ -20,16 +20,16 @@ import json
 
 from typing import List, Optional
 from pydantic import BaseModel, conlist
-from winthrop_client_python.models.compensation import Compensation
 from winthrop_client_python.models.meta import Meta
+from winthrop_client_python.models.sport import Sport
 
 
-class CompensationCollection(BaseModel):
+class SportCollection(BaseModel):
     """
-    CompensationCollection
+    SportCollection
     """
 
-    data: Optional[conlist(Compensation)] = None
+    data: Optional[conlist(Sport)] = None
     meta: Optional[Meta] = None
     __properties = ["data", "meta"]
 
@@ -48,8 +48,8 @@ class CompensationCollection(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> CompensationCollection:
-        """Create an instance of CompensationCollection from a JSON string"""
+    def from_json(cls, json_str: str) -> SportCollection:
+        """Create an instance of SportCollection from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -68,17 +68,17 @@ class CompensationCollection(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> CompensationCollection:
-        """Create an instance of CompensationCollection from a dict"""
+    def from_dict(cls, obj: dict) -> SportCollection:
+        """Create an instance of SportCollection from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return CompensationCollection.parse_obj(obj)
+            return SportCollection.parse_obj(obj)
 
-        _obj = CompensationCollection.parse_obj(
+        _obj = SportCollection.parse_obj(
             {
-                "data": [Compensation.from_dict(_item) for _item in obj.get("data")]
+                "data": [Sport.from_dict(_item) for _item in obj.get("data")]
                 if obj.get("data") is not None
                 else None,
                 "meta": Meta.from_dict(obj.get("meta"))

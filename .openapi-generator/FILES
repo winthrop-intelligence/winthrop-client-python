@@ -1,5 +1,4 @@
 .github/workflows/python.yml
-.gitignore
 .gitlab-ci.yml
 .travis.yml
 README.md
@@ -9,6 +8,8 @@ docs/Coach.md
 docs/CoachCollection.md
 docs/Compensation.md
 docs/CompensationCollection.md
+docs/Contract.md
+docs/ContractCollection.md
 docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
@@ -29,6 +30,8 @@ docs/RequestedItemCollection.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolLogo.md
+docs/Sport.md
+docs/SportCollection.md
 docs/SummarizerPostQaS3Request.md
 docs/SummarizerPostSummarizeS3Request.md
 docs/UnprocessableEntity.md
@@ -56,6 +59,8 @@ winthrop_client_python/models/coach.py
 winthrop_client_python/models/coach_collection.py
 winthrop_client_python/models/compensation.py
 winthrop_client_python/models/compensation_collection.py
+winthrop_client_python/models/contract.py
+winthrop_client_python/models/contract_collection.py
 winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
 winthrop_client_python/models/foia_label.py
@@ -74,6 +79,8 @@ winthrop_client_python/models/requested_item_collection.py
 winthrop_client_python/models/school.py
 winthrop_client_python/models/school_collection.py
 winthrop_client_python/models/school_logo.py
+winthrop_client_python/models/sport.py
+winthrop_client_python/models/sport_collection.py
 winthrop_client_python/models/summarizer_post_qa_s3_request.py
 winthrop_client_python/models/summarizer_post_summarize_s3_request.py
 winthrop_client_python/models/unprocessable_entity.py
