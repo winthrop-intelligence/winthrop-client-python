@@ -19,7 +19,7 @@ import json
 
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, StrictInt
+from pydantic import BaseModel, StrictBool, StrictInt
 
 
 class NcaaFinancialReportStatus(BaseModel):
@@ -30,9 +30,10 @@ class NcaaFinancialReportStatus(BaseModel):
     id: Optional[StrictInt] = None
     school_id: Optional[StrictInt] = None
     year: Optional[StrictInt] = None
+    available: Optional[StrictBool] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    __properties = ["id", "school_id", "year", "created_at", "updated_at"]
+    __properties = ["id", "school_id", "year", "available", "created_at", "updated_at"]
 
     class Config:
         """Pydantic configuration"""
@@ -72,6 +73,7 @@ class NcaaFinancialReportStatus(BaseModel):
                 "id": obj.get("id"),
                 "school_id": obj.get("school_id"),
                 "year": obj.get("year"),
+                "available": obj.get("available"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
             }

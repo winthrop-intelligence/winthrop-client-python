@@ -19,7 +19,7 @@ import json
 
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, Field, StrictInt
+from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
 
 
 class AuditedFinancialReportStatus(BaseModel):
@@ -30,9 +30,25 @@ class AuditedFinancialReportStatus(BaseModel):
     id: Optional[StrictInt] = None
     school_id: StrictInt = Field(...)
     year: StrictInt = Field(...)
+    status: Optional[StrictStr] = Field(
+        None,
+        description="The status of the audited financial report. Available means the report is in the system. Missing means the report is not in the system. Not Available means the report is not required for the year.",
+    )
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    __properties = ["id", "school_id", "year", "created_at", "updated_at"]
+    __properties = ["id", "school_id", "year", "status", "created_at", "updated_at"]
+
+    @validator("status")
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in ("Available", "Missing", "Not Available"):
+            raise ValueError(
+                "must be one of enum values ('Available', 'Missing', 'Not Available')"
+            )
+        return value
 
     class Config:
         """Pydantic configuration"""
@@ -72,6 +88,7 @@ class AuditedFinancialReportStatus(BaseModel):
                 "id": obj.get("id"),
                 "school_id": obj.get("school_id"),
                 "year": obj.get("year"),
+                "status": obj.get("status"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
             }
