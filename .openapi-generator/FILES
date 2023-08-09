@@ -21,6 +21,7 @@ docs/Game.md
 docs/GameCollection.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
+docs/JobPost.md
 docs/Meta.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
@@ -71,6 +72,7 @@ winthrop_client_python/models/game.py
 winthrop_client_python/models/game_collection.py
 winthrop_client_python/models/income_report.py
 winthrop_client_python/models/income_report_collection.py
+winthrop_client_python/models/job_post.py
 winthrop_client_python/models/meta.py
 winthrop_client_python/models/ncaa_financial_report_status.py
 winthrop_client_python/models/ncaa_financial_report_status_collection.py

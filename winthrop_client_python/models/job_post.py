@@ -19,39 +19,36 @@ import json
 
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr, validator
+from pydantic import BaseModel, Field, StrictInt, StrictStr
 
 
-class FoiaRequest(BaseModel):
+class JobPost(BaseModel):
     """
-    FoiaRequest
+    JobPost
     """
 
     id: Optional[StrictInt] = None
+    title: Optional[StrictStr] = None
+    department: Optional[StrictStr] = None
+    link: Optional[StrictStr] = None
+    uid: StrictStr = Field(...)
+    work_type: Optional[StrictStr] = None
+    description: StrictStr = Field(...)
     school_id: StrictInt = Field(...)
-    created_by_id: Optional[StrictInt] = None
-    updated_by_id: Optional[StrictInt] = None
-    state: StrictStr = Field(...)
-    foia_label_id: Optional[StrictInt] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
     __properties = [
         "id",
+        "title",
+        "department",
+        "link",
+        "uid",
+        "work_type",
+        "description",
         "school_id",
-        "created_by_id",
-        "updated_by_id",
-        "state",
-        "foia_label_id",
         "created_at",
         "updated_at",
     ]
-
-    @validator("state")
-    def state_validate_enum(cls, value):
-        """Validates the enum"""
-        if value not in ("ACTIVE", "ARCHIVED"):
-            raise ValueError("must be one of enum values ('ACTIVE', 'ARCHIVED')")
-        return value
 
     class Config:
         """Pydantic configuration"""
@@ -68,8 +65,8 @@ class FoiaRequest(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> FoiaRequest:
-        """Create an instance of FoiaRequest from a JSON string"""
+    def from_json(cls, json_str: str) -> JobPost:
+        """Create an instance of JobPost from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self):
@@ -78,22 +75,24 @@ class FoiaRequest(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: dict) -> FoiaRequest:
-        """Create an instance of FoiaRequest from a dict"""
+    def from_dict(cls, obj: dict) -> JobPost:
+        """Create an instance of JobPost from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
-            return FoiaRequest.parse_obj(obj)
+            return JobPost.parse_obj(obj)
 
-        _obj = FoiaRequest.parse_obj(
+        _obj = JobPost.parse_obj(
             {
                 "id": obj.get("id"),
+                "title": obj.get("title"),
+                "department": obj.get("department"),
+                "link": obj.get("link"),
+                "uid": obj.get("uid"),
+                "work_type": obj.get("work_type"),
+                "description": obj.get("description"),
                 "school_id": obj.get("school_id"),
-                "created_by_id": obj.get("created_by_id"),
-                "updated_by_id": obj.get("updated_by_id"),
-                "state": obj.get("state"),
-                "foia_label_id": obj.get("foia_label_id"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
             }
