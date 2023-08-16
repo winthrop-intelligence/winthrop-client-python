@@ -6,11 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
-[**create_job_post**](DefaultApi.md#create_job_post) | **POST** /api/central-jobs-api/job_posts | Create a job post
+[**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
-[**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /api/central-jobs-api/job_posts/{jobPostId} | Delete a job post
+[**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
@@ -30,8 +30,8 @@ Method | HTTP request | Description
 [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games | 
 [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
-[**get_job_post**](DefaultApi.md#get_job_post) | **GET** /api/central-jobs-api/job_posts/{jobPostId} | Get a job post
-[**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /api/central-jobs-api/job_posts | List all job posts
+[**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
+[**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts
 [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
 [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
@@ -46,7 +46,7 @@ Method | HTTP request | Description
 [**summarizer_post_summarize_s3**](DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3
 [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
-[**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /api/central-jobs-api/job_posts/{jobPostId} | Update a job post
+[**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 
 
@@ -2172,7 +2172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_job_posts**
-> List[JobPost] get_job_posts(page=page, per_page=per_page, q=q)
+> JobPostCollection get_job_posts(page=page, per_page=per_page, q=q)
 
 List all job posts
 
@@ -2185,7 +2185,7 @@ List all job posts
 import time
 import os
 import winthrop_client_python
-from winthrop_client_python.models.job_post import JobPost
+from winthrop_client_python.models.job_post_collection import JobPostCollection
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -2234,7 +2234,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List[JobPost]**](JobPost.md)
+[**JobPostCollection**](JobPostCollection.md)
 
 ### Authorization
 

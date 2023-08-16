@@ -21,7 +21,7 @@ from typing_extensions import Annotated
 
 from pydantic import Field, StrictInt
 
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Optional
 
 from winthrop_client_python.models.audited_financial_report_status import (
     AuditedFinancialReportStatus,
@@ -48,6 +48,7 @@ from winthrop_client_python.models.income_report_collection import (
     IncomeReportCollection,
 )
 from winthrop_client_python.models.job_post import JobPost
+from winthrop_client_python.models.job_post_collection import JobPostCollection
 from winthrop_client_python.models.ncaa_financial_report_status import (
     NcaaFinancialReportStatus,
 )
@@ -555,7 +556,7 @@ class DefaultApi(object):
         }
 
         return self.api_client.call_api(
-            "/api/central-jobs-api/job_posts",
+            "/central_jobs/job_posts",
             "POST",
             _path_params,
             _query_params,
@@ -1163,7 +1164,7 @@ class DefaultApi(object):
         _response_types_map = {}
 
         return self.api_client.call_api(
-            "/api/central-jobs-api/job_posts/{jobPostId}",
+            "/central_jobs/job_posts/{jobPostId}",
             "DELETE",
             _path_params,
             _query_params,
@@ -4515,7 +4516,7 @@ class DefaultApi(object):
         }
 
         return self.api_client.call_api(
-            "/api/central-jobs-api/job_posts/{jobPostId}",
+            "/central_jobs/job_posts/{jobPostId}",
             "GET",
             _path_params,
             _query_params,
@@ -4546,7 +4547,7 @@ class DefaultApi(object):
             Optional[Dict[str, Any]], Field(description="Ransack query")
         ] = None,
         **kwargs
-    ) -> List[JobPost]:  # noqa: E501
+    ) -> JobPostCollection:  # noqa: E501
         """List all job posts  # noqa: E501
 
         List all job posts  # noqa: E501
@@ -4571,7 +4572,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: List[JobPost]
+        :rtype: JobPostCollection
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -4633,7 +4634,7 @@ class DefaultApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(List[JobPost], status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(JobPostCollection, status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -4693,12 +4694,12 @@ class DefaultApi(object):
         _auth_settings = ["ApiKey"]  # noqa: E501
 
         _response_types_map = {
-            "200": "List[JobPost]",
+            "200": "JobPostCollection",
             "401": None,
         }
 
         return self.api_client.call_api(
-            "/api/central-jobs-api/job_posts",
+            "/central_jobs/job_posts",
             "GET",
             _path_params,
             _query_params,
@@ -7241,7 +7242,7 @@ class DefaultApi(object):
         }
 
         return self.api_client.call_api(
-            "/api/central-jobs-api/job_posts/{jobPostId}",
+            "/central_jobs/job_posts/{jobPostId}",
             "PATCH",
             _path_params,
             _query_params,

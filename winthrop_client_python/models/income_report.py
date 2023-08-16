@@ -29,7 +29,7 @@ class IncomeReport(BaseModel):
 
     id: Optional[StrictInt] = None
     coach_id: StrictInt = Field(...)
-    raw_contract_id: StrictInt = Field(...)
+    raw_contract_id: Optional[StrictInt] = None
     year: StrictInt = Field(...)
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None

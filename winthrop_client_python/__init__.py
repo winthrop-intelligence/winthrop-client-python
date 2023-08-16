@@ -57,6 +57,7 @@ from winthrop_client_python.models.income_report_collection import (
     IncomeReportCollection,
 )
 from winthrop_client_python.models.job_post import JobPost
+from winthrop_client_python.models.job_post_collection import JobPostCollection
 from winthrop_client_python.models.meta import Meta
 from winthrop_client_python.models.ncaa_financial_report_status import (
     NcaaFinancialReportStatus,

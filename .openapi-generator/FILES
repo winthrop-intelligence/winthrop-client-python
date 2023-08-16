@@ -22,6 +22,7 @@ docs/GameCollection.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/JobPost.md
+docs/JobPostCollection.md
 docs/Meta.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
@@ -44,6 +45,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_job_post_collection.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -73,6 +75,7 @@ winthrop_client_python/models/game_collection.py
 winthrop_client_python/models/income_report.py
 winthrop_client_python/models/income_report_collection.py
 winthrop_client_python/models/job_post.py
+winthrop_client_python/models/job_post_collection.py
 winthrop_client_python/models/meta.py
 winthrop_client_python/models/ncaa_financial_report_status.py
 winthrop_client_python/models/ncaa_financial_report_status_collection.py
