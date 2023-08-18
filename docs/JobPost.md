@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **work_type** | **str** |  | [optional] 
 **description** | **str** |  | 
 **school_id** | **int** |  | 
+**expired** | **bool** |  | [optional] [default to False]
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 

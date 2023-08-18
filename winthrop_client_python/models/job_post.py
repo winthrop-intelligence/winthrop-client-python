@@ -19,7 +19,7 @@ import json
 
 from datetime import datetime
 from typing import Optional
-from pydantic import BaseModel, Field, StrictInt, StrictStr
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
 
 
 class JobPost(BaseModel):
@@ -35,6 +35,7 @@ class JobPost(BaseModel):
     work_type: Optional[StrictStr] = None
     description: StrictStr = Field(...)
     school_id: StrictInt = Field(...)
+    expired: Optional[StrictBool] = False
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
     __properties = [
@@ -46,6 +47,7 @@ class JobPost(BaseModel):
         "work_type",
         "description",
         "school_id",
+        "expired",
         "created_at",
         "updated_at",
     ]
@@ -93,6 +95,9 @@ class JobPost(BaseModel):
                 "work_type": obj.get("work_type"),
                 "description": obj.get("description"),
                 "school_id": obj.get("school_id"),
+                "expired": obj.get("expired")
+                if obj.get("expired") is not None
+                else False,
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
             }
