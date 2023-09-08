@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **uid** | **str** |  | 
 **work_type** | **str** |  | [optional] 
 **description** | **str** |  | 
+**description_md** | **str** |  | [optional] 
 **school_id** | **int** |  | 
 **expired** | **bool** |  | [optional] [default to False]
 **created_at** | **datetime** |  | [optional] 
