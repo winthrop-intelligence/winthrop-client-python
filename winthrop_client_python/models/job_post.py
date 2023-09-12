@@ -35,6 +35,7 @@ class JobPost(BaseModel):
     work_type: Optional[StrictStr] = None
     description: StrictStr = Field(...)
     description_md: Optional[StrictStr] = None
+    salary: Optional[StrictStr] = None
     school_id: StrictInt = Field(...)
     expired: Optional[StrictBool] = False
     created_at: Optional[datetime] = None
@@ -48,6 +49,7 @@ class JobPost(BaseModel):
         "work_type",
         "description",
         "description_md",
+        "salary",
         "school_id",
         "expired",
         "created_at",
@@ -97,6 +99,7 @@ class JobPost(BaseModel):
                 "work_type": obj.get("work_type"),
                 "description": obj.get("description"),
                 "description_md": obj.get("description_md"),
+                "salary": obj.get("salary"),
                 "school_id": obj.get("school_id"),
                 "expired": obj.get("expired")
                 if obj.get("expired") is not None
