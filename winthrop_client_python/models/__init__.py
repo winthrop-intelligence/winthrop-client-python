@@ -54,6 +54,8 @@ from winthrop_client_python.models.requested_item_collection import (
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.models.school_logo import SchoolLogo
+from winthrop_client_python.models.season import Season
+from winthrop_client_python.models.season_collection import SeasonCollection
 from winthrop_client_python.models.sport import Sport
 from winthrop_client_python.models.sport_collection import SportCollection
 from winthrop_client_python.models.summarizer_post_qa_s3_request import (

@@ -128,6 +128,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
+*DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/season/{seasonId} | 
+*DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
 *DefaultApi* | [**get_sport**](docs/DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} | 
 *DefaultApi* | [**get_sports**](docs/DefaultApi.md#get_sports) | **GET** /api/v1/sports | 
 *DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
@@ -178,6 +180,8 @@ Class | Method | HTTP request | Description
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
  - [SchoolLogo](docs/SchoolLogo.md)
+ - [Season](docs/Season.md)
+ - [SeasonCollection](docs/SeasonCollection.md)
  - [Sport](docs/Sport.md)
  - [SportCollection](docs/SportCollection.md)
  - [SummarizerPostQaS3Request](docs/SummarizerPostQaS3Request.md)

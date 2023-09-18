@@ -32,6 +32,8 @@ docs/RequestedItemCollection.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolLogo.md
+docs/Season.md
+docs/SeasonCollection.md
 docs/Sport.md
 docs/SportCollection.md
 docs/SummarizerPostQaS3Request.md
@@ -83,6 +85,8 @@ winthrop_client_python/models/requested_item_collection.py
 winthrop_client_python/models/school.py
 winthrop_client_python/models/school_collection.py
 winthrop_client_python/models/school_logo.py
+winthrop_client_python/models/season.py
+winthrop_client_python/models/season_collection.py
 winthrop_client_python/models/sport.py
 winthrop_client_python/models/sport_collection.py
 winthrop_client_python/models/summarizer_post_qa_s3_request.py
