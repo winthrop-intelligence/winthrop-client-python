@@ -20,6 +20,7 @@ import json
 from datetime import datetime
 from typing import Optional, Union
 from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr
+from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.school_logo import SchoolLogo
 
 
@@ -53,6 +54,7 @@ class School(BaseModel):
     address_2: Optional[StrictStr] = None
     zip_code: Optional[StrictStr] = None
     logo: Optional[SchoolLogo] = None
+    athletic_director: Optional[Coach] = None
     __properties = [
         "id",
         "name",
@@ -79,6 +81,7 @@ class School(BaseModel):
         "address_2",
         "zip_code",
         "logo",
+        "athletic_director",
     ]
 
     class Config:
@@ -106,6 +109,9 @@ class School(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of logo
         if self.logo:
             _dict["logo"] = self.logo.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of athletic_director
+        if self.athletic_director:
+            _dict["athletic_director"] = self.athletic_director.to_dict()
         return _dict
 
     @classmethod
@@ -149,6 +155,9 @@ class School(BaseModel):
                 "zip_code": obj.get("zip_code"),
                 "logo": SchoolLogo.from_dict(obj.get("logo"))
                 if obj.get("logo") is not None
+                else None,
+                "athletic_director": Coach.from_dict(obj.get("athletic_director"))
+                if obj.get("athletic_director") is not None
                 else None,
             }
         )

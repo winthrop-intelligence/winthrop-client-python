@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **address_2** | **str** |  | [optional] 
 **zip_code** | **str** |  | [optional] 
 **logo** | [**SchoolLogo**](SchoolLogo.md) |  | [optional] 
+**athletic_director** | [**Coach**](Coach.md) |  | [optional] 
 
 ## Example
 
