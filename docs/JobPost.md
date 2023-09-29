@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **title** | **str** |  | [optional] 
-**department** | **str** |  | [optional] 
 **link** | **str** |  | [optional] 
 **uid** | **str** |  | 
 **work_type** | **str** |  | [optional] 

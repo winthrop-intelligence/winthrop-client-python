@@ -29,7 +29,6 @@ class JobPost(BaseModel):
 
     id: Optional[StrictInt] = None
     title: Optional[StrictStr] = None
-    department: Optional[StrictStr] = None
     link: Optional[StrictStr] = None
     uid: StrictStr = Field(...)
     work_type: Optional[StrictStr] = None
@@ -43,7 +42,6 @@ class JobPost(BaseModel):
     __properties = [
         "id",
         "title",
-        "department",
         "link",
         "uid",
         "work_type",
@@ -93,7 +91,6 @@ class JobPost(BaseModel):
             {
                 "id": obj.get("id"),
                 "title": obj.get("title"),
-                "department": obj.get("department"),
                 "link": obj.get("link"),
                 "uid": obj.get("uid"),
                 "work_type": obj.get("work_type"),
