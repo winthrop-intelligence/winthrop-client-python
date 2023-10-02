@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
 **leader** | **bool** |  | [optional] 
+**bio** | **str** |  | [optional] 
 
 ## Example
 
