@@ -33,8 +33,7 @@ class Coach(BaseModel):
     email: Optional[StrictStr] = None
     phone: Optional[StrictStr] = None
     leader: Optional[StrictBool] = None
-    bio: Optional[StrictStr] = None
-    __properties = ["id", "first_name", "last_name", "email", "phone", "leader", "bio"]
+    __properties = ["id", "first_name", "last_name", "email", "phone", "leader"]
 
     class Config:
         """Pydantic configuration"""
@@ -77,7 +76,6 @@ class Coach(BaseModel):
                 "email": obj.get("email"),
                 "phone": obj.get("phone"),
                 "leader": obj.get("leader"),
-                "bio": obj.get("bio"),
             }
         )
         return _obj

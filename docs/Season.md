@@ -35,6 +35,8 @@ Name | Type | Description | Notes
 **home_losses** | **int** |  | [optional] 
 **home_win_percent** | **float** |  | [optional] 
 **asr** | **int** |  | [optional] 
+**head_coach** | [**Coach**](Coach.md) |  | [optional] 
+**assistant_coaches** | [**List[Coach]**](Coach.md) |  | [optional] 
 
 ## Example
 

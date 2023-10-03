@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional, Union
-from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr
+from typing import List, Optional, Union
+from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr, conlist
+from winthrop_client_python.models.coach import Coach
 
 
 class Season(BaseModel):
@@ -58,6 +59,8 @@ class Season(BaseModel):
     home_losses: Optional[StrictInt] = None
     home_win_percent: Optional[Union[StrictFloat, StrictInt]] = None
     asr: Optional[StrictInt] = None
+    head_coach: Optional[Coach] = None
+    assistant_coaches: Optional[conlist(Coach)] = None
     __properties = [
         "id",
         "name",
@@ -90,6 +93,8 @@ class Season(BaseModel):
         "home_losses",
         "home_win_percent",
         "asr",
+        "head_coach",
+        "assistant_coaches",
     ]
 
     class Config:
@@ -114,6 +119,16 @@ class Season(BaseModel):
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of head_coach
+        if self.head_coach:
+            _dict["head_coach"] = self.head_coach.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in assistant_coaches (list)
+        _items = []
+        if self.assistant_coaches:
+            for _item in self.assistant_coaches:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict["assistant_coaches"] = _items
         return _dict
 
     @classmethod
@@ -158,6 +173,14 @@ class Season(BaseModel):
                 "home_losses": obj.get("home_losses"),
                 "home_win_percent": obj.get("home_win_percent"),
                 "asr": obj.get("asr"),
+                "head_coach": Coach.from_dict(obj.get("head_coach"))
+                if obj.get("head_coach") is not None
+                else None,
+                "assistant_coaches": [
+                    Coach.from_dict(_item) for _item in obj.get("assistant_coaches")
+                ]
+                if obj.get("assistant_coaches") is not None
+                else None,
             }
         )
         return _obj
