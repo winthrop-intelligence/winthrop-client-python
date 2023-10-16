@@ -32,6 +32,10 @@ from winthrop_client_python.exceptions import ApiAttributeError
 from winthrop_client_python.exceptions import ApiException
 
 # import models into sdk package
+from winthrop_client_python.models.administrator import Administrator
+from winthrop_client_python.models.administrator_collection import (
+    AdministratorCollection,
+)
 from winthrop_client_python.models.audited_financial_report_status import (
     AuditedFinancialReportStatus,
 )

@@ -2,6 +2,8 @@
 .gitlab-ci.yml
 .travis.yml
 README.md
+docs/Administrator.md
+docs/AdministratorCollection.md
 docs/AuditedFinancialReportStatus.md
 docs/AuditedFinancialReportStatusCollection.md
 docs/Coach.md
@@ -57,6 +59,8 @@ winthrop_client_python/api_response.py
 winthrop_client_python/configuration.py
 winthrop_client_python/exceptions.py
 winthrop_client_python/models/__init__.py
+winthrop_client_python/models/administrator.py
+winthrop_client_python/models/administrator_collection.py
 winthrop_client_python/models/audited_financial_report_status.py
 winthrop_client_python/models/audited_financial_report_status_collection.py
 winthrop_client_python/models/coach.py
