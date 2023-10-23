@@ -28,6 +28,8 @@ docs/JobPostCollection.md
 docs/Meta.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
+docs/Position.md
+docs/PositionCollection.md
 docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
@@ -84,6 +86,8 @@ winthrop_client_python/models/job_post_collection.py
 winthrop_client_python/models/meta.py
 winthrop_client_python/models/ncaa_financial_report_status.py
 winthrop_client_python/models/ncaa_financial_report_status_collection.py
+winthrop_client_python/models/position.py
+winthrop_client_python/models/position_collection.py
 winthrop_client_python/models/requested_item.py
 winthrop_client_python/models/requested_item_collection.py
 winthrop_client_python/models/school.py
