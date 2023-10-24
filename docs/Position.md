@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **compensation_id** | **int** |  | [optional] 
 **coach_apr** | **int** |  | [optional] 
 **title** | **str** |  | [optional] 
+**name_display** | **str** |  | [optional] 
 **departing** | **bool** |  | [optional] 
 **departing_set_at** | **datetime** |  | [optional] 
 **coach** | [**Coach**](Coach.md) |  | [optional] 

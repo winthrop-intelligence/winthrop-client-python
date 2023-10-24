@@ -39,6 +39,7 @@ class Position(BaseModel):
     compensation_id: Optional[StrictInt] = None
     coach_apr: Optional[StrictInt] = None
     title: Optional[StrictStr] = None
+    name_display: Optional[StrictStr] = None
     departing: Optional[StrictBool] = None
     departing_set_at: Optional[datetime] = None
     coach: Optional[Coach] = None
@@ -55,6 +56,7 @@ class Position(BaseModel):
         "compensation_id",
         "coach_apr",
         "title",
+        "name_display",
         "departing",
         "departing_set_at",
         "coach",
@@ -116,6 +118,7 @@ class Position(BaseModel):
                 "compensation_id": obj.get("compensation_id"),
                 "coach_apr": obj.get("coach_apr"),
                 "title": obj.get("title"),
+                "name_display": obj.get("name_display"),
                 "departing": obj.get("departing"),
                 "departing_set_at": obj.get("departing_set_at"),
                 "coach": Coach.from_dict(obj.get("coach"))
