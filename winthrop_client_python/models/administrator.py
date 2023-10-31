@@ -128,8 +128,8 @@ class Administrator(BaseModel):
         if value is None:
             return value
 
-        if value not in ("M", "F"):
-            raise ValueError("must be one of enum values ('M', 'F')")
+        if value not in ("M", "F", ""):
+            raise ValueError("must be one of enum values ('M', 'F', '')")
         return value
 
     class Config:
