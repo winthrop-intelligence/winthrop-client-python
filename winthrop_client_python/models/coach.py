@@ -20,6 +20,7 @@ import json
 
 from typing import Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from winthrop_client_python.models.avatar import Avatar
 
 
 class Coach(BaseModel):
@@ -34,7 +35,17 @@ class Coach(BaseModel):
     phone: Optional[StrictStr] = None
     leader: Optional[StrictBool] = None
     bio: Optional[StrictStr] = None
-    __properties = ["id", "first_name", "last_name", "email", "phone", "leader", "bio"]
+    avatar: Optional[Avatar] = None
+    __properties = [
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        "phone",
+        "leader",
+        "bio",
+        "avatar",
+    ]
 
     class Config:
         """Pydantic configuration"""
@@ -58,6 +69,9 @@ class Coach(BaseModel):
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of avatar
+        if self.avatar:
+            _dict["avatar"] = self.avatar.to_dict()
         return _dict
 
     @classmethod
@@ -78,6 +92,9 @@ class Coach(BaseModel):
                 "phone": obj.get("phone"),
                 "leader": obj.get("leader"),
                 "bio": obj.get("bio"),
+                "avatar": Avatar.from_dict(obj.get("avatar"))
+                if obj.get("avatar") is not None
+                else None,
             }
         )
         return _obj

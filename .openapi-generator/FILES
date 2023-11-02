@@ -6,6 +6,7 @@ docs/Administrator.md
 docs/AdministratorCollection.md
 docs/AuditedFinancialReportStatus.md
 docs/AuditedFinancialReportStatusCollection.md
+docs/Avatar.md
 docs/Coach.md
 docs/CoachCollection.md
 docs/Compensation.md
@@ -65,6 +66,7 @@ winthrop_client_python/models/administrator.py
 winthrop_client_python/models/administrator_collection.py
 winthrop_client_python/models/audited_financial_report_status.py
 winthrop_client_python/models/audited_financial_report_status_collection.py
+winthrop_client_python/models/avatar.py
 winthrop_client_python/models/coach.py
 winthrop_client_python/models/coach_collection.py
 winthrop_client_python/models/compensation.py

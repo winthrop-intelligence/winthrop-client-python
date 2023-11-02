@@ -42,6 +42,7 @@ from winthrop_client_python.models.audited_financial_report_status import (
 from winthrop_client_python.models.audited_financial_report_status_collection import (
     AuditedFinancialReportStatusCollection,
 )
+from winthrop_client_python.models.avatar import Avatar
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.coach_collection import CoachCollection
 from winthrop_client_python.models.compensation import Compensation

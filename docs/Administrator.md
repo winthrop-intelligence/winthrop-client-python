@@ -45,6 +45,7 @@ Name | Type | Description | Notes
 **private** | **bool** |  | [optional] 
 **sport_id** | **int** |  | [optional] 
 **coli** | **float** |  | [optional] 
+**coach** | [**Coach**](Coach.md) |  | [optional] 
 
 ## Example
 

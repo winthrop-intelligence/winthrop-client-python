@@ -20,6 +20,7 @@ import json
 from datetime import date
 from typing import Optional, Union
 from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr, validator
+from winthrop_client_python.models.coach import Coach
 
 
 class Administrator(BaseModel):
@@ -68,6 +69,7 @@ class Administrator(BaseModel):
     private: Optional[StrictBool] = None
     sport_id: Optional[StrictInt] = None
     coli: Optional[Union[StrictFloat, StrictInt]] = None
+    coach: Optional[Coach] = None
     __properties = [
         "id",
         "coach_id",
@@ -110,6 +112,7 @@ class Administrator(BaseModel):
         "private",
         "sport_id",
         "coli",
+        "coach",
     ]
 
     @validator("compensation_type")
@@ -154,6 +157,9 @@ class Administrator(BaseModel):
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of coach
+        if self.coach:
+            _dict["coach"] = self.coach.to_dict()
         return _dict
 
     @classmethod
@@ -224,6 +230,9 @@ class Administrator(BaseModel):
                 "private": obj.get("private"),
                 "sport_id": obj.get("sport_id"),
                 "coli": obj.get("coli"),
+                "coach": Coach.from_dict(obj.get("coach"))
+                if obj.get("coach") is not None
+                else None,
             }
         )
         return _obj

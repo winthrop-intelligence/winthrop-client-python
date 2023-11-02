@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **phone** | **str** |  | [optional] 
 **leader** | **bool** |  | [optional] 
 **bio** | **str** |  | [optional] 
+**avatar** | [**Avatar**](Avatar.md) |  | [optional] 
 
 ## Example
 

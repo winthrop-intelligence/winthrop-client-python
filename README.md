@@ -160,6 +160,7 @@ Class | Method | HTTP request | Description
  - [AdministratorCollection](docs/AdministratorCollection.md)
  - [AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
  - [AuditedFinancialReportStatusCollection](docs/AuditedFinancialReportStatusCollection.md)
+ - [Avatar](docs/Avatar.md)
  - [Coach](docs/Coach.md)
  - [CoachCollection](docs/CoachCollection.md)
  - [Compensation](docs/Compensation.md)
