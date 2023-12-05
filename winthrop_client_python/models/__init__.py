@@ -25,6 +25,8 @@ from winthrop_client_python.models.audited_financial_report_status_collection im
     AuditedFinancialReportStatusCollection,
 )
 from winthrop_client_python.models.avatar import Avatar
+from winthrop_client_python.models.category import Category
+from winthrop_client_python.models.category_collection import CategoryCollection
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.coach_collection import CoachCollection
 from winthrop_client_python.models.compensation import Compensation

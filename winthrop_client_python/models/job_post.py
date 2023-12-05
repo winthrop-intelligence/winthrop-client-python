@@ -18,8 +18,9 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Optional
-from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr
+from typing import List, Optional
+from pydantic import BaseModel, Field, StrictBool, StrictInt, StrictStr, conlist
+from winthrop_client_python.models.category import Category
 
 
 class JobPost(BaseModel):
@@ -39,6 +40,7 @@ class JobPost(BaseModel):
     expired: Optional[StrictBool] = False
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
+    categories: Optional[conlist(Category)] = None
     __properties = [
         "id",
         "title",
@@ -52,6 +54,7 @@ class JobPost(BaseModel):
         "expired",
         "created_at",
         "updated_at",
+        "categories",
     ]
 
     class Config:
@@ -76,6 +79,13 @@ class JobPost(BaseModel):
     def to_dict(self):
         """Returns the dictionary representation of the model using alias"""
         _dict = self.dict(by_alias=True, exclude={}, exclude_none=True)
+        # override the default output from pydantic by calling `to_dict()` of each item in categories (list)
+        _items = []
+        if self.categories:
+            for _item in self.categories:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict["categories"] = _items
         return _dict
 
     @classmethod
@@ -103,6 +113,11 @@ class JobPost(BaseModel):
                 else False,
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
+                "categories": [
+                    Category.from_dict(_item) for _item in obj.get("categories")
+                ]
+                if obj.get("categories") is not None
+                else None,
             }
         )
         return _obj

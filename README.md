@@ -106,6 +106,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
 *DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
+*DefaultApi* | [**get_categories**](docs/DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories
 *DefaultApi* | [**get_coach**](docs/DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
 *DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 *DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
@@ -161,6 +162,8 @@ Class | Method | HTTP request | Description
  - [AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
  - [AuditedFinancialReportStatusCollection](docs/AuditedFinancialReportStatusCollection.md)
  - [Avatar](docs/Avatar.md)
+ - [Category](docs/Category.md)
+ - [CategoryCollection](docs/CategoryCollection.md)
  - [Coach](docs/Coach.md)
  - [CoachCollection](docs/CoachCollection.md)
  - [Compensation](docs/Compensation.md)

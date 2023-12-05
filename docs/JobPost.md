@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **expired** | **bool** |  | [optional] [default to False]
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
+**categories** | [**List[Category]**](Category.md) |  | [optional] 
 
 ## Example
 
