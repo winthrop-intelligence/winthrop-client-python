@@ -39,6 +39,7 @@ docs/RequestedItemCollection.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolLogo.md
+docs/ScraperApi.md
 docs/Season.md
 docs/SeasonCollection.md
 docs/Sport.md
@@ -59,6 +60,7 @@ winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
 winthrop_client_python/api/default_api.py
 winthrop_client_python/api/reporting_api.py
+winthrop_client_python/api/scraper_api.py
 winthrop_client_python/api_client.py
 winthrop_client_python/api_response.py
 winthrop_client_python/configuration.py
