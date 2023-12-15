@@ -3770,7 +3770,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_coach**
-> Coach update_coach(coach)
+> Coach update_coach(coach_id, coach)
 
 
 
@@ -3808,10 +3808,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
+    coach_id = 56 # int | ID of coach to update
     coach = winthrop_client_python.Coach() # Coach | Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored.
 
     try:
-        api_response = api_instance.update_coach(coach)
+        api_response = api_instance.update_coach(coach_id, coach)
         print("The response of DefaultApi->update_coach:\n")
         pprint(api_response)
     except Exception as e:
@@ -3823,6 +3824,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **coach_id** | **int**| ID of coach to update | 
  **coach** | [**Coach**](Coach.md)| Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored. | 
 
 ### Return type

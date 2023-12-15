@@ -7942,6 +7942,7 @@ class DefaultApi(object):
     @validate_arguments
     def update_coach(
         self,
+        coach_id: Annotated[StrictInt, Field(..., description="ID of coach to update")],
         coach: Annotated[
             Coach,
             Field(
@@ -7957,9 +7958,11 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_coach(coach, async_req=True)
+        >>> thread = api.update_coach(coach_id, coach, async_req=True)
         >>> result = thread.get()
 
+        :param coach_id: ID of coach to update (required)
+        :type coach_id: int
         :param coach: Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored. (required)
         :type coach: Coach
         :param async_req: Whether to execute the request asynchronously.
@@ -7978,11 +7981,12 @@ class DefaultApi(object):
             raise ValueError(
                 "Error! Please call the update_coach_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.update_coach_with_http_info(coach, **kwargs)  # noqa: E501
+        return self.update_coach_with_http_info(coach_id, coach, **kwargs)  # noqa: E501
 
     @validate_arguments
     def update_coach_with_http_info(
         self,
+        coach_id: Annotated[StrictInt, Field(..., description="ID of coach to update")],
         coach: Annotated[
             Coach,
             Field(
@@ -7998,9 +8002,11 @@ class DefaultApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.update_coach_with_http_info(coach, async_req=True)
+        >>> thread = api.update_coach_with_http_info(coach_id, coach, async_req=True)
         >>> result = thread.get()
 
+        :param coach_id: ID of coach to update (required)
+        :type coach_id: int
         :param coach: Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored. (required)
         :type coach: Coach
         :param async_req: Whether to execute the request asynchronously.
@@ -8030,7 +8036,7 @@ class DefaultApi(object):
 
         _params = locals()
 
-        _all_params = ["coach"]
+        _all_params = ["coach_id", "coach"]
         _all_params.extend(
             [
                 "async_req",
@@ -8057,6 +8063,8 @@ class DefaultApi(object):
 
         # process the path parameters
         _path_params = {}
+        if _params["coach_id"]:
+            _path_params["coachId"] = _params["coach_id"]
 
         # process the query parameters
         _query_params = []
