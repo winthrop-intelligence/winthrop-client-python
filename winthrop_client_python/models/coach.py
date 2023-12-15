@@ -35,6 +35,7 @@ class Coach(BaseModel):
     phone: Optional[StrictStr] = None
     leader: Optional[StrictBool] = None
     bio: Optional[StrictStr] = None
+    bio_text: Optional[StrictStr] = None
     avatar: Optional[Avatar] = None
     __properties = [
         "id",
@@ -44,6 +45,7 @@ class Coach(BaseModel):
         "phone",
         "leader",
         "bio",
+        "bio_text",
         "avatar",
     ]
 
@@ -92,6 +94,7 @@ class Coach(BaseModel):
                 "phone": obj.get("phone"),
                 "leader": obj.get("leader"),
                 "bio": obj.get("bio"),
+                "bio_text": obj.get("bio_text"),
                 "avatar": Avatar.from_dict(obj.get("avatar"))
                 if obj.get("avatar") is not None
                 else None,
