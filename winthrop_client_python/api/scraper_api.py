@@ -23,6 +23,7 @@ from pydantic import Field, StrictStr
 
 from typing import List
 
+from winthrop_client_python.models.scraper import Scraper
 
 from winthrop_client_python.api_client import ApiClient
 from winthrop_client_python.api_response import ApiResponse
@@ -42,7 +43,7 @@ class ScraperApi(object):
         self.api_client = api_client
 
     @validate_arguments
-    def list_scrapers(self, **kwargs) -> List[str]:  # noqa: E501
+    def list_scrapers(self, **kwargs) -> List[Scraper]:  # noqa: E501
         """List all available scrapers  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
@@ -60,7 +61,7 @@ class ScraperApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: List[str]
+        :rtype: List[Scraper]
         """
         kwargs["_return_http_data_only"] = True
         if "_preload_content" in kwargs:
@@ -101,7 +102,7 @@ class ScraperApi(object):
         :return: Returns the result object.
                  If the method is called asynchronously,
                  returns the request thread.
-        :rtype: tuple(List[str], status_code(int), headers(HTTPHeaderDict))
+        :rtype: tuple(List[Scraper], status_code(int), headers(HTTPHeaderDict))
         """
 
         _params = locals()
@@ -152,7 +153,7 @@ class ScraperApi(object):
         _auth_settings = ["ApiKey"]  # noqa: E501
 
         _response_types_map = {
-            "200": "List[str]",
+            "200": "List[Scraper]",
             "401": None,
         }
 
@@ -178,7 +179,7 @@ class ScraperApi(object):
     @validate_arguments
     def run_scraper(
         self,
-        scraper: Annotated[
+        command: Annotated[
             StrictStr, Field(..., description="The name of the scraper to run")
         ],
         **kwargs
@@ -188,11 +189,11 @@ class ScraperApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.run_scraper(scraper, async_req=True)
+        >>> thread = api.run_scraper(command, async_req=True)
         >>> result = thread.get()
 
-        :param scraper: The name of the scraper to run (required)
-        :type scraper: str
+        :param command: The name of the scraper to run (required)
+        :type command: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _request_timeout: timeout setting for this request. If one
@@ -209,12 +210,12 @@ class ScraperApi(object):
             raise ValueError(
                 "Error! Please call the run_scraper_with_http_info method with `_preload_content` instead and obtain raw data from ApiResponse.raw_data"
             )
-        return self.run_scraper_with_http_info(scraper, **kwargs)  # noqa: E501
+        return self.run_scraper_with_http_info(command, **kwargs)  # noqa: E501
 
     @validate_arguments
     def run_scraper_with_http_info(
         self,
-        scraper: Annotated[
+        command: Annotated[
             StrictStr, Field(..., description="The name of the scraper to run")
         ],
         **kwargs
@@ -224,11 +225,11 @@ class ScraperApi(object):
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
 
-        >>> thread = api.run_scraper_with_http_info(scraper, async_req=True)
+        >>> thread = api.run_scraper_with_http_info(command, async_req=True)
         >>> result = thread.get()
 
-        :param scraper: The name of the scraper to run (required)
-        :type scraper: str
+        :param command: The name of the scraper to run (required)
+        :type command: str
         :param async_req: Whether to execute the request asynchronously.
         :type async_req: bool, optional
         :param _preload_content: if False, the ApiResponse.data will
@@ -256,7 +257,7 @@ class ScraperApi(object):
 
         _params = locals()
 
-        _all_params = ["scraper"]
+        _all_params = ["command"]
         _all_params.extend(
             [
                 "async_req",
@@ -283,8 +284,8 @@ class ScraperApi(object):
 
         # process the path parameters
         _path_params = {}
-        if _params["scraper"]:
-            _path_params["scraper"] = _params["scraper"]
+        if _params["command"]:
+            _path_params["command"] = _params["command"]
 
         # process the query parameters
         _query_params = []
@@ -301,7 +302,7 @@ class ScraperApi(object):
         _response_types_map = {}
 
         return self.api_client.call_api(
-            "/ondemand-scrapers/run/{scraper}",
+            "/ondemand-scrapers/run/{command}",
             "POST",
             _path_params,
             _query_params,
