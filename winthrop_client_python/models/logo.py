@@ -20,6 +20,7 @@ import json
 
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictStr
+from pydantic import Field
 
 try:
     from typing import Self
@@ -27,16 +28,21 @@ except ImportError:
     from typing_extensions import Self
 
 
-class SummarizerPostQaS3Request(BaseModel):
+class Logo(BaseModel):
     """
-    SummarizerPostQaS3Request
+    Logo
     """  # noqa: E501
 
-    bucket: StrictStr
-    key: StrictStr
-    prompt: Optional[StrictStr] = None
-    question: StrictStr
-    __properties: ClassVar[List[str]] = ["bucket", "key", "prompt", "question"]
+    original_url: Optional[StrictStr] = Field(
+        default=None, description="Signed, expiring url for the original logo image"
+    )
+    medium_url: Optional[StrictStr] = Field(
+        default=None, description="Signed, expiring url for the medium logo image"
+    )
+    small_url: Optional[StrictStr] = Field(
+        default=None, description="Signed, expiring url for the small logo image"
+    )
+    __properties: ClassVar[List[str]] = ["original_url", "medium_url", "small_url"]
 
     model_config = {"populate_by_name": True, "validate_assignment": True}
 
@@ -51,7 +57,7 @@ class SummarizerPostQaS3Request(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of SummarizerPostQaS3Request from a JSON string"""
+        """Create an instance of Logo from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,7 +79,7 @@ class SummarizerPostQaS3Request(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of SummarizerPostQaS3Request from a dict"""
+        """Create an instance of Logo from a dict"""
         if obj is None:
             return None
 
@@ -82,10 +88,9 @@ class SummarizerPostQaS3Request(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "bucket": obj.get("bucket"),
-                "key": obj.get("key"),
-                "prompt": obj.get("prompt"),
-                "question": obj.get("question"),
+                "original_url": obj.get("original_url"),
+                "medium_url": obj.get("medium_url"),
+                "small_url": obj.get("small_url"),
             }
         )
         return _obj

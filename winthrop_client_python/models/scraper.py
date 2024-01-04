@@ -27,16 +27,14 @@ except ImportError:
     from typing_extensions import Self
 
 
-class SummarizerPostQaS3Request(BaseModel):
+class Scraper(BaseModel):
     """
-    SummarizerPostQaS3Request
+    Scraper
     """  # noqa: E501
 
-    bucket: StrictStr
-    key: StrictStr
-    prompt: Optional[StrictStr] = None
-    question: StrictStr
-    __properties: ClassVar[List[str]] = ["bucket", "key", "prompt", "question"]
+    name: Optional[StrictStr] = None
+    title: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "title"]
 
     model_config = {"populate_by_name": True, "validate_assignment": True}
 
@@ -51,7 +49,7 @@ class SummarizerPostQaS3Request(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
-        """Create an instance of SummarizerPostQaS3Request from a JSON string"""
+        """Create an instance of Scraper from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,19 +71,12 @@ class SummarizerPostQaS3Request(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Dict) -> Self:
-        """Create an instance of SummarizerPostQaS3Request from a dict"""
+        """Create an instance of Scraper from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "bucket": obj.get("bucket"),
-                "key": obj.get("key"),
-                "prompt": obj.get("prompt"),
-                "question": obj.get("question"),
-            }
-        )
+        _obj = cls.model_validate({"name": obj.get("name"), "title": obj.get("title")})
         return _obj

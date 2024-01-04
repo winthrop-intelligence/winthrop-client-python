@@ -5,11 +5,11 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**list_scrapers**](ScraperApi.md#list_scrapers) | **GET** /ondemand-scrapers/ | List all available scrapers
-[**run_scraper**](ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{scraper} | Run a scraper
+[**run_scraper**](ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{command} | Run a scraper
 
 
 # **list_scrapers**
-> List[str] list_scrapers()
+> List[Scraper] list_scrapers()
 
 List all available scrapers
 
@@ -20,6 +20,7 @@ List all available scrapers
 import time
 import os
 import winthrop_client_python
+from winthrop_client_python.models.scraper import Scraper
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -61,7 +62,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**List[str]**
+[**List[Scraper]**](Scraper.md)
 
 ### Authorization
 
@@ -81,7 +82,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **run_scraper**
-> run_scraper(scraper)
+> run_scraper(command)
 
 Run a scraper
 
@@ -116,11 +117,11 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.ScraperApi(api_client)
-    scraper = 'scraper_example' # str | The name of the scraper to run
+    command = 'command_example' # str | The name of the scraper to run
 
     try:
         # Run a scraper
-        api_instance.run_scraper(scraper)
+        api_instance.run_scraper(command)
     except Exception as e:
         print("Exception when calling ScraperApi->run_scraper: %s\n" % e)
 ```
@@ -131,7 +132,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scraper** | **str**| The name of the scraper to run | 
+ **command** | **str**| The name of the scraper to run | 
 
 ### Return type
 
