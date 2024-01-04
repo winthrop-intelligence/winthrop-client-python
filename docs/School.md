@@ -28,8 +28,12 @@ Name | Type | Description | Notes
 **address_1** | **str** |  | [optional] 
 **address_2** | **str** |  | [optional] 
 **zip_code** | **str** |  | [optional] 
-**logo** | [**SchoolLogo**](SchoolLogo.md) |  | [optional] 
+**logo** | [**Logo**](Logo.md) |  | [optional] 
 **athletic_director** | [**Coach**](Coach.md) |  | [optional] 
+**athletics_url** | **str** |  | [optional] 
+**wikipedia_url** | **str** |  | [optional] 
+**athletics_wikipedia_url** | **str** |  | [optional] 
+**external_logo** | [**Logo**](Logo.md) |  | [optional] 
 
 ## Example
 

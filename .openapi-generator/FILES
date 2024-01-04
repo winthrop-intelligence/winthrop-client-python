@@ -28,6 +28,7 @@ docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/JobPost.md
 docs/JobPostCollection.md
+docs/Logo.md
 docs/Meta.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
@@ -38,7 +39,6 @@ docs/RequestedItem.md
 docs/RequestedItemCollection.md
 docs/School.md
 docs/SchoolCollection.md
-docs/SchoolLogo.md
 docs/Scraper.md
 docs/ScraperApi.md
 docs/Season.md
@@ -92,6 +92,7 @@ winthrop_client_python/models/income_report.py
 winthrop_client_python/models/income_report_collection.py
 winthrop_client_python/models/job_post.py
 winthrop_client_python/models/job_post_collection.py
+winthrop_client_python/models/logo.py
 winthrop_client_python/models/meta.py
 winthrop_client_python/models/ncaa_financial_report_status.py
 winthrop_client_python/models/ncaa_financial_report_status_collection.py
@@ -101,7 +102,6 @@ winthrop_client_python/models/requested_item.py
 winthrop_client_python/models/requested_item_collection.py
 winthrop_client_python/models/school.py
 winthrop_client_python/models/school_collection.py
-winthrop_client_python/models/school_logo.py
 winthrop_client_python/models/scraper.py
 winthrop_client_python/models/season.py
 winthrop_client_python/models/season_collection.py

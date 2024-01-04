@@ -47,6 +47,7 @@ from winthrop_client_python.models.income_report_collection import (
 )
 from winthrop_client_python.models.job_post import JobPost
 from winthrop_client_python.models.job_post_collection import JobPostCollection
+from winthrop_client_python.models.logo import Logo
 from winthrop_client_python.models.meta import Meta
 from winthrop_client_python.models.ncaa_financial_report_status import (
     NcaaFinancialReportStatus,
@@ -62,7 +63,6 @@ from winthrop_client_python.models.requested_item_collection import (
 )
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
-from winthrop_client_python.models.school_logo import SchoolLogo
 from winthrop_client_python.models.scraper import Scraper
 from winthrop_client_python.models.season import Season
 from winthrop_client_python.models.season_collection import SeasonCollection

@@ -21,7 +21,7 @@ from datetime import datetime
 from typing import Optional, Union
 from pydantic import BaseModel, StrictBool, StrictFloat, StrictInt, StrictStr
 from winthrop_client_python.models.coach import Coach
-from winthrop_client_python.models.school_logo import SchoolLogo
+from winthrop_client_python.models.logo import Logo
 
 
 class School(BaseModel):
@@ -53,8 +53,12 @@ class School(BaseModel):
     address_1: Optional[StrictStr] = None
     address_2: Optional[StrictStr] = None
     zip_code: Optional[StrictStr] = None
-    logo: Optional[SchoolLogo] = None
+    logo: Optional[Logo] = None
     athletic_director: Optional[Coach] = None
+    athletics_url: Optional[StrictStr] = None
+    wikipedia_url: Optional[StrictStr] = None
+    athletics_wikipedia_url: Optional[StrictStr] = None
+    external_logo: Optional[Logo] = None
     __properties = [
         "id",
         "name",
@@ -82,6 +86,10 @@ class School(BaseModel):
         "zip_code",
         "logo",
         "athletic_director",
+        "athletics_url",
+        "wikipedia_url",
+        "athletics_wikipedia_url",
+        "external_logo",
     ]
 
     class Config:
@@ -112,6 +120,9 @@ class School(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of athletic_director
         if self.athletic_director:
             _dict["athletic_director"] = self.athletic_director.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of external_logo
+        if self.external_logo:
+            _dict["external_logo"] = self.external_logo.to_dict()
         return _dict
 
     @classmethod
@@ -153,11 +164,17 @@ class School(BaseModel):
                 "address_1": obj.get("address_1"),
                 "address_2": obj.get("address_2"),
                 "zip_code": obj.get("zip_code"),
-                "logo": SchoolLogo.from_dict(obj.get("logo"))
+                "logo": Logo.from_dict(obj.get("logo"))
                 if obj.get("logo") is not None
                 else None,
                 "athletic_director": Coach.from_dict(obj.get("athletic_director"))
                 if obj.get("athletic_director") is not None
+                else None,
+                "athletics_url": obj.get("athletics_url"),
+                "wikipedia_url": obj.get("wikipedia_url"),
+                "athletics_wikipedia_url": obj.get("athletics_wikipedia_url"),
+                "external_logo": Logo.from_dict(obj.get("external_logo"))
+                if obj.get("external_logo") is not None
                 else None,
             }
         )
