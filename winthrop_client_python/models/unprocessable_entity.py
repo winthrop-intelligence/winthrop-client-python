@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 
-from typing import Any, ClassVar, Dict, List, Optional, Union
+from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
 
 try:
@@ -32,10 +32,14 @@ class UnprocessableEntity(BaseModel):
     UnprocessableEntity
     """  # noqa: E501
 
-    errors: Optional[Union[str, Any]] = None
+    errors: Optional[Dict[str, Any]] = None
     __properties: ClassVar[List[str]] = ["errors"]
 
-    model_config = {"populate_by_name": True, "validate_assignment": True}
+    model_config = {
+        "populate_by_name": True,
+        "validate_assignment": True,
+        "protected_namespaces": (),
+    }
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

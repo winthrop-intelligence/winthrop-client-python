@@ -670,7 +670,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"201": "JobPost", "401": None}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "201": "JobPost",
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -732,7 +735,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"201": "JobPost", "401": None}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "201": "JobPost",
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -794,7 +800,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"201": "JobPost", "401": None}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "201": "JobPost",
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1174,7 +1183,11 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1238,7 +1251,11 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1302,7 +1319,11 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1407,7 +1428,11 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1471,7 +1496,11 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1535,7 +1564,11 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1640,7 +1673,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1704,7 +1740,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1768,7 +1807,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1873,7 +1915,11 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1937,7 +1983,11 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -2001,7 +2051,11 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -7811,7 +7865,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "JobPost", "401": None}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "JobPost",
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -7875,7 +7932,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "JobPost", "401": None}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "JobPost",
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -7939,7 +7999,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "JobPost", "401": None}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "JobPost",
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -12114,7 +12177,9 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "str"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "str",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -12176,7 +12241,9 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "str"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "str",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -12238,7 +12305,9 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "str"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "str",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -12356,7 +12425,9 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "str"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "str",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -12420,7 +12491,9 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "str"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "str",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -12484,7 +12557,9 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "str"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "str",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -13446,7 +13521,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "JobPost", "401": None}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "JobPost",
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -13514,7 +13592,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "JobPost", "401": None}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "JobPost",
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -13582,7 +13663,10 @@ class DefaultApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "JobPost", "401": None}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "JobPost",
+            "401": None,
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )

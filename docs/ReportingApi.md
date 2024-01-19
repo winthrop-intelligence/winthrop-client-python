@@ -24,6 +24,7 @@ Retrieve some or all coach contract requests
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -67,6 +68,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -86,6 +88,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Coach contract requests were found |  -  |
@@ -102,6 +105,7 @@ Retrieve some or all coach history
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -145,6 +149,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -164,6 +169,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Coach history was found |  -  |
@@ -180,6 +186,7 @@ Retrieve some or all conferenceships
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -223,6 +230,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -242,6 +250,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Conferenceships were found |  -  |
@@ -258,6 +267,7 @@ Retrieve some or all foia details
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -301,6 +311,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -320,6 +331,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Foia details were found |  -  |
@@ -336,6 +348,7 @@ Retrieve some or all games
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -379,6 +392,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -398,6 +412,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Games were found |  -  |
@@ -414,6 +429,7 @@ Retrieve some or all client invoices
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -457,6 +473,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -476,6 +493,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Invoices were found |  -  |
@@ -492,6 +510,7 @@ Retrieve some or all school contract requests
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -535,6 +554,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -554,6 +574,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | School contract requests were found |  -  |
@@ -570,6 +591,7 @@ Retrieve subscriptions
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -613,6 +635,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -632,6 +655,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | some subscriptions |  -  |

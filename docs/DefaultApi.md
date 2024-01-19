@@ -68,6 +68,7 @@ Create a new foia label
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -111,6 +112,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **foia_label** | [**FoiaLabel**](FoiaLabel.md)| Foia label to create | 
@@ -129,6 +131,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Foia label was created |  -  |
@@ -147,6 +150,7 @@ Create a new foia request
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -190,6 +194,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **foia_request** | [**FoiaRequest**](FoiaRequest.md)| Foia request to create | 
@@ -208,6 +213,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Foia request was created |  -  |
@@ -226,6 +232,7 @@ Create a job post
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -270,6 +277,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_post** | [**JobPost**](JobPost.md)|  | [optional] 
@@ -288,6 +296,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Job post was created |  -  |
@@ -305,6 +314,7 @@ Create a new requested item
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -348,6 +358,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requested_item** | [**RequestedItem**](RequestedItem.md)| Requested item to create | 
@@ -366,6 +377,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Requested item was created |  -  |
@@ -384,6 +396,7 @@ Delete a single foia label
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -424,6 +437,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **foia_label_id** | **int**| ID of foia label to delete | 
@@ -442,6 +456,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Foia label was deleted |  -  |
@@ -460,6 +475,7 @@ Delete a single foia request
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -500,6 +516,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **foia_request_id** | **int**| ID of foia request to delete | 
@@ -518,6 +535,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Foia request was deleted |  -  |
@@ -536,6 +554,7 @@ Delete a job post
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -577,6 +596,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_post_id** | **int**| ID of job post to delete | 
@@ -595,6 +615,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Job post was deleted |  -  |
@@ -612,6 +633,7 @@ Delete a single requested item
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -652,6 +674,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requested_item_id** | **int**| ID of requested item to delete | 
@@ -670,6 +693,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Requested item was deleted |  -  |
@@ -688,6 +712,7 @@ Retrieve a single administrator
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -731,6 +756,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **administrator_id** | **int**| ID of administrator to retrieve | 
@@ -749,6 +775,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Administrator was found |  -  |
@@ -767,6 +794,7 @@ Retrieve some or all administrators
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -812,6 +840,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -832,6 +861,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Administrators were found |  -  |
@@ -849,6 +879,7 @@ Retrieve a single audited financial report status
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -892,6 +923,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **audited_financial_report_status_id** | **int**| ID of audited financial report status to retrieve | 
@@ -910,6 +942,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Audited financial report status was found |  -  |
@@ -928,6 +961,7 @@ Retrieve some or all audited financial report statuses
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -973,6 +1007,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -993,6 +1028,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Audited financial report statuses were found |  -  |
@@ -1010,6 +1046,7 @@ List all categories
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1056,6 +1093,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -1076,6 +1114,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Categories were found |  -  |
@@ -1093,6 +1132,7 @@ Retrieve a single coach
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1136,6 +1176,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coach_id** | **int**| ID of coach to retrieve | 
@@ -1154,6 +1195,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Coach was found |  -  |
@@ -1172,6 +1214,7 @@ Retrieve some or all coaches
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1217,6 +1260,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -1237,6 +1281,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Coaches were found |  -  |
@@ -1254,6 +1299,7 @@ Retrieve a single compensation
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1297,6 +1343,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **compensation_id** | **int**| ID of compensation to retrieve | 
@@ -1315,6 +1362,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Compensation was found |  -  |
@@ -1333,6 +1381,7 @@ Retrieve some or all compensations
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1378,6 +1427,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -1398,6 +1448,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Compensations were found |  -  |
@@ -1415,6 +1466,7 @@ Retrieve a single contract
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1458,6 +1510,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contract_id** | **int**| ID of contract to retrieve | 
@@ -1476,6 +1529,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Contract was found |  -  |
@@ -1494,6 +1548,7 @@ Retrieve some or all contracts
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1539,6 +1594,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -1559,6 +1615,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Contracts were found |  -  |
@@ -1576,6 +1633,7 @@ Retrieve a single deal status
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1619,6 +1677,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **deal_status_id** | **int**| ID of deal status to retrieve | 
@@ -1637,6 +1696,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Deal status was found |  -  |
@@ -1655,6 +1715,7 @@ Retrieve some or all deal statuses
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1700,6 +1761,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -1720,6 +1782,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Deal statuses were found |  -  |
@@ -1737,6 +1800,7 @@ Retrieve a single foia label
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1780,6 +1844,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **foia_label_id** | **int**| ID of foia label to retrieve | 
@@ -1798,6 +1863,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Foia label was found |  -  |
@@ -1816,6 +1882,7 @@ Retrieve some or all foia labels
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1861,6 +1928,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -1881,6 +1949,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Foia labels were found |  -  |
@@ -1898,6 +1967,7 @@ Retrieve a single foia request
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -1941,6 +2011,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **foia_request_id** | **int**| ID of foia request to retrieve | 
@@ -1959,6 +2030,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Foia request was found |  -  |
@@ -1977,6 +2049,7 @@ Retrieve some or all foia requests
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2022,6 +2095,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -2042,6 +2116,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Foia requests were found |  -  |
@@ -2059,6 +2134,7 @@ Retrieve a single game
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2102,6 +2178,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **game_id** | **int**| ID of game to retrieve | 
@@ -2120,6 +2197,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Game was found |  -  |
@@ -2138,6 +2216,7 @@ Retrieve some or all games
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2183,6 +2262,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -2203,6 +2283,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Games were found |  -  |
@@ -2220,6 +2301,7 @@ Retrieve a single income report
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2263,6 +2345,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **income_report_id** | **int**| ID of income report to retrieve | 
@@ -2281,6 +2364,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Income report was found |  -  |
@@ -2299,6 +2383,7 @@ Retrieve some or all income reports
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2344,6 +2429,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -2364,6 +2450,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Income reports were found |  -  |
@@ -2381,6 +2468,7 @@ Get a job post
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2425,6 +2513,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_post_id** | **int**| ID of job post to return | 
@@ -2443,6 +2532,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Job post was found |  -  |
@@ -2460,6 +2550,7 @@ List all job posts
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2506,6 +2597,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -2526,6 +2618,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Job posts were found |  -  |
@@ -2543,6 +2636,7 @@ Retrieve a single ncaa financial report status
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2586,6 +2680,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ncaa_financial_report_status_id** | **int**| ID of ncaa financial report status to retrieve | 
@@ -2604,6 +2699,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ncaa financial report status was found |  -  |
@@ -2622,6 +2718,7 @@ Retrieve some or all ncaa financial report statuses
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2667,6 +2764,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -2687,6 +2785,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Ncaa financial report statuses were found |  -  |
@@ -2704,6 +2803,7 @@ Retrieve a single position
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2747,6 +2847,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **position_id** | **int**| ID of position to retrieve | 
@@ -2765,6 +2866,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Position was found |  -  |
@@ -2783,6 +2885,7 @@ Retrieve some or all positions
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2828,6 +2931,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -2848,6 +2952,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Positions were found |  -  |
@@ -2865,6 +2970,7 @@ Retrieve a single requested item
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2908,6 +3014,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requested_item_id** | **int**| ID of requested item to retrieve | 
@@ -2926,6 +3033,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Requested item was found |  -  |
@@ -2944,6 +3052,7 @@ Retrieve some or all requested items
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -2989,6 +3098,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -3009,6 +3119,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Requested items were found |  -  |
@@ -3026,6 +3137,7 @@ Retrieve a single school
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3069,6 +3181,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **school_id** | **int**| ID of school to retrieve | 
@@ -3087,6 +3200,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | School was found |  -  |
@@ -3105,6 +3219,7 @@ Retrieve some or all schools
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3150,6 +3265,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -3170,6 +3286,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Schools were found |  -  |
@@ -3187,6 +3304,7 @@ Retrieve a single season
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3230,6 +3348,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **season_id** | **int**| ID of season to retrieve | 
@@ -3248,6 +3367,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Season was found |  -  |
@@ -3266,6 +3386,7 @@ Retrieve some or all seasons
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3311,6 +3432,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -3331,6 +3453,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Seasons were found |  -  |
@@ -3348,6 +3471,7 @@ Retrieve a single sport
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3391,6 +3515,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sport_id** | **int**| ID of sport to retrieve | 
@@ -3409,6 +3534,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Sport was found |  -  |
@@ -3427,6 +3553,7 @@ Retrieve some or all sports
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3472,6 +3599,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -3492,6 +3620,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Sports were found |  -  |
@@ -3509,6 +3638,7 @@ Retrieve a single user
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3552,6 +3682,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **user_id** | **int**| ID of user to retrieve | 
@@ -3570,6 +3701,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | User was found |  -  |
@@ -3588,6 +3720,7 @@ Retrieve some or all users
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3633,6 +3766,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
@@ -3653,6 +3787,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Users were found |  -  |
@@ -3670,6 +3805,7 @@ Answer questions a file from S3.
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3714,6 +3850,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **summarizer_post_qa_s3_request** | [**SummarizerPostQaS3Request**](SummarizerPostQaS3Request.md)|  | [optional] 
@@ -3732,6 +3869,7 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | question response |  -  |
@@ -3748,6 +3886,7 @@ Summarizes a file from S3.
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3792,6 +3931,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **summarizer_post_summarize_s3_request** | [**SummarizerPostSummarizeS3Request**](SummarizerPostSummarizeS3Request.md)|  | [optional] 
@@ -3810,6 +3950,7 @@ Name | Type | Description  | Notes
  - **Accept**: text/plain
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | summary response |  -  |
@@ -3826,6 +3967,7 @@ Update a coach
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3870,6 +4012,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coach_id** | **int**| ID of coach to update | 
@@ -3889,6 +4032,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Coach was updated |  -  |
@@ -3907,6 +4051,7 @@ Update a single foia label
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -3951,6 +4096,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **foia_label_id** | **int**| ID of foia label to update | 
@@ -3970,6 +4116,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Foia label was updated |  -  |
@@ -3988,6 +4135,7 @@ Update a single foia request
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -4032,6 +4180,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **foia_request_id** | **int**| ID of foia request to update | 
@@ -4051,6 +4200,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Foia request was updated |  -  |
@@ -4069,6 +4219,7 @@ Update a job post
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -4114,6 +4265,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **job_post_id** | **int**| ID of job post to update | 
@@ -4133,6 +4285,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Job post was updated |  -  |
@@ -4150,6 +4303,7 @@ Update a single requested item
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -4194,6 +4348,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **requested_item_id** | **int**| ID of requested item to update | 
@@ -4213,6 +4368,7 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Requested item was updated |  -  |

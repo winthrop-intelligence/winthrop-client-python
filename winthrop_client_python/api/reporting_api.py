@@ -27,7 +27,7 @@ from pydantic import Field
 from typing_extensions import Annotated
 from pydantic import StrictInt
 
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, Optional
 
 
 from winthrop_client_python.api_client import ApiClient
@@ -107,7 +107,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -177,7 +179,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -247,7 +251,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -368,7 +374,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -438,7 +446,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -508,7 +518,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -629,7 +641,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -699,7 +713,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -769,7 +785,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -890,7 +908,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -960,7 +980,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1030,7 +1052,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1151,7 +1175,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1221,7 +1247,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1291,7 +1319,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1412,7 +1442,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1482,7 +1514,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1552,7 +1586,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1673,7 +1709,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1743,7 +1781,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1813,7 +1853,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -1934,7 +1976,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -2004,7 +2048,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )
@@ -2074,7 +2120,9 @@ class ReportingApi:
             _host_index=_host_index,
         )
 
-        _response_types_map: Dict[str, Optional[str]] = {"200": "object"}
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "object",
+        }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
         )

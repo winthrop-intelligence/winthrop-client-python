@@ -2,6 +2,7 @@
 
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **original_url** | **str** | Signed, expiring url for the original logo image | [optional] 

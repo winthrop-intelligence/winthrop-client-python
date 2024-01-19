@@ -16,6 +16,7 @@ List all available scrapers
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -58,6 +59,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -74,6 +76,7 @@ This endpoint does not need any parameter.
  - **Accept**: application/json
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | A list of available scrapers |  -  |
@@ -89,6 +92,7 @@ Run a scraper
 ### Example
 
 * Api Key Authentication (ApiKey):
+
 ```python
 import time
 import os
@@ -130,6 +134,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **command** | **str**| The name of the scraper to run | 
@@ -148,6 +153,7 @@ void (empty response body)
  - **Accept**: Not defined
 
 ### HTTP response details
+
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The scraper was successfully started |  -  |
