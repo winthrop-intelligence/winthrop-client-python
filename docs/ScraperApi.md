@@ -56,6 +56,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 This endpoint does not need any parameter.
 
@@ -124,6 +125,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling ScraperApi->run_scraper: %s\n" % e)
 ```
+
 
 
 ### Parameters

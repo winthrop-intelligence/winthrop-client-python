@@ -64,6 +64,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -139,6 +140,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling ReportingApi->get_coach_history: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -218,6 +220,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -293,6 +296,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling ReportingApi->get_foia_details: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -372,6 +376,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -447,6 +452,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling ReportingApi->get_invoices: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -526,6 +532,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -601,6 +608,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling ReportingApi->get_subscriptions: %s\n" % e)
 ```
+
 
 
 ### Parameters

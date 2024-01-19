@@ -108,6 +108,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -184,6 +185,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->create_foia_request: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -265,6 +267,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -342,6 +345,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -417,6 +421,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -490,6 +495,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->delete_foia_request: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -568,6 +574,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -640,6 +647,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->delete_requested_item: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -718,6 +726,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_administrator: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -800,6 +809,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -877,6 +887,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_audited_financial_report_status: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -957,6 +968,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_audited_financial_report_statuses: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1041,6 +1053,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1118,6 +1131,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_coach: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1200,6 +1214,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1277,6 +1292,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_compensation: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1359,6 +1375,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1436,6 +1453,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_contract: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1518,6 +1536,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1595,6 +1614,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_deal_status: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1677,6 +1697,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1754,6 +1775,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_foia_label: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1836,6 +1858,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -1913,6 +1936,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_foia_request: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -1995,6 +2019,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2072,6 +2097,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_game: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2154,6 +2180,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2231,6 +2258,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_income_report: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2313,6 +2341,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2391,6 +2420,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_job_post: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2473,6 +2503,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2550,6 +2581,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_ncaa_financial_report_status: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2632,6 +2664,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2709,6 +2742,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_position: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2791,6 +2825,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -2868,6 +2903,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_requested_item: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -2950,6 +2986,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3027,6 +3064,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_school: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -3109,6 +3147,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3186,6 +3225,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_season: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -3268,6 +3308,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3345,6 +3386,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_sport: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -3427,6 +3469,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3504,6 +3547,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->get_user: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -3586,6 +3630,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3666,6 +3711,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3743,6 +3789,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3818,6 +3865,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->update_coach: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -3900,6 +3948,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -3978,6 +4027,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->update_foia_request: %s\n" % e)
 ```
+
 
 
 ### Parameters
@@ -4061,6 +4111,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 ```
 
 
+
 ### Parameters
 
 Name | Type | Description  | Notes
@@ -4138,6 +4189,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     except Exception as e:
         print("Exception when calling DefaultApi->update_requested_item: %s\n" % e)
 ```
+
 
 
 ### Parameters

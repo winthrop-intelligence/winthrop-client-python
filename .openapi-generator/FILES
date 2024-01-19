@@ -112,4 +112,5 @@ winthrop_client_python/models/summarizer_post_summarize_s3_request.py
 winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/user.py
 winthrop_client_python/models/user_collection.py
+winthrop_client_python/py.typed
 winthrop_client_python/rest.py
