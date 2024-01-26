@@ -57,6 +57,8 @@ from winthrop_client_python.models.ncaa_financial_report_status_collection impor
 )
 from winthrop_client_python.models.position import Position
 from winthrop_client_python.models.position_collection import PositionCollection
+from winthrop_client_python.models.position_type import PositionType
+from winthrop_client_python.models.position_type_group import PositionTypeGroup
 from winthrop_client_python.models.requested_item import RequestedItem
 from winthrop_client_python.models.requested_item_collection import (
     RequestedItemCollection,

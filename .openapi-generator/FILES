@@ -34,6 +34,8 @@ docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
 docs/Position.md
 docs/PositionCollection.md
+docs/PositionType.md
+docs/PositionTypeGroup.md
 docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
@@ -56,6 +58,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_position_type.py
+test/test_position_type_group.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -98,6 +102,8 @@ winthrop_client_python/models/ncaa_financial_report_status.py
 winthrop_client_python/models/ncaa_financial_report_status_collection.py
 winthrop_client_python/models/position.py
 winthrop_client_python/models/position_collection.py
+winthrop_client_python/models/position_type.py
+winthrop_client_python/models/position_type_group.py
 winthrop_client_python/models/requested_item.py
 winthrop_client_python/models/requested_item_collection.py
 winthrop_client_python/models/school.py

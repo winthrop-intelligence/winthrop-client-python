@@ -191,6 +191,8 @@ Class | Method | HTTP request | Description
  - [NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
  - [Position](docs/Position.md)
  - [PositionCollection](docs/PositionCollection.md)
+ - [PositionType](docs/PositionType.md)
+ - [PositionTypeGroup](docs/PositionTypeGroup.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
  - [School](docs/School.md)

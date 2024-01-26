@@ -47,6 +47,7 @@ Name | Type | Description | Notes
 **sport_id** | **int** |  | [optional] 
 **coli** | **float** |  | [optional] 
 **coach** | [**Coach**](Coach.md) |  | [optional] 
+**departments** | [**List[PositionType]**](PositionType.md) |  | [optional] 
 
 ## Example
 

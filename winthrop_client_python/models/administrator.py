@@ -28,6 +28,7 @@ from pydantic import (
     field_validator,
 )
 from winthrop_client_python.models.coach import Coach
+from winthrop_client_python.models.position_type import PositionType
 
 try:
     from typing import Self
@@ -82,6 +83,7 @@ class Administrator(BaseModel):
     sport_id: Optional[StrictInt] = None
     coli: Optional[Union[StrictFloat, StrictInt]] = None
     coach: Optional[Coach] = None
+    departments: Optional[List[PositionType]] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "coach_id",
@@ -125,6 +127,7 @@ class Administrator(BaseModel):
         "sport_id",
         "coli",
         "coach",
+        "departments",
     ]
 
     @field_validator("compensation_type")
@@ -185,6 +188,13 @@ class Administrator(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of coach
         if self.coach:
             _dict["coach"] = self.coach.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in departments (list)
+        _items = []
+        if self.departments:
+            for _item in self.departments:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict["departments"] = _items
         return _dict
 
     @classmethod
@@ -257,6 +267,11 @@ class Administrator(BaseModel):
                 "coli": obj.get("coli"),
                 "coach": Coach.from_dict(obj.get("coach"))
                 if obj.get("coach") is not None
+                else None,
+                "departments": [
+                    PositionType.from_dict(_item) for _item in obj.get("departments")
+                ]
+                if obj.get("departments") is not None
                 else None,
             }
         )
