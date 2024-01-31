@@ -58,8 +58,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_position_type.py
-test/test_position_type_group.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
