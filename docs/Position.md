@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **coach** | [**Coach**](Coach.md) |  | [optional] 
 **sport** | [**Sport**](Sport.md) |  | [optional] 
 **school** | [**School**](School.md) |  | [optional] 
-**position_types** | **List[str]** |  | [optional] 
+**position_types** | [**List[PositionType]**](PositionType.md) |  | [optional] 
 
 ## Example
 

@@ -21,6 +21,7 @@ from datetime import date, datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
 from winthrop_client_python.models.coach import Coach
+from winthrop_client_python.models.position_type import PositionType
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.sport import Sport
 
@@ -50,7 +51,7 @@ class Position(BaseModel):
     coach: Optional[Coach] = None
     sport: Optional[Sport] = None
     school: Optional[School] = None
-    position_types: Optional[List[StrictStr]] = None
+    position_types: Optional[List[PositionType]] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "season_id",
@@ -114,6 +115,13 @@ class Position(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of school
         if self.school:
             _dict["school"] = self.school.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in position_types (list)
+        _items = []
+        if self.position_types:
+            for _item in self.position_types:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict["position_types"] = _items
         return _dict
 
     @classmethod
@@ -148,7 +156,11 @@ class Position(BaseModel):
                 "school": School.from_dict(obj.get("school"))
                 if obj.get("school") is not None
                 else None,
-                "position_types": obj.get("position_types"),
+                "position_types": [
+                    PositionType.from_dict(_item) for _item in obj.get("position_types")
+                ]
+                if obj.get("position_types") is not None
+                else None,
             }
         )
         return _obj
