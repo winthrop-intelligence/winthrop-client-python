@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **original_url** | **str** | Signed, expiring url for the original logo image | [optional] 
 **medium_url** | **str** | Signed, expiring url for the medium logo image | [optional] 
 **small_url** | **str** | Signed, expiring url for the small logo image | [optional] 
+**image_remote_url** | **str** | Remote URL for Coach Avatar | [optional] 
 
 ## Example
 

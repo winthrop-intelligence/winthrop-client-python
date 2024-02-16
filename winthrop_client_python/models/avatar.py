@@ -42,7 +42,15 @@ class Avatar(BaseModel):
     small_url: Optional[StrictStr] = Field(
         default=None, description="Signed, expiring url for the small logo image"
     )
-    __properties: ClassVar[List[str]] = ["original_url", "medium_url", "small_url"]
+    image_remote_url: Optional[StrictStr] = Field(
+        default=None, description="Remote URL for Coach Avatar"
+    )
+    __properties: ClassVar[List[str]] = [
+        "original_url",
+        "medium_url",
+        "small_url",
+        "image_remote_url",
+    ]
 
     model_config = {
         "populate_by_name": True,
@@ -95,6 +103,7 @@ class Avatar(BaseModel):
                 "original_url": obj.get("original_url"),
                 "medium_url": obj.get("medium_url"),
                 "small_url": obj.get("small_url"),
+                "image_remote_url": obj.get("image_remote_url"),
             }
         )
         return _obj
