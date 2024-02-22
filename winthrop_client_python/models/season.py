@@ -18,8 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import BaseModel, StrictFloat, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictInt, StrictStr
 from winthrop_client_python.models.coach import Coach
 
 try:
@@ -46,7 +46,7 @@ class Season(BaseModel):
     apr: Optional[StrictInt] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
-    win_percent: Optional[Union[StrictFloat, StrictInt]] = None
+    win_percent: Optional[float] = None
     ties: Optional[StrictInt] = None
     rpi: Optional[StrictInt] = None
     prev_rpi: Optional[StrictInt] = None
@@ -56,13 +56,13 @@ class Season(BaseModel):
     attendance: Optional[StrictInt] = None
     conference_ties: Optional[StrictInt] = None
     recruit_ranking: Optional[StrictInt] = None
-    offensive_efficiency: Optional[Union[StrictFloat, StrictInt]] = None
-    defensive_efficiency: Optional[Union[StrictFloat, StrictInt]] = None
+    offensive_efficiency: Optional[float] = None
+    defensive_efficiency: Optional[float] = None
     sos_ranking: Optional[StrictInt] = None
-    sos: Optional[Union[StrictFloat, StrictInt]] = None
+    sos: Optional[float] = None
     home_wins: Optional[StrictInt] = None
     home_losses: Optional[StrictInt] = None
-    home_win_percent: Optional[Union[StrictFloat, StrictInt]] = None
+    home_win_percent: Optional[float] = None
     asr: Optional[StrictInt] = None
     head_coach: Optional[Coach] = None
     assistant_coaches: Optional[List[Coach]] = None

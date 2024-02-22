@@ -18,15 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import (
-    BaseModel,
-    StrictBool,
-    StrictFloat,
-    StrictInt,
-    StrictStr,
-    field_validator,
-)
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.position_type import PositionType
 
@@ -81,7 +74,7 @@ class Administrator(BaseModel):
     alma_mater_id: Optional[StrictInt] = None
     private: Optional[StrictBool] = None
     sport_id: Optional[StrictInt] = None
-    coli: Optional[Union[StrictFloat, StrictInt]] = None
+    coli: Optional[float] = None
     coach: Optional[Coach] = None
     departments: Optional[List[PositionType]] = None
     __properties: ClassVar[List[str]] = [

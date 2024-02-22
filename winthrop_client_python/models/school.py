@@ -18,15 +18,8 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional, Union
-from pydantic import (
-    BaseModel,
-    StrictBool,
-    StrictFloat,
-    StrictInt,
-    StrictStr,
-    field_validator,
-)
+from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.logo import Logo
 
@@ -60,8 +53,8 @@ class School(BaseModel):
     school_classification_id: Optional[StrictInt] = None
     logo_updated_at: Optional[datetime] = None
     youtube_search_name: Optional[StrictStr] = None
-    latitude: Optional[Union[StrictFloat, StrictInt]] = None
-    longitude: Optional[Union[StrictFloat, StrictInt]] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
     address_1: Optional[StrictStr] = None
     address_2: Optional[StrictStr] = None
     zip_code: Optional[StrictStr] = None
