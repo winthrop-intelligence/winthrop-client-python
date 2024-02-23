@@ -17,18 +17,14 @@ import pprint
 import re  # noqa: F401
 import json
 
-
-from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel
+from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.meta import Meta
 from winthrop_client_python.models.ncaa_financial_report_status import (
     NcaaFinancialReportStatus,
 )
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class NcaaFinancialReportStatusCollection(BaseModel):
@@ -56,7 +52,7 @@ class NcaaFinancialReportStatusCollection(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of NcaaFinancialReportStatusCollection from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -70,9 +66,11 @@ class NcaaFinancialReportStatusCollection(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of each item in data (list)
@@ -88,7 +86,7 @@ class NcaaFinancialReportStatusCollection(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of NcaaFinancialReportStatusCollection from a dict"""
         if obj is None:
             return None
@@ -99,12 +97,11 @@ class NcaaFinancialReportStatusCollection(BaseModel):
         _obj = cls.model_validate(
             {
                 "data": [
-                    NcaaFinancialReportStatus.from_dict(_item)
-                    for _item in obj.get("data")
+                    NcaaFinancialReportStatus.from_dict(_item) for _item in obj["data"]
                 ]
                 if obj.get("data") is not None
                 else None,
-                "meta": Meta.from_dict(obj.get("meta"))
+                "meta": Meta.from_dict(obj["meta"])
                 if obj.get("meta") is not None
                 else None,
             }

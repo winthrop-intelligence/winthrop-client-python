@@ -11,26 +11,16 @@
     Do not edit the class manually.
 """  # noqa: E501
 
-
-import io
 import warnings
-
 from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
-from typing import Dict, List, Optional, Tuple, Union, Any
-
-try:
-    from typing import Annotated
-except ImportError:
-    from typing_extensions import Annotated
-
-from pydantic import Field
+from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
-from pydantic import StrictInt
 
+from pydantic import Field, StrictInt
 from typing import Any, Dict, Optional
+from typing_extensions import Annotated
 
-
-from winthrop_client_python.api_client import ApiClient
+from winthrop_client_python.api_client import ApiClient, RequestSerialized
 from winthrop_client_python.api_response import ApiResponse
 from winthrop_client_python.rest import RESTResponseType
 
@@ -267,7 +257,7 @@ class ReportingApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -534,7 +524,7 @@ class ReportingApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -801,7 +791,7 @@ class ReportingApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -1068,7 +1058,7 @@ class ReportingApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -1335,7 +1325,7 @@ class ReportingApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -1602,7 +1592,7 @@ class ReportingApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -1869,7 +1859,7 @@ class ReportingApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -2136,7 +2126,7 @@ class ReportingApi:
         _content_type,
         _headers,
         _host_index,
-    ) -> Tuple:
+    ) -> RequestSerialized:
         _host = None
 
         _collection_formats: Dict[str, str] = {}

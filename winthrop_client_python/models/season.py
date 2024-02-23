@@ -18,14 +18,11 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.coach import Coach
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class Season(BaseModel):
@@ -118,7 +115,7 @@ class Season(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Season from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -132,9 +129,11 @@ class Season(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of head_coach
@@ -150,7 +149,7 @@ class Season(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Season from a dict"""
         if obj is None:
             return None
@@ -191,11 +190,11 @@ class Season(BaseModel):
                 "home_losses": obj.get("home_losses"),
                 "home_win_percent": obj.get("home_win_percent"),
                 "asr": obj.get("asr"),
-                "head_coach": Coach.from_dict(obj.get("head_coach"))
+                "head_coach": Coach.from_dict(obj["head_coach"])
                 if obj.get("head_coach") is not None
                 else None,
                 "assistant_coaches": [
-                    Coach.from_dict(_item) for _item in obj.get("assistant_coaches")
+                    Coach.from_dict(_item) for _item in obj["assistant_coaches"]
                 ]
                 if obj.get("assistant_coaches") is not None
                 else None,

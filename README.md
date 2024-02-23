@@ -50,7 +50,6 @@ Please follow the [installation procedure](#installation--usage) and then run th
 
 ```python
 
-import time
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint

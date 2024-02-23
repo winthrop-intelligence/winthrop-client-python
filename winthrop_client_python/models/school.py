@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.logo import Logo
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class School(BaseModel):
@@ -107,7 +104,7 @@ class School(BaseModel):
         if value is None:
             return value
 
-        if value not in ("active", "closed", "international"):
+        if value not in set(["active", "closed", "international"]):
             raise ValueError(
                 "must be one of enum values ('active', 'closed', 'international')"
             )
@@ -129,7 +126,7 @@ class School(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of School from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -143,9 +140,11 @@ class School(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of logo
@@ -160,7 +159,7 @@ class School(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of School from a dict"""
         if obj is None:
             return None
@@ -198,16 +197,16 @@ class School(BaseModel):
                 "address_1": obj.get("address_1"),
                 "address_2": obj.get("address_2"),
                 "zip_code": obj.get("zip_code"),
-                "logo": Logo.from_dict(obj.get("logo"))
+                "logo": Logo.from_dict(obj["logo"])
                 if obj.get("logo") is not None
                 else None,
-                "athletic_director": Coach.from_dict(obj.get("athletic_director"))
+                "athletic_director": Coach.from_dict(obj["athletic_director"])
                 if obj.get("athletic_director") is not None
                 else None,
                 "athletics_url": obj.get("athletics_url"),
                 "wikipedia_url": obj.get("wikipedia_url"),
                 "athletics_wikipedia_url": obj.get("athletics_wikipedia_url"),
-                "external_logo": Logo.from_dict(obj.get("external_logo"))
+                "external_logo": Logo.from_dict(obj["external_logo"])
                 if obj.get("external_logo") is not None
                 else None,
                 "non_ncaa_group": obj.get("non_ncaa_group"),

@@ -18,15 +18,12 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
+from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.position_type import PositionType
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class Administrator(BaseModel):
@@ -129,7 +126,7 @@ class Administrator(BaseModel):
         if value is None:
             return value
 
-        if value not in ("yearly", "hourly", "990"):
+        if value not in set(["yearly", "hourly", "990"]):
             raise ValueError("must be one of enum values ('yearly', 'hourly', '990')")
         return value
 
@@ -139,7 +136,7 @@ class Administrator(BaseModel):
         if value is None:
             return value
 
-        if value not in ("M", "F", ""):
+        if value not in set(["M", "F", ""]):
             raise ValueError("must be one of enum values ('M', 'F', '')")
         return value
 
@@ -159,7 +156,7 @@ class Administrator(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Administrator from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -173,9 +170,11 @@ class Administrator(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of coach
@@ -191,7 +190,7 @@ class Administrator(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Administrator from a dict"""
         if obj is None:
             return None
@@ -258,11 +257,11 @@ class Administrator(BaseModel):
                 "private": obj.get("private"),
                 "sport_id": obj.get("sport_id"),
                 "coli": obj.get("coli"),
-                "coach": Coach.from_dict(obj.get("coach"))
+                "coach": Coach.from_dict(obj["coach"])
                 if obj.get("coach") is not None
                 else None,
                 "departments": [
-                    PositionType.from_dict(_item) for _item in obj.get("departments")
+                    PositionType.from_dict(_item) for _item in obj["departments"]
                 ]
                 if obj.get("departments") is not None
                 else None,

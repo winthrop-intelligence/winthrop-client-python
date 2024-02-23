@@ -18,8 +18,6 @@ List all available scrapers
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.scraper import Scraper
 from winthrop_client_python.rest import ApiException
@@ -94,8 +92,6 @@ Run a scraper
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint

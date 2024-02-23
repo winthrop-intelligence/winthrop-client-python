@@ -12,9 +12,9 @@
 """  # noqa: E501
 
 
-import atexit
 import datetime
 from dateutil.parser import parse
+from enum import Enum
 import json
 import mimetypes
 import os
@@ -22,10 +22,10 @@ import re
 import tempfile
 
 from urllib.parse import quote
-from typing import Tuple, Optional, List
+from typing import Tuple, Optional, List, Dict
 
 from winthrop_client_python.configuration import Configuration
-from winthrop_client_python.api_response import ApiResponse
+from winthrop_client_python.api_response import ApiResponse, T as ApiResponseT
 import winthrop_client_python.models
 from winthrop_client_python import rest
 from winthrop_client_python.exceptions import (
@@ -37,6 +37,8 @@ from winthrop_client_python.exceptions import (
     NotFoundException,
     ServiceException,
 )
+
+RequestSerialized = Tuple[str, str, Dict[str, str], Optional[str], List[str]]
 
 
 class ApiClient:
@@ -143,7 +145,7 @@ class ApiClient:
         collection_formats=None,
         _host=None,
         _request_auth=None,
-    ) -> Tuple:
+    ) -> RequestSerialized:
         """Builds the HTTP request params needed by the request.
         :param method: Method to call.
         :param resource_path: Path to method endpoint.
@@ -259,20 +261,23 @@ class ApiClient:
             )
 
         except ApiException as e:
-            if e.body:
-                e.body = e.body.decode("utf-8")
             raise e
 
         return response_data
 
     def response_deserialize(
-        self, response_data: rest.RESTResponse = None, response_types_map=None
-    ) -> ApiResponse:
+        self,
+        response_data: rest.RESTResponse,
+        response_types_map: Optional[Dict[str, ApiResponseT]] = None,
+    ) -> ApiResponse[ApiResponseT]:
         """Deserializes response into an object.
         :param response_data: RESTResponse object to be deserialized.
         :param response_types_map: dict of response types.
         :return: ApiResponse
         """
+
+        msg = "RESTResponse.read() must be called before passing it to response_deserialize()"
+        assert response_data.data is not None, msg
 
         response_type = response_types_map.get(str(response_data.status), None)
         if (
@@ -386,11 +391,15 @@ class ApiClient:
 
         if isinstance(klass, str):
             if klass.startswith("List["):
-                sub_kls = re.match(r"List\[(.*)]", klass).group(1)
+                m = re.match(r"List\[(.*)]", klass)
+                assert m is not None, "Malformed List type definition"
+                sub_kls = m.group(1)
                 return [self.__deserialize(sub_data, sub_kls) for sub_data in data]
 
             if klass.startswith("Dict["):
-                sub_kls = re.match(r"Dict\[([^,]*), (.*)]", klass).group(2)
+                m = re.match(r"Dict\[([^,]*), (.*)]", klass)
+                assert m is not None, "Malformed Dict type definition"
+                sub_kls = m.group(2)
                 return {k: self.__deserialize(v, sub_kls) for k, v in data.items()}
 
             # convert str to class
@@ -407,6 +416,8 @@ class ApiClient:
             return self.__deserialize_date(data)
         elif klass == datetime.datetime:
             return self.__deserialize_datetime(data)
+        elif issubclass(klass, Enum):
+            return self.__deserialize_enum(data, klass)
         else:
             return self.__deserialize_model(data, klass)
 
@@ -417,7 +428,7 @@ class ApiClient:
         :param dict collection_formats: Parameter collection formats
         :return: Parameters as list of tuples, collections formatted
         """
-        new_params = []
+        new_params: List[Tuple[str, str]] = []
         if collection_formats is None:
             collection_formats = {}
         for k, v in params.items() if isinstance(params, dict) else params:
@@ -446,7 +457,7 @@ class ApiClient:
         :param dict collection_formats: Parameter collection formats
         :return: URL query string (e.g. a=Hello%20World&b=123)
         """
-        new_params = []
+        new_params: List[Tuple[str, str]] = []
         if collection_formats is None:
             collection_formats = {}
         for k, v in params.items() if isinstance(params, dict) else params:
@@ -460,7 +471,7 @@ class ApiClient:
             if k in collection_formats:
                 collection_format = collection_formats[k]
                 if collection_format == "multi":
-                    new_params.extend((k, value) for value in v)
+                    new_params.extend((k, str(value)) for value in v)
                 else:
                     if collection_format == "ssv":
                         delimiter = " "
@@ -476,7 +487,7 @@ class ApiClient:
             else:
                 new_params.append((k, quote(str(v))))
 
-        return "&".join(["=".join(item) for item in new_params])
+        return "&".join(["=".join(map(str, item)) for item in new_params])
 
     def files_parameters(self, files=None):
         """Builds form parameters.
@@ -611,9 +622,9 @@ class ApiClient:
 
         content_disposition = response.getheader("Content-Disposition")
         if content_disposition:
-            filename = re.search(
-                r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition
-            ).group(1)
+            m = re.search(r'filename=[\'"]?([^\'"\s]+)[\'"]?', content_disposition)
+            assert m is not None, "Unexpected 'content-disposition' header value"
+            filename = m.group(1)
             path = os.path.join(os.path.dirname(path), filename)
 
         with open(path, "wb") as f:
@@ -674,6 +685,20 @@ class ApiClient:
             raise rest.ApiException(
                 status=0,
                 reason=("Failed to parse `{0}` as datetime object".format(string)),
+            )
+
+    def __deserialize_enum(self, data, klass):
+        """Deserializes primitive type to enum.
+
+        :param data: primitive type.
+        :param klass: class literal.
+        :return: enum value.
+        """
+        try:
+            return klass(data)
+        except ValueError:
+            raise rest.ApiException(
+                status=0, reason=("Failed to parse `{0}` as `{1}`".format(data, klass))
             )
 
     def __deserialize_model(self, data, klass):

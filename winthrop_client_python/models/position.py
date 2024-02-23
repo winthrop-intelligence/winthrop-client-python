@@ -18,17 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import date, datetime
-from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.position_type import PositionType
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.sport import Sport
-
-try:
-    from typing import Self
-except ImportError:
-    from typing_extensions import Self
+from typing import Optional, Set
+from typing_extensions import Self
 
 
 class Position(BaseModel):
@@ -87,7 +84,7 @@ class Position(BaseModel):
         return json.dumps(self.to_dict())
 
     @classmethod
-    def from_json(cls, json_str: str) -> Self:
+    def from_json(cls, json_str: str) -> Optional[Self]:
         """Create an instance of Position from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
@@ -101,9 +98,11 @@ class Position(BaseModel):
           were set at model initialization. Other fields with value `None`
           are ignored.
         """
+        excluded_fields: Set[str] = set([])
+
         _dict = self.model_dump(
             by_alias=True,
-            exclude={},
+            exclude=excluded_fields,
             exclude_none=True,
         )
         # override the default output from pydantic by calling `to_dict()` of coach
@@ -125,7 +124,7 @@ class Position(BaseModel):
         return _dict
 
     @classmethod
-    def from_dict(cls, obj: Dict) -> Self:
+    def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
         """Create an instance of Position from a dict"""
         if obj is None:
             return None
@@ -147,17 +146,17 @@ class Position(BaseModel):
                 "name_display": obj.get("name_display"),
                 "departing": obj.get("departing"),
                 "departing_set_at": obj.get("departing_set_at"),
-                "coach": Coach.from_dict(obj.get("coach"))
+                "coach": Coach.from_dict(obj["coach"])
                 if obj.get("coach") is not None
                 else None,
-                "sport": Sport.from_dict(obj.get("sport"))
+                "sport": Sport.from_dict(obj["sport"])
                 if obj.get("sport") is not None
                 else None,
-                "school": School.from_dict(obj.get("school"))
+                "school": School.from_dict(obj["school"])
                 if obj.get("school") is not None
                 else None,
                 "position_types": [
-                    PositionType.from_dict(_item) for _item in obj.get("position_types")
+                    PositionType.from_dict(_item) for _item in obj["position_types"]
                 ]
                 if obj.get("position_types") is not None
                 else None,

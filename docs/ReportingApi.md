@@ -26,8 +26,6 @@ Retrieve some or all coach contract requests
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -107,8 +105,6 @@ Retrieve some or all coach history
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -188,8 +184,6 @@ Retrieve some or all conferenceships
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -269,8 +263,6 @@ Retrieve some or all foia details
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -350,8 +342,6 @@ Retrieve some or all games
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -431,8 +421,6 @@ Retrieve some or all client invoices
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -512,8 +500,6 @@ Retrieve some or all school contract requests
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -593,8 +579,6 @@ Retrieve subscriptions
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint

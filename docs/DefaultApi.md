@@ -70,8 +70,6 @@ Create a new foia label
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.foia_label import FoiaLabel
 from winthrop_client_python.rest import ApiException
@@ -152,8 +150,6 @@ Create a new foia request
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.foia_request import FoiaRequest
 from winthrop_client_python.rest import ApiException
@@ -234,8 +230,6 @@ Create a job post
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.job_post import JobPost
 from winthrop_client_python.rest import ApiException
@@ -316,8 +310,6 @@ Create a new requested item
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.requested_item import RequestedItem
 from winthrop_client_python.rest import ApiException
@@ -398,8 +390,6 @@ Delete a single foia label
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -477,8 +467,6 @@ Delete a single foia request
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -556,8 +544,6 @@ Delete a job post
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -635,8 +621,6 @@ Delete a single requested item
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -714,8 +698,6 @@ Retrieve a single administrator
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.administrator import Administrator
 from winthrop_client_python.rest import ApiException
@@ -796,8 +778,6 @@ Retrieve some or all administrators
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.administrator_collection import AdministratorCollection
 from winthrop_client_python.rest import ApiException
@@ -881,8 +861,6 @@ Retrieve a single audited financial report status
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.audited_financial_report_status import AuditedFinancialReportStatus
 from winthrop_client_python.rest import ApiException
@@ -963,8 +941,6 @@ Retrieve some or all audited financial report statuses
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.audited_financial_report_status_collection import AuditedFinancialReportStatusCollection
 from winthrop_client_python.rest import ApiException
@@ -1048,8 +1024,6 @@ List all categories
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.category_collection import CategoryCollection
 from winthrop_client_python.rest import ApiException
@@ -1134,8 +1108,6 @@ Retrieve a single coach
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.rest import ApiException
@@ -1216,8 +1188,6 @@ Retrieve some or all coaches
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.coach_collection import CoachCollection
 from winthrop_client_python.rest import ApiException
@@ -1301,8 +1271,6 @@ Retrieve a single compensation
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.compensation import Compensation
 from winthrop_client_python.rest import ApiException
@@ -1383,8 +1351,6 @@ Retrieve some or all compensations
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.compensation_collection import CompensationCollection
 from winthrop_client_python.rest import ApiException
@@ -1468,8 +1434,6 @@ Retrieve a single contract
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.contract import Contract
 from winthrop_client_python.rest import ApiException
@@ -1550,8 +1514,6 @@ Retrieve some or all contracts
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.contract_collection import ContractCollection
 from winthrop_client_python.rest import ApiException
@@ -1635,8 +1597,6 @@ Retrieve a single deal status
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.deal_status import DealStatus
 from winthrop_client_python.rest import ApiException
@@ -1717,8 +1677,6 @@ Retrieve some or all deal statuses
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.deal_status_collection import DealStatusCollection
 from winthrop_client_python.rest import ApiException
@@ -1802,8 +1760,6 @@ Retrieve a single foia label
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.foia_label import FoiaLabel
 from winthrop_client_python.rest import ApiException
@@ -1884,8 +1840,6 @@ Retrieve some or all foia labels
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.foia_label_collection import FoiaLabelCollection
 from winthrop_client_python.rest import ApiException
@@ -1969,8 +1923,6 @@ Retrieve a single foia request
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.foia_request import FoiaRequest
 from winthrop_client_python.rest import ApiException
@@ -2051,8 +2003,6 @@ Retrieve some or all foia requests
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.foia_request_collection import FoiaRequestCollection
 from winthrop_client_python.rest import ApiException
@@ -2136,8 +2086,6 @@ Retrieve a single game
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.game import Game
 from winthrop_client_python.rest import ApiException
@@ -2218,8 +2166,6 @@ Retrieve some or all games
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.game_collection import GameCollection
 from winthrop_client_python.rest import ApiException
@@ -2303,8 +2249,6 @@ Retrieve a single income report
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.income_report import IncomeReport
 from winthrop_client_python.rest import ApiException
@@ -2385,8 +2329,6 @@ Retrieve some or all income reports
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.income_report_collection import IncomeReportCollection
 from winthrop_client_python.rest import ApiException
@@ -2470,8 +2412,6 @@ Get a job post
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.job_post import JobPost
 from winthrop_client_python.rest import ApiException
@@ -2552,8 +2492,6 @@ List all job posts
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.job_post_collection import JobPostCollection
 from winthrop_client_python.rest import ApiException
@@ -2638,8 +2576,6 @@ Retrieve a single ncaa financial report status
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.ncaa_financial_report_status import NcaaFinancialReportStatus
 from winthrop_client_python.rest import ApiException
@@ -2720,8 +2656,6 @@ Retrieve some or all ncaa financial report statuses
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.ncaa_financial_report_status_collection import NcaaFinancialReportStatusCollection
 from winthrop_client_python.rest import ApiException
@@ -2805,8 +2739,6 @@ Retrieve a single position
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.position import Position
 from winthrop_client_python.rest import ApiException
@@ -2887,8 +2819,6 @@ Retrieve some or all positions
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.position_collection import PositionCollection
 from winthrop_client_python.rest import ApiException
@@ -2972,8 +2902,6 @@ Retrieve a single requested item
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.requested_item import RequestedItem
 from winthrop_client_python.rest import ApiException
@@ -3054,8 +2982,6 @@ Retrieve some or all requested items
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.requested_item_collection import RequestedItemCollection
 from winthrop_client_python.rest import ApiException
@@ -3139,8 +3065,6 @@ Retrieve a single school
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.school import School
 from winthrop_client_python.rest import ApiException
@@ -3221,8 +3145,6 @@ Retrieve some or all schools
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.rest import ApiException
@@ -3306,8 +3228,6 @@ Retrieve a single season
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.season import Season
 from winthrop_client_python.rest import ApiException
@@ -3388,8 +3308,6 @@ Retrieve some or all seasons
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.season_collection import SeasonCollection
 from winthrop_client_python.rest import ApiException
@@ -3473,8 +3391,6 @@ Retrieve a single sport
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.sport import Sport
 from winthrop_client_python.rest import ApiException
@@ -3555,8 +3471,6 @@ Retrieve some or all sports
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.sport_collection import SportCollection
 from winthrop_client_python.rest import ApiException
@@ -3640,8 +3554,6 @@ Retrieve a single user
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.user import User
 from winthrop_client_python.rest import ApiException
@@ -3722,8 +3634,6 @@ Retrieve some or all users
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.user_collection import UserCollection
 from winthrop_client_python.rest import ApiException
@@ -3807,8 +3717,6 @@ Answer questions a file from S3.
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.summarizer_post_qa_s3_request import SummarizerPostQaS3Request
 from winthrop_client_python.rest import ApiException
@@ -3888,8 +3796,6 @@ Summarizes a file from S3.
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.summarizer_post_summarize_s3_request import SummarizerPostSummarizeS3Request
 from winthrop_client_python.rest import ApiException
@@ -3969,8 +3875,6 @@ Update a coach
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.rest import ApiException
@@ -4053,8 +3957,6 @@ Update a single foia label
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.foia_label import FoiaLabel
 from winthrop_client_python.rest import ApiException
@@ -4137,8 +4039,6 @@ Update a single foia request
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.foia_request import FoiaRequest
 from winthrop_client_python.rest import ApiException
@@ -4221,8 +4121,6 @@ Update a job post
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.job_post import JobPost
 from winthrop_client_python.rest import ApiException
@@ -4305,8 +4203,6 @@ Update a single requested item
 * Api Key Authentication (ApiKey):
 
 ```python
-import time
-import os
 import winthrop_client_python
 from winthrop_client_python.models.requested_item import RequestedItem
 from winthrop_client_python.rest import ApiException
