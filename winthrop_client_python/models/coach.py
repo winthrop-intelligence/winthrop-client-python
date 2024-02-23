@@ -17,9 +17,10 @@ import pprint
 import re  # noqa: F401
 import json
 
-
+from datetime import date
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from pydantic import Field
 from winthrop_client_python.models.avatar import Avatar
 
 try:
@@ -41,6 +42,15 @@ class Coach(BaseModel):
     leader: Optional[StrictBool] = None
     bio: Optional[StrictStr] = None
     bio_text: Optional[StrictStr] = None
+    dob: Optional[date] = None
+    alma_mater_id: Optional[StrictInt] = Field(
+        default=None,
+        description="ID of School, You can view Alma Mater using School API",
+    )
+    alma_mater_year: Optional[StrictStr] = None
+    hometown_city: Optional[StrictStr] = None
+    hometown_state: Optional[StrictStr] = None
+    twitter_handle: Optional[StrictStr] = None
     avatar: Optional[Avatar] = None
     __properties: ClassVar[List[str]] = [
         "id",
@@ -51,6 +61,12 @@ class Coach(BaseModel):
         "leader",
         "bio",
         "bio_text",
+        "dob",
+        "alma_mater_id",
+        "alma_mater_year",
+        "hometown_city",
+        "hometown_state",
+        "twitter_handle",
         "avatar",
     ]
 
@@ -113,6 +129,12 @@ class Coach(BaseModel):
                 "leader": obj.get("leader"),
                 "bio": obj.get("bio"),
                 "bio_text": obj.get("bio_text"),
+                "dob": obj.get("dob"),
+                "alma_mater_id": obj.get("alma_mater_id"),
+                "alma_mater_year": obj.get("alma_mater_year"),
+                "hometown_city": obj.get("hometown_city"),
+                "hometown_state": obj.get("hometown_state"),
+                "twitter_handle": obj.get("twitter_handle"),
                 "avatar": Avatar.from_dict(obj.get("avatar"))
                 if obj.get("avatar") is not None
                 else None,

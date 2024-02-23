@@ -13,6 +13,12 @@ Name | Type | Description | Notes
 **leader** | **bool** |  | [optional] 
 **bio** | **str** |  | [optional] 
 **bio_text** | **str** |  | [optional] 
+**dob** | **date** |  | [optional] 
+**alma_mater_id** | **int** | ID of School, You can view Alma Mater using School API | [optional] 
+**alma_mater_year** | **str** |  | [optional] 
+**hometown_city** | **str** |  | [optional] 
+**hometown_state** | **str** |  | [optional] 
+**twitter_handle** | **str** |  | [optional] 
 **avatar** | [**Avatar**](Avatar.md) |  | [optional] 
 
 ## Example

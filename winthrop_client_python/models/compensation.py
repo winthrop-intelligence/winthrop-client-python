@@ -20,6 +20,7 @@ import json
 from datetime import datetime
 from typing import Any, ClassVar, Dict, List, Optional
 from pydantic import BaseModel, StrictBool, StrictInt, StrictStr
+from winthrop_client_python.models.contract import Contract
 
 try:
     from typing import Self
@@ -62,6 +63,7 @@ class Compensation(BaseModel):
     contract_status_id: Optional[StrictInt] = None
     year: Optional[StrictInt] = None
     school_id: Optional[StrictInt] = None
+    contracts: Optional[List[Contract]] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "bonus_comp_cents",
@@ -93,6 +95,7 @@ class Compensation(BaseModel):
         "contract_status_id",
         "year",
         "school_id",
+        "contracts",
     ]
 
     model_config = {
@@ -130,6 +133,13 @@ class Compensation(BaseModel):
             exclude={},
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in contracts (list)
+        _items = []
+        if self.contracts:
+            for _item in self.contracts:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict["contracts"] = _items
         return _dict
 
     @classmethod
@@ -177,6 +187,11 @@ class Compensation(BaseModel):
                 "contract_status_id": obj.get("contract_status_id"),
                 "year": obj.get("year"),
                 "school_id": obj.get("school_id"),
+                "contracts": [
+                    Contract.from_dict(_item) for _item in obj.get("contracts")
+                ]
+                if obj.get("contracts") is not None
+                else None,
             }
         )
         return _obj
