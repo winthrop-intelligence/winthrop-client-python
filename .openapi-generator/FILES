@@ -61,9 +61,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_contact.py
-test/test_contact_collection.py
-test/test_financial_qc.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
