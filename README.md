@@ -110,6 +110,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 *DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 *DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
+*DefaultApi* | [**get_contact**](docs/DefaultApi.md#get_contact) | **GET** /api/v1/contacts/{contactId} | 
+*DefaultApi* | [**get_contacts**](docs/DefaultApi.md#get_contacts) | **GET** /api/v1/contacts | 
 *DefaultApi* | [**get_contract**](docs/DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} | 
 *DefaultApi* | [**get_contracts**](docs/DefaultApi.md#get_contracts) | **GET** /api/v1/contracts | 
 *DefaultApi* | [**get_deal_status**](docs/DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} | 
@@ -152,6 +154,7 @@ Class | Method | HTTP request | Description
 *ReportingApi* | [**get_games**](docs/ReportingApi.md#get_games) | **GET** /api/v1/reports/games | 
 *ReportingApi* | [**get_invoices**](docs/ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices | 
 *ReportingApi* | [**get_school_contract_requests**](docs/ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests | 
+*ReportingApi* | [**get_schools_financials_qc**](docs/ReportingApi.md#get_schools_financials_qc) | **GET** /api/v1/financials_qc | 
 *ReportingApi* | [**get_subscriptions**](docs/ReportingApi.md#get_subscriptions) | **GET** /api/v1/reports/subscriptions | 
 *ScraperApi* | [**list_scrapers**](docs/ScraperApi.md#list_scrapers) | **GET** /ondemand-scrapers/ | List all available scrapers
 *ScraperApi* | [**run_scraper**](docs/ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{command} | Run a scraper
@@ -170,10 +173,13 @@ Class | Method | HTTP request | Description
  - [CoachCollection](docs/CoachCollection.md)
  - [Compensation](docs/Compensation.md)
  - [CompensationCollection](docs/CompensationCollection.md)
+ - [Contact](docs/Contact.md)
+ - [ContactCollection](docs/ContactCollection.md)
  - [Contract](docs/Contract.md)
  - [ContractCollection](docs/ContractCollection.md)
  - [DealStatus](docs/DealStatus.md)
  - [DealStatusCollection](docs/DealStatusCollection.md)
+ - [FinancialQc](docs/FinancialQc.md)
  - [FoiaLabel](docs/FoiaLabel.md)
  - [FoiaLabelCollection](docs/FoiaLabelCollection.md)
  - [FoiaRequest](docs/FoiaRequest.md)

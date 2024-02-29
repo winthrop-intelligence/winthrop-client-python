@@ -50,10 +50,13 @@ from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.coach_collection import CoachCollection
 from winthrop_client_python.models.compensation import Compensation
 from winthrop_client_python.models.compensation_collection import CompensationCollection
+from winthrop_client_python.models.contact import Contact
+from winthrop_client_python.models.contact_collection import ContactCollection
 from winthrop_client_python.models.contract import Contract
 from winthrop_client_python.models.contract_collection import ContractCollection
 from winthrop_client_python.models.deal_status import DealStatus
 from winthrop_client_python.models.deal_status_collection import DealStatusCollection
+from winthrop_client_python.models.financial_qc import FinancialQc
 from winthrop_client_python.models.foia_label import FoiaLabel
 from winthrop_client_python.models.foia_label_collection import FoiaLabelCollection
 from winthrop_client_python.models.foia_request import FoiaRequest
