@@ -61,7 +61,6 @@ class School(BaseModel):
     wikipedia_url: Optional[StrictStr] = None
     athletics_wikipedia_url: Optional[StrictStr] = None
     external_logo: Optional[Logo] = None
-    non_ncaa_group: Optional[StrictStr] = None
     school_status: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
@@ -94,7 +93,6 @@ class School(BaseModel):
         "wikipedia_url",
         "athletics_wikipedia_url",
         "external_logo",
-        "non_ncaa_group",
         "school_status",
     ]
 
@@ -209,7 +207,6 @@ class School(BaseModel):
                 "external_logo": Logo.from_dict(obj["external_logo"])
                 if obj.get("external_logo") is not None
                 else None,
-                "non_ncaa_group": obj.get("non_ncaa_group"),
                 "school_status": obj.get("school_status"),
             }
         )

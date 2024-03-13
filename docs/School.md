@@ -35,7 +35,6 @@ Name | Type | Description | Notes
 **wikipedia_url** | **str** |  | [optional] 
 **athletics_wikipedia_url** | **str** |  | [optional] 
 **external_logo** | [**Logo**](Logo.md) |  | [optional] 
-**non_ncaa_group** | **str** |  | [optional] 
 **school_status** | **str** |  | [optional] 
 
 ## Example
