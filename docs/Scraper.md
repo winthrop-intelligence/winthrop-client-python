@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | [optional] 
 **title** | **str** |  | [optional] 
+**argument_defs** | [**List[ScraperArgDef]**](ScraperArgDef.md) |  | [optional] 
 
 ## Example
 

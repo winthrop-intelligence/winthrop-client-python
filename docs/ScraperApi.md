@@ -83,7 +83,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **run_scraper**
-> run_scraper(command)
+> run_scraper(command, body=body)
 
 Run a scraper
 
@@ -118,10 +118,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.ScraperApi(api_client)
     command = 'command_example' # str | The name of the scraper to run
+    body = None # object |  (optional)
 
     try:
         # Run a scraper
-        api_instance.run_scraper(command)
+        api_instance.run_scraper(command, body=body)
     except Exception as e:
         print("Exception when calling ScraperApi->run_scraper: %s\n" % e)
 ```
@@ -134,6 +135,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **command** | **str**| The name of the scraper to run | 
+ **body** | **object**|  | [optional] 
 
 ### Return type
 
@@ -145,7 +147,7 @@ void (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: Not defined
 
 ### HTTP response details
@@ -154,6 +156,8 @@ void (empty response body)
 |-------------|-------------|------------------|
 **200** | The scraper was successfully started |  -  |
 **401** | Unauthorized |  -  |
+**404** | The specified scraper was not found |  -  |
+**422** | The specified scraper was found, but the arguments were invalid |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

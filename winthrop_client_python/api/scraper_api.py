@@ -17,6 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
+from typing import Any, Dict, Optional
 from typing_extensions import Annotated
 from winthrop_client_python.models.scraper import Scraper
 
@@ -266,6 +267,7 @@ class ScraperApi:
         command: Annotated[
             StrictStr, Field(description="The name of the scraper to run")
         ],
+        body: Optional[Dict[str, Any]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -283,6 +285,8 @@ class ScraperApi:
 
         :param command: The name of the scraper to run (required)
         :type command: str
+        :param body:
+        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -307,6 +311,7 @@ class ScraperApi:
 
         _param = self._run_scraper_serialize(
             command=command,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -316,6 +321,8 @@ class ScraperApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": None,
             "401": None,
+            "404": None,
+            "422": None,
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -332,6 +339,7 @@ class ScraperApi:
         command: Annotated[
             StrictStr, Field(description="The name of the scraper to run")
         ],
+        body: Optional[Dict[str, Any]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -349,6 +357,8 @@ class ScraperApi:
 
         :param command: The name of the scraper to run (required)
         :type command: str
+        :param body:
+        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -373,6 +383,7 @@ class ScraperApi:
 
         _param = self._run_scraper_serialize(
             command=command,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -382,6 +393,8 @@ class ScraperApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": None,
             "401": None,
+            "404": None,
+            "422": None,
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -398,6 +411,7 @@ class ScraperApi:
         command: Annotated[
             StrictStr, Field(description="The name of the scraper to run")
         ],
+        body: Optional[Dict[str, Any]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -415,6 +429,8 @@ class ScraperApi:
 
         :param command: The name of the scraper to run (required)
         :type command: str
+        :param body:
+        :type body: object
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -439,6 +455,7 @@ class ScraperApi:
 
         _param = self._run_scraper_serialize(
             command=command,
+            body=body,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -448,6 +465,8 @@ class ScraperApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "200": None,
             "401": None,
+            "404": None,
+            "422": None,
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -457,6 +476,7 @@ class ScraperApi:
     def _run_scraper_serialize(
         self,
         command,
+        body,
         _request_auth,
         _content_type,
         _headers,
@@ -480,6 +500,18 @@ class ScraperApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
+        if body is not None:
+            _body_params = body
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params["Content-Type"] = _content_type
+        else:
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
+            )
+            if _default_content_type is not None:
+                _header_params["Content-Type"] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = ["ApiKey"]

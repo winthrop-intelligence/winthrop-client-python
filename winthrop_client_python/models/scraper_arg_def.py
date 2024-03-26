@@ -17,24 +17,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, Field, StrictStr
+from pydantic import BaseModel, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.scraper_arg_def import ScraperArgDef
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class Scraper(BaseModel):
+class ScraperArgDef(BaseModel):
     """
-    Scraper
+    ScraperArgDef
     """  # noqa: E501
 
     name: Optional[StrictStr] = None
-    title: Optional[StrictStr] = None
-    argument_defs: Optional[List[ScraperArgDef]] = Field(
-        default=None, alias="argumentDefs"
-    )
-    __properties: ClassVar[List[str]] = ["name", "title", "argumentDefs"]
+    type: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["name", "type", "description"]
 
     model_config = {
         "populate_by_name": True,
@@ -53,7 +50,7 @@ class Scraper(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Scraper from a JSON string"""
+        """Create an instance of ScraperArgDef from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,18 +70,11 @@ class Scraper(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in argument_defs (list)
-        _items = []
-        if self.argument_defs:
-            for _item in self.argument_defs:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict["argumentDefs"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Scraper from a dict"""
+        """Create an instance of ScraperArgDef from a dict"""
         if obj is None:
             return None
 
@@ -94,12 +84,8 @@ class Scraper(BaseModel):
         _obj = cls.model_validate(
             {
                 "name": obj.get("name"),
-                "title": obj.get("title"),
-                "argumentDefs": [
-                    ScraperArgDef.from_dict(_item) for _item in obj["argumentDefs"]
-                ]
-                if obj.get("argumentDefs") is not None
-                else None,
+                "type": obj.get("type"),
+                "description": obj.get("description"),
             }
         )
         return _obj

@@ -203,6 +203,7 @@ Class | Method | HTTP request | Description
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
  - [Scraper](docs/Scraper.md)
+ - [ScraperArgDef](docs/ScraperArgDef.md)
  - [Season](docs/Season.md)
  - [SeasonCollection](docs/SeasonCollection.md)
  - [Sport](docs/Sport.md)
