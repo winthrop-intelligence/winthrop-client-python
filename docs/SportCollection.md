@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of SportCollection from a JSON string
 sport_collection_instance = SportCollection.from_json(json)
 # print the JSON string representation of the object
-print SportCollection.to_json()
+print(SportCollection.to_json())
 
 # convert the object into a dict
 sport_collection_dict = sport_collection_instance.to_dict()

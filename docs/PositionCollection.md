@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of PositionCollection from a JSON string
 position_collection_instance = PositionCollection.from_json(json)
 # print the JSON string representation of the object
-print PositionCollection.to_json()
+print(PositionCollection.to_json())
 
 # convert the object into a dict
 position_collection_dict = position_collection_instance.to_dict()

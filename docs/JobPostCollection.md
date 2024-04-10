@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of JobPostCollection from a JSON string
 job_post_collection_instance = JobPostCollection.from_json(json)
 # print the JSON string representation of the object
-print JobPostCollection.to_json()
+print(JobPostCollection.to_json())
 
 # convert the object into a dict
 job_post_collection_dict = job_post_collection_instance.to_dict()

@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of GameCollection from a JSON string
 game_collection_instance = GameCollection.from_json(json)
 # print the JSON string representation of the object
-print GameCollection.to_json()
+print(GameCollection.to_json())
 
 # convert the object into a dict
 game_collection_dict = game_collection_instance.to_dict()

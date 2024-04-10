@@ -19,7 +19,7 @@ json = "{}"
 # create an instance of Logo from a JSON string
 logo_instance = Logo.from_json(json)
 # print the JSON string representation of the object
-print Logo.to_json()
+print(Logo.to_json())
 
 # convert the object into a dict
 logo_dict = logo_instance.to_dict()

@@ -19,7 +19,7 @@ json = "{}"
 # create an instance of FoiaLabel from a JSON string
 foia_label_instance = FoiaLabel.from_json(json)
 # print the JSON string representation of the object
-print FoiaLabel.to_json()
+print(FoiaLabel.to_json())
 
 # convert the object into a dict
 foia_label_dict = foia_label_instance.to_dict()

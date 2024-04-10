@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of UserCollection from a JSON string
 user_collection_instance = UserCollection.from_json(json)
 # print the JSON string representation of the object
-print UserCollection.to_json()
+print(UserCollection.to_json())
 
 # convert the object into a dict
 user_collection_dict = user_collection_instance.to_dict()

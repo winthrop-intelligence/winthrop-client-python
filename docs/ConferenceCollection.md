@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of ConferenceCollection from a JSON string
 conference_collection_instance = ConferenceCollection.from_json(json)
 # print the JSON string representation of the object
-print ConferenceCollection.to_json()
+print(ConferenceCollection.to_json())
 
 # convert the object into a dict
 conference_collection_dict = conference_collection_instance.to_dict()

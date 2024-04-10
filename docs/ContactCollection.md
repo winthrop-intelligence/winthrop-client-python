@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of ContactCollection from a JSON string
 contact_collection_instance = ContactCollection.from_json(json)
 # print the JSON string representation of the object
-print ContactCollection.to_json()
+print(ContactCollection.to_json())
 
 # convert the object into a dict
 contact_collection_dict = contact_collection_instance.to_dict()

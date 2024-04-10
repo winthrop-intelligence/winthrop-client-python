@@ -18,7 +18,14 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, StrictBool, StrictInt, StrictStr, field_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    StrictBool,
+    StrictInt,
+    StrictStr,
+    field_validator,
+)
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.logo import Logo
@@ -108,11 +115,11 @@ class School(BaseModel):
             )
         return value
 
-    model_config = {
-        "populate_by_name": True,
-        "validate_assignment": True,
-        "protected_namespaces": (),
-    }
+    model_config = ConfigDict(
+        populate_by_name=True,
+        validate_assignment=True,
+        protected_namespaces=(),
+    )
 
     def to_str(self) -> str:
         """Returns the string representation of the model using alias"""

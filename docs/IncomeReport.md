@@ -24,7 +24,7 @@ json = "{}"
 # create an instance of IncomeReport from a JSON string
 income_report_instance = IncomeReport.from_json(json)
 # print the JSON string representation of the object
-print IncomeReport.to_json()
+print(IncomeReport.to_json())
 
 # convert the object into a dict
 income_report_dict = income_report_instance.to_dict()

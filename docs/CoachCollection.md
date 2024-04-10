@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of CoachCollection from a JSON string
 coach_collection_instance = CoachCollection.from_json(json)
 # print the JSON string representation of the object
-print CoachCollection.to_json()
+print(CoachCollection.to_json())
 
 # convert the object into a dict
 coach_collection_dict = coach_collection_instance.to_dict()

@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of NcaaFinancialReportStatusCollection from a JSON string
 ncaa_financial_report_status_collection_instance = NcaaFinancialReportStatusCollection.from_json(json)
 # print the JSON string representation of the object
-print NcaaFinancialReportStatusCollection.to_json()
+print(NcaaFinancialReportStatusCollection.to_json())
 
 # convert the object into a dict
 ncaa_financial_report_status_collection_dict = ncaa_financial_report_status_collection_instance.to_dict()

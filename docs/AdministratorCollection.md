@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of AdministratorCollection from a JSON string
 administrator_collection_instance = AdministratorCollection.from_json(json)
 # print the JSON string representation of the object
-print AdministratorCollection.to_json()
+print(AdministratorCollection.to_json())
 
 # convert the object into a dict
 administrator_collection_dict = administrator_collection_instance.to_dict()

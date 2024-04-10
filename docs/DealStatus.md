@@ -25,7 +25,7 @@ json = "{}"
 # create an instance of DealStatus from a JSON string
 deal_status_instance = DealStatus.from_json(json)
 # print the JSON string representation of the object
-print DealStatus.to_json()
+print(DealStatus.to_json())
 
 # convert the object into a dict
 deal_status_dict = deal_status_instance.to_dict()

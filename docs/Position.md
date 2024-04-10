@@ -32,7 +32,7 @@ json = "{}"
 # create an instance of Position from a JSON string
 position_instance = Position.from_json(json)
 # print the JSON string representation of the object
-print Position.to_json()
+print(Position.to_json())
 
 # convert the object into a dict
 position_dict = position_instance.to_dict()

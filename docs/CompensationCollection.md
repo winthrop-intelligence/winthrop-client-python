@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of CompensationCollection from a JSON string
 compensation_collection_instance = CompensationCollection.from_json(json)
 # print the JSON string representation of the object
-print CompensationCollection.to_json()
+print(CompensationCollection.to_json())
 
 # convert the object into a dict
 compensation_collection_dict = compensation_collection_instance.to_dict()

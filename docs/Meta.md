@@ -21,7 +21,7 @@ json = "{}"
 # create an instance of Meta from a JSON string
 meta_instance = Meta.from_json(json)
 # print the JSON string representation of the object
-print Meta.to_json()
+print(Meta.to_json())
 
 # convert the object into a dict
 meta_dict = meta_instance.to_dict()

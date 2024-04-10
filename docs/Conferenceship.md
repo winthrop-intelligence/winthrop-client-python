@@ -22,7 +22,7 @@ json = "{}"
 # create an instance of Conferenceship from a JSON string
 conferenceship_instance = Conferenceship.from_json(json)
 # print the JSON string representation of the object
-print Conferenceship.to_json()
+print(Conferenceship.to_json())
 
 # convert the object into a dict
 conferenceship_dict = conferenceship_instance.to_dict()

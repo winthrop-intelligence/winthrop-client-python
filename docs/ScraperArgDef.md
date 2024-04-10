@@ -19,7 +19,7 @@ json = "{}"
 # create an instance of ScraperArgDef from a JSON string
 scraper_arg_def_instance = ScraperArgDef.from_json(json)
 # print the JSON string representation of the object
-print ScraperArgDef.to_json()
+print(ScraperArgDef.to_json())
 
 # convert the object into a dict
 scraper_arg_def_dict = scraper_arg_def_instance.to_dict()

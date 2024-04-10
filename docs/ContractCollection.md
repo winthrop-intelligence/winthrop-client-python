@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of ContractCollection from a JSON string
 contract_collection_instance = ContractCollection.from_json(json)
 # print the JSON string representation of the object
-print ContractCollection.to_json()
+print(ContractCollection.to_json())
 
 # convert the object into a dict
 contract_collection_dict = contract_collection_instance.to_dict()

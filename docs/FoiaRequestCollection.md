@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of FoiaRequestCollection from a JSON string
 foia_request_collection_instance = FoiaRequestCollection.from_json(json)
 # print the JSON string representation of the object
-print FoiaRequestCollection.to_json()
+print(FoiaRequestCollection.to_json())
 
 # convert the object into a dict
 foia_request_collection_dict = foia_request_collection_instance.to_dict()

@@ -19,7 +19,7 @@ json = "{}"
 # create an instance of SummarizerPostSummarizeS3Request from a JSON string
 summarizer_post_summarize_s3_request_instance = SummarizerPostSummarizeS3Request.from_json(json)
 # print the JSON string representation of the object
-print SummarizerPostSummarizeS3Request.to_json()
+print(SummarizerPostSummarizeS3Request.to_json())
 
 # convert the object into a dict
 summarizer_post_summarize_s3_request_dict = summarizer_post_summarize_s3_request_instance.to_dict()

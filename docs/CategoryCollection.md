@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of CategoryCollection from a JSON string
 category_collection_instance = CategoryCollection.from_json(json)
 # print the JSON string representation of the object
-print CategoryCollection.to_json()
+print(CategoryCollection.to_json())
 
 # convert the object into a dict
 category_collection_dict = category_collection_instance.to_dict()

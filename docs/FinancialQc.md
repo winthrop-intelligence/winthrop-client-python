@@ -24,7 +24,7 @@ json = "{}"
 # create an instance of FinancialQc from a JSON string
 financial_qc_instance = FinancialQc.from_json(json)
 # print the JSON string representation of the object
-print FinancialQc.to_json()
+print(FinancialQc.to_json())
 
 # convert the object into a dict
 financial_qc_dict = financial_qc_instance.to_dict()

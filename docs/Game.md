@@ -34,7 +34,7 @@ json = "{}"
 # create an instance of Game from a JSON string
 game_instance = Game.from_json(json)
 # print the JSON string representation of the object
-print Game.to_json()
+print(Game.to_json())
 
 # convert the object into a dict
 game_dict = game_instance.to_dict()

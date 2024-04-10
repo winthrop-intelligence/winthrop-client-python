@@ -20,7 +20,7 @@ json = "{}"
 # create an instance of Avatar from a JSON string
 avatar_instance = Avatar.from_json(json)
 # print the JSON string representation of the object
-print Avatar.to_json()
+print(Avatar.to_json())
 
 # convert the object into a dict
 avatar_dict = avatar_instance.to_dict()

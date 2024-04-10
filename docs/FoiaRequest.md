@@ -24,7 +24,7 @@ json = "{}"
 # create an instance of FoiaRequest from a JSON string
 foia_request_instance = FoiaRequest.from_json(json)
 # print the JSON string representation of the object
-print FoiaRequest.to_json()
+print(FoiaRequest.to_json())
 
 # convert the object into a dict
 foia_request_dict = foia_request_instance.to_dict()

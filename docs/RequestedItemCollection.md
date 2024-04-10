@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of RequestedItemCollection from a JSON string
 requested_item_collection_instance = RequestedItemCollection.from_json(json)
 # print the JSON string representation of the object
-print RequestedItemCollection.to_json()
+print(RequestedItemCollection.to_json())
 
 # convert the object into a dict
 requested_item_collection_dict = requested_item_collection_instance.to_dict()

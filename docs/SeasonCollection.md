@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of SeasonCollection from a JSON string
 season_collection_instance = SeasonCollection.from_json(json)
 # print the JSON string representation of the object
-print SeasonCollection.to_json()
+print(SeasonCollection.to_json())
 
 # convert the object into a dict
 season_collection_dict = season_collection_instance.to_dict()

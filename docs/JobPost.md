@@ -29,7 +29,7 @@ json = "{}"
 # create an instance of JobPost from a JSON string
 job_post_instance = JobPost.from_json(json)
 # print the JSON string representation of the object
-print JobPost.to_json()
+print(JobPost.to_json())
 
 # convert the object into a dict
 job_post_dict = job_post_instance.to_dict()

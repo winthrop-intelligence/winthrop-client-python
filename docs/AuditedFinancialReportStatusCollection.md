@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of AuditedFinancialReportStatusCollection from a JSON string
 audited_financial_report_status_collection_instance = AuditedFinancialReportStatusCollection.from_json(json)
 # print the JSON string representation of the object
-print AuditedFinancialReportStatusCollection.to_json()
+print(AuditedFinancialReportStatusCollection.to_json())
 
 # convert the object into a dict
 audited_financial_report_status_collection_dict = audited_financial_report_status_collection_instance.to_dict()

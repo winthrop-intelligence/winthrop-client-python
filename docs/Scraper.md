@@ -19,7 +19,7 @@ json = "{}"
 # create an instance of Scraper from a JSON string
 scraper_instance = Scraper.from_json(json)
 # print the JSON string representation of the object
-print Scraper.to_json()
+print(Scraper.to_json())
 
 # convert the object into a dict
 scraper_dict = scraper_instance.to_dict()

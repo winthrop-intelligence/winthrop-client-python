@@ -59,7 +59,7 @@ json = "{}"
 # create an instance of Administrator from a JSON string
 administrator_instance = Administrator.from_json(json)
 # print the JSON string representation of the object
-print Administrator.to_json()
+print(Administrator.to_json())
 
 # convert the object into a dict
 administrator_dict = administrator_instance.to_dict()

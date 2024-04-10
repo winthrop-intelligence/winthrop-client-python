@@ -23,7 +23,7 @@ json = "{}"
 # create an instance of PositionType from a JSON string
 position_type_instance = PositionType.from_json(json)
 # print the JSON string representation of the object
-print PositionType.to_json()
+print(PositionType.to_json())
 
 # convert the object into a dict
 position_type_dict = position_type_instance.to_dict()

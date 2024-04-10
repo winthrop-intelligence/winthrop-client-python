@@ -47,7 +47,7 @@ json = "{}"
 # create an instance of School from a JSON string
 school_instance = School.from_json(json)
 # print the JSON string representation of the object
-print School.to_json()
+print(School.to_json())
 
 # convert the object into a dict
 school_dict = school_instance.to_dict()

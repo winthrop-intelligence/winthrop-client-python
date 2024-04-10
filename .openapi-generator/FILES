@@ -67,11 +67,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_conference.py
-test/test_conference_collection.py
-test/test_conferenceship.py
-test/test_conferenceship_collection.py
-test/test_system_setting.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py

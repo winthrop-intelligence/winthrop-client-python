@@ -18,7 +18,7 @@ json = "{}"
 # create an instance of DealStatusCollection from a JSON string
 deal_status_collection_instance = DealStatusCollection.from_json(json)
 # print the JSON string representation of the object
-print DealStatusCollection.to_json()
+print(DealStatusCollection.to_json())
 
 # convert the object into a dict
 deal_status_collection_dict = deal_status_collection_instance.to_dict()
