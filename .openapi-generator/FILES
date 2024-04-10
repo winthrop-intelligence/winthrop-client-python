@@ -13,6 +13,10 @@ docs/Coach.md
 docs/CoachCollection.md
 docs/Compensation.md
 docs/CompensationCollection.md
+docs/Conference.md
+docs/ConferenceCollection.md
+docs/Conferenceship.md
+docs/ConferenceshipCollection.md
 docs/Contact.md
 docs/ContactCollection.md
 docs/Contract.md
@@ -53,6 +57,7 @@ docs/Sport.md
 docs/SportCollection.md
 docs/SummarizerPostQaS3Request.md
 docs/SummarizerPostSummarizeS3Request.md
+docs/SystemSetting.md
 docs/UnprocessableEntity.md
 docs/User.md
 docs/UserCollection.md
@@ -62,6 +67,11 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_conference.py
+test/test_conference_collection.py
+test/test_conferenceship.py
+test/test_conferenceship_collection.py
+test/test_system_setting.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -84,6 +94,10 @@ winthrop_client_python/models/coach.py
 winthrop_client_python/models/coach_collection.py
 winthrop_client_python/models/compensation.py
 winthrop_client_python/models/compensation_collection.py
+winthrop_client_python/models/conference.py
+winthrop_client_python/models/conference_collection.py
+winthrop_client_python/models/conferenceship.py
+winthrop_client_python/models/conferenceship_collection.py
 winthrop_client_python/models/contact.py
 winthrop_client_python/models/contact_collection.py
 winthrop_client_python/models/contract.py
@@ -121,6 +135,7 @@ winthrop_client_python/models/sport.py
 winthrop_client_python/models/sport_collection.py
 winthrop_client_python/models/summarizer_post_qa_s3_request.py
 winthrop_client_python/models/summarizer_post_summarize_s3_request.py
+winthrop_client_python/models/system_setting.py
 winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/user.py
 winthrop_client_python/models/user_collection.py

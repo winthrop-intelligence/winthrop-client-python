@@ -50,6 +50,12 @@ from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.coach_collection import CoachCollection
 from winthrop_client_python.models.compensation import Compensation
 from winthrop_client_python.models.compensation_collection import CompensationCollection
+from winthrop_client_python.models.conference import Conference
+from winthrop_client_python.models.conference_collection import ConferenceCollection
+from winthrop_client_python.models.conferenceship import Conferenceship
+from winthrop_client_python.models.conferenceship_collection import (
+    ConferenceshipCollection,
+)
 from winthrop_client_python.models.contact import Contact
 from winthrop_client_python.models.contact_collection import ContactCollection
 from winthrop_client_python.models.contract import Contract
@@ -99,6 +105,7 @@ from winthrop_client_python.models.summarizer_post_qa_s3_request import (
 from winthrop_client_python.models.summarizer_post_summarize_s3_request import (
     SummarizerPostSummarizeS3Request,
 )
+from winthrop_client_python.models.system_setting import SystemSetting
 from winthrop_client_python.models.unprocessable_entity import UnprocessableEntity
 from winthrop_client_python.models.user import User
 from winthrop_client_python.models.user_collection import UserCollection
