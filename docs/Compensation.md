@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 **contract_status_id** | **int** |  | [optional] 
 **year** | **int** |  | [optional] 
 **school_id** | **int** |  | [optional] 
-**contracts** | [**List[Contract]**](Contract.md) |  | [optional] 
+**contract** | [**Contract**](Contract.md) |  | [optional] 
 
 ## Example
 

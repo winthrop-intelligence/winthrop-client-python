@@ -60,7 +60,7 @@ class Compensation(BaseModel):
     contract_status_id: Optional[StrictInt] = None
     year: Optional[StrictInt] = None
     school_id: Optional[StrictInt] = None
-    contracts: Optional[List[Contract]] = None
+    contract: Optional[Contract] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "bonus_comp_cents",
@@ -92,7 +92,7 @@ class Compensation(BaseModel):
         "contract_status_id",
         "year",
         "school_id",
-        "contracts",
+        "contract",
     ]
 
     model_config = ConfigDict(
@@ -132,13 +132,9 @@ class Compensation(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in contracts (list)
-        _items = []
-        if self.contracts:
-            for _item in self.contracts:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict["contracts"] = _items
+        # override the default output from pydantic by calling `to_dict()` of contract
+        if self.contract:
+            _dict["contract"] = self.contract.to_dict()
         return _dict
 
     @classmethod
@@ -186,8 +182,8 @@ class Compensation(BaseModel):
                 "contract_status_id": obj.get("contract_status_id"),
                 "year": obj.get("year"),
                 "school_id": obj.get("school_id"),
-                "contracts": [Contract.from_dict(_item) for _item in obj["contracts"]]
-                if obj.get("contracts") is not None
+                "contract": Contract.from_dict(obj["contract"])
+                if obj.get("contract") is not None
                 else None,
             }
         )
