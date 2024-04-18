@@ -48,6 +48,7 @@ class Coach(BaseModel):
     hometown_state: Optional[StrictStr] = None
     twitter_handle: Optional[StrictStr] = None
     avatar: Optional[Avatar] = None
+    years_of_experience: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "first_name",
@@ -64,6 +65,7 @@ class Coach(BaseModel):
         "hometown_state",
         "twitter_handle",
         "avatar",
+        "years_of_experience",
     ]
 
     model_config = ConfigDict(
@@ -136,6 +138,7 @@ class Coach(BaseModel):
                 "avatar": Avatar.from_dict(obj["avatar"])
                 if obj.get("avatar") is not None
                 else None,
+                "years_of_experience": obj.get("years_of_experience"),
             }
         )
         return _obj

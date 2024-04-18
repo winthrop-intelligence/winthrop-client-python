@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **hometown_state** | **str** |  | [optional] 
 **twitter_handle** | **str** |  | [optional] 
 **avatar** | [**Avatar**](Avatar.md) |  | [optional] 
+**years_of_experience** | **int** |  | [optional] 
 
 ## Example
 
