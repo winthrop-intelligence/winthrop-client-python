@@ -25,6 +25,7 @@ Retrieve some or all coach contract requests
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -47,6 +48,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -79,7 +82,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -104,6 +107,7 @@ Retrieve some or all coach history
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -126,6 +130,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -158,7 +164,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -183,6 +189,7 @@ Retrieve some or all conferenceships
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -205,6 +212,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -237,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -262,6 +271,7 @@ Retrieve some or all foia details
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -284,6 +294,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -316,7 +328,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -341,6 +353,7 @@ Retrieve some or all games
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -363,6 +376,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -395,7 +410,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -420,6 +435,7 @@ Retrieve some or all client invoices
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -442,6 +458,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -474,7 +492,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -499,6 +517,7 @@ Retrieve some or all school contract requests
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -521,6 +540,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -553,7 +574,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -578,6 +599,7 @@ Retrieve schools with thier financials qc
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -601,6 +623,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -633,7 +657,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -658,6 +682,7 @@ Retrieve subscriptions
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -680,6 +705,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -712,7 +739,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 

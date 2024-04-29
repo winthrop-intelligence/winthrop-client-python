@@ -16,6 +16,7 @@ List all available scrapers
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -39,6 +40,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -66,7 +69,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
@@ -90,6 +93,7 @@ Run a scraper
 ### Example
 
 * Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
 
 ```python
 import winthrop_client_python
@@ -112,6 +116,8 @@ configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
@@ -143,7 +149,7 @@ void (empty response body)
 
 ### Authorization
 
-[ApiKey](../README.md#ApiKey)
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
 
 ### HTTP request headers
 
