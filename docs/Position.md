@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **name_display** | **str** |  | [optional] 
 **departing** | **bool** |  | [optional] 
 **departing_set_at** | **datetime** |  | [optional] 
+**creation_reason** | **str** |  | [optional] 
+**creation_reason_updated_at** | **datetime** |  | [optional] 
 **coach** | [**Coach**](Coach.md) |  | [optional] 
 **sport** | [**Sport**](Sport.md) |  | [optional] 
 **school** | [**School**](School.md) |  | [optional] 
