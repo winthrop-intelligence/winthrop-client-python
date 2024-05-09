@@ -152,8 +152,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_system_settings**](docs/DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting | 
 *DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *DefaultApi* | [**get_users**](docs/DefaultApi.md#get_users) | **GET** /api/v1/users | 
-*DefaultApi* | [**summarizer_post_qa_s3**](docs/DefaultApi.md#summarizer_post_qa_s3) | **POST** /summarizer/qa_s3 | Answer questions over a file from S3
-*DefaultApi* | [**summarizer_post_summarize_s3**](docs/DefaultApi.md#summarizer_post_summarize_s3) | **POST** /summarizer/summarize_s3 | Summarize a file from S3
 *DefaultApi* | [**update_coach**](docs/DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
 *DefaultApi* | [**update_compensation**](docs/DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
 *DefaultApi* | [**update_conference**](docs/DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} | 
@@ -227,8 +225,6 @@ Class | Method | HTTP request | Description
  - [SeasonCollection](docs/SeasonCollection.md)
  - [Sport](docs/Sport.md)
  - [SportCollection](docs/SportCollection.md)
- - [SummarizerPostQaS3Request](docs/SummarizerPostQaS3Request.md)
- - [SummarizerPostSummarizeS3Request](docs/SummarizerPostSummarizeS3Request.md)
  - [SystemSetting](docs/SystemSetting.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
  - [User](docs/User.md)

@@ -259,6 +259,7 @@ class ReportingApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -273,9 +274,11 @@ class ReportingApi:
         # process the path parameters
         # process the query parameters
         if page is not None:
+
             _query_params.append(("page", page))
 
         if q is not None:
+
             _query_params.append(("q", q))
 
         # process the header parameters
@@ -526,6 +529,7 @@ class ReportingApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -540,9 +544,11 @@ class ReportingApi:
         # process the path parameters
         # process the query parameters
         if page is not None:
+
             _query_params.append(("page", page))
 
         if q is not None:
+
             _query_params.append(("q", q))
 
         # process the header parameters
@@ -793,6 +799,7 @@ class ReportingApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -807,9 +814,11 @@ class ReportingApi:
         # process the path parameters
         # process the query parameters
         if page is not None:
+
             _query_params.append(("page", page))
 
         if q is not None:
+
             _query_params.append(("q", q))
 
         # process the header parameters
@@ -1060,6 +1069,7 @@ class ReportingApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -1074,9 +1084,11 @@ class ReportingApi:
         # process the path parameters
         # process the query parameters
         if page is not None:
+
             _query_params.append(("page", page))
 
         if q is not None:
+
             _query_params.append(("q", q))
 
         # process the header parameters
@@ -1327,6 +1339,7 @@ class ReportingApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -1341,9 +1354,11 @@ class ReportingApi:
         # process the path parameters
         # process the query parameters
         if page is not None:
+
             _query_params.append(("page", page))
 
         if q is not None:
+
             _query_params.append(("q", q))
 
         # process the header parameters
@@ -1594,6 +1609,7 @@ class ReportingApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -1608,9 +1624,11 @@ class ReportingApi:
         # process the path parameters
         # process the query parameters
         if page is not None:
+
             _query_params.append(("page", page))
 
         if q is not None:
+
             _query_params.append(("q", q))
 
         # process the header parameters
@@ -1861,6 +1879,7 @@ class ReportingApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -1875,9 +1894,11 @@ class ReportingApi:
         # process the path parameters
         # process the query parameters
         if page is not None:
+
             _query_params.append(("page", page))
 
         if q is not None:
+
             _query_params.append(("q", q))
 
         # process the header parameters
@@ -2128,6 +2149,7 @@ class ReportingApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -2142,9 +2164,11 @@ class ReportingApi:
         # process the path parameters
         # process the query parameters
         if page is not None:
+
             _query_params.append(("page", page))
 
         if q is not None:
+
             _query_params.append(("q", q))
 
         # process the header parameters
@@ -2395,6 +2419,7 @@ class ReportingApi:
         _headers,
         _host_index,
     ) -> RequestSerialized:
+
         _host = None
 
         _collection_formats: Dict[str, str] = {}
@@ -2409,9 +2434,11 @@ class ReportingApi:
         # process the path parameters
         # process the query parameters
         if page is not None:
+
             _query_params.append(("page", page))
 
         if q is not None:
+
             _query_params.append(("q", q))
 
         # process the header parameters

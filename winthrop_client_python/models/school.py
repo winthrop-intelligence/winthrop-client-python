@@ -202,18 +202,22 @@ class School(BaseModel):
                 "address_1": obj.get("address_1"),
                 "address_2": obj.get("address_2"),
                 "zip_code": obj.get("zip_code"),
-                "logo": Logo.from_dict(obj["logo"])
-                if obj.get("logo") is not None
-                else None,
-                "athletic_director": Coach.from_dict(obj["athletic_director"])
-                if obj.get("athletic_director") is not None
-                else None,
+                "logo": (
+                    Logo.from_dict(obj["logo"]) if obj.get("logo") is not None else None
+                ),
+                "athletic_director": (
+                    Coach.from_dict(obj["athletic_director"])
+                    if obj.get("athletic_director") is not None
+                    else None
+                ),
                 "athletics_url": obj.get("athletics_url"),
                 "wikipedia_url": obj.get("wikipedia_url"),
                 "athletics_wikipedia_url": obj.get("athletics_wikipedia_url"),
-                "external_logo": Logo.from_dict(obj["external_logo"])
-                if obj.get("external_logo") is not None
-                else None,
+                "external_logo": (
+                    Logo.from_dict(obj["external_logo"])
+                    if obj.get("external_logo") is not None
+                    else None
+                ),
                 "school_status": obj.get("school_status"),
             }
         )

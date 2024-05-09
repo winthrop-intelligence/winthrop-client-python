@@ -171,20 +171,26 @@ class Position(BaseModel):
                 "departing_set_at": obj.get("departing_set_at"),
                 "creation_reason": obj.get("creation_reason"),
                 "creation_reason_updated_at": obj.get("creation_reason_updated_at"),
-                "coach": Coach.from_dict(obj["coach"])
-                if obj.get("coach") is not None
-                else None,
-                "sport": Sport.from_dict(obj["sport"])
-                if obj.get("sport") is not None
-                else None,
-                "school": School.from_dict(obj["school"])
-                if obj.get("school") is not None
-                else None,
-                "position_types": [
-                    PositionType.from_dict(_item) for _item in obj["position_types"]
-                ]
-                if obj.get("position_types") is not None
-                else None,
+                "coach": (
+                    Coach.from_dict(obj["coach"])
+                    if obj.get("coach") is not None
+                    else None
+                ),
+                "sport": (
+                    Sport.from_dict(obj["sport"])
+                    if obj.get("sport") is not None
+                    else None
+                ),
+                "school": (
+                    School.from_dict(obj["school"])
+                    if obj.get("school") is not None
+                    else None
+                ),
+                "position_types": (
+                    [PositionType.from_dict(_item) for _item in obj["position_types"]]
+                    if obj.get("position_types") is not None
+                    else None
+                ),
             }
         )
         return _obj

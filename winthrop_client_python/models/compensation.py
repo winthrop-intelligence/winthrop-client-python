@@ -179,9 +179,11 @@ class Compensation(BaseModel):
                 "contract_status_id": obj.get("contract_status_id"),
                 "year": obj.get("year"),
                 "school_id": obj.get("school_id"),
-                "contract": Contract.from_dict(obj["contract"])
-                if obj.get("contract") is not None
-                else None,
+                "contract": (
+                    Contract.from_dict(obj["contract"])
+                    if obj.get("contract") is not None
+                    else None
+                ),
             }
         )
         return _obj

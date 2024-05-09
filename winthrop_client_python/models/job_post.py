@@ -140,14 +140,16 @@ class JobPost(BaseModel):
                 "max_salary": obj.get("max_salary"),
                 "school_id": obj.get("school_id"),
                 "required_years_of_experience": obj.get("required_years_of_experience"),
-                "expired": obj.get("expired")
-                if obj.get("expired") is not None
-                else False,
+                "expired": (
+                    obj.get("expired") if obj.get("expired") is not None else False
+                ),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
-                "categories": [Category.from_dict(_item) for _item in obj["categories"]]
-                if obj.get("categories") is not None
-                else None,
+                "categories": (
+                    [Category.from_dict(_item) for _item in obj["categories"]]
+                    if obj.get("categories") is not None
+                    else None
+                ),
             }
         )
         return _obj

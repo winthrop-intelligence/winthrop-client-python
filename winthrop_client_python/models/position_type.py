@@ -106,11 +106,11 @@ class PositionType(BaseModel):
                 "ord": obj.get("ord"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
-                "position_type_group": PositionTypeGroup.from_dict(
-                    obj["position_type_group"]
-                )
-                if obj.get("position_type_group") is not None
-                else None,
+                "position_type_group": (
+                    PositionTypeGroup.from_dict(obj["position_type_group"])
+                    if obj.get("position_type_group") is not None
+                    else None
+                ),
             }
         )
         return _obj

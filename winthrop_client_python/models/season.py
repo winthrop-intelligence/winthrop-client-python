@@ -190,14 +190,16 @@ class Season(BaseModel):
                 "home_losses": obj.get("home_losses"),
                 "home_win_percent": obj.get("home_win_percent"),
                 "asr": obj.get("asr"),
-                "head_coach": Coach.from_dict(obj["head_coach"])
-                if obj.get("head_coach") is not None
-                else None,
-                "assistant_coaches": [
-                    Coach.from_dict(_item) for _item in obj["assistant_coaches"]
-                ]
-                if obj.get("assistant_coaches") is not None
-                else None,
+                "head_coach": (
+                    Coach.from_dict(obj["head_coach"])
+                    if obj.get("head_coach") is not None
+                    else None
+                ),
+                "assistant_coaches": (
+                    [Coach.from_dict(_item) for _item in obj["assistant_coaches"]]
+                    if obj.get("assistant_coaches") is not None
+                    else None
+                ),
             }
         )
         return _obj

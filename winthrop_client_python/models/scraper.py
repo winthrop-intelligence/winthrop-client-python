@@ -95,11 +95,11 @@ class Scraper(BaseModel):
             {
                 "name": obj.get("name"),
                 "title": obj.get("title"),
-                "argumentDefs": [
-                    ScraperArgDef.from_dict(_item) for _item in obj["argumentDefs"]
-                ]
-                if obj.get("argumentDefs") is not None
-                else None,
+                "argumentDefs": (
+                    [ScraperArgDef.from_dict(_item) for _item in obj["argumentDefs"]]
+                    if obj.get("argumentDefs") is not None
+                    else None
+                ),
             }
         )
         return _obj

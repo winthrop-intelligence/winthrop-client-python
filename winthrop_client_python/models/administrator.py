@@ -259,14 +259,16 @@ class Administrator(BaseModel):
                 "private": obj.get("private"),
                 "sport_id": obj.get("sport_id"),
                 "coli": obj.get("coli"),
-                "coach": Coach.from_dict(obj["coach"])
-                if obj.get("coach") is not None
-                else None,
-                "departments": [
-                    PositionType.from_dict(_item) for _item in obj["departments"]
-                ]
-                if obj.get("departments") is not None
-                else None,
+                "coach": (
+                    Coach.from_dict(obj["coach"])
+                    if obj.get("coach") is not None
+                    else None
+                ),
+                "departments": (
+                    [PositionType.from_dict(_item) for _item in obj["departments"]]
+                    if obj.get("departments") is not None
+                    else None
+                ),
             }
         )
         return _obj

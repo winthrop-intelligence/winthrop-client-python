@@ -94,12 +94,14 @@ class GameCollection(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "data": [Game.from_dict(_item) for _item in obj["data"]]
-                if obj.get("data") is not None
-                else None,
-                "meta": Meta.from_dict(obj["meta"])
-                if obj.get("meta") is not None
-                else None,
+                "data": (
+                    [Game.from_dict(_item) for _item in obj["data"]]
+                    if obj.get("data") is not None
+                    else None
+                ),
+                "meta": (
+                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+                ),
             }
         )
         return _obj

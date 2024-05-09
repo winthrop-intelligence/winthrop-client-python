@@ -141,9 +141,11 @@ class Coach(BaseModel):
                 "twitter_handle": obj.get("twitter_handle"),
                 "linkedin": obj.get("linkedin"),
                 "instagram_handle": obj.get("instagram_handle"),
-                "avatar": Avatar.from_dict(obj["avatar"])
-                if obj.get("avatar") is not None
-                else None,
+                "avatar": (
+                    Avatar.from_dict(obj["avatar"])
+                    if obj.get("avatar") is not None
+                    else None
+                ),
                 "years_of_experience": obj.get("years_of_experience"),
             }
         )

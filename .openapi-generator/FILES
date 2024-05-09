@@ -55,8 +55,6 @@ docs/Season.md
 docs/SeasonCollection.md
 docs/Sport.md
 docs/SportCollection.md
-docs/SummarizerPostQaS3Request.md
-docs/SummarizerPostSummarizeS3Request.md
 docs/SystemSetting.md
 docs/UnprocessableEntity.md
 docs/User.md
@@ -128,8 +126,6 @@ winthrop_client_python/models/season.py
 winthrop_client_python/models/season_collection.py
 winthrop_client_python/models/sport.py
 winthrop_client_python/models/sport_collection.py
-winthrop_client_python/models/summarizer_post_qa_s3_request.py
-winthrop_client_python/models/summarizer_post_summarize_s3_request.py
 winthrop_client_python/models/system_setting.py
 winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/user.py
