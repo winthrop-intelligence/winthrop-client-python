@@ -12,8 +12,13 @@ Name | Type | Description | Notes
 **work_type** | **str** |  | [optional] 
 **description** | **str** |  | 
 **description_md** | **str** |  | [optional] 
-**salary** | **str** |  | [optional] 
+**salary_summary** | **str** |  | [optional] 
+**annual_salary** | **float** |  | [optional] 
+**pay_period** | **str** |  | [optional] 
+**min_salary** | **float** |  | [optional] 
+**max_salary** | **float** |  | [optional] 
 **school_id** | **int** |  | 
+**required_years_of_experience** | **int** |  | [optional] 
 **expired** | **bool** |  | [optional] [default to False]
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
