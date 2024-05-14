@@ -24,6 +24,8 @@ docs/ContractCollection.md
 docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
+docs/Division.md
+docs/DivisionCollection.md
 docs/FinancialQc.md
 docs/FoiaLabel.md
 docs/FoiaLabelCollection.md
@@ -55,6 +57,8 @@ docs/Season.md
 docs/SeasonCollection.md
 docs/Sport.md
 docs/SportCollection.md
+docs/Subdivision.md
+docs/SubdivisionCollection.md
 docs/SystemSetting.md
 docs/UnprocessableEntity.md
 docs/User.md
@@ -65,6 +69,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_division.py
+test/test_division_collection.py
+test/test_subdivision.py
+test/test_subdivision_collection.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -97,6 +105,8 @@ winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
 winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
+winthrop_client_python/models/division.py
+winthrop_client_python/models/division_collection.py
 winthrop_client_python/models/financial_qc.py
 winthrop_client_python/models/foia_label.py
 winthrop_client_python/models/foia_label_collection.py
@@ -126,6 +136,8 @@ winthrop_client_python/models/season.py
 winthrop_client_python/models/season_collection.py
 winthrop_client_python/models/sport.py
 winthrop_client_python/models/sport_collection.py
+winthrop_client_python/models/subdivision.py
+winthrop_client_python/models/subdivision_collection.py
 winthrop_client_python/models/system_setting.py
 winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/user.py

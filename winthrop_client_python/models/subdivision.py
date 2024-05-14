@@ -17,47 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class AuditedFinancialReportStatus(BaseModel):
+class Subdivision(BaseModel):
     """
-    AuditedFinancialReportStatus
+    Subdivision
     """  # noqa: E501
 
     id: Optional[StrictInt] = None
-    school_id: StrictInt
-    year: StrictInt
-    status: Optional[StrictStr] = Field(
-        default=None,
-        description="The status of the audited financial report. Available means the report is in the system. Missing means the report is not in the system. Not Available means the report is not required for the year.",
-    )
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "school_id",
-        "year",
-        "status",
-        "created_at",
-        "updated_at",
-    ]
-
-    @field_validator("status")
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(["Available", "Missing", "Not Available"]):
-            raise ValueError(
-                "must be one of enum values ('Available', 'Missing', 'Not Available')"
-            )
-        return value
+    name: Optional[StrictStr] = None
+    name_display: Optional[StrictStr] = None
+    division_id: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "name_display", "division_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,7 +51,7 @@ class AuditedFinancialReportStatus(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AuditedFinancialReportStatus from a JSON string"""
+        """Create an instance of Subdivision from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -100,7 +75,7 @@ class AuditedFinancialReportStatus(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AuditedFinancialReportStatus from a dict"""
+        """Create an instance of Subdivision from a dict"""
         if obj is None:
             return None
 
@@ -110,11 +85,9 @@ class AuditedFinancialReportStatus(BaseModel):
         _obj = cls.model_validate(
             {
                 "id": obj.get("id"),
-                "school_id": obj.get("school_id"),
-                "year": obj.get("year"),
-                "status": obj.get("status"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
+                "name": obj.get("name"),
+                "name_display": obj.get("name_display"),
+                "division_id": obj.get("division_id"),
             }
         )
         return _obj

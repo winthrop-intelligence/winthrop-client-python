@@ -17,47 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.meta import Meta
+from winthrop_client_python.models.subdivision import Subdivision
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class AuditedFinancialReportStatus(BaseModel):
+class SubdivisionCollection(BaseModel):
     """
-    AuditedFinancialReportStatus
+    SubdivisionCollection
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    school_id: StrictInt
-    year: StrictInt
-    status: Optional[StrictStr] = Field(
-        default=None,
-        description="The status of the audited financial report. Available means the report is in the system. Missing means the report is not in the system. Not Available means the report is not required for the year.",
-    )
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "school_id",
-        "year",
-        "status",
-        "created_at",
-        "updated_at",
-    ]
-
-    @field_validator("status")
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(["Available", "Missing", "Not Available"]):
-            raise ValueError(
-                "must be one of enum values ('Available', 'Missing', 'Not Available')"
-            )
-        return value
+    data: Optional[List[Subdivision]] = None
+    meta: Optional[Meta] = None
+    __properties: ClassVar[List[str]] = ["data", "meta"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -76,7 +51,7 @@ class AuditedFinancialReportStatus(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AuditedFinancialReportStatus from a JSON string"""
+        """Create an instance of SubdivisionCollection from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -96,11 +71,21 @@ class AuditedFinancialReportStatus(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
+        _items = []
+        if self.data:
+            for _item in self.data:
+                if _item:
+                    _items.append(_item.to_dict())
+            _dict["data"] = _items
+        # override the default output from pydantic by calling `to_dict()` of meta
+        if self.meta:
+            _dict["meta"] = self.meta.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AuditedFinancialReportStatus from a dict"""
+        """Create an instance of SubdivisionCollection from a dict"""
         if obj is None:
             return None
 
@@ -109,12 +94,14 @@ class AuditedFinancialReportStatus(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "school_id": obj.get("school_id"),
-                "year": obj.get("year"),
-                "status": obj.get("status"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
+                "data": (
+                    [Subdivision.from_dict(_item) for _item in obj["data"]]
+                    if obj.get("data") is not None
+                    else None
+                ),
+                "meta": (
+                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+                ),
             }
         )
         return _obj
