@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **instagram_handle** | **str** |  | [optional] 
 **avatar** | [**Avatar**](Avatar.md) |  | [optional] 
 **years_of_experience** | **int** |  | [optional] 
+**avatar_scraping_disabled** | **bool** |  | [optional] 
 
 ## Example
 
