@@ -36,6 +36,10 @@ Name | Type | Description | Notes
 **athletics_wikipedia_url** | **str** |  | [optional] 
 **external_logo** | [**Logo**](Logo.md) |  | [optional] 
 **school_status** | **str** |  | [optional] 
+**athletics_instagram_handle** | **str** |  | [optional] 
+**athletics_twitter_handle** | **str** |  | [optional] 
+**external_instagram_handle** | **str** |  | [optional] 
+**external_twitter_handle** | **str** |  | [optional] 
 
 ## Example
 
