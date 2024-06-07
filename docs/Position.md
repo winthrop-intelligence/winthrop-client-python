@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **coach** | [**Coach**](Coach.md) |  | [optional] 
 **sport** | [**Sport**](Sport.md) |  | [optional] 
 **school** | [**School**](School.md) |  | [optional] 
+**article_link** | **str** |  | [optional] 
 **position_types** | [**List[PositionType]**](PositionType.md) |  | [optional] 
 
 ## Example

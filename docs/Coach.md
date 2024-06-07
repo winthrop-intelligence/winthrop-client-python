@@ -24,7 +24,6 @@ Name | Type | Description | Notes
 **current_tenure_years** | **int** |  | [optional] 
 **avatar** | [**Avatar**](Avatar.md) |  | [optional] 
 **years_of_experience** | **int** |  | [optional] 
-**article_link** | **str** |  | [optional] 
 **avatar_scraping_disabled** | **bool** |  | [optional] 
 
 ## Example
