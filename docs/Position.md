@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **sport** | [**Sport**](Sport.md) |  | [optional] 
 **school** | [**School**](School.md) |  | [optional] 
 **article_link** | **str** |  | [optional] 
+**article_title** | **str** |  | [optional] 
 **position_types** | [**List[PositionType]**](PositionType.md) |  | [optional] 
 
 ## Example
