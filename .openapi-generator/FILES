@@ -60,6 +60,7 @@ docs/SportCollection.md
 docs/Subdivision.md
 docs/SubdivisionCollection.md
 docs/Subscription.md
+docs/SubscriptionCollection.md
 docs/SystemSetting.md
 docs/UnprocessableEntity.md
 docs/User.md
@@ -70,6 +71,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_subscription_collection.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -136,6 +138,7 @@ winthrop_client_python/models/sport_collection.py
 winthrop_client_python/models/subdivision.py
 winthrop_client_python/models/subdivision_collection.py
 winthrop_client_python/models/subscription.py
+winthrop_client_python/models/subscription_collection.py
 winthrop_client_python/models/system_setting.py
 winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/user.py

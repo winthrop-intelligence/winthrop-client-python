@@ -4948,7 +4948,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_subscriptions**
-> Subscription get_subscriptions(page=page, per_page=per_page, q=q)
+> SubscriptionCollection get_subscriptions(page=page, per_page=per_page, q=q)
 
 
 
@@ -4961,7 +4961,7 @@ Retrieve the all subscriptions
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.subscription import Subscription
+from winthrop_client_python.models.subscription_collection import SubscriptionCollection
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -5013,7 +5013,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Subscription**](Subscription.md)
+[**SubscriptionCollection**](SubscriptionCollection.md)
 
 ### Authorization
 
