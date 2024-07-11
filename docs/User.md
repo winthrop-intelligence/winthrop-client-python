@@ -13,6 +13,9 @@ Name | Type | Description | Notes
 **updated_at** | **datetime** |  | [optional] 
 **state** | **str** |  | [optional] 
 **title** | **str** |  | [optional] 
+**accountable_id** | **int** |  | [optional] 
+**accountable_type** | **str** |  | [optional] 
+**coach_id** | **int** |  | [optional] 
 
 ## Example
 
