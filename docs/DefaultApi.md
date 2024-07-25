@@ -4,6 +4,10 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**average_conference_comp**](DefaultApi.md#average_conference_comp) | **GET** /api/v1/compensations/average_conference_comp | 
+[**average_division_comp**](DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp | 
+[**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 
+[**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
 [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
 [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
@@ -75,6 +79,362 @@ Method | HTTP request | Description
 [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 
+
+# **average_conference_comp**
+> AverageCompensation average_conference_comp(conference_id, season_years, sport_id, position_type_ids)
+
+
+
+Retrieve average compensation for a conference
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.average_compensation import AverageCompensation
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    conference_id = 56 # int | ID of the conference
+    season_years = [56] # List[int] | Season years
+    sport_id = 56 # int | ID of the sport
+    position_type_ids = [56] # List[int] | IDs of the position types
+
+    try:
+        api_response = api_instance.average_conference_comp(conference_id, season_years, sport_id, position_type_ids)
+        print("The response of DefaultApi->average_conference_comp:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->average_conference_comp: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conference_id** | **int**| ID of the conference | 
+ **season_years** | [**List[int]**](int.md)| Season years | 
+ **sport_id** | **int**| ID of the sport | 
+ **position_type_ids** | [**List[int]**](int.md)| IDs of the position types | 
+
+### Return type
+
+[**AverageCompensation**](AverageCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Average compensation calculated |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **average_division_comp**
+> AverageCompensation average_division_comp(division_id, season_years, sport_id, position_type_ids)
+
+
+
+Retrieve average compensation for a division
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.average_compensation import AverageCompensation
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    division_id = 56 # int | ID of the division
+    season_years = [56] # List[int] | Season years
+    sport_id = 56 # int | ID of the sport
+    position_type_ids = [56] # List[int] | IDs of the position types
+
+    try:
+        api_response = api_instance.average_division_comp(division_id, season_years, sport_id, position_type_ids)
+        print("The response of DefaultApi->average_division_comp:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->average_division_comp: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **division_id** | **int**| ID of the division | 
+ **season_years** | [**List[int]**](int.md)| Season years | 
+ **sport_id** | **int**| ID of the sport | 
+ **position_type_ids** | [**List[int]**](int.md)| IDs of the position types | 
+
+### Return type
+
+[**AverageCompensation**](AverageCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Average compensation calculated |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **average_school_comp**
+> AverageCompensation average_school_comp(school_id, season_years, sport_id, position_type_ids)
+
+
+
+Retrieve average compensation for a school
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.average_compensation import AverageCompensation
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_id = 56 # int | ID of the school
+    season_years = [56] # List[int] | Season years
+    sport_id = 56 # int | ID of the sport
+    position_type_ids = [56] # List[int] | IDs of the position types
+
+    try:
+        api_response = api_instance.average_school_comp(school_id, season_years, sport_id, position_type_ids)
+        print("The response of DefaultApi->average_school_comp:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->average_school_comp: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_id** | **int**| ID of the school | 
+ **season_years** | [**List[int]**](int.md)| Season years | 
+ **sport_id** | **int**| ID of the sport | 
+ **position_type_ids** | [**List[int]**](int.md)| IDs of the position types | 
+
+### Return type
+
+[**AverageCompensation**](AverageCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Average compensation calculated |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **average_subdivision_comp**
+> AverageCompensation average_subdivision_comp(subdivision_id, season_years, sport_id, position_type_ids)
+
+
+
+Retrieve average compensation for a subdivision
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.average_compensation import AverageCompensation
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subdivision_id = 56 # int | ID of the subdivision
+    season_years = [56] # List[int] | Season years
+    sport_id = 56 # int | ID of the sport
+    position_type_ids = [56] # List[int] | IDs of the position types
+
+    try:
+        api_response = api_instance.average_subdivision_comp(subdivision_id, season_years, sport_id, position_type_ids)
+        print("The response of DefaultApi->average_subdivision_comp:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->average_subdivision_comp: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subdivision_id** | **int**| ID of the subdivision | 
+ **season_years** | [**List[int]**](int.md)| Season years | 
+ **sport_id** | **int**| ID of the sport | 
+ **position_type_ids** | [**List[int]**](int.md)| IDs of the position types | 
+
+### Return type
+
+[**AverageCompensation**](AverageCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Average compensation calculated |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_conference**
 > Conference create_conference(conference=conference)

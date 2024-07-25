@@ -7,6 +7,7 @@ docs/AdministratorCollection.md
 docs/AuditedFinancialReportStatus.md
 docs/AuditedFinancialReportStatusCollection.md
 docs/Avatar.md
+docs/AverageCompensation.md
 docs/Category.md
 docs/CategoryCollection.md
 docs/Coach.md
@@ -71,6 +72,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_average_compensation.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -87,6 +89,7 @@ winthrop_client_python/models/administrator_collection.py
 winthrop_client_python/models/audited_financial_report_status.py
 winthrop_client_python/models/audited_financial_report_status_collection.py
 winthrop_client_python/models/avatar.py
+winthrop_client_python/models/average_compensation.py
 winthrop_client_python/models/category.py
 winthrop_client_python/models/category_collection.py
 winthrop_client_python/models/coach.py

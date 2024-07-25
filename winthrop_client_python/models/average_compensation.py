@@ -17,32 +17,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class Contact(BaseModel):
+class AverageCompensation(BaseModel):
     """
-    Contact
+    AverageCompensation
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    school_id: Optional[StrictInt] = None
-    coach_id: Optional[StrictInt] = None
-    sport_id: Optional[StrictInt] = None
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "school_id",
-        "coach_id",
-        "sport_id",
-        "created_at",
-        "updated_at",
-    ]
+    mean: Optional[float] = None
+    median: Optional[float] = None
+    mode: Optional[float] = None
+    min: Optional[float] = None
+    max: Optional[float] = None
+    __properties: ClassVar[List[str]] = ["mean", "median", "mode", "min", "max"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +52,7 @@ class Contact(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Contact from a JSON string"""
+        """Create an instance of AverageCompensation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -85,7 +76,7 @@ class Contact(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Contact from a dict"""
+        """Create an instance of AverageCompensation from a dict"""
         if obj is None:
             return None
 
@@ -94,12 +85,11 @@ class Contact(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "school_id": obj.get("school_id"),
-                "coach_id": obj.get("coach_id"),
-                "sport_id": obj.get("sport_id"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
+                "mean": obj.get("mean"),
+                "median": obj.get("median"),
+                "mode": obj.get("mode"),
+                "min": obj.get("min"),
+                "max": obj.get("max"),
             }
         )
         return _obj
