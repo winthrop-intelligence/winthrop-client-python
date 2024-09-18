@@ -72,7 +72,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_average_compensation.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py

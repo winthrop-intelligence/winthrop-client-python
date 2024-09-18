@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **position_type_group** | [**PositionTypeGroup**](PositionTypeGroup.md) |  | [optional] 
+**force_display_title** | **bool** |  | [optional] 
+**intercollegiate_only** | **bool** |  | [optional] 
 
 ## Example
 

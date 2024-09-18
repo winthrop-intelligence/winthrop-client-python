@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **average_school_comp**
-> AverageCompensation average_school_comp(school_id, season_years, sport_id, position_type_ids)
+> AverageCompensation average_school_comp(school_id, season_years, sport_ids, position_type_ids)
 
 
 
@@ -301,11 +301,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     api_instance = winthrop_client_python.DefaultApi(api_client)
     school_id = 56 # int | ID of the school
     season_years = [56] # List[int] | Season years
-    sport_id = 56 # int | ID of the sport
+    sport_ids = [56] # List[int] | IDs of the sports
     position_type_ids = [56] # List[int] | IDs of the position types
 
     try:
-        api_response = api_instance.average_school_comp(school_id, season_years, sport_id, position_type_ids)
+        api_response = api_instance.average_school_comp(school_id, season_years, sport_ids, position_type_ids)
         print("The response of DefaultApi->average_school_comp:\n")
         pprint(api_response)
     except Exception as e:
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **school_id** | **int**| ID of the school | 
  **season_years** | [**List[int]**](int.md)| Season years | 
- **sport_id** | **int**| ID of the sport | 
+ **sport_ids** | [**List[int]**](int.md)| IDs of the sports | 
  **position_type_ids** | [**List[int]**](int.md)| IDs of the position types | 
 
 ### Return type
