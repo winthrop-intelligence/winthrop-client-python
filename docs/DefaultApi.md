@@ -81,7 +81,7 @@ Method | HTTP request | Description
 
 
 # **average_conference_comp**
-> AverageCompensation average_conference_comp(conference_id, season_years, sport_id, position_type_ids)
+> AverageCompensation average_conference_comp(conference_id, season_years, sport_ids, position_type_ids)
 
 
 
@@ -123,11 +123,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     api_instance = winthrop_client_python.DefaultApi(api_client)
     conference_id = 56 # int | ID of the conference
     season_years = [56] # List[int] | Season years
-    sport_id = 56 # int | ID of the sport
+    sport_ids = [56] # List[int] | IDs of the sports
     position_type_ids = [56] # List[int] | IDs of the position types
 
     try:
-        api_response = api_instance.average_conference_comp(conference_id, season_years, sport_id, position_type_ids)
+        api_response = api_instance.average_conference_comp(conference_id, season_years, sport_ids, position_type_ids)
         print("The response of DefaultApi->average_conference_comp:\n")
         pprint(api_response)
     except Exception as e:
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **conference_id** | **int**| ID of the conference | 
  **season_years** | [**List[int]**](int.md)| Season years | 
- **sport_id** | **int**| ID of the sport | 
+ **sport_ids** | [**List[int]**](int.md)| IDs of the sports | 
  **position_type_ids** | [**List[int]**](int.md)| IDs of the position types | 
 
 ### Return type
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **average_division_comp**
-> AverageCompensation average_division_comp(division_id, season_years, sport_id, position_type_ids)
+> AverageCompensation average_division_comp(division_id, season_years, sport_ids, position_type_ids)
 
 
 
@@ -212,11 +212,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     api_instance = winthrop_client_python.DefaultApi(api_client)
     division_id = 56 # int | ID of the division
     season_years = [56] # List[int] | Season years
-    sport_id = 56 # int | ID of the sport
+    sport_ids = [56] # List[int] | IDs of the sports
     position_type_ids = [56] # List[int] | IDs of the position types
 
     try:
-        api_response = api_instance.average_division_comp(division_id, season_years, sport_id, position_type_ids)
+        api_response = api_instance.average_division_comp(division_id, season_years, sport_ids, position_type_ids)
         print("The response of DefaultApi->average_division_comp:\n")
         pprint(api_response)
     except Exception as e:
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **division_id** | **int**| ID of the division | 
  **season_years** | [**List[int]**](int.md)| Season years | 
- **sport_id** | **int**| ID of the sport | 
+ **sport_ids** | [**List[int]**](int.md)| IDs of the sports | 
  **position_type_ids** | [**List[int]**](int.md)| IDs of the position types | 
 
 ### Return type
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **average_subdivision_comp**
-> AverageCompensation average_subdivision_comp(subdivision_id, season_years, sport_id, position_type_ids)
+> AverageCompensation average_subdivision_comp(subdivision_id, season_years, sport_ids, position_type_ids)
 
 
 
@@ -390,11 +390,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     api_instance = winthrop_client_python.DefaultApi(api_client)
     subdivision_id = 56 # int | ID of the subdivision
     season_years = [56] # List[int] | Season years
-    sport_id = 56 # int | ID of the sport
+    sport_ids = [56] # List[int] | IDs of the sports
     position_type_ids = [56] # List[int] | IDs of the position types
 
     try:
-        api_response = api_instance.average_subdivision_comp(subdivision_id, season_years, sport_id, position_type_ids)
+        api_response = api_instance.average_subdivision_comp(subdivision_id, season_years, sport_ids, position_type_ids)
         print("The response of DefaultApi->average_subdivision_comp:\n")
         pprint(api_response)
     except Exception as e:
@@ -410,7 +410,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **subdivision_id** | **int**| ID of the subdivision | 
  **season_years** | [**List[int]**](int.md)| Season years | 
- **sport_id** | **int**| ID of the sport | 
+ **sport_ids** | [**List[int]**](int.md)| IDs of the sports | 
  **position_type_ids** | [**List[int]**](int.md)| IDs of the position types | 
 
 ### Return type
