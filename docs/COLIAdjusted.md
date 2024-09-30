@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**coli_adjusted_total** | **str** |  | [optional] 
+**coli_adjusted_total** | **int** |  | [optional] 
 
 ## Example
 

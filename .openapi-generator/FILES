@@ -75,9 +75,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_coli_adjusted.py
-test/test_compare_coli404_response.py
-test/test_compare_coli422_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
