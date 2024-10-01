@@ -32,7 +32,6 @@ class WinthropClient:
             headers = {"Content-Type": cls.CONTENT_TYPE}
             data = cls._token_params()
 
-            # Encode the data properly for 'application/x-www-form-urlencoded'
             encoded_data = urllib3.encode_multipart_formdata(data)[1]
 
             response = http.request(
@@ -62,3 +61,4 @@ class WinthropClient:
                 raise Exception(
                     f"Failed to retrieve access token: {response.status} - {response.data.decode('utf-8')}"
                 )
+            
