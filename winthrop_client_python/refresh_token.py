@@ -31,10 +31,15 @@ class WinthropClient:
             http = urllib3.PoolManager()
             headers = {"Content-Type": cls.CONTENT_TYPE}
             data = cls._token_params()
-            encoded_data = urllib3.request.encode_url(data)
+
+            # Encode the data properly for 'application/x-www-form-urlencoded'
+            encoded_data = urllib3.encode_multipart_formdata(data)[1]
 
             response = http.request(
-                "POST", cls.host, headers=headers, body=encoded_data
+                "POST",
+                cls.host,
+                headers=headers,
+                body=encoded_data
             )
             return response
 
