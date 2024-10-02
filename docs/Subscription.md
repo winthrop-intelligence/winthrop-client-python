@@ -29,7 +29,6 @@ Name | Type | Description | Notes
 **invoicing** | **bool** |  | [optional] 
 **notes** | **str** |  | [optional] 
 **send_renewal** | **bool** |  | [optional] 
-**has_foia_clause** | **bool** |  | [optional] 
 **standard_agreement** | **bool** |  | [optional] 
 **active_users_count** | **int** |  | [optional] 
 
