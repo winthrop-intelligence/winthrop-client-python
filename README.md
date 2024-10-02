@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
+*IntercollegiateApi* | [**get_job_posts**](docs/IntercollegiateApi.md#get_job_posts) | **GET** /wi_jobs/job_posts | 
 *ReportingApi* | [**get_coach_contract_requests**](docs/ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests | 
 *ReportingApi* | [**get_coach_history**](docs/ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history | 
 *ReportingApi* | [**get_conferenceships**](docs/ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships | 
@@ -225,8 +226,13 @@ Class | Method | HTTP request | Description
  - [GameCollection](docs/GameCollection.md)
  - [IncomeReport](docs/IncomeReport.md)
  - [IncomeReportCollection](docs/IncomeReportCollection.md)
+ - [Job](docs/Job.md)
+ - [JobCollection](docs/JobCollection.md)
+ - [JobDepartment](docs/JobDepartment.md)
  - [JobPost](docs/JobPost.md)
  - [JobPostCollection](docs/JobPostCollection.md)
+ - [JobSchool](docs/JobSchool.md)
+ - [JobSport](docs/JobSport.md)
  - [Logo](docs/Logo.md)
  - [Meta](docs/Meta.md)
  - [NcaaFinancialReportStatus](docs/NcaaFinancialReportStatus.md)

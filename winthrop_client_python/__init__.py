@@ -18,6 +18,7 @@ __version__ = "1.22.0"
 
 # import apis into sdk package
 from winthrop_client_python.api.default_api import DefaultApi
+from winthrop_client_python.api.intercollegiate_api import IntercollegiateApi
 from winthrop_client_python.api.reporting_api import ReportingApi
 from winthrop_client_python.api.scraper_api import ScraperApi
 
@@ -83,8 +84,13 @@ from winthrop_client_python.models.income_report import IncomeReport
 from winthrop_client_python.models.income_report_collection import (
     IncomeReportCollection,
 )
+from winthrop_client_python.models.job import Job
+from winthrop_client_python.models.job_collection import JobCollection
+from winthrop_client_python.models.job_department import JobDepartment
 from winthrop_client_python.models.job_post import JobPost
 from winthrop_client_python.models.job_post_collection import JobPostCollection
+from winthrop_client_python.models.job_school import JobSchool
+from winthrop_client_python.models.job_sport import JobSport
 from winthrop_client_python.models.logo import Logo
 from winthrop_client_python.models.meta import Meta
 from winthrop_client_python.models.ncaa_financial_report_status import (

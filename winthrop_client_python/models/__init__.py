@@ -64,8 +64,13 @@ from winthrop_client_python.models.income_report import IncomeReport
 from winthrop_client_python.models.income_report_collection import (
     IncomeReportCollection,
 )
+from winthrop_client_python.models.job import Job
+from winthrop_client_python.models.job_collection import JobCollection
+from winthrop_client_python.models.job_department import JobDepartment
 from winthrop_client_python.models.job_post import JobPost
 from winthrop_client_python.models.job_post_collection import JobPostCollection
+from winthrop_client_python.models.job_school import JobSchool
+from winthrop_client_python.models.job_sport import JobSport
 from winthrop_client_python.models.logo import Logo
 from winthrop_client_python.models.meta import Meta
 from winthrop_client_python.models.ncaa_financial_report_status import (
