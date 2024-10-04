@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **years_of_experience** | **int** |  | [optional] 
 **avatar_scraping_disabled** | **bool** |  | [optional] 
 **latest_salary** | **int** |  | [optional] 
+**latest_salary_year** | **int** |  | [optional] 
 
 ## Example
 
