@@ -87,12 +87,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_link.py
-test/test_link_collection.py
-test/test_link_collection1.py
-test/test_news_feed.py
-test/test_news_feed_collection.py
-test/test_tag.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
