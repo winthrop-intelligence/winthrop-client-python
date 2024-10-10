@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **int** |  | [optional] 
 **title** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
 **job_url** | **str** |  | [optional] 
