@@ -24,6 +24,10 @@ Name | Type | Description | Notes
 **school** | [**School**](School.md) |  | [optional] 
 **article_link** | **str** |  | [optional] 
 **article_title** | **str** |  | [optional] 
+**article_description** | **str** |  | [optional] 
+**article_site_name** | **str** |  | [optional] 
+**article_publish_time** | **str** |  | [optional] 
+**article_image_url** | **str** |  | [optional] 
 **position_types** | [**List[PositionType]**](PositionType.md) |  | [optional] 
 
 ## Example

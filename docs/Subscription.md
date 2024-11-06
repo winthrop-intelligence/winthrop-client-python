@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **send_renewal** | **bool** |  | [optional] 
 **standard_agreement** | **bool** |  | [optional] 
 **active_users_count** | **int** |  | [optional] 
+**has_intercollegiate_access** | **bool** |  | [optional] 
 
 ## Example
 
