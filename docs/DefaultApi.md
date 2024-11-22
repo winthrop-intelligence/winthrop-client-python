@@ -80,6 +80,7 @@ Method | HTTP request | Description
 [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
+[**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
 
 
 # **average_conference_comp**
@@ -6492,6 +6493,89 @@ Name | Type | Description  | Notes
 **200** | Requested item was updated |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **verify_user_intercollegiate_access**
+> VerifyUserIntercollegiateAccess200Response verify_user_intercollegiate_access(user_email)
+
+
+
+Verifies whether the user has intercollegiate access based on their email.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.verify_user_intercollegiate_access200_response import VerifyUserIntercollegiateAccess200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    user_email = 'user_email_example' # str | The email of the user whose intercollegiate access is being verified.
+
+    try:
+        api_response = api_instance.verify_user_intercollegiate_access(user_email)
+        print("The response of DefaultApi->verify_user_intercollegiate_access:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->verify_user_intercollegiate_access: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_email** | **str**| The email of the user whose intercollegiate access is being verified. | 
+
+### Return type
+
+[**VerifyUserIntercollegiateAccess200Response**](VerifyUserIntercollegiateAccess200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful response with the access granted status |  -  |
+**401** | Unauthorized |  -  |
+**404** | User Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
