@@ -1,6 +1,7 @@
-import urllib3
 import json
 import time
+from urllib.parse import urlencode
+import urllib3
 
 
 class WinthropClient:
@@ -31,8 +32,7 @@ class WinthropClient:
             http = urllib3.PoolManager()
             headers = {"Content-Type": cls.CONTENT_TYPE}
             data = cls._token_params()
-
-            encoded_data = urllib3.encode_multipart_formdata(data)[1]
+            encoded_data = urlencode(data)
 
             response = http.request(
                 "POST", cls.host, headers=headers, body=encoded_data
