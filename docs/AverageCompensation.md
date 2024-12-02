@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **mode** | **float** |  | [optional] 
 **min** | **float** |  | [optional] 
 **max** | **float** |  | [optional] 
+**percentile_25** | **float** |  | [optional] 
+**percentile_75** | **float** |  | [optional] 
 
 ## Example
 
