@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **avatar_scraping_disabled** | **bool** |  | [optional] 
 **latest_salary** | **int** |  | [optional] 
 **latest_salary_year** | **int** |  | [optional] 
+**last_bio_text_updated_at** | **datetime** |  | [optional] 
 
 ## Example
 
