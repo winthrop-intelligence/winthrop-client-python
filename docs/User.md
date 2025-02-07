@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **accountable_id** | **int** |  | [optional] 
 **accountable_type** | **str** |  | [optional] 
 **coach_id** | **int** |  | [optional] 
+**divisions** | [**List[Division]**](Division.md) |  | [optional] 
+**roles** | **List[str]** |  | [optional] 
 
 ## Example
 
