@@ -40,6 +40,7 @@ Name | Type | Description | Notes
 **athletics_twitter_handle** | **str** |  | [optional] 
 **external_instagram_handle** | **str** |  | [optional] 
 **external_twitter_handle** | **str** |  | [optional] 
+**ncaa_id** | **int** |  | [optional] 
 
 ## Example
 
