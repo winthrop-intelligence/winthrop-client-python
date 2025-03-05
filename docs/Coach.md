@@ -28,6 +28,10 @@ Name | Type | Description | Notes
 **latest_salary** | **int** |  | [optional] 
 **latest_salary_year** | **int** |  | [optional] 
 **last_bio_text_updated_at** | **datetime** |  | [optional] 
+**instagram_scraping_disabled** | **bool** |  | [optional] 
+**linkedin_scraping_disabled** | **bool** |  | [optional] 
+**twitter_scraping_disabled** | **bool** |  | [optional] 
+**email_scraping_disabled** | **bool** |  | [optional] 
 
 ## Example
 
