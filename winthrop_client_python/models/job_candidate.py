@@ -17,22 +17,32 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.compensation import Compensation
-from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class CompensationCollection(BaseModel):
+class JobCandidate(BaseModel):
     """
-    CompensationCollection
+    JobCandidate
     """  # noqa: E501
 
-    data: Optional[List[Compensation]] = None
-    meta: Optional[Meta] = None
-    __properties: ClassVar[List[str]] = ["data", "meta"]
+    coach_id: Optional[StrictStr] = None
+    id: Optional[StrictInt] = None
+    favorite_id: Optional[StrictInt] = None
+    created_by_id: Optional[StrictInt] = None
+    created_at: Optional[datetime] = None
+    shortlisted: Optional[StrictBool] = None
+    __properties: ClassVar[List[str]] = [
+        "coach_id",
+        "id",
+        "favorite_id",
+        "created_by_id",
+        "created_at",
+        "shortlisted",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +61,7 @@ class CompensationCollection(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CompensationCollection from a JSON string"""
+        """Create an instance of JobCandidate from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,21 +81,11 @@ class CompensationCollection(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item in self.data:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict["data"] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict["meta"] = self.meta.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CompensationCollection from a dict"""
+        """Create an instance of JobCandidate from a dict"""
         if obj is None:
             return None
 
@@ -94,14 +94,12 @@ class CompensationCollection(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "data": (
-                    [Compensation.from_dict(_item) for _item in obj["data"]]
-                    if obj.get("data") is not None
-                    else None
-                ),
-                "meta": (
-                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
-                ),
+                "coach_id": obj.get("coach_id"),
+                "id": obj.get("id"),
+                "favorite_id": obj.get("favorite_id"),
+                "created_by_id": obj.get("created_by_id"),
+                "created_at": obj.get("created_at"),
+                "shortlisted": obj.get("shortlisted"),
             }
         )
         return _obj

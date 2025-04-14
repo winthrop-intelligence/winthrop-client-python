@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **school** | [**JobSchool**](JobSchool.md) |  | [optional] 
 **departments** | [**List[JobDepartment]**](JobDepartment.md) |  | [optional] 
 **sports** | [**List[JobSport]**](JobSport.md) |  | [optional] 
+**candidates** | [**List[JobCandidate]**](JobCandidate.md) |  | [optional] 
 
 ## Example
 

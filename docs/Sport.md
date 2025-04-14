@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **meet_sport** | **bool** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
+**ncaa_id** | **str** |  | [optional] 
 
 ## Example
 

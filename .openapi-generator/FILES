@@ -40,6 +40,7 @@ docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/IntercollegiateApi.md
 docs/Job.md
+docs/JobCandidate.md
 docs/JobCollection.md
 docs/JobDepartment.md
 docs/JobPost.md
@@ -87,6 +88,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_job_candidate.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -136,6 +138,7 @@ winthrop_client_python/models/game_collection.py
 winthrop_client_python/models/income_report.py
 winthrop_client_python/models/income_report_collection.py
 winthrop_client_python/models/job.py
+winthrop_client_python/models/job_candidate.py
 winthrop_client_python/models/job_collection.py
 winthrop_client_python/models/job_department.py
 winthrop_client_python/models/job_post.py
