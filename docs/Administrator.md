@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **compensation_outside_income_cents** | **int** |  | [optional] 
 **compensation_deferred_comp_cents** | **int** |  | [optional] 
 **compensation_one_time_bonus_cents** | **int** |  | [optional] 
-**compensation_contingent_bonus_comp_cents** | **int** |  | [optional] 
+**compensation_contingent_bonus** | **bool** |  | [optional] 
 **compensation_buyout_terms** | **str** |  | [optional] 
 **compensation_is_car_provided** | **bool** |  | [optional] 
 **compensation_country_club_dues_cents** | **int** |  | [optional] 

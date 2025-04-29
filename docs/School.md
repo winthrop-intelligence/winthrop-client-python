@@ -41,6 +41,9 @@ Name | Type | Description | Notes
 **external_instagram_handle** | **str** |  | [optional] 
 **external_twitter_handle** | **str** |  | [optional] 
 **ncaa_id** | **int** |  | [optional] 
+**conference** | [**Conference**](Conference.md) |  | [optional] 
+**division** | [**Division**](Division.md) |  | [optional] 
+**subdivisions** | [**List[Subdivision]**](Subdivision.md) |  | [optional] 
 
 ## Example
 

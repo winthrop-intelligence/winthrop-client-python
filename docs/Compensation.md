@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **base_salary_cents** | **int** |  | [optional] 
 **bonus_has_contingents** | **bool** |  | [optional] 
 **calculated_guaranteed_comp_cents** | **int** |  | [optional] 
-**contingent_bonus_comp_cents** | **int** |  | [optional] 
+**contingent_bonus** | **bool** |  | [optional] 
 **noncontingent_bonus_comp_cents** | **int** |  | [optional] 
 **compensation_type** | **str** |  | [optional] 
 **media_link** | **str** |  | [optional] 
