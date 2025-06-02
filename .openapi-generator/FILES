@@ -29,6 +29,7 @@ docs/DealStatusCollection.md
 docs/DefaultApi.md
 docs/Division.md
 docs/DivisionCollection.md
+docs/Filters.md
 docs/FinancialQc.md
 docs/FoiaLabel.md
 docs/FoiaLabelCollection.md
@@ -88,6 +89,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_filters.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -127,6 +129,7 @@ winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
 winthrop_client_python/models/division.py
 winthrop_client_python/models/division_collection.py
+winthrop_client_python/models/filters.py
 winthrop_client_python/models/financial_qc.py
 winthrop_client_python/models/foia_label.py
 winthrop_client_python/models/foia_label_collection.py

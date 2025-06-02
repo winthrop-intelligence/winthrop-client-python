@@ -17,24 +17,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.meta import Meta
-from winthrop_client_python.models.ncaa_financial_report_status import (
-    NcaaFinancialReportStatus,
-)
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class NcaaFinancialReportStatusCollection(BaseModel):
+class Filters(BaseModel):
     """
-    NcaaFinancialReportStatusCollection
+    Filters
     """  # noqa: E501
 
-    data: Optional[List[NcaaFinancialReportStatus]] = None
-    meta: Optional[Meta] = None
-    __properties: ClassVar[List[str]] = ["data", "meta"]
+    filters: Optional[Dict[str, Any]] = Field(
+        default=None, description="Key-value pairs for filtering coaches"
+    )
+    __properties: ClassVar[List[str]] = ["filters"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +50,7 @@ class NcaaFinancialReportStatusCollection(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of NcaaFinancialReportStatusCollection from a JSON string"""
+        """Create an instance of Filters from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,40 +70,16 @@ class NcaaFinancialReportStatusCollection(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item in self.data:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict["data"] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict["meta"] = self.meta.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of NcaaFinancialReportStatusCollection from a dict"""
+        """Create an instance of Filters from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "data": (
-                    [
-                        NcaaFinancialReportStatus.from_dict(_item)
-                        for _item in obj["data"]
-                    ]
-                    if obj.get("data") is not None
-                    else None
-                ),
-                "meta": (
-                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
-                ),
-            }
-        )
+        _obj = cls.model_validate({"filters": obj.get("filters")})
         return _obj
