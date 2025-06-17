@@ -94,11 +94,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_dossier_api.py
-test/test_dossier_report_response.py
-test/test_http_validation_error.py
-test/test_location_inner.py
-test/test_validation_error.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
