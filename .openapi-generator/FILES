@@ -29,6 +29,8 @@ docs/DealStatusCollection.md
 docs/DefaultApi.md
 docs/Division.md
 docs/DivisionCollection.md
+docs/DossierApi.md
+docs/DossierReportResponse.md
 docs/Filters.md
 docs/FinancialQc.md
 docs/FoiaLabel.md
@@ -37,6 +39,7 @@ docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
 docs/Game.md
 docs/GameCollection.md
+docs/HTTPValidationError.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/IntercollegiateApi.md
@@ -51,6 +54,7 @@ docs/JobSport.md
 docs/Link.md
 docs/LinkCollection.md
 docs/LinkCollection1.md
+docs/LocationInner.md
 docs/Logo.md
 docs/Meta.md
 docs/NcaaFinancialReportStatus.md
@@ -82,6 +86,7 @@ docs/Tag.md
 docs/UnprocessableEntity.md
 docs/User.md
 docs/UserCollection.md
+docs/ValidationError.md
 docs/VerifyUserIntercollegiateAccess200Response.md
 pyproject.toml
 requirements.txt
@@ -89,11 +94,16 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_filters.py
+test/test_dossier_api.py
+test/test_dossier_report_response.py
+test/test_http_validation_error.py
+test/test_location_inner.py
+test/test_validation_error.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
 winthrop_client_python/api/default_api.py
+winthrop_client_python/api/dossier_api.py
 winthrop_client_python/api/intercollegiate_api.py
 winthrop_client_python/api/reporting_api.py
 winthrop_client_python/api/scraper_api.py
@@ -129,6 +139,7 @@ winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
 winthrop_client_python/models/division.py
 winthrop_client_python/models/division_collection.py
+winthrop_client_python/models/dossier_report_response.py
 winthrop_client_python/models/filters.py
 winthrop_client_python/models/financial_qc.py
 winthrop_client_python/models/foia_label.py
@@ -137,6 +148,7 @@ winthrop_client_python/models/foia_request.py
 winthrop_client_python/models/foia_request_collection.py
 winthrop_client_python/models/game.py
 winthrop_client_python/models/game_collection.py
+winthrop_client_python/models/http_validation_error.py
 winthrop_client_python/models/income_report.py
 winthrop_client_python/models/income_report_collection.py
 winthrop_client_python/models/job.py
@@ -150,6 +162,7 @@ winthrop_client_python/models/job_sport.py
 winthrop_client_python/models/link.py
 winthrop_client_python/models/link_collection.py
 winthrop_client_python/models/link_collection1.py
+winthrop_client_python/models/location_inner.py
 winthrop_client_python/models/logo.py
 winthrop_client_python/models/meta.py
 winthrop_client_python/models/ncaa_financial_report_status.py
@@ -179,6 +192,7 @@ winthrop_client_python/models/tag.py
 winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/user.py
 winthrop_client_python/models/user_collection.py
+winthrop_client_python/models/validation_error.py
 winthrop_client_python/models/verify_user_intercollegiate_access200_response.py
 winthrop_client_python/py.typed
 winthrop_client_python/rest.py
