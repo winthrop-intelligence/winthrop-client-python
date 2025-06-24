@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "winthrop_client_python"
-version = "1.34.6"
+version = "1.34.7"
 description = "Winthrop Intelligence Internal API"
 authors = ["OpenAPI Generator Community <team@openapitools.org>"]
 license = "NoLicense"
