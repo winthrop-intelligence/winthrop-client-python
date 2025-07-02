@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **current_tenure_years** | **int** |  | [optional] 
 **avatar** | [**Avatar**](Avatar.md) |  | [optional] 
 **years_of_experience** | **int** |  | [optional] 
+**external_years_experience** | **int** |  | [optional] 
+**athletic_years_of_experience** | **int** |  | [optional] 
 **avatar_scraping_disabled** | **bool** |  | [optional] 
 **latest_salary** | **int** |  | [optional] 
 **latest_salary_year** | **int** |  | [optional] 
