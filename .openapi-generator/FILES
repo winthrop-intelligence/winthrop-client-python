@@ -12,6 +12,7 @@ docs/Category.md
 docs/CategoryCollection.md
 docs/Coach.md
 docs/CoachCollection.md
+docs/CoachCompensation.md
 docs/CompareColi404Response.md
 docs/CompareColi422Response.md
 docs/Compensation.md
@@ -94,6 +95,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_coach_compensation.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -117,6 +119,7 @@ winthrop_client_python/models/category.py
 winthrop_client_python/models/category_collection.py
 winthrop_client_python/models/coach.py
 winthrop_client_python/models/coach_collection.py
+winthrop_client_python/models/coach_compensation.py
 winthrop_client_python/models/coli_adjusted.py
 winthrop_client_python/models/compare_coli404_response.py
 winthrop_client_python/models/compare_coli422_response.py

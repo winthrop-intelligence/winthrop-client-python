@@ -27,6 +27,7 @@ Method | HTTP request | Description
 [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
 [**get_categories**](DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories
 [**get_coach**](DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
+[**get_coach_compensation**](DefaultApi.md#get_coach_compensation) | **GET** /api/v1/coach_compensations/get_coach_compensation | 
 [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
@@ -2013,6 +2014,92 @@ Name | Type | Description  | Notes
 **200** | Coach was found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_coach_compensation**
+> CoachCompensation get_coach_compensation(coaches_ids, user_school_id)
+
+
+
+Retrieve compensation estimate (base salary, year, and COL-adjusted salary) for a private school coach
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.coach_compensation import CoachCompensation
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    coaches_ids = [56] # List[int] | IDs of the coaches
+    user_school_id = 56 # int | ID of the school whose cost-of-living index should be used
+
+    try:
+        api_response = api_instance.get_coach_compensation(coaches_ids, user_school_id)
+        print("The response of DefaultApi->get_coach_compensation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_coach_compensation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coaches_ids** | [**List[int]**](int.md)| IDs of the coaches | 
+ **user_school_id** | **int**| ID of the school whose cost-of-living index should be used | 
+
+### Return type
+
+[**CoachCompensation**](CoachCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Coach compensation calculated successfully |  -  |
+**401** | Unauthorized |  -  |
+**404** | Coach or school not found |  -  |
+**422** | Missing or invalid parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -17,31 +17,30 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class SystemSetting(BaseModel):
+class CoachCompensation(BaseModel):
     """
-    SystemSetting
+    CoachCompensation
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    current_season_year: Optional[StrictInt] = None
-    current_financials_season_year: Optional[StrictInt] = None
-    schedule_season_year: Optional[StrictInt] = None
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
+    coach_id: Optional[StrictInt] = None
+    estimated: Optional[StrictBool] = None
+    salary: Optional[float] = Field(
+        default=None, description="The base salary (rounded to 2 decimal places)"
+    )
+    year: Optional[StrictInt] = None
+    coli_salary: Optional[float] = None
     __properties: ClassVar[List[str]] = [
-        "id",
-        "current_season_year",
-        "current_financials_season_year",
-        "schedule_season_year",
-        "created_at",
-        "updated_at",
+        "coach_id",
+        "estimated",
+        "salary",
+        "year",
+        "coli_salary",
     ]
 
     model_config = ConfigDict(
@@ -61,7 +60,7 @@ class SystemSetting(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SystemSetting from a JSON string"""
+        """Create an instance of CoachCompensation from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -85,7 +84,7 @@ class SystemSetting(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SystemSetting from a dict"""
+        """Create an instance of CoachCompensation from a dict"""
         if obj is None:
             return None
 
@@ -94,14 +93,11 @@ class SystemSetting(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "current_season_year": obj.get("current_season_year"),
-                "current_financials_season_year": obj.get(
-                    "current_financials_season_year"
-                ),
-                "schedule_season_year": obj.get("schedule_season_year"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
+                "coach_id": obj.get("coach_id"),
+                "estimated": obj.get("estimated"),
+                "salary": obj.get("salary"),
+                "year": obj.get("year"),
+                "coli_salary": obj.get("coli_salary"),
             }
         )
         return _obj
