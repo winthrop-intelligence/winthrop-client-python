@@ -23,6 +23,9 @@ Name | Type | Description | Notes
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **categories** | [**List[Category]**](Category.md) |  | [optional] 
+**ml_is_athletics** | **bool** |  | [optional] 
+**llm_is_athletics** | **bool** |  | [optional] 
+**human_override_is_athletics** | **bool** |  | [optional] 
 
 ## Example
 
