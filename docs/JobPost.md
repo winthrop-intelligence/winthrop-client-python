@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **ml_is_athletics** | **bool** |  | [optional] 
 **llm_is_athletics** | **bool** |  | [optional] 
 **human_override_is_athletics** | **bool** |  | [optional] 
+**status** | **str** |  | [optional] 
 
 ## Example
 
