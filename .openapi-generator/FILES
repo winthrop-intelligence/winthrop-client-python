@@ -40,6 +40,7 @@ docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
 docs/Game.md
 docs/GameCollection.md
+docs/GetWireChanges200Response.md
 docs/HTTPValidationError.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
@@ -89,12 +90,19 @@ docs/User.md
 docs/UserCollection.md
 docs/ValidationError.md
 docs/VerifyUserIntercollegiateAccess200Response.md
+docs/WireChange.md
+docs/WireChangePositionTypesInner.md
+docs/WireChangeSportsInner.md
 pyproject.toml
 requirements.txt
 setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_get_wire_changes200_response.py
+test/test_wire_change.py
+test/test_wire_change_position_types_inner.py
+test/test_wire_change_sports_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -145,6 +153,7 @@ winthrop_client_python/models/foia_request.py
 winthrop_client_python/models/foia_request_collection.py
 winthrop_client_python/models/game.py
 winthrop_client_python/models/game_collection.py
+winthrop_client_python/models/get_wire_changes200_response.py
 winthrop_client_python/models/http_validation_error.py
 winthrop_client_python/models/income_report.py
 winthrop_client_python/models/income_report_collection.py
@@ -191,5 +200,8 @@ winthrop_client_python/models/user.py
 winthrop_client_python/models/user_collection.py
 winthrop_client_python/models/validation_error.py
 winthrop_client_python/models/verify_user_intercollegiate_access200_response.py
+winthrop_client_python/models/wire_change.py
+winthrop_client_python/models/wire_change_position_types_inner.py
+winthrop_client_python/models/wire_change_sports_inner.py
 winthrop_client_python/py.typed
 winthrop_client_python/rest.py
