@@ -17,22 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.job_post import JobPost
-from winthrop_client_python.models.meta import Meta
+from winthrop_client_python.models.logo import Logo
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class JobPostCollection(BaseModel):
+class WireChangeSchool(BaseModel):
     """
-    JobPostCollection
+    WireChangeSchool
     """  # noqa: E501
 
-    data: Optional[List[JobPost]] = None
-    meta: Optional[Meta] = None
-    __properties: ClassVar[List[str]] = ["data", "meta"]
+    id: Optional[StrictInt] = None
+    logo_image: Optional[Logo] = None
+    external_logo_image: Optional[Logo] = None
+    __properties: ClassVar[List[str]] = ["id", "logo_image", "external_logo_image"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +51,7 @@ class JobPostCollection(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of JobPostCollection from a JSON string"""
+        """Create an instance of WireChangeSchool from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,21 +71,17 @@ class JobPostCollection(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item in self.data:
-                if _item:
-                    _items.append(_item.to_dict())
-            _dict["data"] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict["meta"] = self.meta.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of logo_image
+        if self.logo_image:
+            _dict["logo_image"] = self.logo_image.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of external_logo_image
+        if self.external_logo_image:
+            _dict["external_logo_image"] = self.external_logo_image.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of JobPostCollection from a dict"""
+        """Create an instance of WireChangeSchool from a dict"""
         if obj is None:
             return None
 
@@ -94,13 +90,16 @@ class JobPostCollection(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "data": (
-                    [JobPost.from_dict(_item) for _item in obj["data"]]
-                    if obj.get("data") is not None
+                "id": obj.get("id"),
+                "logo_image": (
+                    Logo.from_dict(obj["logo_image"])
+                    if obj.get("logo_image") is not None
                     else None
                 ),
-                "meta": (
-                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+                "external_logo_image": (
+                    Logo.from_dict(obj["external_logo_image"])
+                    if obj.get("external_logo_image") is not None
+                    else None
                 ),
             }
         )

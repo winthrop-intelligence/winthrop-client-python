@@ -215,7 +215,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.IntercollegiateApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -234,7 +234,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type

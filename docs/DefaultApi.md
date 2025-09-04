@@ -1635,7 +1635,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -1654,7 +1654,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -1804,7 +1804,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -1823,7 +1823,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -1890,7 +1890,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -1910,7 +1910,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -2146,7 +2146,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -2165,7 +2165,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -2315,7 +2315,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -2334,7 +2334,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -2484,7 +2484,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -2503,7 +2503,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -2654,7 +2654,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -2673,7 +2673,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -2824,7 +2824,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -2843,7 +2843,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -2993,7 +2993,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -3012,7 +3012,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -3162,7 +3162,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -3181,7 +3181,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -3331,7 +3331,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -3350,7 +3350,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -3501,7 +3501,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -3520,7 +3520,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -3670,7 +3670,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -3689,7 +3689,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -3839,7 +3839,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -3858,7 +3858,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -4008,7 +4008,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -4027,7 +4027,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -4177,7 +4177,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -4197,7 +4197,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -4347,7 +4347,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -4366,7 +4366,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -4599,7 +4599,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -4618,7 +4618,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -4768,7 +4768,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -4787,7 +4787,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -4937,7 +4937,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -4956,7 +4956,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -5106,7 +5106,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -5125,7 +5125,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -5194,7 +5194,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     coach_id = 56 # int | ID of coach to retrieve
     q = None # object | Ransack query (optional)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
 
     try:
         api_response = api_instance.get_similar_coaches(coach_id, q=q, page=page, per_page=per_page)
@@ -5214,7 +5214,7 @@ Name | Type | Description  | Notes
  **coach_id** | **int**| ID of coach to retrieve | 
  **q** | [**object**](.md)| Ransack query | [optional] 
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
 
 ### Return type
 
@@ -5363,7 +5363,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -5382,7 +5382,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -5532,7 +5532,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -5551,7 +5551,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -5702,7 +5702,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -5721,7 +5721,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -5949,7 +5949,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
@@ -5968,7 +5968,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
@@ -5998,7 +5998,7 @@ Name | Type | Description  | Notes
 
 
 
-Returns WireChange records. Supports Ransack-style filters (`q[...]`). Includes related position_types and sports arrays in each object. Maximum 400 records per page.
+Returns WireChange records. Supports Ransack-style filters (`q[...]`). Includes related position_types and sports arrays in each object. Each item also includes coach avatar (if present) and school logo images. Maximum 100 records per page.
 
 ### Example
 
@@ -6035,7 +6035,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | number of results per page. (optional) (default to 100)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
     q_coach_id_eq = 56 # int | Filter by coach ID (optional)
     q_school_id_eq = 56 # int | Filter by school ID (optional)
@@ -6057,7 +6057,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 100]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
  **q_coach_id_eq** | **int**| Filter by coach ID | [optional] 
  **q_school_id_eq** | **int**| Filter by school ID | [optional] 

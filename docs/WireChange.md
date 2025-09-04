@@ -6,9 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
-**coach_id** | **int** |  | 
 **school_id** | **int** |  | 
-**created_by_id** | **int** |  | 
 **effective_date** | **datetime** |  | [optional] 
 **wire_type** | **str** |  | [optional] 
 **position_title** | **str** |  | [optional] 
@@ -18,8 +16,10 @@ Name | Type | Description | Notes
 **article_site_name** | **str** |  | [optional] 
 **article_publish_time** | **datetime** |  | [optional] 
 **article_image_url** | **str** |  | [optional] 
-**position_types** | [**List[WireChangePositionTypesInner]**](WireChangePositionTypesInner.md) |  | [optional] 
-**sports** | [**List[WireChangeSportsInner]**](WireChangeSportsInner.md) |  | [optional] 
+**coach** | [**WireChangeCoach**](WireChangeCoach.md) |  | [optional] 
+**school** | [**WireChangeSchool**](WireChangeSchool.md) |  | [optional] 
+**position_types** | [**List[PositionType]**](PositionType.md) |  | [optional] 
+**sports** | [**List[Sport]**](Sport.md) |  | [optional] 
 
 ## Example
 
