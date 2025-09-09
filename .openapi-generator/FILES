@@ -99,8 +99,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_wire_change_coach.py
-test/test_wire_change_school.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
