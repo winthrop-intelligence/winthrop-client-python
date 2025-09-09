@@ -13,8 +13,6 @@ Method | HTTP request | Description
 # **create_news_feeds**
 > NewsFeed create_news_feeds(news_feed=news_feed)
 
-
-
 Create news feed
 
 ### Example
@@ -93,8 +91,6 @@ Name | Type | Description  | Notes
 
 # **get_job_post**
 > Job get_job_post(job_post_id)
-
-
 
 Retrieve a job post by ID
 
@@ -175,8 +171,6 @@ Name | Type | Description  | Notes
 
 # **get_job_posts**
 > JobCollection get_job_posts(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all active jobs
 
@@ -261,8 +255,6 @@ Name | Type | Description  | Notes
 
 # **get_news_feeds**
 > NewsFeedCollection get_news_feeds()
-
-
 
 Retrieve news feed
 

@@ -22,7 +22,7 @@ print(JobDepartment.to_json())
 # convert the object into a dict
 job_department_dict = job_department_instance.to_dict()
 # create an instance of JobDepartment from a dict
-job_department_form_dict = job_department.from_dict(job_department_dict)
+job_department_from_dict = JobDepartment.from_dict(job_department_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

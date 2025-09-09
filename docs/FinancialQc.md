@@ -29,7 +29,7 @@ print(FinancialQc.to_json())
 # convert the object into a dict
 financial_qc_dict = financial_qc_instance.to_dict()
 # create an instance of FinancialQc from a dict
-financial_qc_form_dict = financial_qc.from_dict(financial_qc_dict)
+financial_qc_from_dict = FinancialQc.from_dict(financial_qc_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

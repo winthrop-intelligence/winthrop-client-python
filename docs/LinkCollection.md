@@ -22,7 +22,7 @@ print(LinkCollection.to_json())
 # convert the object into a dict
 link_collection_dict = link_collection_instance.to_dict()
 # create an instance of LinkCollection from a dict
-link_collection_form_dict = link_collection.from_dict(link_collection_dict)
+link_collection_from_dict = LinkCollection.from_dict(link_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

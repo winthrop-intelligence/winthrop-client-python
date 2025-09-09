@@ -23,7 +23,7 @@ print(SchoolCollection.to_json())
 # convert the object into a dict
 school_collection_dict = school_collection_instance.to_dict()
 # create an instance of SchoolCollection from a dict
-school_collection_form_dict = school_collection.from_dict(school_collection_dict)
+school_collection_from_dict = SchoolCollection.from_dict(school_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

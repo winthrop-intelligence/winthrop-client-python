@@ -23,7 +23,7 @@ print(JobSchool.to_json())
 # convert the object into a dict
 job_school_dict = job_school_instance.to_dict()
 # create an instance of JobSchool from a dict
-job_school_form_dict = job_school.from_dict(job_school_dict)
+job_school_from_dict = JobSchool.from_dict(job_school_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

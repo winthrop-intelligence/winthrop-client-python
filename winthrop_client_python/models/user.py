@@ -111,9 +111,9 @@ class User(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in divisions (list)
         _items = []
         if self.divisions:
-            for _item in self.divisions:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_divisions in self.divisions:
+                if _item_divisions:
+                    _items.append(_item_divisions.to_dict())
             _dict["divisions"] = _items
         return _dict
 

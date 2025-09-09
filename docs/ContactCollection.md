@@ -23,7 +23,7 @@ print(ContactCollection.to_json())
 # convert the object into a dict
 contact_collection_dict = contact_collection_instance.to_dict()
 # create an instance of ContactCollection from a dict
-contact_collection_form_dict = contact_collection.from_dict(contact_collection_dict)
+contact_collection_from_dict = ContactCollection.from_dict(contact_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

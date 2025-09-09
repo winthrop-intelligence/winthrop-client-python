@@ -23,7 +23,7 @@ print(NcaaFinancialReportStatusCollection.to_json())
 # convert the object into a dict
 ncaa_financial_report_status_collection_dict = ncaa_financial_report_status_collection_instance.to_dict()
 # create an instance of NcaaFinancialReportStatusCollection from a dict
-ncaa_financial_report_status_collection_form_dict = ncaa_financial_report_status_collection.from_dict(ncaa_financial_report_status_collection_dict)
+ncaa_financial_report_status_collection_from_dict = NcaaFinancialReportStatusCollection.from_dict(ncaa_financial_report_status_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -22,7 +22,7 @@ print(COLIAdjusted.to_json())
 # convert the object into a dict
 coli_adjusted_dict = coli_adjusted_instance.to_dict()
 # create an instance of COLIAdjusted from a dict
-coli_adjusted_form_dict = coli_adjusted.from_dict(coli_adjusted_dict)
+coli_adjusted_from_dict = COLIAdjusted.from_dict(coli_adjusted_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

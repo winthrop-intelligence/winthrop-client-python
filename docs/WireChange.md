@@ -36,7 +36,7 @@ print(WireChange.to_json())
 # convert the object into a dict
 wire_change_dict = wire_change_instance.to_dict()
 # create an instance of WireChange from a dict
-wire_change_form_dict = wire_change.from_dict(wire_change_dict)
+wire_change_from_dict = WireChange.from_dict(wire_change_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

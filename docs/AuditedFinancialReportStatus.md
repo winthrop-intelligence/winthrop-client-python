@@ -27,7 +27,7 @@ print(AuditedFinancialReportStatus.to_json())
 # convert the object into a dict
 audited_financial_report_status_dict = audited_financial_report_status_instance.to_dict()
 # create an instance of AuditedFinancialReportStatus from a dict
-audited_financial_report_status_form_dict = audited_financial_report_status.from_dict(audited_financial_report_status_dict)
+audited_financial_report_status_from_dict = AuditedFinancialReportStatus.from_dict(audited_financial_report_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

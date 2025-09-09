@@ -31,7 +31,7 @@ print(Sport.to_json())
 # convert the object into a dict
 sport_dict = sport_instance.to_dict()
 # create an instance of Sport from a dict
-sport_form_dict = sport.from_dict(sport_dict)
+sport_from_dict = Sport.from_dict(sport_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

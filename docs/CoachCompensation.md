@@ -26,7 +26,7 @@ print(CoachCompensation.to_json())
 # convert the object into a dict
 coach_compensation_dict = coach_compensation_instance.to_dict()
 # create an instance of CoachCompensation from a dict
-coach_compensation_form_dict = coach_compensation.from_dict(coach_compensation_dict)
+coach_compensation_from_dict = CoachCompensation.from_dict(coach_compensation_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

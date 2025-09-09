@@ -189,9 +189,9 @@ class School(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in subdivisions (list)
         _items = []
         if self.subdivisions:
-            for _item in self.subdivisions:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_subdivisions in self.subdivisions:
+                if _item_subdivisions:
+                    _items.append(_item_subdivisions.to_dict())
             _dict["subdivisions"] = _items
         return _dict
 

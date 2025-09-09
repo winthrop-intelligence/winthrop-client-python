@@ -23,7 +23,7 @@ print(IncomeReportCollection.to_json())
 # convert the object into a dict
 income_report_collection_dict = income_report_collection_instance.to_dict()
 # create an instance of IncomeReportCollection from a dict
-income_report_collection_form_dict = income_report_collection.from_dict(income_report_collection_dict)
+income_report_collection_from_dict = IncomeReportCollection.from_dict(income_report_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

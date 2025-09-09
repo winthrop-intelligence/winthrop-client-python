@@ -77,9 +77,9 @@ class GetWireChanges200Response(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in wire_changes (list)
         _items = []
         if self.wire_changes:
-            for _item in self.wire_changes:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_wire_changes in self.wire_changes:
+                if _item_wire_changes:
+                    _items.append(_item_wire_changes.to_dict())
             _dict["wire_changes"] = _items
         return _dict
 

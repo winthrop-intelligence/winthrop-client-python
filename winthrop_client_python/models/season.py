@@ -142,9 +142,9 @@ class Season(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in assistant_coaches (list)
         _items = []
         if self.assistant_coaches:
-            for _item in self.assistant_coaches:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_assistant_coaches in self.assistant_coaches:
+                if _item_assistant_coaches:
+                    _items.append(_item_assistant_coaches.to_dict())
             _dict["assistant_coaches"] = _items
         return _dict
 

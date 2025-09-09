@@ -22,7 +22,7 @@ print(CompareColi422Response.to_json())
 # convert the object into a dict
 compare_coli422_response_dict = compare_coli422_response_instance.to_dict()
 # create an instance of CompareColi422Response from a dict
-compare_coli422_response_form_dict = compare_coli422_response.from_dict(compare_coli422_response_dict)
+compare_coli422_response_from_dict = CompareColi422Response.from_dict(compare_coli422_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

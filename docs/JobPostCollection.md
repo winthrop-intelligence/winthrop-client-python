@@ -23,7 +23,7 @@ print(JobPostCollection.to_json())
 # convert the object into a dict
 job_post_collection_dict = job_post_collection_instance.to_dict()
 # create an instance of JobPostCollection from a dict
-job_post_collection_form_dict = job_post_collection.from_dict(job_post_collection_dict)
+job_post_collection_from_dict = JobPostCollection.from_dict(job_post_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

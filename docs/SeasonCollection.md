@@ -23,7 +23,7 @@ print(SeasonCollection.to_json())
 # convert the object into a dict
 season_collection_dict = season_collection_instance.to_dict()
 # create an instance of SeasonCollection from a dict
-season_collection_form_dict = season_collection.from_dict(season_collection_dict)
+season_collection_from_dict = SeasonCollection.from_dict(season_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

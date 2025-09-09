@@ -24,7 +24,7 @@ print(FoiaLabel.to_json())
 # convert the object into a dict
 foia_label_dict = foia_label_instance.to_dict()
 # create an instance of FoiaLabel from a dict
-foia_label_form_dict = foia_label.from_dict(foia_label_dict)
+foia_label_from_dict = FoiaLabel.from_dict(foia_label_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

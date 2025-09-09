@@ -30,7 +30,7 @@ print(DealStatus.to_json())
 # convert the object into a dict
 deal_status_dict = deal_status_instance.to_dict()
 # create an instance of DealStatus from a dict
-deal_status_form_dict = deal_status.from_dict(deal_status_dict)
+deal_status_from_dict = DealStatus.from_dict(deal_status_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

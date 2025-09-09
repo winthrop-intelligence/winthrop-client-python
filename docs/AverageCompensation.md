@@ -28,7 +28,7 @@ print(AverageCompensation.to_json())
 # convert the object into a dict
 average_compensation_dict = average_compensation_instance.to_dict()
 # create an instance of AverageCompensation from a dict
-average_compensation_form_dict = average_compensation.from_dict(average_compensation_dict)
+average_compensation_from_dict = AverageCompensation.from_dict(average_compensation_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

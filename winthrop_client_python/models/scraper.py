@@ -76,9 +76,9 @@ class Scraper(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in argument_defs (list)
         _items = []
         if self.argument_defs:
-            for _item in self.argument_defs:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_argument_defs in self.argument_defs:
+                if _item_argument_defs:
+                    _items.append(_item_argument_defs.to_dict())
             _dict["argumentDefs"] = _items
         return _dict
 

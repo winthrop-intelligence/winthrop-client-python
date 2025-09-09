@@ -23,7 +23,7 @@ print(CategoryCollection.to_json())
 # convert the object into a dict
 category_collection_dict = category_collection_instance.to_dict()
 # create an instance of CategoryCollection from a dict
-category_collection_form_dict = category_collection.from_dict(category_collection_dict)
+category_collection_from_dict = CategoryCollection.from_dict(category_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

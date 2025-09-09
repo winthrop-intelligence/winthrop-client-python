@@ -16,133 +16,440 @@ Do not edit the class manually.
 
 __version__ = "1.37.1"
 
-# import apis into sdk package
-from winthrop_client_python.api.default_api import DefaultApi
-from winthrop_client_python.api.dossier_api import DossierApi
-from winthrop_client_python.api.intercollegiate_api import IntercollegiateApi
-from winthrop_client_python.api.reporting_api import ReportingApi
-from winthrop_client_python.api.scraper_api import ScraperApi
+# Define package exports
+__all__ = [
+    "DefaultApi",
+    "DossierApi",
+    "IntercollegiateApi",
+    "ReportingApi",
+    "ScraperApi",
+    "ApiResponse",
+    "ApiClient",
+    "Configuration",
+    "OpenApiException",
+    "ApiTypeError",
+    "ApiValueError",
+    "ApiKeyError",
+    "ApiAttributeError",
+    "ApiException",
+    "Administrator",
+    "AdministratorCollection",
+    "AuditedFinancialReportStatus",
+    "AuditedFinancialReportStatusCollection",
+    "Avatar",
+    "AverageCompensation",
+    "COLIAdjusted",
+    "Category",
+    "CategoryCollection",
+    "Coach",
+    "CoachCollection",
+    "CoachCompensation",
+    "CompareColi404Response",
+    "CompareColi422Response",
+    "Compensation",
+    "CompensationCollection",
+    "Conference",
+    "ConferenceCollection",
+    "Conferenceship",
+    "ConferenceshipCollection",
+    "Contact",
+    "ContactCollection",
+    "Contract",
+    "ContractCollection",
+    "DealStatus",
+    "DealStatusCollection",
+    "Division",
+    "DivisionCollection",
+    "DossierReportResponse",
+    "Filters",
+    "FinancialQc",
+    "FoiaLabel",
+    "FoiaLabelCollection",
+    "FoiaRequest",
+    "FoiaRequestCollection",
+    "Game",
+    "GameCollection",
+    "GetWireChanges200Response",
+    "HTTPValidationError",
+    "IncomeReport",
+    "IncomeReportCollection",
+    "Job",
+    "JobCandidate",
+    "JobCollection",
+    "JobDepartment",
+    "JobPost",
+    "JobPostCollection",
+    "JobSchool",
+    "JobSport",
+    "Link",
+    "LinkCollection",
+    "LinkCollection1",
+    "LocationInner",
+    "Logo",
+    "Meta",
+    "NcaaFinancialReportStatus",
+    "NcaaFinancialReportStatusCollection",
+    "NewsFeed",
+    "NewsFeedCollection",
+    "Position",
+    "PositionCollection",
+    "PositionType",
+    "PositionTypeGroup",
+    "RequestedItem",
+    "RequestedItemCollection",
+    "School",
+    "SchoolCollection",
+    "Scraper",
+    "ScraperArgDef",
+    "Season",
+    "SeasonCollection",
+    "Sport",
+    "SportCollection",
+    "Subdivision",
+    "SubdivisionCollection",
+    "Subscription",
+    "SubscriptionCollection",
+    "SystemSetting",
+    "Tag",
+    "UnprocessableEntity",
+    "User",
+    "UserCollection",
+    "ValidationError",
+    "VerifyUserIntercollegiateAccess200Response",
+    "WireChange",
+    "WireChangeCoach",
+    "WireChangeSchool",
+]
+
+if __import__("typing").TYPE_CHECKING:
+    # import apis into sdk package
+    from winthrop_client_python.api.default_api import DefaultApi as DefaultApi
+    from winthrop_client_python.api.dossier_api import DossierApi as DossierApi
+    from winthrop_client_python.api.intercollegiate_api import (
+        IntercollegiateApi as IntercollegiateApi,
+    )
+    from winthrop_client_python.api.reporting_api import ReportingApi as ReportingApi
+    from winthrop_client_python.api.scraper_api import ScraperApi as ScraperApi
+
+    # import ApiClient
+    from winthrop_client_python.api_response import ApiResponse as ApiResponse
+    from winthrop_client_python.api_client import ApiClient as ApiClient
+    from winthrop_client_python.configuration import Configuration as Configuration
+    from winthrop_client_python.exceptions import OpenApiException as OpenApiException
+    from winthrop_client_python.exceptions import ApiTypeError as ApiTypeError
+    from winthrop_client_python.exceptions import ApiValueError as ApiValueError
+    from winthrop_client_python.exceptions import ApiKeyError as ApiKeyError
+    from winthrop_client_python.exceptions import ApiAttributeError as ApiAttributeError
+    from winthrop_client_python.exceptions import ApiException as ApiException
+
+    # import models into sdk package
+    from winthrop_client_python.models.administrator import (
+        Administrator as Administrator,
+    )
+    from winthrop_client_python.models.administrator_collection import (
+        AdministratorCollection as AdministratorCollection,
+    )
+    from winthrop_client_python.models.audited_financial_report_status import (
+        AuditedFinancialReportStatus as AuditedFinancialReportStatus,
+    )
+    from winthrop_client_python.models.audited_financial_report_status_collection import (
+        AuditedFinancialReportStatusCollection as AuditedFinancialReportStatusCollection,
+    )
+    from winthrop_client_python.models.avatar import Avatar as Avatar
+    from winthrop_client_python.models.average_compensation import (
+        AverageCompensation as AverageCompensation,
+    )
+    from winthrop_client_python.models.coli_adjusted import COLIAdjusted as COLIAdjusted
+    from winthrop_client_python.models.category import Category as Category
+    from winthrop_client_python.models.category_collection import (
+        CategoryCollection as CategoryCollection,
+    )
+    from winthrop_client_python.models.coach import Coach as Coach
+    from winthrop_client_python.models.coach_collection import (
+        CoachCollection as CoachCollection,
+    )
+    from winthrop_client_python.models.coach_compensation import (
+        CoachCompensation as CoachCompensation,
+    )
+    from winthrop_client_python.models.compare_coli404_response import (
+        CompareColi404Response as CompareColi404Response,
+    )
+    from winthrop_client_python.models.compare_coli422_response import (
+        CompareColi422Response as CompareColi422Response,
+    )
+    from winthrop_client_python.models.compensation import Compensation as Compensation
+    from winthrop_client_python.models.compensation_collection import (
+        CompensationCollection as CompensationCollection,
+    )
+    from winthrop_client_python.models.conference import Conference as Conference
+    from winthrop_client_python.models.conference_collection import (
+        ConferenceCollection as ConferenceCollection,
+    )
+    from winthrop_client_python.models.conferenceship import (
+        Conferenceship as Conferenceship,
+    )
+    from winthrop_client_python.models.conferenceship_collection import (
+        ConferenceshipCollection as ConferenceshipCollection,
+    )
+    from winthrop_client_python.models.contact import Contact as Contact
+    from winthrop_client_python.models.contact_collection import (
+        ContactCollection as ContactCollection,
+    )
+    from winthrop_client_python.models.contract import Contract as Contract
+    from winthrop_client_python.models.contract_collection import (
+        ContractCollection as ContractCollection,
+    )
+    from winthrop_client_python.models.deal_status import DealStatus as DealStatus
+    from winthrop_client_python.models.deal_status_collection import (
+        DealStatusCollection as DealStatusCollection,
+    )
+    from winthrop_client_python.models.division import Division as Division
+    from winthrop_client_python.models.division_collection import (
+        DivisionCollection as DivisionCollection,
+    )
+    from winthrop_client_python.models.dossier_report_response import (
+        DossierReportResponse as DossierReportResponse,
+    )
+    from winthrop_client_python.models.filters import Filters as Filters
+    from winthrop_client_python.models.financial_qc import FinancialQc as FinancialQc
+    from winthrop_client_python.models.foia_label import FoiaLabel as FoiaLabel
+    from winthrop_client_python.models.foia_label_collection import (
+        FoiaLabelCollection as FoiaLabelCollection,
+    )
+    from winthrop_client_python.models.foia_request import FoiaRequest as FoiaRequest
+    from winthrop_client_python.models.foia_request_collection import (
+        FoiaRequestCollection as FoiaRequestCollection,
+    )
+    from winthrop_client_python.models.game import Game as Game
+    from winthrop_client_python.models.game_collection import (
+        GameCollection as GameCollection,
+    )
+    from winthrop_client_python.models.get_wire_changes200_response import (
+        GetWireChanges200Response as GetWireChanges200Response,
+    )
+    from winthrop_client_python.models.http_validation_error import (
+        HTTPValidationError as HTTPValidationError,
+    )
+    from winthrop_client_python.models.income_report import IncomeReport as IncomeReport
+    from winthrop_client_python.models.income_report_collection import (
+        IncomeReportCollection as IncomeReportCollection,
+    )
+    from winthrop_client_python.models.job import Job as Job
+    from winthrop_client_python.models.job_candidate import JobCandidate as JobCandidate
+    from winthrop_client_python.models.job_collection import (
+        JobCollection as JobCollection,
+    )
+    from winthrop_client_python.models.job_department import (
+        JobDepartment as JobDepartment,
+    )
+    from winthrop_client_python.models.job_post import JobPost as JobPost
+    from winthrop_client_python.models.job_post_collection import (
+        JobPostCollection as JobPostCollection,
+    )
+    from winthrop_client_python.models.job_school import JobSchool as JobSchool
+    from winthrop_client_python.models.job_sport import JobSport as JobSport
+    from winthrop_client_python.models.link import Link as Link
+    from winthrop_client_python.models.link_collection import (
+        LinkCollection as LinkCollection,
+    )
+    from winthrop_client_python.models.link_collection1 import (
+        LinkCollection1 as LinkCollection1,
+    )
+    from winthrop_client_python.models.location_inner import (
+        LocationInner as LocationInner,
+    )
+    from winthrop_client_python.models.logo import Logo as Logo
+    from winthrop_client_python.models.meta import Meta as Meta
+    from winthrop_client_python.models.ncaa_financial_report_status import (
+        NcaaFinancialReportStatus as NcaaFinancialReportStatus,
+    )
+    from winthrop_client_python.models.ncaa_financial_report_status_collection import (
+        NcaaFinancialReportStatusCollection as NcaaFinancialReportStatusCollection,
+    )
+    from winthrop_client_python.models.news_feed import NewsFeed as NewsFeed
+    from winthrop_client_python.models.news_feed_collection import (
+        NewsFeedCollection as NewsFeedCollection,
+    )
+    from winthrop_client_python.models.position import Position as Position
+    from winthrop_client_python.models.position_collection import (
+        PositionCollection as PositionCollection,
+    )
+    from winthrop_client_python.models.position_type import PositionType as PositionType
+    from winthrop_client_python.models.position_type_group import (
+        PositionTypeGroup as PositionTypeGroup,
+    )
+    from winthrop_client_python.models.requested_item import (
+        RequestedItem as RequestedItem,
+    )
+    from winthrop_client_python.models.requested_item_collection import (
+        RequestedItemCollection as RequestedItemCollection,
+    )
+    from winthrop_client_python.models.school import School as School
+    from winthrop_client_python.models.school_collection import (
+        SchoolCollection as SchoolCollection,
+    )
+    from winthrop_client_python.models.scraper import Scraper as Scraper
+    from winthrop_client_python.models.scraper_arg_def import (
+        ScraperArgDef as ScraperArgDef,
+    )
+    from winthrop_client_python.models.season import Season as Season
+    from winthrop_client_python.models.season_collection import (
+        SeasonCollection as SeasonCollection,
+    )
+    from winthrop_client_python.models.sport import Sport as Sport
+    from winthrop_client_python.models.sport_collection import (
+        SportCollection as SportCollection,
+    )
+    from winthrop_client_python.models.subdivision import Subdivision as Subdivision
+    from winthrop_client_python.models.subdivision_collection import (
+        SubdivisionCollection as SubdivisionCollection,
+    )
+    from winthrop_client_python.models.subscription import Subscription as Subscription
+    from winthrop_client_python.models.subscription_collection import (
+        SubscriptionCollection as SubscriptionCollection,
+    )
+    from winthrop_client_python.models.system_setting import (
+        SystemSetting as SystemSetting,
+    )
+    from winthrop_client_python.models.tag import Tag as Tag
+    from winthrop_client_python.models.unprocessable_entity import (
+        UnprocessableEntity as UnprocessableEntity,
+    )
+    from winthrop_client_python.models.user import User as User
+    from winthrop_client_python.models.user_collection import (
+        UserCollection as UserCollection,
+    )
+    from winthrop_client_python.models.validation_error import (
+        ValidationError as ValidationError,
+    )
+    from winthrop_client_python.models.verify_user_intercollegiate_access200_response import (
+        VerifyUserIntercollegiateAccess200Response as VerifyUserIntercollegiateAccess200Response,
+    )
+    from winthrop_client_python.models.wire_change import WireChange as WireChange
+    from winthrop_client_python.models.wire_change_coach import (
+        WireChangeCoach as WireChangeCoach,
+    )
+    from winthrop_client_python.models.wire_change_school import (
+        WireChangeSchool as WireChangeSchool,
+    )
+
+else:
+    from lazy_imports import LazyModule, as_package, load
+
+    load(
+        LazyModule(
+            *as_package(__file__),
+            ("__version__", __version__),
+            ("__all__", __all__),
+            """# import apis into sdk package
+from winthrop_client_python.api.default_api import DefaultApi as DefaultApi
+from winthrop_client_python.api.dossier_api import DossierApi as DossierApi
+from winthrop_client_python.api.intercollegiate_api import IntercollegiateApi as IntercollegiateApi
+from winthrop_client_python.api.reporting_api import ReportingApi as ReportingApi
+from winthrop_client_python.api.scraper_api import ScraperApi as ScraperApi
 
 # import ApiClient
-from winthrop_client_python.api_response import ApiResponse
-from winthrop_client_python.api_client import ApiClient
-from winthrop_client_python.configuration import Configuration
-from winthrop_client_python.exceptions import OpenApiException
-from winthrop_client_python.exceptions import ApiTypeError
-from winthrop_client_python.exceptions import ApiValueError
-from winthrop_client_python.exceptions import ApiKeyError
-from winthrop_client_python.exceptions import ApiAttributeError
-from winthrop_client_python.exceptions import ApiException
+from winthrop_client_python.api_response import ApiResponse as ApiResponse
+from winthrop_client_python.api_client import ApiClient as ApiClient
+from winthrop_client_python.configuration import Configuration as Configuration
+from winthrop_client_python.exceptions import OpenApiException as OpenApiException
+from winthrop_client_python.exceptions import ApiTypeError as ApiTypeError
+from winthrop_client_python.exceptions import ApiValueError as ApiValueError
+from winthrop_client_python.exceptions import ApiKeyError as ApiKeyError
+from winthrop_client_python.exceptions import ApiAttributeError as ApiAttributeError
+from winthrop_client_python.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from winthrop_client_python.models.administrator import Administrator
-from winthrop_client_python.models.administrator_collection import (
-    AdministratorCollection,
-)
-from winthrop_client_python.models.audited_financial_report_status import (
-    AuditedFinancialReportStatus,
-)
-from winthrop_client_python.models.audited_financial_report_status_collection import (
-    AuditedFinancialReportStatusCollection,
-)
-from winthrop_client_python.models.avatar import Avatar
-from winthrop_client_python.models.average_compensation import AverageCompensation
-from winthrop_client_python.models.coli_adjusted import COLIAdjusted
-from winthrop_client_python.models.category import Category
-from winthrop_client_python.models.category_collection import CategoryCollection
-from winthrop_client_python.models.coach import Coach
-from winthrop_client_python.models.coach_collection import CoachCollection
-from winthrop_client_python.models.coach_compensation import CoachCompensation
-from winthrop_client_python.models.compare_coli404_response import (
-    CompareColi404Response,
-)
-from winthrop_client_python.models.compare_coli422_response import (
-    CompareColi422Response,
-)
-from winthrop_client_python.models.compensation import Compensation
-from winthrop_client_python.models.compensation_collection import CompensationCollection
-from winthrop_client_python.models.conference import Conference
-from winthrop_client_python.models.conference_collection import ConferenceCollection
-from winthrop_client_python.models.conferenceship import Conferenceship
-from winthrop_client_python.models.conferenceship_collection import (
-    ConferenceshipCollection,
-)
-from winthrop_client_python.models.contact import Contact
-from winthrop_client_python.models.contact_collection import ContactCollection
-from winthrop_client_python.models.contract import Contract
-from winthrop_client_python.models.contract_collection import ContractCollection
-from winthrop_client_python.models.deal_status import DealStatus
-from winthrop_client_python.models.deal_status_collection import DealStatusCollection
-from winthrop_client_python.models.division import Division
-from winthrop_client_python.models.division_collection import DivisionCollection
-from winthrop_client_python.models.dossier_report_response import DossierReportResponse
-from winthrop_client_python.models.filters import Filters
-from winthrop_client_python.models.financial_qc import FinancialQc
-from winthrop_client_python.models.foia_label import FoiaLabel
-from winthrop_client_python.models.foia_label_collection import FoiaLabelCollection
-from winthrop_client_python.models.foia_request import FoiaRequest
-from winthrop_client_python.models.foia_request_collection import FoiaRequestCollection
-from winthrop_client_python.models.game import Game
-from winthrop_client_python.models.game_collection import GameCollection
-from winthrop_client_python.models.get_wire_changes200_response import (
-    GetWireChanges200Response,
-)
-from winthrop_client_python.models.http_validation_error import HTTPValidationError
-from winthrop_client_python.models.income_report import IncomeReport
-from winthrop_client_python.models.income_report_collection import (
-    IncomeReportCollection,
-)
-from winthrop_client_python.models.job import Job
-from winthrop_client_python.models.job_candidate import JobCandidate
-from winthrop_client_python.models.job_collection import JobCollection
-from winthrop_client_python.models.job_department import JobDepartment
-from winthrop_client_python.models.job_post import JobPost
-from winthrop_client_python.models.job_post_collection import JobPostCollection
-from winthrop_client_python.models.job_school import JobSchool
-from winthrop_client_python.models.job_sport import JobSport
-from winthrop_client_python.models.link import Link
-from winthrop_client_python.models.link_collection import LinkCollection
-from winthrop_client_python.models.link_collection1 import LinkCollection1
-from winthrop_client_python.models.location_inner import LocationInner
-from winthrop_client_python.models.logo import Logo
-from winthrop_client_python.models.meta import Meta
-from winthrop_client_python.models.ncaa_financial_report_status import (
-    NcaaFinancialReportStatus,
-)
-from winthrop_client_python.models.ncaa_financial_report_status_collection import (
-    NcaaFinancialReportStatusCollection,
-)
-from winthrop_client_python.models.news_feed import NewsFeed
-from winthrop_client_python.models.news_feed_collection import NewsFeedCollection
-from winthrop_client_python.models.position import Position
-from winthrop_client_python.models.position_collection import PositionCollection
-from winthrop_client_python.models.position_type import PositionType
-from winthrop_client_python.models.position_type_group import PositionTypeGroup
-from winthrop_client_python.models.requested_item import RequestedItem
-from winthrop_client_python.models.requested_item_collection import (
-    RequestedItemCollection,
-)
-from winthrop_client_python.models.school import School
-from winthrop_client_python.models.school_collection import SchoolCollection
-from winthrop_client_python.models.scraper import Scraper
-from winthrop_client_python.models.scraper_arg_def import ScraperArgDef
-from winthrop_client_python.models.season import Season
-from winthrop_client_python.models.season_collection import SeasonCollection
-from winthrop_client_python.models.sport import Sport
-from winthrop_client_python.models.sport_collection import SportCollection
-from winthrop_client_python.models.subdivision import Subdivision
-from winthrop_client_python.models.subdivision_collection import SubdivisionCollection
-from winthrop_client_python.models.subscription import Subscription
-from winthrop_client_python.models.subscription_collection import SubscriptionCollection
-from winthrop_client_python.models.system_setting import SystemSetting
-from winthrop_client_python.models.tag import Tag
-from winthrop_client_python.models.unprocessable_entity import UnprocessableEntity
-from winthrop_client_python.models.user import User
-from winthrop_client_python.models.user_collection import UserCollection
-from winthrop_client_python.models.validation_error import ValidationError
-from winthrop_client_python.models.verify_user_intercollegiate_access200_response import (
-    VerifyUserIntercollegiateAccess200Response,
-)
-from winthrop_client_python.models.wire_change import WireChange
-from winthrop_client_python.models.wire_change_coach import WireChangeCoach
-from winthrop_client_python.models.wire_change_school import WireChangeSchool
+from winthrop_client_python.models.administrator import Administrator as Administrator
+from winthrop_client_python.models.administrator_collection import AdministratorCollection as AdministratorCollection
+from winthrop_client_python.models.audited_financial_report_status import AuditedFinancialReportStatus as AuditedFinancialReportStatus
+from winthrop_client_python.models.audited_financial_report_status_collection import AuditedFinancialReportStatusCollection as AuditedFinancialReportStatusCollection
+from winthrop_client_python.models.avatar import Avatar as Avatar
+from winthrop_client_python.models.average_compensation import AverageCompensation as AverageCompensation
+from winthrop_client_python.models.coli_adjusted import COLIAdjusted as COLIAdjusted
+from winthrop_client_python.models.category import Category as Category
+from winthrop_client_python.models.category_collection import CategoryCollection as CategoryCollection
+from winthrop_client_python.models.coach import Coach as Coach
+from winthrop_client_python.models.coach_collection import CoachCollection as CoachCollection
+from winthrop_client_python.models.coach_compensation import CoachCompensation as CoachCompensation
+from winthrop_client_python.models.compare_coli404_response import CompareColi404Response as CompareColi404Response
+from winthrop_client_python.models.compare_coli422_response import CompareColi422Response as CompareColi422Response
+from winthrop_client_python.models.compensation import Compensation as Compensation
+from winthrop_client_python.models.compensation_collection import CompensationCollection as CompensationCollection
+from winthrop_client_python.models.conference import Conference as Conference
+from winthrop_client_python.models.conference_collection import ConferenceCollection as ConferenceCollection
+from winthrop_client_python.models.conferenceship import Conferenceship as Conferenceship
+from winthrop_client_python.models.conferenceship_collection import ConferenceshipCollection as ConferenceshipCollection
+from winthrop_client_python.models.contact import Contact as Contact
+from winthrop_client_python.models.contact_collection import ContactCollection as ContactCollection
+from winthrop_client_python.models.contract import Contract as Contract
+from winthrop_client_python.models.contract_collection import ContractCollection as ContractCollection
+from winthrop_client_python.models.deal_status import DealStatus as DealStatus
+from winthrop_client_python.models.deal_status_collection import DealStatusCollection as DealStatusCollection
+from winthrop_client_python.models.division import Division as Division
+from winthrop_client_python.models.division_collection import DivisionCollection as DivisionCollection
+from winthrop_client_python.models.dossier_report_response import DossierReportResponse as DossierReportResponse
+from winthrop_client_python.models.filters import Filters as Filters
+from winthrop_client_python.models.financial_qc import FinancialQc as FinancialQc
+from winthrop_client_python.models.foia_label import FoiaLabel as FoiaLabel
+from winthrop_client_python.models.foia_label_collection import FoiaLabelCollection as FoiaLabelCollection
+from winthrop_client_python.models.foia_request import FoiaRequest as FoiaRequest
+from winthrop_client_python.models.foia_request_collection import FoiaRequestCollection as FoiaRequestCollection
+from winthrop_client_python.models.game import Game as Game
+from winthrop_client_python.models.game_collection import GameCollection as GameCollection
+from winthrop_client_python.models.get_wire_changes200_response import GetWireChanges200Response as GetWireChanges200Response
+from winthrop_client_python.models.http_validation_error import HTTPValidationError as HTTPValidationError
+from winthrop_client_python.models.income_report import IncomeReport as IncomeReport
+from winthrop_client_python.models.income_report_collection import IncomeReportCollection as IncomeReportCollection
+from winthrop_client_python.models.job import Job as Job
+from winthrop_client_python.models.job_candidate import JobCandidate as JobCandidate
+from winthrop_client_python.models.job_collection import JobCollection as JobCollection
+from winthrop_client_python.models.job_department import JobDepartment as JobDepartment
+from winthrop_client_python.models.job_post import JobPost as JobPost
+from winthrop_client_python.models.job_post_collection import JobPostCollection as JobPostCollection
+from winthrop_client_python.models.job_school import JobSchool as JobSchool
+from winthrop_client_python.models.job_sport import JobSport as JobSport
+from winthrop_client_python.models.link import Link as Link
+from winthrop_client_python.models.link_collection import LinkCollection as LinkCollection
+from winthrop_client_python.models.link_collection1 import LinkCollection1 as LinkCollection1
+from winthrop_client_python.models.location_inner import LocationInner as LocationInner
+from winthrop_client_python.models.logo import Logo as Logo
+from winthrop_client_python.models.meta import Meta as Meta
+from winthrop_client_python.models.ncaa_financial_report_status import NcaaFinancialReportStatus as NcaaFinancialReportStatus
+from winthrop_client_python.models.ncaa_financial_report_status_collection import NcaaFinancialReportStatusCollection as NcaaFinancialReportStatusCollection
+from winthrop_client_python.models.news_feed import NewsFeed as NewsFeed
+from winthrop_client_python.models.news_feed_collection import NewsFeedCollection as NewsFeedCollection
+from winthrop_client_python.models.position import Position as Position
+from winthrop_client_python.models.position_collection import PositionCollection as PositionCollection
+from winthrop_client_python.models.position_type import PositionType as PositionType
+from winthrop_client_python.models.position_type_group import PositionTypeGroup as PositionTypeGroup
+from winthrop_client_python.models.requested_item import RequestedItem as RequestedItem
+from winthrop_client_python.models.requested_item_collection import RequestedItemCollection as RequestedItemCollection
+from winthrop_client_python.models.school import School as School
+from winthrop_client_python.models.school_collection import SchoolCollection as SchoolCollection
+from winthrop_client_python.models.scraper import Scraper as Scraper
+from winthrop_client_python.models.scraper_arg_def import ScraperArgDef as ScraperArgDef
+from winthrop_client_python.models.season import Season as Season
+from winthrop_client_python.models.season_collection import SeasonCollection as SeasonCollection
+from winthrop_client_python.models.sport import Sport as Sport
+from winthrop_client_python.models.sport_collection import SportCollection as SportCollection
+from winthrop_client_python.models.subdivision import Subdivision as Subdivision
+from winthrop_client_python.models.subdivision_collection import SubdivisionCollection as SubdivisionCollection
+from winthrop_client_python.models.subscription import Subscription as Subscription
+from winthrop_client_python.models.subscription_collection import SubscriptionCollection as SubscriptionCollection
+from winthrop_client_python.models.system_setting import SystemSetting as SystemSetting
+from winthrop_client_python.models.tag import Tag as Tag
+from winthrop_client_python.models.unprocessable_entity import UnprocessableEntity as UnprocessableEntity
+from winthrop_client_python.models.user import User as User
+from winthrop_client_python.models.user_collection import UserCollection as UserCollection
+from winthrop_client_python.models.validation_error import ValidationError as ValidationError
+from winthrop_client_python.models.verify_user_intercollegiate_access200_response import VerifyUserIntercollegiateAccess200Response as VerifyUserIntercollegiateAccess200Response
+from winthrop_client_python.models.wire_change import WireChange as WireChange
+from winthrop_client_python.models.wire_change_coach import WireChangeCoach as WireChangeCoach
+from winthrop_client_python.models.wire_change_school import WireChangeSchool as WireChangeSchool
+
+""",
+            name=__name__,
+            doc=__doc__,
+        )
+    )

@@ -97,9 +97,9 @@ class Position(BaseModel):
         if value is None:
             return value
 
-        if value not in set(["renewed", "new_hire", "promotion", "extension", "null"]):
+        if value not in set(["renewed", "new_hire", "promotion", "extension"]):
             raise ValueError(
-                "must be one of enum values ('renewed', 'new_hire', 'promotion', 'extension', 'null')"
+                "must be one of enum values ('renewed', 'new_hire', 'promotion', 'extension')"
             )
         return value
 
@@ -152,9 +152,9 @@ class Position(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in position_types (list)
         _items = []
         if self.position_types:
-            for _item in self.position_types:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_position_types in self.position_types:
+                if _item_position_types:
+                    _items.append(_item_position_types.to_dict())
             _dict["position_types"] = _items
         # set to None if creation_reason (nullable) is None
         # and model_fields_set contains the field

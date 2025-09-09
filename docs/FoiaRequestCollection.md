@@ -23,7 +23,7 @@ print(FoiaRequestCollection.to_json())
 # convert the object into a dict
 foia_request_collection_dict = foia_request_collection_instance.to_dict()
 # create an instance of FoiaRequestCollection from a dict
-foia_request_collection_form_dict = foia_request_collection.from_dict(foia_request_collection_dict)
+foia_request_collection_from_dict = FoiaRequestCollection.from_dict(foia_request_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

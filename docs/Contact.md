@@ -27,7 +27,7 @@ print(Contact.to_json())
 # convert the object into a dict
 contact_dict = contact_instance.to_dict()
 # create an instance of Contact from a dict
-contact_form_dict = contact.from_dict(contact_dict)
+contact_from_dict = Contact.from_dict(contact_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
