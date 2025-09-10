@@ -122,7 +122,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
 *DefaultApi* | [**get_categories**](docs/DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories
 *DefaultApi* | [**get_coach**](docs/DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
-*DefaultApi* | [**get_coach_compensation**](docs/DefaultApi.md#get_coach_compensation) | **GET** /api/v1/coach_compensations/get_coach_compensation | 
 *DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 *DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 *DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
@@ -156,6 +155,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
+*DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 *DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
@@ -212,7 +212,6 @@ Class | Method | HTTP request | Description
  - [CategoryCollection](docs/CategoryCollection.md)
  - [Coach](docs/Coach.md)
  - [CoachCollection](docs/CoachCollection.md)
- - [CoachCompensation](docs/CoachCompensation.md)
  - [CompareColi404Response](docs/CompareColi404Response.md)
  - [CompareColi422Response](docs/CompareColi422Response.md)
  - [Compensation](docs/Compensation.md)
@@ -238,6 +237,8 @@ Class | Method | HTTP request | Description
  - [FoiaRequestCollection](docs/FoiaRequestCollection.md)
  - [Game](docs/Game.md)
  - [GameCollection](docs/GameCollection.md)
+ - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
+ - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [IncomeReport](docs/IncomeReport.md)

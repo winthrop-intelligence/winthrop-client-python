@@ -52,7 +52,6 @@ from winthrop_client_python.models.category import Category
 from winthrop_client_python.models.category_collection import CategoryCollection
 from winthrop_client_python.models.coach import Coach
 from winthrop_client_python.models.coach_collection import CoachCollection
-from winthrop_client_python.models.coach_compensation import CoachCompensation
 from winthrop_client_python.models.compare_coli404_response import (
     CompareColi404Response,
 )
@@ -84,6 +83,12 @@ from winthrop_client_python.models.foia_request import FoiaRequest
 from winthrop_client_python.models.foia_request_collection import FoiaRequestCollection
 from winthrop_client_python.models.game import Game
 from winthrop_client_python.models.game_collection import GameCollection
+from winthrop_client_python.models.get_school_alternate_names200_response import (
+    GetSchoolAlternateNames200Response,
+)
+from winthrop_client_python.models.get_school_alternate_names404_response import (
+    GetSchoolAlternateNames404Response,
+)
 from winthrop_client_python.models.get_wire_changes200_response import (
     GetWireChanges200Response,
 )

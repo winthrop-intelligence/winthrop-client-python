@@ -12,7 +12,6 @@ docs/Category.md
 docs/CategoryCollection.md
 docs/Coach.md
 docs/CoachCollection.md
-docs/CoachCompensation.md
 docs/CompareColi404Response.md
 docs/CompareColi422Response.md
 docs/Compensation.md
@@ -40,6 +39,8 @@ docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
 docs/Game.md
 docs/GameCollection.md
+docs/GetSchoolAlternateNames200Response.md
+docs/GetSchoolAlternateNames404Response.md
 docs/GetWireChanges200Response.md
 docs/HTTPValidationError.md
 docs/IncomeReport.md
@@ -99,6 +100,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_get_school_alternate_names200_response.py
+test/test_get_school_alternate_names404_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -122,7 +125,6 @@ winthrop_client_python/models/category.py
 winthrop_client_python/models/category_collection.py
 winthrop_client_python/models/coach.py
 winthrop_client_python/models/coach_collection.py
-winthrop_client_python/models/coach_compensation.py
 winthrop_client_python/models/coli_adjusted.py
 winthrop_client_python/models/compare_coli404_response.py
 winthrop_client_python/models/compare_coli422_response.py
@@ -149,6 +151,8 @@ winthrop_client_python/models/foia_request.py
 winthrop_client_python/models/foia_request_collection.py
 winthrop_client_python/models/game.py
 winthrop_client_python/models/game_collection.py
+winthrop_client_python/models/get_school_alternate_names200_response.py
+winthrop_client_python/models/get_school_alternate_names404_response.py
 winthrop_client_python/models/get_wire_changes200_response.py
 winthrop_client_python/models/http_validation_error.py
 winthrop_client_python/models/income_report.py
