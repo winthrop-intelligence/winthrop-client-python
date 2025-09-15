@@ -25,6 +25,8 @@ docs/Contact.md
 docs/ContactCollection.md
 docs/Contract.md
 docs/ContractCollection.md
+docs/Deal.md
+docs/DealCollection.md
 docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
@@ -67,6 +69,8 @@ docs/Position.md
 docs/PositionCollection.md
 docs/PositionType.md
 docs/PositionTypeGroup.md
+docs/RawContract.md
+docs/RawContractCollection.md
 docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
@@ -89,6 +93,8 @@ docs/UnprocessableEntity.md
 docs/User.md
 docs/UserCollection.md
 docs/ValidationError.md
+docs/Vendor.md
+docs/VendorCollection.md
 docs/VerifyUserIntercollegiateAccess200Response.md
 docs/WireChange.md
 docs/WireChangeCoach.md
@@ -99,6 +105,12 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_deal.py
+test/test_deal_collection.py
+test/test_raw_contract.py
+test/test_raw_contract_collection.py
+test/test_vendor.py
+test/test_vendor_collection.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -136,6 +148,8 @@ winthrop_client_python/models/contact.py
 winthrop_client_python/models/contact_collection.py
 winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
+winthrop_client_python/models/deal.py
+winthrop_client_python/models/deal_collection.py
 winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
 winthrop_client_python/models/division.py
@@ -175,6 +189,8 @@ winthrop_client_python/models/position.py
 winthrop_client_python/models/position_collection.py
 winthrop_client_python/models/position_type.py
 winthrop_client_python/models/position_type_group.py
+winthrop_client_python/models/raw_contract.py
+winthrop_client_python/models/raw_contract_collection.py
 winthrop_client_python/models/requested_item.py
 winthrop_client_python/models/requested_item_collection.py
 winthrop_client_python/models/school.py
@@ -195,6 +211,8 @@ winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/user.py
 winthrop_client_python/models/user_collection.py
 winthrop_client_python/models/validation_error.py
+winthrop_client_python/models/vendor.py
+winthrop_client_python/models/vendor_collection.py
 winthrop_client_python/models/verify_user_intercollegiate_access200_response.py
 winthrop_client_python/models/wire_change.py
 winthrop_client_python/models/wire_change_coach.py
