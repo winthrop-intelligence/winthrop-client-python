@@ -160,6 +160,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
+*DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 *DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
@@ -246,6 +247,8 @@ Class | Method | HTTP request | Description
  - [FoiaRequestCollection](docs/FoiaRequestCollection.md)
  - [Game](docs/Game.md)
  - [GameCollection](docs/GameCollection.md)
+ - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
+ - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [IncomeReport](docs/IncomeReport.md)

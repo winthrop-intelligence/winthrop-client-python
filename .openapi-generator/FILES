@@ -42,6 +42,8 @@ docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
 docs/Game.md
 docs/GameCollection.md
+docs/GetSchoolAlternateNames200Response.md
+docs/GetSchoolAlternateNames404Response.md
 docs/GetWireChanges200Response.md
 docs/HTTPValidationError.md
 docs/IncomeReport.md
@@ -105,12 +107,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_deal.py
-test/test_deal_collection.py
-test/test_raw_contract.py
-test/test_raw_contract_collection.py
-test/test_vendor.py
-test/test_vendor_collection.py
+test/test_get_school_alternate_names200_response.py
+test/test_get_school_alternate_names404_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -163,6 +161,8 @@ winthrop_client_python/models/foia_request.py
 winthrop_client_python/models/foia_request_collection.py
 winthrop_client_python/models/game.py
 winthrop_client_python/models/game_collection.py
+winthrop_client_python/models/get_school_alternate_names200_response.py
+winthrop_client_python/models/get_school_alternate_names404_response.py
 winthrop_client_python/models/get_wire_changes200_response.py
 winthrop_client_python/models/http_validation_error.py
 winthrop_client_python/models/income_report.py

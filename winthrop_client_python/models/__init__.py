@@ -65,6 +65,12 @@ from winthrop_client_python.models.foia_request import FoiaRequest
 from winthrop_client_python.models.foia_request_collection import FoiaRequestCollection
 from winthrop_client_python.models.game import Game
 from winthrop_client_python.models.game_collection import GameCollection
+from winthrop_client_python.models.get_school_alternate_names200_response import (
+    GetSchoolAlternateNames200Response,
+)
+from winthrop_client_python.models.get_school_alternate_names404_response import (
+    GetSchoolAlternateNames404Response,
+)
 from winthrop_client_python.models.get_wire_changes200_response import (
     GetWireChanges200Response,
 )

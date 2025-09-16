@@ -33,6 +33,7 @@ class Coach(BaseModel):
     id: Optional[StrictInt] = None
     first_name: Optional[StrictStr] = None
     last_name: Optional[StrictStr] = None
+    full_name: Optional[StrictStr] = None
     email: Optional[StrictStr] = None
     phone: Optional[StrictStr] = None
     leader: Optional[StrictBool] = None
@@ -62,12 +63,15 @@ class Coach(BaseModel):
     linkedin_scraping_disabled: Optional[StrictBool] = None
     twitter_scraping_disabled: Optional[StrictBool] = None
     email_scraping_disabled: Optional[StrictBool] = None
+    estimated_salary: Optional[StrictBool] = None
+    formatted_coli_salary: Optional[StrictInt] = None
     mobility_index: Optional[StrictInt] = None
     has_new_job: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "first_name",
         "last_name",
+        "full_name",
         "email",
         "phone",
         "leader",
@@ -94,6 +98,8 @@ class Coach(BaseModel):
         "linkedin_scraping_disabled",
         "twitter_scraping_disabled",
         "email_scraping_disabled",
+        "estimated_salary",
+        "formatted_coli_salary",
         "mobility_index",
         "has_new_job",
     ]
@@ -154,6 +160,7 @@ class Coach(BaseModel):
                 "id": obj.get("id"),
                 "first_name": obj.get("first_name"),
                 "last_name": obj.get("last_name"),
+                "full_name": obj.get("full_name"),
                 "email": obj.get("email"),
                 "phone": obj.get("phone"),
                 "leader": obj.get("leader"),
@@ -184,6 +191,8 @@ class Coach(BaseModel):
                 "linkedin_scraping_disabled": obj.get("linkedin_scraping_disabled"),
                 "twitter_scraping_disabled": obj.get("twitter_scraping_disabled"),
                 "email_scraping_disabled": obj.get("email_scraping_disabled"),
+                "estimated_salary": obj.get("estimated_salary"),
+                "formatted_coli_salary": obj.get("formatted_coli_salary"),
                 "mobility_index": obj.get("mobility_index"),
                 "has_new_job": obj.get("has_new_job"),
             }

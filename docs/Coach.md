@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **first_name** | **str** |  | [optional] 
 **last_name** | **str** |  | [optional] 
+**full_name** | **str** |  | [optional] 
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
 **leader** | **bool** |  | [optional] 
@@ -34,6 +35,8 @@ Name | Type | Description | Notes
 **linkedin_scraping_disabled** | **bool** |  | [optional] 
 **twitter_scraping_disabled** | **bool** |  | [optional] 
 **email_scraping_disabled** | **bool** |  | [optional] 
+**estimated_salary** | **bool** |  | [optional] 
+**formatted_coli_salary** | **int** |  | [optional] 
 **mobility_index** | **int** |  | [optional] 
 **has_new_job** | **bool** |  | [optional] 
 
