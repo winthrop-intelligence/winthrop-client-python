@@ -78,18 +78,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 # Enter a context with an instance of the API client
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    conference_id = 56 # int | ID of the conference
-    season_years = [56] # List[int] | Season years
-    sport_ids = [56] # List[int] | IDs of the sports
-    position_type_ids = [56] # List[int] | IDs of the position types
+    api_instance = winthrop_client_python.MlAthleticApi(api_client)
 
     try:
-        api_response = api_instance.average_conference_comp(conference_id, season_years, sport_ids, position_type_ids)
-        print("The response of DefaultApi->average_conference_comp:\n")
+        api_response = api_instance.health_check()
+        print("The response of MlAthleticApi->health_check:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling DefaultApi->average_conference_comp: %s\n" % e)
+        print("Exception when calling MlAthleticApi->health_check: %s\n" % e)
 
 ```
 
@@ -99,6 +95,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*MlAthleticApi* | [**health_check**](docs/MlAthleticApi.md#health_check) | **GET** //health_check | 
+*MlAthleticApi* | [**predict**](docs/MlAthleticApi.md#predict) | **POST** //predict | 
 *DefaultApi* | [**average_conference_comp**](docs/DefaultApi.md#average_conference_comp) | **GET** /api/v1/compensations/average_conference_comp | 
 *DefaultApi* | [**average_division_comp**](docs/DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp | 
 *DefaultApi* | [**average_school_comp**](docs/DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 
@@ -160,6 +158,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
+*DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 *DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
@@ -246,8 +245,12 @@ Class | Method | HTTP request | Description
  - [FoiaRequestCollection](docs/FoiaRequestCollection.md)
  - [Game](docs/Game.md)
  - [GameCollection](docs/GameCollection.md)
+ - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
+ - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
+ - [HealthCheckFailure](docs/HealthCheckFailure.md)
+ - [HealthCheckSuccess](docs/HealthCheckSuccess.md)
  - [IncomeReport](docs/IncomeReport.md)
  - [IncomeReportCollection](docs/IncomeReportCollection.md)
  - [Job](docs/Job.md)
@@ -272,6 +275,9 @@ Class | Method | HTTP request | Description
  - [PositionCollection](docs/PositionCollection.md)
  - [PositionType](docs/PositionType.md)
  - [PositionTypeGroup](docs/PositionTypeGroup.md)
+ - [PredictBody](docs/PredictBody.md)
+ - [PredictFailure](docs/PredictFailure.md)
+ - [PredictSuccess](docs/PredictSuccess.md)
  - [RawContract](docs/RawContract.md)
  - [RawContractCollection](docs/RawContractCollection.md)
  - [RequestedItem](docs/RequestedItem.md)
@@ -290,6 +296,7 @@ Class | Method | HTTP request | Description
  - [SubscriptionCollection](docs/SubscriptionCollection.md)
  - [SystemSetting](docs/SystemSetting.md)
  - [Tag](docs/Tag.md)
+ - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
  - [User](docs/User.md)
  - [UserCollection](docs/UserCollection.md)
