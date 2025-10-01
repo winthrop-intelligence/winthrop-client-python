@@ -17,6 +17,7 @@ Do not edit the class manually.
 __version__ = "1.38.0"
 
 # import apis into sdk package
+from winthrop_client_python.api.ml_athletic_api import MlAthleticApi
 from winthrop_client_python.api.default_api import DefaultApi
 from winthrop_client_python.api.dossier_api import DossierApi
 from winthrop_client_python.api.intercollegiate_api import IntercollegiateApi
@@ -86,10 +87,18 @@ from winthrop_client_python.models.foia_request import FoiaRequest
 from winthrop_client_python.models.foia_request_collection import FoiaRequestCollection
 from winthrop_client_python.models.game import Game
 from winthrop_client_python.models.game_collection import GameCollection
+from winthrop_client_python.models.get_school_alternate_names200_response import (
+    GetSchoolAlternateNames200Response,
+)
+from winthrop_client_python.models.get_school_alternate_names404_response import (
+    GetSchoolAlternateNames404Response,
+)
 from winthrop_client_python.models.get_wire_changes200_response import (
     GetWireChanges200Response,
 )
 from winthrop_client_python.models.http_validation_error import HTTPValidationError
+from winthrop_client_python.models.health_check_failure import HealthCheckFailure
+from winthrop_client_python.models.health_check_success import HealthCheckSuccess
 from winthrop_client_python.models.income_report import IncomeReport
 from winthrop_client_python.models.income_report_collection import (
     IncomeReportCollection,
@@ -120,6 +129,9 @@ from winthrop_client_python.models.position import Position
 from winthrop_client_python.models.position_collection import PositionCollection
 from winthrop_client_python.models.position_type import PositionType
 from winthrop_client_python.models.position_type_group import PositionTypeGroup
+from winthrop_client_python.models.predict_body import PredictBody
+from winthrop_client_python.models.predict_failure import PredictFailure
+from winthrop_client_python.models.predict_success import PredictSuccess
 from winthrop_client_python.models.raw_contract import RawContract
 from winthrop_client_python.models.raw_contract_collection import RawContractCollection
 from winthrop_client_python.models.requested_item import RequestedItem
@@ -140,6 +152,7 @@ from winthrop_client_python.models.subscription import Subscription
 from winthrop_client_python.models.subscription_collection import SubscriptionCollection
 from winthrop_client_python.models.system_setting import SystemSetting
 from winthrop_client_python.models.tag import Tag
+from winthrop_client_python.models.unauthorized_error import UnauthorizedError
 from winthrop_client_python.models.unprocessable_entity import UnprocessableEntity
 from winthrop_client_python.models.user import User
 from winthrop_client_python.models.user_collection import UserCollection
