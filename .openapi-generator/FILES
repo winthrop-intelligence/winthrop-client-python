@@ -114,15 +114,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_get_school_alternate_names200_response.py
-test/test_get_school_alternate_names404_response.py
-test/test_health_check_failure.py
-test/test_health_check_success.py
-test/test_ml_athletic_api.py
-test/test_predict_body.py
-test/test_predict_failure.py
-test/test_predict_success.py
-test/test_unauthorized_error.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
