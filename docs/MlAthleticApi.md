@@ -4,8 +4,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**health_check**](MlAthleticApi.md#health_check) | **GET** //health_check | 
-[**predict**](MlAthleticApi.md#predict) | **POST** //predict | 
+[**health_check**](MlAthleticApi.md#health_check) | **GET** /ml-athletic/health_check | 
+[**predict**](MlAthleticApi.md#predict) | **POST** /ml-athletic/predict | 
 
 
 # **health_check**

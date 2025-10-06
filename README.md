@@ -95,8 +95,8 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*MlAthleticApi* | [**health_check**](docs/MlAthleticApi.md#health_check) | **GET** //health_check | 
-*MlAthleticApi* | [**predict**](docs/MlAthleticApi.md#predict) | **POST** //predict | 
+*MlAthleticApi* | [**health_check**](docs/MlAthleticApi.md#health_check) | **GET** /ml-athletic/health_check | 
+*MlAthleticApi* | [**predict**](docs/MlAthleticApi.md#predict) | **POST** /ml-athletic/predict | 
 *DefaultApi* | [**average_conference_comp**](docs/DefaultApi.md#average_conference_comp) | **GET** /api/v1/compensations/average_conference_comp | 
 *DefaultApi* | [**average_division_comp**](docs/DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp | 
 *DefaultApi* | [**average_school_comp**](docs/DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 

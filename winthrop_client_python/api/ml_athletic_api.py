@@ -255,7 +255,7 @@ class MlAthleticApi:
 
         return self.api_client.param_serialize(
             method="GET",
-            resource_path="//health_check",
+            resource_path="/ml-athletic/health_check",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -516,7 +516,7 @@ class MlAthleticApi:
 
         return self.api_client.param_serialize(
             method="POST",
-            resource_path="//predict",
+            resource_path="/ml-athletic/predict",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
