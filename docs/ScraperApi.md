@@ -13,6 +13,8 @@ Method | HTTP request | Description
 
 List all available scrapers
 
+Root endpoint
+
 ### Example
 
 * Api Key Authentication (ApiKey):
@@ -89,6 +91,8 @@ This endpoint does not need any parameter.
 > run_scraper(command, body=body)
 
 Run a scraper
+
+Run a specified scraper with given arguments
 
 ### Example
 

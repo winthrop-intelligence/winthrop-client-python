@@ -60,7 +60,7 @@ print(School.to_json())
 # convert the object into a dict
 school_dict = school_instance.to_dict()
 # create an instance of School from a dict
-school_form_dict = school.from_dict(school_dict)
+school_from_dict = School.from_dict(school_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

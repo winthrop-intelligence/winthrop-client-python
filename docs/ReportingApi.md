@@ -18,8 +18,6 @@ Method | HTTP request | Description
 # **get_coach_contract_requests**
 > object get_coach_contract_requests(page=page, q=q)
 
-
-
 Retrieve some or all coach contract requests
 
 ### Example
@@ -99,8 +97,6 @@ Name | Type | Description  | Notes
 
 # **get_coach_history**
 > object get_coach_history(page=page, q=q)
-
-
 
 Retrieve some or all coach history
 
@@ -182,8 +178,6 @@ Name | Type | Description  | Notes
 # **get_conferenceships**
 > object get_conferenceships(page=page, q=q)
 
-
-
 Retrieve some or all conferenceships
 
 ### Example
@@ -263,8 +257,6 @@ Name | Type | Description  | Notes
 
 # **get_foia_details**
 > object get_foia_details(page=page, q=q)
-
-
 
 Retrieve some or all foia details
 
@@ -346,8 +338,6 @@ Name | Type | Description  | Notes
 # **get_games**
 > object get_games(page=page, q=q)
 
-
-
 Retrieve some or all games
 
 ### Example
@@ -427,8 +417,6 @@ Name | Type | Description  | Notes
 
 # **get_invoices**
 > object get_invoices(page=page, q=q)
-
-
 
 Retrieve some or all client invoices
 
@@ -510,8 +498,6 @@ Name | Type | Description  | Notes
 # **get_school_contract_requests**
 > object get_school_contract_requests(page=page, q=q)
 
-
-
 Retrieve some or all school contract requests
 
 ### Example
@@ -591,8 +577,6 @@ Name | Type | Description  | Notes
 
 # **get_schools_financials_qc**
 > FinancialQc get_schools_financials_qc(page=page, q=q)
-
-
 
 Retrieve schools with thier financials qc
 
@@ -674,8 +658,6 @@ Name | Type | Description  | Notes
 
 # **get_subscriptions**
 > object get_subscriptions(page=page, q=q)
-
-
 
 Retrieve subscriptions
 

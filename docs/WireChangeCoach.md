@@ -25,7 +25,7 @@ print(WireChangeCoach.to_json())
 # convert the object into a dict
 wire_change_coach_dict = wire_change_coach_instance.to_dict()
 # create an instance of WireChangeCoach from a dict
-wire_change_coach_form_dict = wire_change_coach.from_dict(wire_change_coach_dict)
+wire_change_coach_from_dict = WireChangeCoach.from_dict(wire_change_coach_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

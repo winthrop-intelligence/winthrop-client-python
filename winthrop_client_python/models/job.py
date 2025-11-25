@@ -99,23 +99,23 @@ class Job(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in departments (list)
         _items = []
         if self.departments:
-            for _item in self.departments:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_departments in self.departments:
+                if _item_departments:
+                    _items.append(_item_departments.to_dict())
             _dict["departments"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sports (list)
         _items = []
         if self.sports:
-            for _item in self.sports:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_sports in self.sports:
+                if _item_sports:
+                    _items.append(_item_sports.to_dict())
             _dict["sports"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in candidates (list)
         _items = []
         if self.candidates:
-            for _item in self.candidates:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_candidates in self.candidates:
+                if _item_candidates:
+                    _items.append(_item_candidates.to_dict())
             _dict["candidates"] = _items
         return _dict
 

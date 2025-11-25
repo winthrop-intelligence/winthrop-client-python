@@ -51,7 +51,7 @@ print(Compensation.to_json())
 # convert the object into a dict
 compensation_dict = compensation_instance.to_dict()
 # create an instance of Compensation from a dict
-compensation_form_dict = compensation.from_dict(compensation_dict)
+compensation_from_dict = Compensation.from_dict(compensation_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

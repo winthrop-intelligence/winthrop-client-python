@@ -24,7 +24,7 @@ print(Scraper.to_json())
 # convert the object into a dict
 scraper_dict = scraper_instance.to_dict()
 # create an instance of Scraper from a dict
-scraper_form_dict = scraper.from_dict(scraper_dict)
+scraper_from_dict = Scraper.from_dict(scraper_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

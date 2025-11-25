@@ -23,7 +23,7 @@ print(UserCollection.to_json())
 # convert the object into a dict
 user_collection_dict = user_collection_instance.to_dict()
 # create an instance of UserCollection from a dict
-user_collection_form_dict = user_collection.from_dict(user_collection_dict)
+user_collection_from_dict = UserCollection.from_dict(user_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

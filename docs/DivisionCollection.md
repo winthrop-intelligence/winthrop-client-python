@@ -23,7 +23,7 @@ print(DivisionCollection.to_json())
 # convert the object into a dict
 division_collection_dict = division_collection_instance.to_dict()
 # create an instance of DivisionCollection from a dict
-division_collection_form_dict = division_collection.from_dict(division_collection_dict)
+division_collection_from_dict = DivisionCollection.from_dict(division_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

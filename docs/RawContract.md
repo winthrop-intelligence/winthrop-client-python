@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **migrated_successfully** | **bool** |  | [optional] 
 **migration_failure_reason** | **str** |  | [optional] 
 **unstract_pdf_text** | **str** |  | [optional] 
-**unstract_responses_details** | **object** |  | [optional] 
+**unstract_responses_details** | **str** |  | [optional] 
 **layout_preserved_pdf_text** | **str** |  | [optional] 
 
 ## Example
@@ -42,7 +42,7 @@ print(RawContract.to_json())
 # convert the object into a dict
 raw_contract_dict = raw_contract_instance.to_dict()
 # create an instance of RawContract from a dict
-raw_contract_form_dict = raw_contract.from_dict(raw_contract_dict)
+raw_contract_from_dict = RawContract.from_dict(raw_contract_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

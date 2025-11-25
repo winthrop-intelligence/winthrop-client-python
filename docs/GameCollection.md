@@ -23,7 +23,7 @@ print(GameCollection.to_json())
 # convert the object into a dict
 game_collection_dict = game_collection_instance.to_dict()
 # create an instance of GameCollection from a dict
-game_collection_form_dict = game_collection.from_dict(game_collection_dict)
+game_collection_from_dict = GameCollection.from_dict(game_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

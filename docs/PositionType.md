@@ -30,7 +30,7 @@ print(PositionType.to_json())
 # convert the object into a dict
 position_type_dict = position_type_instance.to_dict()
 # create an instance of PositionType from a dict
-position_type_form_dict = position_type.from_dict(position_type_dict)
+position_type_from_dict = PositionType.from_dict(position_type_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -48,7 +48,7 @@ class RawContract(BaseModel):
     migrated_successfully: Optional[StrictBool] = None
     migration_failure_reason: Optional[StrictStr] = None
     unstract_pdf_text: Optional[StrictStr] = None
-    unstract_responses_details: Optional[Any] = None
+    unstract_responses_details: Optional[StrictStr] = None
     layout_preserved_pdf_text: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
@@ -111,14 +111,6 @@ class RawContract(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if unstract_responses_details (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.unstract_responses_details is None
-            and "unstract_responses_details" in self.model_fields_set
-        ):
-            _dict["unstract_responses_details"] = None
-
         return _dict
 
     @classmethod

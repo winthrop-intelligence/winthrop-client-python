@@ -17,7 +17,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
 from pydantic import Field, StrictStr
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from winthrop_client_python.models.scraper import Scraper
 
@@ -55,6 +55,7 @@ class ScraperApi:
     ) -> List[Scraper]:
         """List all available scrapers
 
+        Root endpoint
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -115,6 +116,7 @@ class ScraperApi:
     ) -> ApiResponse[List[Scraper]]:
         """List all available scrapers
 
+        Root endpoint
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -175,6 +177,7 @@ class ScraperApi:
     ) -> RESTResponseType:
         """List all available scrapers
 
+        Root endpoint
 
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -230,7 +233,9 @@ class ScraperApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters
@@ -240,9 +245,10 @@ class ScraperApi:
         # process the body parameter
 
         # set the HTTP header `Accept`
-        _header_params["Accept"] = self.api_client.select_header_accept(
-            ["application/json"]
-        )
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
 
         # authentication setting
         _auth_settings: List[str] = ["ApiKey", "Oauth2"]
@@ -283,6 +289,7 @@ class ScraperApi:
     ) -> None:
         """Run a scraper
 
+        Run a specified scraper with given arguments
 
         :param command: The name of the scraper to run (required)
         :type command: str
@@ -355,6 +362,7 @@ class ScraperApi:
     ) -> ApiResponse[None]:
         """Run a scraper
 
+        Run a specified scraper with given arguments
 
         :param command: The name of the scraper to run (required)
         :type command: str
@@ -427,6 +435,7 @@ class ScraperApi:
     ) -> RESTResponseType:
         """Run a scraper
 
+        Run a specified scraper with given arguments
 
         :param command: The name of the scraper to run (required)
         :type command: str
@@ -492,7 +501,9 @@ class ScraperApi:
         _query_params: List[Tuple[str, str]] = []
         _header_params: Dict[str, Optional[str]] = _headers or {}
         _form_params: List[Tuple[str, str]] = []
-        _files: Dict[str, str] = {}
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
         _body_params: Optional[bytes] = None
 
         # process the path parameters

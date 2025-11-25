@@ -23,7 +23,7 @@ print(ContractCollection.to_json())
 # convert the object into a dict
 contract_collection_dict = contract_collection_instance.to_dict()
 # create an instance of ContractCollection from a dict
-contract_collection_form_dict = contract_collection.from_dict(contract_collection_dict)
+contract_collection_from_dict = ContractCollection.from_dict(contract_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

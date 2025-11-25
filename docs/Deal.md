@@ -35,7 +35,7 @@ print(Deal.to_json())
 # convert the object into a dict
 deal_dict = deal_instance.to_dict()
 # create an instance of Deal from a dict
-deal_form_dict = deal.from_dict(deal_dict)
+deal_from_dict = Deal.from_dict(deal_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

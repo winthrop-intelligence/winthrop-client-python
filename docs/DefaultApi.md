@@ -50,6 +50,8 @@ Method | HTTP request | Description
 [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
 [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
 [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
+[**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
+[**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games | 
 [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
@@ -97,8 +99,6 @@ Method | HTTP request | Description
 
 # **average_conference_comp**
 > AverageCompensation average_conference_comp(conference_id, season_years, sport_ids, position_type_ids)
-
-
 
 Retrieve average compensation for a conference
 
@@ -187,8 +187,6 @@ Name | Type | Description  | Notes
 # **average_division_comp**
 > AverageCompensation average_division_comp(division_id, season_years, sport_ids, position_type_ids)
 
-
-
 Retrieve average compensation for a division
 
 ### Example
@@ -275,8 +273,6 @@ Name | Type | Description  | Notes
 
 # **average_school_comp**
 > AverageCompensation average_school_comp(school_id, season_years, sport_ids, position_type_ids)
-
-
 
 Retrieve average compensation for a school
 
@@ -365,8 +361,6 @@ Name | Type | Description  | Notes
 # **average_subdivision_comp**
 > AverageCompensation average_subdivision_comp(subdivision_id, season_years, sport_ids, position_type_ids)
 
-
-
 Retrieve average compensation for a subdivision
 
 ### Example
@@ -454,8 +448,6 @@ Name | Type | Description  | Notes
 # **compare_coli**
 > COLIAdjusted compare_coli(school_id, other_person_school_id, other_person_total_compensation)
 
-
-
 Retrieve the COLI-adjusted compensation
 
 ### Example
@@ -542,8 +534,6 @@ Name | Type | Description  | Notes
 # **create_conference**
 > Conference create_conference(conference=conference)
 
-
-
 Create a new Conference
 
 ### Example
@@ -624,8 +614,6 @@ Name | Type | Description  | Notes
 
 # **create_conferenceship**
 > Conferenceship create_conferenceship(conferenceship=conferenceship)
-
-
 
 Create a new Conferenceship
 
@@ -708,8 +696,6 @@ Name | Type | Description  | Notes
 # **create_foia_label**
 > FoiaLabel create_foia_label(foia_label)
 
-
-
 Create a new foia label
 
 ### Example
@@ -790,8 +776,6 @@ Name | Type | Description  | Notes
 
 # **create_foia_request**
 > FoiaRequest create_foia_request(foia_request)
-
-
 
 Create a new foia request
 
@@ -957,8 +941,6 @@ Name | Type | Description  | Notes
 # **create_requested_item**
 > RequestedItem create_requested_item(requested_item)
 
-
-
 Create a new requested item
 
 ### Example
@@ -1040,8 +1022,6 @@ Name | Type | Description  | Notes
 # **delete_conference**
 > delete_conference(conference_id)
 
-
-
 Delete a single Conference
 
 ### Example
@@ -1119,8 +1099,6 @@ void (empty response body)
 
 # **delete_conferenceship**
 > delete_conferenceship(conferenceship_id)
-
-
 
 Delete a single Conferenceship
 
@@ -1200,8 +1178,6 @@ void (empty response body)
 # **delete_foia_label**
 > delete_foia_label(foia_label_id)
 
-
-
 Delete a single foia label
 
 ### Example
@@ -1279,8 +1255,6 @@ void (empty response body)
 
 # **delete_foia_request**
 > delete_foia_request(foia_request_id)
-
-
 
 Delete a single foia request
 
@@ -1440,8 +1414,6 @@ void (empty response body)
 # **delete_requested_item**
 > delete_requested_item(requested_item_id)
 
-
-
 Delete a single requested item
 
 ### Example
@@ -1519,8 +1491,6 @@ void (empty response body)
 
 # **get_administrator**
 > Administrator get_administrator(administrator_id)
-
-
 
 Retrieve a single administrator
 
@@ -1602,8 +1572,6 @@ Name | Type | Description  | Notes
 
 # **get_administrators**
 > AdministratorCollection get_administrators(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all administrators
 
@@ -1689,8 +1657,6 @@ Name | Type | Description  | Notes
 # **get_audited_financial_report_status**
 > AuditedFinancialReportStatus get_audited_financial_report_status(audited_financial_report_status_id)
 
-
-
 Retrieve a single audited financial report status
 
 ### Example
@@ -1771,8 +1737,6 @@ Name | Type | Description  | Notes
 
 # **get_audited_financial_report_statuses**
 > AuditedFinancialReportStatusCollection get_audited_financial_report_statuses(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all audited financial report statuses
 
@@ -1945,8 +1909,6 @@ Name | Type | Description  | Notes
 # **get_coach**
 > Coach get_coach(coach_id)
 
-
-
 Retrieve a single coach
 
 ### Example
@@ -2027,8 +1989,6 @@ Name | Type | Description  | Notes
 
 # **get_coach_compensation**
 > CoachCompensation get_coach_compensation(coaches_ids, user_school_id)
-
-
 
 Retrieve compensation estimate (base salary, year, and COL-adjusted salary) for a private school coach
 
@@ -2114,8 +2074,6 @@ Name | Type | Description  | Notes
 # **get_coaches**
 > CoachCollection get_coaches(page=page, per_page=per_page, q=q)
 
-
-
 Retrieve some or all coaches
 
 ### Example
@@ -2200,8 +2158,6 @@ Name | Type | Description  | Notes
 # **get_compensation**
 > Compensation get_compensation(compensation_id)
 
-
-
 Retrieve a single compensation
 
 ### Example
@@ -2282,8 +2238,6 @@ Name | Type | Description  | Notes
 
 # **get_compensations**
 > CompensationCollection get_compensations(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all compensations
 
@@ -2369,8 +2323,6 @@ Name | Type | Description  | Notes
 # **get_conference**
 > Conference get_conference(conference_id)
 
-
-
 Retrieve a single Conference
 
 ### Example
@@ -2451,8 +2403,6 @@ Name | Type | Description  | Notes
 
 # **get_conferences**
 > ConferenceCollection get_conferences(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all conferences
 
@@ -2539,8 +2489,6 @@ Name | Type | Description  | Notes
 # **get_conferenceship**
 > Conferenceship get_conferenceship(conferenceship_id)
 
-
-
 Retrieve a single Conferenceship
 
 ### Example
@@ -2621,8 +2569,6 @@ Name | Type | Description  | Notes
 
 # **get_conferenceships**
 > ConferenceshipCollection get_conferenceships(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all conferenceships
 
@@ -2709,8 +2655,6 @@ Name | Type | Description  | Notes
 # **get_contact**
 > Contact get_contact(contact_id)
 
-
-
 Retrieve a single contact
 
 ### Example
@@ -2791,8 +2735,6 @@ Name | Type | Description  | Notes
 
 # **get_contacts**
 > ContactCollection get_contacts(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all contacts
 
@@ -2878,8 +2820,6 @@ Name | Type | Description  | Notes
 # **get_contract**
 > Contract get_contract(contract_id)
 
-
-
 Retrieve a single contract
 
 ### Example
@@ -2960,8 +2900,6 @@ Name | Type | Description  | Notes
 
 # **get_contracts**
 > ContractCollection get_contracts(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all contracts
 
@@ -3047,8 +2985,6 @@ Name | Type | Description  | Notes
 # **get_deal**
 > Deal get_deal(deal_id)
 
-
-
 Retrieve a single Deal
 
 ### Example
@@ -3130,8 +3066,6 @@ Name | Type | Description  | Notes
 # **get_deal_status**
 > DealStatus get_deal_status(deal_status_id)
 
-
-
 Retrieve a single deal status
 
 ### Example
@@ -3212,8 +3146,6 @@ Name | Type | Description  | Notes
 
 # **get_deal_statuses**
 > DealStatusCollection get_deal_statuses(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all deal statuses
 
@@ -3298,8 +3230,6 @@ Name | Type | Description  | Notes
 
 # **get_deals**
 > DealCollection get_deals(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all deals
 
@@ -3386,8 +3316,6 @@ Name | Type | Description  | Notes
 # **get_division**
 > Division get_division(division_id)
 
-
-
 Retrieve a single Division
 
 ### Example
@@ -3468,8 +3396,6 @@ Name | Type | Description  | Notes
 
 # **get_divisions**
 > DivisionCollection get_divisions(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all divisions
 
@@ -3556,8 +3482,6 @@ Name | Type | Description  | Notes
 # **get_foia_label**
 > FoiaLabel get_foia_label(foia_label_id)
 
-
-
 Retrieve a single foia label
 
 ### Example
@@ -3638,8 +3562,6 @@ Name | Type | Description  | Notes
 
 # **get_foia_labels**
 > FoiaLabelCollection get_foia_labels(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all foia labels
 
@@ -3725,8 +3647,6 @@ Name | Type | Description  | Notes
 # **get_foia_request**
 > FoiaRequest get_foia_request(foia_request_id)
 
-
-
 Retrieve a single foia request
 
 ### Example
@@ -3807,8 +3727,6 @@ Name | Type | Description  | Notes
 
 # **get_foia_requests**
 > FoiaRequestCollection get_foia_requests(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all foia requests
 
@@ -3894,8 +3812,6 @@ Name | Type | Description  | Notes
 # **get_game**
 > Game get_game(game_id)
 
-
-
 Retrieve a single game
 
 ### Example
@@ -3974,10 +3890,174 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_game_contract**
+> GameContract get_game_contract(game_contract_id)
+
+Retrieve a single GameContract
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.game_contract import GameContract
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    game_contract_id = 56 # int | ID of the GameContract
+
+    try:
+        api_response = api_instance.get_game_contract(game_contract_id)
+        print("The response of DefaultApi->get_game_contract:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_game_contract: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **game_contract_id** | **int**| ID of the GameContract | 
+
+### Return type
+
+[**GameContract**](GameContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Game Contract was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_game_contracts**
+> GameContractCollection get_game_contracts(page=page, per_page=per_page, q=q)
+
+Retrieve some or all game_contracts
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.game_contract_collection import GameContractCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_game_contracts(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_game_contracts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_game_contracts: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**GameContractCollection**](GameContractCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Game Contracts were found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_games**
 > GameCollection get_games(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all games
 
@@ -4063,8 +4143,6 @@ Name | Type | Description  | Notes
 # **get_income_report**
 > IncomeReport get_income_report(income_report_id)
 
-
-
 Retrieve a single income report
 
 ### Example
@@ -4145,8 +4223,6 @@ Name | Type | Description  | Notes
 
 # **get_income_reports**
 > IncomeReportCollection get_income_reports(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all income reports
 
@@ -4402,8 +4478,6 @@ Name | Type | Description  | Notes
 # **get_ncaa_financial_report_status**
 > NcaaFinancialReportStatus get_ncaa_financial_report_status(ncaa_financial_report_status_id)
 
-
-
 Retrieve a single ncaa financial report status
 
 ### Example
@@ -4484,8 +4558,6 @@ Name | Type | Description  | Notes
 
 # **get_ncaa_financial_report_statuses**
 > NcaaFinancialReportStatusCollection get_ncaa_financial_report_statuses(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all ncaa financial report statuses
 
@@ -4654,8 +4726,6 @@ Name | Type | Description  | Notes
 # **get_position**
 > Position get_position(position_id)
 
-
-
 Retrieve a single position
 
 ### Example
@@ -4736,8 +4806,6 @@ Name | Type | Description  | Notes
 
 # **get_positions**
 > PositionCollection get_positions(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all positions
 
@@ -4823,8 +4891,6 @@ Name | Type | Description  | Notes
 # **get_raw_contract**
 > RawContract get_raw_contract(raw_contract_id)
 
-
-
 Retrieve a single RawContract
 
 ### Example
@@ -4905,8 +4971,6 @@ Name | Type | Description  | Notes
 
 # **get_raw_contracts**
 > RawContractCollection get_raw_contracts(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all raw_contracts
 
@@ -4993,8 +5057,6 @@ Name | Type | Description  | Notes
 # **get_requested_item**
 > RequestedItem get_requested_item(requested_item_id)
 
-
-
 Retrieve a single requested item
 
 ### Example
@@ -5075,8 +5137,6 @@ Name | Type | Description  | Notes
 
 # **get_requested_items**
 > RequestedItemCollection get_requested_items(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all requested items
 
@@ -5162,8 +5222,6 @@ Name | Type | Description  | Notes
 # **get_school**
 > School get_school(school_id)
 
-
-
 Retrieve a single school
 
 ### Example
@@ -5245,8 +5303,6 @@ Name | Type | Description  | Notes
 # **get_school_alternate_names**
 > GetSchoolAlternateNames200Response get_school_alternate_names(school_id)
 
-
-
 Retrieve alternate names for a specific school
 
 ### Example
@@ -5327,8 +5383,6 @@ Name | Type | Description  | Notes
 
 # **get_schools**
 > SchoolCollection get_schools(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all schools
 
@@ -5414,8 +5468,6 @@ Name | Type | Description  | Notes
 # **get_season**
 > Season get_season(season_id)
 
-
-
 Retrieve a single season
 
 ### Example
@@ -5496,8 +5548,6 @@ Name | Type | Description  | Notes
 
 # **get_seasons**
 > SeasonCollection get_seasons(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all seasons
 
@@ -5582,8 +5632,6 @@ Name | Type | Description  | Notes
 
 # **get_similar_coaches**
 > CoachCollection get_similar_coaches(coach_id, q=q, page=page, per_page=per_page)
-
-
 
 Retrieve similar coaches based on coach ID
 
@@ -5671,8 +5719,6 @@ Name | Type | Description  | Notes
 # **get_sport**
 > Sport get_sport(sport_id)
 
-
-
 Retrieve a single sport
 
 ### Example
@@ -5753,8 +5799,6 @@ Name | Type | Description  | Notes
 
 # **get_sports**
 > SportCollection get_sports(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all sports
 
@@ -5840,8 +5884,6 @@ Name | Type | Description  | Notes
 # **get_subdivision**
 > Subdivision get_subdivision(subdivision_id)
 
-
-
 Retrieve a single Subdivision
 
 ### Example
@@ -5922,8 +5964,6 @@ Name | Type | Description  | Notes
 
 # **get_subdivisions**
 > SubdivisionCollection get_subdivisions(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all subdivisions
 
@@ -6010,8 +6050,6 @@ Name | Type | Description  | Notes
 # **get_subscription**
 > Subscription get_subscription(subscription_id)
 
-
-
 Retrieve a single Subscription
 
 ### Example
@@ -6092,8 +6130,6 @@ Name | Type | Description  | Notes
 
 # **get_subscriptions**
 > SubscriptionCollection get_subscriptions(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve the all subscriptions
 
@@ -6179,8 +6215,6 @@ Name | Type | Description  | Notes
 # **get_system_settings**
 > SystemSetting get_system_settings()
 
-
-
 Retrieve the current system settings
 
 ### Example
@@ -6256,8 +6290,6 @@ This endpoint does not need any parameter.
 
 # **get_user**
 > User get_user(user_id)
-
-
 
 Retrieve a single user
 
@@ -6339,8 +6371,6 @@ Name | Type | Description  | Notes
 
 # **get_users**
 > UserCollection get_users(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all users
 
@@ -6426,8 +6456,6 @@ Name | Type | Description  | Notes
 # **get_vendor**
 > Vendor get_vendor(vendor_id)
 
-
-
 Retrieve a single Vendor
 
 ### Example
@@ -6508,8 +6536,6 @@ Name | Type | Description  | Notes
 
 # **get_vendors**
 > VendorCollection get_vendors(page=page, per_page=per_page, q=q)
-
-
 
 Retrieve some or all vendors
 
@@ -6595,8 +6621,6 @@ Name | Type | Description  | Notes
 
 # **get_wire_changes**
 > GetWireChanges200Response get_wire_changes(page=page, per_page=per_page, q=q, q_coach_id_eq=q_coach_id_eq, q_school_id_eq=q_school_id_eq, q_sport_id_eq=q_sport_id_eq)
-
-
 
 Returns WireChange records. Supports Ransack-style filters (`q[...]`). Includes related position_types and sports arrays in each object. Each item also includes coach avatar (if present) and school logo images.
 
@@ -6688,8 +6712,6 @@ Name | Type | Description  | Notes
 # **search_coaches**
 > CoachCollection search_coaches(filters=filters)
 
-
-
 Search Coaches by priority_ids
 
 ### Example
@@ -6770,8 +6792,6 @@ Name | Type | Description  | Notes
 
 # **update_coach**
 > Coach update_coach(coach_id, coach)
-
-
 
 Update a coach
 
@@ -6856,8 +6876,6 @@ Name | Type | Description  | Notes
 # **update_compensation**
 > Compensation update_compensation(compensation_id, compensation)
 
-
-
 Update a compensation
 
 ### Example
@@ -6940,8 +6958,6 @@ Name | Type | Description  | Notes
 
 # **update_conference**
 > Conference update_conference(conference_id, conference)
-
-
 
 Update a single Conference
 
@@ -7027,8 +7043,6 @@ Name | Type | Description  | Notes
 # **update_conferenceship**
 > Conferenceship update_conferenceship(conferenceship_id, conferenceship)
 
-
-
 Update a single Conferenceship
 
 ### Example
@@ -7113,8 +7127,6 @@ Name | Type | Description  | Notes
 # **update_foia_label**
 > FoiaLabel update_foia_label(foia_label_id, foia_label)
 
-
-
 Update a single foia label
 
 ### Example
@@ -7197,8 +7209,6 @@ Name | Type | Description  | Notes
 
 # **update_foia_request**
 > FoiaRequest update_foia_request(foia_request_id, foia_request)
-
-
 
 Update a single foia request
 
@@ -7368,8 +7378,6 @@ Name | Type | Description  | Notes
 # **update_requested_item**
 > RequestedItem update_requested_item(requested_item_id, requested_item)
 
-
-
 Update a single requested item
 
 ### Example
@@ -7453,8 +7461,6 @@ Name | Type | Description  | Notes
 # **user_me**
 > User user_me()
 
-
-
 Retrieve a single user
 
 ### Example
@@ -7531,8 +7537,6 @@ This endpoint does not need any parameter.
 
 # **verify_user_intercollegiate_access**
 > VerifyUserIntercollegiateAccess200Response verify_user_intercollegiate_access(user_email)
-
-
 
 Verifies whether the user has intercollegiate access based on their email.
 

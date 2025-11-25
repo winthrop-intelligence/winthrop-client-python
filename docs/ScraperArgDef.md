@@ -24,7 +24,7 @@ print(ScraperArgDef.to_json())
 # convert the object into a dict
 scraper_arg_def_dict = scraper_arg_def_instance.to_dict()
 # create an instance of ScraperArgDef from a dict
-scraper_arg_def_form_dict = scraper_arg_def.from_dict(scraper_arg_def_dict)
+scraper_arg_def_from_dict = ScraperArgDef.from_dict(scraper_arg_def_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

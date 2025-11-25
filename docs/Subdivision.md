@@ -25,7 +25,7 @@ print(Subdivision.to_json())
 # convert the object into a dict
 subdivision_dict = subdivision_instance.to_dict()
 # create an instance of Subdivision from a dict
-subdivision_form_dict = subdivision.from_dict(subdivision_dict)
+subdivision_from_dict = Subdivision.from_dict(subdivision_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

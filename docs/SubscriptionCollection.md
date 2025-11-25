@@ -23,7 +23,7 @@ print(SubscriptionCollection.to_json())
 # convert the object into a dict
 subscription_collection_dict = subscription_collection_instance.to_dict()
 # create an instance of SubscriptionCollection from a dict
-subscription_collection_form_dict = subscription_collection.from_dict(subscription_collection_dict)
+subscription_collection_from_dict = SubscriptionCollection.from_dict(subscription_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -29,7 +29,7 @@ print(FoiaRequest.to_json())
 # convert the object into a dict
 foia_request_dict = foia_request_instance.to_dict()
 # create an instance of FoiaRequest from a dict
-foia_request_form_dict = foia_request.from_dict(foia_request_dict)
+foia_request_from_dict = FoiaRequest.from_dict(foia_request_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

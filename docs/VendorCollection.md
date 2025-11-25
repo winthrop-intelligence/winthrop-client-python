@@ -23,7 +23,7 @@ print(VendorCollection.to_json())
 # convert the object into a dict
 vendor_collection_dict = vendor_collection_instance.to_dict()
 # create an instance of VendorCollection from a dict
-vendor_collection_form_dict = vendor_collection.from_dict(vendor_collection_dict)
+vendor_collection_from_dict = VendorCollection.from_dict(vendor_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

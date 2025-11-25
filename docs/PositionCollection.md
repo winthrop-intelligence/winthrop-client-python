@@ -23,7 +23,7 @@ print(PositionCollection.to_json())
 # convert the object into a dict
 position_collection_dict = position_collection_instance.to_dict()
 # create an instance of PositionCollection from a dict
-position_collection_form_dict = position_collection.from_dict(position_collection_dict)
+position_collection_from_dict = PositionCollection.from_dict(position_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ print(CoachCollection.to_json())
 # convert the object into a dict
 coach_collection_dict = coach_collection_instance.to_dict()
 # create an instance of CoachCollection from a dict
-coach_collection_form_dict = coach_collection.from_dict(coach_collection_dict)
+coach_collection_from_dict = CoachCollection.from_dict(coach_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -124,16 +124,16 @@ class WireChange(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of each item in position_types (list)
         _items = []
         if self.position_types:
-            for _item in self.position_types:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_position_types in self.position_types:
+                if _item_position_types:
+                    _items.append(_item_position_types.to_dict())
             _dict["position_types"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sports (list)
         _items = []
         if self.sports:
-            for _item in self.sports:
-                if _item:
-                    _items.append(_item.to_dict())
+            for _item_sports in self.sports:
+                if _item_sports:
+                    _items.append(_item_sports.to_dict())
             _dict["sports"] = _items
         # set to None if effective_date (nullable) is None
         # and model_fields_set contains the field

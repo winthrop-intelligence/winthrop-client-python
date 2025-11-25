@@ -11,8 +11,6 @@ Method | HTTP request | Description
 # **health_check**
 > HealthCheckSuccess health_check()
 
-
-
 Check if the model is loaded and the API is running.
 
 ### Example
@@ -89,8 +87,6 @@ This endpoint does not need any parameter.
 
 # **predict**
 > PredictSuccess predict(predict_body=predict_body)
-
-
 
 Classify a job post as athletic or not.
 

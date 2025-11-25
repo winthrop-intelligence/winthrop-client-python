@@ -27,7 +27,7 @@ print(JobCandidate.to_json())
 # convert the object into a dict
 job_candidate_dict = job_candidate_instance.to_dict()
 # create an instance of JobCandidate from a dict
-job_candidate_form_dict = job_candidate.from_dict(job_candidate_dict)
+job_candidate_from_dict = JobCandidate.from_dict(job_candidate_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

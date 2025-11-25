@@ -23,7 +23,7 @@ print(RawContractCollection.to_json())
 # convert the object into a dict
 raw_contract_collection_dict = raw_contract_collection_instance.to_dict()
 # create an instance of RawContractCollection from a dict
-raw_contract_collection_form_dict = raw_contract_collection.from_dict(raw_contract_collection_dict)
+raw_contract_collection_from_dict = RawContractCollection.from_dict(raw_contract_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

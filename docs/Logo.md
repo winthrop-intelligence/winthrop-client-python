@@ -24,7 +24,7 @@ print(Logo.to_json())
 # convert the object into a dict
 logo_dict = logo_instance.to_dict()
 # create an instance of Logo from a dict
-logo_form_dict = logo.from_dict(logo_dict)
+logo_from_dict = Logo.from_dict(logo_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

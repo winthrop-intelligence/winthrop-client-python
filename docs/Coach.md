@@ -52,7 +52,7 @@ print(Coach.to_json())
 # convert the object into a dict
 coach_dict = coach_instance.to_dict()
 # create an instance of Coach from a dict
-coach_form_dict = coach.from_dict(coach_dict)
+coach_from_dict = Coach.from_dict(coach_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ print(ConferenceCollection.to_json())
 # convert the object into a dict
 conference_collection_dict = conference_collection_instance.to_dict()
 # create an instance of ConferenceCollection from a dict
-conference_collection_form_dict = conference_collection.from_dict(conference_collection_dict)
+conference_collection_from_dict = ConferenceCollection.from_dict(conference_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

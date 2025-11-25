@@ -45,7 +45,7 @@ print(Position.to_json())
 # convert the object into a dict
 position_dict = position_instance.to_dict()
 # create an instance of Position from a dict
-position_form_dict = position.from_dict(position_dict)
+position_from_dict = Position.from_dict(position_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

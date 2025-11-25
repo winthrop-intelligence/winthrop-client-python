@@ -23,7 +23,7 @@ print(DossierReportResponse.to_json())
 # convert the object into a dict
 dossier_report_response_dict = dossier_report_response_instance.to_dict()
 # create an instance of DossierReportResponse from a dict
-dossier_report_response_form_dict = dossier_report_response.from_dict(dossier_report_response_dict)
+dossier_report_response_from_dict = DossierReportResponse.from_dict(dossier_report_response_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

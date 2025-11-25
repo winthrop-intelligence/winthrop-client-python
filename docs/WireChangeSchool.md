@@ -24,7 +24,7 @@ print(WireChangeSchool.to_json())
 # convert the object into a dict
 wire_change_school_dict = wire_change_school_instance.to_dict()
 # create an instance of WireChangeSchool from a dict
-wire_change_school_form_dict = wire_change_school.from_dict(wire_change_school_dict)
+wire_change_school_from_dict = WireChangeSchool.from_dict(wire_change_school_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

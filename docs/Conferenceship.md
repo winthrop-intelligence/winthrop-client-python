@@ -27,7 +27,7 @@ print(Conferenceship.to_json())
 # convert the object into a dict
 conferenceship_dict = conferenceship_instance.to_dict()
 # create an instance of Conferenceship from a dict
-conferenceship_form_dict = conferenceship.from_dict(conferenceship_dict)
+conferenceship_from_dict = Conferenceship.from_dict(conferenceship_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -23,7 +23,7 @@ print(HealthCheckFailure.to_json())
 # convert the object into a dict
 health_check_failure_dict = health_check_failure_instance.to_dict()
 # create an instance of HealthCheckFailure from a dict
-health_check_failure_form_dict = health_check_failure.from_dict(health_check_failure_dict)
+health_check_failure_from_dict = HealthCheckFailure.from_dict(health_check_failure_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

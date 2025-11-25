@@ -23,7 +23,7 @@ print(DealStatusCollection.to_json())
 # convert the object into a dict
 deal_status_collection_dict = deal_status_collection_instance.to_dict()
 # create an instance of DealStatusCollection from a dict
-deal_status_collection_form_dict = deal_status_collection.from_dict(deal_status_collection_dict)
+deal_status_collection_from_dict = DealStatusCollection.from_dict(deal_status_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

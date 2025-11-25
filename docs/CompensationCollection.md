@@ -23,7 +23,7 @@ print(CompensationCollection.to_json())
 # convert the object into a dict
 compensation_collection_dict = compensation_collection_instance.to_dict()
 # create an instance of CompensationCollection from a dict
-compensation_collection_form_dict = compensation_collection.from_dict(compensation_collection_dict)
+compensation_collection_from_dict = CompensationCollection.from_dict(compensation_collection_dict)
 ```
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
