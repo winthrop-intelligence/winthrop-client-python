@@ -17,36 +17,33 @@ import pprint
 import re  # noqa: F401
 import json
 
+from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.link_collection import LinkCollection
-from winthrop_client_python.models.link_collection1 import LinkCollection1
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class NewsFeed(BaseModel):
+class Cashflow(BaseModel):
     """
-    NewsFeed
+    Cashflow
     """  # noqa: E501
 
     id: Optional[StrictInt] = None
-    title: Optional[StrictStr] = None
-    body: Optional[StrictStr] = None
-    url: Optional[StrictStr] = None
-    source_id: Optional[StrictInt] = None
-    source_type: Optional[StrictStr] = None
-    links: Optional[LinkCollection] = None
-    tags_list: Optional[LinkCollection1] = None
+    season_id: Optional[StrictInt] = None
+    cashflow_group_id: Optional[StrictInt] = None
+    amount: Optional[StrictInt] = None
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
+    name: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
-        "title",
-        "body",
-        "url",
-        "source_id",
-        "source_type",
-        "links",
-        "tags_list",
+        "season_id",
+        "cashflow_group_id",
+        "amount",
+        "created_at",
+        "updated_at",
+        "name",
     ]
 
     model_config = ConfigDict(
@@ -66,7 +63,7 @@ class NewsFeed(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of NewsFeed from a JSON string"""
+        """Create an instance of Cashflow from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,17 +83,11 @@ class NewsFeed(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of links
-        if self.links:
-            _dict["links"] = self.links.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of tags_list
-        if self.tags_list:
-            _dict["tags_list"] = self.tags_list.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of NewsFeed from a dict"""
+        """Create an instance of Cashflow from a dict"""
         if obj is None:
             return None
 
@@ -106,21 +97,12 @@ class NewsFeed(BaseModel):
         _obj = cls.model_validate(
             {
                 "id": obj.get("id"),
-                "title": obj.get("title"),
-                "body": obj.get("body"),
-                "url": obj.get("url"),
-                "source_id": obj.get("source_id"),
-                "source_type": obj.get("source_type"),
-                "links": (
-                    LinkCollection.from_dict(obj["links"])
-                    if obj.get("links") is not None
-                    else None
-                ),
-                "tags_list": (
-                    LinkCollection1.from_dict(obj["tags_list"])
-                    if obj.get("tags_list") is not None
-                    else None
-                ),
+                "season_id": obj.get("season_id"),
+                "cashflow_group_id": obj.get("cashflow_group_id"),
+                "amount": obj.get("amount"),
+                "created_at": obj.get("created_at"),
+                "updated_at": obj.get("updated_at"),
+                "name": obj.get("name"),
             }
         )
         return _obj

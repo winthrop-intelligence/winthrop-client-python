@@ -17,37 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.link_collection import LinkCollection
-from winthrop_client_python.models.link_collection1 import LinkCollection1
+from winthrop_client_python.models.cashflow import Cashflow
+from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class NewsFeed(BaseModel):
+class CashflowCollection(BaseModel):
     """
-    NewsFeed
+    CashflowCollection
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    title: Optional[StrictStr] = None
-    body: Optional[StrictStr] = None
-    url: Optional[StrictStr] = None
-    source_id: Optional[StrictInt] = None
-    source_type: Optional[StrictStr] = None
-    links: Optional[LinkCollection] = None
-    tags_list: Optional[LinkCollection1] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "title",
-        "body",
-        "url",
-        "source_id",
-        "source_type",
-        "links",
-        "tags_list",
-    ]
+    data: Optional[List[Cashflow]] = None
+    meta: Optional[Meta] = None
+    __properties: ClassVar[List[str]] = ["data", "meta"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -66,7 +51,7 @@ class NewsFeed(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of NewsFeed from a JSON string"""
+        """Create an instance of CashflowCollection from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,17 +71,21 @@ class NewsFeed(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of links
-        if self.links:
-            _dict["links"] = self.links.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of tags_list
-        if self.tags_list:
-            _dict["tags_list"] = self.tags_list.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
+        _items = []
+        if self.data:
+            for _item_data in self.data:
+                if _item_data:
+                    _items.append(_item_data.to_dict())
+            _dict["data"] = _items
+        # override the default output from pydantic by calling `to_dict()` of meta
+        if self.meta:
+            _dict["meta"] = self.meta.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of NewsFeed from a dict"""
+        """Create an instance of CashflowCollection from a dict"""
         if obj is None:
             return None
 
@@ -105,21 +94,13 @@ class NewsFeed(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "title": obj.get("title"),
-                "body": obj.get("body"),
-                "url": obj.get("url"),
-                "source_id": obj.get("source_id"),
-                "source_type": obj.get("source_type"),
-                "links": (
-                    LinkCollection.from_dict(obj["links"])
-                    if obj.get("links") is not None
+                "data": (
+                    [Cashflow.from_dict(_item) for _item in obj["data"]]
+                    if obj.get("data") is not None
                     else None
                 ),
-                "tags_list": (
-                    LinkCollection1.from_dict(obj["tags_list"])
-                    if obj.get("tags_list") is not None
-                    else None
+                "meta": (
+                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
                 ),
             }
         )

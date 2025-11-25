@@ -8,6 +8,8 @@ docs/AuditedFinancialReportStatusCollection.md
 docs/Avatar.md
 docs/AverageCompensation.md
 docs/COLIAdjusted.md
+docs/Cashflow.md
+docs/CashflowCollection.md
 docs/Category.md
 docs/CategoryCollection.md
 docs/Coach.md
@@ -116,8 +118,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_game_contract.py
-test/test_game_contract_collection.py
+test/test_cashflow.py
+test/test_cashflow_collection.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -138,6 +140,8 @@ winthrop_client_python/models/audited_financial_report_status.py
 winthrop_client_python/models/audited_financial_report_status_collection.py
 winthrop_client_python/models/avatar.py
 winthrop_client_python/models/average_compensation.py
+winthrop_client_python/models/cashflow.py
+winthrop_client_python/models/cashflow_collection.py
 winthrop_client_python/models/category.py
 winthrop_client_python/models/category_collection.py
 winthrop_client_python/models/coach.py
