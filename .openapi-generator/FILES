@@ -104,7 +104,11 @@ docs/Tag.md
 docs/UnauthorizedError.md
 docs/UnprocessableEntity.md
 docs/User.md
+docs/UserActivitySummary.md
+docs/UserActivitySummaryCollection.md
 docs/UserCollection.md
+docs/UserRequest.md
+docs/UserRequestCollection.md
 docs/ValidationError.md
 docs/Vendor.md
 docs/VendorCollection.md
@@ -118,8 +122,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_cashflow.py
-test/test_cashflow_collection.py
+test/test_user_activity_summary.py
+test/test_user_activity_summary_collection.py
+test/test_user_request.py
+test/test_user_request_collection.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -231,7 +237,11 @@ winthrop_client_python/models/tag.py
 winthrop_client_python/models/unauthorized_error.py
 winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/user.py
+winthrop_client_python/models/user_activity_summary.py
+winthrop_client_python/models/user_activity_summary_collection.py
 winthrop_client_python/models/user_collection.py
+winthrop_client_python/models/user_request.py
+winthrop_client_python/models/user_request_collection.py
 winthrop_client_python/models/validation_error.py
 winthrop_client_python/models/vendor.py
 winthrop_client_python/models/vendor_collection.py
