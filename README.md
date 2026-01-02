@@ -156,6 +156,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_income_reports**](docs/DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
 *DefaultApi* | [**get_job_post**](docs/DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
 *DefaultApi* | [**get_job_posts**](docs/DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts
+*DefaultApi* | [**get_job_posts_athletics_count**](docs/DefaultApi.md#get_job_posts_athletics_count) | **GET** /central_jobs/job_posts/athletics_count | Get total athletics job posts count
 *DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
 *DefaultApi* | [**get_news_feed**](docs/DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed
@@ -263,6 +264,8 @@ Class | Method | HTTP request | Description
  - [GameCollection](docs/GameCollection.md)
  - [GameContract](docs/GameContract.md)
  - [GameContractCollection](docs/GameContractCollection.md)
+ - [GetJobPostsAthleticsCount200Response](docs/GetJobPostsAthleticsCount200Response.md)
+ - [GetJobPostsAthleticsCount200ResponseData](docs/GetJobPostsAthleticsCount200ResponseData.md)
  - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)

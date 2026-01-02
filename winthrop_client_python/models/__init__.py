@@ -70,6 +70,12 @@ from winthrop_client_python.models.game_contract import GameContract
 from winthrop_client_python.models.game_contract_collection import (
     GameContractCollection,
 )
+from winthrop_client_python.models.get_job_posts_athletics_count200_response import (
+    GetJobPostsAthleticsCount200Response,
+)
+from winthrop_client_python.models.get_job_posts_athletics_count200_response_data import (
+    GetJobPostsAthleticsCount200ResponseData,
+)
 from winthrop_client_python.models.get_school_alternate_names200_response import (
     GetSchoolAlternateNames200Response,
 )

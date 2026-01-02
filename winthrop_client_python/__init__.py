@@ -76,6 +76,8 @@ __all__ = [
     "GameCollection",
     "GameContract",
     "GameContractCollection",
+    "GetJobPostsAthleticsCount200Response",
+    "GetJobPostsAthleticsCount200ResponseData",
     "GetSchoolAlternateNames200Response",
     "GetSchoolAlternateNames404Response",
     "GetWireChanges200Response",
@@ -256,6 +258,12 @@ from winthrop_client_python.models.game_collection import (
 from winthrop_client_python.models.game_contract import GameContract as GameContract
 from winthrop_client_python.models.game_contract_collection import (
     GameContractCollection as GameContractCollection,
+)
+from winthrop_client_python.models.get_job_posts_athletics_count200_response import (
+    GetJobPostsAthleticsCount200Response as GetJobPostsAthleticsCount200Response,
+)
+from winthrop_client_python.models.get_job_posts_athletics_count200_response_data import (
+    GetJobPostsAthleticsCount200ResponseData as GetJobPostsAthleticsCount200ResponseData,
 )
 from winthrop_client_python.models.get_school_alternate_names200_response import (
     GetSchoolAlternateNames200Response as GetSchoolAlternateNames200Response,

@@ -17,46 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.get_job_posts_athletics_count200_response_data import (
+    GetJobPostsAthleticsCount200ResponseData,
+)
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class Deal(BaseModel):
+class GetJobPostsAthleticsCount200Response(BaseModel):
     """
-    Deal
+    GetJobPostsAthleticsCount200Response
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    school_id: Optional[StrictInt] = None
-    vendor_id: Optional[StrictInt] = None
-    start_at: Optional[datetime] = None
-    end_at: Optional[datetime] = None
-    signed: Optional[datetime] = None
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
-    text: Optional[StrictStr] = None
-    autorenew: Optional[StrictBool] = None
-    deal_type_id: Optional[StrictInt] = None
-    archived: Optional[StrictBool] = None
-    verified: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "school_id",
-        "vendor_id",
-        "start_at",
-        "end_at",
-        "signed",
-        "created_at",
-        "updated_at",
-        "text",
-        "autorenew",
-        "deal_type_id",
-        "archived",
-        "verified",
-    ]
+    data: Optional[GetJobPostsAthleticsCount200ResponseData] = None
+    __properties: ClassVar[List[str]] = ["data"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -75,7 +51,7 @@ class Deal(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Deal from a JSON string"""
+        """Create an instance of GetJobPostsAthleticsCount200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -95,11 +71,14 @@ class Deal(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of data
+        if self.data:
+            _dict["data"] = self.data.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Deal from a dict"""
+        """Create an instance of GetJobPostsAthleticsCount200Response from a dict"""
         if obj is None:
             return None
 
@@ -108,19 +87,11 @@ class Deal(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "school_id": obj.get("school_id"),
-                "vendor_id": obj.get("vendor_id"),
-                "start_at": obj.get("start_at"),
-                "end_at": obj.get("end_at"),
-                "signed": obj.get("signed"),
-                "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
-                "text": obj.get("text"),
-                "autorenew": obj.get("autorenew"),
-                "deal_type_id": obj.get("deal_type_id"),
-                "archived": obj.get("archived"),
-                "verified": obj.get("verified"),
+                "data": (
+                    GetJobPostsAthleticsCount200ResponseData.from_dict(obj["data"])
+                    if obj.get("data") is not None
+                    else None
+                )
             }
         )
         return _obj
