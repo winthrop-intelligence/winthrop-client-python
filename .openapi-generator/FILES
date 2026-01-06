@@ -122,10 +122,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_user_activity_summary.py
-test/test_user_activity_summary_collection.py
-test/test_user_request.py
-test/test_user_request_collection.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py

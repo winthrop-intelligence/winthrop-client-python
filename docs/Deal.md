@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **autorenew** | **bool** |  | [optional] 
 **deal_type_id** | **int** |  | [optional] 
 **archived** | **bool** |  | [optional] 
-**deal_status_type_id** | **int** |  | [optional] 
 **verified** | **bool** |  | [optional] 
 
 ## Example
