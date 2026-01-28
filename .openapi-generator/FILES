@@ -46,6 +46,9 @@ docs/Game.md
 docs/GameCollection.md
 docs/GameContract.md
 docs/GameContractCollection.md
+docs/GamePost.md
+docs/GamePostCollection.md
+docs/GameType.md
 docs/GetSchoolAlternateNames200Response.md
 docs/GetSchoolAlternateNames404Response.md
 docs/GetWireChanges200Response.md
@@ -122,10 +125,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_user_activity_summary.py
-test/test_user_activity_summary_collection.py
-test/test_user_request.py
-test/test_user_request_collection.py
+test/test_game_post.py
+test/test_game_post_collection.py
+test/test_game_type.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -183,6 +185,9 @@ winthrop_client_python/models/game.py
 winthrop_client_python/models/game_collection.py
 winthrop_client_python/models/game_contract.py
 winthrop_client_python/models/game_contract_collection.py
+winthrop_client_python/models/game_post.py
+winthrop_client_python/models/game_post_collection.py
+winthrop_client_python/models/game_type.py
 winthrop_client_python/models/get_school_alternate_names200_response.py
 winthrop_client_python/models/get_school_alternate_names404_response.py
 winthrop_client_python/models/get_wire_changes200_response.py
