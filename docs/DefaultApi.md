@@ -10,11 +10,13 @@ Method | HTTP request | Description
 [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
 [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
 [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows | 
+[**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
 [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
 [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
 [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
+[**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
@@ -23,6 +25,7 @@ Method | HTTP request | Description
 [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
+[**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
@@ -105,6 +108,7 @@ Method | HTTP request | Description
 [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
+[**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
 [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
@@ -626,6 +630,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_coach**
+> Coach create_coach(coach)
+
+Create a coach
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.coach import Coach
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    coach = winthrop_client_python.Coach() # Coach | Coach attributes to create. Accepts standard coach fields including first_name, last_name, email, phone, bio, bio_text, and related profile fields.
+
+    try:
+        api_response = api_instance.create_coach(coach)
+        print("The response of DefaultApi->create_coach:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_coach: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coach** | [**Coach**](Coach.md)| Coach attributes to create. Accepts standard coach fields including first_name, last_name, email, phone, bio, bio_text, and related profile fields. | 
+
+### Return type
+
+[**Coach**](Coach.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Coach was created |  -  |
+**401** | Unauthorized |  -  |
+**422** | Unable to create coach |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_conference**
 > Conference create_conference(conference=conference)
 
@@ -1030,6 +1115,87 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Job post was created |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_position**
+> Position create_position(position)
+
+Create a position. If season_id is omitted, a season will be created (or reused) when school_id, sport_id, and year are provided.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.position import Position
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    position = winthrop_client_python.Position() # Position | Position attributes to create. Accepts season_id or school_id/sport_id/year, coach_id, title, creation_reason, and position_type_ids.
+
+    try:
+        api_response = api_instance.create_position(position)
+        print("The response of DefaultApi->create_position:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_position: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **position** | [**Position**](Position.md)| Position attributes to create. Accepts season_id or school_id/sport_id/year, coach_id, title, creation_reason, and position_type_ids. | 
+
+### Return type
+
+[**Position**](Position.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Position was created |  -  |
+**401** | Unauthorized |  -  |
+**422** | Unable to create position |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1662,6 +1828,84 @@ void (empty response body)
 |-------------|-------------|------------------|
 **204** | Job post was deleted |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_position**
+> delete_position(position_id)
+
+Delete a single position
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    position_id = 56 # int | ID of position to delete
+
+    try:
+        api_instance.delete_position(position_id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_position: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **position_id** | **int**| ID of position to delete | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Position was deleted |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7911,7 +8155,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     coach_id = 56 # int | ID of coach to update
-    coach = winthrop_client_python.Coach() # Coach | Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored.
+    coach = winthrop_client_python.Coach() # Coach | Coach attributes to update. Supports standard coach fields including first_name, last_name, email, phone, bio, bio_text, and related profile fields.
 
     try:
         api_response = api_instance.update_coach(coach_id, coach)
@@ -7929,7 +8173,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coach_id** | **int**| ID of coach to update | 
- **coach** | [**Coach**](Coach.md)| Attributes to update. Currently only supports email, phone, bio, bio_text. Others will be ignored. | 
+ **coach** | [**Coach**](Coach.md)| Coach attributes to update. Supports standard coach fields including first_name, last_name, email, phone, bio, bio_text, and related profile fields. | 
 
 ### Return type
 
@@ -8453,6 +8697,90 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Job post was updated |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_position**
+> Position update_position(position_id, position)
+
+Update a position
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.position import Position
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    position_id = 56 # int | ID of position to update
+    position = winthrop_client_python.Position() # Position | Position attributes to update.
+
+    try:
+        api_response = api_instance.update_position(position_id, position)
+        print("The response of DefaultApi->update_position:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_position: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **position_id** | **int**| ID of position to update | 
+ **position** | [**Position**](Position.md)| Position attributes to update. | 
+
+### Return type
+
+[**Position**](Position.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Position was updated |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+**422** | Unable to update position |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
