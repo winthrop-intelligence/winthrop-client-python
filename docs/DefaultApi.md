@@ -37,6 +37,7 @@ Method | HTTP request | Description
 [**get_categories**](DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories
 [**get_coach**](DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
 [**get_coach_compensation**](DefaultApi.md#get_coach_compensation) | **GET** /api/v1/coach_compensations/get_coach_compensation | 
+[**get_coach_searches**](DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
@@ -49,15 +50,19 @@ Method | HTTP request | Description
 [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} | 
 [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts | 
 [**get_deal**](DefaultApi.md#get_deal) | **GET** /api/v1/deals/{dealId} | 
+[**get_deal_searches**](DefaultApi.md#get_deal_searches) | **GET** /api/v1/deal_searches | 
 [**get_deal_status**](DefaultApi.md#get_deal_status) | **GET** /api/v1/deal_statuses/{dealStatusId} | 
 [**get_deal_statuses**](DefaultApi.md#get_deal_statuses) | **GET** /api/v1/deal_statuses | 
 [**get_deals**](DefaultApi.md#get_deals) | **GET** /api/v1/deals | 
+[**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches | 
 [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
+[**get_financial_searches**](DefaultApi.md#get_financial_searches) | **GET** /api/v1/financial_searches | 
 [**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} | 
 [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
 [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
+[**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
 [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
 [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
@@ -2813,6 +2818,94 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_coach_searches**
+> CoachSearchResultCollection get_coach_searches(page=page, per_page=per_page, q=q, position_type_id=position_type_id, contract_expires_on=contract_expires_on)
+
+Search coaches with filtering and pagination
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.coach_search_result_collection import CoachSearchResultCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    q = None # object | Ransack query (optional)
+    position_type_id = 56 # int | Filter by position type (expands to group if position is a group stub) (optional)
+    contract_expires_on = 'contract_expires_on_example' # str | Filter by contract expiration. Use \"expired\" for expired contracts, or a date range in \"YYYY-MM-DD..YYYY-MM-DD\" format. (optional)
+
+    try:
+        api_response = api_instance.get_coach_searches(page=page, per_page=per_page, q=q, position_type_id=position_type_id, contract_expires_on=contract_expires_on)
+        print("The response of DefaultApi->get_coach_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_coach_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+ **position_type_id** | **int**| Filter by position type (expands to group if position is a group stub) | [optional] 
+ **contract_expires_on** | **str**| Filter by contract expiration. Use \&quot;expired\&quot; for expired contracts, or a date range in \&quot;YYYY-MM-DD..YYYY-MM-DD\&quot; format. | [optional] 
+
+### Return type
+
+[**CoachSearchResultCollection**](CoachSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Coach search results |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_coaches**
 > CoachCollection get_coaches(page=page, per_page=per_page, q=q)
 
@@ -3805,6 +3898,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_deal_searches**
+> DealSearchResultCollection get_deal_searches(page=page, per_page=per_page, q=q)
+
+Search deals with filtering and pagination
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.deal_search_result_collection import DealSearchResultCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_deal_searches(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_deal_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_deal_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**DealSearchResultCollection**](DealSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Deal search results |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_deal_status**
 > DealStatus get_deal_status(deal_status_id)
 
@@ -4055,6 +4232,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_department_searches**
+> DepartmentSearchResultCollection get_department_searches(page=page, per_page=per_page, q=q)
+
+Search school departments with filtering and pagination
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.department_search_result_collection import DepartmentSearchResultCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_department_searches(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_department_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_department_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**DepartmentSearchResultCollection**](DepartmentSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Department search results |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_division**
 > Division get_division(division_id)
 
@@ -4218,6 +4479,90 @@ Name | Type | Description  | Notes
 **200** | Divisions were found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_financial_searches**
+> FinancialSearchResultCollection get_financial_searches(page=page, per_page=per_page, q=q)
+
+Search NCAA financial data with filtering and pagination
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.financial_search_result_collection import FinancialSearchResultCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_financial_searches(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_financial_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_financial_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**FinancialSearchResultCollection**](FinancialSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Financial search results |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4547,6 +4892,90 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Foia requests were found |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_gad_searches**
+> GadSearchResultCollection get_gad_searches(page=page, per_page=per_page, q=q)
+
+Search game contracts (GAD) with filtering and pagination
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.gad_search_result_collection import GadSearchResultCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_gad_searches(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_gad_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_gad_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**GadSearchResultCollection**](GadSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | GAD search results |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
