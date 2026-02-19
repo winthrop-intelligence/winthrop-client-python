@@ -1,4 +1,5 @@
 import json
+import threading
 import time
 from typing import Optional, List, Dict, Any
 from urllib.parse import urlencode
@@ -8,6 +9,7 @@ import urllib3
 class WinthropClient:
     class RefreshToken:
         _token_cache: Dict[str, Dict[str, Any]] = {}
+        _cache_lock = threading.Lock()
 
         TOKEN_GRANT_TYPE = "client_credentials"
         CONTENT_TYPE = "application/x-www-form-urlencoded"
@@ -19,17 +21,21 @@ class WinthropClient:
         @classmethod
         def access_token(cls, scopes: Optional[List[str]] = None) -> str:
             cache_key = cls._get_cache_key(scopes)
-            cached_token = cls._token_cache.get(cache_key)
             
-            if cached_token is None or time.time() >= cached_token["expires_at"]:
-                cls._generate_access_token(scopes)
-            
-            return cls._token_cache[cache_key]["token"]
+            with cls._cache_lock:
+                cached_token = cls._token_cache.get(cache_key)
+                
+                if cached_token is None or time.time() >= cached_token["expires_at"]:
+                    cls._generate_access_token(scopes)
+                
+                return cls._token_cache[cache_key]["token"]
 
         @classmethod
         def _get_cache_key(cls, scopes: Optional[List[str]] = None) -> str:
             if scopes is None:
                 return "no_scopes"
+            if len(scopes) == 0:
+                return "empty_scopes"
             return ",".join(sorted(scopes))
 
         @classmethod

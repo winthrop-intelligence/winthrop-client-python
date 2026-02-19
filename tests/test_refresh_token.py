@@ -287,7 +287,60 @@ class TestRefreshToken(unittest.TestCase):
         # Verify cache keys are different
         cache_key_none = WinthropClient.RefreshToken._get_cache_key(None)
         cache_key_empty = WinthropClient.RefreshToken._get_cache_key([])
+        self.assertEqual(cache_key_none, "no_scopes")
+        self.assertEqual(cache_key_empty, "empty_scopes")
         self.assertNotEqual(cache_key_none, cache_key_empty)
+
+    @patch("winthrop_client_python.refresh_token.urllib3.PoolManager")
+    @patch("winthrop_client_python.refresh_token.time.time")
+    def test_thread_safety(self, mock_time, mock_pool_manager):
+        """Test that concurrent access is thread-safe"""
+        import threading
+        
+        # Set initial time
+        mock_time.return_value = 1000.0
+        
+        # Mock the HTTP response
+        mock_response = Mock()
+        mock_response.status = 200
+        mock_response.data = json.dumps({
+            "access_token": "thread_safe_token",
+            "expires_in": 3600
+        }).encode("utf-8")
+        
+        mock_http = Mock()
+        mock_http.request.return_value = mock_response
+        mock_pool_manager.return_value = mock_http
+        
+        # Track results from threads
+        results = []
+        errors = []
+        
+        def get_token():
+            try:
+                token = WinthropClient.RefreshToken.access_token()
+                results.append(token)
+            except Exception as e:
+                errors.append(e)
+        
+        # Create multiple threads that try to get token simultaneously
+        threads = [threading.Thread(target=get_token) for _ in range(10)]
+        
+        # Start all threads
+        for thread in threads:
+            thread.start()
+        
+        # Wait for all threads to complete
+        for thread in threads:
+            thread.join()
+        
+        # Verify no errors occurred
+        self.assertEqual(len(errors), 0)
+        
+        # Verify all threads got the same token
+        self.assertEqual(len(results), 10)
+        for token in results:
+            self.assertEqual(token, "thread_safe_token")
 
 
 if __name__ == "__main__":
