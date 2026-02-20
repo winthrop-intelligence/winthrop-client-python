@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt, StrictStr
+from pydantic import Field, StrictInt, StrictStr, field_validator
 from typing import Any, Dict, List, Optional
 from typing_extensions import Annotated
 from winthrop_client_python.models.administrator import Administrator
@@ -83,12 +83,22 @@ from winthrop_client_python.models.game_contract_collection import (
 )
 from winthrop_client_python.models.game_post import GamePost
 from winthrop_client_python.models.game_post_collection import GamePostCollection
+from winthrop_client_python.models.game_post_search_result_collection import (
+    GamePostSearchResultCollection,
+)
+from winthrop_client_python.models.get_filter_options200_response import (
+    GetFilterOptions200Response,
+)
+from winthrop_client_python.models.get_lad_filter_options200_response import (
+    GetLadFilterOptions200Response,
+)
 from winthrop_client_python.models.get_school_alternate_names200_response import (
     GetSchoolAlternateNames200Response,
 )
 from winthrop_client_python.models.get_wire_changes200_response import (
     GetWireChanges200Response,
 )
+from winthrop_client_python.models.id_name import IdName
 from winthrop_client_python.models.income_report import IncomeReport
 from winthrop_client_python.models.income_report_collection import (
     IncomeReportCollection,
@@ -6799,6 +6809,12 @@ class DefaultApi:
         q: Annotated[
             Optional[Dict[str, Any]], Field(description="Ransack query")
         ] = None,
+        favorites_only: Annotated[
+            Optional[StrictStr],
+            Field(
+                description='When "1" or "true", restrict results to the current user\'s favorited administrators'
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6821,6 +6837,8 @@ class DefaultApi:
         :type per_page: int
         :param q: Ransack query
         :type q: object
+        :param favorites_only: When \"1\" or \"true\", restrict results to the current user's favorited administrators
+        :type favorites_only: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6847,6 +6865,7 @@ class DefaultApi:
             page=page,
             per_page=per_page,
             q=q,
+            favorites_only=favorites_only,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6878,6 +6897,12 @@ class DefaultApi:
         q: Annotated[
             Optional[Dict[str, Any]], Field(description="Ransack query")
         ] = None,
+        favorites_only: Annotated[
+            Optional[StrictStr],
+            Field(
+                description='When "1" or "true", restrict results to the current user\'s favorited administrators'
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6900,6 +6925,8 @@ class DefaultApi:
         :type per_page: int
         :param q: Ransack query
         :type q: object
+        :param favorites_only: When \"1\" or \"true\", restrict results to the current user's favorited administrators
+        :type favorites_only: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -6926,6 +6953,7 @@ class DefaultApi:
             page=page,
             per_page=per_page,
             q=q,
+            favorites_only=favorites_only,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -6957,6 +6985,12 @@ class DefaultApi:
         q: Annotated[
             Optional[Dict[str, Any]], Field(description="Ransack query")
         ] = None,
+        favorites_only: Annotated[
+            Optional[StrictStr],
+            Field(
+                description='When "1" or "true", restrict results to the current user\'s favorited administrators'
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -6979,6 +7013,8 @@ class DefaultApi:
         :type per_page: int
         :param q: Ransack query
         :type q: object
+        :param favorites_only: When \"1\" or \"true\", restrict results to the current user's favorited administrators
+        :type favorites_only: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7005,6 +7041,7 @@ class DefaultApi:
             page=page,
             per_page=per_page,
             q=q,
+            favorites_only=favorites_only,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7025,6 +7062,7 @@ class DefaultApi:
         page,
         per_page,
         q,
+        favorites_only,
         _request_auth,
         _content_type,
         _headers,
@@ -7057,6 +7095,10 @@ class DefaultApi:
         if q is not None:
 
             _query_params.append(("q", q))
+
+        if favorites_only is not None:
+
+            _query_params.append(("favorites_only", favorites_only))
 
         # process the header parameters
         # process the form parameters
@@ -14713,6 +14755,1060 @@ class DefaultApi:
         )
 
     @validate_call
+    def get_filter_options(
+        self,
+        context: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)"
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GetFilterOptions200Response:
+        """get_filter_options
+
+        Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
+
+        :param context: Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+        :type context: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_serialize(
+            context=context,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GetFilterOptions200Response",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_filter_options_with_http_info(
+        self,
+        context: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)"
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GetFilterOptions200Response]:
+        """get_filter_options
+
+        Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
+
+        :param context: Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+        :type context: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_serialize(
+            context=context,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GetFilterOptions200Response",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_filter_options_without_preload_content(
+        self,
+        context: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)"
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_filter_options
+
+        Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
+
+        :param context: Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+        :type context: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_serialize(
+            context=context,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GetFilterOptions200Response",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_filter_options_serialize(
+        self,
+        context,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if context is not None:
+
+            _query_params.append(("context", context))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/filter_options",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_filter_options_conferences(
+        self,
+        division_id: Optional[StrictInt] = None,
+        sport_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[IdName]:
+        """get_filter_options_conferences
+
+        Retrieve conferences filtered by division and/or sport
+
+        :param division_id:
+        :type division_id: int
+        :param sport_id:
+        :type sport_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_conferences_serialize(
+            division_id=division_id,
+            sport_id=sport_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_filter_options_conferences_with_http_info(
+        self,
+        division_id: Optional[StrictInt] = None,
+        sport_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[IdName]]:
+        """get_filter_options_conferences
+
+        Retrieve conferences filtered by division and/or sport
+
+        :param division_id:
+        :type division_id: int
+        :param sport_id:
+        :type sport_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_conferences_serialize(
+            division_id=division_id,
+            sport_id=sport_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_filter_options_conferences_without_preload_content(
+        self,
+        division_id: Optional[StrictInt] = None,
+        sport_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_filter_options_conferences
+
+        Retrieve conferences filtered by division and/or sport
+
+        :param division_id:
+        :type division_id: int
+        :param sport_id:
+        :type sport_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_conferences_serialize(
+            division_id=division_id,
+            sport_id=sport_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_filter_options_conferences_serialize(
+        self,
+        division_id,
+        sport_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if division_id is not None:
+
+            _query_params.append(("division_id", division_id))
+
+        if sport_id is not None:
+
+            _query_params.append(("sport_id", sport_id))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/filter_options/conferences",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_filter_options_schools(
+        self,
+        conference_id: Optional[StrictInt] = None,
+        division_id: Optional[StrictInt] = None,
+        sport_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[IdName]:
+        """get_filter_options_schools
+
+        Retrieve schools filtered by conference, division, and/or sport
+
+        :param conference_id:
+        :type conference_id: int
+        :param division_id:
+        :type division_id: int
+        :param sport_id:
+        :type sport_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_schools_serialize(
+            conference_id=conference_id,
+            division_id=division_id,
+            sport_id=sport_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_filter_options_schools_with_http_info(
+        self,
+        conference_id: Optional[StrictInt] = None,
+        division_id: Optional[StrictInt] = None,
+        sport_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[IdName]]:
+        """get_filter_options_schools
+
+        Retrieve schools filtered by conference, division, and/or sport
+
+        :param conference_id:
+        :type conference_id: int
+        :param division_id:
+        :type division_id: int
+        :param sport_id:
+        :type sport_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_schools_serialize(
+            conference_id=conference_id,
+            division_id=division_id,
+            sport_id=sport_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_filter_options_schools_without_preload_content(
+        self,
+        conference_id: Optional[StrictInt] = None,
+        division_id: Optional[StrictInt] = None,
+        sport_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_filter_options_schools
+
+        Retrieve schools filtered by conference, division, and/or sport
+
+        :param conference_id:
+        :type conference_id: int
+        :param division_id:
+        :type division_id: int
+        :param sport_id:
+        :type sport_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_schools_serialize(
+            conference_id=conference_id,
+            division_id=division_id,
+            sport_id=sport_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_filter_options_schools_serialize(
+        self,
+        conference_id,
+        division_id,
+        sport_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if conference_id is not None:
+
+            _query_params.append(("conference_id", conference_id))
+
+        if division_id is not None:
+
+            _query_params.append(("division_id", division_id))
+
+        if sport_id is not None:
+
+            _query_params.append(("sport_id", sport_id))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/filter_options/schools",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_filter_options_subdivisions(
+        self,
+        division_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[IdName]:
+        """get_filter_options_subdivisions
+
+        Retrieve subdivisions filtered by division
+
+        :param division_id:
+        :type division_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_subdivisions_serialize(
+            division_id=division_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_filter_options_subdivisions_with_http_info(
+        self,
+        division_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[IdName]]:
+        """get_filter_options_subdivisions
+
+        Retrieve subdivisions filtered by division
+
+        :param division_id:
+        :type division_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_subdivisions_serialize(
+            division_id=division_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_filter_options_subdivisions_without_preload_content(
+        self,
+        division_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_filter_options_subdivisions
+
+        Retrieve subdivisions filtered by division
+
+        :param division_id:
+        :type division_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_subdivisions_serialize(
+            division_id=division_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_filter_options_subdivisions_serialize(
+        self,
+        division_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if division_id is not None:
+
+            _query_params.append(("division_id", division_id))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/filter_options/subdivisions",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def get_financial_searches(
         self,
         page: Annotated[
@@ -17469,6 +18565,305 @@ class DefaultApi:
         )
 
     @validate_call
+    def get_game_post_searches(
+        self,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
+        per_page: Annotated[
+            Optional[StrictInt], Field(description="number of results per page.")
+        ] = None,
+        q: Annotated[
+            Optional[Dict[str, Any]], Field(description="Ransack query")
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GamePostSearchResultCollection:
+        """get_game_post_searches
+
+        Search game posts with enriched data including school info, location, RPI, etc.
+
+        :param page: results page to retrieve.
+        :type page: int
+        :param per_page: number of results per page.
+        :type per_page: int
+        :param q: Ransack query
+        :type q: object
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_game_post_searches_serialize(
+            page=page,
+            per_page=per_page,
+            q=q,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GamePostSearchResultCollection",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_game_post_searches_with_http_info(
+        self,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
+        per_page: Annotated[
+            Optional[StrictInt], Field(description="number of results per page.")
+        ] = None,
+        q: Annotated[
+            Optional[Dict[str, Any]], Field(description="Ransack query")
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GamePostSearchResultCollection]:
+        """get_game_post_searches
+
+        Search game posts with enriched data including school info, location, RPI, etc.
+
+        :param page: results page to retrieve.
+        :type page: int
+        :param per_page: number of results per page.
+        :type per_page: int
+        :param q: Ransack query
+        :type q: object
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_game_post_searches_serialize(
+            page=page,
+            per_page=per_page,
+            q=q,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GamePostSearchResultCollection",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_game_post_searches_without_preload_content(
+        self,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
+        per_page: Annotated[
+            Optional[StrictInt], Field(description="number of results per page.")
+        ] = None,
+        q: Annotated[
+            Optional[Dict[str, Any]], Field(description="Ransack query")
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_game_post_searches
+
+        Search game posts with enriched data including school info, location, RPI, etc.
+
+        :param page: results page to retrieve.
+        :type page: int
+        :param per_page: number of results per page.
+        :type per_page: int
+        :param q: Ransack query
+        :type q: object
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_game_post_searches_serialize(
+            page=page,
+            per_page=per_page,
+            q=q,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GamePostSearchResultCollection",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_game_post_searches_serialize(
+        self,
+        page,
+        per_page,
+        q,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if page is not None:
+
+            _query_params.append(("page", page))
+
+        if per_page is not None:
+
+            _query_params.append(("per_page", per_page))
+
+        if q is not None:
+
+            _query_params.append(("q", q))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/game_post_searches",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def get_game_posts(
         self,
         page: Annotated[
@@ -19160,6 +20555,236 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="GET",
             resource_path="/central_jobs/job_posts",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_lad_filter_options(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GetLadFilterOptions200Response:
+        """get_lad_filter_options
+
+        Retrieve filter options specific to the leader/administrator (LAD) search — position types, departments, and school groups
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_lad_filter_options_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GetLadFilterOptions200Response",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_lad_filter_options_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GetLadFilterOptions200Response]:
+        """get_lad_filter_options
+
+        Retrieve filter options specific to the leader/administrator (LAD) search — position types, departments, and school groups
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_lad_filter_options_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GetLadFilterOptions200Response",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_lad_filter_options_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_lad_filter_options
+
+        Retrieve filter options specific to the leader/administrator (LAD) search — position types, departments, and school groups
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_lad_filter_options_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GetLadFilterOptions200Response",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_lad_filter_options_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/lad_filter_options",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -22432,6 +24057,236 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="GET",
             resource_path="/api/v1/schools",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_schools_alma_mater(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[IdName]:
+        """get_schools_alma_mater
+
+        Retrieve all schools as a flat list for alma mater filtering
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_schools_alma_mater_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_schools_alma_mater_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[IdName]]:
+        """get_schools_alma_mater
+
+        Retrieve all schools as a flat list for alma mater filtering
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_schools_alma_mater_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_schools_alma_mater_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_schools_alma_mater
+
+        Retrieve all schools as a flat list for alma mater filtering
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_schools_alma_mater_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[IdName]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_schools_alma_mater_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/schools/alma_mater",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

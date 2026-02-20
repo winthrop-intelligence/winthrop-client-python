@@ -95,7 +95,17 @@ from winthrop_client_python.models.game_contract_collection import (
 )
 from winthrop_client_python.models.game_post import GamePost
 from winthrop_client_python.models.game_post_collection import GamePostCollection
+from winthrop_client_python.models.game_post_search_result import GamePostSearchResult
+from winthrop_client_python.models.game_post_search_result_collection import (
+    GamePostSearchResultCollection,
+)
 from winthrop_client_python.models.game_type import GameType
+from winthrop_client_python.models.get_filter_options200_response import (
+    GetFilterOptions200Response,
+)
+from winthrop_client_python.models.get_lad_filter_options200_response import (
+    GetLadFilterOptions200Response,
+)
 from winthrop_client_python.models.get_school_alternate_names200_response import (
     GetSchoolAlternateNames200Response,
 )
@@ -108,6 +118,7 @@ from winthrop_client_python.models.get_wire_changes200_response import (
 from winthrop_client_python.models.http_validation_error import HTTPValidationError
 from winthrop_client_python.models.health_check_failure import HealthCheckFailure
 from winthrop_client_python.models.health_check_success import HealthCheckSuccess
+from winthrop_client_python.models.id_name import IdName
 from winthrop_client_python.models.income_report import IncomeReport
 from winthrop_client_python.models.income_report_collection import (
     IncomeReportCollection,

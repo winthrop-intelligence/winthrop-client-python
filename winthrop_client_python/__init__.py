@@ -88,13 +88,18 @@ __all__ = [
     "GameContractCollection",
     "GamePost",
     "GamePostCollection",
+    "GamePostSearchResult",
+    "GamePostSearchResultCollection",
     "GameType",
+    "GetFilterOptions200Response",
+    "GetLadFilterOptions200Response",
     "GetSchoolAlternateNames200Response",
     "GetSchoolAlternateNames404Response",
     "GetWireChanges200Response",
     "HTTPValidationError",
     "HealthCheckFailure",
     "HealthCheckSuccess",
+    "IdName",
     "IncomeReport",
     "IncomeReportCollection",
     "Job",
@@ -307,7 +312,19 @@ from winthrop_client_python.models.game_post import GamePost as GamePost
 from winthrop_client_python.models.game_post_collection import (
     GamePostCollection as GamePostCollection,
 )
+from winthrop_client_python.models.game_post_search_result import (
+    GamePostSearchResult as GamePostSearchResult,
+)
+from winthrop_client_python.models.game_post_search_result_collection import (
+    GamePostSearchResultCollection as GamePostSearchResultCollection,
+)
 from winthrop_client_python.models.game_type import GameType as GameType
+from winthrop_client_python.models.get_filter_options200_response import (
+    GetFilterOptions200Response as GetFilterOptions200Response,
+)
+from winthrop_client_python.models.get_lad_filter_options200_response import (
+    GetLadFilterOptions200Response as GetLadFilterOptions200Response,
+)
 from winthrop_client_python.models.get_school_alternate_names200_response import (
     GetSchoolAlternateNames200Response as GetSchoolAlternateNames200Response,
 )
@@ -326,6 +343,7 @@ from winthrop_client_python.models.health_check_failure import (
 from winthrop_client_python.models.health_check_success import (
     HealthCheckSuccess as HealthCheckSuccess,
 )
+from winthrop_client_python.models.id_name import IdName as IdName
 from winthrop_client_python.models.income_report import IncomeReport as IncomeReport
 from winthrop_client_python.models.income_report_collection import (
     IncomeReportCollection as IncomeReportCollection,

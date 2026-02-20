@@ -150,6 +150,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_department_searches**](docs/DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches | 
 *DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 *DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
+*DefaultApi* | [**get_filter_options**](docs/DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options | 
+*DefaultApi* | [**get_filter_options_conferences**](docs/DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences | 
+*DefaultApi* | [**get_filter_options_schools**](docs/DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools | 
+*DefaultApi* | [**get_filter_options_subdivisions**](docs/DefaultApi.md#get_filter_options_subdivisions) | **GET** /api/v1/filter_options/subdivisions | 
 *DefaultApi* | [**get_financial_searches**](docs/DefaultApi.md#get_financial_searches) | **GET** /api/v1/financial_searches | 
 *DefaultApi* | [**get_foia_label**](docs/DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
@@ -160,12 +164,14 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_game_contract**](docs/DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
 *DefaultApi* | [**get_game_contracts**](docs/DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 *DefaultApi* | [**get_game_post**](docs/DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
+*DefaultApi* | [**get_game_post_searches**](docs/DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches | 
 *DefaultApi* | [**get_game_posts**](docs/DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts | 
 *DefaultApi* | [**get_games**](docs/DefaultApi.md#get_games) | **GET** /api/v1/games | 
 *DefaultApi* | [**get_income_report**](docs/DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 *DefaultApi* | [**get_income_reports**](docs/DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
 *DefaultApi* | [**get_job_post**](docs/DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
 *DefaultApi* | [**get_job_posts**](docs/DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts
+*DefaultApi* | [**get_lad_filter_options**](docs/DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options | 
 *DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
 *DefaultApi* | [**get_news_feed**](docs/DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed
@@ -178,6 +184,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
+*DefaultApi* | [**get_schools_alma_mater**](docs/DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater | 
 *DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
 *DefaultApi* | [**get_similar_coaches**](docs/DefaultApi.md#get_similar_coaches) | **GET** /api/v1/coaches/{coachId}/similar_coaches | 
@@ -287,13 +294,18 @@ Class | Method | HTTP request | Description
  - [GameContractCollection](docs/GameContractCollection.md)
  - [GamePost](docs/GamePost.md)
  - [GamePostCollection](docs/GamePostCollection.md)
+ - [GamePostSearchResult](docs/GamePostSearchResult.md)
+ - [GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
  - [GameType](docs/GameType.md)
+ - [GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
+ - [GetLadFilterOptions200Response](docs/GetLadFilterOptions200Response.md)
  - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HealthCheckFailure](docs/HealthCheckFailure.md)
  - [HealthCheckSuccess](docs/HealthCheckSuccess.md)
+ - [IdName](docs/IdName.md)
  - [IncomeReport](docs/IncomeReport.md)
  - [IncomeReportCollection](docs/IncomeReportCollection.md)
  - [Job](docs/Job.md)
