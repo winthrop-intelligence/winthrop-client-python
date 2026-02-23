@@ -151,9 +151,13 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 *DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
 *DefaultApi* | [**get_filter_options**](docs/DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options | 
+*DefaultApi* | [**get_filter_options_all_schools**](docs/DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools | 
 *DefaultApi* | [**get_filter_options_conferences**](docs/DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences | 
+*DefaultApi* | [**get_filter_options_deal_types**](docs/DefaultApi.md#get_filter_options_deal_types) | **GET** /api/v1/filter_options/deal_types | 
+*DefaultApi* | [**get_filter_options_school_groups**](docs/DefaultApi.md#get_filter_options_school_groups) | **GET** /api/v1/filter_options/school_groups | 
 *DefaultApi* | [**get_filter_options_schools**](docs/DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools | 
 *DefaultApi* | [**get_filter_options_subdivisions**](docs/DefaultApi.md#get_filter_options_subdivisions) | **GET** /api/v1/filter_options/subdivisions | 
+*DefaultApi* | [**get_filter_options_vendors**](docs/DefaultApi.md#get_filter_options_vendors) | **GET** /api/v1/filter_options/vendors | 
 *DefaultApi* | [**get_financial_searches**](docs/DefaultApi.md#get_financial_searches) | **GET** /api/v1/financial_searches | 
 *DefaultApi* | [**get_foia_label**](docs/DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 

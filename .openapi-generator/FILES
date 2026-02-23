@@ -141,11 +141,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_game_post_search_result.py
-test/test_game_post_search_result_collection.py
-test/test_get_filter_options200_response.py
-test/test_get_lad_filter_options200_response.py
-test/test_id_name.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
