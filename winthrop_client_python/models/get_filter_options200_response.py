@@ -19,6 +19,7 @@ import json
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.id_name import IdName
+from winthrop_client_python.models.sport import Sport
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -31,7 +32,7 @@ class GetFilterOptions200Response(BaseModel):
     years: Optional[List[StrictInt]] = None
     current_year: Optional[StrictInt] = None
     divisions: Optional[List[IdName]] = None
-    sports: Optional[List[IdName]] = None
+    sports: Optional[List[Sport]] = None
     position_types: Optional[List[IdName]] = None
     geo_regions: Optional[List[IdName]] = None
     gender_options: Optional[List[StrictStr]] = None
@@ -135,7 +136,7 @@ class GetFilterOptions200Response(BaseModel):
                     else None
                 ),
                 "sports": (
-                    [IdName.from_dict(_item) for _item in obj["sports"]]
+                    [Sport.from_dict(_item) for _item in obj["sports"]]
                     if obj.get("sports") is not None
                     else None
                 ),

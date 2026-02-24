@@ -28,6 +28,12 @@ from winthrop_client_python.models.average_compensation import AverageCompensati
 from winthrop_client_python.models.coli_adjusted import COLIAdjusted
 from winthrop_client_python.models.cashflow import Cashflow
 from winthrop_client_python.models.cashflow_collection import CashflowCollection
+from winthrop_client_python.models.cashflow_group_item import CashflowGroupItem
+from winthrop_client_python.models.cashflow_group_stats import CashflowGroupStats
+from winthrop_client_python.models.cashflow_groups_response import (
+    CashflowGroupsResponse,
+)
+from winthrop_client_python.models.cashflow_sport_stat import CashflowSportStat
 from winthrop_client_python.models.category import Category
 from winthrop_client_python.models.category_collection import CategoryCollection
 from winthrop_client_python.models.coach import Coach
@@ -46,7 +52,13 @@ from winthrop_client_python.models.compare_coli422_response import (
 from winthrop_client_python.models.compensation import Compensation
 from winthrop_client_python.models.compensation_collection import CompensationCollection
 from winthrop_client_python.models.conference import Conference
+from winthrop_client_python.models.conference_cashflow_stats_response import (
+    ConferenceCashflowStatsResponse,
+)
 from winthrop_client_python.models.conference_collection import ConferenceCollection
+from winthrop_client_python.models.conference_position_stats_response import (
+    ConferencePositionStatsResponse,
+)
 from winthrop_client_python.models.conferenceship import Conferenceship
 from winthrop_client_python.models.conferenceship_collection import (
     ConferenceshipCollection,
@@ -147,6 +159,7 @@ from winthrop_client_python.models.news_feed import NewsFeed
 from winthrop_client_python.models.news_feed_collection import NewsFeedCollection
 from winthrop_client_python.models.position import Position
 from winthrop_client_python.models.position_collection import PositionCollection
+from winthrop_client_python.models.position_sport_stat import PositionSportStat
 from winthrop_client_python.models.position_type import PositionType
 from winthrop_client_python.models.position_type_group import PositionTypeGroup
 from winthrop_client_python.models.predict_body import PredictBody

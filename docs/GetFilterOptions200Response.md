@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **years** | **List[int]** |  | [optional] 
 **current_year** | **int** |  | [optional] 
 **divisions** | [**List[IdName]**](IdName.md) |  | [optional] 
-**sports** | [**List[IdName]**](IdName.md) |  | [optional] 
+**sports** | [**List[Sport]**](Sport.md) |  | [optional] 
 **position_types** | [**List[IdName]**](IdName.md) |  | [optional] 
 **geo_regions** | [**List[IdName]**](IdName.md) |  | [optional] 
 **gender_options** | **List[str]** |  | [optional] 

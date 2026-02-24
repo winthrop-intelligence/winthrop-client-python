@@ -126,6 +126,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
 *DefaultApi* | [**get_cashflow**](docs/DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} | 
+*DefaultApi* | [**get_cashflow_groups**](docs/DefaultApi.md#get_cashflow_groups) | **GET** /api/v1/cashflow_groups | 
 *DefaultApi* | [**get_cashflows**](docs/DefaultApi.md#get_cashflows) | **GET** /api/v1/cashflows | 
 *DefaultApi* | [**get_categories**](docs/DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories
 *DefaultApi* | [**get_coach**](docs/DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
@@ -135,6 +136,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 *DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
 *DefaultApi* | [**get_conference**](docs/DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} | 
+*DefaultApi* | [**get_conference_cashflow_stats**](docs/DefaultApi.md#get_conference_cashflow_stats) | **GET** /api/v1/conferences/{conferenceId}/cashflow_stats | 
+*DefaultApi* | [**get_conference_position_stats**](docs/DefaultApi.md#get_conference_position_stats) | **GET** /api/v1/conferences/{conferenceId}/position_stats | 
 *DefaultApi* | [**get_conferences**](docs/DefaultApi.md#get_conferences) | **GET** /api/v1/conferences | 
 *DefaultApi* | [**get_conferenceship**](docs/DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} | 
 *DefaultApi* | [**get_conferenceships**](docs/DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships | 
@@ -251,6 +254,10 @@ Class | Method | HTTP request | Description
  - [COLIAdjusted](docs/COLIAdjusted.md)
  - [Cashflow](docs/Cashflow.md)
  - [CashflowCollection](docs/CashflowCollection.md)
+ - [CashflowGroupItem](docs/CashflowGroupItem.md)
+ - [CashflowGroupStats](docs/CashflowGroupStats.md)
+ - [CashflowGroupsResponse](docs/CashflowGroupsResponse.md)
+ - [CashflowSportStat](docs/CashflowSportStat.md)
  - [Category](docs/Category.md)
  - [CategoryCollection](docs/CategoryCollection.md)
  - [Coach](docs/Coach.md)
@@ -263,7 +270,9 @@ Class | Method | HTTP request | Description
  - [Compensation](docs/Compensation.md)
  - [CompensationCollection](docs/CompensationCollection.md)
  - [Conference](docs/Conference.md)
+ - [ConferenceCashflowStatsResponse](docs/ConferenceCashflowStatsResponse.md)
  - [ConferenceCollection](docs/ConferenceCollection.md)
+ - [ConferencePositionStatsResponse](docs/ConferencePositionStatsResponse.md)
  - [Conferenceship](docs/Conferenceship.md)
  - [ConferenceshipCollection](docs/ConferenceshipCollection.md)
  - [Contact](docs/Contact.md)
@@ -332,6 +341,7 @@ Class | Method | HTTP request | Description
  - [NewsFeedCollection](docs/NewsFeedCollection.md)
  - [Position](docs/Position.md)
  - [PositionCollection](docs/PositionCollection.md)
+ - [PositionSportStat](docs/PositionSportStat.md)
  - [PositionType](docs/PositionType.md)
  - [PositionTypeGroup](docs/PositionTypeGroup.md)
  - [PredictBody](docs/PredictBody.md)

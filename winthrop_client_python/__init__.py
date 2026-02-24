@@ -41,6 +41,10 @@ __all__ = [
     "COLIAdjusted",
     "Cashflow",
     "CashflowCollection",
+    "CashflowGroupItem",
+    "CashflowGroupStats",
+    "CashflowGroupsResponse",
+    "CashflowSportStat",
     "Category",
     "CategoryCollection",
     "Coach",
@@ -53,7 +57,9 @@ __all__ = [
     "Compensation",
     "CompensationCollection",
     "Conference",
+    "ConferenceCashflowStatsResponse",
     "ConferenceCollection",
+    "ConferencePositionStatsResponse",
     "Conferenceship",
     "ConferenceshipCollection",
     "Contact",
@@ -122,6 +128,7 @@ __all__ = [
     "NewsFeedCollection",
     "Position",
     "PositionCollection",
+    "PositionSportStat",
     "PositionType",
     "PositionTypeGroup",
     "PredictBody",
@@ -203,6 +210,18 @@ from winthrop_client_python.models.cashflow import Cashflow as Cashflow
 from winthrop_client_python.models.cashflow_collection import (
     CashflowCollection as CashflowCollection,
 )
+from winthrop_client_python.models.cashflow_group_item import (
+    CashflowGroupItem as CashflowGroupItem,
+)
+from winthrop_client_python.models.cashflow_group_stats import (
+    CashflowGroupStats as CashflowGroupStats,
+)
+from winthrop_client_python.models.cashflow_groups_response import (
+    CashflowGroupsResponse as CashflowGroupsResponse,
+)
+from winthrop_client_python.models.cashflow_sport_stat import (
+    CashflowSportStat as CashflowSportStat,
+)
 from winthrop_client_python.models.category import Category as Category
 from winthrop_client_python.models.category_collection import (
     CategoryCollection as CategoryCollection,
@@ -231,8 +250,14 @@ from winthrop_client_python.models.compensation_collection import (
     CompensationCollection as CompensationCollection,
 )
 from winthrop_client_python.models.conference import Conference as Conference
+from winthrop_client_python.models.conference_cashflow_stats_response import (
+    ConferenceCashflowStatsResponse as ConferenceCashflowStatsResponse,
+)
 from winthrop_client_python.models.conference_collection import (
     ConferenceCollection as ConferenceCollection,
+)
+from winthrop_client_python.models.conference_position_stats_response import (
+    ConferencePositionStatsResponse as ConferencePositionStatsResponse,
 )
 from winthrop_client_python.models.conferenceship import (
     Conferenceship as Conferenceship,
@@ -381,6 +406,9 @@ from winthrop_client_python.models.news_feed_collection import (
 from winthrop_client_python.models.position import Position as Position
 from winthrop_client_python.models.position_collection import (
     PositionCollection as PositionCollection,
+)
+from winthrop_client_python.models.position_sport_stat import (
+    PositionSportStat as PositionSportStat,
 )
 from winthrop_client_python.models.position_type import PositionType as PositionType
 from winthrop_client_python.models.position_type_group import (

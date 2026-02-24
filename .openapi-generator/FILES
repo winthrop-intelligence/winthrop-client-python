@@ -10,6 +10,10 @@ docs/AverageCompensation.md
 docs/COLIAdjusted.md
 docs/Cashflow.md
 docs/CashflowCollection.md
+docs/CashflowGroupItem.md
+docs/CashflowGroupStats.md
+docs/CashflowGroupsResponse.md
+docs/CashflowSportStat.md
 docs/Category.md
 docs/CategoryCollection.md
 docs/Coach.md
@@ -22,7 +26,9 @@ docs/CompareColi422Response.md
 docs/Compensation.md
 docs/CompensationCollection.md
 docs/Conference.md
+docs/ConferenceCashflowStatsResponse.md
 docs/ConferenceCollection.md
+docs/ConferencePositionStatsResponse.md
 docs/Conferenceship.md
 docs/ConferenceshipCollection.md
 docs/Contact.md
@@ -95,6 +101,7 @@ docs/NewsFeed.md
 docs/NewsFeedCollection.md
 docs/Position.md
 docs/PositionCollection.md
+docs/PositionSportStat.md
 docs/PositionType.md
 docs/PositionTypeGroup.md
 docs/PredictBody.md
@@ -141,6 +148,13 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_cashflow_group_item.py
+test/test_cashflow_group_stats.py
+test/test_cashflow_groups_response.py
+test/test_cashflow_sport_stat.py
+test/test_conference_cashflow_stats_response.py
+test/test_conference_position_stats_response.py
+test/test_position_sport_stat.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -163,6 +177,10 @@ winthrop_client_python/models/avatar.py
 winthrop_client_python/models/average_compensation.py
 winthrop_client_python/models/cashflow.py
 winthrop_client_python/models/cashflow_collection.py
+winthrop_client_python/models/cashflow_group_item.py
+winthrop_client_python/models/cashflow_group_stats.py
+winthrop_client_python/models/cashflow_groups_response.py
+winthrop_client_python/models/cashflow_sport_stat.py
 winthrop_client_python/models/category.py
 winthrop_client_python/models/category_collection.py
 winthrop_client_python/models/coach.py
@@ -176,7 +194,9 @@ winthrop_client_python/models/compare_coli422_response.py
 winthrop_client_python/models/compensation.py
 winthrop_client_python/models/compensation_collection.py
 winthrop_client_python/models/conference.py
+winthrop_client_python/models/conference_cashflow_stats_response.py
 winthrop_client_python/models/conference_collection.py
+winthrop_client_python/models/conference_position_stats_response.py
 winthrop_client_python/models/conferenceship.py
 winthrop_client_python/models/conferenceship_collection.py
 winthrop_client_python/models/contact.py
@@ -245,6 +265,7 @@ winthrop_client_python/models/news_feed.py
 winthrop_client_python/models/news_feed_collection.py
 winthrop_client_python/models/position.py
 winthrop_client_python/models/position_collection.py
+winthrop_client_python/models/position_sport_stat.py
 winthrop_client_python/models/position_type.py
 winthrop_client_python/models/position_type_group.py
 winthrop_client_python/models/predict_body.py
