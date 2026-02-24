@@ -136,8 +136,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 *DefaultApi* | [**get_compensations**](docs/DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
 *DefaultApi* | [**get_conference**](docs/DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} | 
+*DefaultApi* | [**get_conference_admin_compensation**](docs/DefaultApi.md#get_conference_admin_compensation) | **GET** /api/v1/conferences/{conferenceId}/admin_compensation | 
 *DefaultApi* | [**get_conference_cashflow_stats**](docs/DefaultApi.md#get_conference_cashflow_stats) | **GET** /api/v1/conferences/{conferenceId}/cashflow_stats | 
+*DefaultApi* | [**get_conference_department_staff**](docs/DefaultApi.md#get_conference_department_staff) | **GET** /api/v1/conferences/{conferenceId}/department_staff | 
+*DefaultApi* | [**get_conference_directors_cup**](docs/DefaultApi.md#get_conference_directors_cup) | **GET** /api/v1/conferences/{conferenceId}/directors_cup | 
 *DefaultApi* | [**get_conference_position_stats**](docs/DefaultApi.md#get_conference_position_stats) | **GET** /api/v1/conferences/{conferenceId}/position_stats | 
+*DefaultApi* | [**get_conference_sport_compensation**](docs/DefaultApi.md#get_conference_sport_compensation) | **GET** /api/v1/conferences/{conferenceId}/sport_compensation | 
 *DefaultApi* | [**get_conferences**](docs/DefaultApi.md#get_conferences) | **GET** /api/v1/conferences | 
 *DefaultApi* | [**get_conferenceship**](docs/DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} | 
 *DefaultApi* | [**get_conferenceships**](docs/DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships | 
@@ -190,6 +194,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+*DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
+*DefaultApi* | [**get_school_group_cashflow_stats**](docs/DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats | 
+*DefaultApi* | [**get_school_group_position_stats**](docs/DefaultApi.md#get_school_group_position_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/position_stats | 
+*DefaultApi* | [**get_school_group_sport_compensation**](docs/DefaultApi.md#get_school_group_sport_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/sport_compensation | 
 *DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 *DefaultApi* | [**get_schools_alma_mater**](docs/DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater | 
 *DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
@@ -198,6 +206,9 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_sport**](docs/DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} | 
 *DefaultApi* | [**get_sports**](docs/DefaultApi.md#get_sports) | **GET** /api/v1/sports | 
 *DefaultApi* | [**get_subdivision**](docs/DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} | 
+*DefaultApi* | [**get_subdivision_cashflow_stats**](docs/DefaultApi.md#get_subdivision_cashflow_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/cashflow_stats | 
+*DefaultApi* | [**get_subdivision_position_stats**](docs/DefaultApi.md#get_subdivision_position_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/position_stats | 
+*DefaultApi* | [**get_subdivision_sport_compensation**](docs/DefaultApi.md#get_subdivision_sport_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/sport_compensation | 
 *DefaultApi* | [**get_subdivisions**](docs/DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions | 
 *DefaultApi* | [**get_subscription**](docs/DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} | 
 *DefaultApi* | [**get_subscriptions**](docs/DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions | 
@@ -245,8 +256,11 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
  - [Administrator](docs/Administrator.md)
  - [AdministratorCollection](docs/AdministratorCollection.md)
+ - [AsstCoachEntry](docs/AsstCoachEntry.md)
+ - [AsstCoachSchool](docs/AsstCoachSchool.md)
  - [AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
  - [AuditedFinancialReportStatusCollection](docs/AuditedFinancialReportStatusCollection.md)
  - [Avatar](docs/Avatar.md)
@@ -269,9 +283,13 @@ Class | Method | HTTP request | Description
  - [CompareColi422Response](docs/CompareColi422Response.md)
  - [Compensation](docs/Compensation.md)
  - [CompensationCollection](docs/CompensationCollection.md)
+ - [CompensationRow](docs/CompensationRow.md)
  - [Conference](docs/Conference.md)
+ - [ConferenceAdminCompensationResponse](docs/ConferenceAdminCompensationResponse.md)
  - [ConferenceCashflowStatsResponse](docs/ConferenceCashflowStatsResponse.md)
  - [ConferenceCollection](docs/ConferenceCollection.md)
+ - [ConferenceDepartmentStaffResponse](docs/ConferenceDepartmentStaffResponse.md)
+ - [ConferenceDirectorsCupResponse](docs/ConferenceDirectorsCupResponse.md)
  - [ConferencePositionStatsResponse](docs/ConferencePositionStatsResponse.md)
  - [Conferenceship](docs/Conferenceship.md)
  - [ConferenceshipCollection](docs/ConferenceshipCollection.md)
@@ -287,6 +305,9 @@ Class | Method | HTTP request | Description
  - [DealStatusCollection](docs/DealStatusCollection.md)
  - [DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
+ - [DepartmentStaffMember](docs/DepartmentStaffMember.md)
+ - [DepartmentStaffSchool](docs/DepartmentStaffSchool.md)
+ - [DirectorsCupSchool](docs/DirectorsCupSchool.md)
  - [Division](docs/Division.md)
  - [DivisionCollection](docs/DivisionCollection.md)
  - [DossierReportResponse](docs/DossierReportResponse.md)
@@ -353,12 +374,19 @@ Class | Method | HTTP request | Description
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
+ - [SchoolGroupShow](docs/SchoolGroupShow.md)
+ - [SchoolNoComp](docs/SchoolNoComp.md)
+ - [SchoolNoSeason](docs/SchoolNoSeason.md)
  - [Scraper](docs/Scraper.md)
  - [ScraperArgDef](docs/ScraperArgDef.md)
  - [Season](docs/Season.md)
  - [SeasonCollection](docs/SeasonCollection.md)
  - [Sport](docs/Sport.md)
  - [SportCollection](docs/SportCollection.md)
+ - [SportCompensationRankings](docs/SportCompensationRankings.md)
+ - [SportCompensationRankingsSchoolsInner](docs/SportCompensationRankingsSchoolsInner.md)
+ - [SportCompensationResponse](docs/SportCompensationResponse.md)
+ - [SportCompensationSubdivision](docs/SportCompensationSubdivision.md)
  - [Subdivision](docs/Subdivision.md)
  - [SubdivisionCollection](docs/SubdivisionCollection.md)
  - [Subscription](docs/Subscription.md)

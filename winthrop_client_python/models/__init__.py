@@ -13,10 +13,15 @@ Do not edit the class manually.
 """  # noqa: E501
 
 # import models into model package
+from winthrop_client_python.models.admin_compensation_subdivision import (
+    AdminCompensationSubdivision,
+)
 from winthrop_client_python.models.administrator import Administrator
 from winthrop_client_python.models.administrator_collection import (
     AdministratorCollection,
 )
+from winthrop_client_python.models.asst_coach_entry import AsstCoachEntry
+from winthrop_client_python.models.asst_coach_school import AsstCoachSchool
 from winthrop_client_python.models.audited_financial_report_status import (
     AuditedFinancialReportStatus,
 )
@@ -51,11 +56,21 @@ from winthrop_client_python.models.compare_coli422_response import (
 )
 from winthrop_client_python.models.compensation import Compensation
 from winthrop_client_python.models.compensation_collection import CompensationCollection
+from winthrop_client_python.models.compensation_row import CompensationRow
 from winthrop_client_python.models.conference import Conference
+from winthrop_client_python.models.conference_admin_compensation_response import (
+    ConferenceAdminCompensationResponse,
+)
 from winthrop_client_python.models.conference_cashflow_stats_response import (
     ConferenceCashflowStatsResponse,
 )
 from winthrop_client_python.models.conference_collection import ConferenceCollection
+from winthrop_client_python.models.conference_department_staff_response import (
+    ConferenceDepartmentStaffResponse,
+)
+from winthrop_client_python.models.conference_directors_cup_response import (
+    ConferenceDirectorsCupResponse,
+)
 from winthrop_client_python.models.conference_position_stats_response import (
     ConferencePositionStatsResponse,
 )
@@ -81,6 +96,9 @@ from winthrop_client_python.models.department_search_result import (
 from winthrop_client_python.models.department_search_result_collection import (
     DepartmentSearchResultCollection,
 )
+from winthrop_client_python.models.department_staff_member import DepartmentStaffMember
+from winthrop_client_python.models.department_staff_school import DepartmentStaffSchool
+from winthrop_client_python.models.directors_cup_school import DirectorsCupSchool
 from winthrop_client_python.models.division import Division
 from winthrop_client_python.models.division_collection import DivisionCollection
 from winthrop_client_python.models.dossier_report_response import DossierReportResponse
@@ -173,12 +191,27 @@ from winthrop_client_python.models.requested_item_collection import (
 )
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
+from winthrop_client_python.models.school_group_show import SchoolGroupShow
+from winthrop_client_python.models.school_no_comp import SchoolNoComp
+from winthrop_client_python.models.school_no_season import SchoolNoSeason
 from winthrop_client_python.models.scraper import Scraper
 from winthrop_client_python.models.scraper_arg_def import ScraperArgDef
 from winthrop_client_python.models.season import Season
 from winthrop_client_python.models.season_collection import SeasonCollection
 from winthrop_client_python.models.sport import Sport
 from winthrop_client_python.models.sport_collection import SportCollection
+from winthrop_client_python.models.sport_compensation_rankings import (
+    SportCompensationRankings,
+)
+from winthrop_client_python.models.sport_compensation_rankings_schools_inner import (
+    SportCompensationRankingsSchoolsInner,
+)
+from winthrop_client_python.models.sport_compensation_response import (
+    SportCompensationResponse,
+)
+from winthrop_client_python.models.sport_compensation_subdivision import (
+    SportCompensationSubdivision,
+)
 from winthrop_client_python.models.subdivision import Subdivision
 from winthrop_client_python.models.subdivision_collection import SubdivisionCollection
 from winthrop_client_python.models.subscription import Subscription

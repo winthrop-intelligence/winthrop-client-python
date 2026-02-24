@@ -43,8 +43,12 @@ Method | HTTP request | Description
 [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
 [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
 [**get_conference**](DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} | 
+[**get_conference_admin_compensation**](DefaultApi.md#get_conference_admin_compensation) | **GET** /api/v1/conferences/{conferenceId}/admin_compensation | 
 [**get_conference_cashflow_stats**](DefaultApi.md#get_conference_cashflow_stats) | **GET** /api/v1/conferences/{conferenceId}/cashflow_stats | 
+[**get_conference_department_staff**](DefaultApi.md#get_conference_department_staff) | **GET** /api/v1/conferences/{conferenceId}/department_staff | 
+[**get_conference_directors_cup**](DefaultApi.md#get_conference_directors_cup) | **GET** /api/v1/conferences/{conferenceId}/directors_cup | 
 [**get_conference_position_stats**](DefaultApi.md#get_conference_position_stats) | **GET** /api/v1/conferences/{conferenceId}/position_stats | 
+[**get_conference_sport_compensation**](DefaultApi.md#get_conference_sport_compensation) | **GET** /api/v1/conferences/{conferenceId}/sport_compensation | 
 [**get_conferences**](DefaultApi.md#get_conferences) | **GET** /api/v1/conferences | 
 [**get_conferenceship**](DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} | 
 [**get_conferenceships**](DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships | 
@@ -97,6 +101,10 @@ Method | HTTP request | Description
 [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+[**get_school_group**](DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
+[**get_school_group_cashflow_stats**](DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats | 
+[**get_school_group_position_stats**](DefaultApi.md#get_school_group_position_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/position_stats | 
+[**get_school_group_sport_compensation**](DefaultApi.md#get_school_group_sport_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/sport_compensation | 
 [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 [**get_schools_alma_mater**](DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater | 
 [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
@@ -105,6 +113,9 @@ Method | HTTP request | Description
 [**get_sport**](DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} | 
 [**get_sports**](DefaultApi.md#get_sports) | **GET** /api/v1/sports | 
 [**get_subdivision**](DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} | 
+[**get_subdivision_cashflow_stats**](DefaultApi.md#get_subdivision_cashflow_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/cashflow_stats | 
+[**get_subdivision_position_stats**](DefaultApi.md#get_subdivision_position_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/position_stats | 
+[**get_subdivision_sport_compensation**](DefaultApi.md#get_subdivision_sport_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/sport_compensation | 
 [**get_subdivisions**](DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions | 
 [**get_subscription**](DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} | 
 [**get_subscriptions**](DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions | 
@@ -3328,6 +3339,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_conference_admin_compensation**
+> ConferenceAdminCompensationResponse get_conference_admin_compensation(conference_id, year=year)
+
+Retrieve athletic director compensation table for a conference
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.conference_admin_compensation_response import ConferenceAdminCompensationResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    conference_id = 56 # int | ID of the Conference
+    year = 56 # int | Season year (optional)
+
+    try:
+        api_response = api_instance.get_conference_admin_compensation(conference_id, year=year)
+        print("The response of DefaultApi->get_conference_admin_compensation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_conference_admin_compensation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conference_id** | **int**| ID of the Conference | 
+ **year** | **int**| Season year | [optional] 
+
+### Return type
+
+[**ConferenceAdminCompensationResponse**](ConferenceAdminCompensationResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Admin compensation data was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_conference_cashflow_stats**
 > ConferenceCashflowStatsResponse get_conference_cashflow_stats(conference_id, group_ids=group_ids, year=year)
 
@@ -3413,6 +3507,172 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_conference_department_staff**
+> ConferenceDepartmentStaffResponse get_conference_department_staff(conference_id, year=year, department_id=department_id)
+
+Retrieve department staff compensation for a conference
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.conference_department_staff_response import ConferenceDepartmentStaffResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    conference_id = 56 # int | ID of the Conference
+    year = 56 # int | Season year (optional)
+    department_id = 56 # int | ID of the department PositionType to filter by (optional)
+
+    try:
+        api_response = api_instance.get_conference_department_staff(conference_id, year=year, department_id=department_id)
+        print("The response of DefaultApi->get_conference_department_staff:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_conference_department_staff: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conference_id** | **int**| ID of the Conference | 
+ **year** | **int**| Season year | [optional] 
+ **department_id** | **int**| ID of the department PositionType to filter by | [optional] 
+
+### Return type
+
+[**ConferenceDepartmentStaffResponse**](ConferenceDepartmentStaffResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Department staff data was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_conference_directors_cup**
+> ConferenceDirectorsCupResponse get_conference_directors_cup(conference_id)
+
+Retrieve Directors Cup rankings for schools in a conference
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.conference_directors_cup_response import ConferenceDirectorsCupResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    conference_id = 56 # int | ID of the Conference
+
+    try:
+        api_response = api_instance.get_conference_directors_cup(conference_id)
+        print("The response of DefaultApi->get_conference_directors_cup:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_conference_directors_cup: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conference_id** | **int**| ID of the Conference | 
+
+### Return type
+
+[**ConferenceDirectorsCupResponse**](ConferenceDirectorsCupResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Directors Cup data was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_conference_position_stats**
 > ConferencePositionStatsResponse get_conference_position_stats(conference_id, year=year)
 
@@ -3491,6 +3751,91 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Conference position stats were found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_conference_sport_compensation**
+> SportCompensationResponse get_conference_sport_compensation(conference_id, sport_id, year=year)
+
+Retrieve head coach compensation table for a conference sport
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.sport_compensation_response import SportCompensationResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    conference_id = 56 # int | ID of the Conference
+    sport_id = 56 # int | ID of the Sport
+    year = 56 # int | Season year (optional)
+
+    try:
+        api_response = api_instance.get_conference_sport_compensation(conference_id, sport_id, year=year)
+        print("The response of DefaultApi->get_conference_sport_compensation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_conference_sport_compensation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conference_id** | **int**| ID of the Conference | 
+ **sport_id** | **int**| ID of the Sport | 
+ **year** | **int**| Season year | [optional] 
+
+### Return type
+
+[**SportCompensationResponse**](SportCompensationResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sport compensation data was found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
 
@@ -7772,6 +8117,340 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_school_group**
+> SchoolGroupShow get_school_group(school_group_id)
+
+Retrieve a single School Group
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.school_group_show import SchoolGroupShow
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_group_id = 56 # int | ID of the School Group
+
+    try:
+        api_response = api_instance.get_school_group(school_group_id)
+        print("The response of DefaultApi->get_school_group:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_school_group: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_group_id** | **int**| ID of the School Group | 
+
+### Return type
+
+[**SchoolGroupShow**](SchoolGroupShow.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | School Group was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_school_group_cashflow_stats**
+> ConferenceCashflowStatsResponse get_school_group_cashflow_stats(school_group_id, group_ids=group_ids, year=year)
+
+Retrieve aggregated cashflow stats for a custom school group
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.conference_cashflow_stats_response import ConferenceCashflowStatsResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_group_id = 56 # int | ID of the School Group
+    group_ids = [56] # List[int] | Array of cashflow group IDs to include (optional)
+    year = 56 # int | Financial year (optional)
+
+    try:
+        api_response = api_instance.get_school_group_cashflow_stats(school_group_id, group_ids=group_ids, year=year)
+        print("The response of DefaultApi->get_school_group_cashflow_stats:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_school_group_cashflow_stats: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_group_id** | **int**| ID of the School Group | 
+ **group_ids** | [**List[int]**](int.md)| Array of cashflow group IDs to include | [optional] 
+ **year** | **int**| Financial year | [optional] 
+
+### Return type
+
+[**ConferenceCashflowStatsResponse**](ConferenceCashflowStatsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | School group cashflow stats were found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_school_group_position_stats**
+> ConferencePositionStatsResponse get_school_group_position_stats(school_group_id, year=year)
+
+Retrieve aggregated assistant coach position stats for a custom school group
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.conference_position_stats_response import ConferencePositionStatsResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_group_id = 56 # int | ID of the School Group
+    year = 56 # int | Season year (optional)
+
+    try:
+        api_response = api_instance.get_school_group_position_stats(school_group_id, year=year)
+        print("The response of DefaultApi->get_school_group_position_stats:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_school_group_position_stats: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_group_id** | **int**| ID of the School Group | 
+ **year** | **int**| Season year | [optional] 
+
+### Return type
+
+[**ConferencePositionStatsResponse**](ConferencePositionStatsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | School group position stats were found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_school_group_sport_compensation**
+> SportCompensationResponse get_school_group_sport_compensation(school_group_id, sport_id, year=year)
+
+Retrieve head coach compensation table for a custom school group sport
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.sport_compensation_response import SportCompensationResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_group_id = 56 # int | ID of the School Group
+    sport_id = 56 # int | ID of the Sport
+    year = 56 # int | Season year (optional)
+
+    try:
+        api_response = api_instance.get_school_group_sport_compensation(school_group_id, sport_id, year=year)
+        print("The response of DefaultApi->get_school_group_sport_compensation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_school_group_sport_compensation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_group_id** | **int**| ID of the School Group | 
+ **sport_id** | **int**| ID of the Sport | 
+ **year** | **int**| Season year | [optional] 
+
+### Return type
+
+[**SportCompensationResponse**](SportCompensationResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sport compensation data was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_schools**
 > SchoolCollection get_schools(page=page, per_page=per_page, q=q)
 
@@ -8425,6 +9104,259 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Subdivision was found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_subdivision_cashflow_stats**
+> ConferenceCashflowStatsResponse get_subdivision_cashflow_stats(subdivision_id, group_ids=group_ids, year=year)
+
+Retrieve aggregated cashflow stats for a subdivision
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.conference_cashflow_stats_response import ConferenceCashflowStatsResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subdivision_id = 56 # int | ID of the Subdivision
+    group_ids = [56] # List[int] | Array of cashflow group IDs to include (optional)
+    year = 56 # int | Financial year (optional)
+
+    try:
+        api_response = api_instance.get_subdivision_cashflow_stats(subdivision_id, group_ids=group_ids, year=year)
+        print("The response of DefaultApi->get_subdivision_cashflow_stats:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_subdivision_cashflow_stats: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subdivision_id** | **int**| ID of the Subdivision | 
+ **group_ids** | [**List[int]**](int.md)| Array of cashflow group IDs to include | [optional] 
+ **year** | **int**| Financial year | [optional] 
+
+### Return type
+
+[**ConferenceCashflowStatsResponse**](ConferenceCashflowStatsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Subdivision cashflow stats were found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_subdivision_position_stats**
+> ConferencePositionStatsResponse get_subdivision_position_stats(subdivision_id, year=year)
+
+Retrieve aggregated assistant coach position stats for a subdivision
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.conference_position_stats_response import ConferencePositionStatsResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subdivision_id = 56 # int | ID of the Subdivision
+    year = 56 # int | Season year (optional)
+
+    try:
+        api_response = api_instance.get_subdivision_position_stats(subdivision_id, year=year)
+        print("The response of DefaultApi->get_subdivision_position_stats:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_subdivision_position_stats: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subdivision_id** | **int**| ID of the Subdivision | 
+ **year** | **int**| Season year | [optional] 
+
+### Return type
+
+[**ConferencePositionStatsResponse**](ConferencePositionStatsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Subdivision position stats were found |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_subdivision_sport_compensation**
+> SportCompensationResponse get_subdivision_sport_compensation(subdivision_id, sport_id, year=year)
+
+Retrieve head coach compensation table for a subdivision sport
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.sport_compensation_response import SportCompensationResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subdivision_id = 56 # int | ID of the Subdivision
+    sport_id = 56 # int | ID of the Sport
+    year = 56 # int | Season year (optional)
+
+    try:
+        api_response = api_instance.get_subdivision_sport_compensation(subdivision_id, sport_id, year=year)
+        print("The response of DefaultApi->get_subdivision_sport_compensation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_subdivision_sport_compensation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subdivision_id** | **int**| ID of the Subdivision | 
+ **sport_id** | **int**| ID of the Sport | 
+ **year** | **int**| Season year | [optional] 
+
+### Return type
+
+[**SportCompensationResponse**](SportCompensationResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Sport compensation data was found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
 
