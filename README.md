@@ -195,7 +195,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
+*DefaultApi* | [**get_school_group_admin_compensation**](docs/DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation | 
 *DefaultApi* | [**get_school_group_cashflow_stats**](docs/DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats | 
+*DefaultApi* | [**get_school_group_department_staff**](docs/DefaultApi.md#get_school_group_department_staff) | **GET** /api/v1/school_groups/{schoolGroupId}/department_staff | 
+*DefaultApi* | [**get_school_group_directors_cup**](docs/DefaultApi.md#get_school_group_directors_cup) | **GET** /api/v1/school_groups/{schoolGroupId}/directors_cup | 
 *DefaultApi* | [**get_school_group_position_stats**](docs/DefaultApi.md#get_school_group_position_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/position_stats | 
 *DefaultApi* | [**get_school_group_sport_compensation**](docs/DefaultApi.md#get_school_group_sport_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/sport_compensation | 
 *DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
@@ -206,7 +209,10 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_sport**](docs/DefaultApi.md#get_sport) | **GET** /api/v1/sports/{sportId} | 
 *DefaultApi* | [**get_sports**](docs/DefaultApi.md#get_sports) | **GET** /api/v1/sports | 
 *DefaultApi* | [**get_subdivision**](docs/DefaultApi.md#get_subdivision) | **GET** /api/v1/subdivisions/{subdivisionId} | 
+*DefaultApi* | [**get_subdivision_admin_compensation**](docs/DefaultApi.md#get_subdivision_admin_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/admin_compensation | 
 *DefaultApi* | [**get_subdivision_cashflow_stats**](docs/DefaultApi.md#get_subdivision_cashflow_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/cashflow_stats | 
+*DefaultApi* | [**get_subdivision_department_staff**](docs/DefaultApi.md#get_subdivision_department_staff) | **GET** /api/v1/subdivisions/{subdivisionId}/department_staff | 
+*DefaultApi* | [**get_subdivision_directors_cup**](docs/DefaultApi.md#get_subdivision_directors_cup) | **GET** /api/v1/subdivisions/{subdivisionId}/directors_cup | 
 *DefaultApi* | [**get_subdivision_position_stats**](docs/DefaultApi.md#get_subdivision_position_stats) | **GET** /api/v1/subdivisions/{subdivisionId}/position_stats | 
 *DefaultApi* | [**get_subdivision_sport_compensation**](docs/DefaultApi.md#get_subdivision_sport_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/sport_compensation | 
 *DefaultApi* | [**get_subdivisions**](docs/DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions | 
