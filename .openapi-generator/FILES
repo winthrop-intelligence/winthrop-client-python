@@ -136,17 +136,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_coach_search_result.py
-test/test_coach_search_result_collection.py
-test/test_deal_search_result.py
-test/test_deal_search_result_collection.py
-test/test_department_search_result.py
-test/test_department_search_result_collection.py
-test/test_financial_search_result.py
-test/test_financial_search_result_collection.py
-test/test_gad_search_result.py
-test/test_gad_search_result_collection.py
-test/test_gad_search_stats.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
