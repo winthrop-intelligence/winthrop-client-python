@@ -42,6 +42,8 @@ docs/Contact.md
 docs/ContactCollection.md
 docs/Contract.md
 docs/ContractCollection.md
+docs/CreateFavorite201Response.md
+docs/CreateFavoriteRequest.md
 docs/Deal.md
 docs/DealCollection.md
 docs/DealSearchResult.md
@@ -49,6 +51,7 @@ docs/DealSearchResultCollection.md
 docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
+docs/DeleteFavorite200Response.md
 docs/DepartmentSearchResult.md
 docs/DepartmentSearchResultCollection.md
 docs/DepartmentStaffMember.md
@@ -165,6 +168,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_create_favorite201_response.py
+test/test_create_favorite_request.py
+test/test_delete_favorite200_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -220,12 +226,15 @@ winthrop_client_python/models/contact.py
 winthrop_client_python/models/contact_collection.py
 winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
+winthrop_client_python/models/create_favorite201_response.py
+winthrop_client_python/models/create_favorite_request.py
 winthrop_client_python/models/deal.py
 winthrop_client_python/models/deal_collection.py
 winthrop_client_python/models/deal_search_result.py
 winthrop_client_python/models/deal_search_result_collection.py
 winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
+winthrop_client_python/models/delete_favorite200_response.py
 winthrop_client_python/models/department_search_result.py
 winthrop_client_python/models/department_search_result_collection.py
 winthrop_client_python/models/department_staff_member.py
