@@ -267,6 +267,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
+ - [AdminMeta](docs/AdminMeta.md)
+ - [AdminMetaCompStats](docs/AdminMetaCompStats.md)
  - [Administrator](docs/Administrator.md)
  - [AdministratorCollection](docs/AdministratorCollection.md)
  - [AsstCoachEntry](docs/AsstCoachEntry.md)
@@ -346,6 +348,7 @@ Class | Method | HTTP request | Description
  - [GameType](docs/GameType.md)
  - [GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
  - [GetLadFilterOptions200Response](docs/GetLadFilterOptions200Response.md)
+ - [GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
  - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)

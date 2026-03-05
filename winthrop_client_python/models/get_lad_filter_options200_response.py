@@ -18,6 +18,9 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.get_lad_filter_options200_response_position_types_inner import (
+    GetLadFilterOptions200ResponsePositionTypesInner,
+)
 from winthrop_client_python.models.id_name import IdName
 from typing import Optional, Set
 from typing_extensions import Self
@@ -28,7 +31,9 @@ class GetLadFilterOptions200Response(BaseModel):
     GetLadFilterOptions200Response
     """  # noqa: E501
 
-    position_types: Optional[List[IdName]] = None
+    position_types: Optional[List[GetLadFilterOptions200ResponsePositionTypesInner]] = (
+        None
+    )
     departments: Optional[List[IdName]] = None
     school_groups: Optional[List[IdName]] = None
     __properties: ClassVar[List[str]] = [
@@ -109,7 +114,12 @@ class GetLadFilterOptions200Response(BaseModel):
         _obj = cls.model_validate(
             {
                 "position_types": (
-                    [IdName.from_dict(_item) for _item in obj["position_types"]]
+                    [
+                        GetLadFilterOptions200ResponsePositionTypesInner.from_dict(
+                            _item
+                        )
+                        for _item in obj["position_types"]
+                    ]
                     if obj.get("position_types") is not None
                     else None
                 ),

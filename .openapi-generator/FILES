@@ -2,6 +2,8 @@
 .travis.yml
 README.md
 docs/AdminCompensationSubdivision.md
+docs/AdminMeta.md
+docs/AdminMetaCompStats.md
 docs/Administrator.md
 docs/AdministratorCollection.md
 docs/AsstCoachEntry.md
@@ -83,6 +85,7 @@ docs/GamePostSearchResultCollection.md
 docs/GameType.md
 docs/GetFilterOptions200Response.md
 docs/GetLadFilterOptions200Response.md
+docs/GetLadFilterOptions200ResponsePositionTypesInner.md
 docs/GetSchoolAlternateNames200Response.md
 docs/GetSchoolAlternateNames404Response.md
 docs/GetWireChanges200Response.md
@@ -168,9 +171,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_favorite201_response.py
-test/test_create_favorite_request.py
-test/test_delete_favorite200_response.py
+test/test_admin_meta.py
+test/test_admin_meta_comp_stats.py
+test/test_get_lad_filter_options200_response_position_types_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -186,6 +189,8 @@ winthrop_client_python/configuration.py
 winthrop_client_python/exceptions.py
 winthrop_client_python/models/__init__.py
 winthrop_client_python/models/admin_compensation_subdivision.py
+winthrop_client_python/models/admin_meta.py
+winthrop_client_python/models/admin_meta_comp_stats.py
 winthrop_client_python/models/administrator.py
 winthrop_client_python/models/administrator_collection.py
 winthrop_client_python/models/asst_coach_entry.py
@@ -265,6 +270,7 @@ winthrop_client_python/models/game_post_search_result_collection.py
 winthrop_client_python/models/game_type.py
 winthrop_client_python/models/get_filter_options200_response.py
 winthrop_client_python/models/get_lad_filter_options200_response.py
+winthrop_client_python/models/get_lad_filter_options200_response_position_types_inner.py
 winthrop_client_python/models/get_school_alternate_names200_response.py
 winthrop_client_python/models/get_school_alternate_names404_response.py
 winthrop_client_python/models/get_wire_changes200_response.py

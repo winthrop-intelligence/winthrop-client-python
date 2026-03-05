@@ -16,22 +16,32 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.admin_meta import AdminMeta
-from winthrop_client_python.models.administrator import Administrator
+from winthrop_client_python.models.admin_meta_comp_stats import AdminMetaCompStats
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class AdministratorCollection(BaseModel):
+class AdminMeta(BaseModel):
     """
-    AdministratorCollection
+    AdminMeta
     """  # noqa: E501
 
-    data: Optional[List[Administrator]] = None
-    meta: Optional[AdminMeta] = None
-    __properties: ClassVar[List[str]] = ["data", "meta"]
+    current_page: Optional[StrictInt] = None
+    total_pages: Optional[StrictInt] = None
+    total_entries: Optional[StrictInt] = None
+    next_page: Optional[StrictInt] = None
+    previous_page: Optional[StrictInt] = None
+    comp_stats: Optional[AdminMetaCompStats] = None
+    __properties: ClassVar[List[str]] = [
+        "current_page",
+        "total_pages",
+        "total_entries",
+        "next_page",
+        "previous_page",
+        "comp_stats",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +60,7 @@ class AdministratorCollection(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AdministratorCollection from a JSON string"""
+        """Create an instance of AdminMeta from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,21 +80,14 @@ class AdministratorCollection(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict["data"] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict["meta"] = self.meta.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of comp_stats
+        if self.comp_stats:
+            _dict["comp_stats"] = self.comp_stats.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AdministratorCollection from a dict"""
+        """Create an instance of AdminMeta from a dict"""
         if obj is None:
             return None
 
@@ -93,14 +96,14 @@ class AdministratorCollection(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "data": (
-                    [Administrator.from_dict(_item) for _item in obj["data"]]
-                    if obj.get("data") is not None
-                    else None
-                ),
-                "meta": (
-                    AdminMeta.from_dict(obj["meta"])
-                    if obj.get("meta") is not None
+                "current_page": obj.get("current_page"),
+                "total_pages": obj.get("total_pages"),
+                "total_entries": obj.get("total_entries"),
+                "next_page": obj.get("next_page"),
+                "previous_page": obj.get("previous_page"),
+                "comp_stats": (
+                    AdminMetaCompStats.from_dict(obj["comp_stats"])
+                    if obj.get("comp_stats") is not None
                     else None
                 ),
             }

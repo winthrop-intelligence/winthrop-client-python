@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**position_types** | [**List[IdName]**](IdName.md) |  | [optional] 
+**position_types** | [**List[GetLadFilterOptions200ResponsePositionTypesInner]**](GetLadFilterOptions200ResponsePositionTypesInner.md) |  | [optional] 
 **departments** | [**List[IdName]**](IdName.md) |  | [optional] 
 **school_groups** | [**List[IdName]**](IdName.md) |  | [optional] 
 

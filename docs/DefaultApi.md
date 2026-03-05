@@ -2350,7 +2350,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_administrators**
-> AdministratorCollection get_administrators(page=page, per_page=per_page, q=q, favorites_only=favorites_only)
+> AdministratorCollection get_administrators(page=page, per_page=per_page, q=q, favorites_only=favorites_only, contract_expires_on=contract_expires_on)
 
 Retrieve some or all administrators
 
@@ -2392,9 +2392,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
     favorites_only = 'favorites_only_example' # str | When \"1\" or \"true\", restrict results to the current user's favorited administrators (optional)
+    contract_expires_on = 'contract_expires_on_example' # str | Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\" (optional)
 
     try:
-        api_response = api_instance.get_administrators(page=page, per_page=per_page, q=q, favorites_only=favorites_only)
+        api_response = api_instance.get_administrators(page=page, per_page=per_page, q=q, favorites_only=favorites_only, contract_expires_on=contract_expires_on)
         print("The response of DefaultApi->get_administrators:\n")
         pprint(api_response)
     except Exception as e:
@@ -2412,6 +2413,7 @@ Name | Type | Description  | Notes
  **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
  **favorites_only** | **str**| When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators | [optional] 
+ **contract_expires_on** | **str**| Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot; | [optional] 
 
 ### Return type
 

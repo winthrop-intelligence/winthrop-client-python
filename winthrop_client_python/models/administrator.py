@@ -73,6 +73,7 @@ class Administrator(BaseModel):
     raw_contract_id: Optional[StrictInt] = None
     contract_starts_on: Optional[date] = None
     contract_expires_on: Optional[date] = None
+    contract_at_will: Optional[StrictBool] = None
     diversity: Optional[StrictBool] = None
     gender: Optional[StrictStr] = None
     alma_mater_id: Optional[StrictInt] = None
@@ -118,6 +119,7 @@ class Administrator(BaseModel):
         "raw_contract_id",
         "contract_starts_on",
         "contract_expires_on",
+        "contract_at_will",
         "diversity",
         "gender",
         "alma_mater_id",
@@ -258,6 +260,7 @@ class Administrator(BaseModel):
                 "raw_contract_id": obj.get("raw_contract_id"),
                 "contract_starts_on": obj.get("contract_starts_on"),
                 "contract_expires_on": obj.get("contract_expires_on"),
+                "contract_at_will": obj.get("contract_at_will"),
                 "diversity": obj.get("diversity"),
                 "gender": obj.get("gender"),
                 "alma_mater_id": obj.get("alma_mater_id"),

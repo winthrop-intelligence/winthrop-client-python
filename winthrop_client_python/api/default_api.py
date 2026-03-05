@@ -7376,6 +7376,12 @@ class DefaultApi:
                 description='When "1" or "true", restrict results to the current user\'s favorited administrators'
             ),
         ] = None,
+        contract_expires_on: Annotated[
+            Optional[StrictStr],
+            Field(
+                description='Filter by contract expiration. Use "expired" or a date range like "2025-01-01..2025-12-31"'
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7400,6 +7406,8 @@ class DefaultApi:
         :type q: object
         :param favorites_only: When \"1\" or \"true\", restrict results to the current user's favorited administrators
         :type favorites_only: str
+        :param contract_expires_on: Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\"
+        :type contract_expires_on: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7427,6 +7435,7 @@ class DefaultApi:
             per_page=per_page,
             q=q,
             favorites_only=favorites_only,
+            contract_expires_on=contract_expires_on,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7464,6 +7473,12 @@ class DefaultApi:
                 description='When "1" or "true", restrict results to the current user\'s favorited administrators'
             ),
         ] = None,
+        contract_expires_on: Annotated[
+            Optional[StrictStr],
+            Field(
+                description='Filter by contract expiration. Use "expired" or a date range like "2025-01-01..2025-12-31"'
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7488,6 +7503,8 @@ class DefaultApi:
         :type q: object
         :param favorites_only: When \"1\" or \"true\", restrict results to the current user's favorited administrators
         :type favorites_only: str
+        :param contract_expires_on: Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\"
+        :type contract_expires_on: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7515,6 +7532,7 @@ class DefaultApi:
             per_page=per_page,
             q=q,
             favorites_only=favorites_only,
+            contract_expires_on=contract_expires_on,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7552,6 +7570,12 @@ class DefaultApi:
                 description='When "1" or "true", restrict results to the current user\'s favorited administrators'
             ),
         ] = None,
+        contract_expires_on: Annotated[
+            Optional[StrictStr],
+            Field(
+                description='Filter by contract expiration. Use "expired" or a date range like "2025-01-01..2025-12-31"'
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -7576,6 +7600,8 @@ class DefaultApi:
         :type q: object
         :param favorites_only: When \"1\" or \"true\", restrict results to the current user's favorited administrators
         :type favorites_only: str
+        :param contract_expires_on: Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\"
+        :type contract_expires_on: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -7603,6 +7629,7 @@ class DefaultApi:
             per_page=per_page,
             q=q,
             favorites_only=favorites_only,
+            contract_expires_on=contract_expires_on,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -7624,6 +7651,7 @@ class DefaultApi:
         per_page,
         q,
         favorites_only,
+        contract_expires_on,
         _request_auth,
         _content_type,
         _headers,
@@ -7660,6 +7688,10 @@ class DefaultApi:
         if favorites_only is not None:
 
             _query_params.append(("favorites_only", favorites_only))
+
+        if contract_expires_on is not None:
+
+            _query_params.append(("contract_expires_on", contract_expires_on))
 
         # process the header parameters
         # process the form parameters

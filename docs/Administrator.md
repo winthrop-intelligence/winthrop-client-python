@@ -41,6 +41,7 @@ Name | Type | Description | Notes
 **raw_contract_id** | **int** |  | [optional] 
 **contract_starts_on** | **date** |  | [optional] 
 **contract_expires_on** | **date** |  | [optional] 
+**contract_at_will** | **bool** |  | [optional] 
 **diversity** | **bool** |  | [optional] 
 **gender** | **str** |  | [optional] 
 **alma_mater_id** | **int** |  | [optional] 
