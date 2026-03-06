@@ -19,19 +19,21 @@ import json
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.administrator import Administrator
+from winthrop_client_python.models.comp_stats import CompStats
 from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class AdministratorCollection(BaseModel):
+class AdministratorSearchResultCollection(BaseModel):
     """
-    AdministratorCollection
+    AdministratorSearchResultCollection
     """  # noqa: E501
 
     data: Optional[List[Administrator]] = None
     meta: Optional[Meta] = None
-    __properties: ClassVar[List[str]] = ["data", "meta"]
+    comp_stats: Optional[CompStats] = None
+    __properties: ClassVar[List[str]] = ["data", "meta", "comp_stats"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +52,7 @@ class AdministratorCollection(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AdministratorCollection from a JSON string"""
+        """Create an instance of AdministratorSearchResultCollection from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,11 +82,14 @@ class AdministratorCollection(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of meta
         if self.meta:
             _dict["meta"] = self.meta.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of comp_stats
+        if self.comp_stats:
+            _dict["comp_stats"] = self.comp_stats.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AdministratorCollection from a dict"""
+        """Create an instance of AdministratorSearchResultCollection from a dict"""
         if obj is None:
             return None
 
@@ -100,6 +105,11 @@ class AdministratorCollection(BaseModel):
                 ),
                 "meta": (
                     Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+                ),
+                "comp_stats": (
+                    CompStats.from_dict(obj["comp_stats"])
+                    if obj.get("comp_stats") is not None
+                    else None
                 ),
             }
         )

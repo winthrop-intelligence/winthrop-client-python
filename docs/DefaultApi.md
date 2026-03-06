@@ -31,6 +31,7 @@ Method | HTTP request | Description
 [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
+[**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
 [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
@@ -2349,8 +2350,96 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_administrator_searches**
+> AdministratorSearchResultCollection get_administrator_searches(page=page, per_page=per_page, q=q, favorites_only=favorites_only, contract_expires_on=contract_expires_on)
+
+Search administrators with filtering, pagination, and comp stats (React UI endpoint)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.administrator_search_result_collection import AdministratorSearchResultCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    q = None # object | Ransack query (optional)
+    favorites_only = 'favorites_only_example' # str | When \"1\" or \"true\", restrict results to the current user's favorited administrators (optional)
+    contract_expires_on = 'contract_expires_on_example' # str | Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\" (optional)
+
+    try:
+        api_response = api_instance.get_administrator_searches(page=page, per_page=per_page, q=q, favorites_only=favorites_only, contract_expires_on=contract_expires_on)
+        print("The response of DefaultApi->get_administrator_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_administrator_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query | [optional] 
+ **favorites_only** | **str**| When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators | [optional] 
+ **contract_expires_on** | **str**| Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot; | [optional] 
+
+### Return type
+
+[**AdministratorSearchResultCollection**](AdministratorSearchResultCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Administrator search results |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_administrators**
-> AdministratorCollection get_administrators(page=page, per_page=per_page, q=q, favorites_only=favorites_only, contract_expires_on=contract_expires_on)
+> AdministratorCollection get_administrators(page=page, per_page=per_page, q=q)
 
 Retrieve some or all administrators
 
@@ -2391,11 +2480,9 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     page = 1 # int | results page to retrieve. (optional) (default to 1)
     per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
-    favorites_only = 'favorites_only_example' # str | When \"1\" or \"true\", restrict results to the current user's favorited administrators (optional)
-    contract_expires_on = 'contract_expires_on_example' # str | Filter by contract expiration. Use \"expired\" or a date range like \"2025-01-01..2025-12-31\" (optional)
 
     try:
-        api_response = api_instance.get_administrators(page=page, per_page=per_page, q=q, favorites_only=favorites_only, contract_expires_on=contract_expires_on)
+        api_response = api_instance.get_administrators(page=page, per_page=per_page, q=q)
         print("The response of DefaultApi->get_administrators:\n")
         pprint(api_response)
     except Exception as e:
@@ -2412,8 +2499,6 @@ Name | Type | Description  | Notes
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
  **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
- **favorites_only** | **str**| When \&quot;1\&quot; or \&quot;true\&quot;, restrict results to the current user&#39;s favorited administrators | [optional] 
- **contract_expires_on** | **str**| Filter by contract expiration. Use \&quot;expired\&quot; or a date range like \&quot;2025-01-01..2025-12-31\&quot; | [optional] 
 
 ### Return type
 

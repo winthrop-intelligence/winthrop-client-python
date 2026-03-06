@@ -33,10 +33,9 @@ __all__ = [
     "ApiAttributeError",
     "ApiException",
     "AdminCompensationSubdivision",
-    "AdminMeta",
-    "AdminMetaCompStats",
     "Administrator",
     "AdministratorCollection",
+    "AdministratorSearchResultCollection",
     "AsstCoachEntry",
     "AsstCoachSchool",
     "AuditedFinancialReportStatus",
@@ -57,6 +56,7 @@ __all__ = [
     "CoachCompensation",
     "CoachSearchResult",
     "CoachSearchResultCollection",
+    "CompStats",
     "CompareColi404Response",
     "CompareColi422Response",
     "Compensation",
@@ -217,13 +217,12 @@ from winthrop_client_python.exceptions import ApiException as ApiException
 from winthrop_client_python.models.admin_compensation_subdivision import (
     AdminCompensationSubdivision as AdminCompensationSubdivision,
 )
-from winthrop_client_python.models.admin_meta import AdminMeta as AdminMeta
-from winthrop_client_python.models.admin_meta_comp_stats import (
-    AdminMetaCompStats as AdminMetaCompStats,
-)
 from winthrop_client_python.models.administrator import Administrator as Administrator
 from winthrop_client_python.models.administrator_collection import (
     AdministratorCollection as AdministratorCollection,
+)
+from winthrop_client_python.models.administrator_search_result_collection import (
+    AdministratorSearchResultCollection as AdministratorSearchResultCollection,
 )
 from winthrop_client_python.models.asst_coach_entry import (
     AsstCoachEntry as AsstCoachEntry,
@@ -275,6 +274,7 @@ from winthrop_client_python.models.coach_search_result import (
 from winthrop_client_python.models.coach_search_result_collection import (
     CoachSearchResultCollection as CoachSearchResultCollection,
 )
+from winthrop_client_python.models.comp_stats import CompStats as CompStats
 from winthrop_client_python.models.compare_coli404_response import (
     CompareColi404Response as CompareColi404Response,
 )

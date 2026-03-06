@@ -16,11 +16,12 @@ Do not edit the class manually.
 from winthrop_client_python.models.admin_compensation_subdivision import (
     AdminCompensationSubdivision,
 )
-from winthrop_client_python.models.admin_meta import AdminMeta
-from winthrop_client_python.models.admin_meta_comp_stats import AdminMetaCompStats
 from winthrop_client_python.models.administrator import Administrator
 from winthrop_client_python.models.administrator_collection import (
     AdministratorCollection,
+)
+from winthrop_client_python.models.administrator_search_result_collection import (
+    AdministratorSearchResultCollection,
 )
 from winthrop_client_python.models.asst_coach_entry import AsstCoachEntry
 from winthrop_client_python.models.asst_coach_school import AsstCoachSchool
@@ -50,6 +51,7 @@ from winthrop_client_python.models.coach_search_result import CoachSearchResult
 from winthrop_client_python.models.coach_search_result_collection import (
     CoachSearchResultCollection,
 )
+from winthrop_client_python.models.comp_stats import CompStats
 from winthrop_client_python.models.compare_coli404_response import (
     CompareColi404Response,
 )

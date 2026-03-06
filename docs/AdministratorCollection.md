@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List[Administrator]**](Administrator.md) |  | [optional] 
-**meta** | [**AdminMeta**](AdminMeta.md) |  | [optional] 
+**meta** | [**Meta**](Meta.md) |  | [optional] 
 
 ## Example
 

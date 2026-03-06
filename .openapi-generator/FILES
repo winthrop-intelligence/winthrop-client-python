@@ -2,10 +2,9 @@
 .travis.yml
 README.md
 docs/AdminCompensationSubdivision.md
-docs/AdminMeta.md
-docs/AdminMetaCompStats.md
 docs/Administrator.md
 docs/AdministratorCollection.md
+docs/AdministratorSearchResultCollection.md
 docs/AsstCoachEntry.md
 docs/AsstCoachSchool.md
 docs/AuditedFinancialReportStatus.md
@@ -26,6 +25,7 @@ docs/CoachCollection.md
 docs/CoachCompensation.md
 docs/CoachSearchResult.md
 docs/CoachSearchResultCollection.md
+docs/CompStats.md
 docs/CompareColi404Response.md
 docs/CompareColi422Response.md
 docs/Compensation.md
@@ -171,9 +171,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_admin_meta.py
-test/test_admin_meta_comp_stats.py
-test/test_get_lad_filter_options200_response_position_types_inner.py
+test/test_administrator_search_result_collection.py
+test/test_comp_stats.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -189,10 +188,9 @@ winthrop_client_python/configuration.py
 winthrop_client_python/exceptions.py
 winthrop_client_python/models/__init__.py
 winthrop_client_python/models/admin_compensation_subdivision.py
-winthrop_client_python/models/admin_meta.py
-winthrop_client_python/models/admin_meta_comp_stats.py
 winthrop_client_python/models/administrator.py
 winthrop_client_python/models/administrator_collection.py
+winthrop_client_python/models/administrator_search_result_collection.py
 winthrop_client_python/models/asst_coach_entry.py
 winthrop_client_python/models/asst_coach_school.py
 winthrop_client_python/models/audited_financial_report_status.py
@@ -213,6 +211,7 @@ winthrop_client_python/models/coach_compensation.py
 winthrop_client_python/models/coach_search_result.py
 winthrop_client_python/models/coach_search_result_collection.py
 winthrop_client_python/models/coli_adjusted.py
+winthrop_client_python/models/comp_stats.py
 winthrop_client_python/models/compare_coli404_response.py
 winthrop_client_python/models/compare_coli422_response.py
 winthrop_client_python/models/compensation.py

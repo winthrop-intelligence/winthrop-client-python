@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
+*DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
 *DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
@@ -267,10 +268,9 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
- - [AdminMeta](docs/AdminMeta.md)
- - [AdminMetaCompStats](docs/AdminMetaCompStats.md)
  - [Administrator](docs/Administrator.md)
  - [AdministratorCollection](docs/AdministratorCollection.md)
+ - [AdministratorSearchResultCollection](docs/AdministratorSearchResultCollection.md)
  - [AsstCoachEntry](docs/AsstCoachEntry.md)
  - [AsstCoachSchool](docs/AsstCoachSchool.md)
  - [AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
@@ -291,6 +291,7 @@ Class | Method | HTTP request | Description
  - [CoachCompensation](docs/CoachCompensation.md)
  - [CoachSearchResult](docs/CoachSearchResult.md)
  - [CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
+ - [CompStats](docs/CompStats.md)
  - [CompareColi404Response](docs/CompareColi404Response.md)
  - [CompareColi422Response](docs/CompareColi422Response.md)
  - [Compensation](docs/Compensation.md)

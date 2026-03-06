@@ -16,22 +16,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.administrator import Administrator
-from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class AdministratorCollection(BaseModel):
+class CompStats(BaseModel):
     """
-    AdministratorCollection
+    CompStats
     """  # noqa: E501
 
-    data: Optional[List[Administrator]] = None
-    meta: Optional[Meta] = None
-    __properties: ClassVar[List[str]] = ["data", "meta"]
+    min: Optional[StrictInt] = None
+    max: Optional[StrictInt] = None
+    average: Optional[StrictInt] = None
+    median: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["min", "max", "average", "median"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +50,7 @@ class AdministratorCollection(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AdministratorCollection from a JSON string"""
+        """Create an instance of CompStats from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,21 +70,11 @@ class AdministratorCollection(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict["data"] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict["meta"] = self.meta.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AdministratorCollection from a dict"""
+        """Create an instance of CompStats from a dict"""
         if obj is None:
             return None
 
@@ -93,14 +83,10 @@ class AdministratorCollection(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "data": (
-                    [Administrator.from_dict(_item) for _item in obj["data"]]
-                    if obj.get("data") is not None
-                    else None
-                ),
-                "meta": (
-                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
-                ),
+                "min": obj.get("min"),
+                "max": obj.get("max"),
+                "average": obj.get("average"),
+                "median": obj.get("median"),
             }
         )
         return _obj
