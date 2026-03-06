@@ -16,19 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class CreateFavorite201Response(BaseModel):
+class GetFavorites200ResponseInner(BaseModel):
     """
-    CreateFavorite201Response
+    GetFavorites200ResponseInner
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    favoritable_id: Optional[StrictInt] = None
+    id: Optional[StrictInt] = Field(default=None, description="The favorite record ID")
+    favoritable_id: Optional[StrictInt] = Field(
+        default=None, description="The favorited record's ID"
+    )
     __properties: ClassVar[List[str]] = ["id", "favoritable_id"]
 
     model_config = ConfigDict(
@@ -48,7 +50,7 @@ class CreateFavorite201Response(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CreateFavorite201Response from a JSON string"""
+        """Create an instance of GetFavorites200ResponseInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,7 +74,7 @@ class CreateFavorite201Response(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CreateFavorite201Response from a dict"""
+        """Create an instance of GetFavorites200ResponseInner from a dict"""
         if obj is None:
             return None
 

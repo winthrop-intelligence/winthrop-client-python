@@ -115,6 +115,9 @@ from winthrop_client_python.models.game_post_search_result_collection import (
     GamePostSearchResultCollection,
 )
 from winthrop_client_python.models.game_type import GameType
+from winthrop_client_python.models.get_favorites200_response_inner import (
+    GetFavorites200ResponseInner,
+)
 from winthrop_client_python.models.get_filter_options200_response import (
     GetFilterOptions200Response,
 )
@@ -5355,12 +5358,7 @@ class DefaultApi:
     @validate_call
     def delete_favorite(
         self,
-        favoritable_type: Annotated[
-            StrictStr, Field(description='The model type (e.g. "Coach")')
-        ],
-        favoritable_id: Annotated[
-            StrictInt, Field(description="The ID of the record to unfavorite")
-        ],
+        id: Annotated[StrictInt, Field(description="The favorite record ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5375,12 +5373,10 @@ class DefaultApi:
     ) -> DeleteFavorite200Response:
         """delete_favorite
 
-        Remove a favorite for the current user
+        Remove a favorite by its ID
 
-        :param favoritable_type: The model type (e.g. \"Coach\") (required)
-        :type favoritable_type: str
-        :param favoritable_id: The ID of the record to unfavorite (required)
-        :type favoritable_id: int
+        :param id: The favorite record ID (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5404,8 +5400,7 @@ class DefaultApi:
         """  # noqa: E501
 
         _param = self._delete_favorite_serialize(
-            favoritable_type=favoritable_type,
-            favoritable_id=favoritable_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5428,12 +5423,7 @@ class DefaultApi:
     @validate_call
     def delete_favorite_with_http_info(
         self,
-        favoritable_type: Annotated[
-            StrictStr, Field(description='The model type (e.g. "Coach")')
-        ],
-        favoritable_id: Annotated[
-            StrictInt, Field(description="The ID of the record to unfavorite")
-        ],
+        id: Annotated[StrictInt, Field(description="The favorite record ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5448,12 +5438,10 @@ class DefaultApi:
     ) -> ApiResponse[DeleteFavorite200Response]:
         """delete_favorite
 
-        Remove a favorite for the current user
+        Remove a favorite by its ID
 
-        :param favoritable_type: The model type (e.g. \"Coach\") (required)
-        :type favoritable_type: str
-        :param favoritable_id: The ID of the record to unfavorite (required)
-        :type favoritable_id: int
+        :param id: The favorite record ID (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5477,8 +5465,7 @@ class DefaultApi:
         """  # noqa: E501
 
         _param = self._delete_favorite_serialize(
-            favoritable_type=favoritable_type,
-            favoritable_id=favoritable_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5501,12 +5488,7 @@ class DefaultApi:
     @validate_call
     def delete_favorite_without_preload_content(
         self,
-        favoritable_type: Annotated[
-            StrictStr, Field(description='The model type (e.g. "Coach")')
-        ],
-        favoritable_id: Annotated[
-            StrictInt, Field(description="The ID of the record to unfavorite")
-        ],
+        id: Annotated[StrictInt, Field(description="The favorite record ID")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -5521,12 +5503,10 @@ class DefaultApi:
     ) -> RESTResponseType:
         """delete_favorite
 
-        Remove a favorite for the current user
+        Remove a favorite by its ID
 
-        :param favoritable_type: The model type (e.g. \"Coach\") (required)
-        :type favoritable_type: str
-        :param favoritable_id: The ID of the record to unfavorite (required)
-        :type favoritable_id: int
+        :param id: The favorite record ID (required)
+        :type id: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -5550,8 +5530,7 @@ class DefaultApi:
         """  # noqa: E501
 
         _param = self._delete_favorite_serialize(
-            favoritable_type=favoritable_type,
-            favoritable_id=favoritable_id,
+            id=id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -5569,8 +5548,7 @@ class DefaultApi:
 
     def _delete_favorite_serialize(
         self,
-        favoritable_type,
-        favoritable_id,
+        id,
         _request_auth,
         _content_type,
         _headers,
@@ -5591,15 +5569,9 @@ class DefaultApi:
         _body_params: Optional[bytes] = None
 
         # process the path parameters
+        if id is not None:
+            _path_params["id"] = id
         # process the query parameters
-        if favoritable_type is not None:
-
-            _query_params.append(("favoritable_type", favoritable_type))
-
-        if favoritable_id is not None:
-
-            _query_params.append(("favoritable_id", favoritable_id))
-
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -5615,7 +5587,7 @@ class DefaultApi:
 
         return self.api_client.param_serialize(
             method="DELETE",
-            resource_path="/api/v1/favorites",
+            resource_path="/api/v1/favorites/{id}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -17552,10 +17524,10 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> List[int]:
+    ) -> List[GetFavorites200ResponseInner]:
         """get_favorites
 
-        Retrieve the current user's favorited IDs for a given type
+        Retrieve the current user's favorites for a given type
 
         :param favoritable_type: The model type (e.g. \"Coach\") (required)
         :type favoritable_type: str
@@ -17590,7 +17562,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "List[int]",
+            "200": "List[GetFavorites200ResponseInner]",
             "401": None,
         }
         response_data = self.api_client.call_api(
@@ -17619,10 +17591,10 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[List[int]]:
+    ) -> ApiResponse[List[GetFavorites200ResponseInner]]:
         """get_favorites
 
-        Retrieve the current user's favorited IDs for a given type
+        Retrieve the current user's favorites for a given type
 
         :param favoritable_type: The model type (e.g. \"Coach\") (required)
         :type favoritable_type: str
@@ -17657,7 +17629,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "List[int]",
+            "200": "List[GetFavorites200ResponseInner]",
             "401": None,
         }
         response_data = self.api_client.call_api(
@@ -17689,7 +17661,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """get_favorites
 
-        Retrieve the current user's favorited IDs for a given type
+        Retrieve the current user's favorites for a given type
 
         :param favoritable_type: The model type (e.g. \"Coach\") (required)
         :type favoritable_type: str
@@ -17724,7 +17696,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "List[int]",
+            "200": "List[GetFavorites200ResponseInner]",
             "401": None,
         }
         response_data = self.api_client.call_api(

@@ -23,7 +23,7 @@ Method | HTTP request | Description
 [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
-[**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites | 
+[**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
 [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
@@ -1718,9 +1718,9 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_favorite**
-> DeleteFavorite200Response delete_favorite(favoritable_type, favoritable_id)
+> DeleteFavorite200Response delete_favorite(id)
 
-Remove a favorite for the current user
+Remove a favorite by its ID
 
 ### Example
 
@@ -1756,11 +1756,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
-    favoritable_type = 'favoritable_type_example' # str | The model type (e.g. \"Coach\")
-    favoritable_id = 56 # int | The ID of the record to unfavorite
+    id = 56 # int | The favorite record ID
 
     try:
-        api_response = api_instance.delete_favorite(favoritable_type, favoritable_id)
+        api_response = api_instance.delete_favorite(id)
         print("The response of DefaultApi->delete_favorite:\n")
         pprint(api_response)
     except Exception as e:
@@ -1774,8 +1773,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **favoritable_type** | **str**| The model type (e.g. \&quot;Coach\&quot;) | 
- **favoritable_id** | **int**| The ID of the record to unfavorite | 
+ **id** | **int**| The favorite record ID | 
 
 ### Return type
 
@@ -5348,9 +5346,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_favorites**
-> List[int] get_favorites(favoritable_type)
+> List[GetFavorites200ResponseInner] get_favorites(favoritable_type)
 
-Retrieve the current user's favorited IDs for a given type
+Retrieve the current user's favorites for a given type
 
 ### Example
 
@@ -5359,6 +5357,7 @@ Retrieve the current user's favorited IDs for a given type
 
 ```python
 import winthrop_client_python
+from winthrop_client_python.models.get_favorites200_response_inner import GetFavorites200ResponseInner
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -5406,7 +5405,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**List[int]**
+[**List[GetFavorites200ResponseInner]**](GetFavorites200ResponseInner.md)
 
 ### Authorization
 
@@ -5421,7 +5420,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of favorited IDs |  -  |
+**200** | List of favorite entries |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
