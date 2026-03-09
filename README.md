@@ -314,6 +314,8 @@ Class | Method | HTTP request | Description
  - [CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [Deal](docs/Deal.md)
  - [DealCollection](docs/DealCollection.md)
+ - [DealDetail](docs/DealDetail.md)
+ - [DealDetailVendor](docs/DealDetailVendor.md)
  - [DealSearchResult](docs/DealSearchResult.md)
  - [DealSearchResultCollection](docs/DealSearchResultCollection.md)
  - [DealStatus](docs/DealStatus.md)

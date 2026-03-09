@@ -19,6 +19,8 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.deal_detail import DealDetail
+from winthrop_client_python.models.deal_detail_vendor import DealDetailVendor
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -41,9 +43,12 @@ class DealSearchResult(BaseModel):
     start_year: Optional[StrictInt] = None
     end_year: Optional[StrictInt] = None
     start_at: Optional[datetime] = None
+    created_at: Optional[datetime] = None
     summary: Optional[StrictStr] = None
     autorenew: Optional[StrictBool] = None
     archived: Optional[StrictBool] = None
+    vendors: Optional[List[DealDetailVendor]] = None
+    deal_detail: Optional[DealDetail] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "deal_id",
@@ -58,9 +63,12 @@ class DealSearchResult(BaseModel):
         "start_year",
         "end_year",
         "start_at",
+        "created_at",
         "summary",
         "autorenew",
         "archived",
+        "vendors",
+        "deal_detail",
     ]
 
     model_config = ConfigDict(
@@ -100,6 +108,16 @@ class DealSearchResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in vendors (list)
+        _items = []
+        if self.vendors:
+            for _item_vendors in self.vendors:
+                if _item_vendors:
+                    _items.append(_item_vendors.to_dict())
+            _dict["vendors"] = _items
+        # override the default output from pydantic by calling `to_dict()` of deal_detail
+        if self.deal_detail:
+            _dict["deal_detail"] = self.deal_detail.to_dict()
         # set to None if school_name (nullable) is None
         # and model_fields_set contains the field
         if self.school_name is None and "school_name" in self.model_fields_set:
@@ -145,6 +163,11 @@ class DealSearchResult(BaseModel):
         if self.start_at is None and "start_at" in self.model_fields_set:
             _dict["start_at"] = None
 
+        # set to None if created_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.created_at is None and "created_at" in self.model_fields_set:
+            _dict["created_at"] = None
+
         # set to None if summary (nullable) is None
         # and model_fields_set contains the field
         if self.summary is None and "summary" in self.model_fields_set:
@@ -186,9 +209,20 @@ class DealSearchResult(BaseModel):
                 "start_year": obj.get("start_year"),
                 "end_year": obj.get("end_year"),
                 "start_at": obj.get("start_at"),
+                "created_at": obj.get("created_at"),
                 "summary": obj.get("summary"),
                 "autorenew": obj.get("autorenew"),
                 "archived": obj.get("archived"),
+                "vendors": (
+                    [DealDetailVendor.from_dict(_item) for _item in obj["vendors"]]
+                    if obj.get("vendors") is not None
+                    else None
+                ),
+                "deal_detail": (
+                    DealDetail.from_dict(obj["deal_detail"])
+                    if obj.get("deal_detail") is not None
+                    else None
+                ),
             }
         )
         return _obj

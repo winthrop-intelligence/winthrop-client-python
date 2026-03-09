@@ -92,6 +92,8 @@ from winthrop_client_python.models.create_favorite201_response import (
 from winthrop_client_python.models.create_favorite_request import CreateFavoriteRequest
 from winthrop_client_python.models.deal import Deal
 from winthrop_client_python.models.deal_collection import DealCollection
+from winthrop_client_python.models.deal_detail import DealDetail
+from winthrop_client_python.models.deal_detail_vendor import DealDetailVendor
 from winthrop_client_python.models.deal_search_result import DealSearchResult
 from winthrop_client_python.models.deal_search_result_collection import (
     DealSearchResultCollection,

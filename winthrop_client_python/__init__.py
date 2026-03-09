@@ -79,6 +79,8 @@ __all__ = [
     "CreateFavoriteRequest",
     "Deal",
     "DealCollection",
+    "DealDetail",
+    "DealDetailVendor",
     "DealSearchResult",
     "DealSearchResultCollection",
     "DealStatus",
@@ -331,6 +333,10 @@ from winthrop_client_python.models.create_favorite_request import (
 from winthrop_client_python.models.deal import Deal as Deal
 from winthrop_client_python.models.deal_collection import (
     DealCollection as DealCollection,
+)
+from winthrop_client_python.models.deal_detail import DealDetail as DealDetail
+from winthrop_client_python.models.deal_detail_vendor import (
+    DealDetailVendor as DealDetailVendor,
 )
 from winthrop_client_python.models.deal_search_result import (
     DealSearchResult as DealSearchResult,

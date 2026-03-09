@@ -16,23 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.deal_search_result import DealSearchResult
-from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class DealSearchResultCollection(BaseModel):
+class DealDetailVendor(BaseModel):
     """
-    DealSearchResultCollection
+    DealDetailVendor
     """  # noqa: E501
 
-    data: Optional[List[DealSearchResult]] = None
-    meta: Optional[Meta] = None
-    averages: Optional[Dict[str, Optional[float]]] = None
-    __properties: ClassVar[List[str]] = ["data", "meta", "averages"]
+    id: Optional[StrictInt] = None
+    name: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -51,7 +48,7 @@ class DealSearchResultCollection(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DealSearchResultCollection from a JSON string"""
+        """Create an instance of DealDetailVendor from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,43 +68,16 @@ class DealSearchResultCollection(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict["data"] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict["meta"] = self.meta.to_dict()
-        # set to None if averages (nullable) is None
-        # and model_fields_set contains the field
-        if self.averages is None and "averages" in self.model_fields_set:
-            _dict["averages"] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DealSearchResultCollection from a dict"""
+        """Create an instance of DealDetailVendor from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "data": (
-                    [DealSearchResult.from_dict(_item) for _item in obj["data"]]
-                    if obj.get("data") is not None
-                    else None
-                ),
-                "meta": (
-                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
-                ),
-                "averages": obj.get("averages"),
-            }
-        )
+        _obj = cls.model_validate({"id": obj.get("id"), "name": obj.get("name")})
         return _obj

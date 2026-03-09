@@ -48,6 +48,8 @@ docs/CreateFavorite201Response.md
 docs/CreateFavoriteRequest.md
 docs/Deal.md
 docs/DealCollection.md
+docs/DealDetail.md
+docs/DealDetailVendor.md
 docs/DealSearchResult.md
 docs/DealSearchResultCollection.md
 docs/DealStatus.md
@@ -172,7 +174,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_get_favorites200_response_inner.py
+test/test_deal_detail.py
+test/test_deal_detail_vendor.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -234,6 +237,8 @@ winthrop_client_python/models/create_favorite201_response.py
 winthrop_client_python/models/create_favorite_request.py
 winthrop_client_python/models/deal.py
 winthrop_client_python/models/deal_collection.py
+winthrop_client_python/models/deal_detail.py
+winthrop_client_python/models/deal_detail_vendor.py
 winthrop_client_python/models/deal_search_result.py
 winthrop_client_python/models/deal_search_result_collection.py
 winthrop_client_python/models/deal_status.py
