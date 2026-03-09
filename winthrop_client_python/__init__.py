@@ -88,6 +88,9 @@ __all__ = [
     "DeleteFavorite200Response",
     "DepartmentSearchResult",
     "DepartmentSearchResultCollection",
+    "DepartmentSearchResultDepartment",
+    "DepartmentSearchResultDepartmentDealsInner",
+    "DepartmentSearchResultSportsInner",
     "DepartmentStaffMember",
     "DepartmentStaffSchool",
     "DirectorsCupSchool",
@@ -356,6 +359,15 @@ from winthrop_client_python.models.department_search_result import (
 )
 from winthrop_client_python.models.department_search_result_collection import (
     DepartmentSearchResultCollection as DepartmentSearchResultCollection,
+)
+from winthrop_client_python.models.department_search_result_department import (
+    DepartmentSearchResultDepartment as DepartmentSearchResultDepartment,
+)
+from winthrop_client_python.models.department_search_result_department_deals_inner import (
+    DepartmentSearchResultDepartmentDealsInner as DepartmentSearchResultDepartmentDealsInner,
+)
+from winthrop_client_python.models.department_search_result_sports_inner import (
+    DepartmentSearchResultSportsInner as DepartmentSearchResultSportsInner,
 )
 from winthrop_client_python.models.department_staff_member import (
     DepartmentStaffMember as DepartmentStaffMember,

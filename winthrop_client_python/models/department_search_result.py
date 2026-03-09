@@ -18,6 +18,12 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.department_search_result_department import (
+    DepartmentSearchResultDepartment,
+)
+from winthrop_client_python.models.department_search_result_sports_inner import (
+    DepartmentSearchResultSportsInner,
+)
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -40,6 +46,9 @@ class DepartmentSearchResult(BaseModel):
     directors_cup_ranking: Optional[StrictInt] = None
     is_private: Optional[StrictBool] = None
     nickname: Optional[StrictStr] = None
+    logo_url: Optional[StrictStr] = None
+    department: Optional[DepartmentSearchResultDepartment] = None
+    sports: Optional[List[DepartmentSearchResultSportsInner]] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
@@ -54,6 +63,9 @@ class DepartmentSearchResult(BaseModel):
         "directors_cup_ranking",
         "is_private",
         "nickname",
+        "logo_url",
+        "department",
+        "sports",
     ]
 
     model_config = ConfigDict(
@@ -93,6 +105,16 @@ class DepartmentSearchResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of department
+        if self.department:
+            _dict["department"] = self.department.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in sports (list)
+        _items = []
+        if self.sports:
+            for _item_sports in self.sports:
+                if _item_sports:
+                    _items.append(_item_sports.to_dict())
+            _dict["sports"] = _items
         # set to None if short_name (nullable) is None
         # and model_fields_set contains the field
         if self.short_name is None and "short_name" in self.model_fields_set:
@@ -146,6 +168,11 @@ class DepartmentSearchResult(BaseModel):
         if self.nickname is None and "nickname" in self.model_fields_set:
             _dict["nickname"] = None
 
+        # set to None if logo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.logo_url is None and "logo_url" in self.model_fields_set:
+            _dict["logo_url"] = None
+
         return _dict
 
     @classmethod
@@ -172,6 +199,20 @@ class DepartmentSearchResult(BaseModel):
                 "directors_cup_ranking": obj.get("directors_cup_ranking"),
                 "is_private": obj.get("is_private"),
                 "nickname": obj.get("nickname"),
+                "logo_url": obj.get("logo_url"),
+                "department": (
+                    DepartmentSearchResultDepartment.from_dict(obj["department"])
+                    if obj.get("department") is not None
+                    else None
+                ),
+                "sports": (
+                    [
+                        DepartmentSearchResultSportsInner.from_dict(_item)
+                        for _item in obj["sports"]
+                    ]
+                    if obj.get("sports") is not None
+                    else None
+                ),
             }
         )
         return _obj

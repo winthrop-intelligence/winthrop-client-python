@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List[DepartmentSearchResult]**](DepartmentSearchResult.md) |  | [optional] 
 **meta** | [**Meta**](Meta.md) |  | [optional] 
+**financials_year** | **str** |  | [optional] 
 
 ## Example
 

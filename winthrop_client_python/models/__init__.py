@@ -109,6 +109,15 @@ from winthrop_client_python.models.department_search_result import (
 from winthrop_client_python.models.department_search_result_collection import (
     DepartmentSearchResultCollection,
 )
+from winthrop_client_python.models.department_search_result_department import (
+    DepartmentSearchResultDepartment,
+)
+from winthrop_client_python.models.department_search_result_department_deals_inner import (
+    DepartmentSearchResultDepartmentDealsInner,
+)
+from winthrop_client_python.models.department_search_result_sports_inner import (
+    DepartmentSearchResultSportsInner,
+)
 from winthrop_client_python.models.department_staff_member import DepartmentStaffMember
 from winthrop_client_python.models.department_staff_school import DepartmentStaffSchool
 from winthrop_client_python.models.directors_cup_school import DirectorsCupSchool

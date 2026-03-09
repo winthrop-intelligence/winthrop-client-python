@@ -58,6 +58,9 @@ docs/DefaultApi.md
 docs/DeleteFavorite200Response.md
 docs/DepartmentSearchResult.md
 docs/DepartmentSearchResultCollection.md
+docs/DepartmentSearchResultDepartment.md
+docs/DepartmentSearchResultDepartmentDealsInner.md
+docs/DepartmentSearchResultSportsInner.md
 docs/DepartmentStaffMember.md
 docs/DepartmentStaffSchool.md
 docs/DirectorsCupSchool.md
@@ -174,8 +177,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_deal_detail.py
-test/test_deal_detail_vendor.py
+test/test_department_search_result_department.py
+test/test_department_search_result_department_deals_inner.py
+test/test_department_search_result_sports_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -246,6 +250,9 @@ winthrop_client_python/models/deal_status_collection.py
 winthrop_client_python/models/delete_favorite200_response.py
 winthrop_client_python/models/department_search_result.py
 winthrop_client_python/models/department_search_result_collection.py
+winthrop_client_python/models/department_search_result_department.py
+winthrop_client_python/models/department_search_result_department_deals_inner.py
+winthrop_client_python/models/department_search_result_sports_inner.py
 winthrop_client_python/models/department_staff_member.py
 winthrop_client_python/models/department_staff_school.py
 winthrop_client_python/models/directors_cup_school.py

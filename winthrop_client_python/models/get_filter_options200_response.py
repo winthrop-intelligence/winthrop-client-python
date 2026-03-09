@@ -31,6 +31,7 @@ class GetFilterOptions200Response(BaseModel):
 
     years: Optional[List[StrictInt]] = None
     current_year: Optional[StrictInt] = None
+    current_financials_year: Optional[StrictInt] = None
     divisions: Optional[List[IdName]] = None
     sports: Optional[List[Sport]] = None
     position_types: Optional[List[IdName]] = None
@@ -41,6 +42,7 @@ class GetFilterOptions200Response(BaseModel):
     __properties: ClassVar[List[str]] = [
         "years",
         "current_year",
+        "current_financials_year",
         "divisions",
         "sports",
         "position_types",
@@ -130,6 +132,7 @@ class GetFilterOptions200Response(BaseModel):
             {
                 "years": obj.get("years"),
                 "current_year": obj.get("current_year"),
+                "current_financials_year": obj.get("current_financials_year"),
                 "divisions": (
                     [IdName.from_dict(_item) for _item in obj["divisions"]]
                     if obj.get("divisions") is not None

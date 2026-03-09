@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **years** | **List[int]** |  | [optional] 
 **current_year** | **int** |  | [optional] 
+**current_financials_year** | **int** |  | [optional] 
 **divisions** | [**List[IdName]**](IdName.md) |  | [optional] 
 **sports** | [**List[Sport]**](Sport.md) |  | [optional] 
 **position_types** | [**List[IdName]**](IdName.md) |  | [optional] 
