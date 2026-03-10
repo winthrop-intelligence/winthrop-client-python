@@ -31,7 +31,8 @@ class FinancialSearchResultCollection(BaseModel):
 
     data: Optional[List[FinancialSearchResult]] = None
     meta: Optional[Meta] = None
-    __properties: ClassVar[List[str]] = ["data", "meta"]
+    averages: Optional[Dict[str, Optional[float]]] = None
+    __properties: ClassVar[List[str]] = ["data", "meta", "averages"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +81,11 @@ class FinancialSearchResultCollection(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of meta
         if self.meta:
             _dict["meta"] = self.meta.to_dict()
+        # set to None if averages (nullable) is None
+        # and model_fields_set contains the field
+        if self.averages is None and "averages" in self.model_fields_set:
+            _dict["averages"] = None
+
         return _dict
 
     @classmethod
@@ -101,6 +107,7 @@ class FinancialSearchResultCollection(BaseModel):
                 "meta": (
                     Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
                 ),
+                "averages": obj.get("averages"),
             }
         )
         return _obj

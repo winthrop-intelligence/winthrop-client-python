@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -41,9 +41,6 @@ class FinancialSearchResult(BaseModel):
         default=None, description="Amount in whole US dollars"
     )
     rev_ticket_sales_amt: Optional[float] = Field(
-        default=None, description="Amount in whole US dollars"
-    )
-    rev_contributions_amt: Optional[float] = Field(
         default=None, description="Amount in whole US dollars"
     )
     rev_rights_amt: Optional[float] = Field(
@@ -76,6 +73,163 @@ class FinancialSearchResult(BaseModel):
     exp_guarantees_amt: Optional[float] = Field(
         default=None, description="Amount in whole US dollars"
     )
+    has_audited_report: Optional[StrictBool] = None
+    rev_contributions_no_ik_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_conf_distributions_non_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_conf_bowl_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_ncaa_distributions_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_ncaa_distributions_grants_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_ncaa_host_settlements_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_ncaa_postseason_reimb_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_branding_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_endowment_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_parking_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_admin_support_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_compensation_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_govt_support_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_in_kind_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_sports_camps_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_transfers_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_other_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_indirect_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_contributions_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_conf_distributions_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_bowl_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    rev_indirect_facilities_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_tuition_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_marketing_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_games_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_support_staff_salaries_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_indirect_support_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_equipment_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_sports_camps: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_debt_service_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_medical_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_dues_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_support_staff_other_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_severance_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_spirit_groups_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_head_coaches_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_facilities_maintenance_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_asst_coaches_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_head_coaches_third_party_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_asst_coaches_third_party_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_total_coaches_third_party_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_admin_support_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_meals_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_bowl_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_bowl_comp_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_postseason_fb_host_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_postseason_other_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_postseason_other_coaching_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_postseason_other_host_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_alston_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_other_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
+    exp_nil_revenue_share_amt: Optional[float] = Field(
+        default=None, description="Amount in whole US dollars"
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "school_id",
@@ -89,7 +243,6 @@ class FinancialSearchResult(BaseModel):
         "sport_count",
         "rev_total_amt",
         "rev_ticket_sales_amt",
-        "rev_contributions_amt",
         "rev_rights_amt",
         "rev_student_fees_amt",
         "rev_university_amt",
@@ -100,6 +253,59 @@ class FinancialSearchResult(BaseModel):
         "exp_travel_amt",
         "exp_facilities_amt",
         "exp_guarantees_amt",
+        "has_audited_report",
+        "rev_contributions_no_ik_amt",
+        "rev_conf_distributions_non_amt",
+        "rev_conf_bowl_amt",
+        "rev_ncaa_distributions_amt",
+        "rev_ncaa_distributions_grants_amt",
+        "rev_ncaa_host_settlements_amt",
+        "rev_ncaa_postseason_reimb_amt",
+        "rev_branding_amt",
+        "rev_endowment_amt",
+        "rev_parking_amt",
+        "rev_admin_support_amt",
+        "rev_compensation_amt",
+        "rev_govt_support_amt",
+        "rev_in_kind_amt",
+        "rev_sports_camps_amt",
+        "rev_transfers_amt",
+        "rev_other_amt",
+        "rev_indirect_amt",
+        "rev_contributions_amt",
+        "rev_conf_distributions_amt",
+        "rev_bowl_amt",
+        "rev_indirect_facilities_amt",
+        "exp_tuition_amt",
+        "exp_marketing_amt",
+        "exp_games_amt",
+        "exp_support_staff_salaries_amt",
+        "exp_indirect_support_amt",
+        "exp_equipment_amt",
+        "exp_sports_camps",
+        "exp_debt_service_amt",
+        "exp_medical_amt",
+        "exp_dues_amt",
+        "exp_support_staff_other_amt",
+        "exp_severance_amt",
+        "exp_spirit_groups_amt",
+        "exp_head_coaches_amt",
+        "exp_facilities_maintenance_amt",
+        "exp_asst_coaches_amt",
+        "exp_head_coaches_third_party_amt",
+        "exp_asst_coaches_third_party_amt",
+        "exp_total_coaches_third_party_amt",
+        "exp_admin_support_amt",
+        "exp_meals_amt",
+        "exp_bowl_amt",
+        "exp_bowl_comp_amt",
+        "exp_postseason_fb_host_amt",
+        "exp_postseason_other_amt",
+        "exp_postseason_other_coaching_amt",
+        "exp_postseason_other_host_amt",
+        "exp_alston_amt",
+        "exp_other_amt",
+        "exp_nil_revenue_share_amt",
     ]
 
     model_config = ConfigDict(
@@ -193,14 +399,6 @@ class FinancialSearchResult(BaseModel):
         ):
             _dict["rev_ticket_sales_amt"] = None
 
-        # set to None if rev_contributions_amt (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.rev_contributions_amt is None
-            and "rev_contributions_amt" in self.model_fields_set
-        ):
-            _dict["rev_contributions_amt"] = None
-
         # set to None if rev_rights_amt (nullable) is None
         # and model_fields_set contains the field
         if self.rev_rights_amt is None and "rev_rights_amt" in self.model_fields_set:
@@ -272,6 +470,394 @@ class FinancialSearchResult(BaseModel):
         ):
             _dict["exp_guarantees_amt"] = None
 
+        # set to None if has_audited_report (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.has_audited_report is None
+            and "has_audited_report" in self.model_fields_set
+        ):
+            _dict["has_audited_report"] = None
+
+        # set to None if rev_contributions_no_ik_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_contributions_no_ik_amt is None
+            and "rev_contributions_no_ik_amt" in self.model_fields_set
+        ):
+            _dict["rev_contributions_no_ik_amt"] = None
+
+        # set to None if rev_conf_distributions_non_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_conf_distributions_non_amt is None
+            and "rev_conf_distributions_non_amt" in self.model_fields_set
+        ):
+            _dict["rev_conf_distributions_non_amt"] = None
+
+        # set to None if rev_conf_bowl_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_conf_bowl_amt is None
+            and "rev_conf_bowl_amt" in self.model_fields_set
+        ):
+            _dict["rev_conf_bowl_amt"] = None
+
+        # set to None if rev_ncaa_distributions_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_ncaa_distributions_amt is None
+            and "rev_ncaa_distributions_amt" in self.model_fields_set
+        ):
+            _dict["rev_ncaa_distributions_amt"] = None
+
+        # set to None if rev_ncaa_distributions_grants_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_ncaa_distributions_grants_amt is None
+            and "rev_ncaa_distributions_grants_amt" in self.model_fields_set
+        ):
+            _dict["rev_ncaa_distributions_grants_amt"] = None
+
+        # set to None if rev_ncaa_host_settlements_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_ncaa_host_settlements_amt is None
+            and "rev_ncaa_host_settlements_amt" in self.model_fields_set
+        ):
+            _dict["rev_ncaa_host_settlements_amt"] = None
+
+        # set to None if rev_ncaa_postseason_reimb_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_ncaa_postseason_reimb_amt is None
+            and "rev_ncaa_postseason_reimb_amt" in self.model_fields_set
+        ):
+            _dict["rev_ncaa_postseason_reimb_amt"] = None
+
+        # set to None if rev_branding_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_branding_amt is None
+            and "rev_branding_amt" in self.model_fields_set
+        ):
+            _dict["rev_branding_amt"] = None
+
+        # set to None if rev_endowment_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_endowment_amt is None
+            and "rev_endowment_amt" in self.model_fields_set
+        ):
+            _dict["rev_endowment_amt"] = None
+
+        # set to None if rev_parking_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.rev_parking_amt is None and "rev_parking_amt" in self.model_fields_set:
+            _dict["rev_parking_amt"] = None
+
+        # set to None if rev_admin_support_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_admin_support_amt is None
+            and "rev_admin_support_amt" in self.model_fields_set
+        ):
+            _dict["rev_admin_support_amt"] = None
+
+        # set to None if rev_compensation_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_compensation_amt is None
+            and "rev_compensation_amt" in self.model_fields_set
+        ):
+            _dict["rev_compensation_amt"] = None
+
+        # set to None if rev_govt_support_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_govt_support_amt is None
+            and "rev_govt_support_amt" in self.model_fields_set
+        ):
+            _dict["rev_govt_support_amt"] = None
+
+        # set to None if rev_in_kind_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.rev_in_kind_amt is None and "rev_in_kind_amt" in self.model_fields_set:
+            _dict["rev_in_kind_amt"] = None
+
+        # set to None if rev_sports_camps_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_sports_camps_amt is None
+            and "rev_sports_camps_amt" in self.model_fields_set
+        ):
+            _dict["rev_sports_camps_amt"] = None
+
+        # set to None if rev_transfers_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_transfers_amt is None
+            and "rev_transfers_amt" in self.model_fields_set
+        ):
+            _dict["rev_transfers_amt"] = None
+
+        # set to None if rev_other_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.rev_other_amt is None and "rev_other_amt" in self.model_fields_set:
+            _dict["rev_other_amt"] = None
+
+        # set to None if rev_indirect_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_indirect_amt is None
+            and "rev_indirect_amt" in self.model_fields_set
+        ):
+            _dict["rev_indirect_amt"] = None
+
+        # set to None if rev_contributions_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_contributions_amt is None
+            and "rev_contributions_amt" in self.model_fields_set
+        ):
+            _dict["rev_contributions_amt"] = None
+
+        # set to None if rev_conf_distributions_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_conf_distributions_amt is None
+            and "rev_conf_distributions_amt" in self.model_fields_set
+        ):
+            _dict["rev_conf_distributions_amt"] = None
+
+        # set to None if rev_bowl_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.rev_bowl_amt is None and "rev_bowl_amt" in self.model_fields_set:
+            _dict["rev_bowl_amt"] = None
+
+        # set to None if rev_indirect_facilities_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rev_indirect_facilities_amt is None
+            and "rev_indirect_facilities_amt" in self.model_fields_set
+        ):
+            _dict["rev_indirect_facilities_amt"] = None
+
+        # set to None if exp_tuition_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.exp_tuition_amt is None and "exp_tuition_amt" in self.model_fields_set:
+            _dict["exp_tuition_amt"] = None
+
+        # set to None if exp_marketing_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_marketing_amt is None
+            and "exp_marketing_amt" in self.model_fields_set
+        ):
+            _dict["exp_marketing_amt"] = None
+
+        # set to None if exp_games_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.exp_games_amt is None and "exp_games_amt" in self.model_fields_set:
+            _dict["exp_games_amt"] = None
+
+        # set to None if exp_support_staff_salaries_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_support_staff_salaries_amt is None
+            and "exp_support_staff_salaries_amt" in self.model_fields_set
+        ):
+            _dict["exp_support_staff_salaries_amt"] = None
+
+        # set to None if exp_indirect_support_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_indirect_support_amt is None
+            and "exp_indirect_support_amt" in self.model_fields_set
+        ):
+            _dict["exp_indirect_support_amt"] = None
+
+        # set to None if exp_equipment_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_equipment_amt is None
+            and "exp_equipment_amt" in self.model_fields_set
+        ):
+            _dict["exp_equipment_amt"] = None
+
+        # set to None if exp_sports_camps (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_sports_camps is None
+            and "exp_sports_camps" in self.model_fields_set
+        ):
+            _dict["exp_sports_camps"] = None
+
+        # set to None if exp_debt_service_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_debt_service_amt is None
+            and "exp_debt_service_amt" in self.model_fields_set
+        ):
+            _dict["exp_debt_service_amt"] = None
+
+        # set to None if exp_medical_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.exp_medical_amt is None and "exp_medical_amt" in self.model_fields_set:
+            _dict["exp_medical_amt"] = None
+
+        # set to None if exp_dues_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.exp_dues_amt is None and "exp_dues_amt" in self.model_fields_set:
+            _dict["exp_dues_amt"] = None
+
+        # set to None if exp_support_staff_other_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_support_staff_other_amt is None
+            and "exp_support_staff_other_amt" in self.model_fields_set
+        ):
+            _dict["exp_support_staff_other_amt"] = None
+
+        # set to None if exp_severance_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_severance_amt is None
+            and "exp_severance_amt" in self.model_fields_set
+        ):
+            _dict["exp_severance_amt"] = None
+
+        # set to None if exp_spirit_groups_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_spirit_groups_amt is None
+            and "exp_spirit_groups_amt" in self.model_fields_set
+        ):
+            _dict["exp_spirit_groups_amt"] = None
+
+        # set to None if exp_head_coaches_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_head_coaches_amt is None
+            and "exp_head_coaches_amt" in self.model_fields_set
+        ):
+            _dict["exp_head_coaches_amt"] = None
+
+        # set to None if exp_facilities_maintenance_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_facilities_maintenance_amt is None
+            and "exp_facilities_maintenance_amt" in self.model_fields_set
+        ):
+            _dict["exp_facilities_maintenance_amt"] = None
+
+        # set to None if exp_asst_coaches_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_asst_coaches_amt is None
+            and "exp_asst_coaches_amt" in self.model_fields_set
+        ):
+            _dict["exp_asst_coaches_amt"] = None
+
+        # set to None if exp_head_coaches_third_party_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_head_coaches_third_party_amt is None
+            and "exp_head_coaches_third_party_amt" in self.model_fields_set
+        ):
+            _dict["exp_head_coaches_third_party_amt"] = None
+
+        # set to None if exp_asst_coaches_third_party_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_asst_coaches_third_party_amt is None
+            and "exp_asst_coaches_third_party_amt" in self.model_fields_set
+        ):
+            _dict["exp_asst_coaches_third_party_amt"] = None
+
+        # set to None if exp_total_coaches_third_party_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_total_coaches_third_party_amt is None
+            and "exp_total_coaches_third_party_amt" in self.model_fields_set
+        ):
+            _dict["exp_total_coaches_third_party_amt"] = None
+
+        # set to None if exp_admin_support_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_admin_support_amt is None
+            and "exp_admin_support_amt" in self.model_fields_set
+        ):
+            _dict["exp_admin_support_amt"] = None
+
+        # set to None if exp_meals_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.exp_meals_amt is None and "exp_meals_amt" in self.model_fields_set:
+            _dict["exp_meals_amt"] = None
+
+        # set to None if exp_bowl_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.exp_bowl_amt is None and "exp_bowl_amt" in self.model_fields_set:
+            _dict["exp_bowl_amt"] = None
+
+        # set to None if exp_bowl_comp_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_bowl_comp_amt is None
+            and "exp_bowl_comp_amt" in self.model_fields_set
+        ):
+            _dict["exp_bowl_comp_amt"] = None
+
+        # set to None if exp_postseason_fb_host_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_postseason_fb_host_amt is None
+            and "exp_postseason_fb_host_amt" in self.model_fields_set
+        ):
+            _dict["exp_postseason_fb_host_amt"] = None
+
+        # set to None if exp_postseason_other_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_postseason_other_amt is None
+            and "exp_postseason_other_amt" in self.model_fields_set
+        ):
+            _dict["exp_postseason_other_amt"] = None
+
+        # set to None if exp_postseason_other_coaching_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_postseason_other_coaching_amt is None
+            and "exp_postseason_other_coaching_amt" in self.model_fields_set
+        ):
+            _dict["exp_postseason_other_coaching_amt"] = None
+
+        # set to None if exp_postseason_other_host_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_postseason_other_host_amt is None
+            and "exp_postseason_other_host_amt" in self.model_fields_set
+        ):
+            _dict["exp_postseason_other_host_amt"] = None
+
+        # set to None if exp_alston_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.exp_alston_amt is None and "exp_alston_amt" in self.model_fields_set:
+            _dict["exp_alston_amt"] = None
+
+        # set to None if exp_other_amt (nullable) is None
+        # and model_fields_set contains the field
+        if self.exp_other_amt is None and "exp_other_amt" in self.model_fields_set:
+            _dict["exp_other_amt"] = None
+
+        # set to None if exp_nil_revenue_share_amt (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.exp_nil_revenue_share_amt is None
+            and "exp_nil_revenue_share_amt" in self.model_fields_set
+        ):
+            _dict["exp_nil_revenue_share_amt"] = None
+
         return _dict
 
     @classmethod
@@ -297,7 +883,6 @@ class FinancialSearchResult(BaseModel):
                 "sport_count": obj.get("sport_count"),
                 "rev_total_amt": obj.get("rev_total_amt"),
                 "rev_ticket_sales_amt": obj.get("rev_ticket_sales_amt"),
-                "rev_contributions_amt": obj.get("rev_contributions_amt"),
                 "rev_rights_amt": obj.get("rev_rights_amt"),
                 "rev_student_fees_amt": obj.get("rev_student_fees_amt"),
                 "rev_university_amt": obj.get("rev_university_amt"),
@@ -308,6 +893,81 @@ class FinancialSearchResult(BaseModel):
                 "exp_travel_amt": obj.get("exp_travel_amt"),
                 "exp_facilities_amt": obj.get("exp_facilities_amt"),
                 "exp_guarantees_amt": obj.get("exp_guarantees_amt"),
+                "has_audited_report": obj.get("has_audited_report"),
+                "rev_contributions_no_ik_amt": obj.get("rev_contributions_no_ik_amt"),
+                "rev_conf_distributions_non_amt": obj.get(
+                    "rev_conf_distributions_non_amt"
+                ),
+                "rev_conf_bowl_amt": obj.get("rev_conf_bowl_amt"),
+                "rev_ncaa_distributions_amt": obj.get("rev_ncaa_distributions_amt"),
+                "rev_ncaa_distributions_grants_amt": obj.get(
+                    "rev_ncaa_distributions_grants_amt"
+                ),
+                "rev_ncaa_host_settlements_amt": obj.get(
+                    "rev_ncaa_host_settlements_amt"
+                ),
+                "rev_ncaa_postseason_reimb_amt": obj.get(
+                    "rev_ncaa_postseason_reimb_amt"
+                ),
+                "rev_branding_amt": obj.get("rev_branding_amt"),
+                "rev_endowment_amt": obj.get("rev_endowment_amt"),
+                "rev_parking_amt": obj.get("rev_parking_amt"),
+                "rev_admin_support_amt": obj.get("rev_admin_support_amt"),
+                "rev_compensation_amt": obj.get("rev_compensation_amt"),
+                "rev_govt_support_amt": obj.get("rev_govt_support_amt"),
+                "rev_in_kind_amt": obj.get("rev_in_kind_amt"),
+                "rev_sports_camps_amt": obj.get("rev_sports_camps_amt"),
+                "rev_transfers_amt": obj.get("rev_transfers_amt"),
+                "rev_other_amt": obj.get("rev_other_amt"),
+                "rev_indirect_amt": obj.get("rev_indirect_amt"),
+                "rev_contributions_amt": obj.get("rev_contributions_amt"),
+                "rev_conf_distributions_amt": obj.get("rev_conf_distributions_amt"),
+                "rev_bowl_amt": obj.get("rev_bowl_amt"),
+                "rev_indirect_facilities_amt": obj.get("rev_indirect_facilities_amt"),
+                "exp_tuition_amt": obj.get("exp_tuition_amt"),
+                "exp_marketing_amt": obj.get("exp_marketing_amt"),
+                "exp_games_amt": obj.get("exp_games_amt"),
+                "exp_support_staff_salaries_amt": obj.get(
+                    "exp_support_staff_salaries_amt"
+                ),
+                "exp_indirect_support_amt": obj.get("exp_indirect_support_amt"),
+                "exp_equipment_amt": obj.get("exp_equipment_amt"),
+                "exp_sports_camps": obj.get("exp_sports_camps"),
+                "exp_debt_service_amt": obj.get("exp_debt_service_amt"),
+                "exp_medical_amt": obj.get("exp_medical_amt"),
+                "exp_dues_amt": obj.get("exp_dues_amt"),
+                "exp_support_staff_other_amt": obj.get("exp_support_staff_other_amt"),
+                "exp_severance_amt": obj.get("exp_severance_amt"),
+                "exp_spirit_groups_amt": obj.get("exp_spirit_groups_amt"),
+                "exp_head_coaches_amt": obj.get("exp_head_coaches_amt"),
+                "exp_facilities_maintenance_amt": obj.get(
+                    "exp_facilities_maintenance_amt"
+                ),
+                "exp_asst_coaches_amt": obj.get("exp_asst_coaches_amt"),
+                "exp_head_coaches_third_party_amt": obj.get(
+                    "exp_head_coaches_third_party_amt"
+                ),
+                "exp_asst_coaches_third_party_amt": obj.get(
+                    "exp_asst_coaches_third_party_amt"
+                ),
+                "exp_total_coaches_third_party_amt": obj.get(
+                    "exp_total_coaches_third_party_amt"
+                ),
+                "exp_admin_support_amt": obj.get("exp_admin_support_amt"),
+                "exp_meals_amt": obj.get("exp_meals_amt"),
+                "exp_bowl_amt": obj.get("exp_bowl_amt"),
+                "exp_bowl_comp_amt": obj.get("exp_bowl_comp_amt"),
+                "exp_postseason_fb_host_amt": obj.get("exp_postseason_fb_host_amt"),
+                "exp_postseason_other_amt": obj.get("exp_postseason_other_amt"),
+                "exp_postseason_other_coaching_amt": obj.get(
+                    "exp_postseason_other_coaching_amt"
+                ),
+                "exp_postseason_other_host_amt": obj.get(
+                    "exp_postseason_other_host_amt"
+                ),
+                "exp_alston_amt": obj.get("exp_alston_amt"),
+                "exp_other_amt": obj.get("exp_other_amt"),
+                "exp_nil_revenue_share_amt": obj.get("exp_nil_revenue_share_amt"),
             }
         )
         return _obj

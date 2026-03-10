@@ -5096,7 +5096,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_department_searches**
-> DepartmentSearchResultCollection get_department_searches(page=page, per_page=per_page, q=q)
+> DepartmentSearchResultCollection get_department_searches(page=page, q=q)
 
 Search school departments with filtering and pagination
 
@@ -5135,11 +5135,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
 
     try:
-        api_response = api_instance.get_department_searches(page=page, per_page=per_page, q=q)
+        api_response = api_instance.get_department_searches(page=page, q=q)
         print("The response of DefaultApi->get_department_searches:\n")
         pprint(api_response)
     except Exception as e:
@@ -5154,7 +5153,6 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type

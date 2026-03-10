@@ -16664,9 +16664,6 @@ class DefaultApi:
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
         ] = None,
-        per_page: Annotated[
-            Optional[StrictInt], Field(description="number of results per page.")
-        ] = None,
         q: Annotated[
             Optional[Dict[str, Any]], Field(description="Ransack query")
         ] = None,
@@ -16688,8 +16685,6 @@ class DefaultApi:
 
         :param page: results page to retrieve.
         :type page: int
-        :param per_page: number of results per page.
-        :type per_page: int
         :param q: Ransack query
         :type q: object
         :param _request_timeout: timeout setting for this request. If one
@@ -16716,7 +16711,6 @@ class DefaultApi:
 
         _param = self._get_department_searches_serialize(
             page=page,
-            per_page=per_page,
             q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -16743,9 +16737,6 @@ class DefaultApi:
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
         ] = None,
-        per_page: Annotated[
-            Optional[StrictInt], Field(description="number of results per page.")
-        ] = None,
         q: Annotated[
             Optional[Dict[str, Any]], Field(description="Ransack query")
         ] = None,
@@ -16767,8 +16758,6 @@ class DefaultApi:
 
         :param page: results page to retrieve.
         :type page: int
-        :param per_page: number of results per page.
-        :type per_page: int
         :param q: Ransack query
         :type q: object
         :param _request_timeout: timeout setting for this request. If one
@@ -16795,7 +16784,6 @@ class DefaultApi:
 
         _param = self._get_department_searches_serialize(
             page=page,
-            per_page=per_page,
             q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -16822,9 +16810,6 @@ class DefaultApi:
         page: Annotated[
             Optional[StrictInt], Field(description="results page to retrieve.")
         ] = None,
-        per_page: Annotated[
-            Optional[StrictInt], Field(description="number of results per page.")
-        ] = None,
         q: Annotated[
             Optional[Dict[str, Any]], Field(description="Ransack query")
         ] = None,
@@ -16846,8 +16831,6 @@ class DefaultApi:
 
         :param page: results page to retrieve.
         :type page: int
-        :param per_page: number of results per page.
-        :type per_page: int
         :param q: Ransack query
         :type q: object
         :param _request_timeout: timeout setting for this request. If one
@@ -16874,7 +16857,6 @@ class DefaultApi:
 
         _param = self._get_department_searches_serialize(
             page=page,
-            per_page=per_page,
             q=q,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -16894,7 +16876,6 @@ class DefaultApi:
     def _get_department_searches_serialize(
         self,
         page,
-        per_page,
         q,
         _request_auth,
         _content_type,
@@ -16920,10 +16901,6 @@ class DefaultApi:
         if page is not None:
 
             _query_params.append(("page", page))
-
-        if per_page is not None:
-
-            _query_params.append(("per_page", per_page))
 
         if q is not None:
 
