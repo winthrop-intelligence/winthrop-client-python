@@ -18,6 +18,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.filter_position_type import FilterPositionType
+from winthrop_client_python.models.geo_region import GeoRegion
 from winthrop_client_python.models.id_name import IdName
 from winthrop_client_python.models.sport import Sport
 from typing import Optional, Set
@@ -34,8 +36,8 @@ class GetFilterOptions200Response(BaseModel):
     current_financials_year: Optional[StrictInt] = None
     divisions: Optional[List[IdName]] = None
     sports: Optional[List[Sport]] = None
-    position_types: Optional[List[IdName]] = None
-    geo_regions: Optional[List[IdName]] = None
+    position_types: Optional[List[FilterPositionType]] = None
+    geo_regions: Optional[List[GeoRegion]] = None
     gender_options: Optional[List[StrictStr]] = None
     diversity_options: Optional[List[StrictStr]] = None
     compensation_types: Optional[List[StrictStr]] = None
@@ -144,12 +146,15 @@ class GetFilterOptions200Response(BaseModel):
                     else None
                 ),
                 "position_types": (
-                    [IdName.from_dict(_item) for _item in obj["position_types"]]
+                    [
+                        FilterPositionType.from_dict(_item)
+                        for _item in obj["position_types"]
+                    ]
                     if obj.get("position_types") is not None
                     else None
                 ),
                 "geo_regions": (
-                    [IdName.from_dict(_item) for _item in obj["geo_regions"]]
+                    [GeoRegion.from_dict(_item) for _item in obj["geo_regions"]]
                     if obj.get("geo_regions") is not None
                     else None
                 ),

@@ -124,6 +124,7 @@ from winthrop_client_python.models.directors_cup_school import DirectorsCupSchoo
 from winthrop_client_python.models.division import Division
 from winthrop_client_python.models.division_collection import DivisionCollection
 from winthrop_client_python.models.dossier_report_response import DossierReportResponse
+from winthrop_client_python.models.filter_position_type import FilterPositionType
 from winthrop_client_python.models.filters import Filters
 from winthrop_client_python.models.financial_qc import FinancialQc
 from winthrop_client_python.models.financial_search_result import FinancialSearchResult
@@ -152,6 +153,7 @@ from winthrop_client_python.models.game_post_search_result_collection import (
     GamePostSearchResultCollection,
 )
 from winthrop_client_python.models.game_type import GameType
+from winthrop_client_python.models.geo_region import GeoRegion
 from winthrop_client_python.models.get_favorites200_response_inner import (
     GetFavorites200ResponseInner,
 )

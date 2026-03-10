@@ -68,6 +68,7 @@ docs/Division.md
 docs/DivisionCollection.md
 docs/DossierApi.md
 docs/DossierReportResponse.md
+docs/FilterPositionType.md
 docs/Filters.md
 docs/FinancialQc.md
 docs/FinancialSearchResult.md
@@ -88,6 +89,7 @@ docs/GamePostCollection.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
 docs/GameType.md
+docs/GeoRegion.md
 docs/GetFavorites200ResponseInner.md
 docs/GetFilterOptions200Response.md
 docs/GetLadFilterOptions200Response.md
@@ -177,9 +179,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_department_search_result_department.py
-test/test_department_search_result_department_deals_inner.py
-test/test_department_search_result_sports_inner.py
+test/test_filter_position_type.py
+test/test_geo_region.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -259,6 +260,7 @@ winthrop_client_python/models/directors_cup_school.py
 winthrop_client_python/models/division.py
 winthrop_client_python/models/division_collection.py
 winthrop_client_python/models/dossier_report_response.py
+winthrop_client_python/models/filter_position_type.py
 winthrop_client_python/models/filters.py
 winthrop_client_python/models/financial_qc.py
 winthrop_client_python/models/financial_search_result.py
@@ -279,6 +281,7 @@ winthrop_client_python/models/game_post_collection.py
 winthrop_client_python/models/game_post_search_result.py
 winthrop_client_python/models/game_post_search_result_collection.py
 winthrop_client_python/models/game_type.py
+winthrop_client_python/models/geo_region.py
 winthrop_client_python/models/get_favorites200_response_inner.py
 winthrop_client_python/models/get_filter_options200_response.py
 winthrop_client_python/models/get_lad_filter_options200_response.py

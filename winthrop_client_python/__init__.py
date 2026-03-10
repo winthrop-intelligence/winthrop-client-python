@@ -97,6 +97,7 @@ __all__ = [
     "Division",
     "DivisionCollection",
     "DossierReportResponse",
+    "FilterPositionType",
     "Filters",
     "FinancialQc",
     "FinancialSearchResult",
@@ -117,6 +118,7 @@ __all__ = [
     "GamePostSearchResult",
     "GamePostSearchResultCollection",
     "GameType",
+    "GeoRegion",
     "GetFavorites200ResponseInner",
     "GetFilterOptions200Response",
     "GetLadFilterOptions200Response",
@@ -385,6 +387,9 @@ from winthrop_client_python.models.division_collection import (
 from winthrop_client_python.models.dossier_report_response import (
     DossierReportResponse as DossierReportResponse,
 )
+from winthrop_client_python.models.filter_position_type import (
+    FilterPositionType as FilterPositionType,
+)
 from winthrop_client_python.models.filters import Filters as Filters
 from winthrop_client_python.models.financial_qc import FinancialQc as FinancialQc
 from winthrop_client_python.models.financial_search_result import (
@@ -429,6 +434,7 @@ from winthrop_client_python.models.game_post_search_result_collection import (
     GamePostSearchResultCollection as GamePostSearchResultCollection,
 )
 from winthrop_client_python.models.game_type import GameType as GameType
+from winthrop_client_python.models.geo_region import GeoRegion as GeoRegion
 from winthrop_client_python.models.get_favorites200_response_inner import (
     GetFavorites200ResponseInner as GetFavorites200ResponseInner,
 )
