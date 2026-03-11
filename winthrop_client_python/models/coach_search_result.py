@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,13 +32,24 @@ class CoachSearchResult(BaseModel):
     first_name: Optional[StrictStr] = None
     last_name: Optional[StrictStr] = None
     school_name: Optional[StrictStr] = None
+    school_short_name: Optional[StrictStr] = None
     school_id: Optional[StrictInt] = None
     conference_name: Optional[StrictStr] = None
     conference_id: Optional[StrictInt] = None
     division_name: Optional[StrictStr] = None
     division_id: Optional[StrictInt] = None
     year: Optional[StrictInt] = None
+    coach_friendly_id: Optional[StrictStr] = None
     position_types: Optional[List[StrictStr]] = None
+    sport_name: Optional[StrictStr] = None
+    sport_full_name: Optional[StrictStr] = None
+    position_title: Optional[StrictStr] = None
+    season_wins: Optional[StrictInt] = None
+    season_losses: Optional[StrictInt] = None
+    season_ties: Optional[StrictInt] = None
+    season_conference_position: Optional[StrictInt] = None
+    season_conference_num_positions: Optional[StrictInt] = None
+    rpi: Optional[float] = None
     compensation_cents: Optional[StrictInt] = Field(
         default=None,
         description="Total compensation in cents (included based on authorization)",
@@ -51,24 +62,63 @@ class CoachSearchResult(BaseModel):
         default=None,
         description="School's cost-of-living index (included based on authorization)",
     )
+    compensation_type: Optional[StrictStr] = Field(
+        default=None, description="Compensation type (included based on authorization)"
+    )
+    compensation_contingent_bonus: Optional[StrictBool] = None
+    compensation_deferred_comp_cents: Optional[StrictInt] = None
+    compensation_one_time_bonus_cents: Optional[StrictInt] = None
+    compensation_buyout_terms: Optional[StrictStr] = None
+    compensation_is_car_provided: Optional[StrictBool] = None
+    compensation_outside_income_cents: Optional[StrictInt] = None
+    compensation_talent_fee: Optional[StrictInt] = None
+    compensation_county_club_membership_paid: Optional[StrictBool] = None
+    compensation_media_link: Optional[StrictStr] = None
+    contract_starts_on: Optional[date] = None
     contract_expires_on: Optional[date] = None
+    contract_at_will: Optional[StrictBool] = None
+    raw_contract_id: Optional[StrictInt] = None
     avatar_url: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "first_name",
         "last_name",
         "school_name",
+        "school_short_name",
         "school_id",
         "conference_name",
         "conference_id",
         "division_name",
         "division_id",
         "year",
+        "coach_friendly_id",
         "position_types",
+        "sport_name",
+        "sport_full_name",
+        "position_title",
+        "season_wins",
+        "season_losses",
+        "season_ties",
+        "season_conference_position",
+        "season_conference_num_positions",
+        "rpi",
         "compensation_cents",
         "base_salary_cents",
         "coli",
+        "compensation_type",
+        "compensation_contingent_bonus",
+        "compensation_deferred_comp_cents",
+        "compensation_one_time_bonus_cents",
+        "compensation_buyout_terms",
+        "compensation_is_car_provided",
+        "compensation_outside_income_cents",
+        "compensation_talent_fee",
+        "compensation_county_club_membership_paid",
+        "compensation_media_link",
+        "contract_starts_on",
         "contract_expires_on",
+        "contract_at_will",
+        "raw_contract_id",
         "avatar_url",
     ]
 
@@ -114,6 +164,14 @@ class CoachSearchResult(BaseModel):
         if self.school_name is None and "school_name" in self.model_fields_set:
             _dict["school_name"] = None
 
+        # set to None if school_short_name (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.school_short_name is None
+            and "school_short_name" in self.model_fields_set
+        ):
+            _dict["school_short_name"] = None
+
         # set to None if school_id (nullable) is None
         # and model_fields_set contains the field
         if self.school_id is None and "school_id" in self.model_fields_set:
@@ -139,6 +197,65 @@ class CoachSearchResult(BaseModel):
         if self.division_id is None and "division_id" in self.model_fields_set:
             _dict["division_id"] = None
 
+        # set to None if coach_friendly_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.coach_friendly_id is None
+            and "coach_friendly_id" in self.model_fields_set
+        ):
+            _dict["coach_friendly_id"] = None
+
+        # set to None if sport_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.sport_name is None and "sport_name" in self.model_fields_set:
+            _dict["sport_name"] = None
+
+        # set to None if sport_full_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.sport_full_name is None and "sport_full_name" in self.model_fields_set:
+            _dict["sport_full_name"] = None
+
+        # set to None if position_title (nullable) is None
+        # and model_fields_set contains the field
+        if self.position_title is None and "position_title" in self.model_fields_set:
+            _dict["position_title"] = None
+
+        # set to None if season_wins (nullable) is None
+        # and model_fields_set contains the field
+        if self.season_wins is None and "season_wins" in self.model_fields_set:
+            _dict["season_wins"] = None
+
+        # set to None if season_losses (nullable) is None
+        # and model_fields_set contains the field
+        if self.season_losses is None and "season_losses" in self.model_fields_set:
+            _dict["season_losses"] = None
+
+        # set to None if season_ties (nullable) is None
+        # and model_fields_set contains the field
+        if self.season_ties is None and "season_ties" in self.model_fields_set:
+            _dict["season_ties"] = None
+
+        # set to None if season_conference_position (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.season_conference_position is None
+            and "season_conference_position" in self.model_fields_set
+        ):
+            _dict["season_conference_position"] = None
+
+        # set to None if season_conference_num_positions (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.season_conference_num_positions is None
+            and "season_conference_num_positions" in self.model_fields_set
+        ):
+            _dict["season_conference_num_positions"] = None
+
+        # set to None if rpi (nullable) is None
+        # and model_fields_set contains the field
+        if self.rpi is None and "rpi" in self.model_fields_set:
+            _dict["rpi"] = None
+
         # set to None if compensation_cents (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -160,6 +277,94 @@ class CoachSearchResult(BaseModel):
         if self.coli is None and "coli" in self.model_fields_set:
             _dict["coli"] = None
 
+        # set to None if compensation_type (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_type is None
+            and "compensation_type" in self.model_fields_set
+        ):
+            _dict["compensation_type"] = None
+
+        # set to None if compensation_contingent_bonus (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_contingent_bonus is None
+            and "compensation_contingent_bonus" in self.model_fields_set
+        ):
+            _dict["compensation_contingent_bonus"] = None
+
+        # set to None if compensation_deferred_comp_cents (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_deferred_comp_cents is None
+            and "compensation_deferred_comp_cents" in self.model_fields_set
+        ):
+            _dict["compensation_deferred_comp_cents"] = None
+
+        # set to None if compensation_one_time_bonus_cents (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_one_time_bonus_cents is None
+            and "compensation_one_time_bonus_cents" in self.model_fields_set
+        ):
+            _dict["compensation_one_time_bonus_cents"] = None
+
+        # set to None if compensation_buyout_terms (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_buyout_terms is None
+            and "compensation_buyout_terms" in self.model_fields_set
+        ):
+            _dict["compensation_buyout_terms"] = None
+
+        # set to None if compensation_is_car_provided (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_is_car_provided is None
+            and "compensation_is_car_provided" in self.model_fields_set
+        ):
+            _dict["compensation_is_car_provided"] = None
+
+        # set to None if compensation_outside_income_cents (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_outside_income_cents is None
+            and "compensation_outside_income_cents" in self.model_fields_set
+        ):
+            _dict["compensation_outside_income_cents"] = None
+
+        # set to None if compensation_talent_fee (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_talent_fee is None
+            and "compensation_talent_fee" in self.model_fields_set
+        ):
+            _dict["compensation_talent_fee"] = None
+
+        # set to None if compensation_county_club_membership_paid (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_county_club_membership_paid is None
+            and "compensation_county_club_membership_paid" in self.model_fields_set
+        ):
+            _dict["compensation_county_club_membership_paid"] = None
+
+        # set to None if compensation_media_link (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_media_link is None
+            and "compensation_media_link" in self.model_fields_set
+        ):
+            _dict["compensation_media_link"] = None
+
+        # set to None if contract_starts_on (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.contract_starts_on is None
+            and "contract_starts_on" in self.model_fields_set
+        ):
+            _dict["contract_starts_on"] = None
+
         # set to None if contract_expires_on (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -167,6 +372,19 @@ class CoachSearchResult(BaseModel):
             and "contract_expires_on" in self.model_fields_set
         ):
             _dict["contract_expires_on"] = None
+
+        # set to None if contract_at_will (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.contract_at_will is None
+            and "contract_at_will" in self.model_fields_set
+        ):
+            _dict["contract_at_will"] = None
+
+        # set to None if raw_contract_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.raw_contract_id is None and "raw_contract_id" in self.model_fields_set:
+            _dict["raw_contract_id"] = None
 
         # set to None if avatar_url (nullable) is None
         # and model_fields_set contains the field
@@ -190,17 +408,53 @@ class CoachSearchResult(BaseModel):
                 "first_name": obj.get("first_name"),
                 "last_name": obj.get("last_name"),
                 "school_name": obj.get("school_name"),
+                "school_short_name": obj.get("school_short_name"),
                 "school_id": obj.get("school_id"),
                 "conference_name": obj.get("conference_name"),
                 "conference_id": obj.get("conference_id"),
                 "division_name": obj.get("division_name"),
                 "division_id": obj.get("division_id"),
                 "year": obj.get("year"),
+                "coach_friendly_id": obj.get("coach_friendly_id"),
                 "position_types": obj.get("position_types"),
+                "sport_name": obj.get("sport_name"),
+                "sport_full_name": obj.get("sport_full_name"),
+                "position_title": obj.get("position_title"),
+                "season_wins": obj.get("season_wins"),
+                "season_losses": obj.get("season_losses"),
+                "season_ties": obj.get("season_ties"),
+                "season_conference_position": obj.get("season_conference_position"),
+                "season_conference_num_positions": obj.get(
+                    "season_conference_num_positions"
+                ),
+                "rpi": obj.get("rpi"),
                 "compensation_cents": obj.get("compensation_cents"),
                 "base_salary_cents": obj.get("base_salary_cents"),
                 "coli": obj.get("coli"),
+                "compensation_type": obj.get("compensation_type"),
+                "compensation_contingent_bonus": obj.get(
+                    "compensation_contingent_bonus"
+                ),
+                "compensation_deferred_comp_cents": obj.get(
+                    "compensation_deferred_comp_cents"
+                ),
+                "compensation_one_time_bonus_cents": obj.get(
+                    "compensation_one_time_bonus_cents"
+                ),
+                "compensation_buyout_terms": obj.get("compensation_buyout_terms"),
+                "compensation_is_car_provided": obj.get("compensation_is_car_provided"),
+                "compensation_outside_income_cents": obj.get(
+                    "compensation_outside_income_cents"
+                ),
+                "compensation_talent_fee": obj.get("compensation_talent_fee"),
+                "compensation_county_club_membership_paid": obj.get(
+                    "compensation_county_club_membership_paid"
+                ),
+                "compensation_media_link": obj.get("compensation_media_link"),
+                "contract_starts_on": obj.get("contract_starts_on"),
                 "contract_expires_on": obj.get("contract_expires_on"),
+                "contract_at_will": obj.get("contract_at_will"),
+                "raw_contract_id": obj.get("raw_contract_id"),
                 "avatar_url": obj.get("avatar_url"),
             }
         )

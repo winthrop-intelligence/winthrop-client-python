@@ -20,6 +20,7 @@ from datetime import date
 from pydantic import (
     BaseModel,
     ConfigDict,
+    Field,
     StrictBool,
     StrictInt,
     StrictStr,
@@ -42,6 +43,9 @@ class Administrator(BaseModel):
     coach_first_name: Optional[StrictStr] = None
     coach_last_name: Optional[StrictStr] = None
     coach_name: Optional[StrictStr] = None
+    name: Optional[StrictStr] = Field(
+        default=None, description="Combined display name (first + last)"
+    )
     season_id: Optional[StrictInt] = None
     position_id: Optional[StrictInt] = None
     school_id: Optional[StrictInt] = None
@@ -88,6 +92,7 @@ class Administrator(BaseModel):
         "coach_first_name",
         "coach_last_name",
         "coach_name",
+        "name",
         "season_id",
         "position_id",
         "school_id",
@@ -215,6 +220,7 @@ class Administrator(BaseModel):
                 "coach_first_name": obj.get("coach_first_name"),
                 "coach_last_name": obj.get("coach_last_name"),
                 "coach_name": obj.get("coach_name"),
+                "name": obj.get("name"),
                 "season_id": obj.get("season_id"),
                 "position_id": obj.get("position_id"),
                 "school_id": obj.get("school_id"),

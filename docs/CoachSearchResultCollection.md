@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List[CoachSearchResult]**](CoachSearchResult.md) |  | [optional] 
 **meta** | [**Meta**](Meta.md) |  | [optional] 
+**comp_stats** | [**CompStats**](CompStats.md) |  | [optional] 
 
 ## Example
 

@@ -19,6 +19,7 @@ import json
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.coach_search_result import CoachSearchResult
+from winthrop_client_python.models.comp_stats import CompStats
 from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,7 +32,8 @@ class CoachSearchResultCollection(BaseModel):
 
     data: Optional[List[CoachSearchResult]] = None
     meta: Optional[Meta] = None
-    __properties: ClassVar[List[str]] = ["data", "meta"]
+    comp_stats: Optional[CompStats] = None
+    __properties: ClassVar[List[str]] = ["data", "meta", "comp_stats"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,6 +82,9 @@ class CoachSearchResultCollection(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of meta
         if self.meta:
             _dict["meta"] = self.meta.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of comp_stats
+        if self.comp_stats:
+            _dict["comp_stats"] = self.comp_stats.to_dict()
         return _dict
 
     @classmethod
@@ -100,6 +105,11 @@ class CoachSearchResultCollection(BaseModel):
                 ),
                 "meta": (
                     Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+                ),
+                "comp_stats": (
+                    CompStats.from_dict(obj["comp_stats"])
+                    if obj.get("comp_stats") is not None
+                    else None
                 ),
             }
         )

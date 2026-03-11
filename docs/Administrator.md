@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **coach_first_name** | **str** |  | [optional] 
 **coach_last_name** | **str** |  | [optional] 
 **coach_name** | **str** |  | [optional] 
+**name** | **str** | Combined display name (first + last) | [optional] 
 **season_id** | **int** |  | [optional] 
 **position_id** | **int** |  | [optional] 
 **school_id** | **int** |  | [optional] 
