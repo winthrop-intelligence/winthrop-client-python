@@ -47,9 +47,9 @@ class CoachSearchResult(BaseModel):
         default=None,
         description="Base salary in cents (included based on authorization)",
     )
-    adjusted_comp_cents: Optional[StrictInt] = Field(
+    coli: Optional[float] = Field(
         default=None,
-        description="Cost-of-living adjusted compensation in cents (included based on authorization)",
+        description="School's cost-of-living index (included based on authorization)",
     )
     contract_expires_on: Optional[date] = None
     avatar_url: Optional[StrictStr] = None
@@ -67,7 +67,7 @@ class CoachSearchResult(BaseModel):
         "position_types",
         "compensation_cents",
         "base_salary_cents",
-        "adjusted_comp_cents",
+        "coli",
         "contract_expires_on",
         "avatar_url",
     ]
@@ -155,13 +155,10 @@ class CoachSearchResult(BaseModel):
         ):
             _dict["base_salary_cents"] = None
 
-        # set to None if adjusted_comp_cents (nullable) is None
+        # set to None if coli (nullable) is None
         # and model_fields_set contains the field
-        if (
-            self.adjusted_comp_cents is None
-            and "adjusted_comp_cents" in self.model_fields_set
-        ):
-            _dict["adjusted_comp_cents"] = None
+        if self.coli is None and "coli" in self.model_fields_set:
+            _dict["coli"] = None
 
         # set to None if contract_expires_on (nullable) is None
         # and model_fields_set contains the field
@@ -202,7 +199,7 @@ class CoachSearchResult(BaseModel):
                 "position_types": obj.get("position_types"),
                 "compensation_cents": obj.get("compensation_cents"),
                 "base_salary_cents": obj.get("base_salary_cents"),
-                "adjusted_comp_cents": obj.get("adjusted_comp_cents"),
+                "coli": obj.get("coli"),
                 "contract_expires_on": obj.get("contract_expires_on"),
                 "avatar_url": obj.get("avatar_url"),
             }

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **position_types** | **List[str]** |  | [optional] 
 **compensation_cents** | **int** | Total compensation in cents (included based on authorization) | [optional] 
 **base_salary_cents** | **int** | Base salary in cents (included based on authorization) | [optional] 
-**adjusted_comp_cents** | **int** | Cost-of-living adjusted compensation in cents (included based on authorization) | [optional] 
+**coli** | **float** | School&#39;s cost-of-living index (included based on authorization) | [optional] 
 **contract_expires_on** | **date** |  | [optional] 
 **avatar_url** | **str** |  | [optional] 
 
