@@ -59,6 +59,15 @@ class GamePostSearchResult(BaseModel):
     game_types_display: Optional[StrictStr] = Field(
         default=None, description="Comma-separated list of game type names"
     )
+    created_by_name: Optional[StrictStr] = Field(
+        default=None, description="Full name of the user who created the game post"
+    )
+    avg_rpi: Optional[StrictInt] = Field(
+        default=None, description="5-year average RPI ranking"
+    )
+    school_logo_url: Optional[StrictStr] = Field(
+        default=None, description="URL to school logo image (small variant)"
+    )
     latitude: Optional[float] = None
     longitude: Optional[float] = None
     __properties: ClassVar[List[str]] = [
@@ -87,6 +96,9 @@ class GamePostSearchResult(BaseModel):
         "avg_guarantee_paid",
         "avg_guarantee_received",
         "game_types_display",
+        "created_by_name",
+        "avg_rpi",
+        "school_logo_url",
         "latitude",
         "longitude",
     ]
@@ -245,6 +257,21 @@ class GamePostSearchResult(BaseModel):
         ):
             _dict["game_types_display"] = None
 
+        # set to None if created_by_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.created_by_name is None and "created_by_name" in self.model_fields_set:
+            _dict["created_by_name"] = None
+
+        # set to None if avg_rpi (nullable) is None
+        # and model_fields_set contains the field
+        if self.avg_rpi is None and "avg_rpi" in self.model_fields_set:
+            _dict["avg_rpi"] = None
+
+        # set to None if school_logo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.school_logo_url is None and "school_logo_url" in self.model_fields_set:
+            _dict["school_logo_url"] = None
+
         # set to None if latitude (nullable) is None
         # and model_fields_set contains the field
         if self.latitude is None and "latitude" in self.model_fields_set:
@@ -293,6 +320,9 @@ class GamePostSearchResult(BaseModel):
                 "avg_guarantee_paid": obj.get("avg_guarantee_paid"),
                 "avg_guarantee_received": obj.get("avg_guarantee_received"),
                 "game_types_display": obj.get("game_types_display"),
+                "created_by_name": obj.get("created_by_name"),
+                "avg_rpi": obj.get("avg_rpi"),
+                "school_logo_url": obj.get("school_logo_url"),
                 "latitude": obj.get("latitude"),
                 "longitude": obj.get("longitude"),
             }

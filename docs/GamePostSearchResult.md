@@ -31,6 +31,9 @@ Name | Type | Description | Notes
 **avg_guarantee_paid** | **float** |  | [optional] 
 **avg_guarantee_received** | **float** |  | [optional] 
 **game_types_display** | **str** | Comma-separated list of game type names | [optional] 
+**created_by_name** | **str** | Full name of the user who created the game post | [optional] 
+**avg_rpi** | **int** | 5-year average RPI ranking | [optional] 
+**school_logo_url** | **str** | URL to school logo image (small variant) | [optional] 
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 
 

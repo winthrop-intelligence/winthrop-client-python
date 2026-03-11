@@ -470,14 +470,6 @@ class FinancialSearchResult(BaseModel):
         ):
             _dict["exp_guarantees_amt"] = None
 
-        # set to None if has_audited_report (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.has_audited_report is None
-            and "has_audited_report" in self.model_fields_set
-        ):
-            _dict["has_audited_report"] = None
-
         # set to None if rev_contributions_no_ik_amt (nullable) is None
         # and model_fields_set contains the field
         if (
