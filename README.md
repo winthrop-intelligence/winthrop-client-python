@@ -426,6 +426,7 @@ Class | Method | HTTP request | Description
  - [UserCollection](docs/UserCollection.md)
  - [UserRequest](docs/UserRequest.md)
  - [UserRequestCollection](docs/UserRequestCollection.md)
+ - [UserScheduleSportsInner](docs/UserScheduleSportsInner.md)
  - [ValidationError](docs/ValidationError.md)
  - [Vendor](docs/Vendor.md)
  - [VendorCollection](docs/VendorCollection.md)

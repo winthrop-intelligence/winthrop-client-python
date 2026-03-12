@@ -17,7 +17,15 @@ import re  # noqa: F401
 import json
 
 from datetime import date, datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StrictBool,
+    StrictInt,
+    StrictStr,
+    field_validator,
+)
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -70,6 +78,9 @@ class GamePostSearchResult(BaseModel):
     )
     latitude: Optional[float] = None
     longitude: Optional[float] = None
+    can_manage: Optional[StrictBool] = Field(
+        default=None, description="Whether the current user can manage this game post"
+    )
     __properties: ClassVar[List[str]] = [
         "game_post_id",
         "id",
@@ -101,6 +112,7 @@ class GamePostSearchResult(BaseModel):
         "school_logo_url",
         "latitude",
         "longitude",
+        "can_manage",
     ]
 
     @field_validator("status")
@@ -325,6 +337,7 @@ class GamePostSearchResult(BaseModel):
                 "school_logo_url": obj.get("school_logo_url"),
                 "latitude": obj.get("latitude"),
                 "longitude": obj.get("longitude"),
+                "can_manage": obj.get("can_manage"),
             }
         )
         return _obj

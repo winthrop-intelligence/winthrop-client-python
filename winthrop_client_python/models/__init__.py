@@ -258,6 +258,9 @@ from winthrop_client_python.models.user_activity_summary_collection import (
 from winthrop_client_python.models.user_collection import UserCollection
 from winthrop_client_python.models.user_request import UserRequest
 from winthrop_client_python.models.user_request_collection import UserRequestCollection
+from winthrop_client_python.models.user_schedule_sports_inner import (
+    UserScheduleSportsInner,
+)
 from winthrop_client_python.models.validation_error import ValidationError
 from winthrop_client_python.models.vendor import Vendor
 from winthrop_client_python.models.vendor_collection import VendorCollection

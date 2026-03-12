@@ -17,9 +17,20 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr, field_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StrictBool,
+    StrictInt,
+    StrictStr,
+    field_validator,
+)
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.division import Division
+from winthrop_client_python.models.user_schedule_sports_inner import (
+    UserScheduleSportsInner,
+)
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -42,6 +53,30 @@ class User(BaseModel):
     coach_id: Optional[StrictInt] = None
     divisions: Optional[List[Division]] = None
     roles: Optional[List[StrictStr]] = None
+    can_see_compensation: Optional[StrictBool] = Field(
+        default=None, description="Whether the user can view coach compensation data"
+    )
+    can_show_scouting: Optional[StrictBool] = Field(
+        default=None,
+        description="Whether the user can view scouting/team schedule links",
+    )
+    can_show_game_contract: Optional[StrictBool] = Field(
+        default=None,
+        description="Whether the user can view game contract/guarantee data",
+    )
+    is_sport_specific: Optional[StrictBool] = None
+    is_d2_only: Optional[StrictBool] = None
+    is_conference_only: Optional[StrictBool] = None
+    permissible_sport_ids: Optional[List[StrictInt]] = None
+    coli_index: Optional[float] = Field(
+        default=None, description="Cost of living index for the user's school"
+    )
+    subscription_type: Optional[StrictStr] = None
+    schedule_sports: Optional[List[UserScheduleSportsInner]] = Field(
+        default=None, description="Sports the user can access for game scheduling"
+    )
+    school_city: Optional[StrictStr] = None
+    school_state: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "email",
@@ -56,6 +91,18 @@ class User(BaseModel):
         "coach_id",
         "divisions",
         "roles",
+        "can_see_compensation",
+        "can_show_scouting",
+        "can_show_game_contract",
+        "is_sport_specific",
+        "is_d2_only",
+        "is_conference_only",
+        "permissible_sport_ids",
+        "coli_index",
+        "subscription_type",
+        "schedule_sports",
+        "school_city",
+        "school_state",
     ]
 
     @field_validator("state")
@@ -114,6 +161,39 @@ class User(BaseModel):
                 if _item_divisions:
                     _items.append(_item_divisions.to_dict())
             _dict["divisions"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in schedule_sports (list)
+        _items = []
+        if self.schedule_sports:
+            for _item_schedule_sports in self.schedule_sports:
+                if _item_schedule_sports:
+                    _items.append(_item_schedule_sports.to_dict())
+            _dict["schedule_sports"] = _items
+        # set to None if permissible_sport_ids (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.permissible_sport_ids is None
+            and "permissible_sport_ids" in self.model_fields_set
+        ):
+            _dict["permissible_sport_ids"] = None
+
+        # set to None if subscription_type (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.subscription_type is None
+            and "subscription_type" in self.model_fields_set
+        ):
+            _dict["subscription_type"] = None
+
+        # set to None if school_city (nullable) is None
+        # and model_fields_set contains the field
+        if self.school_city is None and "school_city" in self.model_fields_set:
+            _dict["school_city"] = None
+
+        # set to None if school_state (nullable) is None
+        # and model_fields_set contains the field
+        if self.school_state is None and "school_state" in self.model_fields_set:
+            _dict["school_state"] = None
+
         return _dict
 
     @classmethod
@@ -144,6 +224,25 @@ class User(BaseModel):
                     else None
                 ),
                 "roles": obj.get("roles"),
+                "can_see_compensation": obj.get("can_see_compensation"),
+                "can_show_scouting": obj.get("can_show_scouting"),
+                "can_show_game_contract": obj.get("can_show_game_contract"),
+                "is_sport_specific": obj.get("is_sport_specific"),
+                "is_d2_only": obj.get("is_d2_only"),
+                "is_conference_only": obj.get("is_conference_only"),
+                "permissible_sport_ids": obj.get("permissible_sport_ids"),
+                "coli_index": obj.get("coli_index"),
+                "subscription_type": obj.get("subscription_type"),
+                "schedule_sports": (
+                    [
+                        UserScheduleSportsInner.from_dict(_item)
+                        for _item in obj["schedule_sports"]
+                    ]
+                    if obj.get("schedule_sports") is not None
+                    else None
+                ),
+                "school_city": obj.get("school_city"),
+                "school_state": obj.get("school_state"),
             }
         )
         return _obj

@@ -166,6 +166,7 @@ docs/UserActivitySummaryCollection.md
 docs/UserCollection.md
 docs/UserRequest.md
 docs/UserRequestCollection.md
+docs/UserScheduleSportsInner.md
 docs/ValidationError.md
 docs/Vendor.md
 docs/VendorCollection.md
@@ -179,6 +180,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_user_schedule_sports_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -352,6 +354,7 @@ winthrop_client_python/models/user_activity_summary_collection.py
 winthrop_client_python/models/user_collection.py
 winthrop_client_python/models/user_request.py
 winthrop_client_python/models/user_request_collection.py
+winthrop_client_python/models/user_schedule_sports_inner.py
 winthrop_client_python/models/validation_error.py
 winthrop_client_python/models/vendor.py
 winthrop_client_python/models/vendor_collection.py

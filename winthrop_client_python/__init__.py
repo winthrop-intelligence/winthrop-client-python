@@ -191,6 +191,7 @@ __all__ = [
     "UserCollection",
     "UserRequest",
     "UserRequestCollection",
+    "UserScheduleSportsInner",
     "ValidationError",
     "Vendor",
     "VendorCollection",
@@ -588,6 +589,9 @@ from winthrop_client_python.models.user_collection import (
 from winthrop_client_python.models.user_request import UserRequest as UserRequest
 from winthrop_client_python.models.user_request_collection import (
     UserRequestCollection as UserRequestCollection,
+)
+from winthrop_client_python.models.user_schedule_sports_inner import (
+    UserScheduleSportsInner as UserScheduleSportsInner,
 )
 from winthrop_client_python.models.validation_error import (
     ValidationError as ValidationError,

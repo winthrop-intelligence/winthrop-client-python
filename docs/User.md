@@ -18,6 +18,18 @@ Name | Type | Description | Notes
 **coach_id** | **int** |  | [optional] 
 **divisions** | [**List[Division]**](Division.md) |  | [optional] 
 **roles** | **List[str]** |  | [optional] 
+**can_see_compensation** | **bool** | Whether the user can view coach compensation data | [optional] 
+**can_show_scouting** | **bool** | Whether the user can view scouting/team schedule links | [optional] 
+**can_show_game_contract** | **bool** | Whether the user can view game contract/guarantee data | [optional] 
+**is_sport_specific** | **bool** |  | [optional] 
+**is_d2_only** | **bool** |  | [optional] 
+**is_conference_only** | **bool** |  | [optional] 
+**permissible_sport_ids** | **List[int]** |  | [optional] 
+**coli_index** | **float** | Cost of living index for the user&#39;s school | [optional] 
+**subscription_type** | **str** |  | [optional] 
+**schedule_sports** | [**List[UserScheduleSportsInner]**](UserScheduleSportsInner.md) | Sports the user can access for game scheduling | [optional] 
+**school_city** | **str** |  | [optional] 
+**school_state** | **str** |  | [optional] 
 
 ## Example
 

@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **school_logo_url** | **str** | URL to school logo image (small variant) | [optional] 
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 
+**can_manage** | **bool** | Whether the current user can manage this game post | [optional] 
 
 ## Example
 
