@@ -29,6 +29,8 @@ Name | Type | Description | Notes
 **raw_contract_id** | **int** |  | [optional] 
 **belongs_to_series** | **bool** |  | [optional] 
 **can_manage** | **bool** |  | [optional] 
+**can_link_home_school** | **bool** |  | [optional] 
+**can_link_away_school** | **bool** |  | [optional] 
 
 ## Example
 
