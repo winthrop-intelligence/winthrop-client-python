@@ -52,8 +52,6 @@ class GadSearchResult(BaseModel):
     raw_contract_id: Optional[StrictInt] = None
     belongs_to_series: Optional[StrictBool] = None
     can_manage: Optional[StrictBool] = None
-    can_link_home_school: Optional[StrictBool] = None
-    can_link_away_school: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "game_contract_id",
         "sport_id",
@@ -79,8 +77,6 @@ class GadSearchResult(BaseModel):
         "raw_contract_id",
         "belongs_to_series",
         "can_manage",
-        "can_link_home_school",
-        "can_link_away_school",
     ]
 
     model_config = ConfigDict(
@@ -286,8 +282,6 @@ class GadSearchResult(BaseModel):
                 "raw_contract_id": obj.get("raw_contract_id"),
                 "belongs_to_series": obj.get("belongs_to_series"),
                 "can_manage": obj.get("can_manage"),
-                "can_link_home_school": obj.get("can_link_home_school"),
-                "can_link_away_school": obj.get("can_link_away_school"),
             }
         )
         return _obj
