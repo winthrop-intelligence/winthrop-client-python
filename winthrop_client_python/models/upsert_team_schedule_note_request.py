@@ -17,18 +17,18 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class UpdateFavoritesCategoryRequest(BaseModel):
+class UpsertTeamScheduleNoteRequest(BaseModel):
     """
-    UpdateFavoritesCategoryRequest
+    UpsertTeamScheduleNoteRequest
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name"]
+    content: StrictStr
+    __properties: ClassVar[List[str]] = ["content"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +47,7 @@ class UpdateFavoritesCategoryRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a JSON string"""
+        """Create an instance of UpsertTeamScheduleNoteRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,12 +71,12 @@ class UpdateFavoritesCategoryRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a dict"""
+        """Create an instance of UpsertTeamScheduleNoteRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"name": obj.get("name")})
+        _obj = cls.model_validate({"content": obj.get("content")})
         return _obj

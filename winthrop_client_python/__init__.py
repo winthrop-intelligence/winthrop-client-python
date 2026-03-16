@@ -78,6 +78,8 @@ __all__ = [
     "CreateFavorite201Response",
     "CreateFavoriteRequest",
     "CreateFavoritesCategoryRequest",
+    "CreateTeamScheduleFavorite201Response",
+    "CreateTeamScheduleFavoriteRequest",
     "Deal",
     "DealCollection",
     "DealDetail",
@@ -127,6 +129,7 @@ __all__ = [
     "GetLadFilterOptions200ResponsePositionTypesInner",
     "GetSchoolAlternateNames200Response",
     "GetSchoolAlternateNames404Response",
+    "GetTeamScheduleFavorites200ResponseInner",
     "GetWireChanges200Response",
     "HTTPValidationError",
     "HealthCheckFailure",
@@ -185,10 +188,33 @@ __all__ = [
     "SubscriptionCollection",
     "SystemSetting",
     "Tag",
+    "TeamScheduleCoaches",
+    "TeamScheduleCoachesCoachesInner",
+    "TeamScheduleCoachesSeasonsInner",
+    "TeamScheduleContact",
+    "TeamScheduleDetail",
+    "TeamScheduleDetailGame",
+    "TeamScheduleDetailHeadCoach",
+    "TeamScheduleDetailSchool",
+    "TeamScheduleDetailSeason",
+    "TeamScheduleDetailSport",
+    "TeamScheduleFavoriteDetail",
+    "TeamScheduleFavoriteEntry",
+    "TeamScheduleGamePosts",
+    "TeamScheduleGamePostsGamePostsInner",
+    "TeamScheduleNote",
+    "TeamScheduleRecentContract",
+    "TeamScheduleSchedule",
+    "TeamScheduleScheduleGamesInner",
+    "TeamScheduleSearchResult",
+    "TeamScheduleSearchResultAwayContracts",
+    "TeamScheduleSearchResultCollection",
+    "TeamScheduleSearchResultHomeContracts",
     "UnauthorizedError",
     "UnprocessableEntity",
-    "UpdateFavoriteRequest",
     "UpdateFavoritesCategoryRequest",
+    "UpdateTeamScheduleFavoriteRequest",
+    "UpsertTeamScheduleNoteRequest",
     "User",
     "UserActivitySummary",
     "UserActivitySummaryCollection",
@@ -343,6 +369,12 @@ from winthrop_client_python.models.create_favorite_request import (
 from winthrop_client_python.models.create_favorites_category_request import (
     CreateFavoritesCategoryRequest as CreateFavoritesCategoryRequest,
 )
+from winthrop_client_python.models.create_team_schedule_favorite201_response import (
+    CreateTeamScheduleFavorite201Response as CreateTeamScheduleFavorite201Response,
+)
+from winthrop_client_python.models.create_team_schedule_favorite_request import (
+    CreateTeamScheduleFavoriteRequest as CreateTeamScheduleFavoriteRequest,
+)
 from winthrop_client_python.models.deal import Deal as Deal
 from winthrop_client_python.models.deal_collection import (
     DealCollection as DealCollection,
@@ -464,6 +496,9 @@ from winthrop_client_python.models.get_school_alternate_names200_response import
 from winthrop_client_python.models.get_school_alternate_names404_response import (
     GetSchoolAlternateNames404Response as GetSchoolAlternateNames404Response,
 )
+from winthrop_client_python.models.get_team_schedule_favorites200_response_inner import (
+    GetTeamScheduleFavorites200ResponseInner as GetTeamScheduleFavorites200ResponseInner,
+)
 from winthrop_client_python.models.get_wire_changes200_response import (
     GetWireChanges200Response as GetWireChanges200Response,
 )
@@ -580,17 +615,86 @@ from winthrop_client_python.models.subscription_collection import (
 )
 from winthrop_client_python.models.system_setting import SystemSetting as SystemSetting
 from winthrop_client_python.models.tag import Tag as Tag
+from winthrop_client_python.models.team_schedule_coaches import (
+    TeamScheduleCoaches as TeamScheduleCoaches,
+)
+from winthrop_client_python.models.team_schedule_coaches_coaches_inner import (
+    TeamScheduleCoachesCoachesInner as TeamScheduleCoachesCoachesInner,
+)
+from winthrop_client_python.models.team_schedule_coaches_seasons_inner import (
+    TeamScheduleCoachesSeasonsInner as TeamScheduleCoachesSeasonsInner,
+)
+from winthrop_client_python.models.team_schedule_contact import (
+    TeamScheduleContact as TeamScheduleContact,
+)
+from winthrop_client_python.models.team_schedule_detail import (
+    TeamScheduleDetail as TeamScheduleDetail,
+)
+from winthrop_client_python.models.team_schedule_detail_game import (
+    TeamScheduleDetailGame as TeamScheduleDetailGame,
+)
+from winthrop_client_python.models.team_schedule_detail_head_coach import (
+    TeamScheduleDetailHeadCoach as TeamScheduleDetailHeadCoach,
+)
+from winthrop_client_python.models.team_schedule_detail_school import (
+    TeamScheduleDetailSchool as TeamScheduleDetailSchool,
+)
+from winthrop_client_python.models.team_schedule_detail_season import (
+    TeamScheduleDetailSeason as TeamScheduleDetailSeason,
+)
+from winthrop_client_python.models.team_schedule_detail_sport import (
+    TeamScheduleDetailSport as TeamScheduleDetailSport,
+)
+from winthrop_client_python.models.team_schedule_favorite_detail import (
+    TeamScheduleFavoriteDetail as TeamScheduleFavoriteDetail,
+)
+from winthrop_client_python.models.team_schedule_favorite_entry import (
+    TeamScheduleFavoriteEntry as TeamScheduleFavoriteEntry,
+)
+from winthrop_client_python.models.team_schedule_game_posts import (
+    TeamScheduleGamePosts as TeamScheduleGamePosts,
+)
+from winthrop_client_python.models.team_schedule_game_posts_game_posts_inner import (
+    TeamScheduleGamePostsGamePostsInner as TeamScheduleGamePostsGamePostsInner,
+)
+from winthrop_client_python.models.team_schedule_note import (
+    TeamScheduleNote as TeamScheduleNote,
+)
+from winthrop_client_python.models.team_schedule_recent_contract import (
+    TeamScheduleRecentContract as TeamScheduleRecentContract,
+)
+from winthrop_client_python.models.team_schedule_schedule import (
+    TeamScheduleSchedule as TeamScheduleSchedule,
+)
+from winthrop_client_python.models.team_schedule_schedule_games_inner import (
+    TeamScheduleScheduleGamesInner as TeamScheduleScheduleGamesInner,
+)
+from winthrop_client_python.models.team_schedule_search_result import (
+    TeamScheduleSearchResult as TeamScheduleSearchResult,
+)
+from winthrop_client_python.models.team_schedule_search_result_away_contracts import (
+    TeamScheduleSearchResultAwayContracts as TeamScheduleSearchResultAwayContracts,
+)
+from winthrop_client_python.models.team_schedule_search_result_collection import (
+    TeamScheduleSearchResultCollection as TeamScheduleSearchResultCollection,
+)
+from winthrop_client_python.models.team_schedule_search_result_home_contracts import (
+    TeamScheduleSearchResultHomeContracts as TeamScheduleSearchResultHomeContracts,
+)
 from winthrop_client_python.models.unauthorized_error import (
     UnauthorizedError as UnauthorizedError,
 )
 from winthrop_client_python.models.unprocessable_entity import (
     UnprocessableEntity as UnprocessableEntity,
 )
-from winthrop_client_python.models.update_favorite_request import (
-    UpdateFavoriteRequest as UpdateFavoriteRequest,
-)
 from winthrop_client_python.models.update_favorites_category_request import (
     UpdateFavoritesCategoryRequest as UpdateFavoritesCategoryRequest,
+)
+from winthrop_client_python.models.update_team_schedule_favorite_request import (
+    UpdateTeamScheduleFavoriteRequest as UpdateTeamScheduleFavoriteRequest,
+)
+from winthrop_client_python.models.upsert_team_schedule_note_request import (
+    UpsertTeamScheduleNoteRequest as UpsertTeamScheduleNoteRequest,
 )
 from winthrop_client_python.models.user import User as User
 from winthrop_client_python.models.user_activity_summary import (

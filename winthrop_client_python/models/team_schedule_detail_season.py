@@ -16,19 +16,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class UpdateFavoritesCategoryRequest(BaseModel):
+class TeamScheduleDetailSeason(BaseModel):
     """
-    UpdateFavoritesCategoryRequest
+    TeamScheduleDetailSeason
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name"]
+    wins: Optional[StrictInt] = None
+    losses: Optional[StrictInt] = None
+    record_str: Optional[StrictStr] = None
+    rpi: Optional[StrictInt] = None
+    avg_rpi: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = [
+        "wins",
+        "losses",
+        "record_str",
+        "rpi",
+        "avg_rpi",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +57,7 @@ class UpdateFavoritesCategoryRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a JSON string"""
+        """Create an instance of TeamScheduleDetailSeason from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -67,16 +77,49 @@ class UpdateFavoritesCategoryRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if wins (nullable) is None
+        # and model_fields_set contains the field
+        if self.wins is None and "wins" in self.model_fields_set:
+            _dict["wins"] = None
+
+        # set to None if losses (nullable) is None
+        # and model_fields_set contains the field
+        if self.losses is None and "losses" in self.model_fields_set:
+            _dict["losses"] = None
+
+        # set to None if record_str (nullable) is None
+        # and model_fields_set contains the field
+        if self.record_str is None and "record_str" in self.model_fields_set:
+            _dict["record_str"] = None
+
+        # set to None if rpi (nullable) is None
+        # and model_fields_set contains the field
+        if self.rpi is None and "rpi" in self.model_fields_set:
+            _dict["rpi"] = None
+
+        # set to None if avg_rpi (nullable) is None
+        # and model_fields_set contains the field
+        if self.avg_rpi is None and "avg_rpi" in self.model_fields_set:
+            _dict["avg_rpi"] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a dict"""
+        """Create an instance of TeamScheduleDetailSeason from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"name": obj.get("name")})
+        _obj = cls.model_validate(
+            {
+                "wins": obj.get("wins"),
+                "losses": obj.get("losses"),
+                "record_str": obj.get("record_str"),
+                "rpi": obj.get("rpi"),
+                "avg_rpi": obj.get("avg_rpi"),
+            }
+        )
         return _obj

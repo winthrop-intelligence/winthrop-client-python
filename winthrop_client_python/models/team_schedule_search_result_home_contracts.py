@@ -16,19 +16,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.team_schedule_recent_contract import (
+    TeamScheduleRecentContract,
+)
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class UpdateFavoritesCategoryRequest(BaseModel):
+class TeamScheduleSearchResultHomeContracts(BaseModel):
     """
-    UpdateFavoritesCategoryRequest
+    TeamScheduleSearchResultHomeContracts
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name"]
+    avg_paid_cents: Optional[StrictInt] = None
+    recent: Optional[List[TeamScheduleRecentContract]] = None
+    __properties: ClassVar[List[str]] = ["avg_paid_cents", "recent"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +51,7 @@ class UpdateFavoritesCategoryRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a JSON string"""
+        """Create an instance of TeamScheduleSearchResultHomeContracts from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -67,16 +71,40 @@ class UpdateFavoritesCategoryRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in recent (list)
+        _items = []
+        if self.recent:
+            for _item_recent in self.recent:
+                if _item_recent:
+                    _items.append(_item_recent.to_dict())
+            _dict["recent"] = _items
+        # set to None if avg_paid_cents (nullable) is None
+        # and model_fields_set contains the field
+        if self.avg_paid_cents is None and "avg_paid_cents" in self.model_fields_set:
+            _dict["avg_paid_cents"] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a dict"""
+        """Create an instance of TeamScheduleSearchResultHomeContracts from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"name": obj.get("name")})
+        _obj = cls.model_validate(
+            {
+                "avg_paid_cents": obj.get("avg_paid_cents"),
+                "recent": (
+                    [
+                        TeamScheduleRecentContract.from_dict(_item)
+                        for _item in obj["recent"]
+                    ]
+                    if obj.get("recent") is not None
+                    else None
+                ),
+            }
+        )
         return _obj

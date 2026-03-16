@@ -7,9 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | The favorite record ID | [optional] 
 **favoritable_id** | **int** | The favorited record&#39;s ID | [optional] 
-**favorites_category_id** | **int** | Category ID (only when detailed&#x3D;1) | [optional] 
-**category_name** | **str** | Category name (only when detailed&#x3D;1) | [optional] 
-**name** | **str** | Favoritable record name (only when detailed&#x3D;1) | [optional] 
 
 ## Example
 

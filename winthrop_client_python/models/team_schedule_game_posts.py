@@ -16,19 +16,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.team_schedule_game_posts_game_posts_inner import (
+    TeamScheduleGamePostsGamePostsInner,
+)
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class UpdateFavoritesCategoryRequest(BaseModel):
+class TeamScheduleGamePosts(BaseModel):
     """
-    UpdateFavoritesCategoryRequest
+    TeamScheduleGamePosts
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name"]
+    game_posts: Optional[List[TeamScheduleGamePostsGamePostsInner]] = None
+    __properties: ClassVar[List[str]] = ["game_posts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +50,7 @@ class UpdateFavoritesCategoryRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a JSON string"""
+        """Create an instance of TeamScheduleGamePosts from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -67,16 +70,34 @@ class UpdateFavoritesCategoryRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in game_posts (list)
+        _items = []
+        if self.game_posts:
+            for _item_game_posts in self.game_posts:
+                if _item_game_posts:
+                    _items.append(_item_game_posts.to_dict())
+            _dict["game_posts"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a dict"""
+        """Create an instance of TeamScheduleGamePosts from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"name": obj.get("name")})
+        _obj = cls.model_validate(
+            {
+                "game_posts": (
+                    [
+                        TeamScheduleGamePostsGamePostsInner.from_dict(_item)
+                        for _item in obj["game_posts"]
+                    ]
+                    if obj.get("game_posts") is not None
+                    else None
+                )
+            }
+        )
         return _obj

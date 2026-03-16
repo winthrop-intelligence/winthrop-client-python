@@ -16,19 +16,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class UpdateFavoritesCategoryRequest(BaseModel):
+class TeamScheduleFavoriteDetail(BaseModel):
     """
-    UpdateFavoritesCategoryRequest
+    TeamScheduleFavoriteDetail
     """  # noqa: E501
 
+    id: Optional[StrictInt] = None
+    favoritable_id: Optional[StrictStr] = None
+    favorites_category_id: Optional[StrictInt] = None
+    category_name: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name"]
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "favoritable_id",
+        "favorites_category_id",
+        "category_name",
+        "name",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +57,7 @@ class UpdateFavoritesCategoryRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a JSON string"""
+        """Create an instance of TeamScheduleFavoriteDetail from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -67,16 +77,37 @@ class UpdateFavoritesCategoryRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if favorites_category_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.favorites_category_id is None
+            and "favorites_category_id" in self.model_fields_set
+        ):
+            _dict["favorites_category_id"] = None
+
+        # set to None if category_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.category_name is None and "category_name" in self.model_fields_set:
+            _dict["category_name"] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a dict"""
+        """Create an instance of TeamScheduleFavoriteDetail from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"name": obj.get("name")})
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "favoritable_id": obj.get("favoritable_id"),
+                "favorites_category_id": obj.get("favorites_category_id"),
+                "category_name": obj.get("category_name"),
+                "name": obj.get("name"),
+            }
+        )
         return _obj

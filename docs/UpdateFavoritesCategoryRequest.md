@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **str** | The new category name | 
+**name** | **str** |  | [optional] 
 
 ## Example
 

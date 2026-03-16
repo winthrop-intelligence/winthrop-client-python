@@ -16,19 +16,24 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class UpdateFavoritesCategoryRequest(BaseModel):
+class CreateTeamScheduleFavoriteRequest(BaseModel):
     """
-    UpdateFavoritesCategoryRequest
+    CreateTeamScheduleFavoriteRequest
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["name"]
+    favoritable_id: StrictStr = Field(
+        description="The FilTeam ID (as string to preserve precision)"
+    )
+    favorites_category_id: Optional[StrictInt] = Field(
+        default=None, description="Optional category to assign the favorite to"
+    )
+    __properties: ClassVar[List[str]] = ["favoritable_id", "favorites_category_id"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -47,7 +52,7 @@ class UpdateFavoritesCategoryRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a JSON string"""
+        """Create an instance of CreateTeamScheduleFavoriteRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -71,12 +76,17 @@ class UpdateFavoritesCategoryRequest(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateFavoritesCategoryRequest from a dict"""
+        """Create an instance of CreateTeamScheduleFavoriteRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"name": obj.get("name")})
+        _obj = cls.model_validate(
+            {
+                "favoritable_id": obj.get("favoritable_id"),
+                "favorites_category_id": obj.get("favorites_category_id"),
+            }
+        )
         return _obj
