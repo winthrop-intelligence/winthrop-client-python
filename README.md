@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_conference**](docs/DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 *DefaultApi* | [**create_conferenceship**](docs/DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
 *DefaultApi* | [**create_favorite**](docs/DefaultApi.md#create_favorite) | **POST** /api/v1/favorites | 
+*DefaultApi* | [**create_favorites_category**](docs/DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 *DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 *DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
 *DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
@@ -117,6 +118,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
 *DefaultApi* | [**delete_favorite**](docs/DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
+*DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
@@ -161,6 +163,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 *DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
 *DefaultApi* | [**get_favorites**](docs/DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
+*DefaultApi* | [**get_favorites_categories**](docs/DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
 *DefaultApi* | [**get_filter_options**](docs/DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options | 
 *DefaultApi* | [**get_filter_options_all_schools**](docs/DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools | 
 *DefaultApi* | [**get_filter_options_conferences**](docs/DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences | 
@@ -239,6 +242,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_compensation**](docs/DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
 *DefaultApi* | [**update_conference**](docs/DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} | 
 *DefaultApi* | [**update_conferenceship**](docs/DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} | 
+*DefaultApi* | [**update_favorite**](docs/DefaultApi.md#update_favorite) | **PATCH** /api/v1/favorites/{id} | 
+*DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
@@ -312,6 +317,7 @@ Class | Method | HTTP request | Description
  - [ContractCollection](docs/ContractCollection.md)
  - [CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
+ - [CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
  - [Deal](docs/Deal.md)
  - [DealCollection](docs/DealCollection.md)
  - [DealDetail](docs/DealDetail.md)
@@ -355,6 +361,7 @@ Class | Method | HTTP request | Description
  - [GameType](docs/GameType.md)
  - [GeoRegion](docs/GeoRegion.md)
  - [GetFavorites200ResponseInner](docs/GetFavorites200ResponseInner.md)
+ - [GetFavoritesCategories200ResponseInner](docs/GetFavoritesCategories200ResponseInner.md)
  - [GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
  - [GetLadFilterOptions200Response](docs/GetLadFilterOptions200Response.md)
  - [GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
@@ -420,6 +427,8 @@ Class | Method | HTTP request | Description
  - [Tag](docs/Tag.md)
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
+ - [UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
+ - [UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)
  - [UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)

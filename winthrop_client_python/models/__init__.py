@@ -90,6 +90,9 @@ from winthrop_client_python.models.create_favorite201_response import (
     CreateFavorite201Response,
 )
 from winthrop_client_python.models.create_favorite_request import CreateFavoriteRequest
+from winthrop_client_python.models.create_favorites_category_request import (
+    CreateFavoritesCategoryRequest,
+)
 from winthrop_client_python.models.deal import Deal
 from winthrop_client_python.models.deal_collection import DealCollection
 from winthrop_client_python.models.deal_detail import DealDetail
@@ -156,6 +159,9 @@ from winthrop_client_python.models.game_type import GameType
 from winthrop_client_python.models.geo_region import GeoRegion
 from winthrop_client_python.models.get_favorites200_response_inner import (
     GetFavorites200ResponseInner,
+)
+from winthrop_client_python.models.get_favorites_categories200_response_inner import (
+    GetFavoritesCategories200ResponseInner,
 )
 from winthrop_client_python.models.get_filter_options200_response import (
     GetFilterOptions200Response,
@@ -250,6 +256,10 @@ from winthrop_client_python.models.system_setting import SystemSetting
 from winthrop_client_python.models.tag import Tag
 from winthrop_client_python.models.unauthorized_error import UnauthorizedError
 from winthrop_client_python.models.unprocessable_entity import UnprocessableEntity
+from winthrop_client_python.models.update_favorite_request import UpdateFavoriteRequest
+from winthrop_client_python.models.update_favorites_category_request import (
+    UpdateFavoritesCategoryRequest,
+)
 from winthrop_client_python.models.user import User
 from winthrop_client_python.models.user_activity_summary import UserActivitySummary
 from winthrop_client_python.models.user_activity_summary_collection import (

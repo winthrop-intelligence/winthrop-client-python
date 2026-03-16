@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,7 +31,22 @@ class GetFavorites200ResponseInner(BaseModel):
     favoritable_id: Optional[StrictInt] = Field(
         default=None, description="The favorited record's ID"
     )
-    __properties: ClassVar[List[str]] = ["id", "favoritable_id"]
+    favorites_category_id: Optional[StrictInt] = Field(
+        default=None, description="Category ID (only when detailed=1)"
+    )
+    category_name: Optional[StrictStr] = Field(
+        default=None, description="Category name (only when detailed=1)"
+    )
+    name: Optional[StrictStr] = Field(
+        default=None, description="Favoritable record name (only when detailed=1)"
+    )
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "favoritable_id",
+        "favorites_category_id",
+        "category_name",
+        "name",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,6 +85,24 @@ class GetFavorites200ResponseInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if favorites_category_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.favorites_category_id is None
+            and "favorites_category_id" in self.model_fields_set
+        ):
+            _dict["favorites_category_id"] = None
+
+        # set to None if category_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.category_name is None and "category_name" in self.model_fields_set:
+            _dict["category_name"] = None
+
+        # set to None if name (nullable) is None
+        # and model_fields_set contains the field
+        if self.name is None and "name" in self.model_fields_set:
+            _dict["name"] = None
+
         return _dict
 
     @classmethod
@@ -82,6 +115,12 @@ class GetFavorites200ResponseInner(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {"id": obj.get("id"), "favoritable_id": obj.get("favoritable_id")}
+            {
+                "id": obj.get("id"),
+                "favoritable_id": obj.get("favoritable_id"),
+                "favorites_category_id": obj.get("favorites_category_id"),
+                "category_name": obj.get("category_name"),
+                "name": obj.get("name"),
+            }
         )
         return _obj

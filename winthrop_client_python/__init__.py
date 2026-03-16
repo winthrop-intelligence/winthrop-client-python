@@ -77,6 +77,7 @@ __all__ = [
     "ContractCollection",
     "CreateFavorite201Response",
     "CreateFavoriteRequest",
+    "CreateFavoritesCategoryRequest",
     "Deal",
     "DealCollection",
     "DealDetail",
@@ -120,6 +121,7 @@ __all__ = [
     "GameType",
     "GeoRegion",
     "GetFavorites200ResponseInner",
+    "GetFavoritesCategories200ResponseInner",
     "GetFilterOptions200Response",
     "GetLadFilterOptions200Response",
     "GetLadFilterOptions200ResponsePositionTypesInner",
@@ -185,6 +187,8 @@ __all__ = [
     "Tag",
     "UnauthorizedError",
     "UnprocessableEntity",
+    "UpdateFavoriteRequest",
+    "UpdateFavoritesCategoryRequest",
     "User",
     "UserActivitySummary",
     "UserActivitySummaryCollection",
@@ -336,6 +340,9 @@ from winthrop_client_python.models.create_favorite201_response import (
 from winthrop_client_python.models.create_favorite_request import (
     CreateFavoriteRequest as CreateFavoriteRequest,
 )
+from winthrop_client_python.models.create_favorites_category_request import (
+    CreateFavoritesCategoryRequest as CreateFavoritesCategoryRequest,
+)
 from winthrop_client_python.models.deal import Deal as Deal
 from winthrop_client_python.models.deal_collection import (
     DealCollection as DealCollection,
@@ -438,6 +445,9 @@ from winthrop_client_python.models.game_type import GameType as GameType
 from winthrop_client_python.models.geo_region import GeoRegion as GeoRegion
 from winthrop_client_python.models.get_favorites200_response_inner import (
     GetFavorites200ResponseInner as GetFavorites200ResponseInner,
+)
+from winthrop_client_python.models.get_favorites_categories200_response_inner import (
+    GetFavoritesCategories200ResponseInner as GetFavoritesCategories200ResponseInner,
 )
 from winthrop_client_python.models.get_filter_options200_response import (
     GetFilterOptions200Response as GetFilterOptions200Response,
@@ -575,6 +585,12 @@ from winthrop_client_python.models.unauthorized_error import (
 )
 from winthrop_client_python.models.unprocessable_entity import (
     UnprocessableEntity as UnprocessableEntity,
+)
+from winthrop_client_python.models.update_favorite_request import (
+    UpdateFavoriteRequest as UpdateFavoriteRequest,
+)
+from winthrop_client_python.models.update_favorites_category_request import (
+    UpdateFavoritesCategoryRequest as UpdateFavoritesCategoryRequest,
 )
 from winthrop_client_python.models.user import User as User
 from winthrop_client_python.models.user_activity_summary import (

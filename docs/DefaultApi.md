@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
 [**create_favorite**](DefaultApi.md#create_favorite) | **POST** /api/v1/favorites | 
+[**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
 [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
@@ -24,6 +25,7 @@ Method | HTTP request | Description
 [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
 [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
+[**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
@@ -68,6 +70,7 @@ Method | HTTP request | Description
 [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
 [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
+[**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
 [**get_filter_options**](DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options | 
 [**get_filter_options_all_schools**](DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools | 
 [**get_filter_options_conferences**](DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences | 
@@ -146,6 +149,8 @@ Method | HTTP request | Description
 [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
 [**update_conference**](DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} | 
 [**update_conferenceship**](DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} | 
+[**update_favorite**](DefaultApi.md#update_favorite) | **PATCH** /api/v1/favorites/{id} | 
+[**update_favorites_category**](DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
@@ -995,6 +1000,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_favorites_category**
+> GetFavoritesCategories200ResponseInner create_favorites_category(create_favorites_category_request)
+
+Create a new favorites category
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_favorites_category_request import CreateFavoritesCategoryRequest
+from winthrop_client_python.models.get_favorites_categories200_response_inner import GetFavoritesCategories200ResponseInner
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_favorites_category_request = winthrop_client_python.CreateFavoritesCategoryRequest() # CreateFavoritesCategoryRequest | 
+
+    try:
+        api_response = api_instance.create_favorites_category(create_favorites_category_request)
+        print("The response of DefaultApi->create_favorites_category:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_favorites_category: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_favorites_category_request** | [**CreateFavoritesCategoryRequest**](CreateFavoritesCategoryRequest.md)|  | 
+
+### Return type
+
+[**GetFavoritesCategories200ResponseInner**](GetFavoritesCategories200ResponseInner.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Category created |  -  |
+**401** | Unauthorized |  -  |
+**422** | Validation error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_foia_label**
 > FoiaLabel create_foia_label(foia_label)
 
@@ -1793,6 +1880,86 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Favorite removed |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_favorites_category**
+> DeleteFavorite200Response delete_favorites_category(id)
+
+Delete a favorites category
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.delete_favorite200_response import DeleteFavorite200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | The category ID
+
+    try:
+        api_response = api_instance.delete_favorites_category(id)
+        print("The response of DefaultApi->delete_favorites_category:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_favorites_category: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The category ID | 
+
+### Return type
+
+[**DeleteFavorite200Response**](DeleteFavorite200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Category deleted |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -5344,9 +5511,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_favorites**
-> List[GetFavorites200ResponseInner] get_favorites(favoritable_type)
+> List[GetFavorites200ResponseInner] get_favorites(favoritable_type, detailed=detailed)
 
-Retrieve the current user's favorites for a given type
+Retrieve the current user's favorites for a given type. Pass detailed=1 for category info.
 
 ### Example
 
@@ -5383,9 +5550,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     favoritable_type = 'favoritable_type_example' # str | The model type (e.g. \"Coach\")
+    detailed = 'detailed_example' # str | Pass \"1\" to include category info and favoritable name (optional)
 
     try:
-        api_response = api_instance.get_favorites(favoritable_type)
+        api_response = api_instance.get_favorites(favoritable_type, detailed=detailed)
         print("The response of DefaultApi->get_favorites:\n")
         pprint(api_response)
     except Exception as e:
@@ -5400,6 +5568,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **favoritable_type** | **str**| The model type (e.g. \&quot;Coach\&quot;) | 
+ **detailed** | **str**| Pass \&quot;1\&quot; to include category info and favoritable name | [optional] 
 
 ### Return type
 
@@ -5418,7 +5587,83 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of favorite entries |  -  |
+**200** | List of favorite entries. Shape depends on detailed param. |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_favorites_categories**
+> List[GetFavoritesCategories200ResponseInner] get_favorites_categories()
+
+List the current user's favorites categories
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.get_favorites_categories200_response_inner import GetFavoritesCategories200ResponseInner
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+
+    try:
+        api_response = api_instance.get_favorites_categories()
+        print("The response of DefaultApi->get_favorites_categories:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_favorites_categories: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[GetFavoritesCategories200ResponseInner]**](GetFavoritesCategories200ResponseInner.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | List of categories |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -11847,6 +12092,172 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **422** | Unable to update the Conferenceship |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_favorite**
+> CreateFavorite201Response update_favorite(id, update_favorite_request)
+
+Update a favorite (e.g. reassign to a different category)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_favorite201_response import CreateFavorite201Response
+from winthrop_client_python.models.update_favorite_request import UpdateFavoriteRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | The favorite record ID
+    update_favorite_request = winthrop_client_python.UpdateFavoriteRequest() # UpdateFavoriteRequest | 
+
+    try:
+        api_response = api_instance.update_favorite(id, update_favorite_request)
+        print("The response of DefaultApi->update_favorite:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_favorite: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The favorite record ID | 
+ **update_favorite_request** | [**UpdateFavoriteRequest**](UpdateFavoriteRequest.md)|  | 
+
+### Return type
+
+[**CreateFavorite201Response**](CreateFavorite201Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Favorite updated |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_favorites_category**
+> GetFavoritesCategories200ResponseInner update_favorites_category(id, update_favorites_category_request)
+
+Update a favorites category name
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.get_favorites_categories200_response_inner import GetFavoritesCategories200ResponseInner
+from winthrop_client_python.models.update_favorites_category_request import UpdateFavoritesCategoryRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | The category ID
+    update_favorites_category_request = winthrop_client_python.UpdateFavoritesCategoryRequest() # UpdateFavoritesCategoryRequest | 
+
+    try:
+        api_response = api_instance.update_favorites_category(id, update_favorites_category_request)
+        print("The response of DefaultApi->update_favorites_category:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_favorites_category: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| The category ID | 
+ **update_favorites_category_request** | [**UpdateFavoritesCategoryRequest**](UpdateFavoritesCategoryRequest.md)|  | 
+
+### Return type
+
+[**GetFavoritesCategories200ResponseInner**](GetFavoritesCategories200ResponseInner.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Category updated |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

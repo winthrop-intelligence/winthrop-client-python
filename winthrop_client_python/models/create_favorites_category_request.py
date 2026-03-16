@@ -16,28 +16,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class CreateFavoriteRequest(BaseModel):
+class CreateFavoritesCategoryRequest(BaseModel):
     """
-    CreateFavoriteRequest
+    CreateFavoritesCategoryRequest
     """  # noqa: E501
 
-    favoritable_type: StrictStr = Field(description='The model type (e.g. "Coach")')
-    favoritable_id: StrictInt = Field(description="The ID of the record to favorite")
-    favorites_category_id: Optional[StrictInt] = Field(
-        default=None,
-        description='Optional category ID. A "Default" category is created if omitted.',
-    )
-    __properties: ClassVar[List[str]] = [
-        "favoritable_type",
-        "favoritable_id",
-        "favorites_category_id",
-    ]
+    name: StrictStr = Field(description="The category name")
+    __properties: ClassVar[List[str]] = ["name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -56,7 +47,7 @@ class CreateFavoriteRequest(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CreateFavoriteRequest from a JSON string"""
+        """Create an instance of CreateFavoritesCategoryRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -76,30 +67,16 @@ class CreateFavoriteRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if favorites_category_id (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.favorites_category_id is None
-            and "favorites_category_id" in self.model_fields_set
-        ):
-            _dict["favorites_category_id"] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CreateFavoriteRequest from a dict"""
+        """Create an instance of CreateFavoritesCategoryRequest from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "favoritable_type": obj.get("favoritable_type"),
-                "favoritable_id": obj.get("favoritable_id"),
-                "favorites_category_id": obj.get("favorites_category_id"),
-            }
-        )
+        _obj = cls.model_validate({"name": obj.get("name")})
         return _obj

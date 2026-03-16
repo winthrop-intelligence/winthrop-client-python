@@ -46,6 +46,7 @@ docs/Contract.md
 docs/ContractCollection.md
 docs/CreateFavorite201Response.md
 docs/CreateFavoriteRequest.md
+docs/CreateFavoritesCategoryRequest.md
 docs/Deal.md
 docs/DealCollection.md
 docs/DealDetail.md
@@ -91,6 +92,7 @@ docs/GamePostSearchResultCollection.md
 docs/GameType.md
 docs/GeoRegion.md
 docs/GetFavorites200ResponseInner.md
+docs/GetFavoritesCategories200ResponseInner.md
 docs/GetFilterOptions200Response.md
 docs/GetLadFilterOptions200Response.md
 docs/GetLadFilterOptions200ResponsePositionTypesInner.md
@@ -160,6 +162,8 @@ docs/SystemSetting.md
 docs/Tag.md
 docs/UnauthorizedError.md
 docs/UnprocessableEntity.md
+docs/UpdateFavoriteRequest.md
+docs/UpdateFavoritesCategoryRequest.md
 docs/User.md
 docs/UserActivitySummary.md
 docs/UserActivitySummaryCollection.md
@@ -180,6 +184,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_create_favorites_category_request.py
+test/test_get_favorites_categories200_response_inner.py
+test/test_update_favorite_request.py
+test/test_update_favorites_category_request.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -239,6 +247,7 @@ winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
 winthrop_client_python/models/create_favorite201_response.py
 winthrop_client_python/models/create_favorite_request.py
+winthrop_client_python/models/create_favorites_category_request.py
 winthrop_client_python/models/deal.py
 winthrop_client_python/models/deal_collection.py
 winthrop_client_python/models/deal_detail.py
@@ -282,6 +291,7 @@ winthrop_client_python/models/game_post_search_result_collection.py
 winthrop_client_python/models/game_type.py
 winthrop_client_python/models/geo_region.py
 winthrop_client_python/models/get_favorites200_response_inner.py
+winthrop_client_python/models/get_favorites_categories200_response_inner.py
 winthrop_client_python/models/get_filter_options200_response.py
 winthrop_client_python/models/get_lad_filter_options200_response.py
 winthrop_client_python/models/get_lad_filter_options200_response_position_types_inner.py
@@ -347,6 +357,8 @@ winthrop_client_python/models/system_setting.py
 winthrop_client_python/models/tag.py
 winthrop_client_python/models/unauthorized_error.py
 winthrop_client_python/models/unprocessable_entity.py
+winthrop_client_python/models/update_favorite_request.py
+winthrop_client_python/models/update_favorites_category_request.py
 winthrop_client_python/models/user.py
 winthrop_client_python/models/user_activity_summary.py
 winthrop_client_python/models/user_activity_summary_collection.py
