@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,7 +29,15 @@ class CreateFavoriteRequest(BaseModel):
 
     favoritable_type: StrictStr = Field(description='The model type (e.g. "Coach")')
     favoritable_id: StrictInt = Field(description="The ID of the record to favorite")
-    __properties: ClassVar[List[str]] = ["favoritable_type", "favoritable_id"]
+    favorites_category_id: Optional[StrictInt] = Field(
+        default=None,
+        description='Optional category ID. A "Default" category is created if omitted.',
+    )
+    __properties: ClassVar[List[str]] = [
+        "favoritable_type",
+        "favoritable_id",
+        "favorites_category_id",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,6 +76,14 @@ class CreateFavoriteRequest(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if favorites_category_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.favorites_category_id is None
+            and "favorites_category_id" in self.model_fields_set
+        ):
+            _dict["favorites_category_id"] = None
+
         return _dict
 
     @classmethod
@@ -83,6 +99,7 @@ class CreateFavoriteRequest(BaseModel):
             {
                 "favoritable_type": obj.get("favoritable_type"),
                 "favoritable_id": obj.get("favoritable_id"),
+                "favorites_category_id": obj.get("favorites_category_id"),
             }
         )
         return _obj

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **favoritable_type** | **str** | The model type (e.g. \&quot;Coach\&quot;) | 
 **favoritable_id** | **int** | The ID of the record to favorite | 
+**favorites_category_id** | **int** | Optional category ID. A \&quot;Default\&quot; category is created if omitted. | [optional] 
 
 ## Example
 

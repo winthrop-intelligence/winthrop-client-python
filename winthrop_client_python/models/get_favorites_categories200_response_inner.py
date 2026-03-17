@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,8 +27,8 @@ class GetFavoritesCategories200ResponseInner(BaseModel):
     GetFavoritesCategories200ResponseInner
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
+    id: StrictInt
+    name: StrictStr
     __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(

@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,8 +27,8 @@ class CreateFavorite201Response(BaseModel):
     CreateFavorite201Response
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    favoritable_id: Optional[StrictInt] = None
+    id: StrictInt
+    favoritable_id: StrictInt
     __properties: ClassVar[List[str]] = ["id", "favoritable_id"]
 
     model_config = ConfigDict(

@@ -114,7 +114,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 *DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
-*DefaultApi* | [**create_team_schedule_favorite**](docs/DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
 *DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 *DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
@@ -126,8 +125,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
-*DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
-*DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 *DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
@@ -139,6 +136,13 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_categories**](docs/DefaultApi.md#get_categories) | **GET** /central_jobs/categories | List all categories
 *DefaultApi* | [**get_coach**](docs/DefaultApi.md#get_coach) | **GET** /api/v1/coaches/{coachId} | 
 *DefaultApi* | [**get_coach_compensation**](docs/DefaultApi.md#get_coach_compensation) | **GET** /api/v1/coach_compensations/get_coach_compensation | 
+*DefaultApi* | [**get_coach_search**](docs/DefaultApi.md#get_coach_search) | **GET** /api/v1/coach_searches/{id} | 
+*DefaultApi* | [**get_coach_search_coli**](docs/DefaultApi.md#get_coach_search_coli) | **GET** /api/v1/coach_searches/{id}/coli | 
+*DefaultApi* | [**get_coach_search_compensation**](docs/DefaultApi.md#get_coach_search_compensation) | **GET** /api/v1/coach_searches/{id}/compensation | 
+*DefaultApi* | [**get_coach_search_coworker_history**](docs/DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history | 
+*DefaultApi* | [**get_coach_search_overview**](docs/DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview | 
+*DefaultApi* | [**get_coach_search_record**](docs/DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record | 
+*DefaultApi* | [**get_coach_search_videos**](docs/DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos | 
 *DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 *DefaultApi* | [**get_compensation**](docs/DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
@@ -230,13 +234,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_subscription**](docs/DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} | 
 *DefaultApi* | [**get_subscriptions**](docs/DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions | 
 *DefaultApi* | [**get_system_settings**](docs/DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting | 
-*DefaultApi* | [**get_team_schedule_detail**](docs/DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} | 
-*DefaultApi* | [**get_team_schedule_detail_coaches**](docs/DefaultApi.md#get_team_schedule_detail_coaches) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/coaches | 
-*DefaultApi* | [**get_team_schedule_detail_game_posts**](docs/DefaultApi.md#get_team_schedule_detail_game_posts) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/game_posts | 
-*DefaultApi* | [**get_team_schedule_detail_schedule**](docs/DefaultApi.md#get_team_schedule_detail_schedule) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule | 
-*DefaultApi* | [**get_team_schedule_favorites**](docs/DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
-*DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
-*DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
 *DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
 *DefaultApi* | [**get_user_activity_summary**](docs/DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} | 
@@ -252,6 +249,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_compensation**](docs/DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
 *DefaultApi* | [**update_conference**](docs/DefaultApi.md#update_conference) | **PUT** /api/v1/conferences/{conferenceId} | 
 *DefaultApi* | [**update_conferenceship**](docs/DefaultApi.md#update_conferenceship) | **PUT** /api/v1/conferenceships/{conferenceshipId} | 
+*DefaultApi* | [**update_favorite**](docs/DefaultApi.md#update_favorite) | **PATCH** /api/v1/favorites/{id} | 
 *DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
@@ -259,8 +257,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
-*DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
-*DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *DefaultApi* | [**verify_user_intercollegiate_access**](docs/DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
 *DossierApi* | [**university_dossier_report_dossier_winad_id_get**](docs/DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report
@@ -305,11 +301,34 @@ Class | Method | HTTP request | Description
  - [Coach](docs/Coach.md)
  - [CoachCollection](docs/CoachCollection.md)
  - [CoachCompensation](docs/CoachCompensation.md)
+ - [CoachCompensationEntry](docs/CoachCompensationEntry.md)
+ - [CoachCompensationTab](docs/CoachCompensationTab.md)
+ - [CoachCompensationTabChartData](docs/CoachCompensationTabChartData.md)
+ - [CoachCompensationTabChartDataConferenceAvgOverTimeInner](docs/CoachCompensationTabChartDataConferenceAvgOverTimeInner.md)
+ - [CoachCompensationTabChartDataCurrentBreakdown](docs/CoachCompensationTabChartDataCurrentBreakdown.md)
+ - [CoachCompensationTabChartDataTotalCompOverTimeInner](docs/CoachCompensationTabChartDataTotalCompOverTimeInner.md)
+ - [CoachCompensationTabComparisons](docs/CoachCompensationTabComparisons.md)
+ - [CoachCompensationTabCompensationsInner](docs/CoachCompensationTabCompensationsInner.md)
+ - [CoachCompensationTabSidebar](docs/CoachCompensationTabSidebar.md)
+ - [CoachCompensationTabSidebarCoachingStaffInner](docs/CoachCompensationTabSidebarCoachingStaffInner.md)
+ - [CoachCompensationTabSidebarContractsInner](docs/CoachCompensationTabSidebarContractsInner.md)
+ - [CoachCompensationTabSidebarIncomeReportsInner](docs/CoachCompensationTabSidebarIncomeReportsInner.md)
+ - [CoachCoworkerHistoryTab](docs/CoachCoworkerHistoryTab.md)
+ - [CoachPositionEntry](docs/CoachPositionEntry.md)
+ - [CoachProfile](docs/CoachProfile.md)
+ - [CoachProfileOverview](docs/CoachProfileOverview.md)
+ - [CoachRecordTab](docs/CoachRecordTab.md)
  - [CoachSearchResult](docs/CoachSearchResult.md)
  - [CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
+ - [CoachSnapshot](docs/CoachSnapshot.md)
+ - [CoachVideoEntry](docs/CoachVideoEntry.md)
+ - [CoachVideosTab](docs/CoachVideosTab.md)
+ - [ColiData](docs/ColiData.md)
  - [CompStats](docs/CompStats.md)
  - [CompareColi404Response](docs/CompareColi404Response.md)
  - [CompareColi422Response](docs/CompareColi422Response.md)
+ - [ComparisonSection](docs/ComparisonSection.md)
+ - [ComparisonSectionCoachesInner](docs/ComparisonSectionCoachesInner.md)
  - [Compensation](docs/Compensation.md)
  - [CompensationCollection](docs/CompensationCollection.md)
  - [CompensationRow](docs/CompensationRow.md)
@@ -319,6 +338,7 @@ Class | Method | HTTP request | Description
  - [ConferenceCollection](docs/ConferenceCollection.md)
  - [ConferenceDepartmentStaffResponse](docs/ConferenceDepartmentStaffResponse.md)
  - [ConferenceDirectorsCupResponse](docs/ConferenceDirectorsCupResponse.md)
+ - [ConferencePositionEntry](docs/ConferencePositionEntry.md)
  - [ConferencePositionStatsResponse](docs/ConferencePositionStatsResponse.md)
  - [Conferenceship](docs/Conferenceship.md)
  - [ConferenceshipCollection](docs/ConferenceshipCollection.md)
@@ -326,11 +346,11 @@ Class | Method | HTTP request | Description
  - [ContactCollection](docs/ContactCollection.md)
  - [Contract](docs/Contract.md)
  - [ContractCollection](docs/ContractCollection.md)
+ - [CoworkerEntry](docs/CoworkerEntry.md)
+ - [CoworkerTenure](docs/CoworkerTenure.md)
  - [CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
- - [CreateTeamScheduleFavorite201Response](docs/CreateTeamScheduleFavorite201Response.md)
- - [CreateTeamScheduleFavoriteRequest](docs/CreateTeamScheduleFavoriteRequest.md)
  - [Deal](docs/Deal.md)
  - [DealCollection](docs/DealCollection.md)
  - [DealDetail](docs/DealDetail.md)
@@ -380,7 +400,6 @@ Class | Method | HTTP request | Description
  - [GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
  - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
- - [GetTeamScheduleFavorites200ResponseInner](docs/GetTeamScheduleFavorites200ResponseInner.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HealthCheckFailure](docs/HealthCheckFailure.md)
@@ -406,6 +425,9 @@ Class | Method | HTTP request | Description
  - [NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
  - [NewsFeed](docs/NewsFeed.md)
  - [NewsFeedCollection](docs/NewsFeedCollection.md)
+ - [PerformanceChartCoach](docs/PerformanceChartCoach.md)
+ - [PerformanceChartData](docs/PerformanceChartData.md)
+ - [PerformanceChartRecord](docs/PerformanceChartRecord.md)
  - [Position](docs/Position.md)
  - [PositionCollection](docs/PositionCollection.md)
  - [PositionSportStat](docs/PositionSportStat.md)
@@ -414,8 +436,11 @@ Class | Method | HTTP request | Description
  - [PredictBody](docs/PredictBody.md)
  - [PredictFailure](docs/PredictFailure.md)
  - [PredictSuccess](docs/PredictSuccess.md)
+ - [QuartileRow](docs/QuartileRow.md)
+ - [QuartilesData](docs/QuartilesData.md)
  - [RawContract](docs/RawContract.md)
  - [RawContractCollection](docs/RawContractCollection.md)
+ - [RecordPositionEntry](docs/RecordPositionEntry.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
  - [School](docs/School.md)
@@ -427,6 +452,7 @@ Class | Method | HTTP request | Description
  - [ScraperArgDef](docs/ScraperArgDef.md)
  - [Season](docs/Season.md)
  - [SeasonCollection](docs/SeasonCollection.md)
+ - [SnapshotIncomeReport](docs/SnapshotIncomeReport.md)
  - [Sport](docs/Sport.md)
  - [SportCollection](docs/SportCollection.md)
  - [SportCompensationRankings](docs/SportCompensationRankings.md)
@@ -439,33 +465,10 @@ Class | Method | HTTP request | Description
  - [SubscriptionCollection](docs/SubscriptionCollection.md)
  - [SystemSetting](docs/SystemSetting.md)
  - [Tag](docs/Tag.md)
- - [TeamScheduleCoaches](docs/TeamScheduleCoaches.md)
- - [TeamScheduleCoachesCoachesInner](docs/TeamScheduleCoachesCoachesInner.md)
- - [TeamScheduleCoachesSeasonsInner](docs/TeamScheduleCoachesSeasonsInner.md)
- - [TeamScheduleContact](docs/TeamScheduleContact.md)
- - [TeamScheduleDetail](docs/TeamScheduleDetail.md)
- - [TeamScheduleDetailGame](docs/TeamScheduleDetailGame.md)
- - [TeamScheduleDetailHeadCoach](docs/TeamScheduleDetailHeadCoach.md)
- - [TeamScheduleDetailSchool](docs/TeamScheduleDetailSchool.md)
- - [TeamScheduleDetailSeason](docs/TeamScheduleDetailSeason.md)
- - [TeamScheduleDetailSport](docs/TeamScheduleDetailSport.md)
- - [TeamScheduleFavoriteDetail](docs/TeamScheduleFavoriteDetail.md)
- - [TeamScheduleFavoriteEntry](docs/TeamScheduleFavoriteEntry.md)
- - [TeamScheduleGamePosts](docs/TeamScheduleGamePosts.md)
- - [TeamScheduleGamePostsGamePostsInner](docs/TeamScheduleGamePostsGamePostsInner.md)
- - [TeamScheduleNote](docs/TeamScheduleNote.md)
- - [TeamScheduleRecentContract](docs/TeamScheduleRecentContract.md)
- - [TeamScheduleSchedule](docs/TeamScheduleSchedule.md)
- - [TeamScheduleScheduleGamesInner](docs/TeamScheduleScheduleGamesInner.md)
- - [TeamScheduleSearchResult](docs/TeamScheduleSearchResult.md)
- - [TeamScheduleSearchResultAwayContracts](docs/TeamScheduleSearchResultAwayContracts.md)
- - [TeamScheduleSearchResultCollection](docs/TeamScheduleSearchResultCollection.md)
- - [TeamScheduleSearchResultHomeContracts](docs/TeamScheduleSearchResultHomeContracts.md)
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
+ - [UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
  - [UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
- - [UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
- - [UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)
  - [UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)
@@ -477,6 +480,7 @@ Class | Method | HTTP request | Description
  - [Vendor](docs/Vendor.md)
  - [VendorCollection](docs/VendorCollection.md)
  - [VerifyUserIntercollegiateAccess200Response](docs/VerifyUserIntercollegiateAccess200Response.md)
+ - [VideoEntry](docs/VideoEntry.md)
  - [WireChange](docs/WireChange.md)
  - [WireChangeCoach](docs/WireChangeCoach.md)
  - [WireChangeSchool](docs/WireChangeSchool.md)

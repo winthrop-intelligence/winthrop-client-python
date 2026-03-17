@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class UpdateFavoritesCategoryRequest(BaseModel):
     UpdateFavoritesCategoryRequest
     """  # noqa: E501
 
-    name: Optional[StrictStr] = None
+    name: StrictStr = Field(description="The new category name")
     __properties: ClassVar[List[str]] = ["name"]
 
     model_config = ConfigDict(

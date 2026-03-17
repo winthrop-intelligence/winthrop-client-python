@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -27,7 +27,7 @@ class DeleteFavorite200Response(BaseModel):
     DeleteFavorite200Response
     """  # noqa: E501
 
-    success: Optional[StrictBool] = None
+    success: StrictBool
     __properties: ClassVar[List[str]] = ["success"]
 
     model_config = ConfigDict(

@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**favoritable_id** | **int** |  | [optional] 
+**id** | **int** |  | 
+**favoritable_id** | **int** |  | 
 
 ## Example
 
