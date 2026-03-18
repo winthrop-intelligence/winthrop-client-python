@@ -29,7 +29,8 @@ class PerformanceChartRecord(BaseModel):
 
     wins: Optional[StrictInt] = None
     losses: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["wins", "losses"]
+    ties: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = ["wins", "losses", "ties"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -78,6 +79,11 @@ class PerformanceChartRecord(BaseModel):
         if self.losses is None and "losses" in self.model_fields_set:
             _dict["losses"] = None
 
+        # set to None if ties (nullable) is None
+        # and model_fields_set contains the field
+        if self.ties is None and "ties" in self.model_fields_set:
+            _dict["ties"] = None
+
         return _dict
 
     @classmethod
@@ -90,6 +96,10 @@ class PerformanceChartRecord(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {"wins": obj.get("wins"), "losses": obj.get("losses")}
+            {
+                "wins": obj.get("wins"),
+                "losses": obj.get("losses"),
+                "ties": obj.get("ties"),
+            }
         )
         return _obj

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **wins** | **int** |  | [optional] 
 **losses** | **int** |  | [optional] 
+**ties** | **int** |  | [optional] 
 
 ## Example
 
