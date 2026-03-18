@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
 **leader** | **bool** |  | 
-**dob** | **str** |  | [optional] 
 **hometown_city** | **str** |  | [optional] 
 **hometown_state** | **str** |  | [optional] 
 **alma_mater_name** | **str** |  | [optional] 

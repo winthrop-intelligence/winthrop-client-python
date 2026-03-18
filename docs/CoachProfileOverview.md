@@ -7,9 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **compensations** | [**List[CoachCompensationEntry]**](CoachCompensationEntry.md) |  | 
 **total_compensations** | **int** |  | 
-**positions_by_sport** | **Dict[str, List[CoachPositionEntry]]** |  | 
+**positions** | [**List[CoachPositionEntry]**](CoachPositionEntry.md) |  | 
 **total_positions** | **int** |  | 
-**conference_positions_by_sport** | **Dict[str, List[ConferencePositionEntry]]** |  | 
+**conference_positions** | [**List[ConferencePositionEntry]**](ConferencePositionEntry.md) |  | 
 **snapshot** | [**CoachSnapshot**](CoachSnapshot.md) |  | [optional] 
 **videos** | [**List[CoachVideoEntry]**](CoachVideoEntry.md) |  | 
 **can_see_compensation** | **bool** |  | 

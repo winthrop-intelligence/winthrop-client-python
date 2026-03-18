@@ -27,6 +27,7 @@ class CoachPositionEntry(BaseModel):
     CoachPositionEntry
     """  # noqa: E501
 
+    sport: StrictStr
     year_str: StrictStr
     school_name: StrictStr
     school_id: StrictInt
@@ -37,6 +38,7 @@ class CoachPositionEntry(BaseModel):
     coach_apr: Optional[float] = None
     departing: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
+        "sport",
         "year_str",
         "school_name",
         "school_id",
@@ -123,6 +125,7 @@ class CoachPositionEntry(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "sport": obj.get("sport"),
                 "year_str": obj.get("year_str"),
                 "school_name": obj.get("school_name"),
                 "school_id": obj.get("school_id"),

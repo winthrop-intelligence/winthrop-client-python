@@ -38,9 +38,9 @@ class CoachProfileOverview(BaseModel):
 
     compensations: List[CoachCompensationEntry]
     total_compensations: StrictInt
-    positions_by_sport: Dict[str, List[CoachPositionEntry]]
+    positions: List[CoachPositionEntry]
     total_positions: StrictInt
-    conference_positions_by_sport: Dict[str, List[ConferencePositionEntry]]
+    conference_positions: List[ConferencePositionEntry]
     snapshot: Optional[CoachSnapshot] = None
     videos: List[CoachVideoEntry]
     can_see_compensation: StrictBool
@@ -48,9 +48,9 @@ class CoachProfileOverview(BaseModel):
     __properties: ClassVar[List[str]] = [
         "compensations",
         "total_compensations",
-        "positions_by_sport",
+        "positions",
         "total_positions",
-        "conference_positions_by_sport",
+        "conference_positions",
         "snapshot",
         "videos",
         "can_see_compensation",
@@ -101,35 +101,20 @@ class CoachProfileOverview(BaseModel):
                 if _item_compensations:
                     _items.append(_item_compensations.to_dict())
             _dict["compensations"] = _items
-        # override the default output from pydantic by calling `to_dict()` of each value in positions_by_sport (dict of array)
-        _field_dict_of_array = {}
-        if self.positions_by_sport:
-            for _key_positions_by_sport in self.positions_by_sport:
-                if self.positions_by_sport[_key_positions_by_sport] is not None:
-                    _field_dict_of_array[_key_positions_by_sport] = [
-                        _item.to_dict()
-                        for _item in self.positions_by_sport[_key_positions_by_sport]
-                    ]
-            _dict["positions_by_sport"] = _field_dict_of_array
-        # override the default output from pydantic by calling `to_dict()` of each value in conference_positions_by_sport (dict of array)
-        _field_dict_of_array = {}
-        if self.conference_positions_by_sport:
-            for (
-                _key_conference_positions_by_sport
-            ) in self.conference_positions_by_sport:
-                if (
-                    self.conference_positions_by_sport[
-                        _key_conference_positions_by_sport
-                    ]
-                    is not None
-                ):
-                    _field_dict_of_array[_key_conference_positions_by_sport] = [
-                        _item.to_dict()
-                        for _item in self.conference_positions_by_sport[
-                            _key_conference_positions_by_sport
-                        ]
-                    ]
-            _dict["conference_positions_by_sport"] = _field_dict_of_array
+        # override the default output from pydantic by calling `to_dict()` of each item in positions (list)
+        _items = []
+        if self.positions:
+            for _item_positions in self.positions:
+                if _item_positions:
+                    _items.append(_item_positions.to_dict())
+            _dict["positions"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in conference_positions (list)
+        _items = []
+        if self.conference_positions:
+            for _item_conference_positions in self.conference_positions:
+                if _item_conference_positions:
+                    _items.append(_item_conference_positions.to_dict())
+            _dict["conference_positions"] = _items
         # override the default output from pydantic by calling `to_dict()` of snapshot
         if self.snapshot:
             _dict["snapshot"] = self.snapshot.to_dict()
@@ -162,28 +147,19 @@ class CoachProfileOverview(BaseModel):
                     else None
                 ),
                 "total_compensations": obj.get("total_compensations"),
-                "positions_by_sport": dict(
-                    (
-                        _k,
-                        (
-                            [CoachPositionEntry.from_dict(_item) for _item in _v]
-                            if _v is not None
-                            else None
-                        ),
-                    )
-                    for _k, _v in obj.get("positions_by_sport", {}).items()
+                "positions": (
+                    [CoachPositionEntry.from_dict(_item) for _item in obj["positions"]]
+                    if obj.get("positions") is not None
+                    else None
                 ),
                 "total_positions": obj.get("total_positions"),
-                "conference_positions_by_sport": dict(
-                    (
-                        _k,
-                        (
-                            [ConferencePositionEntry.from_dict(_item) for _item in _v]
-                            if _v is not None
-                            else None
-                        ),
-                    )
-                    for _k, _v in obj.get("conference_positions_by_sport", {}).items()
+                "conference_positions": (
+                    [
+                        ConferencePositionEntry.from_dict(_item)
+                        for _item in obj["conference_positions"]
+                    ]
+                    if obj.get("conference_positions") is not None
+                    else None
                 ),
                 "snapshot": (
                     CoachSnapshot.from_dict(obj["snapshot"])

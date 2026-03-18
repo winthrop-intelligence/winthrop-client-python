@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **leader_ad** | **bool** |  | 
 **show_coach_apr** | **bool** |  | 
-**positions_by_sport** | **Dict[str, List[RecordPositionEntry]]** |  | 
-**conference_positions_by_sport** | **Dict[str, List[ConferencePositionEntry]]** |  | 
+**positions** | [**List[RecordPositionEntry]**](RecordPositionEntry.md) |  | 
+**conference_positions** | [**List[ConferencePositionEntry]**](ConferencePositionEntry.md) |  | 
 **performance_chart** | [**PerformanceChartData**](PerformanceChartData.md) |  | [optional] 
 
 ## Example

@@ -33,7 +33,6 @@ class CoachProfile(BaseModel):
     email: Optional[StrictStr] = None
     phone: Optional[StrictStr] = None
     leader: StrictBool
-    dob: Optional[StrictStr] = None
     hometown_city: Optional[StrictStr] = None
     hometown_state: Optional[StrictStr] = None
     alma_mater_name: Optional[StrictStr] = None
@@ -63,7 +62,6 @@ class CoachProfile(BaseModel):
         "email",
         "phone",
         "leader",
-        "dob",
         "hometown_city",
         "hometown_state",
         "alma_mater_name",
@@ -134,11 +132,6 @@ class CoachProfile(BaseModel):
         # and model_fields_set contains the field
         if self.phone is None and "phone" in self.model_fields_set:
             _dict["phone"] = None
-
-        # set to None if dob (nullable) is None
-        # and model_fields_set contains the field
-        if self.dob is None and "dob" in self.model_fields_set:
-            _dict["dob"] = None
 
         # set to None if hometown_city (nullable) is None
         # and model_fields_set contains the field
@@ -244,7 +237,6 @@ class CoachProfile(BaseModel):
                 "email": obj.get("email"),
                 "phone": obj.get("phone"),
                 "leader": obj.get("leader"),
-                "dob": obj.get("dob"),
                 "hometown_city": obj.get("hometown_city"),
                 "hometown_state": obj.get("hometown_state"),
                 "alma_mater_name": obj.get("alma_mater_name"),

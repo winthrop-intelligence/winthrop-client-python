@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**sport** | **str** |  | 
 **year_str** | **str** |  | 
 **school_name** | **str** |  | 
 **school_id** | **int** |  | 
