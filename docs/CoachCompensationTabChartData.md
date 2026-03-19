@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**conference_name** | **str** |  | [optional] 
 **total_comp_over_time** | [**List[CoachCompensationTabChartDataTotalCompOverTimeInner]**](CoachCompensationTabChartDataTotalCompOverTimeInner.md) |  | [optional] 
 **conference_avg_over_time** | [**List[CoachCompensationTabChartDataConferenceAvgOverTimeInner]**](CoachCompensationTabChartDataConferenceAvgOverTimeInner.md) |  | [optional] 
 **current_breakdown** | [**CoachCompensationTabChartDataCurrentBreakdown**](CoachCompensationTabChartDataCurrentBreakdown.md) |  | [optional] 

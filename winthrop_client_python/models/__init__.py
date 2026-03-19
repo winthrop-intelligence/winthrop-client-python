@@ -278,8 +278,6 @@ from winthrop_client_python.models.position_type_group import PositionTypeGroup
 from winthrop_client_python.models.predict_body import PredictBody
 from winthrop_client_python.models.predict_failure import PredictFailure
 from winthrop_client_python.models.predict_success import PredictSuccess
-from winthrop_client_python.models.quartile_row import QuartileRow
-from winthrop_client_python.models.quartiles_data import QuartilesData
 from winthrop_client_python.models.raw_contract import RawContract
 from winthrop_client_python.models.raw_contract_collection import RawContractCollection
 from winthrop_client_python.models.record_position_entry import RecordPositionEntry

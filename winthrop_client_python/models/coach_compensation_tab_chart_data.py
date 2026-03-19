@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.coach_compensation_tab_chart_data_conference_avg_over_time_inner import (
     CoachCompensationTabChartDataConferenceAvgOverTimeInner,
@@ -36,6 +36,7 @@ class CoachCompensationTabChartData(BaseModel):
     CoachCompensationTabChartData
     """  # noqa: E501
 
+    conference_name: Optional[StrictStr] = None
     total_comp_over_time: Optional[
         List[CoachCompensationTabChartDataTotalCompOverTimeInner]
     ] = None
@@ -44,6 +45,7 @@ class CoachCompensationTabChartData(BaseModel):
     ] = None
     current_breakdown: Optional[CoachCompensationTabChartDataCurrentBreakdown] = None
     __properties: ClassVar[List[str]] = [
+        "conference_name",
         "total_comp_over_time",
         "conference_avg_over_time",
         "current_breakdown",
@@ -103,6 +105,11 @@ class CoachCompensationTabChartData(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of current_breakdown
         if self.current_breakdown:
             _dict["current_breakdown"] = self.current_breakdown.to_dict()
+        # set to None if conference_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.conference_name is None and "conference_name" in self.model_fields_set:
+            _dict["conference_name"] = None
+
         # set to None if current_breakdown (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -124,6 +131,7 @@ class CoachCompensationTabChartData(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "conference_name": obj.get("conference_name"),
                 "total_comp_over_time": (
                     [
                         CoachCompensationTabChartDataTotalCompOverTimeInner.from_dict(

@@ -30,7 +30,17 @@ class CoachCompensationTabChartDataTotalCompOverTimeInner(BaseModel):
     year: Optional[StrictInt] = None
     comp_cents: Optional[StrictInt] = None
     position: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["year", "comp_cents", "position"]
+    base_salary_cents: Optional[StrictInt] = None
+    bonus_cents: Optional[StrictInt] = None
+    deferred_comp_cents: Optional[StrictInt] = None
+    __properties: ClassVar[List[str]] = [
+        "year",
+        "comp_cents",
+        "position",
+        "base_salary_cents",
+        "bonus_cents",
+        "deferred_comp_cents",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -85,6 +95,9 @@ class CoachCompensationTabChartDataTotalCompOverTimeInner(BaseModel):
                 "year": obj.get("year"),
                 "comp_cents": obj.get("comp_cents"),
                 "position": obj.get("position"),
+                "base_salary_cents": obj.get("base_salary_cents"),
+                "bonus_cents": obj.get("bonus_cents"),
+                "deferred_comp_cents": obj.get("deferred_comp_cents"),
             }
         )
         return _obj

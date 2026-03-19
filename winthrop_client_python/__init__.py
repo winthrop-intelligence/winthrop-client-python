@@ -189,8 +189,6 @@ __all__ = [
     "PredictBody",
     "PredictFailure",
     "PredictSuccess",
-    "QuartileRow",
-    "QuartilesData",
     "RawContract",
     "RawContractCollection",
     "RecordPositionEntry",
@@ -642,8 +640,6 @@ from winthrop_client_python.models.predict_failure import (
 from winthrop_client_python.models.predict_success import (
     PredictSuccess as PredictSuccess,
 )
-from winthrop_client_python.models.quartile_row import QuartileRow as QuartileRow
-from winthrop_client_python.models.quartiles_data import QuartilesData as QuartilesData
 from winthrop_client_python.models.raw_contract import RawContract as RawContract
 from winthrop_client_python.models.raw_contract_collection import (
     RawContractCollection as RawContractCollection,

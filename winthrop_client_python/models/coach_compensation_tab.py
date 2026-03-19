@@ -30,7 +30,6 @@ from winthrop_client_python.models.coach_compensation_tab_compensations_inner im
 from winthrop_client_python.models.coach_compensation_tab_sidebar import (
     CoachCompensationTabSidebar,
 )
-from winthrop_client_python.models.quartiles_data import QuartilesData
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -46,7 +45,6 @@ class CoachCompensationTab(BaseModel):
     total_compensations: StrictInt
     comparisons: Optional[CoachCompensationTabComparisons] = None
     sidebar: Optional[CoachCompensationTabSidebar] = None
-    quartiles: Optional[QuartilesData] = None
     __properties: ClassVar[List[str]] = [
         "can_see_compensation",
         "chart_data",
@@ -54,7 +52,6 @@ class CoachCompensationTab(BaseModel):
         "total_compensations",
         "comparisons",
         "sidebar",
-        "quartiles",
     ]
 
     model_config = ConfigDict(
@@ -110,9 +107,6 @@ class CoachCompensationTab(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sidebar
         if self.sidebar:
             _dict["sidebar"] = self.sidebar.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of quartiles
-        if self.quartiles:
-            _dict["quartiles"] = self.quartiles.to_dict()
         return _dict
 
     @classmethod
@@ -149,11 +143,6 @@ class CoachCompensationTab(BaseModel):
                 "sidebar": (
                     CoachCompensationTabSidebar.from_dict(obj["sidebar"])
                     if obj.get("sidebar") is not None
-                    else None
-                ),
-                "quartiles": (
-                    QuartilesData.from_dict(obj["quartiles"])
-                    if obj.get("quartiles") is not None
                     else None
                 ),
             }

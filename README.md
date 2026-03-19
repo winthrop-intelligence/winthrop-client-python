@@ -436,8 +436,6 @@ Class | Method | HTTP request | Description
  - [PredictBody](docs/PredictBody.md)
  - [PredictFailure](docs/PredictFailure.md)
  - [PredictSuccess](docs/PredictSuccess.md)
- - [QuartileRow](docs/QuartileRow.md)
- - [QuartilesData](docs/QuartilesData.md)
  - [RawContract](docs/RawContract.md)
  - [RawContractCollection](docs/RawContractCollection.md)
  - [RecordPositionEntry](docs/RecordPositionEntry.md)

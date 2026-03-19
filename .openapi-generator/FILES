@@ -162,8 +162,6 @@ docs/PositionTypeGroup.md
 docs/PredictBody.md
 docs/PredictFailure.md
 docs/PredictSuccess.md
-docs/QuartileRow.md
-docs/QuartilesData.md
 docs/RawContract.md
 docs/RawContractCollection.md
 docs/RecordPositionEntry.md
@@ -389,8 +387,6 @@ winthrop_client_python/models/position_type_group.py
 winthrop_client_python/models/predict_body.py
 winthrop_client_python/models/predict_failure.py
 winthrop_client_python/models/predict_success.py
-winthrop_client_python/models/quartile_row.py
-winthrop_client_python/models/quartiles_data.py
 winthrop_client_python/models/raw_contract.py
 winthrop_client_python/models/raw_contract_collection.py
 winthrop_client_python/models/record_position_entry.py

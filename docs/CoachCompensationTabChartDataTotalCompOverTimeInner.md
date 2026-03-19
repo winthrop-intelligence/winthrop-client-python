@@ -8,6 +8,9 @@ Name | Type | Description | Notes
 **year** | **int** |  | [optional] 
 **comp_cents** | **int** |  | [optional] 
 **position** | **str** |  | [optional] 
+**base_salary_cents** | **int** |  | [optional] 
+**bonus_cents** | **int** |  | [optional] 
+**deferred_comp_cents** | **int** |  | [optional] 
 
 ## Example
 
