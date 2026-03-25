@@ -192,6 +192,7 @@ from winthrop_client_python.models.foia_label import FoiaLabel
 from winthrop_client_python.models.foia_label_collection import FoiaLabelCollection
 from winthrop_client_python.models.foia_request import FoiaRequest
 from winthrop_client_python.models.foia_request_collection import FoiaRequestCollection
+from winthrop_client_python.models.gad_contract_detail import GadContractDetail
 from winthrop_client_python.models.gad_search_result import GadSearchResult
 from winthrop_client_python.models.gad_search_result_collection import (
     GadSearchResultCollection,

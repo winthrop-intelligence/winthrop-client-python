@@ -104,6 +104,7 @@ docs/FoiaLabel.md
 docs/FoiaLabelCollection.md
 docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
+docs/GadContractDetail.md
 docs/GadSearchResult.md
 docs/GadSearchResultCollection.md
 docs/GadSearchStats.md
@@ -216,6 +217,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_gad_contract_detail.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -331,6 +333,7 @@ winthrop_client_python/models/foia_label.py
 winthrop_client_python/models/foia_label_collection.py
 winthrop_client_python/models/foia_request.py
 winthrop_client_python/models/foia_request_collection.py
+winthrop_client_python/models/gad_contract_detail.py
 winthrop_client_python/models/gad_search_result.py
 winthrop_client_python/models/gad_search_result_collection.py
 winthrop_client_python/models/gad_search_stats.py

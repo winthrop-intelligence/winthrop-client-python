@@ -30,8 +30,7 @@ class FilterPositionType(BaseModel):
     id: StrictInt
     name: StrictStr
     group_stub: Optional[StrictBool] = None
-    category: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "group_stub", "category"]
+    __properties: ClassVar[List[str]] = ["id", "name", "group_stub"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,11 +69,6 @@ class FilterPositionType(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if category (nullable) is None
-        # and model_fields_set contains the field
-        if self.category is None and "category" in self.model_fields_set:
-            _dict["category"] = None
-
         return _dict
 
     @classmethod
@@ -91,7 +85,6 @@ class FilterPositionType(BaseModel):
                 "id": obj.get("id"),
                 "name": obj.get("name"),
                 "group_stub": obj.get("group_stub"),
-                "category": obj.get("category"),
             }
         )
         return _obj

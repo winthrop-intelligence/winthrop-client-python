@@ -133,6 +133,7 @@ __all__ = [
     "FoiaLabelCollection",
     "FoiaRequest",
     "FoiaRequestCollection",
+    "GadContractDetail",
     "GadSearchResult",
     "GadSearchResultCollection",
     "GadSearchStats",
@@ -515,6 +516,9 @@ from winthrop_client_python.models.foia_label_collection import (
 from winthrop_client_python.models.foia_request import FoiaRequest as FoiaRequest
 from winthrop_client_python.models.foia_request_collection import (
     FoiaRequestCollection as FoiaRequestCollection,
+)
+from winthrop_client_python.models.gad_contract_detail import (
+    GadContractDetail as GadContractDetail,
 )
 from winthrop_client_python.models.gad_search_result import (
     GadSearchResult as GadSearchResult,

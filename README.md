@@ -185,6 +185,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 *DefaultApi* | [**get_foia_request**](docs/DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**get_foia_requests**](docs/DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
+*DefaultApi* | [**get_gad_search_detail**](docs/DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail | 
 *DefaultApi* | [**get_gad_searches**](docs/DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 *DefaultApi* | [**get_game**](docs/DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
 *DefaultApi* | [**get_game_contract**](docs/DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
@@ -380,6 +381,7 @@ Class | Method | HTTP request | Description
  - [FoiaLabelCollection](docs/FoiaLabelCollection.md)
  - [FoiaRequest](docs/FoiaRequest.md)
  - [FoiaRequestCollection](docs/FoiaRequestCollection.md)
+ - [GadContractDetail](docs/GadContractDetail.md)
  - [GadSearchResult](docs/GadSearchResult.md)
  - [GadSearchResultCollection](docs/GadSearchResultCollection.md)
  - [GadSearchStats](docs/GadSearchStats.md)

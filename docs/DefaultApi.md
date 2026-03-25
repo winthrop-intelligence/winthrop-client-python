@@ -92,6 +92,7 @@ Method | HTTP request | Description
 [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
 [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
+[**get_gad_search_detail**](DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail | 
 [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
 [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
@@ -7365,6 +7366,87 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Foia requests were found |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_gad_search_detail**
+> GadContractDetail get_gad_search_detail(id)
+
+Retrieve detailed game contract data for the GAD detail page
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.gad_contract_detail import GadContractDetail
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.get_gad_search_detail(id)
+        print("The response of DefaultApi->get_gad_search_detail:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_gad_search_detail: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**GadContractDetail**](GadContractDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Game contract detail |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

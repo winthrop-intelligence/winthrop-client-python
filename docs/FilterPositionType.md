@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **id** | **int** |  | 
 **name** | **str** |  | 
 **group_stub** | **bool** |  | [optional] 
-**category** | **str** |  | [optional] 
 
 ## Example
 

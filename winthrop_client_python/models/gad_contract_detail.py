@@ -23,25 +23,21 @@ from typing import Optional, Set
 from typing_extensions import Self
 
 
-class GadSearchResult(BaseModel):
+class GadContractDetail(BaseModel):
     """
-    A single guarantee/game contract search result
+    GadContractDetail
     """  # noqa: E501
 
-    game_contract_id: Optional[StrictInt] = None
+    id: Optional[StrictInt] = None
     sport_id: Optional[StrictInt] = None
     sport_name: Optional[StrictStr] = None
-    sport_gender_code_class: Optional[StrictStr] = None
     home_school_id: Optional[StrictInt] = None
     home_school_name: Optional[StrictStr] = None
     home_school_short_name: Optional[StrictStr] = None
-    home_school_logo_url: Optional[StrictStr] = None
     away_school_id: Optional[StrictInt] = None
     away_school_name: Optional[StrictStr] = None
     away_school_short_name: Optional[StrictStr] = None
-    away_school_logo_url: Optional[StrictStr] = None
     game_type: Optional[StrictStr] = None
-    game_type_short: Optional[StrictStr] = None
     comp_cents: Optional[StrictInt] = None
     comp_tbd: Optional[StrictBool] = None
     variable: Optional[StrictBool] = None
@@ -49,26 +45,25 @@ class GadSearchResult(BaseModel):
     cancelled: Optional[StrictBool] = None
     season_year: Optional[StrictInt] = None
     game_date: Optional[date] = None
-    game_date_tbd: Optional[StrictBool] = None
+    game_date_tbd: Optional[StrictStr] = None
+    signed_on: Optional[date] = None
+    off_site_location: Optional[StrictStr] = None
     raw_contract_id: Optional[StrictInt] = None
+    has_raw_contract: Optional[StrictBool] = None
+    raw_contract_url: Optional[StrictStr] = None
     belongs_to_series: Optional[StrictBool] = None
-    can_link_home_school: Optional[StrictBool] = None
-    can_link_away_school: Optional[StrictBool] = None
+    verified: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
-        "game_contract_id",
+        "id",
         "sport_id",
         "sport_name",
-        "sport_gender_code_class",
         "home_school_id",
         "home_school_name",
         "home_school_short_name",
-        "home_school_logo_url",
         "away_school_id",
         "away_school_name",
         "away_school_short_name",
-        "away_school_logo_url",
         "game_type",
-        "game_type_short",
         "comp_cents",
         "comp_tbd",
         "variable",
@@ -77,10 +72,13 @@ class GadSearchResult(BaseModel):
         "season_year",
         "game_date",
         "game_date_tbd",
+        "signed_on",
+        "off_site_location",
         "raw_contract_id",
+        "has_raw_contract",
+        "raw_contract_url",
         "belongs_to_series",
-        "can_link_home_school",
-        "can_link_away_school",
+        "verified",
     ]
 
     model_config = ConfigDict(
@@ -100,7 +98,7 @@ class GadSearchResult(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GadSearchResult from a JSON string"""
+        """Create an instance of GadContractDetail from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -130,14 +128,6 @@ class GadSearchResult(BaseModel):
         if self.sport_name is None and "sport_name" in self.model_fields_set:
             _dict["sport_name"] = None
 
-        # set to None if sport_gender_code_class (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.sport_gender_code_class is None
-            and "sport_gender_code_class" in self.model_fields_set
-        ):
-            _dict["sport_gender_code_class"] = None
-
         # set to None if home_school_id (nullable) is None
         # and model_fields_set contains the field
         if self.home_school_id is None and "home_school_id" in self.model_fields_set:
@@ -158,14 +148,6 @@ class GadSearchResult(BaseModel):
             and "home_school_short_name" in self.model_fields_set
         ):
             _dict["home_school_short_name"] = None
-
-        # set to None if home_school_logo_url (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.home_school_logo_url is None
-            and "home_school_logo_url" in self.model_fields_set
-        ):
-            _dict["home_school_logo_url"] = None
 
         # set to None if away_school_id (nullable) is None
         # and model_fields_set contains the field
@@ -188,23 +170,10 @@ class GadSearchResult(BaseModel):
         ):
             _dict["away_school_short_name"] = None
 
-        # set to None if away_school_logo_url (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.away_school_logo_url is None
-            and "away_school_logo_url" in self.model_fields_set
-        ):
-            _dict["away_school_logo_url"] = None
-
         # set to None if game_type (nullable) is None
         # and model_fields_set contains the field
         if self.game_type is None and "game_type" in self.model_fields_set:
             _dict["game_type"] = None
-
-        # set to None if game_type_short (nullable) is None
-        # and model_fields_set contains the field
-        if self.game_type_short is None and "game_type_short" in self.model_fields_set:
-            _dict["game_type_short"] = None
 
         # set to None if comp_cents (nullable) is None
         # and model_fields_set contains the field
@@ -249,16 +218,42 @@ class GadSearchResult(BaseModel):
         if self.game_date_tbd is None and "game_date_tbd" in self.model_fields_set:
             _dict["game_date_tbd"] = None
 
+        # set to None if signed_on (nullable) is None
+        # and model_fields_set contains the field
+        if self.signed_on is None and "signed_on" in self.model_fields_set:
+            _dict["signed_on"] = None
+
+        # set to None if off_site_location (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.off_site_location is None
+            and "off_site_location" in self.model_fields_set
+        ):
+            _dict["off_site_location"] = None
+
         # set to None if raw_contract_id (nullable) is None
         # and model_fields_set contains the field
         if self.raw_contract_id is None and "raw_contract_id" in self.model_fields_set:
             _dict["raw_contract_id"] = None
 
+        # set to None if raw_contract_url (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.raw_contract_url is None
+            and "raw_contract_url" in self.model_fields_set
+        ):
+            _dict["raw_contract_url"] = None
+
+        # set to None if verified (nullable) is None
+        # and model_fields_set contains the field
+        if self.verified is None and "verified" in self.model_fields_set:
+            _dict["verified"] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GadSearchResult from a dict"""
+        """Create an instance of GadContractDetail from a dict"""
         if obj is None:
             return None
 
@@ -267,20 +262,16 @@ class GadSearchResult(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "game_contract_id": obj.get("game_contract_id"),
+                "id": obj.get("id"),
                 "sport_id": obj.get("sport_id"),
                 "sport_name": obj.get("sport_name"),
-                "sport_gender_code_class": obj.get("sport_gender_code_class"),
                 "home_school_id": obj.get("home_school_id"),
                 "home_school_name": obj.get("home_school_name"),
                 "home_school_short_name": obj.get("home_school_short_name"),
-                "home_school_logo_url": obj.get("home_school_logo_url"),
                 "away_school_id": obj.get("away_school_id"),
                 "away_school_name": obj.get("away_school_name"),
                 "away_school_short_name": obj.get("away_school_short_name"),
-                "away_school_logo_url": obj.get("away_school_logo_url"),
                 "game_type": obj.get("game_type"),
-                "game_type_short": obj.get("game_type_short"),
                 "comp_cents": obj.get("comp_cents"),
                 "comp_tbd": obj.get("comp_tbd"),
                 "variable": obj.get("variable"),
@@ -289,10 +280,13 @@ class GadSearchResult(BaseModel):
                 "season_year": obj.get("season_year"),
                 "game_date": obj.get("game_date"),
                 "game_date_tbd": obj.get("game_date_tbd"),
+                "signed_on": obj.get("signed_on"),
+                "off_site_location": obj.get("off_site_location"),
                 "raw_contract_id": obj.get("raw_contract_id"),
+                "has_raw_contract": obj.get("has_raw_contract"),
+                "raw_contract_url": obj.get("raw_contract_url"),
                 "belongs_to_series": obj.get("belongs_to_series"),
-                "can_link_home_school": obj.get("can_link_home_school"),
-                "can_link_away_school": obj.get("can_link_away_school"),
+                "verified": obj.get("verified"),
             }
         )
         return _obj
