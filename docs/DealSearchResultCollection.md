@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List[DealSearchResult]**](DealSearchResult.md) |  | [optional] 
 **meta** | [**Meta**](Meta.md) |  | [optional] 
+**averages** | **Dict[str, Optional[float]]** |  | [optional] 
 
 ## Example
 

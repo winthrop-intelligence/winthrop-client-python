@@ -18,9 +18,12 @@ Name | Type | Description | Notes
 **start_year** | **int** |  | [optional] 
 **end_year** | **int** |  | [optional] 
 **start_at** | **datetime** |  | [optional] 
+**created_at** | **datetime** |  | [optional] 
 **summary** | **str** |  | [optional] 
 **autorenew** | **bool** |  | [optional] 
 **archived** | **bool** |  | [optional] 
+**vendors** | [**List[DealDetailVendor]**](DealDetailVendor.md) |  | [optional] 
+**deal_detail** | [**DealDetail**](DealDetail.md) |  | [optional] 
 
 ## Example
 

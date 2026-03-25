@@ -18,6 +18,9 @@ Name | Type | Description | Notes
 **directors_cup_ranking** | **int** |  | [optional] 
 **is_private** | **bool** |  | [optional] 
 **nickname** | **str** |  | [optional] 
+**logo_url** | **str** |  | [optional] 
+**department** | [**DepartmentSearchResultDepartment**](DepartmentSearchResultDepartment.md) |  | [optional] 
+**sports** | [**List[DepartmentSearchResultSportsInner]**](DepartmentSearchResultSportsInner.md) |  | [optional] 
 
 ## Example
 
