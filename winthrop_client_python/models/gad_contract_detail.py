@@ -51,8 +51,17 @@ class GadContractDetail(BaseModel):
     raw_contract_id: Optional[StrictInt] = None
     has_raw_contract: Optional[StrictBool] = None
     raw_contract_url: Optional[StrictStr] = None
+    raw_contract_filename: Optional[StrictStr] = None
     belongs_to_series: Optional[StrictBool] = None
     verified: Optional[StrictBool] = None
+    unstract_text_state: Optional[StrictStr] = None
+    unstract_layout_state: Optional[StrictStr] = None
+    has_simple_text: Optional[StrictBool] = None
+    has_layout_text: Optional[StrictBool] = None
+    simple_text: Optional[StrictStr] = None
+    layout_preserved_text: Optional[StrictStr] = None
+    unstract_text_error: Optional[StrictStr] = None
+    unstract_layout_error: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "sport_id",
@@ -77,8 +86,17 @@ class GadContractDetail(BaseModel):
         "raw_contract_id",
         "has_raw_contract",
         "raw_contract_url",
+        "raw_contract_filename",
         "belongs_to_series",
         "verified",
+        "unstract_text_state",
+        "unstract_layout_state",
+        "has_simple_text",
+        "has_layout_text",
+        "simple_text",
+        "layout_preserved_text",
+        "unstract_text_error",
+        "unstract_layout_error",
     ]
 
     model_config = ConfigDict(
@@ -244,10 +262,63 @@ class GadContractDetail(BaseModel):
         ):
             _dict["raw_contract_url"] = None
 
+        # set to None if raw_contract_filename (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.raw_contract_filename is None
+            and "raw_contract_filename" in self.model_fields_set
+        ):
+            _dict["raw_contract_filename"] = None
+
         # set to None if verified (nullable) is None
         # and model_fields_set contains the field
         if self.verified is None and "verified" in self.model_fields_set:
             _dict["verified"] = None
+
+        # set to None if unstract_text_state (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.unstract_text_state is None
+            and "unstract_text_state" in self.model_fields_set
+        ):
+            _dict["unstract_text_state"] = None
+
+        # set to None if unstract_layout_state (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.unstract_layout_state is None
+            and "unstract_layout_state" in self.model_fields_set
+        ):
+            _dict["unstract_layout_state"] = None
+
+        # set to None if simple_text (nullable) is None
+        # and model_fields_set contains the field
+        if self.simple_text is None and "simple_text" in self.model_fields_set:
+            _dict["simple_text"] = None
+
+        # set to None if layout_preserved_text (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.layout_preserved_text is None
+            and "layout_preserved_text" in self.model_fields_set
+        ):
+            _dict["layout_preserved_text"] = None
+
+        # set to None if unstract_text_error (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.unstract_text_error is None
+            and "unstract_text_error" in self.model_fields_set
+        ):
+            _dict["unstract_text_error"] = None
+
+        # set to None if unstract_layout_error (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.unstract_layout_error is None
+            and "unstract_layout_error" in self.model_fields_set
+        ):
+            _dict["unstract_layout_error"] = None
 
         return _dict
 
@@ -285,8 +356,17 @@ class GadContractDetail(BaseModel):
                 "raw_contract_id": obj.get("raw_contract_id"),
                 "has_raw_contract": obj.get("has_raw_contract"),
                 "raw_contract_url": obj.get("raw_contract_url"),
+                "raw_contract_filename": obj.get("raw_contract_filename"),
                 "belongs_to_series": obj.get("belongs_to_series"),
                 "verified": obj.get("verified"),
+                "unstract_text_state": obj.get("unstract_text_state"),
+                "unstract_layout_state": obj.get("unstract_layout_state"),
+                "has_simple_text": obj.get("has_simple_text"),
+                "has_layout_text": obj.get("has_layout_text"),
+                "simple_text": obj.get("simple_text"),
+                "layout_preserved_text": obj.get("layout_preserved_text"),
+                "unstract_text_error": obj.get("unstract_text_error"),
+                "unstract_layout_error": obj.get("unstract_layout_error"),
             }
         )
         return _obj

@@ -141,6 +141,8 @@ __all__ = [
     "GameCollection",
     "GameContract",
     "GameContractCollection",
+    "GameContractSeriesEntry",
+    "GameContractSeriesResponse",
     "GamePost",
     "GamePostCollection",
     "GamePostSearchResult",
@@ -193,13 +195,20 @@ __all__ = [
     "RawContract",
     "RawContractCollection",
     "RecordPositionEntry",
+    "RegenerateRawContractPdf200Response",
     "RequestedItem",
     "RequestedItemCollection",
     "School",
     "SchoolCollection",
+    "SchoolContractEntry",
+    "SchoolGameContractsResponse",
+    "SchoolGameContractsResponseSchool",
     "SchoolGroupShow",
     "SchoolNoComp",
     "SchoolNoSeason",
+    "SchoolSportSeason",
+    "SchoolSportSection",
+    "SchoolWLChartPoint",
     "Scraper",
     "ScraperArgDef",
     "Season",
@@ -219,8 +228,10 @@ __all__ = [
     "Tag",
     "UnauthorizedError",
     "UnprocessableEntity",
+    "UnstractRawContractPdfTextRequest",
     "UpdateFavoriteRequest",
     "UpdateFavoritesCategoryRequest",
+    "UpdateGameContract200Response",
     "User",
     "UserActivitySummary",
     "UserActivitySummaryCollection",
@@ -537,6 +548,12 @@ from winthrop_client_python.models.game_contract import GameContract as GameCont
 from winthrop_client_python.models.game_contract_collection import (
     GameContractCollection as GameContractCollection,
 )
+from winthrop_client_python.models.game_contract_series_entry import (
+    GameContractSeriesEntry as GameContractSeriesEntry,
+)
+from winthrop_client_python.models.game_contract_series_response import (
+    GameContractSeriesResponse as GameContractSeriesResponse,
+)
 from winthrop_client_python.models.game_post import GamePost as GamePost
 from winthrop_client_python.models.game_post_collection import (
     GamePostCollection as GamePostCollection,
@@ -651,6 +668,9 @@ from winthrop_client_python.models.raw_contract_collection import (
 from winthrop_client_python.models.record_position_entry import (
     RecordPositionEntry as RecordPositionEntry,
 )
+from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import (
+    RegenerateRawContractPdf200Response as RegenerateRawContractPdf200Response,
+)
 from winthrop_client_python.models.requested_item import RequestedItem as RequestedItem
 from winthrop_client_python.models.requested_item_collection import (
     RequestedItemCollection as RequestedItemCollection,
@@ -659,12 +679,30 @@ from winthrop_client_python.models.school import School as School
 from winthrop_client_python.models.school_collection import (
     SchoolCollection as SchoolCollection,
 )
+from winthrop_client_python.models.school_contract_entry import (
+    SchoolContractEntry as SchoolContractEntry,
+)
+from winthrop_client_python.models.school_game_contracts_response import (
+    SchoolGameContractsResponse as SchoolGameContractsResponse,
+)
+from winthrop_client_python.models.school_game_contracts_response_school import (
+    SchoolGameContractsResponseSchool as SchoolGameContractsResponseSchool,
+)
 from winthrop_client_python.models.school_group_show import (
     SchoolGroupShow as SchoolGroupShow,
 )
 from winthrop_client_python.models.school_no_comp import SchoolNoComp as SchoolNoComp
 from winthrop_client_python.models.school_no_season import (
     SchoolNoSeason as SchoolNoSeason,
+)
+from winthrop_client_python.models.school_sport_season import (
+    SchoolSportSeason as SchoolSportSeason,
+)
+from winthrop_client_python.models.school_sport_section import (
+    SchoolSportSection as SchoolSportSection,
+)
+from winthrop_client_python.models.school_wl_chart_point import (
+    SchoolWLChartPoint as SchoolWLChartPoint,
 )
 from winthrop_client_python.models.scraper import Scraper as Scraper
 from winthrop_client_python.models.scraper_arg_def import ScraperArgDef as ScraperArgDef
@@ -707,11 +745,17 @@ from winthrop_client_python.models.unauthorized_error import (
 from winthrop_client_python.models.unprocessable_entity import (
     UnprocessableEntity as UnprocessableEntity,
 )
+from winthrop_client_python.models.unstract_raw_contract_pdf_text_request import (
+    UnstractRawContractPdfTextRequest as UnstractRawContractPdfTextRequest,
+)
 from winthrop_client_python.models.update_favorite_request import (
     UpdateFavoriteRequest as UpdateFavoriteRequest,
 )
 from winthrop_client_python.models.update_favorites_category_request import (
     UpdateFavoritesCategoryRequest as UpdateFavoritesCategoryRequest,
+)
+from winthrop_client_python.models.update_game_contract200_response import (
+    UpdateGameContract200Response as UpdateGameContract200Response,
 )
 from winthrop_client_python.models.user import User as User
 from winthrop_client_python.models.user_activity_summary import (

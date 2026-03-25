@@ -121,6 +121,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
+*DefaultApi* | [**delete_game_contract_raw_contract**](docs/DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract | 
 *DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 *DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
@@ -189,6 +190,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_gad_searches**](docs/DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 *DefaultApi* | [**get_game**](docs/DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
 *DefaultApi* | [**get_game_contract**](docs/DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
+*DefaultApi* | [**get_game_contract_series**](docs/DefaultApi.md#get_game_contract_series) | **GET** /api/v1/game_contracts/{game_contractId}/series | 
 *DefaultApi* | [**get_game_contracts**](docs/DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 *DefaultApi* | [**get_game_post**](docs/DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
 *DefaultApi* | [**get_game_post_searches**](docs/DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches | 
@@ -210,6 +212,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+*DefaultApi* | [**get_school_game_contracts**](docs/DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
 *DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
 *DefaultApi* | [**get_school_group_admin_compensation**](docs/DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation | 
 *DefaultApi* | [**get_school_group_cashflow_stats**](docs/DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats | 
@@ -244,7 +247,9 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_vendor**](docs/DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} | 
 *DefaultApi* | [**get_vendors**](docs/DefaultApi.md#get_vendors) | **GET** /api/v1/vendors | 
 *DefaultApi* | [**get_wire_changes**](docs/DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
+*DefaultApi* | [**regenerate_raw_contract_pdf**](docs/DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
 *DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
+*DefaultApi* | [**unstract_raw_contract_pdf_text**](docs/DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
 *DefaultApi* | [**update_cashflow**](docs/DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} | 
 *DefaultApi* | [**update_coach**](docs/DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
 *DefaultApi* | [**update_compensation**](docs/DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
@@ -254,6 +259,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
+*DefaultApi* | [**update_game_contract**](docs/DefaultApi.md#update_game_contract) | **PUT** /api/v1/game_contracts/{game_contractId} | 
 *DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 *DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
@@ -389,6 +395,8 @@ Class | Method | HTTP request | Description
  - [GameCollection](docs/GameCollection.md)
  - [GameContract](docs/GameContract.md)
  - [GameContractCollection](docs/GameContractCollection.md)
+ - [GameContractSeriesEntry](docs/GameContractSeriesEntry.md)
+ - [GameContractSeriesResponse](docs/GameContractSeriesResponse.md)
  - [GamePost](docs/GamePost.md)
  - [GamePostCollection](docs/GamePostCollection.md)
  - [GamePostSearchResult](docs/GamePostSearchResult.md)
@@ -441,13 +449,20 @@ Class | Method | HTTP request | Description
  - [RawContract](docs/RawContract.md)
  - [RawContractCollection](docs/RawContractCollection.md)
  - [RecordPositionEntry](docs/RecordPositionEntry.md)
+ - [RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
+ - [SchoolContractEntry](docs/SchoolContractEntry.md)
+ - [SchoolGameContractsResponse](docs/SchoolGameContractsResponse.md)
+ - [SchoolGameContractsResponseSchool](docs/SchoolGameContractsResponseSchool.md)
  - [SchoolGroupShow](docs/SchoolGroupShow.md)
  - [SchoolNoComp](docs/SchoolNoComp.md)
  - [SchoolNoSeason](docs/SchoolNoSeason.md)
+ - [SchoolSportSeason](docs/SchoolSportSeason.md)
+ - [SchoolSportSection](docs/SchoolSportSection.md)
+ - [SchoolWLChartPoint](docs/SchoolWLChartPoint.md)
  - [Scraper](docs/Scraper.md)
  - [ScraperArgDef](docs/ScraperArgDef.md)
  - [Season](docs/Season.md)
@@ -467,8 +482,10 @@ Class | Method | HTTP request | Description
  - [Tag](docs/Tag.md)
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
+ - [UnstractRawContractPdfTextRequest](docs/UnstractRawContractPdfTextRequest.md)
  - [UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
  - [UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
+ - [UpdateGameContract200Response](docs/UpdateGameContract200Response.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)
  - [UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)

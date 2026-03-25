@@ -28,8 +28,17 @@ Name | Type | Description | Notes
 **raw_contract_id** | **int** |  | [optional] 
 **has_raw_contract** | **bool** |  | [optional] 
 **raw_contract_url** | **str** |  | [optional] 
+**raw_contract_filename** | **str** |  | [optional] 
 **belongs_to_series** | **bool** |  | [optional] 
 **verified** | **bool** |  | [optional] 
+**unstract_text_state** | **str** |  | [optional] 
+**unstract_layout_state** | **str** |  | [optional] 
+**has_simple_text** | **bool** |  | [optional] 
+**has_layout_text** | **bool** |  | [optional] 
+**simple_text** | **str** |  | [optional] 
+**layout_preserved_text** | **str** |  | [optional] 
+**unstract_text_error** | **str** |  | [optional] 
+**unstract_layout_error** | **str** |  | [optional] 
 
 ## Example
 
