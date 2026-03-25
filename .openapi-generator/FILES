@@ -228,17 +228,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_game_contract_series_entry.py
-test/test_game_contract_series_response.py
-test/test_regenerate_raw_contract_pdf200_response.py
-test/test_school_contract_entry.py
-test/test_school_game_contracts_response.py
-test/test_school_game_contracts_response_school.py
-test/test_school_sport_season.py
-test/test_school_sport_section.py
-test/test_school_wl_chart_point.py
-test/test_unstract_raw_contract_pdf_text_request.py
-test/test_update_game_contract200_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
