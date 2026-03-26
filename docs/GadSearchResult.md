@@ -1,6 +1,5 @@
 # GadSearchResult
 
-A single guarantee/game contract search result
 
 ## Properties
 
@@ -19,7 +18,6 @@ Name | Type | Description | Notes
 **away_school_short_name** | **str** |  | [optional] 
 **away_school_logo_url** | **str** |  | [optional] 
 **game_type** | **str** |  | [optional] 
-**game_type_short** | **str** |  | [optional] 
 **comp_cents** | **int** |  | [optional] 
 **comp_tbd** | **bool** |  | [optional] 
 **variable** | **bool** |  | [optional] 

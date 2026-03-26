@@ -28,7 +28,6 @@ Method | HTTP request | Description
 [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
-[**delete_game_contract_raw_contract**](DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract | 
 [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
@@ -93,11 +92,9 @@ Method | HTTP request | Description
 [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
 [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
-[**get_gad_search_detail**](DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail | 
 [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
 [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
-[**get_game_contract_series**](DefaultApi.md#get_game_contract_series) | **GET** /api/v1/game_contracts/{game_contractId}/series | 
 [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
 [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches | 
@@ -119,7 +116,6 @@ Method | HTTP request | Description
 [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
-[**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
 [**get_school_group**](DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
 [**get_school_group_admin_compensation**](DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation | 
 [**get_school_group_cashflow_stats**](DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats | 
@@ -154,9 +150,7 @@ Method | HTTP request | Description
 [**get_vendor**](DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} | 
 [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors | 
 [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
-[**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
 [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
-[**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
 [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} | 
 [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
 [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
@@ -166,7 +160,6 @@ Method | HTTP request | Description
 [**update_favorites_category**](DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
-[**update_game_contract**](DefaultApi.md#update_game_contract) | **PUT** /api/v1/game_contracts/{game_contractId} | 
 [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
@@ -2129,84 +2122,6 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Foia request was deleted |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_game_contract_raw_contract**
-> delete_game_contract_raw_contract(game_contract_id)
-
-Delete the raw contract attached to a game contract
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    game_contract_id = 56 # int | ID of the GameContract
-
-    try:
-        api_instance.delete_game_contract_raw_contract(game_contract_id)
-    except Exception as e:
-        print("Exception when calling DefaultApi->delete_game_contract_raw_contract: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **game_contract_id** | **int**| ID of the GameContract | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | Raw contract was deleted |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
 
@@ -7453,87 +7368,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_gad_search_detail**
-> GadContractDetail get_gad_search_detail(id)
-
-Retrieve detailed game contract data for the GAD detail page
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.gad_contract_detail import GadContractDetail
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    id = 56 # int | 
-
-    try:
-        api_response = api_instance.get_gad_search_detail(id)
-        print("The response of DefaultApi->get_gad_search_detail:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_gad_search_detail: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
-
-### Return type
-
-[**GadContractDetail**](GadContractDetail.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Game contract detail |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_gad_searches**
 > GadSearchResultCollection get_gad_searches(page=page, per_page=per_page, q=q)
 
@@ -7775,87 +7609,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Game Contract was found |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_game_contract_series**
-> GameContractSeriesResponse get_game_contract_series(game_contract_id)
-
-Retrieve the series of game contracts related to this contract
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.game_contract_series_response import GameContractSeriesResponse
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    game_contract_id = 56 # int | ID of the GameContract
-
-    try:
-        api_response = api_instance.get_game_contract_series(game_contract_id)
-        print("The response of DefaultApi->get_game_contract_series:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_game_contract_series: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **game_contract_id** | **int**| ID of the GameContract | 
-
-### Return type
-
-[**GameContractSeriesResponse**](GameContractSeriesResponse.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Game contract series |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
 
@@ -9594,87 +9347,6 @@ Name | Type | Description  | Notes
 **200** | Alternate names were found |  -  |
 **401** | Unauthorized |  -  |
 **404** | School not found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_school_game_contracts**
-> SchoolGameContractsResponse get_school_game_contracts(school_id)
-
-Retrieve game contracts for a school grouped by sport
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.school_game_contracts_response import SchoolGameContractsResponse
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    school_id = 56 # int | ID of the School
-
-    try:
-        api_response = api_instance.get_school_game_contracts(school_id)
-        print("The response of DefaultApi->get_school_game_contracts:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_school_game_contracts: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **school_id** | **int**| ID of the School | 
-
-### Return type
-
-[**SchoolGameContractsResponse**](SchoolGameContractsResponse.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | School game contracts |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -12500,87 +12172,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **regenerate_raw_contract_pdf**
-> RegenerateRawContractPdf200Response regenerate_raw_contract_pdf(raw_contract_id)
-
-Regenerate the PDF for a raw contract
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import RegenerateRawContractPdf200Response
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    raw_contract_id = 56 # int | ID of the RawContract
-
-    try:
-        api_response = api_instance.regenerate_raw_contract_pdf(raw_contract_id)
-        print("The response of DefaultApi->regenerate_raw_contract_pdf:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->regenerate_raw_contract_pdf: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **raw_contract_id** | **int**| ID of the RawContract | 
-
-### Return type
-
-[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | PDF regeneration started |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **search_coaches**
 > CoachCollection search_coaches(filters=filters)
 
@@ -12659,90 +12250,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Coaches were found |  -  |
 **401** | Unauthorized |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **unstract_raw_contract_pdf_text**
-> RegenerateRawContractPdf200Response unstract_raw_contract_pdf_text(raw_contract_id, unstract_raw_contract_pdf_text_request=unstract_raw_contract_pdf_text_request)
-
-Extract text from a raw contract PDF
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import RegenerateRawContractPdf200Response
-from winthrop_client_python.models.unstract_raw_contract_pdf_text_request import UnstractRawContractPdfTextRequest
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    raw_contract_id = 56 # int | ID of the RawContract
-    unstract_raw_contract_pdf_text_request = winthrop_client_python.UnstractRawContractPdfTextRequest() # UnstractRawContractPdfTextRequest |  (optional)
-
-    try:
-        api_response = api_instance.unstract_raw_contract_pdf_text(raw_contract_id, unstract_raw_contract_pdf_text_request=unstract_raw_contract_pdf_text_request)
-        print("The response of DefaultApi->unstract_raw_contract_pdf_text:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->unstract_raw_contract_pdf_text: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **raw_contract_id** | **int**| ID of the RawContract | 
- **unstract_raw_contract_pdf_text_request** | [**UnstractRawContractPdfTextRequest**](UnstractRawContractPdfTextRequest.md)|  | [optional] 
-
-### Return type
-
-[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Text extraction started |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -13493,118 +13000,6 @@ Name | Type | Description  | Notes
 **200** | Foia request was updated |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_game_contract**
-> UpdateGameContract200Response update_game_contract(game_contract_id, game_contract_home_school_id=game_contract_home_school_id, game_contract_away_school_id=game_contract_away_school_id, game_contract_sport_id=game_contract_sport_id, game_contract_game_type=game_contract_game_type, game_contract_game_date=game_contract_game_date, game_contract_game_date_tbd=game_contract_game_date_tbd, game_contract_off_site_location=game_contract_off_site_location, game_contract_comp_dollars=game_contract_comp_dollars, game_contract_comp_tbd=game_contract_comp_tbd, game_contract_variable=game_contract_variable, game_contract_cancel_fee_dollars=game_contract_cancel_fee_dollars, game_contract_cancelled=game_contract_cancelled, game_contract_verified=game_contract_verified, game_contract_signed_on=game_contract_signed_on, raw_contract_file=raw_contract_file)
-
-Update a GameContract
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.update_game_contract200_response import UpdateGameContract200Response
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    game_contract_id = 56 # int | ID of the GameContract
-    game_contract_home_school_id = 56 # int |  (optional)
-    game_contract_away_school_id = 56 # int |  (optional)
-    game_contract_sport_id = 56 # int |  (optional)
-    game_contract_game_type = 'game_contract_game_type_example' # str |  (optional)
-    game_contract_game_date = 'game_contract_game_date_example' # str |  (optional)
-    game_contract_game_date_tbd = 'game_contract_game_date_tbd_example' # str |  (optional)
-    game_contract_off_site_location = 'game_contract_off_site_location_example' # str |  (optional)
-    game_contract_comp_dollars = 'game_contract_comp_dollars_example' # str |  (optional)
-    game_contract_comp_tbd = 'game_contract_comp_tbd_example' # str |  (optional)
-    game_contract_variable = 'game_contract_variable_example' # str |  (optional)
-    game_contract_cancel_fee_dollars = 'game_contract_cancel_fee_dollars_example' # str |  (optional)
-    game_contract_cancelled = 'game_contract_cancelled_example' # str |  (optional)
-    game_contract_verified = 'game_contract_verified_example' # str |  (optional)
-    game_contract_signed_on = 'game_contract_signed_on_example' # str |  (optional)
-    raw_contract_file = None # bytearray |  (optional)
-
-    try:
-        api_response = api_instance.update_game_contract(game_contract_id, game_contract_home_school_id=game_contract_home_school_id, game_contract_away_school_id=game_contract_away_school_id, game_contract_sport_id=game_contract_sport_id, game_contract_game_type=game_contract_game_type, game_contract_game_date=game_contract_game_date, game_contract_game_date_tbd=game_contract_game_date_tbd, game_contract_off_site_location=game_contract_off_site_location, game_contract_comp_dollars=game_contract_comp_dollars, game_contract_comp_tbd=game_contract_comp_tbd, game_contract_variable=game_contract_variable, game_contract_cancel_fee_dollars=game_contract_cancel_fee_dollars, game_contract_cancelled=game_contract_cancelled, game_contract_verified=game_contract_verified, game_contract_signed_on=game_contract_signed_on, raw_contract_file=raw_contract_file)
-        print("The response of DefaultApi->update_game_contract:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->update_game_contract: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **game_contract_id** | **int**| ID of the GameContract | 
- **game_contract_home_school_id** | **int**|  | [optional] 
- **game_contract_away_school_id** | **int**|  | [optional] 
- **game_contract_sport_id** | **int**|  | [optional] 
- **game_contract_game_type** | **str**|  | [optional] 
- **game_contract_game_date** | **str**|  | [optional] 
- **game_contract_game_date_tbd** | **str**|  | [optional] 
- **game_contract_off_site_location** | **str**|  | [optional] 
- **game_contract_comp_dollars** | **str**|  | [optional] 
- **game_contract_comp_tbd** | **str**|  | [optional] 
- **game_contract_variable** | **str**|  | [optional] 
- **game_contract_cancel_fee_dollars** | **str**|  | [optional] 
- **game_contract_cancelled** | **str**|  | [optional] 
- **game_contract_verified** | **str**|  | [optional] 
- **game_contract_signed_on** | **str**|  | [optional] 
- **raw_contract_file** | **bytearray**|  | [optional] 
-
-### Return type
-
-[**UpdateGameContract200Response**](UpdateGameContract200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Game Contract was updated |  -  |
-**401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-**422** | Unprocessable Content |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

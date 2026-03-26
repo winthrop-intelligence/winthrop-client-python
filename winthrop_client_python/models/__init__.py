@@ -192,7 +192,6 @@ from winthrop_client_python.models.foia_label import FoiaLabel
 from winthrop_client_python.models.foia_label_collection import FoiaLabelCollection
 from winthrop_client_python.models.foia_request import FoiaRequest
 from winthrop_client_python.models.foia_request_collection import FoiaRequestCollection
-from winthrop_client_python.models.gad_contract_detail import GadContractDetail
 from winthrop_client_python.models.gad_search_result import GadSearchResult
 from winthrop_client_python.models.gad_search_result_collection import (
     GadSearchResultCollection,
@@ -203,12 +202,6 @@ from winthrop_client_python.models.game_collection import GameCollection
 from winthrop_client_python.models.game_contract import GameContract
 from winthrop_client_python.models.game_contract_collection import (
     GameContractCollection,
-)
-from winthrop_client_python.models.game_contract_series_entry import (
-    GameContractSeriesEntry,
-)
-from winthrop_client_python.models.game_contract_series_response import (
-    GameContractSeriesResponse,
 )
 from winthrop_client_python.models.game_post import GamePost
 from winthrop_client_python.models.game_post_collection import GamePostCollection
@@ -288,28 +281,15 @@ from winthrop_client_python.models.predict_success import PredictSuccess
 from winthrop_client_python.models.raw_contract import RawContract
 from winthrop_client_python.models.raw_contract_collection import RawContractCollection
 from winthrop_client_python.models.record_position_entry import RecordPositionEntry
-from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import (
-    RegenerateRawContractPdf200Response,
-)
 from winthrop_client_python.models.requested_item import RequestedItem
 from winthrop_client_python.models.requested_item_collection import (
     RequestedItemCollection,
 )
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
-from winthrop_client_python.models.school_contract_entry import SchoolContractEntry
-from winthrop_client_python.models.school_game_contracts_response import (
-    SchoolGameContractsResponse,
-)
-from winthrop_client_python.models.school_game_contracts_response_school import (
-    SchoolGameContractsResponseSchool,
-)
 from winthrop_client_python.models.school_group_show import SchoolGroupShow
 from winthrop_client_python.models.school_no_comp import SchoolNoComp
 from winthrop_client_python.models.school_no_season import SchoolNoSeason
-from winthrop_client_python.models.school_sport_season import SchoolSportSeason
-from winthrop_client_python.models.school_sport_section import SchoolSportSection
-from winthrop_client_python.models.school_wl_chart_point import SchoolWLChartPoint
 from winthrop_client_python.models.scraper import Scraper
 from winthrop_client_python.models.scraper_arg_def import ScraperArgDef
 from winthrop_client_python.models.season import Season
@@ -337,15 +317,9 @@ from winthrop_client_python.models.system_setting import SystemSetting
 from winthrop_client_python.models.tag import Tag
 from winthrop_client_python.models.unauthorized_error import UnauthorizedError
 from winthrop_client_python.models.unprocessable_entity import UnprocessableEntity
-from winthrop_client_python.models.unstract_raw_contract_pdf_text_request import (
-    UnstractRawContractPdfTextRequest,
-)
 from winthrop_client_python.models.update_favorite_request import UpdateFavoriteRequest
 from winthrop_client_python.models.update_favorites_category_request import (
     UpdateFavoritesCategoryRequest,
-)
-from winthrop_client_python.models.update_game_contract200_response import (
-    UpdateGameContract200Response,
 )
 from winthrop_client_python.models.user import User
 from winthrop_client_python.models.user_activity_summary import UserActivitySummary

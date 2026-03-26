@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **start_year** | **int** |  | [optional] 
 **end_year** | **int** |  | [optional] 
 **start_at** | **datetime** |  | [optional] 
+**end_at** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **summary** | **str** |  | [optional] 
 **autorenew** | **bool** |  | [optional] 

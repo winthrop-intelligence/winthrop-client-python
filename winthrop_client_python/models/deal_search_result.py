@@ -43,6 +43,7 @@ class DealSearchResult(BaseModel):
     start_year: Optional[StrictInt] = None
     end_year: Optional[StrictInt] = None
     start_at: Optional[datetime] = None
+    end_at: Optional[datetime] = None
     created_at: Optional[datetime] = None
     summary: Optional[StrictStr] = None
     autorenew: Optional[StrictBool] = None
@@ -63,6 +64,7 @@ class DealSearchResult(BaseModel):
         "start_year",
         "end_year",
         "start_at",
+        "end_at",
         "created_at",
         "summary",
         "autorenew",
@@ -163,6 +165,11 @@ class DealSearchResult(BaseModel):
         if self.start_at is None and "start_at" in self.model_fields_set:
             _dict["start_at"] = None
 
+        # set to None if end_at (nullable) is None
+        # and model_fields_set contains the field
+        if self.end_at is None and "end_at" in self.model_fields_set:
+            _dict["end_at"] = None
+
         # set to None if created_at (nullable) is None
         # and model_fields_set contains the field
         if self.created_at is None and "created_at" in self.model_fields_set:
@@ -209,6 +216,7 @@ class DealSearchResult(BaseModel):
                 "start_year": obj.get("start_year"),
                 "end_year": obj.get("end_year"),
                 "start_at": obj.get("start_at"),
+                "end_at": obj.get("end_at"),
                 "created_at": obj.get("created_at"),
                 "summary": obj.get("summary"),
                 "autorenew": obj.get("autorenew"),
