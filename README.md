@@ -110,6 +110,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_favorites_category**](docs/DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 *DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 *DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
+*DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 *DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 *DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
@@ -354,6 +355,8 @@ Class | Method | HTTP request | Description
  - [CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
+ - [CreateGamePostSearchRequest](docs/CreateGamePostSearchRequest.md)
+ - [CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
  - [Deal](docs/Deal.md)
  - [DealCollection](docs/DealCollection.md)
  - [DealDetail](docs/DealDetail.md)

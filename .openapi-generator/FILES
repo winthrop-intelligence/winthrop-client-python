@@ -73,6 +73,8 @@ docs/CoworkerTenure.md
 docs/CreateFavorite201Response.md
 docs/CreateFavoriteRequest.md
 docs/CreateFavoritesCategoryRequest.md
+docs/CreateGamePostSearchRequest.md
+docs/CreateGamePostSearchRequestGamePost.md
 docs/Deal.md
 docs/DealCollection.md
 docs/DealDetail.md
@@ -222,12 +224,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_delete_game_post_search200_response.py
-test/test_game_post_contact.py
-test/test_game_post_detail.py
-test/test_game_post_detail_created_by.py
-test/test_update_game_post_search_request.py
-test/test_update_game_post_search_request_game_post.py
+test/test_create_game_post_search_request.py
+test/test_create_game_post_search_request_game_post.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -314,6 +312,8 @@ winthrop_client_python/models/coworker_tenure.py
 winthrop_client_python/models/create_favorite201_response.py
 winthrop_client_python/models/create_favorite_request.py
 winthrop_client_python/models/create_favorites_category_request.py
+winthrop_client_python/models/create_game_post_search_request.py
+winthrop_client_python/models/create_game_post_search_request_game_post.py
 winthrop_client_python/models/deal.py
 winthrop_client_python/models/deal_collection.py
 winthrop_client_python/models/deal_detail.py

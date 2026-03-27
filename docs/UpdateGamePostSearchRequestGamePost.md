@@ -7,6 +7,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** |  | [optional] 
 **expires_on** | **date** |  | [optional] 
+**sport_id** | **int** |  | [optional] 
+**start_date** | **date** |  | [optional] 
+**end_date** | **date** |  | [optional] 
+**description** | **str** |  | [optional] 
+**game_type_ids** | **List[int]** |  | [optional] 
 
 ## Example
 

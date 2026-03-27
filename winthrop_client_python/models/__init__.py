@@ -147,6 +147,12 @@ from winthrop_client_python.models.create_favorite_request import CreateFavorite
 from winthrop_client_python.models.create_favorites_category_request import (
     CreateFavoritesCategoryRequest,
 )
+from winthrop_client_python.models.create_game_post_search_request import (
+    CreateGamePostSearchRequest,
+)
+from winthrop_client_python.models.create_game_post_search_request_game_post import (
+    CreateGamePostSearchRequestGamePost,
+)
 from winthrop_client_python.models.deal import Deal
 from winthrop_client_python.models.deal_collection import DealCollection
 from winthrop_client_python.models.deal_detail import DealDetail

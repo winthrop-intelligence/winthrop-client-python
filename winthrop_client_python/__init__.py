@@ -104,6 +104,8 @@ __all__ = [
     "CreateFavorite201Response",
     "CreateFavoriteRequest",
     "CreateFavoritesCategoryRequest",
+    "CreateGamePostSearchRequest",
+    "CreateGamePostSearchRequestGamePost",
     "Deal",
     "DealCollection",
     "DealDetail",
@@ -450,6 +452,12 @@ from winthrop_client_python.models.create_favorite_request import (
 )
 from winthrop_client_python.models.create_favorites_category_request import (
     CreateFavoritesCategoryRequest as CreateFavoritesCategoryRequest,
+)
+from winthrop_client_python.models.create_game_post_search_request import (
+    CreateGamePostSearchRequest as CreateGamePostSearchRequest,
+)
+from winthrop_client_python.models.create_game_post_search_request_game_post import (
+    CreateGamePostSearchRequestGamePost as CreateGamePostSearchRequestGamePost,
 )
 from winthrop_client_python.models.deal import Deal as Deal
 from winthrop_client_python.models.deal_collection import (

@@ -17,43 +17,29 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr, field_validator
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class UpdateGamePostSearchRequestGamePost(BaseModel):
+class CreateGamePostSearchRequestGamePost(BaseModel):
     """
-    UpdateGamePostSearchRequestGamePost
+    CreateGamePostSearchRequestGamePost
     """  # noqa: E501
 
-    status: Optional[StrictStr] = None
-    expires_on: Optional[date] = None
-    sport_id: Optional[StrictInt] = None
-    start_date: Optional[date] = None
+    sport_id: StrictInt
+    start_date: date
     end_date: Optional[date] = None
     description: Optional[StrictStr] = None
     game_type_ids: Optional[List[StrictInt]] = None
     __properties: ClassVar[List[str]] = [
-        "status",
-        "expires_on",
         "sport_id",
         "start_date",
         "end_date",
         "description",
         "game_type_ids",
     ]
-
-    @field_validator("status")
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(["Active", "Inactive"]):
-            raise ValueError("must be one of enum values ('Active', 'Inactive')")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,7 +58,7 @@ class UpdateGamePostSearchRequestGamePost(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateGamePostSearchRequestGamePost from a JSON string"""
+        """Create an instance of CreateGamePostSearchRequestGamePost from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -101,7 +87,7 @@ class UpdateGamePostSearchRequestGamePost(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateGamePostSearchRequestGamePost from a dict"""
+        """Create an instance of CreateGamePostSearchRequestGamePost from a dict"""
         if obj is None:
             return None
 
@@ -110,8 +96,6 @@ class UpdateGamePostSearchRequestGamePost(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "status": obj.get("status"),
-                "expires_on": obj.get("expires_on"),
                 "sport_id": obj.get("sport_id"),
                 "start_date": obj.get("start_date"),
                 "end_date": obj.get("end_date"),

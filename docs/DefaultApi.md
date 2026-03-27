@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
+[**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
@@ -1254,6 +1255,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_game_post_search**
+> GamePostDetail create_game_post_search(create_game_post_search_request)
+
+Create a new game post
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_game_post_search_request import CreateGamePostSearchRequest
+from winthrop_client_python.models.game_post_detail import GamePostDetail
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_game_post_search_request = winthrop_client_python.CreateGamePostSearchRequest() # CreateGamePostSearchRequest | 
+
+    try:
+        api_response = api_instance.create_game_post_search(create_game_post_search_request)
+        print("The response of DefaultApi->create_game_post_search:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_game_post_search: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_game_post_search_request** | [**CreateGamePostSearchRequest**](CreateGamePostSearchRequest.md)|  | 
+
+### Return type
+
+[**GamePostDetail**](GamePostDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Game post created |  -  |
+**422** | Validation error |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_job_post**
 > JobPost create_job_post(job_post=job_post)
 
@@ -2207,6 +2290,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Game post deleted |  -  |
 **401** | Unauthorized |  -  |
+**404** | Not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -13168,9 +13252,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_game_post_search**
-> DeleteGamePostSearch200Response update_game_post_search(game_post_search_id, update_game_post_search_request=update_game_post_search_request)
+> GamePostDetail update_game_post_search(game_post_search_id, update_game_post_search_request=update_game_post_search_request)
 
-Update a game post (e.g. expire or renew)
+Update a game post. Accepts status/expires_on for expire/renew, or full form fields for editing.
 
 ### Example
 
@@ -13179,7 +13263,7 @@ Update a game post (e.g. expire or renew)
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.delete_game_post_search200_response import DeleteGamePostSearch200Response
+from winthrop_client_python.models.game_post_detail import GamePostDetail
 from winthrop_client_python.models.update_game_post_search_request import UpdateGamePostSearchRequest
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -13230,7 +13314,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteGamePostSearch200Response**](DeleteGamePostSearch200Response.md)
+[**GamePostDetail**](GamePostDetail.md)
 
 ### Authorization
 
@@ -13248,6 +13332,7 @@ Name | Type | Description  | Notes
 **200** | Game post updated |  -  |
 **422** | Validation error |  -  |
 **401** | Unauthorized |  -  |
+**404** | Not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

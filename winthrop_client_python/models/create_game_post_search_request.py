@@ -16,44 +16,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import date
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr, field_validator
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict
+from typing import Any, ClassVar, Dict, List
+from winthrop_client_python.models.create_game_post_search_request_game_post import (
+    CreateGamePostSearchRequestGamePost,
+)
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class UpdateGamePostSearchRequestGamePost(BaseModel):
+class CreateGamePostSearchRequest(BaseModel):
     """
-    UpdateGamePostSearchRequestGamePost
+    CreateGamePostSearchRequest
     """  # noqa: E501
 
-    status: Optional[StrictStr] = None
-    expires_on: Optional[date] = None
-    sport_id: Optional[StrictInt] = None
-    start_date: Optional[date] = None
-    end_date: Optional[date] = None
-    description: Optional[StrictStr] = None
-    game_type_ids: Optional[List[StrictInt]] = None
-    __properties: ClassVar[List[str]] = [
-        "status",
-        "expires_on",
-        "sport_id",
-        "start_date",
-        "end_date",
-        "description",
-        "game_type_ids",
-    ]
-
-    @field_validator("status")
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(["Active", "Inactive"]):
-            raise ValueError("must be one of enum values ('Active', 'Inactive')")
-        return value
+    game_post: CreateGamePostSearchRequestGamePost
+    __properties: ClassVar[List[str]] = ["game_post"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -72,7 +50,7 @@ class UpdateGamePostSearchRequestGamePost(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of UpdateGamePostSearchRequestGamePost from a JSON string"""
+        """Create an instance of CreateGamePostSearchRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -92,16 +70,14 @@ class UpdateGamePostSearchRequestGamePost(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if end_date (nullable) is None
-        # and model_fields_set contains the field
-        if self.end_date is None and "end_date" in self.model_fields_set:
-            _dict["end_date"] = None
-
+        # override the default output from pydantic by calling `to_dict()` of game_post
+        if self.game_post:
+            _dict["game_post"] = self.game_post.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of UpdateGamePostSearchRequestGamePost from a dict"""
+        """Create an instance of CreateGamePostSearchRequest from a dict"""
         if obj is None:
             return None
 
@@ -110,13 +86,11 @@ class UpdateGamePostSearchRequestGamePost(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "status": obj.get("status"),
-                "expires_on": obj.get("expires_on"),
-                "sport_id": obj.get("sport_id"),
-                "start_date": obj.get("start_date"),
-                "end_date": obj.get("end_date"),
-                "description": obj.get("description"),
-                "game_type_ids": obj.get("game_type_ids"),
+                "game_post": (
+                    CreateGamePostSearchRequestGamePost.from_dict(obj["game_post"])
+                    if obj.get("game_post") is not None
+                    else None
+                )
             }
         )
         return _obj
