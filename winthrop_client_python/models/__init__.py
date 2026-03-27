@@ -160,6 +160,9 @@ from winthrop_client_python.models.deal_status_collection import DealStatusColle
 from winthrop_client_python.models.delete_favorite200_response import (
     DeleteFavorite200Response,
 )
+from winthrop_client_python.models.delete_game_post_search200_response import (
+    DeleteGamePostSearch200Response,
+)
 from winthrop_client_python.models.department_search_result import (
     DepartmentSearchResult,
 )
@@ -205,6 +208,11 @@ from winthrop_client_python.models.game_contract_collection import (
 )
 from winthrop_client_python.models.game_post import GamePost
 from winthrop_client_python.models.game_post_collection import GamePostCollection
+from winthrop_client_python.models.game_post_contact import GamePostContact
+from winthrop_client_python.models.game_post_detail import GamePostDetail
+from winthrop_client_python.models.game_post_detail_created_by import (
+    GamePostDetailCreatedBy,
+)
 from winthrop_client_python.models.game_post_search_result import GamePostSearchResult
 from winthrop_client_python.models.game_post_search_result_collection import (
     GamePostSearchResultCollection,
@@ -320,6 +328,12 @@ from winthrop_client_python.models.unprocessable_entity import UnprocessableEnti
 from winthrop_client_python.models.update_favorite_request import UpdateFavoriteRequest
 from winthrop_client_python.models.update_favorites_category_request import (
     UpdateFavoritesCategoryRequest,
+)
+from winthrop_client_python.models.update_game_post_search_request import (
+    UpdateGamePostSearchRequest,
+)
+from winthrop_client_python.models.update_game_post_search_request_game_post import (
+    UpdateGamePostSearchRequestGamePost,
 )
 from winthrop_client_python.models.user import User
 from winthrop_client_python.models.user_activity_summary import UserActivitySummary

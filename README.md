@@ -121,6 +121,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
+*DefaultApi* | [**delete_game_post_search**](docs/DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 *DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
@@ -190,6 +191,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_game_contract**](docs/DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
 *DefaultApi* | [**get_game_contracts**](docs/DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 *DefaultApi* | [**get_game_post**](docs/DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
+*DefaultApi* | [**get_game_post_search**](docs/DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**get_game_post_searches**](docs/DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches | 
 *DefaultApi* | [**get_game_posts**](docs/DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts | 
 *DefaultApi* | [**get_games**](docs/DefaultApi.md#get_games) | **GET** /api/v1/games | 
@@ -253,6 +255,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
+*DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 *DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
@@ -360,6 +363,7 @@ Class | Method | HTTP request | Description
  - [DealStatus](docs/DealStatus.md)
  - [DealStatusCollection](docs/DealStatusCollection.md)
  - [DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
+ - [DeleteGamePostSearch200Response](docs/DeleteGamePostSearch200Response.md)
  - [DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
@@ -389,6 +393,9 @@ Class | Method | HTTP request | Description
  - [GameContractCollection](docs/GameContractCollection.md)
  - [GamePost](docs/GamePost.md)
  - [GamePostCollection](docs/GamePostCollection.md)
+ - [GamePostContact](docs/GamePostContact.md)
+ - [GamePostDetail](docs/GamePostDetail.md)
+ - [GamePostDetailCreatedBy](docs/GamePostDetailCreatedBy.md)
  - [GamePostSearchResult](docs/GamePostSearchResult.md)
  - [GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
  - [GameType](docs/GameType.md)
@@ -467,6 +474,8 @@ Class | Method | HTTP request | Description
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
  - [UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
  - [UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
+ - [UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
+ - [UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)
  - [UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)

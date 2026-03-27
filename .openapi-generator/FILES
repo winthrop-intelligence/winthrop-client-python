@@ -83,6 +83,7 @@ docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
 docs/DeleteFavorite200Response.md
+docs/DeleteGamePostSearch200Response.md
 docs/DepartmentSearchResult.md
 docs/DepartmentSearchResultCollection.md
 docs/DepartmentSearchResultDepartment.md
@@ -113,6 +114,9 @@ docs/GameContract.md
 docs/GameContractCollection.md
 docs/GamePost.md
 docs/GamePostCollection.md
+docs/GamePostContact.md
+docs/GamePostDetail.md
+docs/GamePostDetailCreatedBy.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
 docs/GameType.md
@@ -195,6 +199,8 @@ docs/UnauthorizedError.md
 docs/UnprocessableEntity.md
 docs/UpdateFavoriteRequest.md
 docs/UpdateFavoritesCategoryRequest.md
+docs/UpdateGamePostSearchRequest.md
+docs/UpdateGamePostSearchRequestGamePost.md
 docs/User.md
 docs/UserActivitySummary.md
 docs/UserActivitySummaryCollection.md
@@ -216,6 +222,12 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_delete_game_post_search200_response.py
+test/test_game_post_contact.py
+test/test_game_post_detail.py
+test/test_game_post_detail_created_by.py
+test/test_update_game_post_search_request.py
+test/test_update_game_post_search_request_game_post.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -311,6 +323,7 @@ winthrop_client_python/models/deal_search_result_collection.py
 winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
 winthrop_client_python/models/delete_favorite200_response.py
+winthrop_client_python/models/delete_game_post_search200_response.py
 winthrop_client_python/models/department_search_result.py
 winthrop_client_python/models/department_search_result_collection.py
 winthrop_client_python/models/department_search_result_department.py
@@ -340,6 +353,9 @@ winthrop_client_python/models/game_contract.py
 winthrop_client_python/models/game_contract_collection.py
 winthrop_client_python/models/game_post.py
 winthrop_client_python/models/game_post_collection.py
+winthrop_client_python/models/game_post_contact.py
+winthrop_client_python/models/game_post_detail.py
+winthrop_client_python/models/game_post_detail_created_by.py
 winthrop_client_python/models/game_post_search_result.py
 winthrop_client_python/models/game_post_search_result_collection.py
 winthrop_client_python/models/game_type.py
@@ -418,6 +434,8 @@ winthrop_client_python/models/unauthorized_error.py
 winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/update_favorite_request.py
 winthrop_client_python/models/update_favorites_category_request.py
+winthrop_client_python/models/update_game_post_search_request.py
+winthrop_client_python/models/update_game_post_search_request_game_post.py
 winthrop_client_python/models/user.py
 winthrop_client_python/models/user_activity_summary.py
 winthrop_client_python/models/user_activity_summary_collection.py
