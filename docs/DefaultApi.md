@@ -1333,6 +1333,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Game post created |  -  |
 **422** | Validation error |  -  |
+**403** | Forbidden — only school accounts can create game posts |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

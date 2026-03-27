@@ -3915,6 +3915,7 @@ class DefaultApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "201": "GamePostDetail",
             "422": None,
+            "403": None,
             "401": None,
         }
         response_data = self.api_client.call_api(
@@ -3981,6 +3982,7 @@ class DefaultApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "201": "GamePostDetail",
             "422": None,
+            "403": None,
             "401": None,
         }
         response_data = self.api_client.call_api(
@@ -4047,6 +4049,7 @@ class DefaultApi:
         _response_types_map: Dict[str, Optional[str]] = {
             "201": "GamePostDetail",
             "422": None,
+            "403": None,
             "401": None,
         }
         response_data = self.api_client.call_api(
