@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
 *DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 *DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
+*DefaultApi* | [**create_note**](docs/DefaultApi.md#create_note) | **POST** /api/v1/notes | 
 *DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 *DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
@@ -124,6 +125,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**delete_game_post_search**](docs/DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
+*DefaultApi* | [**delete_note**](docs/DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} | 
 *DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
@@ -204,6 +206,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
 *DefaultApi* | [**get_news_feed**](docs/DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed
+*DefaultApi* | [**get_note**](docs/DefaultApi.md#get_note) | **GET** /api/v1/notes | 
 *DefaultApi* | [**get_position**](docs/DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**get_positions**](docs/DefaultApi.md#get_positions) | **GET** /api/v1/positions | 
 *DefaultApi* | [**get_raw_contract**](docs/DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} | 
@@ -258,6 +261,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
+*DefaultApi* | [**update_note**](docs/DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} | 
 *DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
@@ -357,6 +361,7 @@ Class | Method | HTTP request | Description
  - [CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
  - [CreateGamePostSearchRequest](docs/CreateGamePostSearchRequest.md)
  - [CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
+ - [CreateNoteRequest](docs/CreateNoteRequest.md)
  - [Deal](docs/Deal.md)
  - [DealCollection](docs/DealCollection.md)
  - [DealDetail](docs/DealDetail.md)
@@ -367,6 +372,7 @@ Class | Method | HTTP request | Description
  - [DealStatusCollection](docs/DealStatusCollection.md)
  - [DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
  - [DeleteGamePostSearch200Response](docs/DeleteGamePostSearch200Response.md)
+ - [DeleteNote200Response](docs/DeleteNote200Response.md)
  - [DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
@@ -435,6 +441,7 @@ Class | Method | HTTP request | Description
  - [NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
  - [NewsFeed](docs/NewsFeed.md)
  - [NewsFeedCollection](docs/NewsFeedCollection.md)
+ - [Note](docs/Note.md)
  - [PerformanceChartCoach](docs/PerformanceChartCoach.md)
  - [PerformanceChartData](docs/PerformanceChartData.md)
  - [PerformanceChartRecord](docs/PerformanceChartRecord.md)
@@ -479,6 +486,7 @@ Class | Method | HTTP request | Description
  - [UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
  - [UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
  - [UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
+ - [UpdateNoteRequest](docs/UpdateNoteRequest.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)
  - [UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)

@@ -75,6 +75,7 @@ docs/CreateFavoriteRequest.md
 docs/CreateFavoritesCategoryRequest.md
 docs/CreateGamePostSearchRequest.md
 docs/CreateGamePostSearchRequestGamePost.md
+docs/CreateNoteRequest.md
 docs/Deal.md
 docs/DealCollection.md
 docs/DealDetail.md
@@ -86,6 +87,7 @@ docs/DealStatusCollection.md
 docs/DefaultApi.md
 docs/DeleteFavorite200Response.md
 docs/DeleteGamePostSearch200Response.md
+docs/DeleteNote200Response.md
 docs/DepartmentSearchResult.md
 docs/DepartmentSearchResultCollection.md
 docs/DepartmentSearchResultDepartment.md
@@ -157,6 +159,7 @@ docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
 docs/NewsFeed.md
 docs/NewsFeedCollection.md
+docs/Note.md
 docs/PerformanceChartCoach.md
 docs/PerformanceChartData.md
 docs/PerformanceChartRecord.md
@@ -203,6 +206,7 @@ docs/UpdateFavoriteRequest.md
 docs/UpdateFavoritesCategoryRequest.md
 docs/UpdateGamePostSearchRequest.md
 docs/UpdateGamePostSearchRequestGamePost.md
+docs/UpdateNoteRequest.md
 docs/User.md
 docs/UserActivitySummary.md
 docs/UserActivitySummaryCollection.md
@@ -224,6 +228,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_create_note_request.py
+test/test_delete_note200_response.py
+test/test_note.py
+test/test_update_note_request.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -312,6 +320,7 @@ winthrop_client_python/models/create_favorite_request.py
 winthrop_client_python/models/create_favorites_category_request.py
 winthrop_client_python/models/create_game_post_search_request.py
 winthrop_client_python/models/create_game_post_search_request_game_post.py
+winthrop_client_python/models/create_note_request.py
 winthrop_client_python/models/deal.py
 winthrop_client_python/models/deal_collection.py
 winthrop_client_python/models/deal_detail.py
@@ -322,6 +331,7 @@ winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
 winthrop_client_python/models/delete_favorite200_response.py
 winthrop_client_python/models/delete_game_post_search200_response.py
+winthrop_client_python/models/delete_note200_response.py
 winthrop_client_python/models/department_search_result.py
 winthrop_client_python/models/department_search_result_collection.py
 winthrop_client_python/models/department_search_result_department.py
@@ -390,6 +400,7 @@ winthrop_client_python/models/ncaa_financial_report_status.py
 winthrop_client_python/models/ncaa_financial_report_status_collection.py
 winthrop_client_python/models/news_feed.py
 winthrop_client_python/models/news_feed_collection.py
+winthrop_client_python/models/note.py
 winthrop_client_python/models/performance_chart_coach.py
 winthrop_client_python/models/performance_chart_data.py
 winthrop_client_python/models/performance_chart_record.py
@@ -434,6 +445,7 @@ winthrop_client_python/models/update_favorite_request.py
 winthrop_client_python/models/update_favorites_category_request.py
 winthrop_client_python/models/update_game_post_search_request.py
 winthrop_client_python/models/update_game_post_search_request_game_post.py
+winthrop_client_python/models/update_note_request.py
 winthrop_client_python/models/user.py
 winthrop_client_python/models/user_activity_summary.py
 winthrop_client_python/models/user_activity_summary_collection.py

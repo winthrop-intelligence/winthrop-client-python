@@ -106,6 +106,7 @@ __all__ = [
     "CreateFavoritesCategoryRequest",
     "CreateGamePostSearchRequest",
     "CreateGamePostSearchRequestGamePost",
+    "CreateNoteRequest",
     "Deal",
     "DealCollection",
     "DealDetail",
@@ -116,6 +117,7 @@ __all__ = [
     "DealStatusCollection",
     "DeleteFavorite200Response",
     "DeleteGamePostSearch200Response",
+    "DeleteNote200Response",
     "DepartmentSearchResult",
     "DepartmentSearchResultCollection",
     "DepartmentSearchResultDepartment",
@@ -184,6 +186,7 @@ __all__ = [
     "NcaaFinancialReportStatusCollection",
     "NewsFeed",
     "NewsFeedCollection",
+    "Note",
     "PerformanceChartCoach",
     "PerformanceChartData",
     "PerformanceChartRecord",
@@ -228,6 +231,7 @@ __all__ = [
     "UpdateFavoritesCategoryRequest",
     "UpdateGamePostSearchRequest",
     "UpdateGamePostSearchRequestGamePost",
+    "UpdateNoteRequest",
     "User",
     "UserActivitySummary",
     "UserActivitySummaryCollection",
@@ -459,6 +463,9 @@ from winthrop_client_python.models.create_game_post_search_request import (
 from winthrop_client_python.models.create_game_post_search_request_game_post import (
     CreateGamePostSearchRequestGamePost as CreateGamePostSearchRequestGamePost,
 )
+from winthrop_client_python.models.create_note_request import (
+    CreateNoteRequest as CreateNoteRequest,
+)
 from winthrop_client_python.models.deal import Deal as Deal
 from winthrop_client_python.models.deal_collection import (
     DealCollection as DealCollection,
@@ -482,6 +489,9 @@ from winthrop_client_python.models.delete_favorite200_response import (
 )
 from winthrop_client_python.models.delete_game_post_search200_response import (
     DeleteGamePostSearch200Response as DeleteGamePostSearch200Response,
+)
+from winthrop_client_python.models.delete_note200_response import (
+    DeleteNote200Response as DeleteNote200Response,
 )
 from winthrop_client_python.models.department_search_result import (
     DepartmentSearchResult as DepartmentSearchResult,
@@ -639,6 +649,7 @@ from winthrop_client_python.models.news_feed import NewsFeed as NewsFeed
 from winthrop_client_python.models.news_feed_collection import (
     NewsFeedCollection as NewsFeedCollection,
 )
+from winthrop_client_python.models.note import Note as Note
 from winthrop_client_python.models.performance_chart_coach import (
     PerformanceChartCoach as PerformanceChartCoach,
 )
@@ -740,6 +751,9 @@ from winthrop_client_python.models.update_game_post_search_request import (
 )
 from winthrop_client_python.models.update_game_post_search_request_game_post import (
     UpdateGamePostSearchRequestGamePost as UpdateGamePostSearchRequestGamePost,
+)
+from winthrop_client_python.models.update_note_request import (
+    UpdateNoteRequest as UpdateNoteRequest,
 )
 from winthrop_client_python.models.user import User as User
 from winthrop_client_python.models.user_activity_summary import (

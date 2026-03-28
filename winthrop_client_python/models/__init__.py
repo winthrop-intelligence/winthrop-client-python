@@ -153,6 +153,7 @@ from winthrop_client_python.models.create_game_post_search_request import (
 from winthrop_client_python.models.create_game_post_search_request_game_post import (
     CreateGamePostSearchRequestGamePost,
 )
+from winthrop_client_python.models.create_note_request import CreateNoteRequest
 from winthrop_client_python.models.deal import Deal
 from winthrop_client_python.models.deal_collection import DealCollection
 from winthrop_client_python.models.deal_detail import DealDetail
@@ -169,6 +170,7 @@ from winthrop_client_python.models.delete_favorite200_response import (
 from winthrop_client_python.models.delete_game_post_search200_response import (
     DeleteGamePostSearch200Response,
 )
+from winthrop_client_python.models.delete_note200_response import DeleteNote200Response
 from winthrop_client_python.models.department_search_result import (
     DepartmentSearchResult,
 )
@@ -279,6 +281,7 @@ from winthrop_client_python.models.ncaa_financial_report_status_collection impor
 )
 from winthrop_client_python.models.news_feed import NewsFeed
 from winthrop_client_python.models.news_feed_collection import NewsFeedCollection
+from winthrop_client_python.models.note import Note
 from winthrop_client_python.models.performance_chart_coach import PerformanceChartCoach
 from winthrop_client_python.models.performance_chart_data import PerformanceChartData
 from winthrop_client_python.models.performance_chart_record import (
@@ -341,6 +344,7 @@ from winthrop_client_python.models.update_game_post_search_request import (
 from winthrop_client_python.models.update_game_post_search_request_game_post import (
     UpdateGamePostSearchRequestGamePost,
 )
+from winthrop_client_python.models.update_note_request import UpdateNoteRequest
 from winthrop_client_python.models.user import User
 from winthrop_client_python.models.user_activity_summary import UserActivitySummary
 from winthrop_client_python.models.user_activity_summary_collection import (
