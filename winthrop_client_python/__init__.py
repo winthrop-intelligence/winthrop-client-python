@@ -38,6 +38,17 @@ __all__ = [
     "AdministratorSearchResultCollection",
     "AsstCoachEntry",
     "AsstCoachSchool",
+    "AthleticProfileShow",
+    "AthleticProfileShowDealsInner",
+    "AthleticProfileShowFinancialInfo",
+    "AthleticProfileShowFinancials",
+    "AthleticProfileShowFinancialsRevenuesInner",
+    "AthleticProfileShowGuaranteesInner",
+    "AthleticProfileShowPermissions",
+    "AthleticProfileShowPersonnelInner",
+    "AthleticProfileShowSchool",
+    "AthleticProfileShowSportsOverviewInner",
+    "AthleticProfileShowTabSportsInner",
     "AuditedFinancialReportStatus",
     "AuditedFinancialReportStatusCollection",
     "Avatar",
@@ -293,6 +304,39 @@ from winthrop_client_python.models.asst_coach_entry import (
 )
 from winthrop_client_python.models.asst_coach_school import (
     AsstCoachSchool as AsstCoachSchool,
+)
+from winthrop_client_python.models.athletic_profile_show import (
+    AthleticProfileShow as AthleticProfileShow,
+)
+from winthrop_client_python.models.athletic_profile_show_deals_inner import (
+    AthleticProfileShowDealsInner as AthleticProfileShowDealsInner,
+)
+from winthrop_client_python.models.athletic_profile_show_financial_info import (
+    AthleticProfileShowFinancialInfo as AthleticProfileShowFinancialInfo,
+)
+from winthrop_client_python.models.athletic_profile_show_financials import (
+    AthleticProfileShowFinancials as AthleticProfileShowFinancials,
+)
+from winthrop_client_python.models.athletic_profile_show_financials_revenues_inner import (
+    AthleticProfileShowFinancialsRevenuesInner as AthleticProfileShowFinancialsRevenuesInner,
+)
+from winthrop_client_python.models.athletic_profile_show_guarantees_inner import (
+    AthleticProfileShowGuaranteesInner as AthleticProfileShowGuaranteesInner,
+)
+from winthrop_client_python.models.athletic_profile_show_permissions import (
+    AthleticProfileShowPermissions as AthleticProfileShowPermissions,
+)
+from winthrop_client_python.models.athletic_profile_show_personnel_inner import (
+    AthleticProfileShowPersonnelInner as AthleticProfileShowPersonnelInner,
+)
+from winthrop_client_python.models.athletic_profile_show_school import (
+    AthleticProfileShowSchool as AthleticProfileShowSchool,
+)
+from winthrop_client_python.models.athletic_profile_show_sports_overview_inner import (
+    AthleticProfileShowSportsOverviewInner as AthleticProfileShowSportsOverviewInner,
+)
+from winthrop_client_python.models.athletic_profile_show_tab_sports_inner import (
+    AthleticProfileShowTabSportsInner as AthleticProfileShowTabSportsInner,
 )
 from winthrop_client_python.models.audited_financial_report_status import (
     AuditedFinancialReportStatus as AuditedFinancialReportStatus,

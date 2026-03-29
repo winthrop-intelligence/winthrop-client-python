@@ -25,6 +25,37 @@ from winthrop_client_python.models.administrator_search_result_collection import
 )
 from winthrop_client_python.models.asst_coach_entry import AsstCoachEntry
 from winthrop_client_python.models.asst_coach_school import AsstCoachSchool
+from winthrop_client_python.models.athletic_profile_show import AthleticProfileShow
+from winthrop_client_python.models.athletic_profile_show_deals_inner import (
+    AthleticProfileShowDealsInner,
+)
+from winthrop_client_python.models.athletic_profile_show_financial_info import (
+    AthleticProfileShowFinancialInfo,
+)
+from winthrop_client_python.models.athletic_profile_show_financials import (
+    AthleticProfileShowFinancials,
+)
+from winthrop_client_python.models.athletic_profile_show_financials_revenues_inner import (
+    AthleticProfileShowFinancialsRevenuesInner,
+)
+from winthrop_client_python.models.athletic_profile_show_guarantees_inner import (
+    AthleticProfileShowGuaranteesInner,
+)
+from winthrop_client_python.models.athletic_profile_show_permissions import (
+    AthleticProfileShowPermissions,
+)
+from winthrop_client_python.models.athletic_profile_show_personnel_inner import (
+    AthleticProfileShowPersonnelInner,
+)
+from winthrop_client_python.models.athletic_profile_show_school import (
+    AthleticProfileShowSchool,
+)
+from winthrop_client_python.models.athletic_profile_show_sports_overview_inner import (
+    AthleticProfileShowSportsOverviewInner,
+)
+from winthrop_client_python.models.athletic_profile_show_tab_sports_inner import (
+    AthleticProfileShowTabSportsInner,
+)
 from winthrop_client_python.models.audited_financial_report_status import (
     AuditedFinancialReportStatus,
 )
