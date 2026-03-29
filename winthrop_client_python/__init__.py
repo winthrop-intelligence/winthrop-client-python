@@ -39,6 +39,7 @@ __all__ = [
     "AsstCoachEntry",
     "AsstCoachSchool",
     "AthleticProfileShow",
+    "AthleticProfileShowContactsInner",
     "AthleticProfileShowDealsInner",
     "AthleticProfileShowFinancialInfo",
     "AthleticProfileShowFinancials",
@@ -308,6 +309,9 @@ from winthrop_client_python.models.asst_coach_school import (
 )
 from winthrop_client_python.models.athletic_profile_show import (
     AthleticProfileShow as AthleticProfileShow,
+)
+from winthrop_client_python.models.athletic_profile_show_contacts_inner import (
+    AthleticProfileShowContactsInner as AthleticProfileShowContactsInner,
 )
 from winthrop_client_python.models.athletic_profile_show_deals_inner import (
     AthleticProfileShowDealsInner as AthleticProfileShowDealsInner,

@@ -297,6 +297,7 @@ Class | Method | HTTP request | Description
  - [AsstCoachEntry](docs/AsstCoachEntry.md)
  - [AsstCoachSchool](docs/AsstCoachSchool.md)
  - [AthleticProfileShow](docs/AthleticProfileShow.md)
+ - [AthleticProfileShowContactsInner](docs/AthleticProfileShowContactsInner.md)
  - [AthleticProfileShowDealsInner](docs/AthleticProfileShowDealsInner.md)
  - [AthleticProfileShowFinancialInfo](docs/AthleticProfileShowFinancialInfo.md)
  - [AthleticProfileShowFinancials](docs/AthleticProfileShowFinancials.md)

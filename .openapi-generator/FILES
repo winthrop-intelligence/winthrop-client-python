@@ -8,6 +8,7 @@ docs/AdministratorSearchResultCollection.md
 docs/AsstCoachEntry.md
 docs/AsstCoachSchool.md
 docs/AthleticProfileShow.md
+docs/AthleticProfileShowContactsInner.md
 docs/AthleticProfileShowDealsInner.md
 docs/AthleticProfileShowFinancialInfo.md
 docs/AthleticProfileShowFinancials.md
@@ -247,7 +248,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_athletic_profile_show_games_inner.py
+test/test_athletic_profile_show_contacts_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -269,6 +270,7 @@ winthrop_client_python/models/administrator_search_result_collection.py
 winthrop_client_python/models/asst_coach_entry.py
 winthrop_client_python/models/asst_coach_school.py
 winthrop_client_python/models/athletic_profile_show.py
+winthrop_client_python/models/athletic_profile_show_contacts_inner.py
 winthrop_client_python/models/athletic_profile_show_deals_inner.py
 winthrop_client_python/models/athletic_profile_show_financial_info.py
 winthrop_client_python/models/athletic_profile_show_financials.py

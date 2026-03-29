@@ -18,6 +18,9 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.athletic_profile_show_contacts_inner import (
+    AthleticProfileShowContactsInner,
+)
 from winthrop_client_python.models.athletic_profile_show_deals_inner import (
     AthleticProfileShowDealsInner,
 )
@@ -73,6 +76,7 @@ class AthleticProfileShow(BaseModel):
     deals: Optional[List[AthleticProfileShowDealsInner]] = None
     guarantees: Optional[List[AthleticProfileShowGuaranteesInner]] = None
     guarantees_total_count: Optional[StrictInt] = None
+    contacts: Optional[List[AthleticProfileShowContactsInner]] = None
     games: Optional[List[AthleticProfileShowGamesInner]] = None
     __properties: ClassVar[List[str]] = [
         "school",
@@ -91,6 +95,7 @@ class AthleticProfileShow(BaseModel):
         "deals",
         "guarantees",
         "guarantees_total_count",
+        "contacts",
         "games",
     ]
 
@@ -185,6 +190,13 @@ class AthleticProfileShow(BaseModel):
                 if _item_guarantees:
                     _items.append(_item_guarantees.to_dict())
             _dict["guarantees"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in contacts (list)
+        _items = []
+        if self.contacts:
+            for _item_contacts in self.contacts:
+                if _item_contacts:
+                    _items.append(_item_contacts.to_dict())
+            _dict["contacts"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in games (list)
         _items = []
         if self.games:
@@ -289,6 +301,14 @@ class AthleticProfileShow(BaseModel):
                     else None
                 ),
                 "guarantees_total_count": obj.get("guarantees_total_count"),
+                "contacts": (
+                    [
+                        AthleticProfileShowContactsInner.from_dict(_item)
+                        for _item in obj["contacts"]
+                    ]
+                    if obj.get("contacts") is not None
+                    else None
+                ),
                 "games": (
                     [
                         AthleticProfileShowGamesInner.from_dict(_item)

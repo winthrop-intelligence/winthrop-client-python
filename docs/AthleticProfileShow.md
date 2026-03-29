@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **deals** | [**List[AthleticProfileShowDealsInner]**](AthleticProfileShowDealsInner.md) |  | [optional] 
 **guarantees** | [**List[AthleticProfileShowGuaranteesInner]**](AthleticProfileShowGuaranteesInner.md) |  | [optional] 
 **guarantees_total_count** | **int** |  | [optional] 
+**contacts** | [**List[AthleticProfileShowContactsInner]**](AthleticProfileShowContactsInner.md) |  | [optional] 
 **games** | [**List[AthleticProfileShowGamesInner]**](AthleticProfileShowGamesInner.md) |  | [optional] 
 
 ## Example

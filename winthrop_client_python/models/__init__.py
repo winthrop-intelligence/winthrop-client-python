@@ -26,6 +26,9 @@ from winthrop_client_python.models.administrator_search_result_collection import
 from winthrop_client_python.models.asst_coach_entry import AsstCoachEntry
 from winthrop_client_python.models.asst_coach_school import AsstCoachSchool
 from winthrop_client_python.models.athletic_profile_show import AthleticProfileShow
+from winthrop_client_python.models.athletic_profile_show_contacts_inner import (
+    AthleticProfileShowContactsInner,
+)
 from winthrop_client_python.models.athletic_profile_show_deals_inner import (
     AthleticProfileShowDealsInner,
 )
