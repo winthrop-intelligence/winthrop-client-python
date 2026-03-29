@@ -65,6 +65,7 @@ class AthleticProfileShow(BaseModel):
     sport_key: Optional[StrictStr] = None
     sport_name: Optional[StrictStr] = None
     year: Optional[StrictInt] = None
+    current_season_year: Optional[StrictInt] = None
     tab_sports: Optional[List[AthleticProfileShowTabSportsInner]] = None
     non_revenue_sports: Optional[List[AthleticProfileShowTabSportsInner]] = None
     permissions: Optional[AthleticProfileShowPermissions] = None
@@ -84,6 +85,7 @@ class AthleticProfileShow(BaseModel):
         "sport_key",
         "sport_name",
         "year",
+        "current_season_year",
         "tab_sports",
         "non_revenue_sports",
         "permissions",
@@ -240,6 +242,7 @@ class AthleticProfileShow(BaseModel):
                 "sport_key": obj.get("sport_key"),
                 "sport_name": obj.get("sport_name"),
                 "year": obj.get("year"),
+                "current_season_year": obj.get("current_season_year"),
                 "tab_sports": (
                     [
                         AthleticProfileShowTabSportsInner.from_dict(_item)

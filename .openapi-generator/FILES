@@ -248,7 +248,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_athletic_profile_show_contacts_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py

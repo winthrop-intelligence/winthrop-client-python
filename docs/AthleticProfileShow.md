@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **sport_key** | **str** |  | [optional] 
 **sport_name** | **str** |  | [optional] 
 **year** | **int** |  | [optional] 
+**current_season_year** | **int** |  | [optional] 
 **tab_sports** | [**List[AthleticProfileShowTabSportsInner]**](AthleticProfileShowTabSportsInner.md) |  | [optional] 
 **non_revenue_sports** | [**List[AthleticProfileShowTabSportsInner]**](AthleticProfileShowTabSportsInner.md) |  | [optional] 
 **permissions** | [**AthleticProfileShowPermissions**](AthleticProfileShowPermissions.md) |  | [optional] 
