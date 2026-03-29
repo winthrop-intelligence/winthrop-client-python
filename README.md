@@ -213,6 +213,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_raw_contracts**](docs/DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts | 
 *DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
+*DefaultApi* | [**get_revenue_search**](docs/DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} | 
+*DefaultApi* | [**get_revenue_searches**](docs/DefaultApi.md#get_revenue_searches) | **GET** /api/v1/revenue_searches | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
@@ -460,7 +462,14 @@ Class | Method | HTTP request | Description
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
+ - [SchoolFinancialDetail](docs/SchoolFinancialDetail.md)
+ - [SchoolFinancialDetailGroup](docs/SchoolFinancialDetailGroup.md)
+ - [SchoolFinancialDetailSibling](docs/SchoolFinancialDetailSibling.md)
+ - [SchoolFinancialDetailSport](docs/SchoolFinancialDetailSport.md)
+ - [SchoolFinancialGroup](docs/SchoolFinancialGroup.md)
+ - [SchoolFinancialSummary](docs/SchoolFinancialSummary.md)
  - [SchoolGroupShow](docs/SchoolGroupShow.md)
+ - [SchoolInfo](docs/SchoolInfo.md)
  - [SchoolNoComp](docs/SchoolNoComp.md)
  - [SchoolNoSeason](docs/SchoolNoSeason.md)
  - [Scraper](docs/Scraper.md)

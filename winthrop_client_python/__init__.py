@@ -205,7 +205,14 @@ __all__ = [
     "RequestedItemCollection",
     "School",
     "SchoolCollection",
+    "SchoolFinancialDetail",
+    "SchoolFinancialDetailGroup",
+    "SchoolFinancialDetailSibling",
+    "SchoolFinancialDetailSport",
+    "SchoolFinancialGroup",
+    "SchoolFinancialSummary",
     "SchoolGroupShow",
+    "SchoolInfo",
     "SchoolNoComp",
     "SchoolNoSeason",
     "Scraper",
@@ -692,9 +699,28 @@ from winthrop_client_python.models.school import School as School
 from winthrop_client_python.models.school_collection import (
     SchoolCollection as SchoolCollection,
 )
+from winthrop_client_python.models.school_financial_detail import (
+    SchoolFinancialDetail as SchoolFinancialDetail,
+)
+from winthrop_client_python.models.school_financial_detail_group import (
+    SchoolFinancialDetailGroup as SchoolFinancialDetailGroup,
+)
+from winthrop_client_python.models.school_financial_detail_sibling import (
+    SchoolFinancialDetailSibling as SchoolFinancialDetailSibling,
+)
+from winthrop_client_python.models.school_financial_detail_sport import (
+    SchoolFinancialDetailSport as SchoolFinancialDetailSport,
+)
+from winthrop_client_python.models.school_financial_group import (
+    SchoolFinancialGroup as SchoolFinancialGroup,
+)
+from winthrop_client_python.models.school_financial_summary import (
+    SchoolFinancialSummary as SchoolFinancialSummary,
+)
 from winthrop_client_python.models.school_group_show import (
     SchoolGroupShow as SchoolGroupShow,
 )
+from winthrop_client_python.models.school_info import SchoolInfo as SchoolInfo
 from winthrop_client_python.models.school_no_comp import SchoolNoComp as SchoolNoComp
 from winthrop_client_python.models.school_no_season import (
     SchoolNoSeason as SchoolNoSeason,

@@ -304,7 +304,22 @@ from winthrop_client_python.models.requested_item_collection import (
 )
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
+from winthrop_client_python.models.school_financial_detail import SchoolFinancialDetail
+from winthrop_client_python.models.school_financial_detail_group import (
+    SchoolFinancialDetailGroup,
+)
+from winthrop_client_python.models.school_financial_detail_sibling import (
+    SchoolFinancialDetailSibling,
+)
+from winthrop_client_python.models.school_financial_detail_sport import (
+    SchoolFinancialDetailSport,
+)
+from winthrop_client_python.models.school_financial_group import SchoolFinancialGroup
+from winthrop_client_python.models.school_financial_summary import (
+    SchoolFinancialSummary,
+)
 from winthrop_client_python.models.school_group_show import SchoolGroupShow
+from winthrop_client_python.models.school_info import SchoolInfo
 from winthrop_client_python.models.school_no_comp import SchoolNoComp
 from winthrop_client_python.models.school_no_season import SchoolNoSeason
 from winthrop_client_python.models.scraper import Scraper
