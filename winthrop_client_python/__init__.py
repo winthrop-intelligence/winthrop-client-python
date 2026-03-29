@@ -43,6 +43,7 @@ __all__ = [
     "AthleticProfileShowFinancialInfo",
     "AthleticProfileShowFinancials",
     "AthleticProfileShowFinancialsRevenuesInner",
+    "AthleticProfileShowGamesInner",
     "AthleticProfileShowGuaranteesInner",
     "AthleticProfileShowPermissions",
     "AthleticProfileShowPersonnelInner",
@@ -319,6 +320,9 @@ from winthrop_client_python.models.athletic_profile_show_financials import (
 )
 from winthrop_client_python.models.athletic_profile_show_financials_revenues_inner import (
     AthleticProfileShowFinancialsRevenuesInner as AthleticProfileShowFinancialsRevenuesInner,
+)
+from winthrop_client_python.models.athletic_profile_show_games_inner import (
+    AthleticProfileShowGamesInner as AthleticProfileShowGamesInner,
 )
 from winthrop_client_python.models.athletic_profile_show_guarantees_inner import (
     AthleticProfileShowGuaranteesInner as AthleticProfileShowGuaranteesInner,

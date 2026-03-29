@@ -33,6 +33,8 @@ class AthleticProfileShowSportsOverviewInner(BaseModel):
     head_coach_name: Optional[StrictStr] = None
     head_coach_id: Optional[StrictInt] = None
     record: Optional[StrictStr] = None
+    apr: Optional[StrictInt] = None
+    rpi: Optional[StrictInt] = None
     head_coach_comp_cents: Optional[StrictInt] = None
     asst_pool_cents: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = [
@@ -42,6 +44,8 @@ class AthleticProfileShowSportsOverviewInner(BaseModel):
         "head_coach_name",
         "head_coach_id",
         "record",
+        "apr",
+        "rpi",
         "head_coach_comp_cents",
         "asst_pool_cents",
     ]
@@ -103,6 +107,16 @@ class AthleticProfileShowSportsOverviewInner(BaseModel):
         if self.record is None and "record" in self.model_fields_set:
             _dict["record"] = None
 
+        # set to None if apr (nullable) is None
+        # and model_fields_set contains the field
+        if self.apr is None and "apr" in self.model_fields_set:
+            _dict["apr"] = None
+
+        # set to None if rpi (nullable) is None
+        # and model_fields_set contains the field
+        if self.rpi is None and "rpi" in self.model_fields_set:
+            _dict["rpi"] = None
+
         # set to None if head_coach_comp_cents (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -135,6 +149,8 @@ class AthleticProfileShowSportsOverviewInner(BaseModel):
                 "head_coach_name": obj.get("head_coach_name"),
                 "head_coach_id": obj.get("head_coach_id"),
                 "record": obj.get("record"),
+                "apr": obj.get("apr"),
+                "rpi": obj.get("rpi"),
                 "head_coach_comp_cents": obj.get("head_coach_comp_cents"),
                 "asst_pool_cents": obj.get("asst_pool_cents"),
             }

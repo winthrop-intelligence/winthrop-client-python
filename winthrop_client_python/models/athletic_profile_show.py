@@ -27,6 +27,9 @@ from winthrop_client_python.models.athletic_profile_show_financial_info import (
 from winthrop_client_python.models.athletic_profile_show_financials import (
     AthleticProfileShowFinancials,
 )
+from winthrop_client_python.models.athletic_profile_show_games_inner import (
+    AthleticProfileShowGamesInner,
+)
 from winthrop_client_python.models.athletic_profile_show_guarantees_inner import (
     AthleticProfileShowGuaranteesInner,
 )
@@ -70,6 +73,7 @@ class AthleticProfileShow(BaseModel):
     deals: Optional[List[AthleticProfileShowDealsInner]] = None
     guarantees: Optional[List[AthleticProfileShowGuaranteesInner]] = None
     guarantees_total_count: Optional[StrictInt] = None
+    games: Optional[List[AthleticProfileShowGamesInner]] = None
     __properties: ClassVar[List[str]] = [
         "school",
         "financial_info",
@@ -87,6 +91,7 @@ class AthleticProfileShow(BaseModel):
         "deals",
         "guarantees",
         "guarantees_total_count",
+        "games",
     ]
 
     model_config = ConfigDict(
@@ -180,6 +185,13 @@ class AthleticProfileShow(BaseModel):
                 if _item_guarantees:
                     _items.append(_item_guarantees.to_dict())
             _dict["guarantees"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in games (list)
+        _items = []
+        if self.games:
+            for _item_games in self.games:
+                if _item_games:
+                    _items.append(_item_games.to_dict())
+            _dict["games"] = _items
         # set to None if financial_info (nullable) is None
         # and model_fields_set contains the field
         if self.financial_info is None and "financial_info" in self.model_fields_set:
@@ -277,6 +289,14 @@ class AthleticProfileShow(BaseModel):
                     else None
                 ),
                 "guarantees_total_count": obj.get("guarantees_total_count"),
+                "games": (
+                    [
+                        AthleticProfileShowGamesInner.from_dict(_item)
+                        for _item in obj["games"]
+                    ]
+                    if obj.get("games") is not None
+                    else None
+                ),
             }
         )
         return _obj

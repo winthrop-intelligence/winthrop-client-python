@@ -12,6 +12,7 @@ docs/AthleticProfileShowDealsInner.md
 docs/AthleticProfileShowFinancialInfo.md
 docs/AthleticProfileShowFinancials.md
 docs/AthleticProfileShowFinancialsRevenuesInner.md
+docs/AthleticProfileShowGamesInner.md
 docs/AthleticProfileShowGuaranteesInner.md
 docs/AthleticProfileShowPermissions.md
 docs/AthleticProfileShowPersonnelInner.md
@@ -246,17 +247,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_athletic_profile_show.py
-test/test_athletic_profile_show_deals_inner.py
-test/test_athletic_profile_show_financial_info.py
-test/test_athletic_profile_show_financials.py
-test/test_athletic_profile_show_financials_revenues_inner.py
-test/test_athletic_profile_show_guarantees_inner.py
-test/test_athletic_profile_show_permissions.py
-test/test_athletic_profile_show_personnel_inner.py
-test/test_athletic_profile_show_school.py
-test/test_athletic_profile_show_sports_overview_inner.py
-test/test_athletic_profile_show_tab_sports_inner.py
+test/test_athletic_profile_show_games_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -282,6 +273,7 @@ winthrop_client_python/models/athletic_profile_show_deals_inner.py
 winthrop_client_python/models/athletic_profile_show_financial_info.py
 winthrop_client_python/models/athletic_profile_show_financials.py
 winthrop_client_python/models/athletic_profile_show_financials_revenues_inner.py
+winthrop_client_python/models/athletic_profile_show_games_inner.py
 winthrop_client_python/models/athletic_profile_show_guarantees_inner.py
 winthrop_client_python/models/athletic_profile_show_permissions.py
 winthrop_client_python/models/athletic_profile_show_personnel_inner.py

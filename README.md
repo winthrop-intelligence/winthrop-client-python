@@ -301,6 +301,7 @@ Class | Method | HTTP request | Description
  - [AthleticProfileShowFinancialInfo](docs/AthleticProfileShowFinancialInfo.md)
  - [AthleticProfileShowFinancials](docs/AthleticProfileShowFinancials.md)
  - [AthleticProfileShowFinancialsRevenuesInner](docs/AthleticProfileShowFinancialsRevenuesInner.md)
+ - [AthleticProfileShowGamesInner](docs/AthleticProfileShowGamesInner.md)
  - [AthleticProfileShowGuaranteesInner](docs/AthleticProfileShowGuaranteesInner.md)
  - [AthleticProfileShowPermissions](docs/AthleticProfileShowPermissions.md)
  - [AthleticProfileShowPersonnelInner](docs/AthleticProfileShowPersonnelInner.md)

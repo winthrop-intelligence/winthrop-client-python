@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **head_coach_name** | **str** |  | [optional] 
 **head_coach_id** | **int** |  | [optional] 
 **record** | **str** |  | [optional] 
+**apr** | **int** |  | [optional] 
+**rpi** | **int** |  | [optional] 
 **head_coach_comp_cents** | **int** |  | [optional] 
 **asst_pool_cents** | **int** |  | [optional] 
 
