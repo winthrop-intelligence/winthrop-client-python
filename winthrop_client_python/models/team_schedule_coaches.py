@@ -18,11 +18,11 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.get_favorites_categories200_response_inner import (
-    GetFavoritesCategories200ResponseInner,
-)
 from winthrop_client_python.models.team_schedule_coaches_coaches_inner import (
     TeamScheduleCoachesCoachesInner,
+)
+from winthrop_client_python.models.team_schedule_coaches_head_coaches_inner_inner import (
+    TeamScheduleCoachesHeadCoachesInnerInner,
 )
 from winthrop_client_python.models.team_schedule_coaches_seasons_inner import (
     TeamScheduleCoachesSeasonsInner,
@@ -39,7 +39,7 @@ class TeamScheduleCoaches(BaseModel):
     performance_year: Optional[StrictInt] = None
     performance_years: Optional[List[StrictInt]] = None
     coaches: Optional[List[TeamScheduleCoachesCoachesInner]] = None
-    head_coaches: Optional[List[List[GetFavoritesCategories200ResponseInner]]] = None
+    head_coaches: Optional[List[List[TeamScheduleCoachesHeadCoachesInnerInner]]] = None
     seasons: Optional[List[Optional[TeamScheduleCoachesSeasonsInner]]] = None
     __properties: ClassVar[List[str]] = [
         "performance_year",
@@ -139,7 +139,7 @@ class TeamScheduleCoaches(BaseModel):
                 "head_coaches": (
                     [
                         [
-                            GetFavoritesCategories200ResponseInner.from_dict(
+                            TeamScheduleCoachesHeadCoachesInnerInner.from_dict(
                                 _inner_item
                             )
                             for _inner_item in _item

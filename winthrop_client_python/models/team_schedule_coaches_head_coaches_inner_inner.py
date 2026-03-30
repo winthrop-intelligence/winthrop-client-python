@@ -22,15 +22,14 @@ from typing import Optional, Set
 from typing_extensions import Self
 
 
-class TeamScheduleDetailHeadCoach(BaseModel):
+class TeamScheduleCoachesHeadCoachesInnerInner(BaseModel):
     """
-    TeamScheduleDetailHeadCoach
+    TeamScheduleCoachesHeadCoachesInnerInner
     """  # noqa: E501
 
     id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
-    photo_url: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "photo_url"]
+    __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +48,7 @@ class TeamScheduleDetailHeadCoach(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of TeamScheduleDetailHeadCoach from a JSON string"""
+        """Create an instance of TeamScheduleCoachesHeadCoachesInnerInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,37 +68,16 @@ class TeamScheduleDetailHeadCoach(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if id (nullable) is None
-        # and model_fields_set contains the field
-        if self.id is None and "id" in self.model_fields_set:
-            _dict["id"] = None
-
-        # set to None if name (nullable) is None
-        # and model_fields_set contains the field
-        if self.name is None and "name" in self.model_fields_set:
-            _dict["name"] = None
-
-        # set to None if photo_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.photo_url is None and "photo_url" in self.model_fields_set:
-            _dict["photo_url"] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of TeamScheduleDetailHeadCoach from a dict"""
+        """Create an instance of TeamScheduleCoachesHeadCoachesInnerInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "photo_url": obj.get("photo_url"),
-            }
-        )
+        _obj = cls.model_validate({"id": obj.get("id"), "name": obj.get("name")})
         return _obj

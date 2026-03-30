@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
+**photo_url** | **str** |  | [optional] 
 
 ## Example
 
