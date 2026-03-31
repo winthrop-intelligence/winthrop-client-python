@@ -262,9 +262,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_raw_contract_back_to.py
-test/test_raw_contract_deal_info.py
-test/test_raw_contract_deal_info_vendors_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
