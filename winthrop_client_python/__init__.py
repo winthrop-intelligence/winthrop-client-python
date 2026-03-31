@@ -264,6 +264,13 @@ __all__ = [
     "TeamScheduleGamePosts",
     "TeamScheduleGamePostsGamePostsInner",
     "TeamScheduleNote",
+    "TeamScheduleOverlap",
+    "TeamScheduleOverlapTeamGamesInner",
+    "TeamSchedulePlayerData",
+    "TeamSchedulePlayerDataRecruitsInner",
+    "TeamSchedulePlayerDataReturningPct",
+    "TeamSchedulePlayerDataReturningPlayersInner",
+    "TeamSchedulePlayerDataTransfersInner",
     "TeamScheduleRecentContract",
     "TeamScheduleSchedule",
     "TeamScheduleScheduleGamesInner",
@@ -896,6 +903,27 @@ from winthrop_client_python.models.team_schedule_game_posts_game_posts_inner imp
 )
 from winthrop_client_python.models.team_schedule_note import (
     TeamScheduleNote as TeamScheduleNote,
+)
+from winthrop_client_python.models.team_schedule_overlap import (
+    TeamScheduleOverlap as TeamScheduleOverlap,
+)
+from winthrop_client_python.models.team_schedule_overlap_team_games_inner import (
+    TeamScheduleOverlapTeamGamesInner as TeamScheduleOverlapTeamGamesInner,
+)
+from winthrop_client_python.models.team_schedule_player_data import (
+    TeamSchedulePlayerData as TeamSchedulePlayerData,
+)
+from winthrop_client_python.models.team_schedule_player_data_recruits_inner import (
+    TeamSchedulePlayerDataRecruitsInner as TeamSchedulePlayerDataRecruitsInner,
+)
+from winthrop_client_python.models.team_schedule_player_data_returning_pct import (
+    TeamSchedulePlayerDataReturningPct as TeamSchedulePlayerDataReturningPct,
+)
+from winthrop_client_python.models.team_schedule_player_data_returning_players_inner import (
+    TeamSchedulePlayerDataReturningPlayersInner as TeamSchedulePlayerDataReturningPlayersInner,
+)
+from winthrop_client_python.models.team_schedule_player_data_transfers_inner import (
+    TeamSchedulePlayerDataTransfersInner as TeamSchedulePlayerDataTransfersInner,
 )
 from winthrop_client_python.models.team_schedule_recent_contract import (
     TeamScheduleRecentContract as TeamScheduleRecentContract,

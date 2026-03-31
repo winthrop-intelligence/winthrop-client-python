@@ -249,7 +249,9 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_team_schedule_detail**](docs/DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} | 
 *DefaultApi* | [**get_team_schedule_detail_coaches**](docs/DefaultApi.md#get_team_schedule_detail_coaches) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/coaches | 
 *DefaultApi* | [**get_team_schedule_detail_game_posts**](docs/DefaultApi.md#get_team_schedule_detail_game_posts) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/game_posts | 
+*DefaultApi* | [**get_team_schedule_detail_player_data**](docs/DefaultApi.md#get_team_schedule_detail_player_data) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/player_data | 
 *DefaultApi* | [**get_team_schedule_detail_schedule**](docs/DefaultApi.md#get_team_schedule_detail_schedule) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule | 
+*DefaultApi* | [**get_team_schedule_detail_schedule_overlap**](docs/DefaultApi.md#get_team_schedule_detail_schedule_overlap) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule_overlap | 
 *DefaultApi* | [**get_team_schedule_favorites**](docs/DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
 *DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
@@ -534,6 +536,13 @@ Class | Method | HTTP request | Description
  - [TeamScheduleGamePosts](docs/TeamScheduleGamePosts.md)
  - [TeamScheduleGamePostsGamePostsInner](docs/TeamScheduleGamePostsGamePostsInner.md)
  - [TeamScheduleNote](docs/TeamScheduleNote.md)
+ - [TeamScheduleOverlap](docs/TeamScheduleOverlap.md)
+ - [TeamScheduleOverlapTeamGamesInner](docs/TeamScheduleOverlapTeamGamesInner.md)
+ - [TeamSchedulePlayerData](docs/TeamSchedulePlayerData.md)
+ - [TeamSchedulePlayerDataRecruitsInner](docs/TeamSchedulePlayerDataRecruitsInner.md)
+ - [TeamSchedulePlayerDataReturningPct](docs/TeamSchedulePlayerDataReturningPct.md)
+ - [TeamSchedulePlayerDataReturningPlayersInner](docs/TeamSchedulePlayerDataReturningPlayersInner.md)
+ - [TeamSchedulePlayerDataTransfersInner](docs/TeamSchedulePlayerDataTransfersInner.md)
  - [TeamScheduleRecentContract](docs/TeamScheduleRecentContract.md)
  - [TeamScheduleSchedule](docs/TeamScheduleSchedule.md)
  - [TeamScheduleScheduleGamesInner](docs/TeamScheduleScheduleGamesInner.md)

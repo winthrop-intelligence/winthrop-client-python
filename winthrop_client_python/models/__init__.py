@@ -431,6 +431,25 @@ from winthrop_client_python.models.team_schedule_game_posts_game_posts_inner imp
     TeamScheduleGamePostsGamePostsInner,
 )
 from winthrop_client_python.models.team_schedule_note import TeamScheduleNote
+from winthrop_client_python.models.team_schedule_overlap import TeamScheduleOverlap
+from winthrop_client_python.models.team_schedule_overlap_team_games_inner import (
+    TeamScheduleOverlapTeamGamesInner,
+)
+from winthrop_client_python.models.team_schedule_player_data import (
+    TeamSchedulePlayerData,
+)
+from winthrop_client_python.models.team_schedule_player_data_recruits_inner import (
+    TeamSchedulePlayerDataRecruitsInner,
+)
+from winthrop_client_python.models.team_schedule_player_data_returning_pct import (
+    TeamSchedulePlayerDataReturningPct,
+)
+from winthrop_client_python.models.team_schedule_player_data_returning_players_inner import (
+    TeamSchedulePlayerDataReturningPlayersInner,
+)
+from winthrop_client_python.models.team_schedule_player_data_transfers_inner import (
+    TeamSchedulePlayerDataTransfersInner,
+)
 from winthrop_client_python.models.team_schedule_recent_contract import (
     TeamScheduleRecentContract,
 )

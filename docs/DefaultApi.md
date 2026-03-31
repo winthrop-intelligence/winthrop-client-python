@@ -156,7 +156,9 @@ Method | HTTP request | Description
 [**get_team_schedule_detail**](DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} | 
 [**get_team_schedule_detail_coaches**](DefaultApi.md#get_team_schedule_detail_coaches) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/coaches | 
 [**get_team_schedule_detail_game_posts**](DefaultApi.md#get_team_schedule_detail_game_posts) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/game_posts | 
+[**get_team_schedule_detail_player_data**](DefaultApi.md#get_team_schedule_detail_player_data) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/player_data | 
 [**get_team_schedule_detail_schedule**](DefaultApi.md#get_team_schedule_detail_schedule) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule | 
+[**get_team_schedule_detail_schedule_overlap**](DefaultApi.md#get_team_schedule_detail_schedule_overlap) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id}/schedule_overlap | 
 [**get_team_schedule_favorites**](DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
 [**get_team_schedule_note**](DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 [**get_team_schedule_searches**](DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
@@ -12677,6 +12679,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_team_schedule_detail_player_data**
+> TeamSchedulePlayerData get_team_schedule_detail_player_data(sport_name, school_id)
+
+Get player data for a team (Men's Basketball only).
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.team_schedule_player_data import TeamSchedulePlayerData
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    sport_name = 'sport_name_example' # str | 
+    school_id = 56 # int | 
+
+    try:
+        api_response = api_instance.get_team_schedule_detail_player_data(sport_name, school_id)
+        print("The response of DefaultApi->get_team_schedule_detail_player_data:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_team_schedule_detail_player_data: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sport_name** | **str**|  | 
+ **school_id** | **int**|  | 
+
+### Return type
+
+[**TeamSchedulePlayerData**](TeamSchedulePlayerData.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Player data |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_team_schedule_detail_schedule**
 > TeamScheduleSchedule get_team_schedule_detail_schedule(sport_name, school_id, year=year)
 
@@ -12759,6 +12844,88 @@ Name | Type | Description  | Notes
 **200** | Schedule games list |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_team_schedule_detail_schedule_overlap**
+> TeamScheduleOverlap get_team_schedule_detail_schedule_overlap(sport_name, school_id)
+
+Check schedule overlap between a team and the current user's team.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.team_schedule_overlap import TeamScheduleOverlap
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    sport_name = 'sport_name_example' # str | 
+    school_id = 56 # int | 
+
+    try:
+        api_response = api_instance.get_team_schedule_detail_schedule_overlap(sport_name, school_id)
+        print("The response of DefaultApi->get_team_schedule_detail_schedule_overlap:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_team_schedule_detail_schedule_overlap: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sport_name** | **str**|  | 
+ **school_id** | **int**|  | 
+
+### Return type
+
+[**TeamScheduleOverlap**](TeamScheduleOverlap.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Schedule overlap data |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
