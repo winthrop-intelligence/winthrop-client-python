@@ -26,6 +26,11 @@ Name | Type | Description | Notes
 **unstract_pdf_text** | **str** |  | [optional] 
 **unstract_responses_details** | **str** |  | [optional] 
 **layout_preserved_pdf_text** | **str** |  | [optional] 
+**file_url** | **str** |  | [optional] 
+**has_file** | **bool** |  | [optional] 
+**back_to** | [**RawContractBackTo**](RawContractBackTo.md) |  | [optional] 
+**contract_label** | **str** |  | [optional] 
+**deal_info** | [**RawContractDealInfo**](RawContractDealInfo.md) |  | [optional] 
 
 ## Example
 
