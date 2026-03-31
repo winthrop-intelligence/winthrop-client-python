@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.team_schedule_game_posts_game_posts_inner import (
     TeamScheduleGamePostsGamePostsInner,
@@ -30,8 +30,9 @@ class TeamScheduleGamePosts(BaseModel):
     TeamScheduleGamePosts
     """  # noqa: E501
 
+    is_own_school: Optional[StrictBool] = None
     game_posts: Optional[List[TeamScheduleGamePostsGamePostsInner]] = None
-    __properties: ClassVar[List[str]] = ["game_posts"]
+    __properties: ClassVar[List[str]] = ["is_own_school", "game_posts"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -90,6 +91,7 @@ class TeamScheduleGamePosts(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "is_own_school": obj.get("is_own_school"),
                 "game_posts": (
                     [
                         TeamScheduleGamePostsGamePostsInner.from_dict(_item)
@@ -97,7 +99,7 @@ class TeamScheduleGamePosts(BaseModel):
                     ]
                     if obj.get("game_posts") is not None
                     else None
-                )
+                ),
             }
         )
         return _obj

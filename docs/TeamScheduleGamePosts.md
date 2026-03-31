@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**is_own_school** | **bool** |  | [optional] 
 **game_posts** | [**List[TeamScheduleGamePostsGamePostsInner]**](TeamScheduleGamePostsGamePostsInner.md) |  | [optional] 
 
 ## Example

@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
+**game_post_id** | **int** |  | [optional] 
 **display_date** | **str** |  | [optional] 
 **game_types** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
@@ -15,6 +16,8 @@ Name | Type | Description | Notes
 **state_name** | **str** |  | [optional] 
 **created_at** | **str** |  | [optional] 
 **active** | **bool** |  | [optional] 
+**distance** | **float** |  | [optional] 
+**can_manage** | **bool** |  | [optional] 
 
 ## Example
 

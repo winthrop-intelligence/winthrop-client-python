@@ -28,6 +28,7 @@ class TeamScheduleGamePostsGamePostsInner(BaseModel):
     """  # noqa: E501
 
     id: Optional[StrictInt] = None
+    game_post_id: Optional[StrictInt] = None
     display_date: Optional[StrictStr] = None
     game_types: Optional[StrictStr] = None
     description: Optional[StrictStr] = None
@@ -37,8 +38,11 @@ class TeamScheduleGamePostsGamePostsInner(BaseModel):
     state_name: Optional[StrictStr] = None
     created_at: Optional[StrictStr] = None
     active: Optional[StrictBool] = None
+    distance: Optional[float] = None
+    can_manage: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "id",
+        "game_post_id",
         "display_date",
         "game_types",
         "description",
@@ -48,6 +52,8 @@ class TeamScheduleGamePostsGamePostsInner(BaseModel):
         "state_name",
         "created_at",
         "active",
+        "distance",
+        "can_manage",
     ]
 
     model_config = ConfigDict(
@@ -127,6 +133,11 @@ class TeamScheduleGamePostsGamePostsInner(BaseModel):
         if self.created_at is None and "created_at" in self.model_fields_set:
             _dict["created_at"] = None
 
+        # set to None if distance (nullable) is None
+        # and model_fields_set contains the field
+        if self.distance is None and "distance" in self.model_fields_set:
+            _dict["distance"] = None
+
         return _dict
 
     @classmethod
@@ -141,6 +152,7 @@ class TeamScheduleGamePostsGamePostsInner(BaseModel):
         _obj = cls.model_validate(
             {
                 "id": obj.get("id"),
+                "game_post_id": obj.get("game_post_id"),
                 "display_date": obj.get("display_date"),
                 "game_types": obj.get("game_types"),
                 "description": obj.get("description"),
@@ -150,6 +162,8 @@ class TeamScheduleGamePostsGamePostsInner(BaseModel):
                 "state_name": obj.get("state_name"),
                 "created_at": obj.get("created_at"),
                 "active": obj.get("active"),
+                "distance": obj.get("distance"),
+                "can_manage": obj.get("can_manage"),
             }
         )
         return _obj
