@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
+*DefaultApi* | [**delete_game_contract_raw_contract**](docs/DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract | 
 *DefaultApi* | [**delete_game_post_search**](docs/DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 *DefaultApi* | [**delete_note**](docs/DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} | 
@@ -193,9 +194,11 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 *DefaultApi* | [**get_foia_request**](docs/DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**get_foia_requests**](docs/DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
+*DefaultApi* | [**get_gad_search_detail**](docs/DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail | 
 *DefaultApi* | [**get_gad_searches**](docs/DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 *DefaultApi* | [**get_game**](docs/DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
 *DefaultApi* | [**get_game_contract**](docs/DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
+*DefaultApi* | [**get_game_contract_series**](docs/DefaultApi.md#get_game_contract_series) | **GET** /api/v1/game_contracts/{game_contractId}/series | 
 *DefaultApi* | [**get_game_contracts**](docs/DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 *DefaultApi* | [**get_game_post**](docs/DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
 *DefaultApi* | [**get_game_post_search**](docs/DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} | 
@@ -221,6 +224,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_revenue_searches**](docs/DefaultApi.md#get_revenue_searches) | **GET** /api/v1/revenue_searches | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+*DefaultApi* | [**get_school_game_contracts**](docs/DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
 *DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
 *DefaultApi* | [**get_school_group_admin_compensation**](docs/DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation | 
 *DefaultApi* | [**get_school_group_cashflow_stats**](docs/DefaultApi.md#get_school_group_cashflow_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/cashflow_stats | 
@@ -264,7 +268,9 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_vendor**](docs/DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} | 
 *DefaultApi* | [**get_vendors**](docs/DefaultApi.md#get_vendors) | **GET** /api/v1/vendors | 
 *DefaultApi* | [**get_wire_changes**](docs/DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
+*DefaultApi* | [**regenerate_raw_contract_pdf**](docs/DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
 *DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
+*DefaultApi* | [**unstract_raw_contract_pdf_text**](docs/DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
 *DefaultApi* | [**update_cashflow**](docs/DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} | 
 *DefaultApi* | [**update_coach**](docs/DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
 *DefaultApi* | [**update_compensation**](docs/DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
@@ -274,6 +280,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
+*DefaultApi* | [**update_game_contract**](docs/DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} | 
 *DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 *DefaultApi* | [**update_note**](docs/DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} | 
@@ -425,6 +432,7 @@ Class | Method | HTTP request | Description
  - [FoiaLabelCollection](docs/FoiaLabelCollection.md)
  - [FoiaRequest](docs/FoiaRequest.md)
  - [FoiaRequestCollection](docs/FoiaRequestCollection.md)
+ - [GadContractDetail](docs/GadContractDetail.md)
  - [GadSearchResult](docs/GadSearchResult.md)
  - [GadSearchResultCollection](docs/GadSearchResultCollection.md)
  - [GadSearchStats](docs/GadSearchStats.md)
@@ -432,6 +440,8 @@ Class | Method | HTTP request | Description
  - [GameCollection](docs/GameCollection.md)
  - [GameContract](docs/GameContract.md)
  - [GameContractCollection](docs/GameContractCollection.md)
+ - [GameContractSeriesEntry](docs/GameContractSeriesEntry.md)
+ - [GameContractSeriesResponse](docs/GameContractSeriesResponse.md)
  - [GamePost](docs/GamePost.md)
  - [GamePostCollection](docs/GamePostCollection.md)
  - [GamePostContact](docs/GamePostContact.md)
@@ -489,20 +499,27 @@ Class | Method | HTTP request | Description
  - [RawContract](docs/RawContract.md)
  - [RawContractCollection](docs/RawContractCollection.md)
  - [RecordPositionEntry](docs/RecordPositionEntry.md)
+ - [RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
+ - [SchoolContractEntry](docs/SchoolContractEntry.md)
  - [SchoolFinancialDetail](docs/SchoolFinancialDetail.md)
  - [SchoolFinancialDetailGroup](docs/SchoolFinancialDetailGroup.md)
  - [SchoolFinancialDetailSibling](docs/SchoolFinancialDetailSibling.md)
  - [SchoolFinancialDetailSport](docs/SchoolFinancialDetailSport.md)
  - [SchoolFinancialGroup](docs/SchoolFinancialGroup.md)
  - [SchoolFinancialSummary](docs/SchoolFinancialSummary.md)
+ - [SchoolGameContractsResponse](docs/SchoolGameContractsResponse.md)
+ - [SchoolGameContractsResponseSchool](docs/SchoolGameContractsResponseSchool.md)
  - [SchoolGroupShow](docs/SchoolGroupShow.md)
  - [SchoolInfo](docs/SchoolInfo.md)
  - [SchoolNoComp](docs/SchoolNoComp.md)
  - [SchoolNoSeason](docs/SchoolNoSeason.md)
+ - [SchoolSportSeason](docs/SchoolSportSeason.md)
+ - [SchoolSportSection](docs/SchoolSportSection.md)
+ - [SchoolWLChartPoint](docs/SchoolWLChartPoint.md)
  - [Scraper](docs/Scraper.md)
  - [ScraperArgDef](docs/ScraperArgDef.md)
  - [Season](docs/Season.md)
@@ -552,6 +569,7 @@ Class | Method | HTTP request | Description
  - [TeamScheduleSearchResultHomeContracts](docs/TeamScheduleSearchResultHomeContracts.md)
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
+ - [UnstractRawContractPdfTextRequest](docs/UnstractRawContractPdfTextRequest.md)
  - [UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
  - [UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
  - [UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
