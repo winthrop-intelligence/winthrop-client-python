@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -33,6 +33,12 @@ class TeamScheduleCoachesCoachesInner(BaseModel):
     email: Optional[StrictStr] = None
     phone: Optional[StrictStr] = None
     photo_url: Optional[StrictStr] = None
+    compensation: Optional[StrictStr] = Field(
+        default=None, description="Compensation label (e.g. 'Hourly')"
+    )
+    compensation_cents: Optional[StrictInt] = Field(
+        default=None, description="Total compensation in cents"
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
@@ -40,6 +46,8 @@ class TeamScheduleCoachesCoachesInner(BaseModel):
         "email",
         "phone",
         "photo_url",
+        "compensation",
+        "compensation_cents",
     ]
 
     model_config = ConfigDict(
@@ -99,6 +107,19 @@ class TeamScheduleCoachesCoachesInner(BaseModel):
         if self.photo_url is None and "photo_url" in self.model_fields_set:
             _dict["photo_url"] = None
 
+        # set to None if compensation (nullable) is None
+        # and model_fields_set contains the field
+        if self.compensation is None and "compensation" in self.model_fields_set:
+            _dict["compensation"] = None
+
+        # set to None if compensation_cents (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_cents is None
+            and "compensation_cents" in self.model_fields_set
+        ):
+            _dict["compensation_cents"] = None
+
         return _dict
 
     @classmethod
@@ -118,6 +139,8 @@ class TeamScheduleCoachesCoachesInner(BaseModel):
                 "email": obj.get("email"),
                 "phone": obj.get("phone"),
                 "photo_url": obj.get("photo_url"),
+                "compensation": obj.get("compensation"),
+                "compensation_cents": obj.get("compensation_cents"),
             }
         )
         return _obj

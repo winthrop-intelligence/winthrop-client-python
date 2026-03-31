@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.team_schedule_coaches_coaches_inner import (
     TeamScheduleCoachesCoachesInner,
@@ -38,12 +38,14 @@ class TeamScheduleCoaches(BaseModel):
 
     performance_year: Optional[StrictInt] = None
     performance_years: Optional[List[StrictInt]] = None
+    sport_name: Optional[StrictStr] = None
     coaches: Optional[List[TeamScheduleCoachesCoachesInner]] = None
     head_coaches: Optional[List[List[TeamScheduleCoachesHeadCoachesInnerInner]]] = None
     seasons: Optional[List[Optional[TeamScheduleCoachesSeasonsInner]]] = None
     __properties: ClassVar[List[str]] = [
         "performance_year",
         "performance_years",
+        "sport_name",
         "coaches",
         "head_coaches",
         "seasons",
@@ -113,6 +115,11 @@ class TeamScheduleCoaches(BaseModel):
                 if _item_seasons:
                     _items.append(_item_seasons.to_dict())
             _dict["seasons"] = _items
+        # set to None if sport_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.sport_name is None and "sport_name" in self.model_fields_set:
+            _dict["sport_name"] = None
+
         return _dict
 
     @classmethod
@@ -128,6 +135,7 @@ class TeamScheduleCoaches(BaseModel):
             {
                 "performance_year": obj.get("performance_year"),
                 "performance_years": obj.get("performance_years"),
+                "sport_name": obj.get("sport_name"),
                 "coaches": (
                     [
                         TeamScheduleCoachesCoachesInner.from_dict(_item)

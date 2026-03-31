@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,6 +27,9 @@ class TeamScheduleContact(BaseModel):
     Scheduling contact for a school/sport
     """  # noqa: E501
 
+    coach_id: Optional[StrictInt] = Field(
+        default=None, description="Coach ID for linking to coach profile"
+    )
     name: Optional[StrictStr] = Field(
         default=None, description="Full name of the contact"
     )
@@ -38,7 +41,17 @@ class TeamScheduleContact(BaseModel):
     phone: Optional[StrictStr] = Field(
         default=None, description="Formatted phone number"
     )
-    __properties: ClassVar[List[str]] = ["name", "title", "email", "phone"]
+    avatar_url: Optional[StrictStr] = Field(
+        default=None, description="URL to coach avatar image (small cropped variant)"
+    )
+    __properties: ClassVar[List[str]] = [
+        "coach_id",
+        "name",
+        "title",
+        "email",
+        "phone",
+        "avatar_url",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,6 +90,11 @@ class TeamScheduleContact(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if coach_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.coach_id is None and "coach_id" in self.model_fields_set:
+            _dict["coach_id"] = None
+
         # set to None if name (nullable) is None
         # and model_fields_set contains the field
         if self.name is None and "name" in self.model_fields_set:
@@ -97,6 +115,11 @@ class TeamScheduleContact(BaseModel):
         if self.phone is None and "phone" in self.model_fields_set:
             _dict["phone"] = None
 
+        # set to None if avatar_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.avatar_url is None and "avatar_url" in self.model_fields_set:
+            _dict["avatar_url"] = None
+
         return _dict
 
     @classmethod
@@ -110,10 +133,12 @@ class TeamScheduleContact(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "coach_id": obj.get("coach_id"),
                 "name": obj.get("name"),
                 "title": obj.get("title"),
                 "email": obj.get("email"),
                 "phone": obj.get("phone"),
+                "avatar_url": obj.get("avatar_url"),
             }
         )
         return _obj

@@ -47,6 +47,8 @@ class TeamScheduleScheduleGamesInner(BaseModel):
     opponent_avg_rpi: Optional[StrictInt] = None
     in_conference: Optional[StrictBool] = None
     has_contract: Optional[StrictBool] = None
+    compensation_cents: Optional[StrictInt] = None
+    game_contract_id: Optional[StrictInt] = None
     result: Optional[StrictStr] = None
     score: Optional[StrictStr] = None
     overtime: Optional[StrictInt] = None
@@ -63,6 +65,8 @@ class TeamScheduleScheduleGamesInner(BaseModel):
         "opponent_avg_rpi",
         "in_conference",
         "has_contract",
+        "compensation_cents",
+        "game_contract_id",
         "result",
         "score",
         "overtime",
@@ -171,6 +175,22 @@ class TeamScheduleScheduleGamesInner(BaseModel):
         ):
             _dict["opponent_avg_rpi"] = None
 
+        # set to None if compensation_cents (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.compensation_cents is None
+            and "compensation_cents" in self.model_fields_set
+        ):
+            _dict["compensation_cents"] = None
+
+        # set to None if game_contract_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.game_contract_id is None
+            and "game_contract_id" in self.model_fields_set
+        ):
+            _dict["game_contract_id"] = None
+
         # set to None if result (nullable) is None
         # and model_fields_set contains the field
         if self.result is None and "result" in self.model_fields_set:
@@ -211,6 +231,8 @@ class TeamScheduleScheduleGamesInner(BaseModel):
                 "opponent_avg_rpi": obj.get("opponent_avg_rpi"),
                 "in_conference": obj.get("in_conference"),
                 "has_contract": obj.get("has_contract"),
+                "compensation_cents": obj.get("compensation_cents"),
+                "game_contract_id": obj.get("game_contract_id"),
                 "result": obj.get("result"),
                 "score": obj.get("score"),
                 "overtime": obj.get("overtime"),

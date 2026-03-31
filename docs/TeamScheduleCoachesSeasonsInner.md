@@ -13,6 +13,11 @@ Name | Type | Description | Notes
 **record_str** | **str** |  | [optional] 
 **conference_record** | **str** |  | [optional] 
 **postseason** | **str** |  | [optional] 
+**home_record** | **str** |  | [optional] 
+**home_win_percent** | **float** |  | [optional] 
+**sos_ranking** | **int** |  | [optional] 
+**offensive_efficiency** | **float** |  | [optional] 
+**defensive_efficiency** | **float** |  | [optional] 
 
 ## Example
 

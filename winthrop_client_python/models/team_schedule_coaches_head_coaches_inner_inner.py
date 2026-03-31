@@ -29,7 +29,8 @@ class TeamScheduleCoachesHeadCoachesInnerInner(BaseModel):
 
     id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name"]
+    photo_url: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "photo_url"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -68,6 +69,11 @@ class TeamScheduleCoachesHeadCoachesInnerInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if photo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.photo_url is None and "photo_url" in self.model_fields_set:
+            _dict["photo_url"] = None
+
         return _dict
 
     @classmethod
@@ -79,5 +85,11 @@ class TeamScheduleCoachesHeadCoachesInnerInner(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"id": obj.get("id"), "name": obj.get("name")})
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "name": obj.get("name"),
+                "photo_url": obj.get("photo_url"),
+            }
+        )
         return _obj

@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class GadSearchResult(BaseModel):
     """
-    A single guarantee/game contract search result
+    GadSearchResult
     """  # noqa: E501
 
     game_contract_id: Optional[StrictInt] = None
@@ -41,7 +41,6 @@ class GadSearchResult(BaseModel):
     away_school_short_name: Optional[StrictStr] = None
     away_school_logo_url: Optional[StrictStr] = None
     game_type: Optional[StrictStr] = None
-    game_type_short: Optional[StrictStr] = None
     comp_cents: Optional[StrictInt] = None
     comp_tbd: Optional[StrictBool] = None
     variable: Optional[StrictBool] = None
@@ -68,7 +67,6 @@ class GadSearchResult(BaseModel):
         "away_school_short_name",
         "away_school_logo_url",
         "game_type",
-        "game_type_short",
         "comp_cents",
         "comp_tbd",
         "variable",
@@ -201,11 +199,6 @@ class GadSearchResult(BaseModel):
         if self.game_type is None and "game_type" in self.model_fields_set:
             _dict["game_type"] = None
 
-        # set to None if game_type_short (nullable) is None
-        # and model_fields_set contains the field
-        if self.game_type_short is None and "game_type_short" in self.model_fields_set:
-            _dict["game_type_short"] = None
-
         # set to None if comp_cents (nullable) is None
         # and model_fields_set contains the field
         if self.comp_cents is None and "comp_cents" in self.model_fields_set:
@@ -280,7 +273,6 @@ class GadSearchResult(BaseModel):
                 "away_school_short_name": obj.get("away_school_short_name"),
                 "away_school_logo_url": obj.get("away_school_logo_url"),
                 "game_type": obj.get("game_type"),
-                "game_type_short": obj.get("game_type_short"),
                 "comp_cents": obj.get("comp_cents"),
                 "comp_tbd": obj.get("comp_tbd"),
                 "variable": obj.get("variable"),

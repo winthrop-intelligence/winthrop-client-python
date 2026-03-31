@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **opponent_avg_rpi** | **int** |  | [optional] 
 **in_conference** | **bool** |  | [optional] 
 **has_contract** | **bool** |  | [optional] 
+**compensation_cents** | **int** |  | [optional] 
+**game_contract_id** | **int** |  | [optional] 
 **result** | **str** |  | [optional] 
 **score** | **str** |  | [optional] 
 **overtime** | **int** |  | [optional] 

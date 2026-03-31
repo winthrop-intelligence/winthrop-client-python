@@ -6,10 +6,12 @@ Scheduling contact for a school/sport
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**coach_id** | **int** | Coach ID for linking to coach profile | [optional] 
 **name** | **str** | Full name of the contact | [optional] 
 **title** | **str** | Position title (e.g. Director of Football Operations) | [optional] 
 **email** | **str** |  | [optional] 
 **phone** | **str** | Formatted phone number | [optional] 
+**avatar_url** | **str** | URL to coach avatar image (small cropped variant) | [optional] 
 
 ## Example
 

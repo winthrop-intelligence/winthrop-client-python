@@ -35,6 +35,11 @@ class TeamScheduleCoachesSeasonsInner(BaseModel):
     record_str: Optional[StrictStr] = None
     conference_record: Optional[StrictStr] = None
     postseason: Optional[StrictStr] = None
+    home_record: Optional[StrictStr] = None
+    home_win_percent: Optional[float] = None
+    sos_ranking: Optional[StrictInt] = None
+    offensive_efficiency: Optional[float] = None
+    defensive_efficiency: Optional[float] = None
     __properties: ClassVar[List[str]] = [
         "year",
         "wins",
@@ -44,6 +49,11 @@ class TeamScheduleCoachesSeasonsInner(BaseModel):
         "record_str",
         "conference_record",
         "postseason",
+        "home_record",
+        "home_win_percent",
+        "sos_ranking",
+        "offensive_efficiency",
+        "defensive_efficiency",
     ]
 
     model_config = ConfigDict(
@@ -121,6 +131,40 @@ class TeamScheduleCoachesSeasonsInner(BaseModel):
         if self.postseason is None and "postseason" in self.model_fields_set:
             _dict["postseason"] = None
 
+        # set to None if home_record (nullable) is None
+        # and model_fields_set contains the field
+        if self.home_record is None and "home_record" in self.model_fields_set:
+            _dict["home_record"] = None
+
+        # set to None if home_win_percent (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.home_win_percent is None
+            and "home_win_percent" in self.model_fields_set
+        ):
+            _dict["home_win_percent"] = None
+
+        # set to None if sos_ranking (nullable) is None
+        # and model_fields_set contains the field
+        if self.sos_ranking is None and "sos_ranking" in self.model_fields_set:
+            _dict["sos_ranking"] = None
+
+        # set to None if offensive_efficiency (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.offensive_efficiency is None
+            and "offensive_efficiency" in self.model_fields_set
+        ):
+            _dict["offensive_efficiency"] = None
+
+        # set to None if defensive_efficiency (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.defensive_efficiency is None
+            and "defensive_efficiency" in self.model_fields_set
+        ):
+            _dict["defensive_efficiency"] = None
+
         return _dict
 
     @classmethod
@@ -142,6 +186,11 @@ class TeamScheduleCoachesSeasonsInner(BaseModel):
                 "record_str": obj.get("record_str"),
                 "conference_record": obj.get("conference_record"),
                 "postseason": obj.get("postseason"),
+                "home_record": obj.get("home_record"),
+                "home_win_percent": obj.get("home_win_percent"),
+                "sos_ranking": obj.get("sos_ranking"),
+                "offensive_efficiency": obj.get("offensive_efficiency"),
+                "defensive_efficiency": obj.get("defensive_efficiency"),
             }
         )
         return _obj

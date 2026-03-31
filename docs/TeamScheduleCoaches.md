@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **performance_year** | **int** |  | [optional] 
 **performance_years** | **List[int]** |  | [optional] 
+**sport_name** | **str** |  | [optional] 
 **coaches** | [**List[TeamScheduleCoachesCoachesInner]**](TeamScheduleCoachesCoachesInner.md) |  | [optional] 
 **head_coaches** | **List[List[TeamScheduleCoachesHeadCoachesInnerInner]]** |  | [optional] 
 **seasons** | [**List[TeamScheduleCoachesSeasonsInner]**](TeamScheduleCoachesSeasonsInner.md) |  | [optional] 

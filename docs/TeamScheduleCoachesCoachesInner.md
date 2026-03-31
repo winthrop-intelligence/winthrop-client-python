@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
 **photo_url** | **str** |  | [optional] 
+**compensation** | **str** | Compensation label (e.g. &#39;Hourly&#39;) | [optional] 
+**compensation_cents** | **int** | Total compensation in cents | [optional] 
 
 ## Example
 
