@@ -25,7 +25,6 @@ Name | Type | Description | Notes
 **archived** | **bool** |  | [optional] 
 **vendors** | [**List[DealDetailVendor]**](DealDetailVendor.md) |  | [optional] 
 **deal_detail** | [**DealDetail**](DealDetail.md) |  | [optional] 
-**raw_contract_id** | **int** |  | [optional] 
 
 ## Example
 

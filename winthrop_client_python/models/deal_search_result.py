@@ -50,7 +50,6 @@ class DealSearchResult(BaseModel):
     archived: Optional[StrictBool] = None
     vendors: Optional[List[DealDetailVendor]] = None
     deal_detail: Optional[DealDetail] = None
-    raw_contract_id: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "deal_id",
@@ -72,7 +71,6 @@ class DealSearchResult(BaseModel):
         "archived",
         "vendors",
         "deal_detail",
-        "raw_contract_id",
     ]
 
     model_config = ConfigDict(
@@ -192,11 +190,6 @@ class DealSearchResult(BaseModel):
         if self.archived is None and "archived" in self.model_fields_set:
             _dict["archived"] = None
 
-        # set to None if raw_contract_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.raw_contract_id is None and "raw_contract_id" in self.model_fields_set:
-            _dict["raw_contract_id"] = None
-
         return _dict
 
     @classmethod
@@ -238,7 +231,6 @@ class DealSearchResult(BaseModel):
                     if obj.get("deal_detail") is not None
                     else None
                 ),
-                "raw_contract_id": obj.get("raw_contract_id"),
             }
         )
         return _obj

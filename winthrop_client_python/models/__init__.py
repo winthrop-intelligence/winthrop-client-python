@@ -125,6 +125,16 @@ from winthrop_client_python.models.coach_position_entry import CoachPositionEntr
 from winthrop_client_python.models.coach_profile import CoachProfile
 from winthrop_client_python.models.coach_profile_overview import CoachProfileOverview
 from winthrop_client_python.models.coach_record_tab import CoachRecordTab
+from winthrop_client_python.models.coach_recruiting_tab import CoachRecruitingTab
+from winthrop_client_python.models.coach_recruiting_tab_conference_comparison import (
+    CoachRecruitingTabConferenceComparison,
+)
+from winthrop_client_python.models.coach_recruiting_tab_metadata import (
+    CoachRecruitingTabMetadata,
+)
+from winthrop_client_python.models.coach_recruiting_tab_recruiting_budgets import (
+    CoachRecruitingTabRecruitingBudgets,
+)
 from winthrop_client_python.models.coach_search_result import CoachSearchResult
 from winthrop_client_python.models.coach_search_result_collection import (
     CoachSearchResultCollection,
@@ -191,12 +201,6 @@ from winthrop_client_python.models.create_game_post_search_request_game_post imp
     CreateGamePostSearchRequestGamePost,
 )
 from winthrop_client_python.models.create_note_request import CreateNoteRequest
-from winthrop_client_python.models.create_team_schedule_favorite201_response import (
-    CreateTeamScheduleFavorite201Response,
-)
-from winthrop_client_python.models.create_team_schedule_favorite_request import (
-    CreateTeamScheduleFavoriteRequest,
-)
 from winthrop_client_python.models.deal import Deal
 from winthrop_client_python.models.deal_collection import DealCollection
 from winthrop_client_python.models.deal_detail import DealDetail
@@ -298,9 +302,6 @@ from winthrop_client_python.models.get_school_alternate_names200_response import
 from winthrop_client_python.models.get_school_alternate_names404_response import (
     GetSchoolAlternateNames404Response,
 )
-from winthrop_client_python.models.get_team_schedule_favorites200_response_inner import (
-    GetTeamScheduleFavorites200ResponseInner,
-)
 from winthrop_client_python.models.get_wire_changes200_response import (
     GetWireChanges200Response,
 )
@@ -349,13 +350,16 @@ from winthrop_client_python.models.predict_body import PredictBody
 from winthrop_client_python.models.predict_failure import PredictFailure
 from winthrop_client_python.models.predict_success import PredictSuccess
 from winthrop_client_python.models.raw_contract import RawContract
-from winthrop_client_python.models.raw_contract_back_to import RawContractBackTo
 from winthrop_client_python.models.raw_contract_collection import RawContractCollection
-from winthrop_client_python.models.raw_contract_deal_info import RawContractDealInfo
-from winthrop_client_python.models.raw_contract_deal_info_vendors_inner import (
-    RawContractDealInfoVendorsInner,
-)
 from winthrop_client_python.models.record_position_entry import RecordPositionEntry
+from winthrop_client_python.models.recruiting_budget_entry import RecruitingBudgetEntry
+from winthrop_client_python.models.recruiting_chart_data import RecruitingChartData
+from winthrop_client_python.models.recruiting_conference_entry import (
+    RecruitingConferenceEntry,
+)
+from winthrop_client_python.models.recruiting_position_entry import (
+    RecruitingPositionEntry,
+)
 from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import (
     RegenerateRawContractPdf200Response,
 )
@@ -418,82 +422,6 @@ from winthrop_client_python.models.subscription import Subscription
 from winthrop_client_python.models.subscription_collection import SubscriptionCollection
 from winthrop_client_python.models.system_setting import SystemSetting
 from winthrop_client_python.models.tag import Tag
-from winthrop_client_python.models.team_schedule_coaches import TeamScheduleCoaches
-from winthrop_client_python.models.team_schedule_coaches_coaches_inner import (
-    TeamScheduleCoachesCoachesInner,
-)
-from winthrop_client_python.models.team_schedule_coaches_head_coaches_inner_inner import (
-    TeamScheduleCoachesHeadCoachesInnerInner,
-)
-from winthrop_client_python.models.team_schedule_coaches_seasons_inner import (
-    TeamScheduleCoachesSeasonsInner,
-)
-from winthrop_client_python.models.team_schedule_contact import TeamScheduleContact
-from winthrop_client_python.models.team_schedule_detail import TeamScheduleDetail
-from winthrop_client_python.models.team_schedule_detail_game import (
-    TeamScheduleDetailGame,
-)
-from winthrop_client_python.models.team_schedule_detail_head_coach import (
-    TeamScheduleDetailHeadCoach,
-)
-from winthrop_client_python.models.team_schedule_detail_school import (
-    TeamScheduleDetailSchool,
-)
-from winthrop_client_python.models.team_schedule_detail_season import (
-    TeamScheduleDetailSeason,
-)
-from winthrop_client_python.models.team_schedule_detail_sport import (
-    TeamScheduleDetailSport,
-)
-from winthrop_client_python.models.team_schedule_favorite_detail import (
-    TeamScheduleFavoriteDetail,
-)
-from winthrop_client_python.models.team_schedule_favorite_entry import (
-    TeamScheduleFavoriteEntry,
-)
-from winthrop_client_python.models.team_schedule_game_posts import TeamScheduleGamePosts
-from winthrop_client_python.models.team_schedule_game_posts_game_posts_inner import (
-    TeamScheduleGamePostsGamePostsInner,
-)
-from winthrop_client_python.models.team_schedule_note import TeamScheduleNote
-from winthrop_client_python.models.team_schedule_overlap import TeamScheduleOverlap
-from winthrop_client_python.models.team_schedule_overlap_team_games_inner import (
-    TeamScheduleOverlapTeamGamesInner,
-)
-from winthrop_client_python.models.team_schedule_player_data import (
-    TeamSchedulePlayerData,
-)
-from winthrop_client_python.models.team_schedule_player_data_recruits_inner import (
-    TeamSchedulePlayerDataRecruitsInner,
-)
-from winthrop_client_python.models.team_schedule_player_data_returning_pct import (
-    TeamSchedulePlayerDataReturningPct,
-)
-from winthrop_client_python.models.team_schedule_player_data_returning_players_inner import (
-    TeamSchedulePlayerDataReturningPlayersInner,
-)
-from winthrop_client_python.models.team_schedule_player_data_transfers_inner import (
-    TeamSchedulePlayerDataTransfersInner,
-)
-from winthrop_client_python.models.team_schedule_recent_contract import (
-    TeamScheduleRecentContract,
-)
-from winthrop_client_python.models.team_schedule_schedule import TeamScheduleSchedule
-from winthrop_client_python.models.team_schedule_schedule_games_inner import (
-    TeamScheduleScheduleGamesInner,
-)
-from winthrop_client_python.models.team_schedule_search_result import (
-    TeamScheduleSearchResult,
-)
-from winthrop_client_python.models.team_schedule_search_result_away_contracts import (
-    TeamScheduleSearchResultAwayContracts,
-)
-from winthrop_client_python.models.team_schedule_search_result_collection import (
-    TeamScheduleSearchResultCollection,
-)
-from winthrop_client_python.models.team_schedule_search_result_home_contracts import (
-    TeamScheduleSearchResultHomeContracts,
-)
 from winthrop_client_python.models.unauthorized_error import UnauthorizedError
 from winthrop_client_python.models.unprocessable_entity import UnprocessableEntity
 from winthrop_client_python.models.unstract_raw_contract_pdf_text_request import (
@@ -510,12 +438,6 @@ from winthrop_client_python.models.update_game_post_search_request_game_post imp
     UpdateGamePostSearchRequestGamePost,
 )
 from winthrop_client_python.models.update_note_request import UpdateNoteRequest
-from winthrop_client_python.models.update_team_schedule_favorite_request import (
-    UpdateTeamScheduleFavoriteRequest,
-)
-from winthrop_client_python.models.upsert_team_schedule_note_request import (
-    UpsertTeamScheduleNoteRequest,
-)
 from winthrop_client_python.models.user import User
 from winthrop_client_python.models.user_activity_summary import UserActivitySummary
 from winthrop_client_python.models.user_activity_summary_collection import (
