@@ -77,6 +77,10 @@ class User(BaseModel):
     )
     school_city: Optional[StrictStr] = None
     school_state: Optional[StrictStr] = None
+    otp_required: Optional[StrictBool] = Field(
+        default=None,
+        description="Whether the user must verify OTP to access the application",
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "email",
@@ -103,6 +107,7 @@ class User(BaseModel):
         "schedule_sports",
         "school_city",
         "school_state",
+        "otp_required",
     ]
 
     @field_validator("state")
@@ -243,6 +248,7 @@ class User(BaseModel):
                 ),
                 "school_city": obj.get("school_city"),
                 "school_state": obj.get("school_state"),
+                "otp_required": obj.get("otp_required"),
             }
         )
         return _obj

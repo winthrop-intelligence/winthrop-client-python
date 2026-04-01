@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **schedule_sports** | [**List[UserScheduleSportsInner]**](UserScheduleSportsInner.md) | Sports the user can access for game scheduling | [optional] 
 **school_city** | **str** |  | [optional] 
 **school_state** | **str** |  | [optional] 
+**otp_required** | **bool** | Whether the user must verify OTP to access the application | [optional] 
 
 ## Example
 

@@ -84,10 +84,6 @@ __all__ = [
     "CoachProfile",
     "CoachProfileOverview",
     "CoachRecordTab",
-    "CoachRecruitingTab",
-    "CoachRecruitingTabConferenceComparison",
-    "CoachRecruitingTabMetadata",
-    "CoachRecruitingTabRecruitingBudgets",
     "CoachSearchResult",
     "CoachSearchResultCollection",
     "CoachSnapshot",
@@ -124,6 +120,9 @@ __all__ = [
     "CreateGamePostSearchRequest",
     "CreateGamePostSearchRequestGamePost",
     "CreateNoteRequest",
+    "CreatePasswordReset200Response",
+    "CreatePasswordResetRequest",
+    "CreatePasswordResetRequestUser",
     "Deal",
     "DealCollection",
     "DealDetail",
@@ -221,10 +220,6 @@ __all__ = [
     "RawContract",
     "RawContractCollection",
     "RecordPositionEntry",
-    "RecruitingBudgetEntry",
-    "RecruitingChartData",
-    "RecruitingConferenceEntry",
-    "RecruitingPositionEntry",
     "RegenerateRawContractPdf200Response",
     "RequestedItem",
     "RequestedItemCollection",
@@ -250,6 +245,7 @@ __all__ = [
     "ScraperArgDef",
     "Season",
     "SeasonCollection",
+    "SendOtpCode422Response",
     "SnapshotIncomeReport",
     "Sport",
     "SportCollection",
@@ -271,6 +267,10 @@ __all__ = [
     "UpdateGamePostSearchRequest",
     "UpdateGamePostSearchRequestGamePost",
     "UpdateNoteRequest",
+    "UpdatePasswordReset200Response",
+    "UpdatePasswordReset422Response",
+    "UpdatePasswordResetRequest",
+    "UpdatePasswordResetRequestUser",
     "User",
     "UserActivitySummary",
     "UserActivitySummaryCollection",
@@ -281,6 +281,8 @@ __all__ = [
     "ValidationError",
     "Vendor",
     "VendorCollection",
+    "VerifyOtpCode200Response",
+    "VerifyOtpCodeRequest",
     "VerifyUserIntercollegiateAccess200Response",
     "VideoEntry",
     "WireChange",
@@ -452,18 +454,6 @@ from winthrop_client_python.models.coach_profile_overview import (
 from winthrop_client_python.models.coach_record_tab import (
     CoachRecordTab as CoachRecordTab,
 )
-from winthrop_client_python.models.coach_recruiting_tab import (
-    CoachRecruitingTab as CoachRecruitingTab,
-)
-from winthrop_client_python.models.coach_recruiting_tab_conference_comparison import (
-    CoachRecruitingTabConferenceComparison as CoachRecruitingTabConferenceComparison,
-)
-from winthrop_client_python.models.coach_recruiting_tab_metadata import (
-    CoachRecruitingTabMetadata as CoachRecruitingTabMetadata,
-)
-from winthrop_client_python.models.coach_recruiting_tab_recruiting_budgets import (
-    CoachRecruitingTabRecruitingBudgets as CoachRecruitingTabRecruitingBudgets,
-)
 from winthrop_client_python.models.coach_search_result import (
     CoachSearchResult as CoachSearchResult,
 )
@@ -555,6 +545,15 @@ from winthrop_client_python.models.create_game_post_search_request_game_post imp
 )
 from winthrop_client_python.models.create_note_request import (
     CreateNoteRequest as CreateNoteRequest,
+)
+from winthrop_client_python.models.create_password_reset200_response import (
+    CreatePasswordReset200Response as CreatePasswordReset200Response,
+)
+from winthrop_client_python.models.create_password_reset_request import (
+    CreatePasswordResetRequest as CreatePasswordResetRequest,
+)
+from winthrop_client_python.models.create_password_reset_request_user import (
+    CreatePasswordResetRequestUser as CreatePasswordResetRequestUser,
 )
 from winthrop_client_python.models.deal import Deal as Deal
 from winthrop_client_python.models.deal_collection import (
@@ -783,18 +782,6 @@ from winthrop_client_python.models.raw_contract_collection import (
 from winthrop_client_python.models.record_position_entry import (
     RecordPositionEntry as RecordPositionEntry,
 )
-from winthrop_client_python.models.recruiting_budget_entry import (
-    RecruitingBudgetEntry as RecruitingBudgetEntry,
-)
-from winthrop_client_python.models.recruiting_chart_data import (
-    RecruitingChartData as RecruitingChartData,
-)
-from winthrop_client_python.models.recruiting_conference_entry import (
-    RecruitingConferenceEntry as RecruitingConferenceEntry,
-)
-from winthrop_client_python.models.recruiting_position_entry import (
-    RecruitingPositionEntry as RecruitingPositionEntry,
-)
 from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import (
     RegenerateRawContractPdf200Response as RegenerateRawContractPdf200Response,
 )
@@ -856,6 +843,9 @@ from winthrop_client_python.models.season import Season as Season
 from winthrop_client_python.models.season_collection import (
     SeasonCollection as SeasonCollection,
 )
+from winthrop_client_python.models.send_otp_code422_response import (
+    SendOtpCode422Response as SendOtpCode422Response,
+)
 from winthrop_client_python.models.snapshot_income_report import (
     SnapshotIncomeReport as SnapshotIncomeReport,
 )
@@ -909,6 +899,18 @@ from winthrop_client_python.models.update_game_post_search_request_game_post imp
 from winthrop_client_python.models.update_note_request import (
     UpdateNoteRequest as UpdateNoteRequest,
 )
+from winthrop_client_python.models.update_password_reset200_response import (
+    UpdatePasswordReset200Response as UpdatePasswordReset200Response,
+)
+from winthrop_client_python.models.update_password_reset422_response import (
+    UpdatePasswordReset422Response as UpdatePasswordReset422Response,
+)
+from winthrop_client_python.models.update_password_reset_request import (
+    UpdatePasswordResetRequest as UpdatePasswordResetRequest,
+)
+from winthrop_client_python.models.update_password_reset_request_user import (
+    UpdatePasswordResetRequestUser as UpdatePasswordResetRequestUser,
+)
 from winthrop_client_python.models.user import User as User
 from winthrop_client_python.models.user_activity_summary import (
     UserActivitySummary as UserActivitySummary,
@@ -932,6 +934,12 @@ from winthrop_client_python.models.validation_error import (
 from winthrop_client_python.models.vendor import Vendor as Vendor
 from winthrop_client_python.models.vendor_collection import (
     VendorCollection as VendorCollection,
+)
+from winthrop_client_python.models.verify_otp_code200_response import (
+    VerifyOtpCode200Response as VerifyOtpCode200Response,
+)
+from winthrop_client_python.models.verify_otp_code_request import (
+    VerifyOtpCodeRequest as VerifyOtpCodeRequest,
 )
 from winthrop_client_python.models.verify_user_intercollegiate_access200_response import (
     VerifyUserIntercollegiateAccess200Response as VerifyUserIntercollegiateAccess200Response,

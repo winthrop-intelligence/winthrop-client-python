@@ -113,6 +113,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 *DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 *DefaultApi* | [**create_note**](docs/DefaultApi.md#create_note) | **POST** /api/v1/notes | 
+*DefaultApi* | [**create_password_reset**](docs/DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset | 
 *DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 *DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
@@ -148,7 +149,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_coach_search_coworker_history**](docs/DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history | 
 *DefaultApi* | [**get_coach_search_overview**](docs/DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview | 
 *DefaultApi* | [**get_coach_search_record**](docs/DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record | 
-*DefaultApi* | [**get_coach_search_recruiting**](docs/DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting | 
 *DefaultApi* | [**get_coach_search_videos**](docs/DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos | 
 *DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
@@ -259,6 +259,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_wire_changes**](docs/DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
 *DefaultApi* | [**regenerate_raw_contract_pdf**](docs/DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
 *DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
+*DefaultApi* | [**send_otp_code**](docs/DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
 *DefaultApi* | [**unstract_raw_contract_pdf_text**](docs/DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
 *DefaultApi* | [**update_cashflow**](docs/DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} | 
 *DefaultApi* | [**update_coach**](docs/DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
@@ -273,10 +274,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
 *DefaultApi* | [**update_note**](docs/DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} | 
+*DefaultApi* | [**update_password_reset**](docs/DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset | 
 *DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
+*DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
 *DefaultApi* | [**verify_user_intercollegiate_access**](docs/DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
 *DossierApi* | [**university_dossier_report_dossier_winad_id_get**](docs/DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report
 *IntercollegiateApi* | [**create_news_feeds**](docs/IntercollegiateApi.md#create_news_feeds) | **POST** /wi_jobs/news_feeds | 
@@ -350,10 +353,6 @@ Class | Method | HTTP request | Description
  - [CoachProfile](docs/CoachProfile.md)
  - [CoachProfileOverview](docs/CoachProfileOverview.md)
  - [CoachRecordTab](docs/CoachRecordTab.md)
- - [CoachRecruitingTab](docs/CoachRecruitingTab.md)
- - [CoachRecruitingTabConferenceComparison](docs/CoachRecruitingTabConferenceComparison.md)
- - [CoachRecruitingTabMetadata](docs/CoachRecruitingTabMetadata.md)
- - [CoachRecruitingTabRecruitingBudgets](docs/CoachRecruitingTabRecruitingBudgets.md)
  - [CoachSearchResult](docs/CoachSearchResult.md)
  - [CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
  - [CoachSnapshot](docs/CoachSnapshot.md)
@@ -390,6 +389,9 @@ Class | Method | HTTP request | Description
  - [CreateGamePostSearchRequest](docs/CreateGamePostSearchRequest.md)
  - [CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
  - [CreateNoteRequest](docs/CreateNoteRequest.md)
+ - [CreatePasswordReset200Response](docs/CreatePasswordReset200Response.md)
+ - [CreatePasswordResetRequest](docs/CreatePasswordResetRequest.md)
+ - [CreatePasswordResetRequestUser](docs/CreatePasswordResetRequestUser.md)
  - [Deal](docs/Deal.md)
  - [DealCollection](docs/DealCollection.md)
  - [DealDetail](docs/DealDetail.md)
@@ -487,10 +489,6 @@ Class | Method | HTTP request | Description
  - [RawContract](docs/RawContract.md)
  - [RawContractCollection](docs/RawContractCollection.md)
  - [RecordPositionEntry](docs/RecordPositionEntry.md)
- - [RecruitingBudgetEntry](docs/RecruitingBudgetEntry.md)
- - [RecruitingChartData](docs/RecruitingChartData.md)
- - [RecruitingConferenceEntry](docs/RecruitingConferenceEntry.md)
- - [RecruitingPositionEntry](docs/RecruitingPositionEntry.md)
  - [RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
@@ -516,6 +514,7 @@ Class | Method | HTTP request | Description
  - [ScraperArgDef](docs/ScraperArgDef.md)
  - [Season](docs/Season.md)
  - [SeasonCollection](docs/SeasonCollection.md)
+ - [SendOtpCode422Response](docs/SendOtpCode422Response.md)
  - [SnapshotIncomeReport](docs/SnapshotIncomeReport.md)
  - [Sport](docs/Sport.md)
  - [SportCollection](docs/SportCollection.md)
@@ -537,6 +536,10 @@ Class | Method | HTTP request | Description
  - [UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
  - [UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
  - [UpdateNoteRequest](docs/UpdateNoteRequest.md)
+ - [UpdatePasswordReset200Response](docs/UpdatePasswordReset200Response.md)
+ - [UpdatePasswordReset422Response](docs/UpdatePasswordReset422Response.md)
+ - [UpdatePasswordResetRequest](docs/UpdatePasswordResetRequest.md)
+ - [UpdatePasswordResetRequestUser](docs/UpdatePasswordResetRequestUser.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)
  - [UserActivitySummaryCollection](docs/UserActivitySummaryCollection.md)
@@ -547,6 +550,8 @@ Class | Method | HTTP request | Description
  - [ValidationError](docs/ValidationError.md)
  - [Vendor](docs/Vendor.md)
  - [VendorCollection](docs/VendorCollection.md)
+ - [VerifyOtpCode200Response](docs/VerifyOtpCode200Response.md)
+ - [VerifyOtpCodeRequest](docs/VerifyOtpCodeRequest.md)
  - [VerifyUserIntercollegiateAccess200Response](docs/VerifyUserIntercollegiateAccess200Response.md)
  - [VideoEntry](docs/VideoEntry.md)
  - [WireChange](docs/WireChange.md)
