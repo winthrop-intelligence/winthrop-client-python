@@ -26,6 +26,14 @@ Name | Type | Description | Notes
 **game_type** | **str** |  | [optional] 
 **off_site_location** | **str** |  | [optional] 
 **verified** | **bool** |  | [optional] 
+**home_school_name** | **str** |  | [optional] 
+**away_school_name** | **str** |  | [optional] 
+**sport_name** | **str** |  | [optional] 
+**belongs_to_series** | **bool** |  | [optional] 
+**attendance** | **int** |  | [optional] 
+**signed_on_formatted** | **str** |  | [optional] 
+**file_url** | **str** |  | [optional] 
+**has_file** | **bool** |  | [optional] 
 
 ## Example
 

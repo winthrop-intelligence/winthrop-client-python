@@ -221,7 +221,10 @@ __all__ = [
     "PredictFailure",
     "PredictSuccess",
     "RawContract",
+    "RawContractBackTo",
     "RawContractCollection",
+    "RawContractDealInfo",
+    "RawContractDealInfoVendorsInner",
     "RecordPositionEntry",
     "RegenerateRawContractPdf200Response",
     "RequestedItem",
@@ -820,8 +823,17 @@ from winthrop_client_python.models.predict_success import (
     PredictSuccess as PredictSuccess,
 )
 from winthrop_client_python.models.raw_contract import RawContract as RawContract
+from winthrop_client_python.models.raw_contract_back_to import (
+    RawContractBackTo as RawContractBackTo,
+)
 from winthrop_client_python.models.raw_contract_collection import (
     RawContractCollection as RawContractCollection,
+)
+from winthrop_client_python.models.raw_contract_deal_info import (
+    RawContractDealInfo as RawContractDealInfo,
+)
+from winthrop_client_python.models.raw_contract_deal_info_vendors_inner import (
+    RawContractDealInfoVendorsInner as RawContractDealInfoVendorsInner,
 )
 from winthrop_client_python.models.record_position_entry import (
     RecordPositionEntry as RecordPositionEntry,

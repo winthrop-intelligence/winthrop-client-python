@@ -358,7 +358,12 @@ from winthrop_client_python.models.predict_body import PredictBody
 from winthrop_client_python.models.predict_failure import PredictFailure
 from winthrop_client_python.models.predict_success import PredictSuccess
 from winthrop_client_python.models.raw_contract import RawContract
+from winthrop_client_python.models.raw_contract_back_to import RawContractBackTo
 from winthrop_client_python.models.raw_contract_collection import RawContractCollection
+from winthrop_client_python.models.raw_contract_deal_info import RawContractDealInfo
+from winthrop_client_python.models.raw_contract_deal_info_vendors_inner import (
+    RawContractDealInfoVendorsInner,
+)
 from winthrop_client_python.models.record_position_entry import RecordPositionEntry
 from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import (
     RegenerateRawContractPdf200Response,

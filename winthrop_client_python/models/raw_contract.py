@@ -19,6 +19,8 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.raw_contract_back_to import RawContractBackTo
+from winthrop_client_python.models.raw_contract_deal_info import RawContractDealInfo
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -49,6 +51,11 @@ class RawContract(BaseModel):
     unstract_pdf_text: Optional[StrictStr] = None
     unstract_responses_details: Optional[StrictStr] = None
     layout_preserved_pdf_text: Optional[StrictStr] = None
+    file_url: Optional[StrictStr] = None
+    has_file: Optional[StrictBool] = None
+    back_to: Optional[RawContractBackTo] = None
+    contract_label: Optional[StrictStr] = None
+    deal_info: Optional[RawContractDealInfo] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "asset_file_size",
@@ -71,6 +78,11 @@ class RawContract(BaseModel):
         "unstract_pdf_text",
         "unstract_responses_details",
         "layout_preserved_pdf_text",
+        "file_url",
+        "has_file",
+        "back_to",
+        "contract_label",
+        "deal_info",
     ]
 
     model_config = ConfigDict(
@@ -110,6 +122,32 @@ class RawContract(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of back_to
+        if self.back_to:
+            _dict["back_to"] = self.back_to.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of deal_info
+        if self.deal_info:
+            _dict["deal_info"] = self.deal_info.to_dict()
+        # set to None if file_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.file_url is None and "file_url" in self.model_fields_set:
+            _dict["file_url"] = None
+
+        # set to None if back_to (nullable) is None
+        # and model_fields_set contains the field
+        if self.back_to is None and "back_to" in self.model_fields_set:
+            _dict["back_to"] = None
+
+        # set to None if contract_label (nullable) is None
+        # and model_fields_set contains the field
+        if self.contract_label is None and "contract_label" in self.model_fields_set:
+            _dict["contract_label"] = None
+
+        # set to None if deal_info (nullable) is None
+        # and model_fields_set contains the field
+        if self.deal_info is None and "deal_info" in self.model_fields_set:
+            _dict["deal_info"] = None
+
         return _dict
 
     @classmethod
@@ -144,6 +182,19 @@ class RawContract(BaseModel):
                 "unstract_pdf_text": obj.get("unstract_pdf_text"),
                 "unstract_responses_details": obj.get("unstract_responses_details"),
                 "layout_preserved_pdf_text": obj.get("layout_preserved_pdf_text"),
+                "file_url": obj.get("file_url"),
+                "has_file": obj.get("has_file"),
+                "back_to": (
+                    RawContractBackTo.from_dict(obj["back_to"])
+                    if obj.get("back_to") is not None
+                    else None
+                ),
+                "contract_label": obj.get("contract_label"),
+                "deal_info": (
+                    RawContractDealInfo.from_dict(obj["deal_info"])
+                    if obj.get("deal_info") is not None
+                    else None
+                ),
             }
         )
         return _obj
