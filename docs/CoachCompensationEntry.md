@@ -16,13 +16,6 @@ Name | Type | Description | Notes
 **compensation_type** | **str** |  | 
 **media_link** | **str** |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
-**one_time_bonus_cents** | **int** |  | [optional] 
-**outside_income_cents** | **int** |  | [optional] 
-**contingent_bonus** | **bool** |  | [optional] 
-**buyout_terms** | **str** |  | [optional] 
-**is_car_provided** | **bool** |  | [optional] 
-**country_club_membership** | **bool** |  | [optional] 
-**notes** | **str** |  | [optional] 
 
 ## Example
 

@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -38,13 +38,6 @@ class CoachCompensationEntry(BaseModel):
     compensation_type: StrictStr
     media_link: Optional[StrictStr] = None
     raw_contract_id: Optional[StrictInt] = None
-    one_time_bonus_cents: Optional[StrictInt] = None
-    outside_income_cents: Optional[StrictInt] = None
-    contingent_bonus: Optional[StrictBool] = None
-    buyout_terms: Optional[StrictStr] = None
-    is_car_provided: Optional[StrictBool] = None
-    country_club_membership: Optional[StrictBool] = None
-    notes: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "year_str",
         "school_name",
@@ -57,13 +50,6 @@ class CoachCompensationEntry(BaseModel):
         "compensation_type",
         "media_link",
         "raw_contract_id",
-        "one_time_bonus_cents",
-        "outside_income_cents",
-        "contingent_bonus",
-        "buyout_terms",
-        "is_car_provided",
-        "country_club_membership",
-        "notes",
     ]
 
     model_config = ConfigDict(
@@ -142,40 +128,6 @@ class CoachCompensationEntry(BaseModel):
         if self.raw_contract_id is None and "raw_contract_id" in self.model_fields_set:
             _dict["raw_contract_id"] = None
 
-        # set to None if one_time_bonus_cents (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.one_time_bonus_cents is None
-            and "one_time_bonus_cents" in self.model_fields_set
-        ):
-            _dict["one_time_bonus_cents"] = None
-
-        # set to None if outside_income_cents (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.outside_income_cents is None
-            and "outside_income_cents" in self.model_fields_set
-        ):
-            _dict["outside_income_cents"] = None
-
-        # set to None if contingent_bonus (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.contingent_bonus is None
-            and "contingent_bonus" in self.model_fields_set
-        ):
-            _dict["contingent_bonus"] = None
-
-        # set to None if buyout_terms (nullable) is None
-        # and model_fields_set contains the field
-        if self.buyout_terms is None and "buyout_terms" in self.model_fields_set:
-            _dict["buyout_terms"] = None
-
-        # set to None if notes (nullable) is None
-        # and model_fields_set contains the field
-        if self.notes is None and "notes" in self.model_fields_set:
-            _dict["notes"] = None
-
         return _dict
 
     @classmethod
@@ -200,13 +152,6 @@ class CoachCompensationEntry(BaseModel):
                 "compensation_type": obj.get("compensation_type"),
                 "media_link": obj.get("media_link"),
                 "raw_contract_id": obj.get("raw_contract_id"),
-                "one_time_bonus_cents": obj.get("one_time_bonus_cents"),
-                "outside_income_cents": obj.get("outside_income_cents"),
-                "contingent_bonus": obj.get("contingent_bonus"),
-                "buyout_terms": obj.get("buyout_terms"),
-                "is_car_provided": obj.get("is_car_provided"),
-                "country_club_membership": obj.get("country_club_membership"),
-                "notes": obj.get("notes"),
             }
         )
         return _obj

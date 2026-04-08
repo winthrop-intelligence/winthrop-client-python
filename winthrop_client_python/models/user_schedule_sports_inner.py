@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,10 +27,9 @@ class UserScheduleSportsInner(BaseModel):
     UserScheduleSportsInner
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
     label: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "label"]
+    __properties: ClassVar[List[str]] = ["name", "label"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -80,7 +79,5 @@ class UserScheduleSportsInner(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {"id": obj.get("id"), "name": obj.get("name"), "label": obj.get("label")}
-        )
+        _obj = cls.model_validate({"name": obj.get("name"), "label": obj.get("label")})
         return _obj
