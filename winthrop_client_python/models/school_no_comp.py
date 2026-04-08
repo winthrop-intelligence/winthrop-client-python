@@ -29,8 +29,14 @@ class SchoolNoComp(BaseModel):
 
     school_id: Optional[StrictInt] = None
     school_name: Optional[StrictStr] = None
+    coach_id: Optional[StrictInt] = None
     coach_name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["school_id", "school_name", "coach_name"]
+    __properties: ClassVar[List[str]] = [
+        "school_id",
+        "school_name",
+        "coach_id",
+        "coach_name",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,6 +75,11 @@ class SchoolNoComp(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if coach_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.coach_id is None and "coach_id" in self.model_fields_set:
+            _dict["coach_id"] = None
+
         # set to None if coach_name (nullable) is None
         # and model_fields_set contains the field
         if self.coach_name is None and "coach_name" in self.model_fields_set:
@@ -89,6 +100,7 @@ class SchoolNoComp(BaseModel):
             {
                 "school_id": obj.get("school_id"),
                 "school_name": obj.get("school_name"),
+                "coach_id": obj.get("coach_id"),
                 "coach_name": obj.get("coach_name"),
             }
         )
