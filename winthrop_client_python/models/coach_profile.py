@@ -54,6 +54,7 @@ class CoachProfile(BaseModel):
     can_see_compensation: StrictBool
     can_see_videos: StrictBool
     can_see_coworker_history: StrictBool
+    can_see_recruiting: StrictBool
     is_sport_specific: StrictBool
     __properties: ClassVar[List[str]] = [
         "id",
@@ -83,6 +84,7 @@ class CoachProfile(BaseModel):
         "can_see_compensation",
         "can_see_videos",
         "can_see_coworker_history",
+        "can_see_recruiting",
         "is_sport_specific",
     ]
 
@@ -258,6 +260,7 @@ class CoachProfile(BaseModel):
                 "can_see_compensation": obj.get("can_see_compensation"),
                 "can_see_videos": obj.get("can_see_videos"),
                 "can_see_coworker_history": obj.get("can_see_coworker_history"),
+                "can_see_recruiting": obj.get("can_see_recruiting"),
                 "is_sport_specific": obj.get("is_sport_specific"),
             }
         )

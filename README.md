@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_coach_search_coworker_history**](docs/DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history | 
 *DefaultApi* | [**get_coach_search_overview**](docs/DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview | 
 *DefaultApi* | [**get_coach_search_record**](docs/DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record | 
+*DefaultApi* | [**get_coach_search_recruiting**](docs/DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting | 
 *DefaultApi* | [**get_coach_search_videos**](docs/DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos | 
 *DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
@@ -357,7 +358,6 @@ Class | Method | HTTP request | Description
  - [CoachCompensationTabChartDataCurrentBreakdown](docs/CoachCompensationTabChartDataCurrentBreakdown.md)
  - [CoachCompensationTabChartDataTotalCompOverTimeInner](docs/CoachCompensationTabChartDataTotalCompOverTimeInner.md)
  - [CoachCompensationTabComparisons](docs/CoachCompensationTabComparisons.md)
- - [CoachCompensationTabCompensationsInner](docs/CoachCompensationTabCompensationsInner.md)
  - [CoachCompensationTabSidebar](docs/CoachCompensationTabSidebar.md)
  - [CoachCompensationTabSidebarCoachingStaffInner](docs/CoachCompensationTabSidebarCoachingStaffInner.md)
  - [CoachCompensationTabSidebarContractsInner](docs/CoachCompensationTabSidebarContractsInner.md)
@@ -367,6 +367,10 @@ Class | Method | HTTP request | Description
  - [CoachProfile](docs/CoachProfile.md)
  - [CoachProfileOverview](docs/CoachProfileOverview.md)
  - [CoachRecordTab](docs/CoachRecordTab.md)
+ - [CoachRecruitingTab](docs/CoachRecruitingTab.md)
+ - [CoachRecruitingTabConferenceComparison](docs/CoachRecruitingTabConferenceComparison.md)
+ - [CoachRecruitingTabMetadata](docs/CoachRecruitingTabMetadata.md)
+ - [CoachRecruitingTabRecruitingBudgets](docs/CoachRecruitingTabRecruitingBudgets.md)
  - [CoachSearchResult](docs/CoachSearchResult.md)
  - [CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
  - [CoachSnapshot](docs/CoachSnapshot.md)
@@ -509,6 +513,10 @@ Class | Method | HTTP request | Description
  - [RawContractDealInfo](docs/RawContractDealInfo.md)
  - [RawContractDealInfoVendorsInner](docs/RawContractDealInfoVendorsInner.md)
  - [RecordPositionEntry](docs/RecordPositionEntry.md)
+ - [RecruitingBudgetEntry](docs/RecruitingBudgetEntry.md)
+ - [RecruitingChartData](docs/RecruitingChartData.md)
+ - [RecruitingConferenceEntry](docs/RecruitingConferenceEntry.md)
+ - [RecruitingPositionEntry](docs/RecruitingPositionEntry.md)
  - [RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
