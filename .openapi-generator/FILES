@@ -52,6 +52,10 @@ docs/CoachPositionEntry.md
 docs/CoachProfile.md
 docs/CoachProfileOverview.md
 docs/CoachRecordTab.md
+docs/CoachRecruitingTab.md
+docs/CoachRecruitingTabConferenceComparison.md
+docs/CoachRecruitingTabMetadata.md
+docs/CoachRecruitingTabRecruitingBudgets.md
 docs/CoachSearchResult.md
 docs/CoachSearchResultCollection.md
 docs/CoachSnapshot.md
@@ -198,6 +202,10 @@ docs/RawContractCollection.md
 docs/RawContractDealInfo.md
 docs/RawContractDealInfoVendorsInner.md
 docs/RecordPositionEntry.md
+docs/RecruitingBudgetEntry.md
+docs/RecruitingChartData.md
+docs/RecruitingConferenceEntry.md
+docs/RecruitingPositionEntry.md
 docs/RegenerateRawContractPdf200Response.md
 docs/ReportingApi.md
 docs/RequestedItem.md
@@ -370,6 +378,10 @@ winthrop_client_python/models/coach_position_entry.py
 winthrop_client_python/models/coach_profile.py
 winthrop_client_python/models/coach_profile_overview.py
 winthrop_client_python/models/coach_record_tab.py
+winthrop_client_python/models/coach_recruiting_tab.py
+winthrop_client_python/models/coach_recruiting_tab_conference_comparison.py
+winthrop_client_python/models/coach_recruiting_tab_metadata.py
+winthrop_client_python/models/coach_recruiting_tab_recruiting_budgets.py
 winthrop_client_python/models/coach_search_result.py
 winthrop_client_python/models/coach_search_result_collection.py
 winthrop_client_python/models/coach_snapshot.py
@@ -513,6 +525,10 @@ winthrop_client_python/models/raw_contract_collection.py
 winthrop_client_python/models/raw_contract_deal_info.py
 winthrop_client_python/models/raw_contract_deal_info_vendors_inner.py
 winthrop_client_python/models/record_position_entry.py
+winthrop_client_python/models/recruiting_budget_entry.py
+winthrop_client_python/models/recruiting_chart_data.py
+winthrop_client_python/models/recruiting_conference_entry.py
+winthrop_client_python/models/recruiting_position_entry.py
 winthrop_client_python/models/regenerate_raw_contract_pdf200_response.py
 winthrop_client_python/models/requested_item.py
 winthrop_client_python/models/requested_item_collection.py
