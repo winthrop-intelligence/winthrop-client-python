@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **can_see_compensation** | **bool** |  | 
 **chart_data** | [**CoachCompensationTabChartData**](CoachCompensationTabChartData.md) |  | [optional] 
-**compensations** | [**List[CoachCompensationTabCompensationsInner]**](CoachCompensationTabCompensationsInner.md) |  | 
+**compensations** | [**List[CoachCompensationEntry]**](CoachCompensationEntry.md) |  | 
 **total_compensations** | **int** |  | 
 **comparisons** | [**CoachCompensationTabComparisons**](CoachCompensationTabComparisons.md) |  | [optional] 
 **sidebar** | [**CoachCompensationTabSidebar**](CoachCompensationTabSidebar.md) |  | [optional] 
