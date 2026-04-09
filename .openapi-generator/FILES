@@ -10,6 +10,7 @@ docs/AsstCoachSchool.md
 docs/AthleticProfileShow.md
 docs/AthleticProfileShowContactsInner.md
 docs/AthleticProfileShowDealsInner.md
+docs/AthleticProfileShowDealsInnerVendorsInner.md
 docs/AthleticProfileShowFinancialInfo.md
 docs/AthleticProfileShowFinancials.md
 docs/AthleticProfileShowFinancialsRevenuesInner.md
@@ -196,7 +197,6 @@ docs/RawContract.md
 docs/RawContractBackTo.md
 docs/RawContractCollection.md
 docs/RawContractDealInfo.md
-docs/RawContractDealInfoVendorsInner.md
 docs/RecordPositionEntry.md
 docs/RegenerateRawContractPdf200Response.md
 docs/ReportingApi.md
@@ -306,6 +306,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_athletic_profile_show_deals_inner_vendors_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -329,6 +330,7 @@ winthrop_client_python/models/asst_coach_school.py
 winthrop_client_python/models/athletic_profile_show.py
 winthrop_client_python/models/athletic_profile_show_contacts_inner.py
 winthrop_client_python/models/athletic_profile_show_deals_inner.py
+winthrop_client_python/models/athletic_profile_show_deals_inner_vendors_inner.py
 winthrop_client_python/models/athletic_profile_show_financial_info.py
 winthrop_client_python/models/athletic_profile_show_financials.py
 winthrop_client_python/models/athletic_profile_show_financials_revenues_inner.py
@@ -511,7 +513,6 @@ winthrop_client_python/models/raw_contract.py
 winthrop_client_python/models/raw_contract_back_to.py
 winthrop_client_python/models/raw_contract_collection.py
 winthrop_client_python/models/raw_contract_deal_info.py
-winthrop_client_python/models/raw_contract_deal_info_vendors_inner.py
 winthrop_client_python/models/record_position_entry.py
 winthrop_client_python/models/regenerate_raw_contract_pdf200_response.py
 winthrop_client_python/models/requested_item.py
