@@ -32,9 +32,6 @@ from winthrop_client_python.models.athletic_profile_show_contacts_inner import (
 from winthrop_client_python.models.athletic_profile_show_deals_inner import (
     AthleticProfileShowDealsInner,
 )
-from winthrop_client_python.models.athletic_profile_show_deals_inner_vendors_inner import (
-    AthleticProfileShowDealsInnerVendorsInner,
-)
 from winthrop_client_python.models.athletic_profile_show_financial_info import (
     AthleticProfileShowFinancialInfo,
 )
@@ -125,6 +122,16 @@ from winthrop_client_python.models.coach_position_entry import CoachPositionEntr
 from winthrop_client_python.models.coach_profile import CoachProfile
 from winthrop_client_python.models.coach_profile_overview import CoachProfileOverview
 from winthrop_client_python.models.coach_record_tab import CoachRecordTab
+from winthrop_client_python.models.coach_recruiting_tab import CoachRecruitingTab
+from winthrop_client_python.models.coach_recruiting_tab_conference_comparison import (
+    CoachRecruitingTabConferenceComparison,
+)
+from winthrop_client_python.models.coach_recruiting_tab_metadata import (
+    CoachRecruitingTabMetadata,
+)
+from winthrop_client_python.models.coach_recruiting_tab_recruiting_budgets import (
+    CoachRecruitingTabRecruitingBudgets,
+)
 from winthrop_client_python.models.coach_search_result import CoachSearchResult
 from winthrop_client_python.models.coach_search_result_collection import (
     CoachSearchResultCollection,
@@ -361,7 +368,18 @@ from winthrop_client_python.models.raw_contract import RawContract
 from winthrop_client_python.models.raw_contract_back_to import RawContractBackTo
 from winthrop_client_python.models.raw_contract_collection import RawContractCollection
 from winthrop_client_python.models.raw_contract_deal_info import RawContractDealInfo
+from winthrop_client_python.models.raw_contract_deal_info_vendors_inner import (
+    RawContractDealInfoVendorsInner,
+)
 from winthrop_client_python.models.record_position_entry import RecordPositionEntry
+from winthrop_client_python.models.recruiting_budget_entry import RecruitingBudgetEntry
+from winthrop_client_python.models.recruiting_chart_data import RecruitingChartData
+from winthrop_client_python.models.recruiting_conference_entry import (
+    RecruitingConferenceEntry,
+)
+from winthrop_client_python.models.recruiting_position_entry import (
+    RecruitingPositionEntry,
+)
 from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import (
     RegenerateRawContractPdf200Response,
 )

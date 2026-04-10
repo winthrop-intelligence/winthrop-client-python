@@ -41,7 +41,6 @@ __all__ = [
     "AthleticProfileShow",
     "AthleticProfileShowContactsInner",
     "AthleticProfileShowDealsInner",
-    "AthleticProfileShowDealsInnerVendorsInner",
     "AthleticProfileShowFinancialInfo",
     "AthleticProfileShowFinancials",
     "AthleticProfileShowFinancialsRevenuesInner",
@@ -84,6 +83,10 @@ __all__ = [
     "CoachProfile",
     "CoachProfileOverview",
     "CoachRecordTab",
+    "CoachRecruitingTab",
+    "CoachRecruitingTabConferenceComparison",
+    "CoachRecruitingTabMetadata",
+    "CoachRecruitingTabRecruitingBudgets",
     "CoachSearchResult",
     "CoachSearchResultCollection",
     "CoachSnapshot",
@@ -224,7 +227,12 @@ __all__ = [
     "RawContractBackTo",
     "RawContractCollection",
     "RawContractDealInfo",
+    "RawContractDealInfoVendorsInner",
     "RecordPositionEntry",
+    "RecruitingBudgetEntry",
+    "RecruitingChartData",
+    "RecruitingConferenceEntry",
+    "RecruitingPositionEntry",
     "RegenerateRawContractPdf200Response",
     "RequestedItem",
     "RequestedItemCollection",
@@ -374,9 +382,6 @@ from winthrop_client_python.models.athletic_profile_show_contacts_inner import (
 from winthrop_client_python.models.athletic_profile_show_deals_inner import (
     AthleticProfileShowDealsInner as AthleticProfileShowDealsInner,
 )
-from winthrop_client_python.models.athletic_profile_show_deals_inner_vendors_inner import (
-    AthleticProfileShowDealsInnerVendorsInner as AthleticProfileShowDealsInnerVendorsInner,
-)
 from winthrop_client_python.models.athletic_profile_show_financial_info import (
     AthleticProfileShowFinancialInfo as AthleticProfileShowFinancialInfo,
 )
@@ -490,6 +495,18 @@ from winthrop_client_python.models.coach_profile_overview import (
 )
 from winthrop_client_python.models.coach_record_tab import (
     CoachRecordTab as CoachRecordTab,
+)
+from winthrop_client_python.models.coach_recruiting_tab import (
+    CoachRecruitingTab as CoachRecruitingTab,
+)
+from winthrop_client_python.models.coach_recruiting_tab_conference_comparison import (
+    CoachRecruitingTabConferenceComparison as CoachRecruitingTabConferenceComparison,
+)
+from winthrop_client_python.models.coach_recruiting_tab_metadata import (
+    CoachRecruitingTabMetadata as CoachRecruitingTabMetadata,
+)
+from winthrop_client_python.models.coach_recruiting_tab_recruiting_budgets import (
+    CoachRecruitingTabRecruitingBudgets as CoachRecruitingTabRecruitingBudgets,
 )
 from winthrop_client_python.models.coach_search_result import (
     CoachSearchResult as CoachSearchResult,
@@ -831,8 +848,23 @@ from winthrop_client_python.models.raw_contract_collection import (
 from winthrop_client_python.models.raw_contract_deal_info import (
     RawContractDealInfo as RawContractDealInfo,
 )
+from winthrop_client_python.models.raw_contract_deal_info_vendors_inner import (
+    RawContractDealInfoVendorsInner as RawContractDealInfoVendorsInner,
+)
 from winthrop_client_python.models.record_position_entry import (
     RecordPositionEntry as RecordPositionEntry,
+)
+from winthrop_client_python.models.recruiting_budget_entry import (
+    RecruitingBudgetEntry as RecruitingBudgetEntry,
+)
+from winthrop_client_python.models.recruiting_chart_data import (
+    RecruitingChartData as RecruitingChartData,
+)
+from winthrop_client_python.models.recruiting_conference_entry import (
+    RecruitingConferenceEntry as RecruitingConferenceEntry,
+)
+from winthrop_client_python.models.recruiting_position_entry import (
+    RecruitingPositionEntry as RecruitingPositionEntry,
 )
 from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import (
     RegenerateRawContractPdf200Response as RegenerateRawContractPdf200Response,
