@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **coach_id** | **int** |  | [optional] 
 **divisions** | [**List[Division]**](Division.md) |  | [optional] 
 **roles** | **List[str]** |  | [optional] 
-**is_admin** | **bool** | Whether the user is a data admin or super admin | [optional] 
 **can_see_compensation** | **bool** | Whether the user can view coach compensation data | [optional] 
 **can_show_scouting** | **bool** | Whether the user can view scouting/team schedule links | [optional] 
 **can_show_game_contract** | **bool** | Whether the user can view game contract/guarantee data | [optional] 
