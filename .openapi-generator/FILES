@@ -310,10 +310,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_school_group_request.py
-test/test_create_school_group_request_school_group.py
-test/test_update_school_group_request.py
-test/test_update_school_group_request_school_group.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
