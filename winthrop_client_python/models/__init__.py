@@ -122,16 +122,6 @@ from winthrop_client_python.models.coach_position_entry import CoachPositionEntr
 from winthrop_client_python.models.coach_profile import CoachProfile
 from winthrop_client_python.models.coach_profile_overview import CoachProfileOverview
 from winthrop_client_python.models.coach_record_tab import CoachRecordTab
-from winthrop_client_python.models.coach_recruiting_tab import CoachRecruitingTab
-from winthrop_client_python.models.coach_recruiting_tab_conference_comparison import (
-    CoachRecruitingTabConferenceComparison,
-)
-from winthrop_client_python.models.coach_recruiting_tab_metadata import (
-    CoachRecruitingTabMetadata,
-)
-from winthrop_client_python.models.coach_recruiting_tab_recruiting_budgets import (
-    CoachRecruitingTabRecruitingBudgets,
-)
 from winthrop_client_python.models.coach_search_result import CoachSearchResult
 from winthrop_client_python.models.coach_search_result_collection import (
     CoachSearchResultCollection,
@@ -206,6 +196,12 @@ from winthrop_client_python.models.create_password_reset_request import (
 )
 from winthrop_client_python.models.create_password_reset_request_user import (
     CreatePasswordResetRequestUser,
+)
+from winthrop_client_python.models.create_school_group_request import (
+    CreateSchoolGroupRequest,
+)
+from winthrop_client_python.models.create_school_group_request_school_group import (
+    CreateSchoolGroupRequestSchoolGroup,
 )
 from winthrop_client_python.models.create_team_schedule_favorite201_response import (
     CreateTeamScheduleFavorite201Response,
@@ -372,14 +368,6 @@ from winthrop_client_python.models.raw_contract_deal_info_vendors_inner import (
     RawContractDealInfoVendorsInner,
 )
 from winthrop_client_python.models.record_position_entry import RecordPositionEntry
-from winthrop_client_python.models.recruiting_budget_entry import RecruitingBudgetEntry
-from winthrop_client_python.models.recruiting_chart_data import RecruitingChartData
-from winthrop_client_python.models.recruiting_conference_entry import (
-    RecruitingConferenceEntry,
-)
-from winthrop_client_python.models.recruiting_position_entry import (
-    RecruitingPositionEntry,
-)
 from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import (
     RegenerateRawContractPdf200Response,
 )
@@ -548,6 +536,12 @@ from winthrop_client_python.models.update_password_reset_request import (
 )
 from winthrop_client_python.models.update_password_reset_request_user import (
     UpdatePasswordResetRequestUser,
+)
+from winthrop_client_python.models.update_school_group_request import (
+    UpdateSchoolGroupRequest,
+)
+from winthrop_client_python.models.update_school_group_request_school_group import (
+    UpdateSchoolGroupRequestSchoolGroup,
 )
 from winthrop_client_python.models.update_team_schedule_favorite_request import (
     UpdateTeamScheduleFavoriteRequest,

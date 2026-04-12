@@ -18,20 +18,18 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.id_name import IdName
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class SchoolGroupShow(BaseModel):
+class UpdateSchoolGroupRequestSchoolGroup(BaseModel):
     """
-    SchoolGroupShow
+    UpdateSchoolGroupRequestSchoolGroup
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
-    schools: Optional[List[IdName]] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "schools"]
+    school_ids: Optional[List[StrictInt]] = None
+    __properties: ClassVar[List[str]] = ["name", "school_ids"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -50,7 +48,7 @@ class SchoolGroupShow(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a JSON string"""
+        """Create an instance of UpdateSchoolGroupRequestSchoolGroup from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -70,18 +68,11 @@ class SchoolGroupShow(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in schools (list)
-        _items = []
-        if self.schools:
-            for _item_schools in self.schools:
-                if _item_schools:
-                    _items.append(_item_schools.to_dict())
-            _dict["schools"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a dict"""
+        """Create an instance of UpdateSchoolGroupRequestSchoolGroup from a dict"""
         if obj is None:
             return None
 
@@ -89,14 +80,6 @@ class SchoolGroupShow(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "schools": (
-                    [IdName.from_dict(_item) for _item in obj["schools"]]
-                    if obj.get("schools") is not None
-                    else None
-                ),
-            }
+            {"name": obj.get("name"), "school_ids": obj.get("school_ids")}
         )
         return _obj
