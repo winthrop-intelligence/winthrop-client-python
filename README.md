@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_coach_search_coworker_history**](docs/DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history | 
 *DefaultApi* | [**get_coach_search_overview**](docs/DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview | 
 *DefaultApi* | [**get_coach_search_record**](docs/DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record | 
+*DefaultApi* | [**get_coach_search_recruiting**](docs/DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting | 
 *DefaultApi* | [**get_coach_search_videos**](docs/DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos | 
 *DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
@@ -260,7 +261,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_team_schedule_favorites**](docs/DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
 *DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
-*DefaultApi* | [**get_time_zones**](docs/DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones | 
 *DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
 *DefaultApi* | [**get_user_activity_summary**](docs/DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} | 
@@ -292,7 +292,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
-*DefaultApi* | [**update_user**](docs/DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
 *DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
@@ -368,6 +367,10 @@ Class | Method | HTTP request | Description
  - [CoachProfile](docs/CoachProfile.md)
  - [CoachProfileOverview](docs/CoachProfileOverview.md)
  - [CoachRecordTab](docs/CoachRecordTab.md)
+ - [CoachRecruitingTab](docs/CoachRecruitingTab.md)
+ - [CoachRecruitingTabConferenceComparison](docs/CoachRecruitingTabConferenceComparison.md)
+ - [CoachRecruitingTabMetadata](docs/CoachRecruitingTabMetadata.md)
+ - [CoachRecruitingTabRecruitingBudgets](docs/CoachRecruitingTabRecruitingBudgets.md)
  - [CoachSearchResult](docs/CoachSearchResult.md)
  - [CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
  - [CoachSnapshot](docs/CoachSnapshot.md)
@@ -467,7 +470,6 @@ Class | Method | HTTP request | Description
  - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [GetTeamScheduleFavorites200ResponseInner](docs/GetTeamScheduleFavorites200ResponseInner.md)
- - [GetTimeZones200Response](docs/GetTimeZones200Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HealthCheckFailure](docs/HealthCheckFailure.md)
@@ -511,6 +513,10 @@ Class | Method | HTTP request | Description
  - [RawContractDealInfo](docs/RawContractDealInfo.md)
  - [RawContractDealInfoVendorsInner](docs/RawContractDealInfoVendorsInner.md)
  - [RecordPositionEntry](docs/RecordPositionEntry.md)
+ - [RecruitingBudgetEntry](docs/RecruitingBudgetEntry.md)
+ - [RecruitingChartData](docs/RecruitingChartData.md)
+ - [RecruitingConferenceEntry](docs/RecruitingConferenceEntry.md)
+ - [RecruitingPositionEntry](docs/RecruitingPositionEntry.md)
  - [RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
@@ -580,7 +586,6 @@ Class | Method | HTTP request | Description
  - [TeamScheduleSearchResultAwayContracts](docs/TeamScheduleSearchResultAwayContracts.md)
  - [TeamScheduleSearchResultCollection](docs/TeamScheduleSearchResultCollection.md)
  - [TeamScheduleSearchResultHomeContracts](docs/TeamScheduleSearchResultHomeContracts.md)
- - [TimeZoneOption](docs/TimeZoneOption.md)
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
  - [UnstractRawContractPdfTextRequest](docs/UnstractRawContractPdfTextRequest.md)
@@ -594,8 +599,6 @@ Class | Method | HTTP request | Description
  - [UpdatePasswordResetRequest](docs/UpdatePasswordResetRequest.md)
  - [UpdatePasswordResetRequestUser](docs/UpdatePasswordResetRequestUser.md)
  - [UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
- - [UpdateUserRequest](docs/UpdateUserRequest.md)
- - [UpdateUserRequestUser](docs/UpdateUserRequestUser.md)
  - [UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)
