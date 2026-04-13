@@ -41,6 +41,7 @@ __all__ = [
     "AthleticProfileShow",
     "AthleticProfileShowContactsInner",
     "AthleticProfileShowDealsInner",
+    "AthleticProfileShowDealsInnerVendorsInner",
     "AthleticProfileShowFinancialInfo",
     "AthleticProfileShowFinancials",
     "AthleticProfileShowFinancialsRevenuesInner",
@@ -227,7 +228,6 @@ __all__ = [
     "RawContractBackTo",
     "RawContractCollection",
     "RawContractDealInfo",
-    "RawContractDealInfoVendorsInner",
     "RecordPositionEntry",
     "RecruitingBudgetEntry",
     "RecruitingChartData",
@@ -381,6 +381,9 @@ from winthrop_client_python.models.athletic_profile_show_contacts_inner import (
 )
 from winthrop_client_python.models.athletic_profile_show_deals_inner import (
     AthleticProfileShowDealsInner as AthleticProfileShowDealsInner,
+)
+from winthrop_client_python.models.athletic_profile_show_deals_inner_vendors_inner import (
+    AthleticProfileShowDealsInnerVendorsInner as AthleticProfileShowDealsInnerVendorsInner,
 )
 from winthrop_client_python.models.athletic_profile_show_financial_info import (
     AthleticProfileShowFinancialInfo as AthleticProfileShowFinancialInfo,
@@ -847,9 +850,6 @@ from winthrop_client_python.models.raw_contract_collection import (
 )
 from winthrop_client_python.models.raw_contract_deal_info import (
     RawContractDealInfo as RawContractDealInfo,
-)
-from winthrop_client_python.models.raw_contract_deal_info_vendors_inner import (
-    RawContractDealInfoVendorsInner as RawContractDealInfoVendorsInner,
 )
 from winthrop_client_python.models.record_position_entry import (
     RecordPositionEntry as RecordPositionEntry,
