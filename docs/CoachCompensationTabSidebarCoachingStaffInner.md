@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **initials** | **str** |  | [optional] 
 **position_types** | **List[str]** |  | [optional] 
 **salary_cents** | **int** |  | [optional] 
-**avatar_url** | **str** |  | [optional] 
 
 ## Example
 
