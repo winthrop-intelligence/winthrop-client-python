@@ -64,6 +64,31 @@ class User(BaseModel):
         default=None,
         description="Whether the user can view game contract/guarantee data",
     )
+    can_see_coaches: Optional[StrictBool] = Field(
+        default=None, description="Whether the user can access the Coaches section"
+    )
+    can_see_administrators: Optional[StrictBool] = Field(
+        default=None,
+        description="Whether the user can access the Administrators section",
+    )
+    can_show_financials: Optional[StrictBool] = Field(
+        default=None, description="Whether the user can access the Financials section"
+    )
+    can_show_deals: Optional[StrictBool] = Field(
+        default=None, description="Whether the user can access the Vendors section"
+    )
+    can_show_benchmark: Optional[StrictBool] = Field(
+        default=None, description="Whether the user can access the Benchmark section"
+    )
+    can_show_athletic_profile: Optional[StrictBool] = Field(
+        default=None, description="Whether the user can access the Departments section"
+    )
+    can_read_conference: Optional[StrictBool] = Field(
+        default=None, description="Whether the user can access the Conferences section"
+    )
+    can_show_game_post: Optional[StrictBool] = Field(
+        default=None, description="Whether the user can access the Games Wanted section"
+    )
     is_sport_specific: Optional[StrictBool] = None
     is_d2_only: Optional[StrictBool] = None
     is_conference_only: Optional[StrictBool] = None
@@ -98,6 +123,14 @@ class User(BaseModel):
         "can_see_compensation",
         "can_show_scouting",
         "can_show_game_contract",
+        "can_see_coaches",
+        "can_see_administrators",
+        "can_show_financials",
+        "can_show_deals",
+        "can_show_benchmark",
+        "can_show_athletic_profile",
+        "can_read_conference",
+        "can_show_game_post",
         "is_sport_specific",
         "is_d2_only",
         "is_conference_only",
@@ -232,6 +265,14 @@ class User(BaseModel):
                 "can_see_compensation": obj.get("can_see_compensation"),
                 "can_show_scouting": obj.get("can_show_scouting"),
                 "can_show_game_contract": obj.get("can_show_game_contract"),
+                "can_see_coaches": obj.get("can_see_coaches"),
+                "can_see_administrators": obj.get("can_see_administrators"),
+                "can_show_financials": obj.get("can_show_financials"),
+                "can_show_deals": obj.get("can_show_deals"),
+                "can_show_benchmark": obj.get("can_show_benchmark"),
+                "can_show_athletic_profile": obj.get("can_show_athletic_profile"),
+                "can_read_conference": obj.get("can_read_conference"),
+                "can_show_game_post": obj.get("can_show_game_post"),
                 "is_sport_specific": obj.get("is_sport_specific"),
                 "is_d2_only": obj.get("is_d2_only"),
                 "is_conference_only": obj.get("is_conference_only"),
