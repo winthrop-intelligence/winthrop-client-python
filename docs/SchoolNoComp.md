@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **school_id** | **int** |  | [optional] 
 **school_name** | **str** |  | [optional] 
-**coach_id** | **int** |  | [optional] 
 **coach_name** | **str** |  | [optional] 
 
 ## Example
