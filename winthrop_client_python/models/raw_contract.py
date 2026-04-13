@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.raw_contract_back_to import RawContractBackTo
 from winthrop_client_python.models.raw_contract_deal_info import RawContractDealInfo
@@ -51,10 +51,6 @@ class RawContract(BaseModel):
     unstract_pdf_text: Optional[StrictStr] = None
     unstract_responses_details: Optional[StrictStr] = None
     layout_preserved_pdf_text: Optional[StrictStr] = None
-    can_see_admin_view: Optional[StrictBool] = Field(
-        default=None,
-        description="Whether the current user can see the admin view for this contract",
-    )
     file_url: Optional[StrictStr] = None
     has_file: Optional[StrictBool] = None
     back_to: Optional[RawContractBackTo] = None
@@ -82,7 +78,6 @@ class RawContract(BaseModel):
         "unstract_pdf_text",
         "unstract_responses_details",
         "layout_preserved_pdf_text",
-        "can_see_admin_view",
         "file_url",
         "has_file",
         "back_to",
@@ -187,7 +182,6 @@ class RawContract(BaseModel):
                 "unstract_pdf_text": obj.get("unstract_pdf_text"),
                 "unstract_responses_details": obj.get("unstract_responses_details"),
                 "layout_preserved_pdf_text": obj.get("layout_preserved_pdf_text"),
-                "can_see_admin_view": obj.get("can_see_admin_view"),
                 "file_url": obj.get("file_url"),
                 "has_file": obj.get("has_file"),
                 "back_to": (
