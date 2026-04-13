@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **unstract_pdf_text** | **str** |  | [optional] 
 **unstract_responses_details** | **str** |  | [optional] 
 **layout_preserved_pdf_text** | **str** |  | [optional] 
+**can_see_admin_view** | **bool** | Whether the current user can see the admin view for this contract | [optional] 
 **file_url** | **str** |  | [optional] 
 **has_file** | **bool** |  | [optional] 
 **back_to** | [**RawContractBackTo**](RawContractBackTo.md) |  | [optional] 
