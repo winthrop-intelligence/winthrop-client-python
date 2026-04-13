@@ -31,12 +31,6 @@ Name | Type | Description | Notes
 **school_city** | **str** |  | [optional] 
 **school_state** | **str** |  | [optional] 
 **otp_required** | **bool** | Whether the user must verify OTP to access the application | [optional] 
-**time_zone** | **str** | User&#39;s time zone setting | [optional] 
-**scheduling_notifications** | **bool** | Whether user receives scheduling notifications | [optional] 
-**game_post_notifications** | **bool** | Whether user receives games wanted notifications | [optional] 
-**games_digest** | **bool** | Whether user receives scheduling digest emails | [optional] 
-**email_domain** | **str** | Email domain required by the user&#39;s account | [optional] 
-**can_show_game_post** | **bool** | Whether user can view game posts | [optional] 
 
 ## Example
 

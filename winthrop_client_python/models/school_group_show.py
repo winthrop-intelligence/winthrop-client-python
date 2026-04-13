@@ -18,7 +18,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.id_name import IdName
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -30,8 +29,7 @@ class SchoolGroupShow(BaseModel):
 
     id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
-    schools: Optional[List[IdName]] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "schools"]
+    __properties: ClassVar[List[str]] = ["id", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,13 +68,6 @@ class SchoolGroupShow(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in schools (list)
-        _items = []
-        if self.schools:
-            for _item_schools in self.schools:
-                if _item_schools:
-                    _items.append(_item_schools.to_dict())
-            _dict["schools"] = _items
         return _dict
 
     @classmethod
@@ -88,15 +79,5 @@ class SchoolGroupShow(BaseModel):
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "schools": (
-                    [IdName.from_dict(_item) for _item in obj["schools"]]
-                    if obj.get("schools") is not None
-                    else None
-                ),
-            }
-        )
+        _obj = cls.model_validate({"id": obj.get("id"), "name": obj.get("name")})
         return _obj
