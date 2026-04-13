@@ -16,20 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.time_zone_option import TimeZoneOption
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class SchoolGroupShow(BaseModel):
+class GetTimeZones200Response(BaseModel):
     """
-    SchoolGroupShow
+    GetTimeZones200Response
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name"]
+    us_zones: Optional[List[TimeZoneOption]] = None
+    other_zones: Optional[List[TimeZoneOption]] = None
+    __properties: ClassVar[List[str]] = ["us_zones", "other_zones"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +49,7 @@ class SchoolGroupShow(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a JSON string"""
+        """Create an instance of GetTimeZones200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -68,16 +69,43 @@ class SchoolGroupShow(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in us_zones (list)
+        _items = []
+        if self.us_zones:
+            for _item_us_zones in self.us_zones:
+                if _item_us_zones:
+                    _items.append(_item_us_zones.to_dict())
+            _dict["us_zones"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in other_zones (list)
+        _items = []
+        if self.other_zones:
+            for _item_other_zones in self.other_zones:
+                if _item_other_zones:
+                    _items.append(_item_other_zones.to_dict())
+            _dict["other_zones"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a dict"""
+        """Create an instance of GetTimeZones200Response from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"id": obj.get("id"), "name": obj.get("name")})
+        _obj = cls.model_validate(
+            {
+                "us_zones": (
+                    [TimeZoneOption.from_dict(_item) for _item in obj["us_zones"]]
+                    if obj.get("us_zones") is not None
+                    else None
+                ),
+                "other_zones": (
+                    [TimeZoneOption.from_dict(_item) for _item in obj["other_zones"]]
+                    if obj.get("other_zones") is not None
+                    else None
+                ),
+            }
+        )
         return _obj

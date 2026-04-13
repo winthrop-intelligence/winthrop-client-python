@@ -91,8 +91,6 @@ docs/CreateNoteRequest.md
 docs/CreatePasswordReset200Response.md
 docs/CreatePasswordResetRequest.md
 docs/CreatePasswordResetRequestUser.md
-docs/CreateSchoolGroupRequest.md
-docs/CreateSchoolGroupRequestSchoolGroup.md
 docs/CreateTeamScheduleFavorite201Response.md
 docs/CreateTeamScheduleFavoriteRequest.md
 docs/Deal.md
@@ -155,6 +153,7 @@ docs/GetLadFilterOptions200ResponsePositionTypesInner.md
 docs/GetSchoolAlternateNames200Response.md
 docs/GetSchoolAlternateNames404Response.md
 docs/GetTeamScheduleFavorites200ResponseInner.md
+docs/GetTimeZones200Response.md
 docs/GetWireChanges200Response.md
 docs/HTTPValidationError.md
 docs/HealthCheckFailure.md
@@ -271,6 +270,7 @@ docs/TeamScheduleSearchResult.md
 docs/TeamScheduleSearchResultAwayContracts.md
 docs/TeamScheduleSearchResultCollection.md
 docs/TeamScheduleSearchResultHomeContracts.md
+docs/TimeZoneOption.md
 docs/UnauthorizedError.md
 docs/UnprocessableEntity.md
 docs/UnstractRawContractPdfTextRequest.md
@@ -283,9 +283,9 @@ docs/UpdatePasswordReset200Response.md
 docs/UpdatePasswordReset400Response.md
 docs/UpdatePasswordResetRequest.md
 docs/UpdatePasswordResetRequestUser.md
-docs/UpdateSchoolGroupRequest.md
-docs/UpdateSchoolGroupRequestSchoolGroup.md
 docs/UpdateTeamScheduleFavoriteRequest.md
+docs/UpdateUserRequest.md
+docs/UpdateUserRequestUser.md
 docs/UpsertTeamScheduleNoteRequest.md
 docs/User.md
 docs/UserActivitySummary.md
@@ -310,6 +310,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_get_time_zones200_response.py
+test/test_time_zone_option.py
+test/test_update_user_request.py
+test/test_update_user_request_user.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -414,8 +418,6 @@ winthrop_client_python/models/create_note_request.py
 winthrop_client_python/models/create_password_reset200_response.py
 winthrop_client_python/models/create_password_reset_request.py
 winthrop_client_python/models/create_password_reset_request_user.py
-winthrop_client_python/models/create_school_group_request.py
-winthrop_client_python/models/create_school_group_request_school_group.py
 winthrop_client_python/models/create_team_schedule_favorite201_response.py
 winthrop_client_python/models/create_team_schedule_favorite_request.py
 winthrop_client_python/models/deal.py
@@ -476,6 +478,7 @@ winthrop_client_python/models/get_lad_filter_options200_response_position_types_
 winthrop_client_python/models/get_school_alternate_names200_response.py
 winthrop_client_python/models/get_school_alternate_names404_response.py
 winthrop_client_python/models/get_team_schedule_favorites200_response_inner.py
+winthrop_client_python/models/get_time_zones200_response.py
 winthrop_client_python/models/get_wire_changes200_response.py
 winthrop_client_python/models/health_check_failure.py
 winthrop_client_python/models/health_check_success.py
@@ -588,6 +591,7 @@ winthrop_client_python/models/team_schedule_search_result.py
 winthrop_client_python/models/team_schedule_search_result_away_contracts.py
 winthrop_client_python/models/team_schedule_search_result_collection.py
 winthrop_client_python/models/team_schedule_search_result_home_contracts.py
+winthrop_client_python/models/time_zone_option.py
 winthrop_client_python/models/unauthorized_error.py
 winthrop_client_python/models/unprocessable_entity.py
 winthrop_client_python/models/unstract_raw_contract_pdf_text_request.py
@@ -600,9 +604,9 @@ winthrop_client_python/models/update_password_reset200_response.py
 winthrop_client_python/models/update_password_reset400_response.py
 winthrop_client_python/models/update_password_reset_request.py
 winthrop_client_python/models/update_password_reset_request_user.py
-winthrop_client_python/models/update_school_group_request.py
-winthrop_client_python/models/update_school_group_request_school_group.py
 winthrop_client_python/models/update_team_schedule_favorite_request.py
+winthrop_client_python/models/update_user_request.py
+winthrop_client_python/models/update_user_request_user.py
 winthrop_client_python/models/upsert_team_schedule_note_request.py
 winthrop_client_python/models/user.py
 winthrop_client_python/models/user_activity_summary.py

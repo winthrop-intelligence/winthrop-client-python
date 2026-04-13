@@ -16,20 +16,39 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class SchoolGroupShow(BaseModel):
+class UpdateUserRequestUser(BaseModel):
     """
-    SchoolGroupShow
+    UpdateUserRequestUser
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name"]
+    first_name: Optional[StrictStr] = None
+    last_name: Optional[StrictStr] = None
+    email: Optional[StrictStr] = None
+    time_zone: Optional[StrictStr] = None
+    scheduling_notifications: Optional[StrictBool] = None
+    game_post_notifications: Optional[StrictBool] = None
+    games_digest: Optional[StrictBool] = None
+    current_password: Optional[StrictStr] = None
+    password: Optional[StrictStr] = None
+    password_confirmation: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = [
+        "first_name",
+        "last_name",
+        "email",
+        "time_zone",
+        "scheduling_notifications",
+        "game_post_notifications",
+        "games_digest",
+        "current_password",
+        "password",
+        "password_confirmation",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +67,7 @@ class SchoolGroupShow(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a JSON string"""
+        """Create an instance of UpdateUserRequestUser from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,12 +91,25 @@ class SchoolGroupShow(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a dict"""
+        """Create an instance of UpdateUserRequestUser from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"id": obj.get("id"), "name": obj.get("name")})
+        _obj = cls.model_validate(
+            {
+                "first_name": obj.get("first_name"),
+                "last_name": obj.get("last_name"),
+                "email": obj.get("email"),
+                "time_zone": obj.get("time_zone"),
+                "scheduling_notifications": obj.get("scheduling_notifications"),
+                "game_post_notifications": obj.get("game_post_notifications"),
+                "games_digest": obj.get("games_digest"),
+                "current_password": obj.get("current_password"),
+                "password": obj.get("password"),
+                "password_confirmation": obj.get("password_confirmation"),
+            }
+        )
         return _obj

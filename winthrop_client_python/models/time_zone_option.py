@@ -16,20 +16,26 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class SchoolGroupShow(BaseModel):
+class TimeZoneOption(BaseModel):
     """
-    SchoolGroupShow
+    TimeZoneOption
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name"]
+    value: Optional[StrictStr] = Field(
+        default=None,
+        description='Time zone identifier (e.g. "Eastern Time (US & Canada)")',
+    )
+    label: Optional[StrictStr] = Field(
+        default=None,
+        description='Display label with GMT offset (e.g. "(GMT-05:00) Eastern Time (US & Canada)")',
+    )
+    __properties: ClassVar[List[str]] = ["value", "label"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +54,7 @@ class SchoolGroupShow(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a JSON string"""
+        """Create an instance of TimeZoneOption from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,12 +78,14 @@ class SchoolGroupShow(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a dict"""
+        """Create an instance of TimeZoneOption from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"id": obj.get("id"), "name": obj.get("name")})
+        _obj = cls.model_validate(
+            {"value": obj.get("value"), "label": obj.get("label")}
+        )
         return _obj
