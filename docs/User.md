@@ -21,14 +21,6 @@ Name | Type | Description | Notes
 **can_see_compensation** | **bool** | Whether the user can view coach compensation data | [optional] 
 **can_show_scouting** | **bool** | Whether the user can view scouting/team schedule links | [optional] 
 **can_show_game_contract** | **bool** | Whether the user can view game contract/guarantee data | [optional] 
-**can_see_coaches** | **bool** | Whether the user can access the Coaches section | [optional] 
-**can_see_administrators** | **bool** | Whether the user can access the Administrators section | [optional] 
-**can_show_financials** | **bool** | Whether the user can access the Financials section | [optional] 
-**can_show_deals** | **bool** | Whether the user can access the Vendors section | [optional] 
-**can_show_benchmark** | **bool** | Whether the user can access the Benchmark section | [optional] 
-**can_show_athletic_profile** | **bool** | Whether the user can access the Departments section | [optional] 
-**can_read_conference** | **bool** | Whether the user can access the Conferences section | [optional] 
-**can_show_game_post** | **bool** | Whether the user can access the Games Wanted section | [optional] 
 **is_sport_specific** | **bool** |  | [optional] 
 **is_d2_only** | **bool** |  | [optional] 
 **is_conference_only** | **bool** |  | [optional] 
@@ -39,6 +31,12 @@ Name | Type | Description | Notes
 **school_city** | **str** |  | [optional] 
 **school_state** | **str** |  | [optional] 
 **otp_required** | **bool** | Whether the user must verify OTP to access the application | [optional] 
+**time_zone** | **str** | User&#39;s time zone setting | [optional] 
+**scheduling_notifications** | **bool** | Whether user receives scheduling notifications | [optional] 
+**game_post_notifications** | **bool** | Whether user receives games wanted notifications | [optional] 
+**games_digest** | **bool** | Whether user receives scheduling digest emails | [optional] 
+**email_domain** | **str** | Email domain required by the user&#39;s account | [optional] 
+**can_show_game_post** | **bool** | Whether user can view game posts | [optional] 
 
 ## Example
 

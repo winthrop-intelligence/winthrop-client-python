@@ -64,31 +64,6 @@ class User(BaseModel):
         default=None,
         description="Whether the user can view game contract/guarantee data",
     )
-    can_see_coaches: Optional[StrictBool] = Field(
-        default=None, description="Whether the user can access the Coaches section"
-    )
-    can_see_administrators: Optional[StrictBool] = Field(
-        default=None,
-        description="Whether the user can access the Administrators section",
-    )
-    can_show_financials: Optional[StrictBool] = Field(
-        default=None, description="Whether the user can access the Financials section"
-    )
-    can_show_deals: Optional[StrictBool] = Field(
-        default=None, description="Whether the user can access the Vendors section"
-    )
-    can_show_benchmark: Optional[StrictBool] = Field(
-        default=None, description="Whether the user can access the Benchmark section"
-    )
-    can_show_athletic_profile: Optional[StrictBool] = Field(
-        default=None, description="Whether the user can access the Departments section"
-    )
-    can_read_conference: Optional[StrictBool] = Field(
-        default=None, description="Whether the user can access the Conferences section"
-    )
-    can_show_game_post: Optional[StrictBool] = Field(
-        default=None, description="Whether the user can access the Games Wanted section"
-    )
     is_sport_specific: Optional[StrictBool] = None
     is_d2_only: Optional[StrictBool] = None
     is_conference_only: Optional[StrictBool] = None
@@ -105,6 +80,24 @@ class User(BaseModel):
     otp_required: Optional[StrictBool] = Field(
         default=None,
         description="Whether the user must verify OTP to access the application",
+    )
+    time_zone: Optional[StrictStr] = Field(
+        default=None, description="User's time zone setting"
+    )
+    scheduling_notifications: Optional[StrictBool] = Field(
+        default=None, description="Whether user receives scheduling notifications"
+    )
+    game_post_notifications: Optional[StrictBool] = Field(
+        default=None, description="Whether user receives games wanted notifications"
+    )
+    games_digest: Optional[StrictBool] = Field(
+        default=None, description="Whether user receives scheduling digest emails"
+    )
+    email_domain: Optional[StrictStr] = Field(
+        default=None, description="Email domain required by the user's account"
+    )
+    can_show_game_post: Optional[StrictBool] = Field(
+        default=None, description="Whether user can view game posts"
     )
     __properties: ClassVar[List[str]] = [
         "id",
@@ -123,14 +116,6 @@ class User(BaseModel):
         "can_see_compensation",
         "can_show_scouting",
         "can_show_game_contract",
-        "can_see_coaches",
-        "can_see_administrators",
-        "can_show_financials",
-        "can_show_deals",
-        "can_show_benchmark",
-        "can_show_athletic_profile",
-        "can_read_conference",
-        "can_show_game_post",
         "is_sport_specific",
         "is_d2_only",
         "is_conference_only",
@@ -141,6 +126,12 @@ class User(BaseModel):
         "school_city",
         "school_state",
         "otp_required",
+        "time_zone",
+        "scheduling_notifications",
+        "game_post_notifications",
+        "games_digest",
+        "email_domain",
+        "can_show_game_post",
     ]
 
     @field_validator("state")
@@ -232,6 +223,16 @@ class User(BaseModel):
         if self.school_state is None and "school_state" in self.model_fields_set:
             _dict["school_state"] = None
 
+        # set to None if time_zone (nullable) is None
+        # and model_fields_set contains the field
+        if self.time_zone is None and "time_zone" in self.model_fields_set:
+            _dict["time_zone"] = None
+
+        # set to None if email_domain (nullable) is None
+        # and model_fields_set contains the field
+        if self.email_domain is None and "email_domain" in self.model_fields_set:
+            _dict["email_domain"] = None
+
         return _dict
 
     @classmethod
@@ -265,14 +266,6 @@ class User(BaseModel):
                 "can_see_compensation": obj.get("can_see_compensation"),
                 "can_show_scouting": obj.get("can_show_scouting"),
                 "can_show_game_contract": obj.get("can_show_game_contract"),
-                "can_see_coaches": obj.get("can_see_coaches"),
-                "can_see_administrators": obj.get("can_see_administrators"),
-                "can_show_financials": obj.get("can_show_financials"),
-                "can_show_deals": obj.get("can_show_deals"),
-                "can_show_benchmark": obj.get("can_show_benchmark"),
-                "can_show_athletic_profile": obj.get("can_show_athletic_profile"),
-                "can_read_conference": obj.get("can_read_conference"),
-                "can_show_game_post": obj.get("can_show_game_post"),
                 "is_sport_specific": obj.get("is_sport_specific"),
                 "is_d2_only": obj.get("is_d2_only"),
                 "is_conference_only": obj.get("is_conference_only"),
@@ -290,6 +283,12 @@ class User(BaseModel):
                 "school_city": obj.get("school_city"),
                 "school_state": obj.get("school_state"),
                 "otp_required": obj.get("otp_required"),
+                "time_zone": obj.get("time_zone"),
+                "scheduling_notifications": obj.get("scheduling_notifications"),
+                "game_post_notifications": obj.get("game_post_notifications"),
+                "games_digest": obj.get("games_digest"),
+                "email_domain": obj.get("email_domain"),
+                "can_show_game_post": obj.get("can_show_game_post"),
             }
         )
         return _obj
