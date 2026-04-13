@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **school_name** | **str** |  | [optional] 
 **school_id** | **int** |  | [optional] 
 **vendor_name** | **str** |  | [optional] 
-**vendors** | [**List[RawContractDealInfoVendorsInner]**](RawContractDealInfoVendorsInner.md) |  | [optional] 
+**vendors** | [**List[AthleticProfileShowDealsInnerVendorsInner]**](AthleticProfileShowDealsInnerVendorsInner.md) |  | [optional] 
 **deal_type_name** | **str** |  | [optional] 
 **start_year** | **int** |  | [optional] 
 **end_year** | **int** |  | [optional] 
