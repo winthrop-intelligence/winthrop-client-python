@@ -41,7 +41,6 @@ __all__ = [
     "AthleticProfileShow",
     "AthleticProfileShowContactsInner",
     "AthleticProfileShowDealsInner",
-    "AthleticProfileShowDealsInnerVendorsInner",
     "AthleticProfileShowFinancialInfo",
     "AthleticProfileShowFinancials",
     "AthleticProfileShowFinancialsRevenuesInner",
@@ -84,10 +83,6 @@ __all__ = [
     "CoachProfile",
     "CoachProfileOverview",
     "CoachRecordTab",
-    "CoachRecruitingTab",
-    "CoachRecruitingTabConferenceComparison",
-    "CoachRecruitingTabMetadata",
-    "CoachRecruitingTabRecruitingBudgets",
     "CoachSearchResult",
     "CoachSearchResultCollection",
     "CoachSnapshot",
@@ -127,6 +122,8 @@ __all__ = [
     "CreatePasswordReset200Response",
     "CreatePasswordResetRequest",
     "CreatePasswordResetRequestUser",
+    "CreateSchoolGroupRequest",
+    "CreateSchoolGroupRequestSchoolGroup",
     "CreateTeamScheduleFavorite201Response",
     "CreateTeamScheduleFavoriteRequest",
     "Deal",
@@ -187,6 +184,7 @@ __all__ = [
     "GetSchoolAlternateNames200Response",
     "GetSchoolAlternateNames404Response",
     "GetTeamScheduleFavorites200ResponseInner",
+    "GetTimeZones200Response",
     "GetWireChanges200Response",
     "HTTPValidationError",
     "HealthCheckFailure",
@@ -228,11 +226,8 @@ __all__ = [
     "RawContractBackTo",
     "RawContractCollection",
     "RawContractDealInfo",
+    "RawContractDealInfoVendorsInner",
     "RecordPositionEntry",
-    "RecruitingBudgetEntry",
-    "RecruitingChartData",
-    "RecruitingConferenceEntry",
-    "RecruitingPositionEntry",
     "RegenerateRawContractPdf200Response",
     "RequestedItem",
     "RequestedItemCollection",
@@ -302,6 +297,7 @@ __all__ = [
     "TeamScheduleSearchResultAwayContracts",
     "TeamScheduleSearchResultCollection",
     "TeamScheduleSearchResultHomeContracts",
+    "TimeZoneOption",
     "UnauthorizedError",
     "UnprocessableEntity",
     "UnstractRawContractPdfTextRequest",
@@ -314,7 +310,11 @@ __all__ = [
     "UpdatePasswordReset400Response",
     "UpdatePasswordResetRequest",
     "UpdatePasswordResetRequestUser",
+    "UpdateSchoolGroupRequest",
+    "UpdateSchoolGroupRequestSchoolGroup",
     "UpdateTeamScheduleFavoriteRequest",
+    "UpdateUserRequest",
+    "UpdateUserRequestUser",
     "UpsertTeamScheduleNoteRequest",
     "User",
     "UserActivitySummary",
@@ -381,9 +381,6 @@ from winthrop_client_python.models.athletic_profile_show_contacts_inner import (
 )
 from winthrop_client_python.models.athletic_profile_show_deals_inner import (
     AthleticProfileShowDealsInner as AthleticProfileShowDealsInner,
-)
-from winthrop_client_python.models.athletic_profile_show_deals_inner_vendors_inner import (
-    AthleticProfileShowDealsInnerVendorsInner as AthleticProfileShowDealsInnerVendorsInner,
 )
 from winthrop_client_python.models.athletic_profile_show_financial_info import (
     AthleticProfileShowFinancialInfo as AthleticProfileShowFinancialInfo,
@@ -499,18 +496,6 @@ from winthrop_client_python.models.coach_profile_overview import (
 from winthrop_client_python.models.coach_record_tab import (
     CoachRecordTab as CoachRecordTab,
 )
-from winthrop_client_python.models.coach_recruiting_tab import (
-    CoachRecruitingTab as CoachRecruitingTab,
-)
-from winthrop_client_python.models.coach_recruiting_tab_conference_comparison import (
-    CoachRecruitingTabConferenceComparison as CoachRecruitingTabConferenceComparison,
-)
-from winthrop_client_python.models.coach_recruiting_tab_metadata import (
-    CoachRecruitingTabMetadata as CoachRecruitingTabMetadata,
-)
-from winthrop_client_python.models.coach_recruiting_tab_recruiting_budgets import (
-    CoachRecruitingTabRecruitingBudgets as CoachRecruitingTabRecruitingBudgets,
-)
 from winthrop_client_python.models.coach_search_result import (
     CoachSearchResult as CoachSearchResult,
 )
@@ -611,6 +596,12 @@ from winthrop_client_python.models.create_password_reset_request import (
 )
 from winthrop_client_python.models.create_password_reset_request_user import (
     CreatePasswordResetRequestUser as CreatePasswordResetRequestUser,
+)
+from winthrop_client_python.models.create_school_group_request import (
+    CreateSchoolGroupRequest as CreateSchoolGroupRequest,
+)
+from winthrop_client_python.models.create_school_group_request_school_group import (
+    CreateSchoolGroupRequestSchoolGroup as CreateSchoolGroupRequestSchoolGroup,
 )
 from winthrop_client_python.models.create_team_schedule_favorite201_response import (
     CreateTeamScheduleFavorite201Response as CreateTeamScheduleFavorite201Response,
@@ -766,6 +757,9 @@ from winthrop_client_python.models.get_school_alternate_names404_response import
 from winthrop_client_python.models.get_team_schedule_favorites200_response_inner import (
     GetTeamScheduleFavorites200ResponseInner as GetTeamScheduleFavorites200ResponseInner,
 )
+from winthrop_client_python.models.get_time_zones200_response import (
+    GetTimeZones200Response as GetTimeZones200Response,
+)
 from winthrop_client_python.models.get_wire_changes200_response import (
     GetWireChanges200Response as GetWireChanges200Response,
 )
@@ -851,20 +845,11 @@ from winthrop_client_python.models.raw_contract_collection import (
 from winthrop_client_python.models.raw_contract_deal_info import (
     RawContractDealInfo as RawContractDealInfo,
 )
+from winthrop_client_python.models.raw_contract_deal_info_vendors_inner import (
+    RawContractDealInfoVendorsInner as RawContractDealInfoVendorsInner,
+)
 from winthrop_client_python.models.record_position_entry import (
     RecordPositionEntry as RecordPositionEntry,
-)
-from winthrop_client_python.models.recruiting_budget_entry import (
-    RecruitingBudgetEntry as RecruitingBudgetEntry,
-)
-from winthrop_client_python.models.recruiting_chart_data import (
-    RecruitingChartData as RecruitingChartData,
-)
-from winthrop_client_python.models.recruiting_conference_entry import (
-    RecruitingConferenceEntry as RecruitingConferenceEntry,
-)
-from winthrop_client_python.models.recruiting_position_entry import (
-    RecruitingPositionEntry as RecruitingPositionEntry,
 )
 from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import (
     RegenerateRawContractPdf200Response as RegenerateRawContractPdf200Response,
@@ -1049,6 +1034,9 @@ from winthrop_client_python.models.team_schedule_search_result_collection import
 from winthrop_client_python.models.team_schedule_search_result_home_contracts import (
     TeamScheduleSearchResultHomeContracts as TeamScheduleSearchResultHomeContracts,
 )
+from winthrop_client_python.models.time_zone_option import (
+    TimeZoneOption as TimeZoneOption,
+)
 from winthrop_client_python.models.unauthorized_error import (
     UnauthorizedError as UnauthorizedError,
 )
@@ -1085,8 +1073,20 @@ from winthrop_client_python.models.update_password_reset_request import (
 from winthrop_client_python.models.update_password_reset_request_user import (
     UpdatePasswordResetRequestUser as UpdatePasswordResetRequestUser,
 )
+from winthrop_client_python.models.update_school_group_request import (
+    UpdateSchoolGroupRequest as UpdateSchoolGroupRequest,
+)
+from winthrop_client_python.models.update_school_group_request_school_group import (
+    UpdateSchoolGroupRequestSchoolGroup as UpdateSchoolGroupRequestSchoolGroup,
+)
 from winthrop_client_python.models.update_team_schedule_favorite_request import (
     UpdateTeamScheduleFavoriteRequest as UpdateTeamScheduleFavoriteRequest,
+)
+from winthrop_client_python.models.update_user_request import (
+    UpdateUserRequest as UpdateUserRequest,
+)
+from winthrop_client_python.models.update_user_request_user import (
+    UpdateUserRequestUser as UpdateUserRequestUser,
 )
 from winthrop_client_python.models.upsert_team_schedule_note_request import (
     UpsertTeamScheduleNoteRequest as UpsertTeamScheduleNoteRequest,

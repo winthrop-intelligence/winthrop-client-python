@@ -18,9 +18,6 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.athletic_profile_show_deals_inner_vendors_inner import (
-    AthleticProfileShowDealsInnerVendorsInner,
-)
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,7 +31,6 @@ class AthleticProfileShowDealsInner(BaseModel):
     deal_type: Optional[StrictStr] = None
     term: Optional[StrictStr] = None
     vendor_names: Optional[StrictStr] = None
-    vendors: Optional[List[AthleticProfileShowDealsInnerVendorsInner]] = None
     summary: Optional[StrictStr] = None
     has_contract: Optional[StrictBool] = None
     raw_contract_id: Optional[StrictInt] = None
@@ -43,7 +39,6 @@ class AthleticProfileShowDealsInner(BaseModel):
         "deal_type",
         "term",
         "vendor_names",
-        "vendors",
         "summary",
         "has_contract",
         "raw_contract_id",
@@ -86,13 +81,6 @@ class AthleticProfileShowDealsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in vendors (list)
-        _items = []
-        if self.vendors:
-            for _item_vendors in self.vendors:
-                if _item_vendors:
-                    _items.append(_item_vendors.to_dict())
-            _dict["vendors"] = _items
         # set to None if summary (nullable) is None
         # and model_fields_set contains the field
         if self.summary is None and "summary" in self.model_fields_set:
@@ -120,14 +108,6 @@ class AthleticProfileShowDealsInner(BaseModel):
                 "deal_type": obj.get("deal_type"),
                 "term": obj.get("term"),
                 "vendor_names": obj.get("vendor_names"),
-                "vendors": (
-                    [
-                        AthleticProfileShowDealsInnerVendorsInner.from_dict(_item)
-                        for _item in obj["vendors"]
-                    ]
-                    if obj.get("vendors") is not None
-                    else None
-                ),
                 "summary": obj.get("summary"),
                 "has_contract": obj.get("has_contract"),
                 "raw_contract_id": obj.get("raw_contract_id"),
