@@ -29,7 +29,9 @@ class ListNotes200ResponseInner(BaseModel):
     """  # noqa: E501
 
     id: StrictInt
-    notable_id: StrictInt = Field(description="The notable record's ID")
+    notable_id: StrictStr = Field(
+        description="The notable record's ID (string to avoid JS precision loss)"
+    )
     notable_type: StrictStr = Field(description='The model type (e.g. "Coach")')
     content: StrictStr = Field(description="The note text")
     name: StrictStr = Field(description="The notable record's name")
