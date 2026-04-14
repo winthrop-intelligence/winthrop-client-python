@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.raw_contract_back_to import RawContractBackTo
 from winthrop_client_python.models.raw_contract_deal_info import RawContractDealInfo
@@ -51,7 +51,17 @@ class RawContract(BaseModel):
     unstract_pdf_text: Optional[StrictStr] = None
     unstract_responses_details: Optional[StrictStr] = None
     layout_preserved_pdf_text: Optional[StrictStr] = None
-    file_url: Optional[StrictStr] = None
+    can_see_admin_view: Optional[StrictBool] = Field(
+        default=None,
+        description="Whether the current user can see the admin view for this contract",
+    )
+    pdf_preview_url: Optional[StrictStr] = Field(
+        default=None,
+        description="Proxied URL for inline PDF viewing (no direct file access)",
+    )
+    pdf_download_url: Optional[StrictStr] = Field(
+        default=None, description="Direct download URL (admin only)"
+    )
     has_file: Optional[StrictBool] = None
     back_to: Optional[RawContractBackTo] = None
     contract_label: Optional[StrictStr] = None
@@ -78,7 +88,9 @@ class RawContract(BaseModel):
         "unstract_pdf_text",
         "unstract_responses_details",
         "layout_preserved_pdf_text",
-        "file_url",
+        "can_see_admin_view",
+        "pdf_preview_url",
+        "pdf_download_url",
         "has_file",
         "back_to",
         "contract_label",
@@ -128,10 +140,18 @@ class RawContract(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of deal_info
         if self.deal_info:
             _dict["deal_info"] = self.deal_info.to_dict()
-        # set to None if file_url (nullable) is None
+        # set to None if pdf_preview_url (nullable) is None
         # and model_fields_set contains the field
-        if self.file_url is None and "file_url" in self.model_fields_set:
-            _dict["file_url"] = None
+        if self.pdf_preview_url is None and "pdf_preview_url" in self.model_fields_set:
+            _dict["pdf_preview_url"] = None
+
+        # set to None if pdf_download_url (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.pdf_download_url is None
+            and "pdf_download_url" in self.model_fields_set
+        ):
+            _dict["pdf_download_url"] = None
 
         # set to None if back_to (nullable) is None
         # and model_fields_set contains the field
@@ -182,7 +202,9 @@ class RawContract(BaseModel):
                 "unstract_pdf_text": obj.get("unstract_pdf_text"),
                 "unstract_responses_details": obj.get("unstract_responses_details"),
                 "layout_preserved_pdf_text": obj.get("layout_preserved_pdf_text"),
-                "file_url": obj.get("file_url"),
+                "can_see_admin_view": obj.get("can_see_admin_view"),
+                "pdf_preview_url": obj.get("pdf_preview_url"),
+                "pdf_download_url": obj.get("pdf_download_url"),
                 "has_file": obj.get("has_file"),
                 "back_to": (
                     RawContractBackTo.from_dict(obj["back_to"])

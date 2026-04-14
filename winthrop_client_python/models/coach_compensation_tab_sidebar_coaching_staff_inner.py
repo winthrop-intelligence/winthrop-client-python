@@ -33,6 +33,7 @@ class CoachCompensationTabSidebarCoachingStaffInner(BaseModel):
     initials: Optional[StrictStr] = None
     position_types: Optional[List[StrictStr]] = None
     salary_cents: Optional[StrictInt] = None
+    avatar_url: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "coach_id",
         "coach_friendly_id",
@@ -40,6 +41,7 @@ class CoachCompensationTabSidebarCoachingStaffInner(BaseModel):
         "initials",
         "position_types",
         "salary_cents",
+        "avatar_url",
     ]
 
     model_config = ConfigDict(
@@ -84,6 +86,11 @@ class CoachCompensationTabSidebarCoachingStaffInner(BaseModel):
         if self.salary_cents is None and "salary_cents" in self.model_fields_set:
             _dict["salary_cents"] = None
 
+        # set to None if avatar_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.avatar_url is None and "avatar_url" in self.model_fields_set:
+            _dict["avatar_url"] = None
+
         return _dict
 
     @classmethod
@@ -103,6 +110,7 @@ class CoachCompensationTabSidebarCoachingStaffInner(BaseModel):
                 "initials": obj.get("initials"),
                 "position_types": obj.get("position_types"),
                 "salary_cents": obj.get("salary_cents"),
+                "avatar_url": obj.get("avatar_url"),
             }
         )
         return _obj
