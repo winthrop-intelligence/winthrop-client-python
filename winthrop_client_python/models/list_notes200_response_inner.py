@@ -16,20 +16,34 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from datetime import datetime
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class SchoolGroupShow(BaseModel):
+class ListNotes200ResponseInner(BaseModel):
     """
-    SchoolGroupShow
+    ListNotes200ResponseInner
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name"]
+    id: StrictInt
+    notable_id: StrictInt = Field(description="The notable record's ID")
+    notable_type: StrictStr = Field(description='The model type (e.g. "Coach")')
+    content: StrictStr = Field(description="The note text")
+    name: StrictStr = Field(description="The notable record's name")
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "notable_id",
+        "notable_type",
+        "content",
+        "name",
+        "created_at",
+        "updated_at",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -48,7 +62,7 @@ class SchoolGroupShow(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a JSON string"""
+        """Create an instance of ListNotes200ResponseInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,12 +86,22 @@ class SchoolGroupShow(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SchoolGroupShow from a dict"""
+        """Create an instance of ListNotes200ResponseInner from a dict"""
         if obj is None:
             return None
 
         if not isinstance(obj, dict):
             return cls.model_validate(obj)
 
-        _obj = cls.model_validate({"id": obj.get("id"), "name": obj.get("name")})
+        _obj = cls.model_validate(
+            {
+                "id": obj.get("id"),
+                "notable_id": obj.get("notable_id"),
+                "notable_type": obj.get("notable_type"),
+                "content": obj.get("content"),
+                "name": obj.get("name"),
+                "created_at": obj.get("created_at"),
+                "updated_at": obj.get("updated_at"),
+            }
+        )
         return _obj

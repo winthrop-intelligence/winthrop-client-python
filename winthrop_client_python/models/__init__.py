@@ -197,12 +197,6 @@ from winthrop_client_python.models.create_password_reset_request import (
 from winthrop_client_python.models.create_password_reset_request_user import (
     CreatePasswordResetRequestUser,
 )
-from winthrop_client_python.models.create_school_group_request import (
-    CreateSchoolGroupRequest,
-)
-from winthrop_client_python.models.create_school_group_request_school_group import (
-    CreateSchoolGroupRequestSchoolGroup,
-)
 from winthrop_client_python.models.create_team_schedule_favorite201_response import (
     CreateTeamScheduleFavorite201Response,
 )
@@ -313,9 +307,6 @@ from winthrop_client_python.models.get_school_alternate_names404_response import
 from winthrop_client_python.models.get_team_schedule_favorites200_response_inner import (
     GetTeamScheduleFavorites200ResponseInner,
 )
-from winthrop_client_python.models.get_time_zones200_response import (
-    GetTimeZones200Response,
-)
 from winthrop_client_python.models.get_wire_changes200_response import (
     GetWireChanges200Response,
 )
@@ -338,6 +329,9 @@ from winthrop_client_python.models.job_sport import JobSport
 from winthrop_client_python.models.link import Link
 from winthrop_client_python.models.link_collection import LinkCollection
 from winthrop_client_python.models.link_collection1 import LinkCollection1
+from winthrop_client_python.models.list_notes200_response_inner import (
+    ListNotes200ResponseInner,
+)
 from winthrop_client_python.models.location_inner import LocationInner
 from winthrop_client_python.models.logo import Logo
 from winthrop_client_python.models.meta import Meta
@@ -512,7 +506,6 @@ from winthrop_client_python.models.team_schedule_search_result_collection import
 from winthrop_client_python.models.team_schedule_search_result_home_contracts import (
     TeamScheduleSearchResultHomeContracts,
 )
-from winthrop_client_python.models.time_zone_option import TimeZoneOption
 from winthrop_client_python.models.unauthorized_error import UnauthorizedError
 from winthrop_client_python.models.unprocessable_entity import UnprocessableEntity
 from winthrop_client_python.models.unstract_raw_contract_pdf_text_request import (
@@ -541,17 +534,9 @@ from winthrop_client_python.models.update_password_reset_request import (
 from winthrop_client_python.models.update_password_reset_request_user import (
     UpdatePasswordResetRequestUser,
 )
-from winthrop_client_python.models.update_school_group_request import (
-    UpdateSchoolGroupRequest,
-)
-from winthrop_client_python.models.update_school_group_request_school_group import (
-    UpdateSchoolGroupRequestSchoolGroup,
-)
 from winthrop_client_python.models.update_team_schedule_favorite_request import (
     UpdateTeamScheduleFavoriteRequest,
 )
-from winthrop_client_python.models.update_user_request import UpdateUserRequest
-from winthrop_client_python.models.update_user_request_user import UpdateUserRequestUser
 from winthrop_client_python.models.upsert_team_schedule_note_request import (
     UpsertTeamScheduleNoteRequest,
 )
