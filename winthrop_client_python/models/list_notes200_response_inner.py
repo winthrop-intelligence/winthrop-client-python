@@ -35,6 +35,12 @@ class ListNotes200ResponseInner(BaseModel):
     name: StrictStr = Field(description="The notable record's name")
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
+    school_id: Optional[StrictInt] = Field(
+        default=None, description="School ID for FilTeam notes"
+    )
+    sport_name: Optional[StrictStr] = Field(
+        default=None, description="Sport name for FilTeam notes"
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "notable_id",
@@ -43,6 +49,8 @@ class ListNotes200ResponseInner(BaseModel):
         "name",
         "created_at",
         "updated_at",
+        "school_id",
+        "sport_name",
     ]
 
     model_config = ConfigDict(
@@ -82,6 +90,16 @@ class ListNotes200ResponseInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if school_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.school_id is None and "school_id" in self.model_fields_set:
+            _dict["school_id"] = None
+
+        # set to None if sport_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.sport_name is None and "sport_name" in self.model_fields_set:
+            _dict["sport_name"] = None
+
         return _dict
 
     @classmethod
@@ -102,6 +120,8 @@ class ListNotes200ResponseInner(BaseModel):
                 "name": obj.get("name"),
                 "created_at": obj.get("created_at"),
                 "updated_at": obj.get("updated_at"),
+                "school_id": obj.get("school_id"),
+                "sport_name": obj.get("sport_name"),
             }
         )
         return _obj

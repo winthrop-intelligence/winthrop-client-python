@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **name** | **str** | The notable record&#39;s name | 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
+**school_id** | **int** | School ID for FilTeam notes | [optional] 
+**sport_name** | **str** | Sport name for FilTeam notes | [optional] 
 
 ## Example
 
