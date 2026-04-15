@@ -127,6 +127,8 @@ __all__ = [
     "CreatePasswordReset200Response",
     "CreatePasswordResetRequest",
     "CreatePasswordResetRequestUser",
+    "CreateSchoolGroupRequest",
+    "CreateSchoolGroupRequestSchoolGroup",
     "CreateTeamScheduleFavorite201Response",
     "CreateTeamScheduleFavoriteRequest",
     "Deal",
@@ -315,6 +317,8 @@ __all__ = [
     "UpdatePasswordReset400Response",
     "UpdatePasswordResetRequest",
     "UpdatePasswordResetRequestUser",
+    "UpdateSchoolGroupRequest",
+    "UpdateSchoolGroupRequestSchoolGroup",
     "UpdateTeamScheduleFavoriteRequest",
     "UpsertTeamScheduleNoteRequest",
     "User",
@@ -612,6 +616,12 @@ from winthrop_client_python.models.create_password_reset_request import (
 )
 from winthrop_client_python.models.create_password_reset_request_user import (
     CreatePasswordResetRequestUser as CreatePasswordResetRequestUser,
+)
+from winthrop_client_python.models.create_school_group_request import (
+    CreateSchoolGroupRequest as CreateSchoolGroupRequest,
+)
+from winthrop_client_python.models.create_school_group_request_school_group import (
+    CreateSchoolGroupRequestSchoolGroup as CreateSchoolGroupRequestSchoolGroup,
 )
 from winthrop_client_python.models.create_team_schedule_favorite201_response import (
     CreateTeamScheduleFavorite201Response as CreateTeamScheduleFavorite201Response,
@@ -1088,6 +1098,12 @@ from winthrop_client_python.models.update_password_reset_request import (
 )
 from winthrop_client_python.models.update_password_reset_request_user import (
     UpdatePasswordResetRequestUser as UpdatePasswordResetRequestUser,
+)
+from winthrop_client_python.models.update_school_group_request import (
+    UpdateSchoolGroupRequest as UpdateSchoolGroupRequest,
+)
+from winthrop_client_python.models.update_school_group_request_school_group import (
+    UpdateSchoolGroupRequestSchoolGroup as UpdateSchoolGroupRequestSchoolGroup,
 )
 from winthrop_client_python.models.update_team_schedule_favorite_request import (
     UpdateTeamScheduleFavoriteRequest as UpdateTeamScheduleFavoriteRequest,
