@@ -38,22 +38,12 @@ class GetFavorites200ResponseInner(BaseModel):
     name: Optional[StrictStr] = Field(
         default=None, description="Favoritable record name (only when detailed=1)"
     )
-    school_id: Optional[StrictInt] = Field(
-        default=None,
-        description="School ID for FilTeam/Deal favorites (only when detailed=1)",
-    )
-    sport_name: Optional[StrictStr] = Field(
-        default=None,
-        description="Sport name for FilTeam favorites (only when detailed=1)",
-    )
     __properties: ClassVar[List[str]] = [
         "id",
         "favoritable_id",
         "favorites_category_id",
         "category_name",
         "name",
-        "school_id",
-        "sport_name",
     ]
 
     model_config = ConfigDict(
@@ -111,16 +101,6 @@ class GetFavorites200ResponseInner(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict["name"] = None
 
-        # set to None if school_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.school_id is None and "school_id" in self.model_fields_set:
-            _dict["school_id"] = None
-
-        # set to None if sport_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.sport_name is None and "sport_name" in self.model_fields_set:
-            _dict["sport_name"] = None
-
         return _dict
 
     @classmethod
@@ -139,8 +119,6 @@ class GetFavorites200ResponseInner(BaseModel):
                 "favorites_category_id": obj.get("favorites_category_id"),
                 "category_name": obj.get("category_name"),
                 "name": obj.get("name"),
-                "school_id": obj.get("school_id"),
-                "sport_name": obj.get("sport_name"),
             }
         )
         return _obj

@@ -116,7 +116,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_password_reset**](docs/DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset | 
 *DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
-*DefaultApi* | [**create_school_group**](docs/DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 *DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 *DefaultApi* | [**create_team_schedule_favorite**](docs/DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
 *DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
@@ -132,7 +131,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_note**](docs/DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} | 
 *DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
-*DefaultApi* | [**delete_school_group**](docs/DefaultApi.md#delete_school_group) | **DELETE** /api/v1/school_groups/{schoolGroupId} | 
 *DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 *DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
@@ -154,6 +152,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_coach_search_coworker_history**](docs/DefaultApi.md#get_coach_search_coworker_history) | **GET** /api/v1/coach_searches/{id}/coworker_history | 
 *DefaultApi* | [**get_coach_search_overview**](docs/DefaultApi.md#get_coach_search_overview) | **GET** /api/v1/coach_searches/{id}/overview | 
 *DefaultApi* | [**get_coach_search_record**](docs/DefaultApi.md#get_coach_search_record) | **GET** /api/v1/coach_searches/{id}/record | 
+*DefaultApi* | [**get_coach_search_recruiting**](docs/DefaultApi.md#get_coach_search_recruiting) | **GET** /api/v1/coach_searches/{id}/recruiting | 
 *DefaultApi* | [**get_coach_search_videos**](docs/DefaultApi.md#get_coach_search_videos) | **GET** /api/v1/coach_searches/{id}/videos | 
 *DefaultApi* | [**get_coach_searches**](docs/DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 *DefaultApi* | [**get_coaches**](docs/DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
@@ -235,8 +234,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_school_group_directors_cup**](docs/DefaultApi.md#get_school_group_directors_cup) | **GET** /api/v1/school_groups/{schoolGroupId}/directors_cup | 
 *DefaultApi* | [**get_school_group_position_stats**](docs/DefaultApi.md#get_school_group_position_stats) | **GET** /api/v1/school_groups/{schoolGroupId}/position_stats | 
 *DefaultApi* | [**get_school_group_sport_compensation**](docs/DefaultApi.md#get_school_group_sport_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/sport_compensation | 
-*DefaultApi* | [**get_school_groups**](docs/DefaultApi.md#get_school_groups) | **GET** /api/v1/school_groups | 
-*DefaultApi* | [**get_school_groups_available_schools**](docs/DefaultApi.md#get_school_groups_available_schools) | **GET** /api/v1/school_groups/available_schools | 
 *DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 *DefaultApi* | [**get_schools_alma_mater**](docs/DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater | 
 *DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
@@ -264,7 +261,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_team_schedule_favorites**](docs/DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
 *DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
-*DefaultApi* | [**get_time_zones**](docs/DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones | 
 *DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
 *DefaultApi* | [**get_user_activity_summary**](docs/DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} | 
@@ -274,7 +270,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_vendor**](docs/DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} | 
 *DefaultApi* | [**get_vendors**](docs/DefaultApi.md#get_vendors) | **GET** /api/v1/vendors | 
 *DefaultApi* | [**get_wire_changes**](docs/DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
-*DefaultApi* | [**list_notes**](docs/DefaultApi.md#list_notes) | **GET** /api/v1/notes/list | 
 *DefaultApi* | [**regenerate_raw_contract_pdf**](docs/DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
 *DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
 *DefaultApi* | [**send_otp_code**](docs/DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
@@ -295,15 +290,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_password_reset**](docs/DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset | 
 *DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
-*DefaultApi* | [**update_school_group**](docs/DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} | 
 *DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
-*DefaultApi* | [**update_user**](docs/DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
 *DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
 *DefaultApi* | [**verify_user_intercollegiate_access**](docs/DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
-*DefaultApi* | [**view_raw_contract_file**](docs/DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file | 
 *DossierApi* | [**university_dossier_report_dossier_winad_id_get**](docs/DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report
 *IntercollegiateApi* | [**create_news_feeds**](docs/IntercollegiateApi.md#create_news_feeds) | **POST** /wi_jobs/news_feeds | 
 *IntercollegiateApi* | [**get_job_post**](docs/IntercollegiateApi.md#get_job_post) | **GET** /wi_jobs/job_posts/{jobPostId} | 
@@ -333,6 +325,7 @@ Class | Method | HTTP request | Description
  - [AthleticProfileShow](docs/AthleticProfileShow.md)
  - [AthleticProfileShowContactsInner](docs/AthleticProfileShowContactsInner.md)
  - [AthleticProfileShowDealsInner](docs/AthleticProfileShowDealsInner.md)
+ - [AthleticProfileShowDealsInnerVendorsInner](docs/AthleticProfileShowDealsInnerVendorsInner.md)
  - [AthleticProfileShowFinancialInfo](docs/AthleticProfileShowFinancialInfo.md)
  - [AthleticProfileShowFinancials](docs/AthleticProfileShowFinancials.md)
  - [AthleticProfileShowFinancialsRevenuesInner](docs/AthleticProfileShowFinancialsRevenuesInner.md)
@@ -375,6 +368,10 @@ Class | Method | HTTP request | Description
  - [CoachProfile](docs/CoachProfile.md)
  - [CoachProfileOverview](docs/CoachProfileOverview.md)
  - [CoachRecordTab](docs/CoachRecordTab.md)
+ - [CoachRecruitingTab](docs/CoachRecruitingTab.md)
+ - [CoachRecruitingTabConferenceComparison](docs/CoachRecruitingTabConferenceComparison.md)
+ - [CoachRecruitingTabMetadata](docs/CoachRecruitingTabMetadata.md)
+ - [CoachRecruitingTabRecruitingBudgets](docs/CoachRecruitingTabRecruitingBudgets.md)
  - [CoachSearchResult](docs/CoachSearchResult.md)
  - [CoachSearchResultCollection](docs/CoachSearchResultCollection.md)
  - [CoachSnapshot](docs/CoachSnapshot.md)
@@ -414,8 +411,6 @@ Class | Method | HTTP request | Description
  - [CreatePasswordReset200Response](docs/CreatePasswordReset200Response.md)
  - [CreatePasswordResetRequest](docs/CreatePasswordResetRequest.md)
  - [CreatePasswordResetRequestUser](docs/CreatePasswordResetRequestUser.md)
- - [CreateSchoolGroupRequest](docs/CreateSchoolGroupRequest.md)
- - [CreateSchoolGroupRequestSchoolGroup](docs/CreateSchoolGroupRequestSchoolGroup.md)
  - [CreateTeamScheduleFavorite201Response](docs/CreateTeamScheduleFavorite201Response.md)
  - [CreateTeamScheduleFavoriteRequest](docs/CreateTeamScheduleFavoriteRequest.md)
  - [Deal](docs/Deal.md)
@@ -476,7 +471,6 @@ Class | Method | HTTP request | Description
  - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [GetTeamScheduleFavorites200ResponseInner](docs/GetTeamScheduleFavorites200ResponseInner.md)
- - [GetTimeZones200Response](docs/GetTimeZones200Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HealthCheckFailure](docs/HealthCheckFailure.md)
@@ -495,7 +489,6 @@ Class | Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [LinkCollection](docs/LinkCollection.md)
  - [LinkCollection1](docs/LinkCollection1.md)
- - [ListNotes200ResponseInner](docs/ListNotes200ResponseInner.md)
  - [LocationInner](docs/LocationInner.md)
  - [Logo](docs/Logo.md)
  - [Meta](docs/Meta.md)
@@ -519,8 +512,11 @@ Class | Method | HTTP request | Description
  - [RawContractBackTo](docs/RawContractBackTo.md)
  - [RawContractCollection](docs/RawContractCollection.md)
  - [RawContractDealInfo](docs/RawContractDealInfo.md)
- - [RawContractDealInfoVendorsInner](docs/RawContractDealInfoVendorsInner.md)
  - [RecordPositionEntry](docs/RecordPositionEntry.md)
+ - [RecruitingBudgetEntry](docs/RecruitingBudgetEntry.md)
+ - [RecruitingChartData](docs/RecruitingChartData.md)
+ - [RecruitingConferenceEntry](docs/RecruitingConferenceEntry.md)
+ - [RecruitingPositionEntry](docs/RecruitingPositionEntry.md)
  - [RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
@@ -590,7 +586,6 @@ Class | Method | HTTP request | Description
  - [TeamScheduleSearchResultAwayContracts](docs/TeamScheduleSearchResultAwayContracts.md)
  - [TeamScheduleSearchResultCollection](docs/TeamScheduleSearchResultCollection.md)
  - [TeamScheduleSearchResultHomeContracts](docs/TeamScheduleSearchResultHomeContracts.md)
- - [TimeZoneOption](docs/TimeZoneOption.md)
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
  - [UnstractRawContractPdfTextRequest](docs/UnstractRawContractPdfTextRequest.md)
@@ -603,11 +598,7 @@ Class | Method | HTTP request | Description
  - [UpdatePasswordReset400Response](docs/UpdatePasswordReset400Response.md)
  - [UpdatePasswordResetRequest](docs/UpdatePasswordResetRequest.md)
  - [UpdatePasswordResetRequestUser](docs/UpdatePasswordResetRequestUser.md)
- - [UpdateSchoolGroupRequest](docs/UpdateSchoolGroupRequest.md)
- - [UpdateSchoolGroupRequestSchoolGroup](docs/UpdateSchoolGroupRequestSchoolGroup.md)
  - [UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
- - [UpdateUserRequest](docs/UpdateUserRequest.md)
- - [UpdateUserRequestUser](docs/UpdateUserRequestUser.md)
  - [UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)

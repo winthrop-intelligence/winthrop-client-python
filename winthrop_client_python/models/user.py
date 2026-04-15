@@ -109,21 +109,6 @@ class User(BaseModel):
         default=None,
         description="Whether the user must verify OTP to access the application",
     )
-    time_zone: Optional[StrictStr] = Field(
-        default=None, description="User's time zone setting"
-    )
-    scheduling_notifications: Optional[StrictBool] = Field(
-        default=None, description="Whether user receives scheduling notifications"
-    )
-    game_post_notifications: Optional[StrictBool] = Field(
-        default=None, description="Whether user receives games wanted notifications"
-    )
-    games_digest: Optional[StrictBool] = Field(
-        default=None, description="Whether user receives scheduling digest emails"
-    )
-    email_domain: Optional[StrictStr] = Field(
-        default=None, description="Email domain required by the user's account"
-    )
     __properties: ClassVar[List[str]] = [
         "id",
         "email",
@@ -160,11 +145,6 @@ class User(BaseModel):
         "school_city",
         "school_state",
         "otp_required",
-        "time_zone",
-        "scheduling_notifications",
-        "game_post_notifications",
-        "games_digest",
-        "email_domain",
     ]
 
     @field_validator("state")
@@ -256,16 +236,6 @@ class User(BaseModel):
         if self.school_state is None and "school_state" in self.model_fields_set:
             _dict["school_state"] = None
 
-        # set to None if time_zone (nullable) is None
-        # and model_fields_set contains the field
-        if self.time_zone is None and "time_zone" in self.model_fields_set:
-            _dict["time_zone"] = None
-
-        # set to None if email_domain (nullable) is None
-        # and model_fields_set contains the field
-        if self.email_domain is None and "email_domain" in self.model_fields_set:
-            _dict["email_domain"] = None
-
         return _dict
 
     @classmethod
@@ -325,11 +295,6 @@ class User(BaseModel):
                 "school_city": obj.get("school_city"),
                 "school_state": obj.get("school_state"),
                 "otp_required": obj.get("otp_required"),
-                "time_zone": obj.get("time_zone"),
-                "scheduling_notifications": obj.get("scheduling_notifications"),
-                "game_post_notifications": obj.get("game_post_notifications"),
-                "games_digest": obj.get("games_digest"),
-                "email_domain": obj.get("email_domain"),
             }
         )
         return _obj
