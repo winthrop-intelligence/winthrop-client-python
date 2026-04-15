@@ -189,6 +189,7 @@ __all__ = [
     "GetSchoolAlternateNames200Response",
     "GetSchoolAlternateNames404Response",
     "GetTeamScheduleFavorites200ResponseInner",
+    "GetTimeZones200Response",
     "GetWireChanges200Response",
     "HTTPValidationError",
     "HealthCheckFailure",
@@ -305,6 +306,7 @@ __all__ = [
     "TeamScheduleSearchResultAwayContracts",
     "TeamScheduleSearchResultCollection",
     "TeamScheduleSearchResultHomeContracts",
+    "TimeZoneOption",
     "UnauthorizedError",
     "UnprocessableEntity",
     "UnstractRawContractPdfTextRequest",
@@ -320,6 +322,8 @@ __all__ = [
     "UpdateSchoolGroupRequest",
     "UpdateSchoolGroupRequestSchoolGroup",
     "UpdateTeamScheduleFavoriteRequest",
+    "UpdateUserRequest",
+    "UpdateUserRequestUser",
     "UpsertTeamScheduleNoteRequest",
     "User",
     "UserActivitySummary",
@@ -777,6 +781,9 @@ from winthrop_client_python.models.get_school_alternate_names404_response import
 from winthrop_client_python.models.get_team_schedule_favorites200_response_inner import (
     GetTeamScheduleFavorites200ResponseInner as GetTeamScheduleFavorites200ResponseInner,
 )
+from winthrop_client_python.models.get_time_zones200_response import (
+    GetTimeZones200Response as GetTimeZones200Response,
+)
 from winthrop_client_python.models.get_wire_changes200_response import (
     GetWireChanges200Response as GetWireChanges200Response,
 )
@@ -1063,6 +1070,9 @@ from winthrop_client_python.models.team_schedule_search_result_collection import
 from winthrop_client_python.models.team_schedule_search_result_home_contracts import (
     TeamScheduleSearchResultHomeContracts as TeamScheduleSearchResultHomeContracts,
 )
+from winthrop_client_python.models.time_zone_option import (
+    TimeZoneOption as TimeZoneOption,
+)
 from winthrop_client_python.models.unauthorized_error import (
     UnauthorizedError as UnauthorizedError,
 )
@@ -1107,6 +1117,12 @@ from winthrop_client_python.models.update_school_group_request_school_group impo
 )
 from winthrop_client_python.models.update_team_schedule_favorite_request import (
     UpdateTeamScheduleFavoriteRequest as UpdateTeamScheduleFavoriteRequest,
+)
+from winthrop_client_python.models.update_user_request import (
+    UpdateUserRequest as UpdateUserRequest,
+)
+from winthrop_client_python.models.update_user_request_user import (
+    UpdateUserRequestUser as UpdateUserRequestUser,
 )
 from winthrop_client_python.models.upsert_team_schedule_note_request import (
     UpsertTeamScheduleNoteRequest as UpsertTeamScheduleNoteRequest,

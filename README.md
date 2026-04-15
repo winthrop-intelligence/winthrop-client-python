@@ -265,6 +265,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_team_schedule_favorites**](docs/DefaultApi.md#get_team_schedule_favorites) | **GET** /api/v1/team_schedule_favorites | 
 *DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
+*DefaultApi* | [**get_time_zones**](docs/DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones | 
 *DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
 *DefaultApi* | [**get_user_activity_summary**](docs/DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} | 
@@ -298,6 +299,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_school_group**](docs/DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} | 
 *DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
+*DefaultApi* | [**update_user**](docs/DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
 *DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
@@ -480,6 +482,7 @@ Class | Method | HTTP request | Description
  - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
  - [GetTeamScheduleFavorites200ResponseInner](docs/GetTeamScheduleFavorites200ResponseInner.md)
+ - [GetTimeZones200Response](docs/GetTimeZones200Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HealthCheckFailure](docs/HealthCheckFailure.md)
@@ -596,6 +599,7 @@ Class | Method | HTTP request | Description
  - [TeamScheduleSearchResultAwayContracts](docs/TeamScheduleSearchResultAwayContracts.md)
  - [TeamScheduleSearchResultCollection](docs/TeamScheduleSearchResultCollection.md)
  - [TeamScheduleSearchResultHomeContracts](docs/TeamScheduleSearchResultHomeContracts.md)
+ - [TimeZoneOption](docs/TimeZoneOption.md)
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
  - [UnstractRawContractPdfTextRequest](docs/UnstractRawContractPdfTextRequest.md)
@@ -611,6 +615,8 @@ Class | Method | HTTP request | Description
  - [UpdateSchoolGroupRequest](docs/UpdateSchoolGroupRequest.md)
  - [UpdateSchoolGroupRequestSchoolGroup](docs/UpdateSchoolGroupRequestSchoolGroup.md)
  - [UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
+ - [UpdateUserRequest](docs/UpdateUserRequest.md)
+ - [UpdateUserRequestUser](docs/UpdateUserRequestUser.md)
  - [UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)
