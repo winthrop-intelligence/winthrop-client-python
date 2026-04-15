@@ -177,6 +177,7 @@ docs/JobSport.md
 docs/Link.md
 docs/LinkCollection.md
 docs/LinkCollection1.md
+docs/ListNotes200ResponseInner.md
 docs/LocationInner.md
 docs/Logo.md
 docs/Meta.md
@@ -501,6 +502,7 @@ winthrop_client_python/models/job_sport.py
 winthrop_client_python/models/link.py
 winthrop_client_python/models/link_collection.py
 winthrop_client_python/models/link_collection1.py
+winthrop_client_python/models/list_notes200_response_inner.py
 winthrop_client_python/models/location_inner.py
 winthrop_client_python/models/logo.py
 winthrop_client_python/models/meta.py

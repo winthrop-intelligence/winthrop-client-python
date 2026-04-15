@@ -342,6 +342,9 @@ from winthrop_client_python.models.job_sport import JobSport
 from winthrop_client_python.models.link import Link
 from winthrop_client_python.models.link_collection import LinkCollection
 from winthrop_client_python.models.link_collection1 import LinkCollection1
+from winthrop_client_python.models.list_notes200_response_inner import (
+    ListNotes200ResponseInner,
+)
 from winthrop_client_python.models.location_inner import LocationInner
 from winthrop_client_python.models.logo import Logo
 from winthrop_client_python.models.meta import Meta

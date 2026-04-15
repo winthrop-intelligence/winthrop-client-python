@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **favorites_category_id** | **int** | Category ID (only when detailed&#x3D;1) | [optional] 
 **category_name** | **str** | Category name (only when detailed&#x3D;1) | [optional] 
 **name** | **str** | Favoritable record name (only when detailed&#x3D;1) | [optional] 
+**school_id** | **int** | School ID for FilTeam/Deal favorites (only when detailed&#x3D;1) | [optional] 
+**sport_name** | **str** | Sport name for FilTeam favorites (only when detailed&#x3D;1) | [optional] 
 
 ## Example
 

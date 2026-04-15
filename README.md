@@ -270,6 +270,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_vendor**](docs/DefaultApi.md#get_vendor) | **GET** /api/v1/vendors/{vendorId} | 
 *DefaultApi* | [**get_vendors**](docs/DefaultApi.md#get_vendors) | **GET** /api/v1/vendors | 
 *DefaultApi* | [**get_wire_changes**](docs/DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
+*DefaultApi* | [**list_notes**](docs/DefaultApi.md#list_notes) | **GET** /api/v1/notes/list | 
 *DefaultApi* | [**regenerate_raw_contract_pdf**](docs/DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
 *DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
 *DefaultApi* | [**send_otp_code**](docs/DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
@@ -489,6 +490,7 @@ Class | Method | HTTP request | Description
  - [Link](docs/Link.md)
  - [LinkCollection](docs/LinkCollection.md)
  - [LinkCollection1](docs/LinkCollection1.md)
+ - [ListNotes200ResponseInner](docs/ListNotes200ResponseInner.md)
  - [LocationInner](docs/LocationInner.md)
  - [Logo](docs/Logo.md)
  - [Meta](docs/Meta.md)

@@ -205,6 +205,7 @@ __all__ = [
     "Link",
     "LinkCollection",
     "LinkCollection1",
+    "ListNotes200ResponseInner",
     "LocationInner",
     "Logo",
     "Meta",
@@ -799,6 +800,9 @@ from winthrop_client_python.models.link_collection import (
 )
 from winthrop_client_python.models.link_collection1 import (
     LinkCollection1 as LinkCollection1,
+)
+from winthrop_client_python.models.list_notes200_response_inner import (
+    ListNotes200ResponseInner as ListNotes200ResponseInner,
 )
 from winthrop_client_python.models.location_inner import LocationInner as LocationInner
 from winthrop_client_python.models.logo import Logo as Logo
