@@ -339,14 +339,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_edit_account_user.py
-test/test_edit_account_user_response.py
-test/test_get_account_user_activation200_response.py
-test/test_update_account_user_activation200_response.py
-test/test_update_account_user_activation_request.py
-test/test_update_account_user_activation_request_user.py
-test/test_update_account_user_request.py
-test/test_update_account_user_request_user.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
