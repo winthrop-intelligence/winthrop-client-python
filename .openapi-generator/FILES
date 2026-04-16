@@ -331,12 +331,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_account_user422_response.py
-test/test_create_account_user_request.py
-test/test_create_account_user_request_user.py
-test/test_new_account_user_response.py
-test/test_role_option.py
-test/test_sport_option.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
