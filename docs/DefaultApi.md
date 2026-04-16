@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 
 [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
 [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
-[**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
 [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows | 
 [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
 [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
@@ -27,7 +26,6 @@ Method | HTTP request | Description
 [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
-[**delete_account_user**](DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
 [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
@@ -45,7 +43,7 @@ Method | HTTP request | Description
 [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
-[**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
+[**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
@@ -126,7 +124,6 @@ Method | HTTP request | Description
 [**get_lad_filter_options**](DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options | 
 [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 [**get_ncaa_financial_report_statuses**](DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
-[**get_new_account_user**](DefaultApi.md#get_new_account_user) | **GET** /api/v1/account_users/new | 
 [**get_news_feed**](DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed
 [**get_note**](DefaultApi.md#get_note) | **GET** /api/v1/notes | 
 [**get_position**](DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} | 
@@ -649,89 +646,6 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **401** | Unauthorized |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **create_account_user**
-> AccountUser create_account_user(create_account_user_request)
-
-Create a new user for the current account. The email prefix is combined with the account email domain. The new user receives an invitation email.
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.account_user import AccountUser
-from winthrop_client_python.models.create_account_user_request import CreateAccountUserRequest
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    create_account_user_request = winthrop_client_python.CreateAccountUserRequest() # CreateAccountUserRequest | 
-
-    try:
-        api_response = api_instance.create_account_user(create_account_user_request)
-        print("The response of DefaultApi->create_account_user:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->create_account_user: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_account_user_request** | [**CreateAccountUserRequest**](CreateAccountUserRequest.md)|  | 
-
-### Return type
-
-[**AccountUser**](AccountUser.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | User created |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden - requires account admin role |  -  |
-**422** | Validation errors |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2106,88 +2020,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **delete_account_user**
-> DeleteAccountUser200Response delete_account_user(account_user_id)
-
-Delete a user from the current account
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.delete_account_user200_response import DeleteAccountUser200Response
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    account_user_id = 56 # int | ID of the user to delete
-
-    try:
-        api_response = api_instance.delete_account_user(account_user_id)
-        print("The response of DefaultApi->delete_account_user:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->delete_account_user: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_user_id** | **int**| ID of the user to delete | 
-
-### Return type
-
-[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | User deleted |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden - requires account admin role |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **delete_cashflow**
 > delete_cashflow(cashflow_id)
 
@@ -2978,7 +2810,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_note**
-> DeleteAccountUser200Response delete_note(id)
+> DeleteNote200Response delete_note(id)
 
 Delete a note
 
@@ -2989,7 +2821,7 @@ Delete a note
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.delete_account_user200_response import DeleteAccountUser200Response
+from winthrop_client_python.models.delete_note200_response import DeleteNote200Response
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -3037,7 +2869,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+[**DeleteNote200Response**](DeleteNote200Response.md)
 
 ### Authorization
 
@@ -3214,7 +3046,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_school_group**
-> DeleteAccountUser200Response delete_school_group(school_group_id)
+> DeleteNote200Response delete_school_group(school_group_id)
 
 Delete a custom school group
 
@@ -3225,7 +3057,7 @@ Delete a custom school group
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.delete_account_user200_response import DeleteAccountUser200Response
+from winthrop_client_python.models.delete_note200_response import DeleteNote200Response
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -3273,7 +3105,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+[**DeleteNote200Response**](DeleteNote200Response.md)
 
 ### Authorization
 
@@ -3373,7 +3205,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_team_schedule_favorite**
-> DeleteAccountUser200Response delete_team_schedule_favorite(id)
+> DeleteNote200Response delete_team_schedule_favorite(id)
 
 Remove a FilTeam favorite
 
@@ -3384,7 +3216,7 @@ Remove a FilTeam favorite
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.delete_account_user200_response import DeleteAccountUser200Response
+from winthrop_client_python.models.delete_note200_response import DeleteNote200Response
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -3432,7 +3264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+[**DeleteNote200Response**](DeleteNote200Response.md)
 
 ### Authorization
 
@@ -3531,10 +3363,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_account_users**
-> AccountUsersResponse get_account_users()
+# **get_account**
+> AccountDetail get_account(id)
 
-Retrieve all users for the current user's account with their computed access permissions
+Retrieve an account with subscriptions, invoices, and billing addresses
 
 ### Example
 
@@ -3543,7 +3375,7 @@ Retrieve all users for the current user's account with their computed access per
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.account_users_response import AccountUsersResponse
+from winthrop_client_python.models.account_detail import AccountDetail
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -3570,24 +3402,28 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
 
     try:
-        api_response = api_instance.get_account_users()
-        print("The response of DefaultApi->get_account_users:\n")
+        api_response = api_instance.get_account(id)
+        print("The response of DefaultApi->get_account:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->get_account_users: %s\n" % e)
+        print("Exception when calling DefaultApi->get_account: %s\n" % e)
 ```
 
 
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
 
 ### Return type
 
-[**AccountUsersResponse**](AccountUsersResponse.md)
+[**AccountDetail**](AccountDetail.md)
 
 ### Authorization
 
@@ -3602,9 +3438,9 @@ This endpoint does not need any parameter.
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Account users retrieved |  -  |
+**200** | Account found |  -  |
 **401** | Unauthorized |  -  |
-**403** | Forbidden - requires account admin role |  -  |
+**403** | Forbidden - user is not an account admin |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10185,83 +10021,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_new_account_user**
-> NewAccountUserResponse get_new_account_user()
-
-Retrieve form metadata for creating a new account user including available role options based on subscription, schedulable sports, and email domain
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.new_account_user_response import NewAccountUserResponse
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-
-    try:
-        api_response = api_instance.get_new_account_user()
-        print("The response of DefaultApi->get_new_account_user:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_new_account_user: %s\n" % e)
-```
-
-
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**NewAccountUserResponse**](NewAccountUserResponse.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | New account user form data retrieved |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden - requires account admin role |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_news_feed**
 > NewsFeed get_news_feed(news_feed_id)
 
@@ -16286,7 +16045,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_game_contract**
-> DeleteAccountUser200Response update_game_contract(game_contract_id, game_contract_home_school_id=game_contract_home_school_id, game_contract_away_school_id=game_contract_away_school_id, game_contract_sport_id=game_contract_sport_id, game_contract_game_type=game_contract_game_type, game_contract_game_date=game_contract_game_date, game_contract_game_date_tbd=game_contract_game_date_tbd, game_contract_off_site_location=game_contract_off_site_location, game_contract_comp_dollars=game_contract_comp_dollars, game_contract_comp_tbd=game_contract_comp_tbd, game_contract_variable=game_contract_variable, game_contract_cancel_fee_dollars=game_contract_cancel_fee_dollars, game_contract_cancelled=game_contract_cancelled, game_contract_verified=game_contract_verified, game_contract_signed_on=game_contract_signed_on, raw_contract_file=raw_contract_file)
+> DeleteNote200Response update_game_contract(game_contract_id, game_contract_home_school_id=game_contract_home_school_id, game_contract_away_school_id=game_contract_away_school_id, game_contract_sport_id=game_contract_sport_id, game_contract_game_type=game_contract_game_type, game_contract_game_date=game_contract_game_date, game_contract_game_date_tbd=game_contract_game_date_tbd, game_contract_off_site_location=game_contract_off_site_location, game_contract_comp_dollars=game_contract_comp_dollars, game_contract_comp_tbd=game_contract_comp_tbd, game_contract_variable=game_contract_variable, game_contract_cancel_fee_dollars=game_contract_cancel_fee_dollars, game_contract_cancelled=game_contract_cancelled, game_contract_verified=game_contract_verified, game_contract_signed_on=game_contract_signed_on, raw_contract_file=raw_contract_file)
 
 Update a GameContract
 
@@ -16297,7 +16056,7 @@ Update a GameContract
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.delete_account_user200_response import DeleteAccountUser200Response
+from winthrop_client_python.models.delete_note200_response import DeleteNote200Response
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -16375,7 +16134,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+[**DeleteNote200Response**](DeleteNote200Response.md)
 
 ### Authorization
 
