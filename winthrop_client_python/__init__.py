@@ -32,10 +32,9 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
-    "AccountBillingAddress",
-    "AccountDetail",
-    "AccountInvoice",
-    "AccountSubscription",
+    "AccountInfo",
+    "AccountUser",
+    "AccountUsersResponse",
     "AdminCompensationSubdivision",
     "Administrator",
     "AdministratorCollection",
@@ -122,6 +121,9 @@ __all__ = [
     "ContractCollection",
     "CoworkerEntry",
     "CoworkerTenure",
+    "CreateAccountUser422Response",
+    "CreateAccountUserRequest",
+    "CreateAccountUserRequestUser",
     "CreateFavorite201Response",
     "CreateFavoriteRequest",
     "CreateFavoritesCategoryRequest",
@@ -143,9 +145,9 @@ __all__ = [
     "DealSearchResultCollection",
     "DealStatus",
     "DealStatusCollection",
+    "DeleteAccountUser200Response",
     "DeleteFavorite200Response",
     "DeleteGamePostSearch200Response",
-    "DeleteNote200Response",
     "DepartmentSearchResult",
     "DepartmentSearchResultCollection",
     "DepartmentSearchResultDepartment",
@@ -157,6 +159,8 @@ __all__ = [
     "Division",
     "DivisionCollection",
     "DossierReportResponse",
+    "EditAccountUser",
+    "EditAccountUserResponse",
     "FilterPositionType",
     "Filters",
     "FinancialQc",
@@ -185,6 +189,7 @@ __all__ = [
     "GamePostSearchResultCollection",
     "GameType",
     "GeoRegion",
+    "GetAccountUserActivation200Response",
     "GetFavorites200ResponseInner",
     "GetFavoritesCategories200ResponseInner",
     "GetFilterOptions200Response",
@@ -218,6 +223,7 @@ __all__ = [
     "Meta",
     "NcaaFinancialReportStatus",
     "NcaaFinancialReportStatusCollection",
+    "NewAccountUserResponse",
     "NewsFeed",
     "NewsFeedCollection",
     "Note",
@@ -244,6 +250,7 @@ __all__ = [
     "RegenerateRawContractPdf200Response",
     "RequestedItem",
     "RequestedItemCollection",
+    "RoleOption",
     "School",
     "SchoolCollection",
     "SchoolContractEntry",
@@ -274,6 +281,7 @@ __all__ = [
     "SportCompensationRankingsSchoolsInner",
     "SportCompensationResponse",
     "SportCompensationSubdivision",
+    "SportOption",
     "Subdivision",
     "SubdivisionCollection",
     "Subscription",
@@ -314,13 +322,17 @@ __all__ = [
     "UnauthorizedError",
     "UnprocessableEntity",
     "UnstractRawContractPdfTextRequest",
+    "UpdateAccountUserActivation200Response",
+    "UpdateAccountUserActivationRequest",
+    "UpdateAccountUserActivationRequestUser",
+    "UpdateAccountUserRequest",
+    "UpdateAccountUserRequestUser",
     "UpdateFavoriteRequest",
     "UpdateFavoritesCategoryRequest",
     "UpdateGamePostSearchRequest",
     "UpdateGamePostSearchRequestGamePost",
     "UpdateNoteRequest",
     "UpdatePasswordReset200Response",
-    "UpdatePasswordReset400Response",
     "UpdatePasswordResetRequest",
     "UpdatePasswordResetRequestUser",
     "UpdateSchoolGroupRequest",
@@ -370,15 +382,10 @@ from winthrop_client_python.exceptions import ApiAttributeError as ApiAttributeE
 from winthrop_client_python.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from winthrop_client_python.models.account_billing_address import (
-    AccountBillingAddress as AccountBillingAddress,
-)
-from winthrop_client_python.models.account_detail import AccountDetail as AccountDetail
-from winthrop_client_python.models.account_invoice import (
-    AccountInvoice as AccountInvoice,
-)
-from winthrop_client_python.models.account_subscription import (
-    AccountSubscription as AccountSubscription,
+from winthrop_client_python.models.account_info import AccountInfo as AccountInfo
+from winthrop_client_python.models.account_user import AccountUser as AccountUser
+from winthrop_client_python.models.account_users_response import (
+    AccountUsersResponse as AccountUsersResponse,
 )
 from winthrop_client_python.models.admin_compensation_subdivision import (
     AdminCompensationSubdivision as AdminCompensationSubdivision,
@@ -608,6 +615,15 @@ from winthrop_client_python.models.coworker_entry import CoworkerEntry as Cowork
 from winthrop_client_python.models.coworker_tenure import (
     CoworkerTenure as CoworkerTenure,
 )
+from winthrop_client_python.models.create_account_user422_response import (
+    CreateAccountUser422Response as CreateAccountUser422Response,
+)
+from winthrop_client_python.models.create_account_user_request import (
+    CreateAccountUserRequest as CreateAccountUserRequest,
+)
+from winthrop_client_python.models.create_account_user_request_user import (
+    CreateAccountUserRequestUser as CreateAccountUserRequestUser,
+)
 from winthrop_client_python.models.create_favorite201_response import (
     CreateFavorite201Response as CreateFavorite201Response,
 )
@@ -665,14 +681,14 @@ from winthrop_client_python.models.deal_status import DealStatus as DealStatus
 from winthrop_client_python.models.deal_status_collection import (
     DealStatusCollection as DealStatusCollection,
 )
+from winthrop_client_python.models.delete_account_user200_response import (
+    DeleteAccountUser200Response as DeleteAccountUser200Response,
+)
 from winthrop_client_python.models.delete_favorite200_response import (
     DeleteFavorite200Response as DeleteFavorite200Response,
 )
 from winthrop_client_python.models.delete_game_post_search200_response import (
     DeleteGamePostSearch200Response as DeleteGamePostSearch200Response,
-)
-from winthrop_client_python.models.delete_note200_response import (
-    DeleteNote200Response as DeleteNote200Response,
 )
 from winthrop_client_python.models.department_search_result import (
     DepartmentSearchResult as DepartmentSearchResult,
@@ -704,6 +720,12 @@ from winthrop_client_python.models.division_collection import (
 )
 from winthrop_client_python.models.dossier_report_response import (
     DossierReportResponse as DossierReportResponse,
+)
+from winthrop_client_python.models.edit_account_user import (
+    EditAccountUser as EditAccountUser,
+)
+from winthrop_client_python.models.edit_account_user_response import (
+    EditAccountUserResponse as EditAccountUserResponse,
 )
 from winthrop_client_python.models.filter_position_type import (
     FilterPositionType as FilterPositionType,
@@ -771,6 +793,9 @@ from winthrop_client_python.models.game_post_search_result_collection import (
 )
 from winthrop_client_python.models.game_type import GameType as GameType
 from winthrop_client_python.models.geo_region import GeoRegion as GeoRegion
+from winthrop_client_python.models.get_account_user_activation200_response import (
+    GetAccountUserActivation200Response as GetAccountUserActivation200Response,
+)
 from winthrop_client_python.models.get_favorites200_response_inner import (
     GetFavorites200ResponseInner as GetFavorites200ResponseInner,
 )
@@ -844,6 +869,9 @@ from winthrop_client_python.models.ncaa_financial_report_status import (
 from winthrop_client_python.models.ncaa_financial_report_status_collection import (
     NcaaFinancialReportStatusCollection as NcaaFinancialReportStatusCollection,
 )
+from winthrop_client_python.models.new_account_user_response import (
+    NewAccountUserResponse as NewAccountUserResponse,
+)
 from winthrop_client_python.models.news_feed import NewsFeed as NewsFeed
 from winthrop_client_python.models.news_feed_collection import (
     NewsFeedCollection as NewsFeedCollection,
@@ -908,6 +936,7 @@ from winthrop_client_python.models.requested_item import RequestedItem as Reques
 from winthrop_client_python.models.requested_item_collection import (
     RequestedItemCollection as RequestedItemCollection,
 )
+from winthrop_client_python.models.role_option import RoleOption as RoleOption
 from winthrop_client_python.models.school import School as School
 from winthrop_client_python.models.school_collection import (
     SchoolCollection as SchoolCollection,
@@ -984,6 +1013,7 @@ from winthrop_client_python.models.sport_compensation_response import (
 from winthrop_client_python.models.sport_compensation_subdivision import (
     SportCompensationSubdivision as SportCompensationSubdivision,
 )
+from winthrop_client_python.models.sport_option import SportOption as SportOption
 from winthrop_client_python.models.subdivision import Subdivision as Subdivision
 from winthrop_client_python.models.subdivision_collection import (
     SubdivisionCollection as SubdivisionCollection,
@@ -1096,6 +1126,21 @@ from winthrop_client_python.models.unprocessable_entity import (
 from winthrop_client_python.models.unstract_raw_contract_pdf_text_request import (
     UnstractRawContractPdfTextRequest as UnstractRawContractPdfTextRequest,
 )
+from winthrop_client_python.models.update_account_user_activation200_response import (
+    UpdateAccountUserActivation200Response as UpdateAccountUserActivation200Response,
+)
+from winthrop_client_python.models.update_account_user_activation_request import (
+    UpdateAccountUserActivationRequest as UpdateAccountUserActivationRequest,
+)
+from winthrop_client_python.models.update_account_user_activation_request_user import (
+    UpdateAccountUserActivationRequestUser as UpdateAccountUserActivationRequestUser,
+)
+from winthrop_client_python.models.update_account_user_request import (
+    UpdateAccountUserRequest as UpdateAccountUserRequest,
+)
+from winthrop_client_python.models.update_account_user_request_user import (
+    UpdateAccountUserRequestUser as UpdateAccountUserRequestUser,
+)
 from winthrop_client_python.models.update_favorite_request import (
     UpdateFavoriteRequest as UpdateFavoriteRequest,
 )
@@ -1113,9 +1158,6 @@ from winthrop_client_python.models.update_note_request import (
 )
 from winthrop_client_python.models.update_password_reset200_response import (
     UpdatePasswordReset200Response as UpdatePasswordReset200Response,
-)
-from winthrop_client_python.models.update_password_reset400_response import (
-    UpdatePasswordReset400Response as UpdatePasswordReset400Response,
 )
 from winthrop_client_python.models.update_password_reset_request import (
     UpdatePasswordResetRequest as UpdatePasswordResetRequest,
