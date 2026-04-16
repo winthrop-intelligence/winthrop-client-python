@@ -102,6 +102,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**average_school_comp**](docs/DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 
 *DefaultApi* | [**average_subdivision_comp**](docs/DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
 *DefaultApi* | [**compare_coli**](docs/DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
+*DefaultApi* | [**create_account_user**](docs/DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
 *DefaultApi* | [**create_cashflow**](docs/DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows | 
 *DefaultApi* | [**create_coach**](docs/DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
 *DefaultApi* | [**create_conference**](docs/DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
@@ -218,6 +219,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_lad_filter_options**](docs/DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options | 
 *DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
+*DefaultApi* | [**get_new_account_user**](docs/DefaultApi.md#get_new_account_user) | **GET** /api/v1/account_users/new | 
 *DefaultApi* | [**get_news_feed**](docs/DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed
 *DefaultApi* | [**get_note**](docs/DefaultApi.md#get_note) | **GET** /api/v1/notes | 
 *DefaultApi* | [**get_position**](docs/DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} | 
@@ -416,6 +418,9 @@ Class | Method | HTTP request | Description
  - [ContractCollection](docs/ContractCollection.md)
  - [CoworkerEntry](docs/CoworkerEntry.md)
  - [CoworkerTenure](docs/CoworkerTenure.md)
+ - [CreateAccountUser422Response](docs/CreateAccountUser422Response.md)
+ - [CreateAccountUserRequest](docs/CreateAccountUserRequest.md)
+ - [CreateAccountUserRequestUser](docs/CreateAccountUserRequestUser.md)
  - [CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
@@ -512,6 +517,7 @@ Class | Method | HTTP request | Description
  - [Meta](docs/Meta.md)
  - [NcaaFinancialReportStatus](docs/NcaaFinancialReportStatus.md)
  - [NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
+ - [NewAccountUserResponse](docs/NewAccountUserResponse.md)
  - [NewsFeed](docs/NewsFeed.md)
  - [NewsFeedCollection](docs/NewsFeedCollection.md)
  - [Note](docs/Note.md)
@@ -538,6 +544,7 @@ Class | Method | HTTP request | Description
  - [RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
+ - [RoleOption](docs/RoleOption.md)
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
  - [SchoolContractEntry](docs/SchoolContractEntry.md)
@@ -568,6 +575,7 @@ Class | Method | HTTP request | Description
  - [SportCompensationRankingsSchoolsInner](docs/SportCompensationRankingsSchoolsInner.md)
  - [SportCompensationResponse](docs/SportCompensationResponse.md)
  - [SportCompensationSubdivision](docs/SportCompensationSubdivision.md)
+ - [SportOption](docs/SportOption.md)
  - [Subdivision](docs/Subdivision.md)
  - [SubdivisionCollection](docs/SubdivisionCollection.md)
  - [Subscription](docs/Subscription.md)
@@ -614,7 +622,6 @@ Class | Method | HTTP request | Description
  - [UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
  - [UpdateNoteRequest](docs/UpdateNoteRequest.md)
  - [UpdatePasswordReset200Response](docs/UpdatePasswordReset200Response.md)
- - [UpdatePasswordReset400Response](docs/UpdatePasswordReset400Response.md)
  - [UpdatePasswordResetRequest](docs/UpdatePasswordResetRequest.md)
  - [UpdatePasswordResetRequestUser](docs/UpdatePasswordResetRequestUser.md)
  - [UpdateSchoolGroupRequest](docs/UpdateSchoolGroupRequest.md)
