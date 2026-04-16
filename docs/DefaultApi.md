@@ -45,7 +45,6 @@ Method | HTTP request | Description
 [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
-[**get_account_user**](DefaultApi.md#get_account_user) | **GET** /api/v1/account_users/{accountUserId} | 
 [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
 [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
@@ -94,6 +93,7 @@ Method | HTTP request | Description
 [**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches | 
 [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
+[**get_edit_account_user**](DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit | 
 [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
 [**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
 [**get_filter_options**](DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options | 
@@ -3531,88 +3531,6 @@ void (empty response body)
 |-------------|-------------|------------------|
 **204** | Note deleted |  -  |
 **401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_account_user**
-> EditAccountUserResponse get_account_user(account_user_id)
-
-Retrieve a single account user with their current roles, sports, and form metadata for editing
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.edit_account_user_response import EditAccountUserResponse
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    account_user_id = 56 # int | ID of the user to retrieve
-
-    try:
-        api_response = api_instance.get_account_user(account_user_id)
-        print("The response of DefaultApi->get_account_user:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_account_user: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_user_id** | **int**| ID of the user to retrieve | 
-
-### Return type
-
-[**EditAccountUserResponse**](EditAccountUserResponse.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Account user edit data retrieved |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden - requires account admin role |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -7568,6 +7486,88 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Divisions were found |  -  |
 **401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_edit_account_user**
+> EditAccountUserResponse get_edit_account_user(account_user_id)
+
+Retrieve a single account user with their current roles, sports, and form metadata for editing
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.edit_account_user_response import EditAccountUserResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    account_user_id = 56 # int | ID of the user to edit
+
+    try:
+        api_response = api_instance.get_edit_account_user(account_user_id)
+        print("The response of DefaultApi->get_edit_account_user:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_edit_account_user: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_user_id** | **int**| ID of the user to edit | 
+
+### Return type
+
+[**EditAccountUserResponse**](EditAccountUserResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Account user edit data retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - requires account admin role |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
