@@ -1,6 +1,9 @@
 .gitlab-ci.yml
 .travis.yml
 README.md
+docs/AccountInfo.md
+docs/AccountUser.md
+docs/AccountUsersResponse.md
 docs/AdminCompensationSubdivision.md
 docs/Administrator.md
 docs/AdministratorCollection.md
@@ -109,9 +112,9 @@ docs/DealSearchResultCollection.md
 docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
+docs/DeleteAccountUser200Response.md
 docs/DeleteFavorite200Response.md
 docs/DeleteGamePostSearch200Response.md
-docs/DeleteNote200Response.md
 docs/DepartmentSearchResult.md
 docs/DepartmentSearchResultCollection.md
 docs/DepartmentSearchResultDepartment.md
@@ -323,6 +326,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_account_info.py
+test/test_account_user.py
+test/test_account_users_response.py
+test/test_delete_account_user200_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -337,6 +344,9 @@ winthrop_client_python/api_response.py
 winthrop_client_python/configuration.py
 winthrop_client_python/exceptions.py
 winthrop_client_python/models/__init__.py
+winthrop_client_python/models/account_info.py
+winthrop_client_python/models/account_user.py
+winthrop_client_python/models/account_users_response.py
 winthrop_client_python/models/admin_compensation_subdivision.py
 winthrop_client_python/models/administrator.py
 winthrop_client_python/models/administrator_collection.py
@@ -444,9 +454,9 @@ winthrop_client_python/models/deal_search_result.py
 winthrop_client_python/models/deal_search_result_collection.py
 winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
+winthrop_client_python/models/delete_account_user200_response.py
 winthrop_client_python/models/delete_favorite200_response.py
 winthrop_client_python/models/delete_game_post_search200_response.py
-winthrop_client_python/models/delete_note200_response.py
 winthrop_client_python/models/department_search_result.py
 winthrop_client_python/models/department_search_result_collection.py
 winthrop_client_python/models/department_search_result_department.py

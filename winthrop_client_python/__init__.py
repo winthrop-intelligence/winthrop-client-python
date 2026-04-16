@@ -32,6 +32,9 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
+    "AccountInfo",
+    "AccountUser",
+    "AccountUsersResponse",
     "AdminCompensationSubdivision",
     "Administrator",
     "AdministratorCollection",
@@ -139,9 +142,9 @@ __all__ = [
     "DealSearchResultCollection",
     "DealStatus",
     "DealStatusCollection",
+    "DeleteAccountUser200Response",
     "DeleteFavorite200Response",
     "DeleteGamePostSearch200Response",
-    "DeleteNote200Response",
     "DepartmentSearchResult",
     "DepartmentSearchResultCollection",
     "DepartmentSearchResultDepartment",
@@ -366,6 +369,11 @@ from winthrop_client_python.exceptions import ApiAttributeError as ApiAttributeE
 from winthrop_client_python.exceptions import ApiException as ApiException
 
 # import models into sdk package
+from winthrop_client_python.models.account_info import AccountInfo as AccountInfo
+from winthrop_client_python.models.account_user import AccountUser as AccountUser
+from winthrop_client_python.models.account_users_response import (
+    AccountUsersResponse as AccountUsersResponse,
+)
 from winthrop_client_python.models.admin_compensation_subdivision import (
     AdminCompensationSubdivision as AdminCompensationSubdivision,
 )
@@ -651,14 +659,14 @@ from winthrop_client_python.models.deal_status import DealStatus as DealStatus
 from winthrop_client_python.models.deal_status_collection import (
     DealStatusCollection as DealStatusCollection,
 )
+from winthrop_client_python.models.delete_account_user200_response import (
+    DeleteAccountUser200Response as DeleteAccountUser200Response,
+)
 from winthrop_client_python.models.delete_favorite200_response import (
     DeleteFavorite200Response as DeleteFavorite200Response,
 )
 from winthrop_client_python.models.delete_game_post_search200_response import (
     DeleteGamePostSearch200Response as DeleteGamePostSearch200Response,
-)
-from winthrop_client_python.models.delete_note200_response import (
-    DeleteNote200Response as DeleteNote200Response,
 )
 from winthrop_client_python.models.department_search_result import (
     DepartmentSearchResult as DepartmentSearchResult,

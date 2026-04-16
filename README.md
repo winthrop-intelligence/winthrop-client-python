@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_school_group**](docs/DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 *DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 *DefaultApi* | [**create_team_schedule_favorite**](docs/DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
+*DefaultApi* | [**delete_account_user**](docs/DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
 *DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 *DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
@@ -136,6 +137,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 *DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
+*DefaultApi* | [**get_account_users**](docs/DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 *DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 *DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
@@ -325,6 +327,9 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AccountInfo](docs/AccountInfo.md)
+ - [AccountUser](docs/AccountUser.md)
+ - [AccountUsersResponse](docs/AccountUsersResponse.md)
  - [AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
  - [Administrator](docs/Administrator.md)
  - [AdministratorCollection](docs/AdministratorCollection.md)
@@ -432,9 +437,9 @@ Class | Method | HTTP request | Description
  - [DealSearchResultCollection](docs/DealSearchResultCollection.md)
  - [DealStatus](docs/DealStatus.md)
  - [DealStatusCollection](docs/DealStatusCollection.md)
+ - [DeleteAccountUser200Response](docs/DeleteAccountUser200Response.md)
  - [DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
  - [DeleteGamePostSearch200Response](docs/DeleteGamePostSearch200Response.md)
- - [DeleteNote200Response](docs/DeleteNote200Response.md)
  - [DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
