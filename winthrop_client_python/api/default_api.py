@@ -6791,7 +6791,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            "files": "csv",
+            "files[]": "csv",
         }
 
         _path_params: Dict[str, str] = {}
@@ -6808,7 +6808,7 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         if files is not None:
-            _files["files"] = files
+            _files["files[]"] = files
         # process the body parameter
 
         # set the HTTP header `Accept`
