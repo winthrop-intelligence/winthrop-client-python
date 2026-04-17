@@ -316,6 +316,7 @@ docs/UpdateSchoolGroupRequestSchoolGroup.md
 docs/UpdateTeamScheduleFavoriteRequest.md
 docs/UpdateUserRequest.md
 docs/UpdateUserRequestUser.md
+docs/UploadDetail.md
 docs/UploadItem.md
 docs/UploadsResponse.md
 docs/UpsertTeamScheduleNoteRequest.md
@@ -342,9 +343,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_upload201_response.py
-test/test_upload_item.py
-test/test_uploads_response.py
+test/test_upload_detail.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -668,6 +667,7 @@ winthrop_client_python/models/update_school_group_request_school_group.py
 winthrop_client_python/models/update_team_schedule_favorite_request.py
 winthrop_client_python/models/update_user_request.py
 winthrop_client_python/models/update_user_request_user.py
+winthrop_client_python/models/upload_detail.py
 winthrop_client_python/models/upload_item.py
 winthrop_client_python/models/uploads_response.py
 winthrop_client_python/models/upsert_team_schedule_note_request.py

@@ -614,6 +614,7 @@ from winthrop_client_python.models.update_team_schedule_favorite_request import 
 )
 from winthrop_client_python.models.update_user_request import UpdateUserRequest
 from winthrop_client_python.models.update_user_request_user import UpdateUserRequestUser
+from winthrop_client_python.models.upload_detail import UploadDetail
 from winthrop_client_python.models.upload_item import UploadItem
 from winthrop_client_python.models.uploads_response import UploadsResponse
 from winthrop_client_python.models.upsert_team_schedule_note_request import (

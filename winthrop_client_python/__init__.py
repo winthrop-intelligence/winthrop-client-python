@@ -341,6 +341,7 @@ __all__ = [
     "UpdateTeamScheduleFavoriteRequest",
     "UpdateUserRequest",
     "UpdateUserRequestUser",
+    "UploadDetail",
     "UploadItem",
     "UploadsResponse",
     "UpsertTeamScheduleNoteRequest",
@@ -1186,6 +1187,7 @@ from winthrop_client_python.models.update_user_request import (
 from winthrop_client_python.models.update_user_request_user import (
     UpdateUserRequestUser as UpdateUserRequestUser,
 )
+from winthrop_client_python.models.upload_detail import UploadDetail as UploadDetail
 from winthrop_client_python.models.upload_item import UploadItem as UploadItem
 from winthrop_client_python.models.uploads_response import (
     UploadsResponse as UploadsResponse,

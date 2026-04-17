@@ -274,6 +274,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
 *DefaultApi* | [**get_time_zones**](docs/DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones | 
+*DefaultApi* | [**get_upload**](docs/DefaultApi.md#get_upload) | **GET** /api/v1/uploads/{uploadId} | 
+*DefaultApi* | [**get_upload_file**](docs/DefaultApi.md#get_upload_file) | **GET** /api/v1/uploads/{uploadId}/file | 
 *DefaultApi* | [**get_uploads**](docs/DefaultApi.md#get_uploads) | **GET** /api/v1/uploads | 
 *DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
@@ -645,6 +647,7 @@ Class | Method | HTTP request | Description
  - [UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UpdateUserRequestUser](docs/UpdateUserRequestUser.md)
+ - [UploadDetail](docs/UploadDetail.md)
  - [UploadItem](docs/UploadItem.md)
  - [UploadsResponse](docs/UploadsResponse.md)
  - [UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
