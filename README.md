@@ -102,6 +102,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**average_school_comp**](docs/DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 
 *DefaultApi* | [**average_subdivision_comp**](docs/DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
 *DefaultApi* | [**compare_coli**](docs/DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
+*DefaultApi* | [**create_account_user**](docs/DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
 *DefaultApi* | [**create_cashflow**](docs/DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows | 
 *DefaultApi* | [**create_coach**](docs/DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
 *DefaultApi* | [**create_conference**](docs/DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
@@ -119,6 +120,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_school_group**](docs/DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 *DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 *DefaultApi* | [**create_team_schedule_favorite**](docs/DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
+*DefaultApi* | [**delete_account_user**](docs/DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
 *DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 *DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
@@ -137,6 +139,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 *DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**get_account**](docs/DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
+*DefaultApi* | [**get_account_user_activation**](docs/DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
+*DefaultApi* | [**get_account_users**](docs/DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 *DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 *DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
@@ -183,6 +187,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_department_searches**](docs/DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches | 
 *DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 *DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
+*DefaultApi* | [**get_edit_account_user**](docs/DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit | 
 *DefaultApi* | [**get_favorites**](docs/DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
 *DefaultApi* | [**get_favorites_categories**](docs/DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
 *DefaultApi* | [**get_filter_options**](docs/DefaultApi.md#get_filter_options) | **GET** /api/v1/filter_options | 
@@ -217,6 +222,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_lad_filter_options**](docs/DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options | 
 *DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
 *DefaultApi* | [**get_ncaa_financial_report_statuses**](docs/DefaultApi.md#get_ncaa_financial_report_statuses) | **GET** /api/v1/ncaa_financial_report_statuses | 
+*DefaultApi* | [**get_new_account_user**](docs/DefaultApi.md#get_new_account_user) | **GET** /api/v1/account_users/new | 
 *DefaultApi* | [**get_news_feed**](docs/DefaultApi.md#get_news_feed) | **GET** /wi_jobs/news_feeds/{newsFeedId} | Get a news feed
 *DefaultApi* | [**get_note**](docs/DefaultApi.md#get_note) | **GET** /api/v1/notes | 
 *DefaultApi* | [**get_position**](docs/DefaultApi.md#get_position) | **GET** /api/v1/positions/{positionId} | 
@@ -281,6 +287,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
 *DefaultApi* | [**send_otp_code**](docs/DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
 *DefaultApi* | [**unstract_raw_contract_pdf_text**](docs/DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
+*DefaultApi* | [**update_account_user**](docs/DefaultApi.md#update_account_user) | **PATCH** /api/v1/account_users/{accountUserId} | 
+*DefaultApi* | [**update_account_user_activation**](docs/DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation | 
 *DefaultApi* | [**update_cashflow**](docs/DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} | 
 *DefaultApi* | [**update_coach**](docs/DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
 *DefaultApi* | [**update_compensation**](docs/DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
@@ -328,8 +336,11 @@ Class | Method | HTTP request | Description
 
  - [AccountBillingAddress](docs/AccountBillingAddress.md)
  - [AccountDetail](docs/AccountDetail.md)
+ - [AccountInfo](docs/AccountInfo.md)
  - [AccountInvoice](docs/AccountInvoice.md)
  - [AccountSubscription](docs/AccountSubscription.md)
+ - [AccountUser](docs/AccountUser.md)
+ - [AccountUsersResponse](docs/AccountUsersResponse.md)
  - [AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
  - [Administrator](docs/Administrator.md)
  - [AdministratorCollection](docs/AdministratorCollection.md)
@@ -416,6 +427,9 @@ Class | Method | HTTP request | Description
  - [ContractCollection](docs/ContractCollection.md)
  - [CoworkerEntry](docs/CoworkerEntry.md)
  - [CoworkerTenure](docs/CoworkerTenure.md)
+ - [CreateAccountUser422Response](docs/CreateAccountUser422Response.md)
+ - [CreateAccountUserRequest](docs/CreateAccountUserRequest.md)
+ - [CreateAccountUserRequestUser](docs/CreateAccountUserRequestUser.md)
  - [CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
@@ -437,9 +451,9 @@ Class | Method | HTTP request | Description
  - [DealSearchResultCollection](docs/DealSearchResultCollection.md)
  - [DealStatus](docs/DealStatus.md)
  - [DealStatusCollection](docs/DealStatusCollection.md)
+ - [DeleteAccountUser200Response](docs/DeleteAccountUser200Response.md)
  - [DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
  - [DeleteGamePostSearch200Response](docs/DeleteGamePostSearch200Response.md)
- - [DeleteNote200Response](docs/DeleteNote200Response.md)
  - [DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
@@ -451,6 +465,8 @@ Class | Method | HTTP request | Description
  - [Division](docs/Division.md)
  - [DivisionCollection](docs/DivisionCollection.md)
  - [DossierReportResponse](docs/DossierReportResponse.md)
+ - [EditAccountUser](docs/EditAccountUser.md)
+ - [EditAccountUserResponse](docs/EditAccountUserResponse.md)
  - [FilterPositionType](docs/FilterPositionType.md)
  - [Filters](docs/Filters.md)
  - [FinancialQc](docs/FinancialQc.md)
@@ -479,6 +495,7 @@ Class | Method | HTTP request | Description
  - [GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
  - [GameType](docs/GameType.md)
  - [GeoRegion](docs/GeoRegion.md)
+ - [GetAccountUserActivation200Response](docs/GetAccountUserActivation200Response.md)
  - [GetFavorites200ResponseInner](docs/GetFavorites200ResponseInner.md)
  - [GetFavoritesCategories200ResponseInner](docs/GetFavoritesCategories200ResponseInner.md)
  - [GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
@@ -512,6 +529,7 @@ Class | Method | HTTP request | Description
  - [Meta](docs/Meta.md)
  - [NcaaFinancialReportStatus](docs/NcaaFinancialReportStatus.md)
  - [NcaaFinancialReportStatusCollection](docs/NcaaFinancialReportStatusCollection.md)
+ - [NewAccountUserResponse](docs/NewAccountUserResponse.md)
  - [NewsFeed](docs/NewsFeed.md)
  - [NewsFeedCollection](docs/NewsFeedCollection.md)
  - [Note](docs/Note.md)
@@ -538,6 +556,7 @@ Class | Method | HTTP request | Description
  - [RegenerateRawContractPdf200Response](docs/RegenerateRawContractPdf200Response.md)
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
+ - [RoleOption](docs/RoleOption.md)
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
  - [SchoolContractEntry](docs/SchoolContractEntry.md)
@@ -568,6 +587,7 @@ Class | Method | HTTP request | Description
  - [SportCompensationRankingsSchoolsInner](docs/SportCompensationRankingsSchoolsInner.md)
  - [SportCompensationResponse](docs/SportCompensationResponse.md)
  - [SportCompensationSubdivision](docs/SportCompensationSubdivision.md)
+ - [SportOption](docs/SportOption.md)
  - [Subdivision](docs/Subdivision.md)
  - [SubdivisionCollection](docs/SubdivisionCollection.md)
  - [Subscription](docs/Subscription.md)
@@ -608,13 +628,17 @@ Class | Method | HTTP request | Description
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnprocessableEntity](docs/UnprocessableEntity.md)
  - [UnstractRawContractPdfTextRequest](docs/UnstractRawContractPdfTextRequest.md)
+ - [UpdateAccountUserActivation200Response](docs/UpdateAccountUserActivation200Response.md)
+ - [UpdateAccountUserActivationRequest](docs/UpdateAccountUserActivationRequest.md)
+ - [UpdateAccountUserActivationRequestUser](docs/UpdateAccountUserActivationRequestUser.md)
+ - [UpdateAccountUserRequest](docs/UpdateAccountUserRequest.md)
+ - [UpdateAccountUserRequestUser](docs/UpdateAccountUserRequestUser.md)
  - [UpdateFavoriteRequest](docs/UpdateFavoriteRequest.md)
  - [UpdateFavoritesCategoryRequest](docs/UpdateFavoritesCategoryRequest.md)
  - [UpdateGamePostSearchRequest](docs/UpdateGamePostSearchRequest.md)
  - [UpdateGamePostSearchRequestGamePost](docs/UpdateGamePostSearchRequestGamePost.md)
  - [UpdateNoteRequest](docs/UpdateNoteRequest.md)
  - [UpdatePasswordReset200Response](docs/UpdatePasswordReset200Response.md)
- - [UpdatePasswordReset400Response](docs/UpdatePasswordReset400Response.md)
  - [UpdatePasswordResetRequest](docs/UpdatePasswordResetRequest.md)
  - [UpdatePasswordResetRequestUser](docs/UpdatePasswordResetRequestUser.md)
  - [UpdateSchoolGroupRequest](docs/UpdateSchoolGroupRequest.md)
