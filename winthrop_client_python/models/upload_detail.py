@@ -16,8 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from datetime import datetime
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -31,7 +30,9 @@ class UploadDetail(BaseModel):
     id: Optional[StrictInt] = None
     filename: Optional[StrictStr] = None
     uploaded_by: Optional[StrictStr] = None
-    created_at: Optional[datetime] = None
+    created_at: Optional[StrictStr] = Field(
+        default=None, description="Pre-formatted date string in the user's timezone"
+    )
     has_file: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
         "id",

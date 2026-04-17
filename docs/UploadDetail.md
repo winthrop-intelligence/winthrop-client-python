@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **filename** | **str** |  | [optional] 
 **uploaded_by** | **str** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
+**created_at** | **str** | Pre-formatted date string in the user&#39;s timezone | [optional] 
 **has_file** | **bool** |  | [optional] 
 
 ## Example
