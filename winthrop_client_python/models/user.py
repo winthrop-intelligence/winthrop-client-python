@@ -48,6 +48,9 @@ class User(BaseModel):
     updated_at: Optional[datetime] = None
     state: Optional[StrictStr] = None
     title: Optional[StrictStr] = None
+    account_id: Optional[StrictInt] = Field(
+        default=None, description="The user's account ID"
+    )
     accountable_id: Optional[StrictInt] = None
     accountable_type: Optional[StrictStr] = None
     coach_id: Optional[StrictInt] = None
@@ -92,6 +95,9 @@ class User(BaseModel):
     can_see_school_groups: Optional[StrictBool] = Field(
         default=None, description="Whether the user can access Custom School Groups"
     )
+    can_read_account: Optional[StrictBool] = Field(
+        default=None, description="Whether the user can view account management"
+    )
     is_sport_specific: Optional[StrictBool] = None
     is_d2_only: Optional[StrictBool] = None
     is_conference_only: Optional[StrictBool] = None
@@ -133,6 +139,7 @@ class User(BaseModel):
         "updated_at",
         "state",
         "title",
+        "account_id",
         "accountable_id",
         "accountable_type",
         "coach_id",
@@ -150,6 +157,7 @@ class User(BaseModel):
         "can_read_conference",
         "can_show_game_post",
         "can_see_school_groups",
+        "can_read_account",
         "is_sport_specific",
         "is_d2_only",
         "is_conference_only",
@@ -230,6 +238,11 @@ class User(BaseModel):
                 if _item_schedule_sports:
                     _items.append(_item_schedule_sports.to_dict())
             _dict["schedule_sports"] = _items
+        # set to None if account_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.account_id is None and "account_id" in self.model_fields_set:
+            _dict["account_id"] = None
+
         # set to None if permissible_sport_ids (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -287,6 +300,7 @@ class User(BaseModel):
                 "updated_at": obj.get("updated_at"),
                 "state": obj.get("state"),
                 "title": obj.get("title"),
+                "account_id": obj.get("account_id"),
                 "accountable_id": obj.get("accountable_id"),
                 "accountable_type": obj.get("accountable_type"),
                 "coach_id": obj.get("coach_id"),
@@ -308,6 +322,7 @@ class User(BaseModel):
                 "can_read_conference": obj.get("can_read_conference"),
                 "can_show_game_post": obj.get("can_show_game_post"),
                 "can_see_school_groups": obj.get("can_see_school_groups"),
+                "can_read_account": obj.get("can_read_account"),
                 "is_sport_specific": obj.get("is_sport_specific"),
                 "is_d2_only": obj.get("is_d2_only"),
                 "is_conference_only": obj.get("is_conference_only"),

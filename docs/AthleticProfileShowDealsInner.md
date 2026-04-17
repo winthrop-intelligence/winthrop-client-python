@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **deal_type** | **str** |  | [optional] 
 **term** | **str** |  | [optional] 
 **vendor_names** | **str** |  | [optional] 
-**vendors** | [**List[AthleticProfileShowDealsInnerVendorsInner]**](AthleticProfileShowDealsInnerVendorsInner.md) |  | [optional] 
+**vendors** | [**List[ContactSearchCoachOptionsCoachesInner]**](ContactSearchCoachOptionsCoachesInner.md) |  | [optional] 
 **summary** | **str** |  | [optional] 
 **has_contract** | **bool** |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
