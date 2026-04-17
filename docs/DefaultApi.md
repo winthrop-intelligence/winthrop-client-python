@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
 [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
-[**create_contact_search**](DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches | 
 [**create_favorite**](DefaultApi.md#create_favorite) | **POST** /api/v1/favorites | 
 [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
@@ -28,11 +27,11 @@ Method | HTTP request | Description
 [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
+[**create_upload**](DefaultApi.md#create_upload) | **POST** /api/v1/uploads | 
 [**delete_account_user**](DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
 [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
-[**delete_contact_search**](DefaultApi.md#delete_contact_search) | **DELETE** /api/v1/contact_searches/{id} | 
 [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
 [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
@@ -47,7 +46,7 @@ Method | HTTP request | Description
 [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
-[**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
+[**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} | 
 [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
 [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
@@ -85,8 +84,6 @@ Method | HTTP request | Description
 [**get_conferenceship**](DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} | 
 [**get_conferenceships**](DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships | 
 [**get_contact**](DefaultApi.md#get_contact) | **GET** /api/v1/contacts/{contactId} | 
-[**get_contact_search_coach_options**](DefaultApi.md#get_contact_search_coach_options) | **GET** /api/v1/contact_searches/coach_options | 
-[**get_contact_searches**](DefaultApi.md#get_contact_searches) | **GET** /api/v1/contact_searches | 
 [**get_contacts**](DefaultApi.md#get_contacts) | **GET** /api/v1/contacts | 
 [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} | 
 [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts | 
@@ -184,6 +181,7 @@ Method | HTTP request | Description
 [**get_team_schedule_note**](DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 [**get_team_schedule_searches**](DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
 [**get_time_zones**](DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones | 
+[**get_uploads**](DefaultApi.md#get_uploads) | **GET** /api/v1/uploads | 
 [**get_user**](DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 [**get_user_activity_summaries**](DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
 [**get_user_activity_summary**](DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} | 
@@ -1065,89 +1063,6 @@ Name | Type | Description  | Notes
 **201** | Conferenceship was created |  -  |
 **401** | Unauthorized |  -  |
 **422** | Unable to create the Conferenceship |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **create_contact_search**
-> ContactSearchEntry create_contact_search(create_contact_search_request=create_contact_search_request)
-
-Create a new scheduling contact
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.contact_search_entry import ContactSearchEntry
-from winthrop_client_python.models.create_contact_search_request import CreateContactSearchRequest
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    create_contact_search_request = winthrop_client_python.CreateContactSearchRequest() # CreateContactSearchRequest |  (optional)
-
-    try:
-        api_response = api_instance.create_contact_search(create_contact_search_request=create_contact_search_request)
-        print("The response of DefaultApi->create_contact_search:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->create_contact_search: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_contact_search_request** | [**CreateContactSearchRequest**](CreateContactSearchRequest.md)|  | [optional] 
-
-### Return type
-
-[**ContactSearchEntry**](ContactSearchEntry.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Contact was created |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden - requires account admin role |  -  |
-**422** | Unable to create the Contact |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2198,6 +2113,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_upload**
+> CreateUpload201Response create_upload(files=files)
+
+Upload one or more PDF contract files
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_upload201_response import CreateUpload201Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    files = None # List[bytearray] | PDF files to upload (optional)
+
+    try:
+        api_response = api_instance.create_upload(files=files)
+        print("The response of DefaultApi->create_upload:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_upload: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **files** | **List[bytearray]**| PDF files to upload | [optional] 
+
+### Return type
+
+[**CreateUpload201Response**](CreateUpload201Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Files uploaded |  -  |
+**400** | No files provided |  -  |
+**422** | Validation errors |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_account_user**
 > DeleteAccountUser200Response delete_account_user(account_user_id)
 
@@ -2510,88 +2506,6 @@ void (empty response body)
 |-------------|-------------|------------------|
 **204** | Conferenceship was deleted |  -  |
 **401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **delete_contact_search**
-> DeleteContactSearch200Response delete_contact_search(id)
-
-Delete a scheduling contact
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.delete_contact_search200_response import DeleteContactSearch200Response
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    id = 56 # int | ID of contact to delete
-
-    try:
-        api_response = api_instance.delete_contact_search(id)
-        print("The response of DefaultApi->delete_contact_search:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->delete_contact_search: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**| ID of contact to delete | 
-
-### Return type
-
-[**DeleteContactSearch200Response**](DeleteContactSearch200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Contact was deleted |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -2991,7 +2905,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_game_post_search**
-> DeleteContactSearch200Response delete_game_post_search(game_post_search_id)
+> DeleteGamePostSearch200Response delete_game_post_search(game_post_search_id)
 
 Delete a game post
 
@@ -3002,7 +2916,7 @@ Delete a game post
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.delete_contact_search200_response import DeleteContactSearch200Response
+from winthrop_client_python.models.delete_game_post_search200_response import DeleteGamePostSearch200Response
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -3050,7 +2964,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**DeleteContactSearch200Response**](DeleteContactSearch200Response.md)
+[**DeleteGamePostSearch200Response**](DeleteGamePostSearch200Response.md)
 
 ### Authorization
 
@@ -3705,10 +3619,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_account**
-> AccountDetail get_account(id)
+# **delete_upload**
+> DeleteAccountUser200Response delete_upload(upload_id)
 
-Retrieve an account with subscriptions, invoices, and billing addresses
+Delete an uploaded contract
 
 ### Example
 
@@ -3717,7 +3631,7 @@ Retrieve an account with subscriptions, invoices, and billing addresses
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.account_detail import AccountDetail
+from winthrop_client_python.models.delete_account_user200_response import DeleteAccountUser200Response
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -3744,14 +3658,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
-    id = 56 # int | The account ID
+    upload_id = 56 # int | ID of the upload to delete
 
     try:
-        api_response = api_instance.get_account(id)
-        print("The response of DefaultApi->get_account:\n")
+        api_response = api_instance.delete_upload(upload_id)
+        print("The response of DefaultApi->delete_upload:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->get_account: %s\n" % e)
+        print("Exception when calling DefaultApi->delete_upload: %s\n" % e)
 ```
 
 
@@ -3761,11 +3675,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| The account ID | 
+ **upload_id** | **int**| ID of the upload to delete | 
 
 ### Return type
 
-[**AccountDetail**](AccountDetail.md)
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
 
 ### Authorization
 
@@ -3780,9 +3694,10 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Account found |  -  |
+**200** | Upload deleted |  -  |
 **401** | Unauthorized |  -  |
-**403** | Forbidden - user is not an account admin |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6826,168 +6741,6 @@ Name | Type | Description  | Notes
 **200** | Contact was found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_contact_search_coach_options**
-> ContactSearchCoachOptions get_contact_search_coach_options()
-
-Retrieve coach options for the scheduling contacts form
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.contact_search_coach_options import ContactSearchCoachOptions
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-
-    try:
-        api_response = api_instance.get_contact_search_coach_options()
-        print("The response of DefaultApi->get_contact_search_coach_options:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_contact_search_coach_options: %s\n" % e)
-```
-
-
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**ContactSearchCoachOptions**](ContactSearchCoachOptions.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Coach options retrieved |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_contact_searches**
-> ContactSearchCollection get_contact_searches(page=page, per_page=per_page, q=q)
-
-Retrieve scheduling contacts for the current account's school
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.contact_search_collection import ContactSearchCollection
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 20 # int | number of results per page. (optional) (default to 20)
-    q = None # object | Ransack query (optional)
-
-    try:
-        api_response = api_instance.get_contact_searches(page=page, per_page=per_page, q=q)
-        print("The response of DefaultApi->get_contact_searches:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_contact_searches: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 20]
- **q** | [**object**](.md)| Ransack query | [optional] 
-
-### Return type
-
-[**ContactSearchCollection**](ContactSearchCollection.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Contacts were found |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden - requires account admin role |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -14946,6 +14699,87 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Time zones retrieved |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_uploads**
+> UploadsResponse get_uploads(page=page)
+
+Retrieve paginated list of uploaded contracts for the current account
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.uploads_response import UploadsResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+
+    try:
+        api_response = api_instance.get_uploads(page=page)
+        print("The response of DefaultApi->get_uploads:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_uploads: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+
+### Return type
+
+[**UploadsResponse**](UploadsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Uploads retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -1,11 +1,7 @@
 .gitlab-ci.yml
 .travis.yml
 README.md
-docs/AccountBillingAddress.md
-docs/AccountDetail.md
 docs/AccountInfo.md
-docs/AccountInvoice.md
-docs/AccountSubscription.md
 docs/AccountUser.md
 docs/AccountUsersResponse.md
 docs/AdminCompensationSubdivision.md
@@ -17,6 +13,7 @@ docs/AsstCoachSchool.md
 docs/AthleticProfileShow.md
 docs/AthleticProfileShowContactsInner.md
 docs/AthleticProfileShowDealsInner.md
+docs/AthleticProfileShowDealsInnerVendorsInner.md
 docs/AthleticProfileShowFinancialInfo.md
 docs/AthleticProfileShowFinancials.md
 docs/AthleticProfileShowFinancialsRevenuesInner.md
@@ -89,11 +86,6 @@ docs/Conferenceship.md
 docs/ConferenceshipCollection.md
 docs/Contact.md
 docs/ContactCollection.md
-docs/ContactSearchCoachOptions.md
-docs/ContactSearchCoachOptionsCoachesInner.md
-docs/ContactSearchCoachOptionsSportsInner.md
-docs/ContactSearchCollection.md
-docs/ContactSearchEntry.md
 docs/Contract.md
 docs/ContractCollection.md
 docs/CoworkerEntry.md
@@ -101,8 +93,6 @@ docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
 docs/CreateAccountUserRequest.md
 docs/CreateAccountUserRequestUser.md
-docs/CreateContactSearchRequest.md
-docs/CreateContactSearchRequestContact.md
 docs/CreateFavorite201Response.md
 docs/CreateFavoriteRequest.md
 docs/CreateFavoritesCategoryRequest.md
@@ -116,6 +106,7 @@ docs/CreateSchoolGroupRequest.md
 docs/CreateSchoolGroupRequestSchoolGroup.md
 docs/CreateTeamScheduleFavorite201Response.md
 docs/CreateTeamScheduleFavoriteRequest.md
+docs/CreateUpload201Response.md
 docs/Deal.md
 docs/DealCollection.md
 docs/DealDetail.md
@@ -126,8 +117,8 @@ docs/DealStatus.md
 docs/DealStatusCollection.md
 docs/DefaultApi.md
 docs/DeleteAccountUser200Response.md
-docs/DeleteContactSearch200Response.md
 docs/DeleteFavorite200Response.md
+docs/DeleteGamePostSearch200Response.md
 docs/DepartmentSearchResult.md
 docs/DepartmentSearchResultCollection.md
 docs/DepartmentSearchResultDepartment.md
@@ -283,6 +274,7 @@ docs/TeamScheduleDetailGame.md
 docs/TeamScheduleDetailHeadCoach.md
 docs/TeamScheduleDetailSchool.md
 docs/TeamScheduleDetailSeason.md
+docs/TeamScheduleDetailSport.md
 docs/TeamScheduleFavoriteDetail.md
 docs/TeamScheduleFavoriteEntry.md
 docs/TeamScheduleGamePosts.md
@@ -324,6 +316,8 @@ docs/UpdateSchoolGroupRequestSchoolGroup.md
 docs/UpdateTeamScheduleFavoriteRequest.md
 docs/UpdateUserRequest.md
 docs/UpdateUserRequestUser.md
+docs/UploadItem.md
+docs/UploadsResponse.md
 docs/UpsertTeamScheduleNoteRequest.md
 docs/User.md
 docs/UserActivitySummary.md
@@ -348,6 +342,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_create_upload201_response.py
+test/test_upload_item.py
+test/test_uploads_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -362,11 +359,7 @@ winthrop_client_python/api_response.py
 winthrop_client_python/configuration.py
 winthrop_client_python/exceptions.py
 winthrop_client_python/models/__init__.py
-winthrop_client_python/models/account_billing_address.py
-winthrop_client_python/models/account_detail.py
 winthrop_client_python/models/account_info.py
-winthrop_client_python/models/account_invoice.py
-winthrop_client_python/models/account_subscription.py
 winthrop_client_python/models/account_user.py
 winthrop_client_python/models/account_users_response.py
 winthrop_client_python/models/admin_compensation_subdivision.py
@@ -378,6 +371,7 @@ winthrop_client_python/models/asst_coach_school.py
 winthrop_client_python/models/athletic_profile_show.py
 winthrop_client_python/models/athletic_profile_show_contacts_inner.py
 winthrop_client_python/models/athletic_profile_show_deals_inner.py
+winthrop_client_python/models/athletic_profile_show_deals_inner_vendors_inner.py
 winthrop_client_python/models/athletic_profile_show_financial_info.py
 winthrop_client_python/models/athletic_profile_show_financials.py
 winthrop_client_python/models/athletic_profile_show_financials_revenues_inner.py
@@ -450,11 +444,6 @@ winthrop_client_python/models/conferenceship.py
 winthrop_client_python/models/conferenceship_collection.py
 winthrop_client_python/models/contact.py
 winthrop_client_python/models/contact_collection.py
-winthrop_client_python/models/contact_search_coach_options.py
-winthrop_client_python/models/contact_search_coach_options_coaches_inner.py
-winthrop_client_python/models/contact_search_coach_options_sports_inner.py
-winthrop_client_python/models/contact_search_collection.py
-winthrop_client_python/models/contact_search_entry.py
 winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
 winthrop_client_python/models/coworker_entry.py
@@ -462,8 +451,6 @@ winthrop_client_python/models/coworker_tenure.py
 winthrop_client_python/models/create_account_user422_response.py
 winthrop_client_python/models/create_account_user_request.py
 winthrop_client_python/models/create_account_user_request_user.py
-winthrop_client_python/models/create_contact_search_request.py
-winthrop_client_python/models/create_contact_search_request_contact.py
 winthrop_client_python/models/create_favorite201_response.py
 winthrop_client_python/models/create_favorite_request.py
 winthrop_client_python/models/create_favorites_category_request.py
@@ -477,6 +464,7 @@ winthrop_client_python/models/create_school_group_request.py
 winthrop_client_python/models/create_school_group_request_school_group.py
 winthrop_client_python/models/create_team_schedule_favorite201_response.py
 winthrop_client_python/models/create_team_schedule_favorite_request.py
+winthrop_client_python/models/create_upload201_response.py
 winthrop_client_python/models/deal.py
 winthrop_client_python/models/deal_collection.py
 winthrop_client_python/models/deal_detail.py
@@ -486,8 +474,8 @@ winthrop_client_python/models/deal_search_result_collection.py
 winthrop_client_python/models/deal_status.py
 winthrop_client_python/models/deal_status_collection.py
 winthrop_client_python/models/delete_account_user200_response.py
-winthrop_client_python/models/delete_contact_search200_response.py
 winthrop_client_python/models/delete_favorite200_response.py
+winthrop_client_python/models/delete_game_post_search200_response.py
 winthrop_client_python/models/department_search_result.py
 winthrop_client_python/models/department_search_result_collection.py
 winthrop_client_python/models/department_search_result_department.py
@@ -638,6 +626,7 @@ winthrop_client_python/models/team_schedule_detail_game.py
 winthrop_client_python/models/team_schedule_detail_head_coach.py
 winthrop_client_python/models/team_schedule_detail_school.py
 winthrop_client_python/models/team_schedule_detail_season.py
+winthrop_client_python/models/team_schedule_detail_sport.py
 winthrop_client_python/models/team_schedule_favorite_detail.py
 winthrop_client_python/models/team_schedule_favorite_entry.py
 winthrop_client_python/models/team_schedule_game_posts.py
@@ -679,6 +668,8 @@ winthrop_client_python/models/update_school_group_request_school_group.py
 winthrop_client_python/models/update_team_schedule_favorite_request.py
 winthrop_client_python/models/update_user_request.py
 winthrop_client_python/models/update_user_request_user.py
+winthrop_client_python/models/upload_item.py
+winthrop_client_python/models/uploads_response.py
 winthrop_client_python/models/upsert_team_schedule_note_request.py
 winthrop_client_python/models/user.py
 winthrop_client_python/models/user_activity_summary.py

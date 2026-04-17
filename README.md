@@ -107,7 +107,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_coach**](docs/DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
 *DefaultApi* | [**create_conference**](docs/DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 *DefaultApi* | [**create_conferenceship**](docs/DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
-*DefaultApi* | [**create_contact_search**](docs/DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches | 
 *DefaultApi* | [**create_favorite**](docs/DefaultApi.md#create_favorite) | **POST** /api/v1/favorites | 
 *DefaultApi* | [**create_favorites_category**](docs/DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 *DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
@@ -121,11 +120,11 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_school_group**](docs/DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 *DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 *DefaultApi* | [**create_team_schedule_favorite**](docs/DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
+*DefaultApi* | [**create_upload**](docs/DefaultApi.md#create_upload) | **POST** /api/v1/uploads | 
 *DefaultApi* | [**delete_account_user**](docs/DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
 *DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
 *DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
-*DefaultApi* | [**delete_contact_search**](docs/DefaultApi.md#delete_contact_search) | **DELETE** /api/v1/contact_searches/{id} | 
 *DefaultApi* | [**delete_favorite**](docs/DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
 *DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
@@ -140,7 +139,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 *DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
-*DefaultApi* | [**get_account**](docs/DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
+*DefaultApi* | [**delete_upload**](docs/DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} | 
 *DefaultApi* | [**get_account_user_activation**](docs/DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
 *DefaultApi* | [**get_account_users**](docs/DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 *DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
@@ -178,8 +177,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_conferenceship**](docs/DefaultApi.md#get_conferenceship) | **GET** /api/v1/conferenceships/{conferenceshipId} | 
 *DefaultApi* | [**get_conferenceships**](docs/DefaultApi.md#get_conferenceships) | **GET** /api/v1/conferenceships | 
 *DefaultApi* | [**get_contact**](docs/DefaultApi.md#get_contact) | **GET** /api/v1/contacts/{contactId} | 
-*DefaultApi* | [**get_contact_search_coach_options**](docs/DefaultApi.md#get_contact_search_coach_options) | **GET** /api/v1/contact_searches/coach_options | 
-*DefaultApi* | [**get_contact_searches**](docs/DefaultApi.md#get_contact_searches) | **GET** /api/v1/contact_searches | 
 *DefaultApi* | [**get_contacts**](docs/DefaultApi.md#get_contacts) | **GET** /api/v1/contacts | 
 *DefaultApi* | [**get_contract**](docs/DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} | 
 *DefaultApi* | [**get_contracts**](docs/DefaultApi.md#get_contracts) | **GET** /api/v1/contracts | 
@@ -277,6 +274,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_team_schedule_note**](docs/DefaultApi.md#get_team_schedule_note) | **GET** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**get_team_schedule_searches**](docs/DefaultApi.md#get_team_schedule_searches) | **GET** /api/v1/team_schedule_searches | 
 *DefaultApi* | [**get_time_zones**](docs/DefaultApi.md#get_time_zones) | **GET** /api/v1/time_zones | 
+*DefaultApi* | [**get_uploads**](docs/DefaultApi.md#get_uploads) | **GET** /api/v1/uploads | 
 *DefaultApi* | [**get_user**](docs/DefaultApi.md#get_user) | **GET** /api/v1/users/{userId} | 
 *DefaultApi* | [**get_user_activity_summaries**](docs/DefaultApi.md#get_user_activity_summaries) | **GET** /api/v1/user_activity_summaries | 
 *DefaultApi* | [**get_user_activity_summary**](docs/DefaultApi.md#get_user_activity_summary) | **GET** /api/v1/user_activity_summaries/{user_activity_summaryId} | 
@@ -338,11 +336,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AccountBillingAddress](docs/AccountBillingAddress.md)
- - [AccountDetail](docs/AccountDetail.md)
  - [AccountInfo](docs/AccountInfo.md)
- - [AccountInvoice](docs/AccountInvoice.md)
- - [AccountSubscription](docs/AccountSubscription.md)
  - [AccountUser](docs/AccountUser.md)
  - [AccountUsersResponse](docs/AccountUsersResponse.md)
  - [AdminCompensationSubdivision](docs/AdminCompensationSubdivision.md)
@@ -354,6 +348,7 @@ Class | Method | HTTP request | Description
  - [AthleticProfileShow](docs/AthleticProfileShow.md)
  - [AthleticProfileShowContactsInner](docs/AthleticProfileShowContactsInner.md)
  - [AthleticProfileShowDealsInner](docs/AthleticProfileShowDealsInner.md)
+ - [AthleticProfileShowDealsInnerVendorsInner](docs/AthleticProfileShowDealsInnerVendorsInner.md)
  - [AthleticProfileShowFinancialInfo](docs/AthleticProfileShowFinancialInfo.md)
  - [AthleticProfileShowFinancials](docs/AthleticProfileShowFinancials.md)
  - [AthleticProfileShowFinancialsRevenuesInner](docs/AthleticProfileShowFinancialsRevenuesInner.md)
@@ -426,11 +421,6 @@ Class | Method | HTTP request | Description
  - [ConferenceshipCollection](docs/ConferenceshipCollection.md)
  - [Contact](docs/Contact.md)
  - [ContactCollection](docs/ContactCollection.md)
- - [ContactSearchCoachOptions](docs/ContactSearchCoachOptions.md)
- - [ContactSearchCoachOptionsCoachesInner](docs/ContactSearchCoachOptionsCoachesInner.md)
- - [ContactSearchCoachOptionsSportsInner](docs/ContactSearchCoachOptionsSportsInner.md)
- - [ContactSearchCollection](docs/ContactSearchCollection.md)
- - [ContactSearchEntry](docs/ContactSearchEntry.md)
  - [Contract](docs/Contract.md)
  - [ContractCollection](docs/ContractCollection.md)
  - [CoworkerEntry](docs/CoworkerEntry.md)
@@ -438,8 +428,6 @@ Class | Method | HTTP request | Description
  - [CreateAccountUser422Response](docs/CreateAccountUser422Response.md)
  - [CreateAccountUserRequest](docs/CreateAccountUserRequest.md)
  - [CreateAccountUserRequestUser](docs/CreateAccountUserRequestUser.md)
- - [CreateContactSearchRequest](docs/CreateContactSearchRequest.md)
- - [CreateContactSearchRequestContact](docs/CreateContactSearchRequestContact.md)
  - [CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
@@ -453,6 +441,7 @@ Class | Method | HTTP request | Description
  - [CreateSchoolGroupRequestSchoolGroup](docs/CreateSchoolGroupRequestSchoolGroup.md)
  - [CreateTeamScheduleFavorite201Response](docs/CreateTeamScheduleFavorite201Response.md)
  - [CreateTeamScheduleFavoriteRequest](docs/CreateTeamScheduleFavoriteRequest.md)
+ - [CreateUpload201Response](docs/CreateUpload201Response.md)
  - [Deal](docs/Deal.md)
  - [DealCollection](docs/DealCollection.md)
  - [DealDetail](docs/DealDetail.md)
@@ -462,8 +451,8 @@ Class | Method | HTTP request | Description
  - [DealStatus](docs/DealStatus.md)
  - [DealStatusCollection](docs/DealStatusCollection.md)
  - [DeleteAccountUser200Response](docs/DeleteAccountUser200Response.md)
- - [DeleteContactSearch200Response](docs/DeleteContactSearch200Response.md)
  - [DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
+ - [DeleteGamePostSearch200Response](docs/DeleteGamePostSearch200Response.md)
  - [DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
@@ -614,6 +603,7 @@ Class | Method | HTTP request | Description
  - [TeamScheduleDetailHeadCoach](docs/TeamScheduleDetailHeadCoach.md)
  - [TeamScheduleDetailSchool](docs/TeamScheduleDetailSchool.md)
  - [TeamScheduleDetailSeason](docs/TeamScheduleDetailSeason.md)
+ - [TeamScheduleDetailSport](docs/TeamScheduleDetailSport.md)
  - [TeamScheduleFavoriteDetail](docs/TeamScheduleFavoriteDetail.md)
  - [TeamScheduleFavoriteEntry](docs/TeamScheduleFavoriteEntry.md)
  - [TeamScheduleGamePosts](docs/TeamScheduleGamePosts.md)
@@ -655,6 +645,8 @@ Class | Method | HTTP request | Description
  - [UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UpdateUserRequestUser](docs/UpdateUserRequestUser.md)
+ - [UploadItem](docs/UploadItem.md)
+ - [UploadsResponse](docs/UploadsResponse.md)
  - [UpsertTeamScheduleNoteRequest](docs/UpsertTeamScheduleNoteRequest.md)
  - [User](docs/User.md)
  - [UserActivitySummary](docs/UserActivitySummary.md)

@@ -55,10 +55,6 @@ class RawContract(BaseModel):
         default=None,
         description="Whether the current user can see the admin view for this contract",
     )
-    can_download: Optional[StrictBool] = Field(
-        default=None,
-        description="Whether the current user can download this contract's PDF",
-    )
     pdf_preview_url: Optional[StrictStr] = Field(
         default=None,
         description="Proxied URL for inline PDF viewing (no direct file access)",
@@ -93,7 +89,6 @@ class RawContract(BaseModel):
         "unstract_responses_details",
         "layout_preserved_pdf_text",
         "can_see_admin_view",
-        "can_download",
         "pdf_preview_url",
         "pdf_download_url",
         "has_file",
@@ -208,7 +203,6 @@ class RawContract(BaseModel):
                 "unstract_responses_details": obj.get("unstract_responses_details"),
                 "layout_preserved_pdf_text": obj.get("layout_preserved_pdf_text"),
                 "can_see_admin_view": obj.get("can_see_admin_view"),
-                "can_download": obj.get("can_download"),
                 "pdf_preview_url": obj.get("pdf_preview_url"),
                 "pdf_download_url": obj.get("pdf_download_url"),
                 "has_file": obj.get("has_file"),
