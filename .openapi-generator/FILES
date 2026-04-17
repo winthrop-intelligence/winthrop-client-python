@@ -1,11 +1,7 @@
 .gitlab-ci.yml
 .travis.yml
 README.md
-docs/AccountBillingAddress.md
-docs/AccountDetail.md
 docs/AccountInfo.md
-docs/AccountInvoice.md
-docs/AccountSubscription.md
 docs/AccountUser.md
 docs/AccountUsersResponse.md
 docs/AdminCompensationSubdivision.md
@@ -366,11 +362,7 @@ winthrop_client_python/api_response.py
 winthrop_client_python/configuration.py
 winthrop_client_python/exceptions.py
 winthrop_client_python/models/__init__.py
-winthrop_client_python/models/account_billing_address.py
-winthrop_client_python/models/account_detail.py
 winthrop_client_python/models/account_info.py
-winthrop_client_python/models/account_invoice.py
-winthrop_client_python/models/account_subscription.py
 winthrop_client_python/models/account_user.py
 winthrop_client_python/models/account_users_response.py
 winthrop_client_python/models/admin_compensation_subdivision.py
