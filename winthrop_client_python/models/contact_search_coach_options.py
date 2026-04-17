@@ -16,38 +16,27 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.contact_search_coach_options_coaches_inner import (
     ContactSearchCoachOptionsCoachesInner,
+)
+from winthrop_client_python.models.contact_search_coach_options_sports_inner import (
+    ContactSearchCoachOptionsSportsInner,
 )
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class AthleticProfileShowDealsInner(BaseModel):
+class ContactSearchCoachOptions(BaseModel):
     """
-    AthleticProfileShowDealsInner
+    ContactSearchCoachOptions
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    deal_type: Optional[StrictStr] = None
-    term: Optional[StrictStr] = None
-    vendor_names: Optional[StrictStr] = None
-    vendors: Optional[List[ContactSearchCoachOptionsCoachesInner]] = None
-    summary: Optional[StrictStr] = None
-    has_contract: Optional[StrictBool] = None
-    raw_contract_id: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "deal_type",
-        "term",
-        "vendor_names",
-        "vendors",
-        "summary",
-        "has_contract",
-        "raw_contract_id",
-    ]
+    school_name: Optional[StrictStr] = None
+    coaches: Optional[List[ContactSearchCoachOptionsCoachesInner]] = None
+    sports: Optional[List[ContactSearchCoachOptionsSportsInner]] = None
+    __properties: ClassVar[List[str]] = ["school_name", "coaches", "sports"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -66,7 +55,7 @@ class AthleticProfileShowDealsInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AthleticProfileShowDealsInner from a JSON string"""
+        """Create an instance of ContactSearchCoachOptions from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -86,28 +75,25 @@ class AthleticProfileShowDealsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in vendors (list)
+        # override the default output from pydantic by calling `to_dict()` of each item in coaches (list)
         _items = []
-        if self.vendors:
-            for _item_vendors in self.vendors:
-                if _item_vendors:
-                    _items.append(_item_vendors.to_dict())
-            _dict["vendors"] = _items
-        # set to None if summary (nullable) is None
-        # and model_fields_set contains the field
-        if self.summary is None and "summary" in self.model_fields_set:
-            _dict["summary"] = None
-
-        # set to None if raw_contract_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.raw_contract_id is None and "raw_contract_id" in self.model_fields_set:
-            _dict["raw_contract_id"] = None
-
+        if self.coaches:
+            for _item_coaches in self.coaches:
+                if _item_coaches:
+                    _items.append(_item_coaches.to_dict())
+            _dict["coaches"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in sports (list)
+        _items = []
+        if self.sports:
+            for _item_sports in self.sports:
+                if _item_sports:
+                    _items.append(_item_sports.to_dict())
+            _dict["sports"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AthleticProfileShowDealsInner from a dict"""
+        """Create an instance of ContactSearchCoachOptions from a dict"""
         if obj is None:
             return None
 
@@ -116,21 +102,23 @@ class AthleticProfileShowDealsInner(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "deal_type": obj.get("deal_type"),
-                "term": obj.get("term"),
-                "vendor_names": obj.get("vendor_names"),
-                "vendors": (
+                "school_name": obj.get("school_name"),
+                "coaches": (
                     [
                         ContactSearchCoachOptionsCoachesInner.from_dict(_item)
-                        for _item in obj["vendors"]
+                        for _item in obj["coaches"]
                     ]
-                    if obj.get("vendors") is not None
+                    if obj.get("coaches") is not None
                     else None
                 ),
-                "summary": obj.get("summary"),
-                "has_contract": obj.get("has_contract"),
-                "raw_contract_id": obj.get("raw_contract_id"),
+                "sports": (
+                    [
+                        ContactSearchCoachOptionsSportsInner.from_dict(_item)
+                        for _item in obj["sports"]
+                    ]
+                    if obj.get("sports") is not None
+                    else None
+                ),
             }
         )
         return _obj

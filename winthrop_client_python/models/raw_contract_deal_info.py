@@ -19,8 +19,8 @@ import json
 from datetime import datetime
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.athletic_profile_show_deals_inner_vendors_inner import (
-    AthleticProfileShowDealsInnerVendorsInner,
+from winthrop_client_python.models.contact_search_coach_options_coaches_inner import (
+    ContactSearchCoachOptionsCoachesInner,
 )
 from typing import Optional, Set
 from typing_extensions import Self
@@ -35,7 +35,7 @@ class RawContractDealInfo(BaseModel):
     school_name: Optional[StrictStr] = None
     school_id: Optional[StrictInt] = None
     vendor_name: Optional[StrictStr] = None
-    vendors: Optional[List[AthleticProfileShowDealsInnerVendorsInner]] = None
+    vendors: Optional[List[ContactSearchCoachOptionsCoachesInner]] = None
     deal_type_name: Optional[StrictStr] = None
     start_year: Optional[StrictInt] = None
     end_year: Optional[StrictInt] = None
@@ -169,7 +169,7 @@ class RawContractDealInfo(BaseModel):
                 "vendor_name": obj.get("vendor_name"),
                 "vendors": (
                     [
-                        AthleticProfileShowDealsInnerVendorsInner.from_dict(_item)
+                        ContactSearchCoachOptionsCoachesInner.from_dict(_item)
                         for _item in obj["vendors"]
                     ]
                     if obj.get("vendors") is not None
