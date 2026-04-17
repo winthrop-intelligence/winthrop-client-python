@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **unstract_responses_details** | **str** |  | [optional] 
 **layout_preserved_pdf_text** | **str** |  | [optional] 
 **can_see_admin_view** | **bool** | Whether the current user can see the admin view for this contract | [optional] 
+**can_download** | **bool** | Whether the current user can download this contract&#39;s PDF | [optional] 
 **pdf_preview_url** | **str** | Proxied URL for inline PDF viewing (no direct file access) | [optional] 
 **pdf_download_url** | **str** | Direct download URL (admin only) | [optional] 
 **has_file** | **bool** |  | [optional] 

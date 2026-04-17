@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **reminders** | **bool** |  | [optional] 
 **subscription_id** | **int** |  | [optional] 
 **created_by_name** | **str** |  | [optional] 
+**can_read** | **bool** | Whether the current user can view this invoice&#39;s PDF | [optional] 
 
 ## Example
 

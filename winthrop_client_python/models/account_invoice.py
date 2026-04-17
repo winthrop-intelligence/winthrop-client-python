@@ -20,6 +20,7 @@ from datetime import date
 from pydantic import (
     BaseModel,
     ConfigDict,
+    Field,
     StrictBool,
     StrictInt,
     StrictStr,
@@ -47,6 +48,9 @@ class AccountInvoice(BaseModel):
     reminders: Optional[StrictBool] = None
     subscription_id: Optional[StrictInt] = None
     created_by_name: Optional[StrictStr] = None
+    can_read: Optional[StrictBool] = Field(
+        default=None, description="Whether the current user can view this invoice's PDF"
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "invoice_date",
@@ -60,6 +64,7 @@ class AccountInvoice(BaseModel):
         "reminders",
         "subscription_id",
         "created_by_name",
+        "can_read",
     ]
 
     @field_validator("status")
@@ -165,6 +170,7 @@ class AccountInvoice(BaseModel):
                 "reminders": obj.get("reminders"),
                 "subscription_id": obj.get("subscription_id"),
                 "created_by_name": obj.get("created_by_name"),
+                "can_read": obj.get("can_read"),
             }
         )
         return _obj
