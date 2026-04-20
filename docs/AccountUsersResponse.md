@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**meta** | [**Meta**](Meta.md) |  | [optional] 
 **account** | [**AccountInfo**](AccountInfo.md) |  | [optional] 
 **users** | [**List[AccountUser]**](AccountUser.md) |  | [optional] 
 

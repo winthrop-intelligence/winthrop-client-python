@@ -3853,9 +3853,9 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_account_users**
-> AccountUsersResponse get_account_users()
+> AccountUsersResponse get_account_users(page=page)
 
-Retrieve all users for the current user's account with their computed access permissions
+Retrieve paginated list of users for the current user's account with their computed access permissions
 
 ### Example
 
@@ -3891,9 +3891,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
 
     try:
-        api_response = api_instance.get_account_users()
+        api_response = api_instance.get_account_users(page=page)
         print("The response of DefaultApi->get_account_users:\n")
         pprint(api_response)
     except Exception as e:
@@ -3904,7 +3905,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
 
 ### Return type
 

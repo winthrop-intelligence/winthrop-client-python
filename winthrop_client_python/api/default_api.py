@@ -12056,6 +12056,9 @@ class DefaultApi:
     @validate_call
     def get_account_users(
         self,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12070,8 +12073,10 @@ class DefaultApi:
     ) -> AccountUsersResponse:
         """get_account_users
 
-        Retrieve all users for the current user's account with their computed access permissions
+        Retrieve paginated list of users for the current user's account with their computed access permissions
 
+        :param page: results page to retrieve.
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12095,6 +12100,7 @@ class DefaultApi:
         """  # noqa: E501
 
         _param = self._get_account_users_serialize(
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12118,6 +12124,9 @@ class DefaultApi:
     @validate_call
     def get_account_users_with_http_info(
         self,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12132,8 +12141,10 @@ class DefaultApi:
     ) -> ApiResponse[AccountUsersResponse]:
         """get_account_users
 
-        Retrieve all users for the current user's account with their computed access permissions
+        Retrieve paginated list of users for the current user's account with their computed access permissions
 
+        :param page: results page to retrieve.
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12157,6 +12168,7 @@ class DefaultApi:
         """  # noqa: E501
 
         _param = self._get_account_users_serialize(
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12180,6 +12192,9 @@ class DefaultApi:
     @validate_call
     def get_account_users_without_preload_content(
         self,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -12194,8 +12209,10 @@ class DefaultApi:
     ) -> RESTResponseType:
         """get_account_users
 
-        Retrieve all users for the current user's account with their computed access permissions
+        Retrieve paginated list of users for the current user's account with their computed access permissions
 
+        :param page: results page to retrieve.
+        :type page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -12219,6 +12236,7 @@ class DefaultApi:
         """  # noqa: E501
 
         _param = self._get_account_users_serialize(
+            page=page,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -12237,6 +12255,7 @@ class DefaultApi:
 
     def _get_account_users_serialize(
         self,
+        page,
         _request_auth,
         _content_type,
         _headers,
@@ -12258,6 +12277,10 @@ class DefaultApi:
 
         # process the path parameters
         # process the query parameters
+        if page is not None:
+
+            _query_params.append(("page", page))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter

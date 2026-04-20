@@ -20,6 +20,7 @@ from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.account_info import AccountInfo
 from winthrop_client_python.models.account_user import AccountUser
+from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -29,9 +30,10 @@ class AccountUsersResponse(BaseModel):
     AccountUsersResponse
     """  # noqa: E501
 
+    meta: Optional[Meta] = None
     account: Optional[AccountInfo] = None
     users: Optional[List[AccountUser]] = None
-    __properties: ClassVar[List[str]] = ["account", "users"]
+    __properties: ClassVar[List[str]] = ["meta", "account", "users"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,6 +72,9 @@ class AccountUsersResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of meta
+        if self.meta:
+            _dict["meta"] = self.meta.to_dict()
         # override the default output from pydantic by calling `to_dict()` of account
         if self.account:
             _dict["account"] = self.account.to_dict()
@@ -93,6 +98,9 @@ class AccountUsersResponse(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "meta": (
+                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+                ),
                 "account": (
                     AccountInfo.from_dict(obj["account"])
                     if obj.get("account") is not None
