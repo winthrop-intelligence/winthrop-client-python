@@ -18,8 +18,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.athletic_profile_show_deals_inner_vendors_inner import (
-    AthleticProfileShowDealsInnerVendorsInner,
+from winthrop_client_python.models.contact_search_coach_options_coaches_inner import (
+    ContactSearchCoachOptionsCoachesInner,
 )
 from typing import Optional, Set
 from typing_extensions import Self
@@ -34,7 +34,7 @@ class AthleticProfileShowDealsInner(BaseModel):
     deal_type: Optional[StrictStr] = None
     term: Optional[StrictStr] = None
     vendor_names: Optional[StrictStr] = None
-    vendors: Optional[List[AthleticProfileShowDealsInnerVendorsInner]] = None
+    vendors: Optional[List[ContactSearchCoachOptionsCoachesInner]] = None
     summary: Optional[StrictStr] = None
     has_contract: Optional[StrictBool] = None
     raw_contract_id: Optional[StrictInt] = None
@@ -122,7 +122,7 @@ class AthleticProfileShowDealsInner(BaseModel):
                 "vendor_names": obj.get("vendor_names"),
                 "vendors": (
                     [
-                        AthleticProfileShowDealsInnerVendorsInner.from_dict(_item)
+                        ContactSearchCoachOptionsCoachesInner.from_dict(_item)
                         for _item in obj["vendors"]
                     ]
                     if obj.get("vendors") is not None

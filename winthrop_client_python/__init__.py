@@ -48,7 +48,6 @@ __all__ = [
     "AthleticProfileShow",
     "AthleticProfileShowContactsInner",
     "AthleticProfileShowDealsInner",
-    "AthleticProfileShowDealsInnerVendorsInner",
     "AthleticProfileShowFinancialInfo",
     "AthleticProfileShowFinancials",
     "AthleticProfileShowFinancialsRevenuesInner",
@@ -121,6 +120,11 @@ __all__ = [
     "ConferenceshipCollection",
     "Contact",
     "ContactCollection",
+    "ContactSearchCoachOptions",
+    "ContactSearchCoachOptionsCoachesInner",
+    "ContactSearchCoachOptionsSportsInner",
+    "ContactSearchCollection",
+    "ContactSearchEntry",
     "Contract",
     "ContractCollection",
     "CoworkerEntry",
@@ -128,6 +132,8 @@ __all__ = [
     "CreateAccountUser422Response",
     "CreateAccountUserRequest",
     "CreateAccountUserRequestUser",
+    "CreateContactSearchRequest",
+    "CreateContactSearchRequestContact",
     "CreateFavorite201Response",
     "CreateFavoriteRequest",
     "CreateFavoritesCategoryRequest",
@@ -151,8 +157,8 @@ __all__ = [
     "DealStatus",
     "DealStatusCollection",
     "DeleteAccountUser200Response",
+    "DeleteContactSearch200Response",
     "DeleteFavorite200Response",
-    "DeleteGamePostSearch200Response",
     "DepartmentSearchResult",
     "DepartmentSearchResultCollection",
     "DepartmentSearchResultDepartment",
@@ -303,7 +309,6 @@ __all__ = [
     "TeamScheduleDetailHeadCoach",
     "TeamScheduleDetailSchool",
     "TeamScheduleDetailSeason",
-    "TeamScheduleDetailSport",
     "TeamScheduleFavoriteDetail",
     "TeamScheduleFavoriteEntry",
     "TeamScheduleGamePosts",
@@ -429,9 +434,6 @@ from winthrop_client_python.models.athletic_profile_show_contacts_inner import (
 )
 from winthrop_client_python.models.athletic_profile_show_deals_inner import (
     AthleticProfileShowDealsInner as AthleticProfileShowDealsInner,
-)
-from winthrop_client_python.models.athletic_profile_show_deals_inner_vendors_inner import (
-    AthleticProfileShowDealsInnerVendorsInner as AthleticProfileShowDealsInnerVendorsInner,
 )
 from winthrop_client_python.models.athletic_profile_show_financial_info import (
     AthleticProfileShowFinancialInfo as AthleticProfileShowFinancialInfo,
@@ -625,6 +627,21 @@ from winthrop_client_python.models.contact import Contact as Contact
 from winthrop_client_python.models.contact_collection import (
     ContactCollection as ContactCollection,
 )
+from winthrop_client_python.models.contact_search_coach_options import (
+    ContactSearchCoachOptions as ContactSearchCoachOptions,
+)
+from winthrop_client_python.models.contact_search_coach_options_coaches_inner import (
+    ContactSearchCoachOptionsCoachesInner as ContactSearchCoachOptionsCoachesInner,
+)
+from winthrop_client_python.models.contact_search_coach_options_sports_inner import (
+    ContactSearchCoachOptionsSportsInner as ContactSearchCoachOptionsSportsInner,
+)
+from winthrop_client_python.models.contact_search_collection import (
+    ContactSearchCollection as ContactSearchCollection,
+)
+from winthrop_client_python.models.contact_search_entry import (
+    ContactSearchEntry as ContactSearchEntry,
+)
 from winthrop_client_python.models.contract import Contract as Contract
 from winthrop_client_python.models.contract_collection import (
     ContractCollection as ContractCollection,
@@ -641,6 +658,12 @@ from winthrop_client_python.models.create_account_user_request import (
 )
 from winthrop_client_python.models.create_account_user_request_user import (
     CreateAccountUserRequestUser as CreateAccountUserRequestUser,
+)
+from winthrop_client_python.models.create_contact_search_request import (
+    CreateContactSearchRequest as CreateContactSearchRequest,
+)
+from winthrop_client_python.models.create_contact_search_request_contact import (
+    CreateContactSearchRequestContact as CreateContactSearchRequestContact,
 )
 from winthrop_client_python.models.create_favorite201_response import (
     CreateFavorite201Response as CreateFavorite201Response,
@@ -705,11 +728,11 @@ from winthrop_client_python.models.deal_status_collection import (
 from winthrop_client_python.models.delete_account_user200_response import (
     DeleteAccountUser200Response as DeleteAccountUser200Response,
 )
+from winthrop_client_python.models.delete_contact_search200_response import (
+    DeleteContactSearch200Response as DeleteContactSearch200Response,
+)
 from winthrop_client_python.models.delete_favorite200_response import (
     DeleteFavorite200Response as DeleteFavorite200Response,
-)
-from winthrop_client_python.models.delete_game_post_search200_response import (
-    DeleteGamePostSearch200Response as DeleteGamePostSearch200Response,
 )
 from winthrop_client_python.models.department_search_result import (
     DepartmentSearchResult as DepartmentSearchResult,
@@ -1074,9 +1097,6 @@ from winthrop_client_python.models.team_schedule_detail_school import (
 )
 from winthrop_client_python.models.team_schedule_detail_season import (
     TeamScheduleDetailSeason as TeamScheduleDetailSeason,
-)
-from winthrop_client_python.models.team_schedule_detail_sport import (
-    TeamScheduleDetailSport as TeamScheduleDetailSport,
 )
 from winthrop_client_python.models.team_schedule_favorite_detail import (
     TeamScheduleFavoriteDetail as TeamScheduleFavoriteDetail,
