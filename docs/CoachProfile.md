@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **can_see_compensation** | **bool** |  | 
 **can_see_videos** | **bool** |  | 
 **can_see_coworker_history** | **bool** |  | 
+**can_see_recruiting** | **bool** |  | 
 **is_sport_specific** | **bool** |  | 
 
 ## Example
