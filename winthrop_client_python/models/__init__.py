@@ -332,6 +332,10 @@ from winthrop_client_python.models.game_contract_series_entry import (
 from winthrop_client_python.models.game_contract_series_response import (
     GameContractSeriesResponse,
 )
+from winthrop_client_python.models.game_detail import GameDetail
+from winthrop_client_python.models.game_detail_all_of_game_contract import (
+    GameDetailAllOfGameContract,
+)
 from winthrop_client_python.models.game_post import GamePost
 from winthrop_client_python.models.game_post_collection import GamePostCollection
 from winthrop_client_python.models.game_post_contact import GamePostContact

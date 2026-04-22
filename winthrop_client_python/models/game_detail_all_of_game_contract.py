@@ -16,34 +16,37 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from datetime import date
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class CoachCompensationTabSidebarContractsInner(BaseModel):
+class GameDetailAllOfGameContract(BaseModel):
     """
-    CoachCompensationTabSidebarContractsInner
+    GameDetailAllOfGameContract
     """  # noqa: E501
 
     id: Optional[StrictInt] = None
-    raw_contract_id: Optional[StrictInt] = None
-    start_on: Optional[StrictStr] = None
-    end_on: Optional[StrictStr] = None
-    at_will: Optional[StrictBool] = None
+    game_type: Optional[StrictStr] = None
+    comp_cents: Optional[StrictInt] = None
+    cancel_fee_cents: Optional[StrictInt] = None
+    signed_on: Optional[date] = None
+    off_site_location: Optional[StrictStr] = None
+    file_url: Optional[StrictStr] = Field(
+        default=None, description="Only present when a raw contract file is attached"
+    )
     has_file: Optional[StrictBool] = None
-    can_download: Optional[StrictBool] = None
-    asset_file_name: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
-        "raw_contract_id",
-        "start_on",
-        "end_on",
-        "at_will",
+        "game_type",
+        "comp_cents",
+        "cancel_fee_cents",
+        "signed_on",
+        "off_site_location",
+        "file_url",
         "has_file",
-        "can_download",
-        "asset_file_name",
     ]
 
     model_config = ConfigDict(
@@ -63,7 +66,7 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CoachCompensationTabSidebarContractsInner from a JSON string"""
+        """Create an instance of GameDetailAllOfGameContract from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -83,26 +86,42 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if raw_contract_id (nullable) is None
+        # set to None if game_type (nullable) is None
         # and model_fields_set contains the field
-        if self.raw_contract_id is None and "raw_contract_id" in self.model_fields_set:
-            _dict["raw_contract_id"] = None
+        if self.game_type is None and "game_type" in self.model_fields_set:
+            _dict["game_type"] = None
 
-        # set to None if at_will (nullable) is None
+        # set to None if comp_cents (nullable) is None
         # and model_fields_set contains the field
-        if self.at_will is None and "at_will" in self.model_fields_set:
-            _dict["at_will"] = None
+        if self.comp_cents is None and "comp_cents" in self.model_fields_set:
+            _dict["comp_cents"] = None
 
-        # set to None if asset_file_name (nullable) is None
+        # set to None if cancel_fee_cents (nullable) is None
         # and model_fields_set contains the field
-        if self.asset_file_name is None and "asset_file_name" in self.model_fields_set:
-            _dict["asset_file_name"] = None
+        if (
+            self.cancel_fee_cents is None
+            and "cancel_fee_cents" in self.model_fields_set
+        ):
+            _dict["cancel_fee_cents"] = None
+
+        # set to None if signed_on (nullable) is None
+        # and model_fields_set contains the field
+        if self.signed_on is None and "signed_on" in self.model_fields_set:
+            _dict["signed_on"] = None
+
+        # set to None if off_site_location (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.off_site_location is None
+            and "off_site_location" in self.model_fields_set
+        ):
+            _dict["off_site_location"] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CoachCompensationTabSidebarContractsInner from a dict"""
+        """Create an instance of GameDetailAllOfGameContract from a dict"""
         if obj is None:
             return None
 
@@ -112,13 +131,13 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
         _obj = cls.model_validate(
             {
                 "id": obj.get("id"),
-                "raw_contract_id": obj.get("raw_contract_id"),
-                "start_on": obj.get("start_on"),
-                "end_on": obj.get("end_on"),
-                "at_will": obj.get("at_will"),
+                "game_type": obj.get("game_type"),
+                "comp_cents": obj.get("comp_cents"),
+                "cancel_fee_cents": obj.get("cancel_fee_cents"),
+                "signed_on": obj.get("signed_on"),
+                "off_site_location": obj.get("off_site_location"),
+                "file_url": obj.get("file_url"),
                 "has_file": obj.get("has_file"),
-                "can_download": obj.get("can_download"),
-                "asset_file_name": obj.get("asset_file_name"),
             }
         )
         return _obj

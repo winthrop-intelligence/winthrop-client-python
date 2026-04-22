@@ -133,6 +133,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
+*DefaultApi* | [**delete_game**](docs/DefaultApi.md#delete_game) | **DELETE** /api/v1/games/{gameId} | 
 *DefaultApi* | [**delete_game_contract_raw_contract**](docs/DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract | 
 *DefaultApi* | [**delete_game_post**](docs/DefaultApi.md#delete_game_post) | **DELETE** /api/v1/game_posts/{gamePostId} | 
 *DefaultApi* | [**delete_game_post_search**](docs/DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} | 
@@ -312,6 +313,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_favorites_category**](docs/DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**update_foia_label**](docs/DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**update_foia_request**](docs/DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
+*DefaultApi* | [**update_game**](docs/DefaultApi.md#update_game) | **PATCH** /api/v1/games/{gameId} | 
 *DefaultApi* | [**update_game_contract**](docs/DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} | 
 *DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
@@ -509,6 +511,8 @@ Class | Method | HTTP request | Description
  - [GameContractCollection](docs/GameContractCollection.md)
  - [GameContractSeriesEntry](docs/GameContractSeriesEntry.md)
  - [GameContractSeriesResponse](docs/GameContractSeriesResponse.md)
+ - [GameDetail](docs/GameDetail.md)
+ - [GameDetailAllOfGameContract](docs/GameDetailAllOfGameContract.md)
  - [GamePost](docs/GamePost.md)
  - [GamePostCollection](docs/GamePostCollection.md)
  - [GamePostContact](docs/GamePostContact.md)

@@ -40,6 +40,7 @@ Method | HTTP request | Description
 [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 [**delete_foia_request**](DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
+[**delete_game**](DefaultApi.md#delete_game) | **DELETE** /api/v1/games/{gameId} | 
 [**delete_game_contract_raw_contract**](DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract | 
 [**delete_game_post**](DefaultApi.md#delete_game_post) | **DELETE** /api/v1/game_posts/{gamePostId} | 
 [**delete_game_post_search**](DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} | 
@@ -219,6 +220,7 @@ Method | HTTP request | Description
 [**update_favorites_category**](DefaultApi.md#update_favorites_category) | **PATCH** /api/v1/favorites_categories/{id} | 
 [**update_foia_label**](DefaultApi.md#update_foia_label) | **PATCH** /api/v1/foia_labels/{foiaLabelId} | 
 [**update_foia_request**](DefaultApi.md#update_foia_request) | **PATCH** /api/v1/foia_requests/{foiaRequestId} | 
+[**update_game**](DefaultApi.md#update_game) | **PATCH** /api/v1/games/{gameId} | 
 [**update_game_contract**](DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} | 
 [**update_game_post_search**](DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 [**update_job_post**](DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
@@ -1487,7 +1489,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_game**
-> Game create_game(create_game_request)
+> GameDetail create_game(create_game_request)
 
 Create a game
 
@@ -1499,7 +1501,7 @@ Create a game
 ```python
 import winthrop_client_python
 from winthrop_client_python.models.create_game_request import CreateGameRequest
-from winthrop_client_python.models.game import Game
+from winthrop_client_python.models.game_detail import GameDetail
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -1547,7 +1549,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Game**](Game.md)
+[**GameDetail**](GameDetail.md)
 
 ### Authorization
 
@@ -3164,6 +3166,84 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Foia request was deleted |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_game**
+> delete_game(game_id)
+
+Delete a game
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    game_id = 56 # int | ID of game to delete
+
+    try:
+        api_instance.delete_game(game_id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_game: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **game_id** | **int**| ID of game to delete | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Game deleted |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
 
@@ -9856,7 +9936,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_game**
-> Game get_game(game_id)
+> GameDetail get_game(game_id)
 
 Retrieve a single game
 
@@ -9867,7 +9947,7 @@ Retrieve a single game
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.game import Game
+from winthrop_client_python.models.game_detail import GameDetail
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -9915,7 +9995,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Game**](Game.md)
+[**GameDetail**](GameDetail.md)
 
 ### Authorization
 
@@ -17849,6 +17929,91 @@ Name | Type | Description  | Notes
 **200** | Foia request was updated |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_game**
+> GameDetail update_game(game_id, create_game_request)
+
+Update a game
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_game_request import CreateGameRequest
+from winthrop_client_python.models.game_detail import GameDetail
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    game_id = 56 # int | ID of game to update
+    create_game_request = winthrop_client_python.CreateGameRequest() # CreateGameRequest | 
+
+    try:
+        api_response = api_instance.update_game(game_id, create_game_request)
+        print("The response of DefaultApi->update_game:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_game: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **game_id** | **int**| ID of game to update | 
+ **create_game_request** | [**CreateGameRequest**](CreateGameRequest.md)|  | 
+
+### Return type
+
+[**GameDetail**](GameDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Game updated |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+**422** | Validation error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

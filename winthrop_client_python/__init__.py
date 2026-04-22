@@ -193,6 +193,8 @@ __all__ = [
     "GameContractCollection",
     "GameContractSeriesEntry",
     "GameContractSeriesResponse",
+    "GameDetail",
+    "GameDetailAllOfGameContract",
     "GamePost",
     "GamePostCollection",
     "GamePostContact",
@@ -830,6 +832,10 @@ from winthrop_client_python.models.game_contract_series_entry import (
 )
 from winthrop_client_python.models.game_contract_series_response import (
     GameContractSeriesResponse as GameContractSeriesResponse,
+)
+from winthrop_client_python.models.game_detail import GameDetail as GameDetail
+from winthrop_client_python.models.game_detail_all_of_game_contract import (
+    GameDetailAllOfGameContract as GameDetailAllOfGameContract,
 )
 from winthrop_client_python.models.game_post import GamePost as GamePost
 from winthrop_client_python.models.game_post_collection import (

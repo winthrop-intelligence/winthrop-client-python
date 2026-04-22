@@ -164,6 +164,8 @@ docs/GameContract.md
 docs/GameContractCollection.md
 docs/GameContractSeriesEntry.md
 docs/GameContractSeriesResponse.md
+docs/GameDetail.md
+docs/GameDetailAllOfGameContract.md
 docs/GamePost.md
 docs/GamePostCollection.md
 docs/GamePostContact.md
@@ -361,6 +363,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_game_detail.py
+test/test_game_detail_all_of_game_contract.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -536,6 +540,8 @@ winthrop_client_python/models/game_contract.py
 winthrop_client_python/models/game_contract_collection.py
 winthrop_client_python/models/game_contract_series_entry.py
 winthrop_client_python/models/game_contract_series_response.py
+winthrop_client_python/models/game_detail.py
+winthrop_client_python/models/game_detail_all_of_game_contract.py
 winthrop_client_python/models/game_post.py
 winthrop_client_python/models/game_post_collection.py
 winthrop_client_python/models/game_post_contact.py
