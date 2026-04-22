@@ -139,6 +139,8 @@ __all__ = [
     "CreateFavoritesCategoryRequest",
     "CreateGamePostSearchRequest",
     "CreateGamePostSearchRequestGamePost",
+    "CreateGameRequest",
+    "CreateGameRequestGame",
     "CreateNoteRequest",
     "CreatePasswordReset200Response",
     "CreatePasswordResetRequest",
@@ -262,6 +264,13 @@ __all__ = [
     "RequestedItem",
     "RequestedItemCollection",
     "RoleOption",
+    "ScheduleGridAvailableSchoolPost",
+    "ScheduleGridAvailableSchoolRow",
+    "ScheduleGridAvailableSchools",
+    "ScheduleGridGame",
+    "ScheduleGridGamePost",
+    "ScheduleGridSchool",
+    "ScheduleGridView",
     "School",
     "SchoolCollection",
     "SchoolContractEntry",
@@ -680,6 +689,12 @@ from winthrop_client_python.models.create_game_post_search_request import (
 from winthrop_client_python.models.create_game_post_search_request_game_post import (
     CreateGamePostSearchRequestGamePost as CreateGamePostSearchRequestGamePost,
 )
+from winthrop_client_python.models.create_game_request import (
+    CreateGameRequest as CreateGameRequest,
+)
+from winthrop_client_python.models.create_game_request_game import (
+    CreateGameRequestGame as CreateGameRequestGame,
+)
 from winthrop_client_python.models.create_note_request import (
     CreateNoteRequest as CreateNoteRequest,
 )
@@ -981,6 +996,27 @@ from winthrop_client_python.models.requested_item_collection import (
     RequestedItemCollection as RequestedItemCollection,
 )
 from winthrop_client_python.models.role_option import RoleOption as RoleOption
+from winthrop_client_python.models.schedule_grid_available_school_post import (
+    ScheduleGridAvailableSchoolPost as ScheduleGridAvailableSchoolPost,
+)
+from winthrop_client_python.models.schedule_grid_available_school_row import (
+    ScheduleGridAvailableSchoolRow as ScheduleGridAvailableSchoolRow,
+)
+from winthrop_client_python.models.schedule_grid_available_schools import (
+    ScheduleGridAvailableSchools as ScheduleGridAvailableSchools,
+)
+from winthrop_client_python.models.schedule_grid_game import (
+    ScheduleGridGame as ScheduleGridGame,
+)
+from winthrop_client_python.models.schedule_grid_game_post import (
+    ScheduleGridGamePost as ScheduleGridGamePost,
+)
+from winthrop_client_python.models.schedule_grid_school import (
+    ScheduleGridSchool as ScheduleGridSchool,
+)
+from winthrop_client_python.models.schedule_grid_view import (
+    ScheduleGridView as ScheduleGridView,
+)
 from winthrop_client_python.models.school import School as School
 from winthrop_client_python.models.school_collection import (
     SchoolCollection as SchoolCollection,

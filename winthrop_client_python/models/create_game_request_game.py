@@ -16,28 +16,29 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from datetime import date
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class CoachCompensationTabSidebarContractsInner(BaseModel):
+class CreateGameRequestGame(BaseModel):
     """
-    CoachCompensationTabSidebarContractsInner
+    CreateGameRequestGame
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    raw_contract_id: Optional[StrictInt] = None
-    start_on: Optional[StrictStr] = None
-    end_on: Optional[StrictStr] = None
-    at_will: Optional[StrictBool] = None
+    home_school_id: Optional[StrictInt] = None
+    away_school_id: Optional[StrictInt] = None
+    sport_id: Optional[StrictInt] = None
+    game_date: Optional[date] = None
+    neutral: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = [
-        "id",
-        "raw_contract_id",
-        "start_on",
-        "end_on",
-        "at_will",
+        "home_school_id",
+        "away_school_id",
+        "sport_id",
+        "game_date",
+        "neutral",
     ]
 
     model_config = ConfigDict(
@@ -57,7 +58,7 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CoachCompensationTabSidebarContractsInner from a JSON string"""
+        """Create an instance of CreateGameRequestGame from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,21 +78,11 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if raw_contract_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.raw_contract_id is None and "raw_contract_id" in self.model_fields_set:
-            _dict["raw_contract_id"] = None
-
-        # set to None if at_will (nullable) is None
-        # and model_fields_set contains the field
-        if self.at_will is None and "at_will" in self.model_fields_set:
-            _dict["at_will"] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CoachCompensationTabSidebarContractsInner from a dict"""
+        """Create an instance of CreateGameRequestGame from a dict"""
         if obj is None:
             return None
 
@@ -100,11 +91,11 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "raw_contract_id": obj.get("raw_contract_id"),
-                "start_on": obj.get("start_on"),
-                "end_on": obj.get("end_on"),
-                "at_will": obj.get("at_will"),
+                "home_school_id": obj.get("home_school_id"),
+                "away_school_id": obj.get("away_school_id"),
+                "sport_id": obj.get("sport_id"),
+                "game_date": obj.get("game_date"),
+                "neutral": obj.get("neutral"),
             }
         )
         return _obj

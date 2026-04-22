@@ -16,29 +16,25 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.schedule_grid_available_school_row import (
+    ScheduleGridAvailableSchoolRow,
+)
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class CoachCompensationTabSidebarContractsInner(BaseModel):
+class ScheduleGridAvailableSchools(BaseModel):
     """
-    CoachCompensationTabSidebarContractsInner
+    Response for GET /schedule_grid/{sport_name}/available_schools
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    raw_contract_id: Optional[StrictInt] = None
-    start_on: Optional[StrictStr] = None
-    end_on: Optional[StrictStr] = None
-    at_will: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "raw_contract_id",
-        "start_on",
-        "end_on",
-        "at_will",
-    ]
+    available_count: Optional[StrictInt] = Field(
+        default=None, description="Total matching schools before the limit is applied"
+    )
+    schools: Optional[List[ScheduleGridAvailableSchoolRow]] = None
+    __properties: ClassVar[List[str]] = ["available_count", "schools"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -57,7 +53,7 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CoachCompensationTabSidebarContractsInner from a JSON string"""
+        """Create an instance of ScheduleGridAvailableSchools from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,21 +73,18 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if raw_contract_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.raw_contract_id is None and "raw_contract_id" in self.model_fields_set:
-            _dict["raw_contract_id"] = None
-
-        # set to None if at_will (nullable) is None
-        # and model_fields_set contains the field
-        if self.at_will is None and "at_will" in self.model_fields_set:
-            _dict["at_will"] = None
-
+        # override the default output from pydantic by calling `to_dict()` of each item in schools (list)
+        _items = []
+        if self.schools:
+            for _item_schools in self.schools:
+                if _item_schools:
+                    _items.append(_item_schools.to_dict())
+            _dict["schools"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CoachCompensationTabSidebarContractsInner from a dict"""
+        """Create an instance of ScheduleGridAvailableSchools from a dict"""
         if obj is None:
             return None
 
@@ -100,11 +93,15 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "raw_contract_id": obj.get("raw_contract_id"),
-                "start_on": obj.get("start_on"),
-                "end_on": obj.get("end_on"),
-                "at_will": obj.get("at_will"),
+                "available_count": obj.get("available_count"),
+                "schools": (
+                    [
+                        ScheduleGridAvailableSchoolRow.from_dict(_item)
+                        for _item in obj["schools"]
+                    ]
+                    if obj.get("schools") is not None
+                    else None
+                ),
             }
         )
         return _obj
