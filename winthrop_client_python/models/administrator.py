@@ -35,7 +35,7 @@ from typing_extensions import Self
 
 class Administrator(BaseModel):
     """
-    Administrator
+    Administrator search result. In /administrator_searches responses, compensation fields are only included when the user has administrator_compensation permission, and contract fields are only included when the user can view the related contract or raw contract.
     """  # noqa: E501
 
     id: Optional[StrictInt] = None
@@ -52,8 +52,14 @@ class Administrator(BaseModel):
     conference_id: Optional[StrictInt] = None
     division_id: Optional[StrictInt] = None
     geo_division_id: Optional[StrictInt] = None
-    compensation_id: Optional[StrictInt] = None
-    contract_id: Optional[StrictInt] = None
+    compensation_id: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    contract_id: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user can view this administrator's contract.",
+    )
     year: Optional[StrictInt] = None
     position_title: Optional[StrictStr] = None
     school_name: Optional[StrictStr] = None
@@ -61,29 +67,83 @@ class Administrator(BaseModel):
     state: Optional[StrictStr] = None
     usnwr_ranking: Optional[StrictInt] = None
     directors_cup_ranking: Optional[StrictInt] = None
-    compensation_cents: Optional[StrictInt] = None
-    compensation_base_salary_cents: Optional[StrictInt] = None
-    compensation_type: Optional[StrictStr] = None
-    compensation_outside_income_cents: Optional[StrictInt] = None
-    compensation_deferred_comp_cents: Optional[StrictInt] = None
-    compensation_one_time_bonus_cents: Optional[StrictInt] = None
-    compensation_contingent_bonus: Optional[StrictBool] = None
-    compensation_buyout_terms: Optional[StrictStr] = None
-    compensation_is_car_provided: Optional[StrictBool] = None
-    compensation_country_club_dues_cents: Optional[StrictInt] = None
-    compensation_country_club_membership_paid: Optional[StrictBool] = None
-    compensation_talent_fee: Optional[StrictInt] = None
-    compensation_media_link: Optional[StrictStr] = None
-    raw_contract_id: Optional[StrictInt] = None
-    contract_starts_on: Optional[date] = None
-    contract_expires_on: Optional[date] = None
-    contract_at_will: Optional[StrictBool] = None
+    compensation_cents: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_base_salary_cents: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_type: Optional[StrictStr] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_outside_income_cents: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_deferred_comp_cents: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_one_time_bonus_cents: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_contingent_bonus: Optional[StrictBool] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_buyout_terms: Optional[StrictStr] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_is_car_provided: Optional[StrictBool] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_country_club_dues_cents: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_country_club_membership_paid: Optional[StrictBool] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_talent_fee: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    compensation_media_link: Optional[StrictStr] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
+    raw_contract_id: Optional[StrictInt] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user can view this administrator's raw contract.",
+    )
+    contract_starts_on: Optional[date] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user can view this administrator's contract.",
+    )
+    contract_expires_on: Optional[date] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user can view this administrator's contract.",
+    )
+    contract_at_will: Optional[StrictBool] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user can view this administrator's contract.",
+    )
     diversity: Optional[StrictBool] = None
     gender: Optional[StrictStr] = None
     alma_mater_id: Optional[StrictInt] = None
     private: Optional[StrictBool] = None
     sport_id: Optional[StrictInt] = None
-    coli: Optional[float] = None
+    coli: Optional[float] = Field(
+        default=None,
+        description="Only included in /administrator_searches responses when the user has administrator_compensation permission.",
+    )
     coach: Optional[Coach] = None
     departments: Optional[List[PositionType]] = None
     __properties: ClassVar[List[str]] = [
