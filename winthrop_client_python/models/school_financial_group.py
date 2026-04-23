@@ -85,6 +85,11 @@ class SchoolFinancialGroup(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if report_label (nullable) is None
+        # and model_fields_set contains the field
+        if self.report_label is None and "report_label" in self.model_fields_set:
+            _dict["report_label"] = None
+
         # set to None if football (nullable) is None
         # and model_fields_set contains the field
         if self.football is None and "football" in self.model_fields_set:

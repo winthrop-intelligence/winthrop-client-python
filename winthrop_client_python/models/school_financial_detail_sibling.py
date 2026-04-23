@@ -77,6 +77,11 @@ class SchoolFinancialDetailSibling(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if report_label (nullable) is None
+        # and model_fields_set contains the field
+        if self.report_label is None and "report_label" in self.model_fields_set:
+            _dict["report_label"] = None
+
         return _dict
 
     @classmethod

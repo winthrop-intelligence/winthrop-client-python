@@ -54,14 +54,8 @@ class Coach(BaseModel):
     external_years_experience: Optional[StrictInt] = None
     athletic_years_of_experience: Optional[StrictInt] = None
     avatar_scraping_disabled: Optional[StrictBool] = None
-    latest_salary: Optional[StrictInt] = Field(
-        default=None,
-        description="Only included when the user has coach_compensation permission for this coach. For leader/administrator coaches, this requires administrator_compensation access.",
-    )
-    latest_salary_year: Optional[StrictInt] = Field(
-        default=None,
-        description="Only included when the user has coach_compensation permission for this coach. For leader/administrator coaches, this requires administrator_compensation access.",
-    )
+    latest_salary: Optional[StrictInt] = None
+    latest_salary_year: Optional[StrictInt] = None
     last_bio_text_updated_at: Optional[datetime] = None
     instagram_scraping_disabled: Optional[StrictBool] = None
     linkedin_scraping_disabled: Optional[StrictBool] = None
