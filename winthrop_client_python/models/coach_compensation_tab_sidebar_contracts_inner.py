@@ -32,18 +32,12 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
     start_on: Optional[StrictStr] = None
     end_on: Optional[StrictStr] = None
     at_will: Optional[StrictBool] = None
-    has_file: Optional[StrictBool] = None
-    can_download: Optional[StrictBool] = None
-    asset_file_name: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
         "raw_contract_id",
         "start_on",
         "end_on",
         "at_will",
-        "has_file",
-        "can_download",
-        "asset_file_name",
     ]
 
     model_config = ConfigDict(
@@ -93,11 +87,6 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
         if self.at_will is None and "at_will" in self.model_fields_set:
             _dict["at_will"] = None
 
-        # set to None if asset_file_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.asset_file_name is None and "asset_file_name" in self.model_fields_set:
-            _dict["asset_file_name"] = None
-
         return _dict
 
     @classmethod
@@ -116,9 +105,6 @@ class CoachCompensationTabSidebarContractsInner(BaseModel):
                 "start_on": obj.get("start_on"),
                 "end_on": obj.get("end_on"),
                 "at_will": obj.get("at_will"),
-                "has_file": obj.get("has_file"),
-                "can_download": obj.get("can_download"),
-                "asset_file_name": obj.get("asset_file_name"),
             }
         )
         return _obj

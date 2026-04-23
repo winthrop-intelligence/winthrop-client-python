@@ -31,7 +31,14 @@ class SchoolFinancialDetailGroup(BaseModel):
     name: Optional[StrictStr] = None
     name_id: Optional[StrictStr] = None
     cashflow_type: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "name_id", "cashflow_type"]
+    report_label: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "name",
+        "name_id",
+        "cashflow_type",
+        "report_label",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -87,6 +94,7 @@ class SchoolFinancialDetailGroup(BaseModel):
                 "name": obj.get("name"),
                 "name_id": obj.get("name_id"),
                 "cashflow_type": obj.get("cashflow_type"),
+                "report_label": obj.get("report_label"),
             }
         )
         return _obj

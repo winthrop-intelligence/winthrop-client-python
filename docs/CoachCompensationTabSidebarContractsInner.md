@@ -10,9 +10,6 @@ Name | Type | Description | Notes
 **start_on** | **str** |  | [optional] 
 **end_on** | **str** |  | [optional] 
 **at_will** | **bool** |  | [optional] 
-**has_file** | **bool** |  | [optional] 
-**can_download** | **bool** |  | [optional] 
-**asset_file_name** | **str** |  | [optional] 
 
 ## Example
 

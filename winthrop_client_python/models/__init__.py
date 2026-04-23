@@ -232,8 +232,6 @@ from winthrop_client_python.models.create_game_post_search_request import (
 from winthrop_client_python.models.create_game_post_search_request_game_post import (
     CreateGamePostSearchRequestGamePost,
 )
-from winthrop_client_python.models.create_game_request import CreateGameRequest
-from winthrop_client_python.models.create_game_request_game import CreateGameRequestGame
 from winthrop_client_python.models.create_note_request import CreateNoteRequest
 from winthrop_client_python.models.create_password_reset200_response import (
     CreatePasswordReset200Response,
@@ -331,10 +329,6 @@ from winthrop_client_python.models.game_contract_series_entry import (
 )
 from winthrop_client_python.models.game_contract_series_response import (
     GameContractSeriesResponse,
-)
-from winthrop_client_python.models.game_detail import GameDetail
-from winthrop_client_python.models.game_detail_all_of_game_contract import (
-    GameDetailAllOfGameContract,
 )
 from winthrop_client_python.models.game_post import GamePost
 from winthrop_client_python.models.game_post_collection import GamePostCollection
@@ -453,19 +447,6 @@ from winthrop_client_python.models.requested_item_collection import (
     RequestedItemCollection,
 )
 from winthrop_client_python.models.role_option import RoleOption
-from winthrop_client_python.models.schedule_grid_available_school_post import (
-    ScheduleGridAvailableSchoolPost,
-)
-from winthrop_client_python.models.schedule_grid_available_school_row import (
-    ScheduleGridAvailableSchoolRow,
-)
-from winthrop_client_python.models.schedule_grid_available_schools import (
-    ScheduleGridAvailableSchools,
-)
-from winthrop_client_python.models.schedule_grid_game import ScheduleGridGame
-from winthrop_client_python.models.schedule_grid_game_post import ScheduleGridGamePost
-from winthrop_client_python.models.schedule_grid_school import ScheduleGridSchool
-from winthrop_client_python.models.schedule_grid_view import ScheduleGridView
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.models.school_contract_entry import SchoolContractEntry
