@@ -112,6 +112,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_favorites_category**](docs/DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 *DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 *DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
+*DefaultApi* | [**create_game**](docs/DefaultApi.md#create_game) | **POST** /api/v1/games | 
+*DefaultApi* | [**create_game_post**](docs/DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts | 
 *DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 *DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 *DefaultApi* | [**create_note**](docs/DefaultApi.md#create_note) | **POST** /api/v1/notes | 
@@ -132,6 +134,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
 *DefaultApi* | [**delete_foia_request**](docs/DefaultApi.md#delete_foia_request) | **DELETE** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**delete_game_contract_raw_contract**](docs/DefaultApi.md#delete_game_contract_raw_contract) | **DELETE** /api/v1/game_contracts/{game_contractId}/delete_raw_contract | 
+*DefaultApi* | [**delete_game_post**](docs/DefaultApi.md#delete_game_post) | **DELETE** /api/v1/game_posts/{gamePostId} | 
 *DefaultApi* | [**delete_game_post_search**](docs/DefaultApi.md#delete_game_post_search) | **DELETE** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 *DefaultApi* | [**delete_note**](docs/DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} | 
@@ -240,6 +243,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *DefaultApi* | [**get_revenue_search**](docs/DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} | 
 *DefaultApi* | [**get_revenue_searches**](docs/DefaultApi.md#get_revenue_searches) | **GET** /api/v1/revenue_searches | 
+*DefaultApi* | [**get_schedule_grid**](docs/DefaultApi.md#get_schedule_grid) | **GET** /api/v1/schedule_grid/{sport_name} | 
+*DefaultApi* | [**get_schedule_grid_available_schools**](docs/DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *DefaultApi* | [**get_school_game_contracts**](docs/DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
@@ -451,6 +456,8 @@ Class | Method | HTTP request | Description
  - [CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
  - [CreateGamePostSearchRequest](docs/CreateGamePostSearchRequest.md)
  - [CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
+ - [CreateGameRequest](docs/CreateGameRequest.md)
+ - [CreateGameRequestGame](docs/CreateGameRequestGame.md)
  - [CreateNoteRequest](docs/CreateNoteRequest.md)
  - [CreatePasswordReset200Response](docs/CreatePasswordReset200Response.md)
  - [CreatePasswordResetRequest](docs/CreatePasswordResetRequest.md)
@@ -574,6 +581,13 @@ Class | Method | HTTP request | Description
  - [RequestedItem](docs/RequestedItem.md)
  - [RequestedItemCollection](docs/RequestedItemCollection.md)
  - [RoleOption](docs/RoleOption.md)
+ - [ScheduleGridAvailableSchoolPost](docs/ScheduleGridAvailableSchoolPost.md)
+ - [ScheduleGridAvailableSchoolRow](docs/ScheduleGridAvailableSchoolRow.md)
+ - [ScheduleGridAvailableSchools](docs/ScheduleGridAvailableSchools.md)
+ - [ScheduleGridGame](docs/ScheduleGridGame.md)
+ - [ScheduleGridGamePost](docs/ScheduleGridGamePost.md)
+ - [ScheduleGridSchool](docs/ScheduleGridSchool.md)
+ - [ScheduleGridView](docs/ScheduleGridView.md)
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
  - [SchoolContractEntry](docs/SchoolContractEntry.md)
