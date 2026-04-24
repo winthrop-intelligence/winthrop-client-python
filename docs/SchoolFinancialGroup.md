@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **group_id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **name_id** | **str** |  | [optional] 
-**report_label** | **str** |  | [optional] 
 **football** | **int** |  | [optional] 
 **basketball_m** | **int** |  | [optional] 
 **basketball_w** | **int** |  | [optional] 

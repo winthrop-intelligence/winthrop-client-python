@@ -18,6 +18,7 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.cashflow_entry import CashflowEntry
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -34,6 +35,7 @@ class CashflowSportStat(BaseModel):
     low: Optional[float] = None
     median: Optional[float] = None
     count: Optional[StrictInt] = None
+    entries: Optional[List[CashflowEntry]] = None
     __properties: ClassVar[List[str]] = [
         "sport_id",
         "sport_name",
@@ -42,6 +44,7 @@ class CashflowSportStat(BaseModel):
         "low",
         "median",
         "count",
+        "entries",
     ]
 
     @field_validator("gender_code")
@@ -91,6 +94,13 @@ class CashflowSportStat(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in entries (list)
+        _items = []
+        if self.entries:
+            for _item_entries in self.entries:
+                if _item_entries:
+                    _items.append(_item_entries.to_dict())
+            _dict["entries"] = _items
         # set to None if gender_code (nullable) is None
         # and model_fields_set contains the field
         if self.gender_code is None and "gender_code" in self.model_fields_set:
@@ -131,6 +141,11 @@ class CashflowSportStat(BaseModel):
                 "low": obj.get("low"),
                 "median": obj.get("median"),
                 "count": obj.get("count"),
+                "entries": (
+                    [CashflowEntry.from_dict(_item) for _item in obj["entries"]]
+                    if obj.get("entries") is not None
+                    else None
+                ),
             }
         )
         return _obj

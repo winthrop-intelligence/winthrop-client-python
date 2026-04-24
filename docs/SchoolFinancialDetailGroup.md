@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **name_id** | **str** |  | [optional] 
 **cashflow_type** | **str** |  | [optional] 
-**report_label** | **str** |  | [optional] 
 
 ## Example
 
