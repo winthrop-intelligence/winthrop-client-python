@@ -65,6 +65,7 @@ __all__ = [
     "COLIAdjusted",
     "Cashflow",
     "CashflowCollection",
+    "CashflowEntry",
     "CashflowGroupItem",
     "CashflowGroupStats",
     "CashflowGroupsResponse",
@@ -243,6 +244,7 @@ __all__ = [
     "PerformanceChartRecord",
     "Position",
     "PositionCollection",
+    "PositionEntry",
     "PositionSportStat",
     "PositionType",
     "PositionTypeGroup",
@@ -480,6 +482,7 @@ from winthrop_client_python.models.cashflow import Cashflow as Cashflow
 from winthrop_client_python.models.cashflow_collection import (
     CashflowCollection as CashflowCollection,
 )
+from winthrop_client_python.models.cashflow_entry import CashflowEntry as CashflowEntry
 from winthrop_client_python.models.cashflow_group_item import (
     CashflowGroupItem as CashflowGroupItem,
 )
@@ -934,6 +937,7 @@ from winthrop_client_python.models.position import Position as Position
 from winthrop_client_python.models.position_collection import (
     PositionCollection as PositionCollection,
 )
+from winthrop_client_python.models.position_entry import PositionEntry as PositionEntry
 from winthrop_client_python.models.position_sport_stat import (
     PositionSportStat as PositionSportStat,
 )

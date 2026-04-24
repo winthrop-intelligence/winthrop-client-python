@@ -32,14 +32,12 @@ class CashflowGroupStats(BaseModel):
     name_id: Optional[StrictStr] = None
     name: Optional[StrictStr] = None
     short_name: Optional[StrictStr] = None
-    report_label: Optional[StrictStr] = None
     sports: Optional[List[CashflowSportStat]] = None
     __properties: ClassVar[List[str]] = [
         "group_id",
         "name_id",
         "name",
         "short_name",
-        "report_label",
         "sports",
     ]
 
@@ -102,11 +100,6 @@ class CashflowGroupStats(BaseModel):
         if self.short_name is None and "short_name" in self.model_fields_set:
             _dict["short_name"] = None
 
-        # set to None if report_label (nullable) is None
-        # and model_fields_set contains the field
-        if self.report_label is None and "report_label" in self.model_fields_set:
-            _dict["report_label"] = None
-
         return _dict
 
     @classmethod
@@ -124,7 +117,6 @@ class CashflowGroupStats(BaseModel):
                 "name_id": obj.get("name_id"),
                 "name": obj.get("name"),
                 "short_name": obj.get("short_name"),
-                "report_label": obj.get("report_label"),
                 "sports": (
                     [CashflowSportStat.from_dict(_item) for _item in obj["sports"]]
                     if obj.get("sports") is not None

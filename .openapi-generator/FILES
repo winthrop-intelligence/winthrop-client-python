@@ -34,6 +34,7 @@ docs/AverageCompensation.md
 docs/COLIAdjusted.md
 docs/Cashflow.md
 docs/CashflowCollection.md
+docs/CashflowEntry.md
 docs/CashflowGroupItem.md
 docs/CashflowGroupStats.md
 docs/CashflowGroupsResponse.md
@@ -216,6 +217,7 @@ docs/PerformanceChartData.md
 docs/PerformanceChartRecord.md
 docs/Position.md
 docs/PositionCollection.md
+docs/PositionEntry.md
 docs/PositionSportStat.md
 docs/PositionType.md
 docs/PositionTypeGroup.md
@@ -352,6 +354,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_cashflow_entry.py
+test/test_position_entry.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -398,6 +402,7 @@ winthrop_client_python/models/avatar.py
 winthrop_client_python/models/average_compensation.py
 winthrop_client_python/models/cashflow.py
 winthrop_client_python/models/cashflow_collection.py
+winthrop_client_python/models/cashflow_entry.py
 winthrop_client_python/models/cashflow_group_item.py
 winthrop_client_python/models/cashflow_group_stats.py
 winthrop_client_python/models/cashflow_groups_response.py
@@ -577,6 +582,7 @@ winthrop_client_python/models/performance_chart_data.py
 winthrop_client_python/models/performance_chart_record.py
 winthrop_client_python/models/position.py
 winthrop_client_python/models/position_collection.py
+winthrop_client_python/models/position_entry.py
 winthrop_client_python/models/position_sport_stat.py
 winthrop_client_python/models/position_type.py
 winthrop_client_python/models/position_type_group.py

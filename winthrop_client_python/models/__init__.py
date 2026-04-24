@@ -80,6 +80,7 @@ from winthrop_client_python.models.average_compensation import AverageCompensati
 from winthrop_client_python.models.coli_adjusted import COLIAdjusted
 from winthrop_client_python.models.cashflow import Cashflow
 from winthrop_client_python.models.cashflow_collection import CashflowCollection
+from winthrop_client_python.models.cashflow_entry import CashflowEntry
 from winthrop_client_python.models.cashflow_group_item import CashflowGroupItem
 from winthrop_client_python.models.cashflow_group_stats import CashflowGroupStats
 from winthrop_client_python.models.cashflow_groups_response import (
@@ -420,6 +421,7 @@ from winthrop_client_python.models.performance_chart_record import (
 )
 from winthrop_client_python.models.position import Position
 from winthrop_client_python.models.position_collection import PositionCollection
+from winthrop_client_python.models.position_entry import PositionEntry
 from winthrop_client_python.models.position_sport_stat import PositionSportStat
 from winthrop_client_python.models.position_type import PositionType
 from winthrop_client_python.models.position_type_group import PositionTypeGroup
