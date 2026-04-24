@@ -16,6 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
+from datetime import date
 from pydantic import Field, StrictBytes, StrictInt, StrictStr, field_validator
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
@@ -36,6 +37,7 @@ from winthrop_client_python.models.audited_financial_report_status import (
 from winthrop_client_python.models.audited_financial_report_status_collection import (
     AuditedFinancialReportStatusCollection,
 )
+from winthrop_client_python.models.available_game_contract import AvailableGameContract
 from winthrop_client_python.models.average_compensation import AverageCompensation
 from winthrop_client_python.models.coli_adjusted import COLIAdjusted
 from winthrop_client_python.models.cashflow import Cashflow
@@ -110,6 +112,7 @@ from winthrop_client_python.models.create_favorites_category_request import (
 from winthrop_client_python.models.create_game_post_search_request import (
     CreateGamePostSearchRequest,
 )
+from winthrop_client_python.models.create_game_request import CreateGameRequest
 from winthrop_client_python.models.create_note_request import CreateNoteRequest
 from winthrop_client_python.models.create_password_reset200_response import (
     CreatePasswordReset200Response,
@@ -165,7 +168,6 @@ from winthrop_client_python.models.gad_contract_detail import GadContractDetail
 from winthrop_client_python.models.gad_search_result_collection import (
     GadSearchResultCollection,
 )
-from winthrop_client_python.models.game import Game
 from winthrop_client_python.models.game_collection import GameCollection
 from winthrop_client_python.models.game_contract import GameContract
 from winthrop_client_python.models.game_contract_collection import (
@@ -174,6 +176,7 @@ from winthrop_client_python.models.game_contract_collection import (
 from winthrop_client_python.models.game_contract_series_response import (
     GameContractSeriesResponse,
 )
+from winthrop_client_python.models.game_detail import GameDetail
 from winthrop_client_python.models.game_post import GamePost
 from winthrop_client_python.models.game_post_collection import GamePostCollection
 from winthrop_client_python.models.game_post_detail import GamePostDetail
@@ -240,6 +243,10 @@ from winthrop_client_python.models.requested_item import RequestedItem
 from winthrop_client_python.models.requested_item_collection import (
     RequestedItemCollection,
 )
+from winthrop_client_python.models.schedule_grid_available_schools import (
+    ScheduleGridAvailableSchools,
+)
+from winthrop_client_python.models.schedule_grid_view import ScheduleGridView
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.models.school_financial_detail import SchoolFinancialDetail
@@ -257,6 +264,7 @@ from winthrop_client_python.models.sport_collection import SportCollection
 from winthrop_client_python.models.sport_compensation_response import (
     SportCompensationResponse,
 )
+from winthrop_client_python.models.state import State
 from winthrop_client_python.models.subdivision import Subdivision
 from winthrop_client_python.models.subdivision_collection import SubdivisionCollection
 from winthrop_client_python.models.subscription import Subscription
@@ -4490,6 +4498,528 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="POST",
             resource_path="/api/v1/foia_requests",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def create_game(
+        self,
+        create_game_request: CreateGameRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GameDetail:
+        """create_game
+
+        Create a game
+
+        :param create_game_request: (required)
+        :type create_game_request: CreateGameRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._create_game_serialize(
+            create_game_request=create_game_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "201": "GameDetail",
+            "401": None,
+            "403": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def create_game_with_http_info(
+        self,
+        create_game_request: CreateGameRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GameDetail]:
+        """create_game
+
+        Create a game
+
+        :param create_game_request: (required)
+        :type create_game_request: CreateGameRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._create_game_serialize(
+            create_game_request=create_game_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "201": "GameDetail",
+            "401": None,
+            "403": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def create_game_without_preload_content(
+        self,
+        create_game_request: CreateGameRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """create_game
+
+        Create a game
+
+        :param create_game_request: (required)
+        :type create_game_request: CreateGameRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._create_game_serialize(
+            create_game_request=create_game_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "201": "GameDetail",
+            "401": None,
+            "403": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _create_game_serialize(
+        self,
+        create_game_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if create_game_request is not None:
+            _body_params = create_game_request
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params["Content-Type"] = _content_type
+        else:
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
+            )
+            if _default_content_type is not None:
+                _header_params["Content-Type"] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="POST",
+            resource_path="/api/v1/games",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def create_game_post(
+        self,
+        create_game_post_search_request: CreateGamePostSearchRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GamePost:
+        """create_game_post
+
+        Create a game post for the current user's school
+
+        :param create_game_post_search_request: (required)
+        :type create_game_post_search_request: CreateGamePostSearchRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._create_game_post_serialize(
+            create_game_post_search_request=create_game_post_search_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "201": "GamePost",
+            "401": None,
+            "403": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def create_game_post_with_http_info(
+        self,
+        create_game_post_search_request: CreateGamePostSearchRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GamePost]:
+        """create_game_post
+
+        Create a game post for the current user's school
+
+        :param create_game_post_search_request: (required)
+        :type create_game_post_search_request: CreateGamePostSearchRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._create_game_post_serialize(
+            create_game_post_search_request=create_game_post_search_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "201": "GamePost",
+            "401": None,
+            "403": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def create_game_post_without_preload_content(
+        self,
+        create_game_post_search_request: CreateGamePostSearchRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """create_game_post
+
+        Create a game post for the current user's school
+
+        :param create_game_post_search_request: (required)
+        :type create_game_post_search_request: CreateGamePostSearchRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._create_game_post_serialize(
+            create_game_post_search_request=create_game_post_search_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "201": "GamePost",
+            "401": None,
+            "403": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _create_game_post_serialize(
+        self,
+        create_game_post_search_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if create_game_post_search_request is not None:
+            _body_params = create_game_post_search_request
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params["Content-Type"] = _content_type
+        else:
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
+            )
+            if _default_content_type is not None:
+                _header_params["Content-Type"] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="POST",
+            resource_path="/api/v1/game_posts",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -9344,6 +9874,248 @@ class DefaultApi:
         )
 
     @validate_call
+    def delete_game(
+        self,
+        game_id: Annotated[StrictInt, Field(description="ID of game to delete")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """delete_game
+
+        Delete a game
+
+        :param game_id: ID of game to delete (required)
+        :type game_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_game_serialize(
+            game_id=game_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def delete_game_with_http_info(
+        self,
+        game_id: Annotated[StrictInt, Field(description="ID of game to delete")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """delete_game
+
+        Delete a game
+
+        :param game_id: ID of game to delete (required)
+        :type game_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_game_serialize(
+            game_id=game_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def delete_game_without_preload_content(
+        self,
+        game_id: Annotated[StrictInt, Field(description="ID of game to delete")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """delete_game
+
+        Delete a game
+
+        :param game_id: ID of game to delete (required)
+        :type game_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_game_serialize(
+            game_id=game_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _delete_game_serialize(
+        self,
+        game_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if game_id is not None:
+            _path_params["gameId"] = game_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="DELETE",
+            resource_path="/api/v1/games/{gameId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def delete_game_contract_raw_contract(
         self,
         game_contract_id: Annotated[
@@ -9579,6 +10351,254 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="DELETE",
             resource_path="/api/v1/game_contracts/{game_contractId}/delete_raw_contract",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def delete_game_post(
+        self,
+        game_post_id: Annotated[StrictInt, Field(description="ID of the GamePost")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """delete_game_post
+
+        Delete a game post
+
+        :param game_post_id: ID of the GamePost (required)
+        :type game_post_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_game_post_serialize(
+            game_post_id=game_post_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def delete_game_post_with_http_info(
+        self,
+        game_post_id: Annotated[StrictInt, Field(description="ID of the GamePost")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """delete_game_post
+
+        Delete a game post
+
+        :param game_post_id: ID of the GamePost (required)
+        :type game_post_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_game_post_serialize(
+            game_post_id=game_post_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def delete_game_post_without_preload_content(
+        self,
+        game_post_id: Annotated[StrictInt, Field(description="ID of the GamePost")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """delete_game_post
+
+        Delete a game post
+
+        :param game_post_id: ID of the GamePost (required)
+        :type game_post_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_game_post_serialize(
+            game_post_id=game_post_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _delete_game_post_serialize(
+        self,
+        game_post_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if game_post_id is not None:
+            _path_params["gamePostId"] = game_post_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="DELETE",
+            resource_path="/api/v1/game_posts/{gamePostId}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -12056,6 +13076,260 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="DELETE",
             resource_path="/api/v1/uploads/{uploadId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def download_raw_contract_file(
+        self,
+        raw_contract_id: Annotated[
+            StrictInt, Field(description="ID of the RawContract")
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> bytearray:
+        """download_raw_contract_file
+
+        Download the raw contract PDF with a provenance watermark (attachment disposition)
+
+        :param raw_contract_id: ID of the RawContract (required)
+        :type raw_contract_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._download_raw_contract_file_serialize(
+            raw_contract_id=raw_contract_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "bytearray",
+            "401": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def download_raw_contract_file_with_http_info(
+        self,
+        raw_contract_id: Annotated[
+            StrictInt, Field(description="ID of the RawContract")
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[bytearray]:
+        """download_raw_contract_file
+
+        Download the raw contract PDF with a provenance watermark (attachment disposition)
+
+        :param raw_contract_id: ID of the RawContract (required)
+        :type raw_contract_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._download_raw_contract_file_serialize(
+            raw_contract_id=raw_contract_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "bytearray",
+            "401": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def download_raw_contract_file_without_preload_content(
+        self,
+        raw_contract_id: Annotated[
+            StrictInt, Field(description="ID of the RawContract")
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """download_raw_contract_file
+
+        Download the raw contract PDF with a provenance watermark (attachment disposition)
+
+        :param raw_contract_id: ID of the RawContract (required)
+        :type raw_contract_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._download_raw_contract_file_serialize(
+            raw_contract_id=raw_contract_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "bytearray",
+            "401": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _download_raw_contract_file_serialize(
+        self,
+        raw_contract_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if raw_contract_id is not None:
+            _path_params["raw_contractId"] = raw_contract_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/pdf"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/raw_contracts/{raw_contractId}/download",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -28575,6 +29849,236 @@ class DefaultApi:
         )
 
     @validate_call
+    def get_filter_options_states(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[State]:
+        """get_filter_options_states
+
+        Retrieve all US states, ordered by name. Used by the Edit Game sheet's neutral-venue picker.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_states_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[State]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_filter_options_states_with_http_info(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[State]]:
+        """get_filter_options_states
+
+        Retrieve all US states, ordered by name. Used by the Edit Game sheet's neutral-venue picker.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_states_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[State]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_filter_options_states_without_preload_content(
+        self,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_filter_options_states
+
+        Retrieve all US states, ordered by name. Used by the Edit Game sheet's neutral-venue picker.
+
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_filter_options_states_serialize(
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[State]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_filter_options_states_serialize(
+        self,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/filter_options/states",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def get_filter_options_subdivisions(
         self,
         division_id: Optional[StrictInt] = None,
@@ -31035,7 +32539,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> Game:
+    ) -> GameDetail:
         """get_game
 
         Retrieve a single game
@@ -31073,7 +32577,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "Game",
+            "200": "GameDetail",
             "401": None,
             "404": None,
         }
@@ -31101,7 +32605,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[Game]:
+    ) -> ApiResponse[GameDetail]:
         """get_game
 
         Retrieve a single game
@@ -31139,7 +32643,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "Game",
+            "200": "GameDetail",
             "401": None,
             "404": None,
         }
@@ -31205,7 +32709,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "Game",
+            "200": "GameDetail",
             "401": None,
             "404": None,
         }
@@ -33462,6 +34966,287 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="GET",
             resource_path="/api/v1/games",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_games_available_contracts(
+        self,
+        sport_id: Optional[StrictInt] = None,
+        home_school_id: Optional[StrictInt] = None,
+        away_school_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> List[AvailableGameContract]:
+        """get_games_available_contracts
+
+        List GameContracts compatible with the given sport + school pair, for the Edit Game sheet's Contract picker. Matches either direction (home=A,away=B or home=B,away=A). Uses `GameContract.filtered_for_game`. Capped at 50 rows, ordered by game date descending.
+
+        :param sport_id:
+        :type sport_id: int
+        :param home_school_id:
+        :type home_school_id: int
+        :param away_school_id:
+        :type away_school_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_games_available_contracts_serialize(
+            sport_id=sport_id,
+            home_school_id=home_school_id,
+            away_school_id=away_school_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[AvailableGameContract]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_games_available_contracts_with_http_info(
+        self,
+        sport_id: Optional[StrictInt] = None,
+        home_school_id: Optional[StrictInt] = None,
+        away_school_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[List[AvailableGameContract]]:
+        """get_games_available_contracts
+
+        List GameContracts compatible with the given sport + school pair, for the Edit Game sheet's Contract picker. Matches either direction (home=A,away=B or home=B,away=A). Uses `GameContract.filtered_for_game`. Capped at 50 rows, ordered by game date descending.
+
+        :param sport_id:
+        :type sport_id: int
+        :param home_school_id:
+        :type home_school_id: int
+        :param away_school_id:
+        :type away_school_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_games_available_contracts_serialize(
+            sport_id=sport_id,
+            home_school_id=home_school_id,
+            away_school_id=away_school_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[AvailableGameContract]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_games_available_contracts_without_preload_content(
+        self,
+        sport_id: Optional[StrictInt] = None,
+        home_school_id: Optional[StrictInt] = None,
+        away_school_id: Optional[StrictInt] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_games_available_contracts
+
+        List GameContracts compatible with the given sport + school pair, for the Edit Game sheet's Contract picker. Matches either direction (home=A,away=B or home=B,away=A). Uses `GameContract.filtered_for_game`. Capped at 50 rows, ordered by game date descending.
+
+        :param sport_id:
+        :type sport_id: int
+        :param home_school_id:
+        :type home_school_id: int
+        :param away_school_id:
+        :type away_school_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_games_available_contracts_serialize(
+            sport_id=sport_id,
+            home_school_id=home_school_id,
+            away_school_id=away_school_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "List[AvailableGameContract]",
+            "401": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_games_available_contracts_serialize(
+        self,
+        sport_id,
+        home_school_id,
+        away_school_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if sport_id is not None:
+
+            _query_params.append(("sport_id", sport_id))
+
+        if home_school_id is not None:
+
+            _query_params.append(("home_school_id", home_school_id))
+
+        if away_school_id is not None:
+
+            _query_params.append(("away_school_id", away_school_id))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/games/available_contracts",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -38324,6 +40109,831 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="GET",
             resource_path="/api/v1/revenue_searches",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_schedule_grid(
+        self,
+        sport_name: Annotated[
+            StrictStr, Field(description="Sport name (e.g. FOOTBALL, BASKETBALL_M)")
+        ],
+        school_ids: Annotated[
+            Optional[List[StrictInt]],
+            Field(
+                description="School IDs to include on the grid (max 8, ordering is preserved)"
+            ),
+        ] = None,
+        year: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Four-digit season year. Defaults to the current year when omitted or invalid."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ScheduleGridView:
+        """get_schedule_grid
+
+        Retrieve the schedule grid for a sport — season window, schools, games, and active game posts for up to eight selected schools.
+
+        :param sport_name: Sport name (e.g. FOOTBALL, BASKETBALL_M) (required)
+        :type sport_name: str
+        :param school_ids: School IDs to include on the grid (max 8, ordering is preserved)
+        :type school_ids: List[int]
+        :param year: Four-digit season year. Defaults to the current year when omitted or invalid.
+        :type year: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_schedule_grid_serialize(
+            sport_name=sport_name,
+            school_ids=school_ids,
+            year=year,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ScheduleGridView",
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_schedule_grid_with_http_info(
+        self,
+        sport_name: Annotated[
+            StrictStr, Field(description="Sport name (e.g. FOOTBALL, BASKETBALL_M)")
+        ],
+        school_ids: Annotated[
+            Optional[List[StrictInt]],
+            Field(
+                description="School IDs to include on the grid (max 8, ordering is preserved)"
+            ),
+        ] = None,
+        year: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Four-digit season year. Defaults to the current year when omitted or invalid."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ScheduleGridView]:
+        """get_schedule_grid
+
+        Retrieve the schedule grid for a sport — season window, schools, games, and active game posts for up to eight selected schools.
+
+        :param sport_name: Sport name (e.g. FOOTBALL, BASKETBALL_M) (required)
+        :type sport_name: str
+        :param school_ids: School IDs to include on the grid (max 8, ordering is preserved)
+        :type school_ids: List[int]
+        :param year: Four-digit season year. Defaults to the current year when omitted or invalid.
+        :type year: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_schedule_grid_serialize(
+            sport_name=sport_name,
+            school_ids=school_ids,
+            year=year,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ScheduleGridView",
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_schedule_grid_without_preload_content(
+        self,
+        sport_name: Annotated[
+            StrictStr, Field(description="Sport name (e.g. FOOTBALL, BASKETBALL_M)")
+        ],
+        school_ids: Annotated[
+            Optional[List[StrictInt]],
+            Field(
+                description="School IDs to include on the grid (max 8, ordering is preserved)"
+            ),
+        ] = None,
+        year: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Four-digit season year. Defaults to the current year when omitted or invalid."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_schedule_grid
+
+        Retrieve the schedule grid for a sport — season window, schools, games, and active game posts for up to eight selected schools.
+
+        :param sport_name: Sport name (e.g. FOOTBALL, BASKETBALL_M) (required)
+        :type sport_name: str
+        :param school_ids: School IDs to include on the grid (max 8, ordering is preserved)
+        :type school_ids: List[int]
+        :param year: Four-digit season year. Defaults to the current year when omitted or invalid.
+        :type year: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_schedule_grid_serialize(
+            sport_name=sport_name,
+            school_ids=school_ids,
+            year=year,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ScheduleGridView",
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_schedule_grid_serialize(
+        self,
+        sport_name,
+        school_ids,
+        year,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            "school_ids": "multi",
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if sport_name is not None:
+            _path_params["sport_name"] = sport_name
+        # process the query parameters
+        if school_ids is not None:
+
+            _query_params.append(("school_ids", school_ids))
+
+        if year is not None:
+
+            _query_params.append(("year", year))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/schedule_grid/{sport_name}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_schedule_grid_available_schools(
+        self,
+        sport_name: Annotated[
+            StrictStr, Field(description="Sport name (e.g. FOOTBALL, BASKETBALL_M)")
+        ],
+        target_date: Annotated[
+            date, Field(description="Target date in ISO format (YYYY-MM-DD)")
+        ],
+        window_days: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Number of days on either side of target_date to include (default 1)"
+            ),
+        ] = None,
+        deal_types: Annotated[
+            Optional[List[StrictStr]],
+            Field(
+                description="Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)"
+            ),
+        ] = None,
+        quality_tier: Annotated[
+            Optional[StrictStr], Field(description="Restrict to a subdivision tier")
+        ] = None,
+        max_distance_miles: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin."
+            ),
+        ] = None,
+        user_school_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Requesting user's school. Used as the origin for distance filtering and is always excluded from results."
+            ),
+        ] = None,
+        exclude_school_ids: Annotated[
+            Optional[List[StrictInt]],
+            Field(
+                description="Additional school IDs to exclude from results (e.g. schools already on the grid)"
+            ),
+        ] = None,
+        limit: Annotated[
+            Optional[Annotated[int, Field(le=100, strict=True)]],
+            Field(description="Maximum rows to return (default 50, capped at 100)"),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ScheduleGridAvailableSchools:
+        """get_schedule_grid_available_schools
+
+        Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, and distance.
+
+        :param sport_name: Sport name (e.g. FOOTBALL, BASKETBALL_M) (required)
+        :type sport_name: str
+        :param target_date: Target date in ISO format (YYYY-MM-DD) (required)
+        :type target_date: date
+        :param window_days: Number of days on either side of target_date to include (default 1)
+        :type window_days: int
+        :param deal_types: Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
+        :type deal_types: List[str]
+        :param quality_tier: Restrict to a subdivision tier
+        :type quality_tier: str
+        :param max_distance_miles: Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
+        :type max_distance_miles: int
+        :param user_school_id: Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
+        :type user_school_id: int
+        :param exclude_school_ids: Additional school IDs to exclude from results (e.g. schools already on the grid)
+        :type exclude_school_ids: List[int]
+        :param limit: Maximum rows to return (default 50, capped at 100)
+        :type limit: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_schedule_grid_available_schools_serialize(
+            sport_name=sport_name,
+            target_date=target_date,
+            window_days=window_days,
+            deal_types=deal_types,
+            quality_tier=quality_tier,
+            max_distance_miles=max_distance_miles,
+            user_school_id=user_school_id,
+            exclude_school_ids=exclude_school_ids,
+            limit=limit,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ScheduleGridAvailableSchools",
+            "400": None,
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_schedule_grid_available_schools_with_http_info(
+        self,
+        sport_name: Annotated[
+            StrictStr, Field(description="Sport name (e.g. FOOTBALL, BASKETBALL_M)")
+        ],
+        target_date: Annotated[
+            date, Field(description="Target date in ISO format (YYYY-MM-DD)")
+        ],
+        window_days: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Number of days on either side of target_date to include (default 1)"
+            ),
+        ] = None,
+        deal_types: Annotated[
+            Optional[List[StrictStr]],
+            Field(
+                description="Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)"
+            ),
+        ] = None,
+        quality_tier: Annotated[
+            Optional[StrictStr], Field(description="Restrict to a subdivision tier")
+        ] = None,
+        max_distance_miles: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin."
+            ),
+        ] = None,
+        user_school_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Requesting user's school. Used as the origin for distance filtering and is always excluded from results."
+            ),
+        ] = None,
+        exclude_school_ids: Annotated[
+            Optional[List[StrictInt]],
+            Field(
+                description="Additional school IDs to exclude from results (e.g. schools already on the grid)"
+            ),
+        ] = None,
+        limit: Annotated[
+            Optional[Annotated[int, Field(le=100, strict=True)]],
+            Field(description="Maximum rows to return (default 50, capped at 100)"),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ScheduleGridAvailableSchools]:
+        """get_schedule_grid_available_schools
+
+        Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, and distance.
+
+        :param sport_name: Sport name (e.g. FOOTBALL, BASKETBALL_M) (required)
+        :type sport_name: str
+        :param target_date: Target date in ISO format (YYYY-MM-DD) (required)
+        :type target_date: date
+        :param window_days: Number of days on either side of target_date to include (default 1)
+        :type window_days: int
+        :param deal_types: Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
+        :type deal_types: List[str]
+        :param quality_tier: Restrict to a subdivision tier
+        :type quality_tier: str
+        :param max_distance_miles: Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
+        :type max_distance_miles: int
+        :param user_school_id: Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
+        :type user_school_id: int
+        :param exclude_school_ids: Additional school IDs to exclude from results (e.g. schools already on the grid)
+        :type exclude_school_ids: List[int]
+        :param limit: Maximum rows to return (default 50, capped at 100)
+        :type limit: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_schedule_grid_available_schools_serialize(
+            sport_name=sport_name,
+            target_date=target_date,
+            window_days=window_days,
+            deal_types=deal_types,
+            quality_tier=quality_tier,
+            max_distance_miles=max_distance_miles,
+            user_school_id=user_school_id,
+            exclude_school_ids=exclude_school_ids,
+            limit=limit,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ScheduleGridAvailableSchools",
+            "400": None,
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_schedule_grid_available_schools_without_preload_content(
+        self,
+        sport_name: Annotated[
+            StrictStr, Field(description="Sport name (e.g. FOOTBALL, BASKETBALL_M)")
+        ],
+        target_date: Annotated[
+            date, Field(description="Target date in ISO format (YYYY-MM-DD)")
+        ],
+        window_days: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Number of days on either side of target_date to include (default 1)"
+            ),
+        ] = None,
+        deal_types: Annotated[
+            Optional[List[StrictStr]],
+            Field(
+                description="Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)"
+            ),
+        ] = None,
+        quality_tier: Annotated[
+            Optional[StrictStr], Field(description="Restrict to a subdivision tier")
+        ] = None,
+        max_distance_miles: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin."
+            ),
+        ] = None,
+        user_school_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Requesting user's school. Used as the origin for distance filtering and is always excluded from results."
+            ),
+        ] = None,
+        exclude_school_ids: Annotated[
+            Optional[List[StrictInt]],
+            Field(
+                description="Additional school IDs to exclude from results (e.g. schools already on the grid)"
+            ),
+        ] = None,
+        limit: Annotated[
+            Optional[Annotated[int, Field(le=100, strict=True)]],
+            Field(description="Maximum rows to return (default 50, capped at 100)"),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_schedule_grid_available_schools
+
+        Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, and distance.
+
+        :param sport_name: Sport name (e.g. FOOTBALL, BASKETBALL_M) (required)
+        :type sport_name: str
+        :param target_date: Target date in ISO format (YYYY-MM-DD) (required)
+        :type target_date: date
+        :param window_days: Number of days on either side of target_date to include (default 1)
+        :type window_days: int
+        :param deal_types: Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered)
+        :type deal_types: List[str]
+        :param quality_tier: Restrict to a subdivision tier
+        :type quality_tier: str
+        :param max_distance_miles: Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
+        :type max_distance_miles: int
+        :param user_school_id: Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
+        :type user_school_id: int
+        :param exclude_school_ids: Additional school IDs to exclude from results (e.g. schools already on the grid)
+        :type exclude_school_ids: List[int]
+        :param limit: Maximum rows to return (default 50, capped at 100)
+        :type limit: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_schedule_grid_available_schools_serialize(
+            sport_name=sport_name,
+            target_date=target_date,
+            window_days=window_days,
+            deal_types=deal_types,
+            quality_tier=quality_tier,
+            max_distance_miles=max_distance_miles,
+            user_school_id=user_school_id,
+            exclude_school_ids=exclude_school_ids,
+            limit=limit,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ScheduleGridAvailableSchools",
+            "400": None,
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_schedule_grid_available_schools_serialize(
+        self,
+        sport_name,
+        target_date,
+        window_days,
+        deal_types,
+        quality_tier,
+        max_distance_miles,
+        user_school_id,
+        exclude_school_ids,
+        limit,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            "deal_types": "multi",
+            "exclude_school_ids": "multi",
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if sport_name is not None:
+            _path_params["sport_name"] = sport_name
+        # process the query parameters
+        if target_date is not None:
+            if isinstance(target_date, date):
+                _query_params.append(
+                    (
+                        "target_date",
+                        target_date.strftime(self.api_client.configuration.date_format),
+                    )
+                )
+            else:
+                _query_params.append(("target_date", target_date))
+
+        if window_days is not None:
+
+            _query_params.append(("window_days", window_days))
+
+        if deal_types is not None:
+
+            _query_params.append(("deal_types", deal_types))
+
+        if quality_tier is not None:
+
+            _query_params.append(("quality_tier", quality_tier))
+
+        if max_distance_miles is not None:
+
+            _query_params.append(("max_distance_miles", max_distance_miles))
+
+        if user_school_id is not None:
+
+            _query_params.append(("user_school_id", user_school_id))
+
+        if exclude_school_ids is not None:
+
+            _query_params.append(("exclude_school_ids", exclude_school_ids))
+
+        if limit is not None:
+
+            _query_params.append(("limit", limit))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/schedule_grid/{sport_name}/available_schools",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -56900,6 +59510,282 @@ class DefaultApi:
         )
 
     @validate_call
+    def update_game(
+        self,
+        game_id: Annotated[StrictInt, Field(description="ID of game to update")],
+        create_game_request: CreateGameRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> GameDetail:
+        """update_game
+
+        Update a game
+
+        :param game_id: ID of game to update (required)
+        :type game_id: int
+        :param create_game_request: (required)
+        :type create_game_request: CreateGameRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._update_game_serialize(
+            game_id=game_id,
+            create_game_request=create_game_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GameDetail",
+            "401": None,
+            "404": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def update_game_with_http_info(
+        self,
+        game_id: Annotated[StrictInt, Field(description="ID of game to update")],
+        create_game_request: CreateGameRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[GameDetail]:
+        """update_game
+
+        Update a game
+
+        :param game_id: ID of game to update (required)
+        :type game_id: int
+        :param create_game_request: (required)
+        :type create_game_request: CreateGameRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._update_game_serialize(
+            game_id=game_id,
+            create_game_request=create_game_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GameDetail",
+            "401": None,
+            "404": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def update_game_without_preload_content(
+        self,
+        game_id: Annotated[StrictInt, Field(description="ID of game to update")],
+        create_game_request: CreateGameRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """update_game
+
+        Update a game
+
+        :param game_id: ID of game to update (required)
+        :type game_id: int
+        :param create_game_request: (required)
+        :type create_game_request: CreateGameRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._update_game_serialize(
+            game_id=game_id,
+            create_game_request=create_game_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "GameDetail",
+            "401": None,
+            "404": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _update_game_serialize(
+        self,
+        game_id,
+        create_game_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if game_id is not None:
+            _path_params["gameId"] = game_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if create_game_request is not None:
+            _body_params = create_game_request
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params["Content-Type"] = _content_type
+        else:
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
+            )
+            if _default_content_type is not None:
+                _header_params["Content-Type"] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="PATCH",
+            resource_path="/api/v1/games/{gameId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def update_game_contract(
         self,
         game_contract_id: Annotated[
@@ -61218,7 +64104,7 @@ class DefaultApi:
     ) -> bytearray:
         """view_raw_contract_file
 
-        Stream the raw contract PDF for inline viewing
+        Stream the raw contract PDF for inline viewing (no watermark)
 
         :param raw_contract_id: ID of the RawContract (required)
         :type raw_contract_id: int
@@ -61286,7 +64172,7 @@ class DefaultApi:
     ) -> ApiResponse[bytearray]:
         """view_raw_contract_file
 
-        Stream the raw contract PDF for inline viewing
+        Stream the raw contract PDF for inline viewing (no watermark)
 
         :param raw_contract_id: ID of the RawContract (required)
         :type raw_contract_id: int
@@ -61354,7 +64240,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """view_raw_contract_file
 
-        Stream the raw contract PDF for inline viewing
+        Stream the raw contract PDF for inline viewing (no watermark)
 
         :param raw_contract_id: ID of the RawContract (required)
         :type raw_contract_id: int

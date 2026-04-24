@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -32,13 +32,32 @@ class CreateGameRequestGame(BaseModel):
     away_school_id: Optional[StrictInt] = None
     sport_id: Optional[StrictInt] = None
     game_date: Optional[date] = None
+    season_year_tbd: Optional[StrictInt] = Field(
+        default=None,
+        description="4-digit season year; mutually exclusive with game_date.",
+    )
     neutral: Optional[StrictBool] = None
+    city: Optional[StrictStr] = Field(
+        default=None, description="Only meaningful when neutral is true."
+    )
+    state_id: Optional[StrictInt] = Field(
+        default=None, description="Only meaningful when neutral is true."
+    )
+    description: Optional[StrictStr] = None
+    game_contract_id: Optional[StrictInt] = Field(
+        default=None, description="Link/unlink an existing GameContract."
+    )
     __properties: ClassVar[List[str]] = [
         "home_school_id",
         "away_school_id",
         "sport_id",
         "game_date",
+        "season_year_tbd",
         "neutral",
+        "city",
+        "state_id",
+        "description",
+        "game_contract_id",
     ]
 
     model_config = ConfigDict(
@@ -78,6 +97,39 @@ class CreateGameRequestGame(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if game_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.game_date is None and "game_date" in self.model_fields_set:
+            _dict["game_date"] = None
+
+        # set to None if season_year_tbd (nullable) is None
+        # and model_fields_set contains the field
+        if self.season_year_tbd is None and "season_year_tbd" in self.model_fields_set:
+            _dict["season_year_tbd"] = None
+
+        # set to None if city (nullable) is None
+        # and model_fields_set contains the field
+        if self.city is None and "city" in self.model_fields_set:
+            _dict["city"] = None
+
+        # set to None if state_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.state_id is None and "state_id" in self.model_fields_set:
+            _dict["state_id"] = None
+
+        # set to None if description (nullable) is None
+        # and model_fields_set contains the field
+        if self.description is None and "description" in self.model_fields_set:
+            _dict["description"] = None
+
+        # set to None if game_contract_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.game_contract_id is None
+            and "game_contract_id" in self.model_fields_set
+        ):
+            _dict["game_contract_id"] = None
+
         return _dict
 
     @classmethod
@@ -95,7 +147,12 @@ class CreateGameRequestGame(BaseModel):
                 "away_school_id": obj.get("away_school_id"),
                 "sport_id": obj.get("sport_id"),
                 "game_date": obj.get("game_date"),
+                "season_year_tbd": obj.get("season_year_tbd"),
                 "neutral": obj.get("neutral"),
+                "city": obj.get("city"),
+                "state_id": obj.get("state_id"),
+                "description": obj.get("description"),
+                "game_contract_id": obj.get("game_contract_id"),
             }
         )
         return _obj

@@ -22,25 +22,15 @@ from typing import Optional, Set
 from typing_extensions import Self
 
 
-class CashflowGroupItem(BaseModel):
+class State(BaseModel):
     """
-    CashflowGroupItem
+    A US state. Returned by /filter_options/states.
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    name_id: Optional[StrictStr] = None
-    short_name: Optional[StrictStr] = None
-    report_id: Optional[StrictStr] = None
-    report_label: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "name_id",
-        "short_name",
-        "report_id",
-        "report_label",
-    ]
+    id: StrictInt
+    name: StrictStr
+    name_display: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "name_display"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -59,7 +49,7 @@ class CashflowGroupItem(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of CashflowGroupItem from a JSON string"""
+        """Create an instance of State from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,21 +69,16 @@ class CashflowGroupItem(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if short_name (nullable) is None
+        # set to None if name_display (nullable) is None
         # and model_fields_set contains the field
-        if self.short_name is None and "short_name" in self.model_fields_set:
-            _dict["short_name"] = None
-
-        # set to None if report_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.report_id is None and "report_id" in self.model_fields_set:
-            _dict["report_id"] = None
+        if self.name_display is None and "name_display" in self.model_fields_set:
+            _dict["name_display"] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of CashflowGroupItem from a dict"""
+        """Create an instance of State from a dict"""
         if obj is None:
             return None
 
@@ -104,10 +89,7 @@ class CashflowGroupItem(BaseModel):
             {
                 "id": obj.get("id"),
                 "name": obj.get("name"),
-                "name_id": obj.get("name_id"),
-                "short_name": obj.get("short_name"),
-                "report_id": obj.get("report_id"),
-                "report_label": obj.get("report_label"),
+                "name_display": obj.get("name_display"),
             }
         )
         return _obj

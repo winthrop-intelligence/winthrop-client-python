@@ -9,7 +9,12 @@ Name | Type | Description | Notes
 **away_school_id** | **int** |  | [optional] 
 **sport_id** | **int** |  | [optional] 
 **game_date** | **date** |  | [optional] 
+**season_year_tbd** | **int** | 4-digit season year; mutually exclusive with game_date. | [optional] 
 **neutral** | **bool** |  | [optional] 
+**city** | **str** | Only meaningful when neutral is true. | [optional] 
+**state_id** | **int** | Only meaningful when neutral is true. | [optional] 
+**description** | **str** |  | [optional] 
+**game_contract_id** | **int** | Link/unlink an existing GameContract. | [optional] 
 
 ## Example
 
