@@ -30,7 +30,6 @@ class SchoolFinancialGroup(BaseModel):
     group_id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
     name_id: Optional[StrictStr] = None
-    report_label: Optional[StrictStr] = None
     football: Optional[StrictInt] = None
     basketball_m: Optional[StrictInt] = None
     basketball_w: Optional[StrictInt] = None
@@ -40,7 +39,6 @@ class SchoolFinancialGroup(BaseModel):
         "group_id",
         "name",
         "name_id",
-        "report_label",
         "football",
         "basketball_m",
         "basketball_w",
@@ -85,11 +83,6 @@ class SchoolFinancialGroup(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if report_label (nullable) is None
-        # and model_fields_set contains the field
-        if self.report_label is None and "report_label" in self.model_fields_set:
-            _dict["report_label"] = None
-
         # set to None if football (nullable) is None
         # and model_fields_set contains the field
         if self.football is None and "football" in self.model_fields_set:
@@ -131,7 +124,6 @@ class SchoolFinancialGroup(BaseModel):
                 "group_id": obj.get("group_id"),
                 "name": obj.get("name"),
                 "name_id": obj.get("name_id"),
-                "report_label": obj.get("report_label"),
                 "football": obj.get("football"),
                 "basketball_m": obj.get("basketball_m"),
                 "basketball_w": obj.get("basketball_w"),

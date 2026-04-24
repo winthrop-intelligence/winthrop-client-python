@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **group_id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **name_id** | **str** |  | [optional] 
-**report_label** | **str** |  | [optional] 
 **total** | **int** |  | [optional] 
 
 ## Example

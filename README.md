@@ -142,8 +142,6 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
 *DefaultApi* | [**delete_team_schedule_note**](docs/DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**delete_upload**](docs/DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} | 
-*DefaultApi* | [**download_raw_contract_file**](docs/DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download | 
-*DefaultApi* | [**export_revenue_searches**](docs/DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export | 
 *DefaultApi* | [**get_account**](docs/DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
 *DefaultApi* | [**get_account_user_activation**](docs/DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
 *DefaultApi* | [**get_account_users**](docs/DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 

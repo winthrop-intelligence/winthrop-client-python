@@ -31,14 +31,7 @@ class SchoolFinancialDetailGroup(BaseModel):
     name: Optional[StrictStr] = None
     name_id: Optional[StrictStr] = None
     cashflow_type: Optional[StrictStr] = None
-    report_label: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "name_id",
-        "cashflow_type",
-        "report_label",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "name_id", "cashflow_type"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -77,11 +70,6 @@ class SchoolFinancialDetailGroup(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if report_label (nullable) is None
-        # and model_fields_set contains the field
-        if self.report_label is None and "report_label" in self.model_fields_set:
-            _dict["report_label"] = None
-
         return _dict
 
     @classmethod
@@ -99,7 +87,6 @@ class SchoolFinancialDetailGroup(BaseModel):
                 "name": obj.get("name"),
                 "name_id": obj.get("name_id"),
                 "cashflow_type": obj.get("cashflow_type"),
-                "report_label": obj.get("report_label"),
             }
         )
         return _obj
