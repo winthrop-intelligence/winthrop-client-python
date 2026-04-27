@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **low** | **float** |  | [optional] 
 **median** | **float** |  | [optional] 
 **count** | **int** |  | [optional] 
+**entries** | [**List[CashflowEntry]**](CashflowEntry.md) |  | [optional] 
 
 ## Example
 
