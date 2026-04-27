@@ -16,6 +16,11 @@ Name | Type | Description | Notes
 **neutral** | **bool** |  | [optional] 
 **guarantee_cents** | **int** | Associated game contract comp (cents), if any | [optional] 
 **in_conference** | **bool** |  | [optional] 
+**home_school_id** | **int** |  | [optional] 
+**away_school_id** | **int** |  | [optional] 
+**home_school_score** | **int** | Final home-school score for completed games; null for games that have not been played | [optional] 
+**away_school_score** | **int** | Final away-school score for completed games; null for games that have not been played | [optional] 
+**overtime** | **bool** | True when the game went to overtime | [optional] 
 
 ## Example
 

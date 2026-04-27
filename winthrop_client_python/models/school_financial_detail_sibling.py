@@ -30,8 +30,15 @@ class SchoolFinancialDetailSibling(BaseModel):
     group_id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
     name_id: Optional[StrictStr] = None
+    report_label: Optional[StrictStr] = None
     total: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["group_id", "name", "name_id", "total"]
+    __properties: ClassVar[List[str]] = [
+        "group_id",
+        "name",
+        "name_id",
+        "report_label",
+        "total",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -70,6 +77,11 @@ class SchoolFinancialDetailSibling(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if report_label (nullable) is None
+        # and model_fields_set contains the field
+        if self.report_label is None and "report_label" in self.model_fields_set:
+            _dict["report_label"] = None
+
         return _dict
 
     @classmethod
@@ -86,6 +98,7 @@ class SchoolFinancialDetailSibling(BaseModel):
                 "group_id": obj.get("group_id"),
                 "name": obj.get("name"),
                 "name_id": obj.get("name_id"),
+                "report_label": obj.get("report_label"),
                 "total": obj.get("total"),
             }
         )

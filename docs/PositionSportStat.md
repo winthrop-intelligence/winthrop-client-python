@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **low_position_num** | **float** |  | [optional] 
 **median_position_num** | **float** |  | [optional] 
 **count** | **int** |  | [optional] 
-**entries** | [**List[PositionEntry]**](PositionEntry.md) |  | [optional] 
 
 ## Example
 

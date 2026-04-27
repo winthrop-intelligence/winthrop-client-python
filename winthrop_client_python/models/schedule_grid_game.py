@@ -40,6 +40,19 @@ class ScheduleGridGame(BaseModel):
         default=None, description="Associated game contract comp (cents), if any"
     )
     in_conference: Optional[StrictBool] = None
+    home_school_id: Optional[StrictInt] = None
+    away_school_id: Optional[StrictInt] = None
+    home_school_score: Optional[StrictInt] = Field(
+        default=None,
+        description="Final home-school score for completed games; null for games that have not been played",
+    )
+    away_school_score: Optional[StrictInt] = Field(
+        default=None,
+        description="Final away-school score for completed games; null for games that have not been played",
+    )
+    overtime: Optional[StrictBool] = Field(
+        default=None, description="True when the game went to overtime"
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "game_date",
@@ -51,6 +64,11 @@ class ScheduleGridGame(BaseModel):
         "neutral",
         "guarantee_cents",
         "in_conference",
+        "home_school_id",
+        "away_school_id",
+        "home_school_score",
+        "away_school_score",
+        "overtime",
     ]
 
     model_config = ConfigDict(
@@ -131,6 +149,37 @@ class ScheduleGridGame(BaseModel):
         if self.in_conference is None and "in_conference" in self.model_fields_set:
             _dict["in_conference"] = None
 
+        # set to None if home_school_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.home_school_id is None and "home_school_id" in self.model_fields_set:
+            _dict["home_school_id"] = None
+
+        # set to None if away_school_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.away_school_id is None and "away_school_id" in self.model_fields_set:
+            _dict["away_school_id"] = None
+
+        # set to None if home_school_score (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.home_school_score is None
+            and "home_school_score" in self.model_fields_set
+        ):
+            _dict["home_school_score"] = None
+
+        # set to None if away_school_score (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.away_school_score is None
+            and "away_school_score" in self.model_fields_set
+        ):
+            _dict["away_school_score"] = None
+
+        # set to None if overtime (nullable) is None
+        # and model_fields_set contains the field
+        if self.overtime is None and "overtime" in self.model_fields_set:
+            _dict["overtime"] = None
+
         return _dict
 
     @classmethod
@@ -154,6 +203,11 @@ class ScheduleGridGame(BaseModel):
                 "neutral": obj.get("neutral"),
                 "guarantee_cents": obj.get("guarantee_cents"),
                 "in_conference": obj.get("in_conference"),
+                "home_school_id": obj.get("home_school_id"),
+                "away_school_id": obj.get("away_school_id"),
+                "home_school_score": obj.get("home_school_score"),
+                "away_school_score": obj.get("away_school_score"),
+                "overtime": obj.get("overtime"),
             }
         )
         return _obj
