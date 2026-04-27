@@ -28,9 +28,19 @@ class DepartmentStaffMember(BaseModel):
     """  # noqa: E501
 
     id: Optional[StrictInt] = None
+    coach_id: Optional[StrictInt] = None
     coach_name: Optional[StrictStr] = None
     total_comp: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["id", "coach_name", "total_comp"]
+    position_title: Optional[StrictStr] = None
+    photo_url: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "coach_id",
+        "coach_name",
+        "total_comp",
+        "position_title",
+        "photo_url",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -74,6 +84,16 @@ class DepartmentStaffMember(BaseModel):
         if self.total_comp is None and "total_comp" in self.model_fields_set:
             _dict["total_comp"] = None
 
+        # set to None if position_title (nullable) is None
+        # and model_fields_set contains the field
+        if self.position_title is None and "position_title" in self.model_fields_set:
+            _dict["position_title"] = None
+
+        # set to None if photo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.photo_url is None and "photo_url" in self.model_fields_set:
+            _dict["photo_url"] = None
+
         return _dict
 
     @classmethod
@@ -88,8 +108,11 @@ class DepartmentStaffMember(BaseModel):
         _obj = cls.model_validate(
             {
                 "id": obj.get("id"),
+                "coach_id": obj.get("coach_id"),
                 "coach_name": obj.get("coach_name"),
                 "total_comp": obj.get("total_comp"),
+                "position_title": obj.get("position_title"),
+                "photo_url": obj.get("photo_url"),
             }
         )
         return _obj

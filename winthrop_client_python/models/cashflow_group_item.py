@@ -31,16 +31,7 @@ class CashflowGroupItem(BaseModel):
     name: Optional[StrictStr] = None
     name_id: Optional[StrictStr] = None
     short_name: Optional[StrictStr] = None
-    report_id: Optional[StrictStr] = None
-    report_label: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "name_id",
-        "short_name",
-        "report_id",
-        "report_label",
-    ]
+    __properties: ClassVar[List[str]] = ["id", "name", "name_id", "short_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,11 +75,6 @@ class CashflowGroupItem(BaseModel):
         if self.short_name is None and "short_name" in self.model_fields_set:
             _dict["short_name"] = None
 
-        # set to None if report_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.report_id is None and "report_id" in self.model_fields_set:
-            _dict["report_id"] = None
-
         return _dict
 
     @classmethod
@@ -106,8 +92,6 @@ class CashflowGroupItem(BaseModel):
                 "name": obj.get("name"),
                 "name_id": obj.get("name_id"),
                 "short_name": obj.get("short_name"),
-                "report_id": obj.get("report_id"),
-                "report_label": obj.get("report_label"),
             }
         )
         return _obj

@@ -75,12 +75,12 @@ from winthrop_client_python.models.audited_financial_report_status import (
 from winthrop_client_python.models.audited_financial_report_status_collection import (
     AuditedFinancialReportStatusCollection,
 )
-from winthrop_client_python.models.available_game_contract import AvailableGameContract
 from winthrop_client_python.models.avatar import Avatar
 from winthrop_client_python.models.average_compensation import AverageCompensation
 from winthrop_client_python.models.coli_adjusted import COLIAdjusted
 from winthrop_client_python.models.cashflow import Cashflow
 from winthrop_client_python.models.cashflow_collection import CashflowCollection
+from winthrop_client_python.models.cashflow_entry import CashflowEntry
 from winthrop_client_python.models.cashflow_group_item import CashflowGroupItem
 from winthrop_client_python.models.cashflow_group_stats import CashflowGroupStats
 from winthrop_client_python.models.cashflow_groups_response import (
@@ -233,8 +233,6 @@ from winthrop_client_python.models.create_game_post_search_request import (
 from winthrop_client_python.models.create_game_post_search_request_game_post import (
     CreateGamePostSearchRequestGamePost,
 )
-from winthrop_client_python.models.create_game_request import CreateGameRequest
-from winthrop_client_python.models.create_game_request_game import CreateGameRequestGame
 from winthrop_client_python.models.create_note_request import CreateNoteRequest
 from winthrop_client_python.models.create_password_reset200_response import (
     CreatePasswordReset200Response,
@@ -333,10 +331,6 @@ from winthrop_client_python.models.game_contract_series_entry import (
 from winthrop_client_python.models.game_contract_series_response import (
     GameContractSeriesResponse,
 )
-from winthrop_client_python.models.game_detail import GameDetail
-from winthrop_client_python.models.game_detail_all_of_game_contract import (
-    GameDetailAllOfGameContract,
-)
 from winthrop_client_python.models.game_post import GamePost
 from winthrop_client_python.models.game_post_collection import GamePostCollection
 from winthrop_client_python.models.game_post_contact import GamePostContact
@@ -427,6 +421,7 @@ from winthrop_client_python.models.performance_chart_record import (
 )
 from winthrop_client_python.models.position import Position
 from winthrop_client_python.models.position_collection import PositionCollection
+from winthrop_client_python.models.position_entry import PositionEntry
 from winthrop_client_python.models.position_sport_stat import PositionSportStat
 from winthrop_client_python.models.position_type import PositionType
 from winthrop_client_python.models.position_type_group import PositionTypeGroup
@@ -454,19 +449,6 @@ from winthrop_client_python.models.requested_item_collection import (
     RequestedItemCollection,
 )
 from winthrop_client_python.models.role_option import RoleOption
-from winthrop_client_python.models.schedule_grid_available_school_post import (
-    ScheduleGridAvailableSchoolPost,
-)
-from winthrop_client_python.models.schedule_grid_available_school_row import (
-    ScheduleGridAvailableSchoolRow,
-)
-from winthrop_client_python.models.schedule_grid_available_schools import (
-    ScheduleGridAvailableSchools,
-)
-from winthrop_client_python.models.schedule_grid_game import ScheduleGridGame
-from winthrop_client_python.models.schedule_grid_game_post import ScheduleGridGamePost
-from winthrop_client_python.models.schedule_grid_school import ScheduleGridSchool
-from winthrop_client_python.models.schedule_grid_view import ScheduleGridView
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.models.school_contract_entry import SchoolContractEntry
@@ -520,7 +502,6 @@ from winthrop_client_python.models.sport_compensation_subdivision import (
     SportCompensationSubdivision,
 )
 from winthrop_client_python.models.sport_option import SportOption
-from winthrop_client_python.models.state import State
 from winthrop_client_python.models.subdivision import Subdivision
 from winthrop_client_python.models.subdivision_collection import SubdivisionCollection
 from winthrop_client_python.models.subscription import Subscription

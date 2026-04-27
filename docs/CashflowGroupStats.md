@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **name_id** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **short_name** | **str** |  | [optional] 
-**report_label** | **str** |  | [optional] 
 **sports** | [**List[CashflowSportStat]**](CashflowSportStat.md) |  | [optional] 
 
 ## Example

@@ -6,8 +6,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
+**coach_id** | **int** |  | [optional] 
 **coach_name** | **str** |  | [optional] 
 **total_comp** | **int** |  | [optional] 
+**position_title** | **str** |  | [optional] 
+**photo_url** | **str** |  | [optional] 
 
 ## Example
 
