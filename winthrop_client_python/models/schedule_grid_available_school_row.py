@@ -44,7 +44,10 @@ class ScheduleGridAvailableSchoolRow(BaseModel):
         default=None,
         description="Distance from user_school_id in miles (omitted when distance filtering is not active)",
     )
-    nearest_post: Optional[ScheduleGridAvailableSchoolPost] = None
+    nearest_post: Optional[ScheduleGridAvailableSchoolPost] = Field(
+        default=None,
+        description="Nearest active GamePost to target_date in the window. Null when the school has no openness recorded for the window (assumed-eligible).",
+    )
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
@@ -146,6 +149,11 @@ class ScheduleGridAvailableSchoolRow(BaseModel):
         # and model_fields_set contains the field
         if self.distance_miles is None and "distance_miles" in self.model_fields_set:
             _dict["distance_miles"] = None
+
+        # set to None if nearest_post (nullable) is None
+        # and model_fields_set contains the field
+        if self.nearest_post is None and "nearest_post" in self.model_fields_set:
+            _dict["nearest_post"] = None
 
         return _dict
 
