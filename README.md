@@ -264,6 +264,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_school_groups_available_schools**](docs/DefaultApi.md#get_school_groups_available_schools) | **GET** /api/v1/school_groups/available_schools | 
 *DefaultApi* | [**get_schools**](docs/DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 *DefaultApi* | [**get_schools_alma_mater**](docs/DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater | 
+*DefaultApi* | [**get_schools_count**](docs/DefaultApi.md#get_schools_count) | **GET** /api/v1/schools/count | 
 *DefaultApi* | [**get_season**](docs/DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**get_seasons**](docs/DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
 *DefaultApi* | [**get_similar_coaches**](docs/DefaultApi.md#get_similar_coaches) | **GET** /api/v1/coaches/{coachId}/similar_coaches | 
@@ -537,6 +538,7 @@ Class | Method | HTTP request | Description
  - [GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
  - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
  - [GetSchoolAlternateNames404Response](docs/GetSchoolAlternateNames404Response.md)
+ - [GetSchoolsCount200Response](docs/GetSchoolsCount200Response.md)
  - [GetTeamScheduleFavorites200ResponseInner](docs/GetTeamScheduleFavorites200ResponseInner.md)
  - [GetTimeZones200Response](docs/GetTimeZones200Response.md)
  - [GetWireChanges200Response](docs/GetWireChanges200Response.md)

@@ -185,6 +185,7 @@ docs/GetLadFilterOptions200Response.md
 docs/GetLadFilterOptions200ResponsePositionTypesInner.md
 docs/GetSchoolAlternateNames200Response.md
 docs/GetSchoolAlternateNames404Response.md
+docs/GetSchoolsCount200Response.md
 docs/GetTeamScheduleFavorites200ResponseInner.md
 docs/GetTimeZones200Response.md
 docs/GetWireChanges200Response.md
@@ -367,6 +368,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_get_schools_count200_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -563,6 +565,7 @@ winthrop_client_python/models/get_lad_filter_options200_response.py
 winthrop_client_python/models/get_lad_filter_options200_response_position_types_inner.py
 winthrop_client_python/models/get_school_alternate_names200_response.py
 winthrop_client_python/models/get_school_alternate_names404_response.py
+winthrop_client_python/models/get_schools_count200_response.py
 winthrop_client_python/models/get_team_schedule_favorites200_response_inner.py
 winthrop_client_python/models/get_time_zones200_response.py
 winthrop_client_python/models/get_wire_changes200_response.py

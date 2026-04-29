@@ -214,6 +214,7 @@ __all__ = [
     "GetLadFilterOptions200ResponsePositionTypesInner",
     "GetSchoolAlternateNames200Response",
     "GetSchoolAlternateNames404Response",
+    "GetSchoolsCount200Response",
     "GetTeamScheduleFavorites200ResponseInner",
     "GetTimeZones200Response",
     "GetWireChanges200Response",
@@ -889,6 +890,9 @@ from winthrop_client_python.models.get_school_alternate_names200_response import
 )
 from winthrop_client_python.models.get_school_alternate_names404_response import (
     GetSchoolAlternateNames404Response as GetSchoolAlternateNames404Response,
+)
+from winthrop_client_python.models.get_schools_count200_response import (
+    GetSchoolsCount200Response as GetSchoolsCount200Response,
 )
 from winthrop_client_python.models.get_team_schedule_favorites200_response_inner import (
     GetTeamScheduleFavorites200ResponseInner as GetTeamScheduleFavorites200ResponseInner,

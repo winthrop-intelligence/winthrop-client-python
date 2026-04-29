@@ -171,6 +171,7 @@ Method | HTTP request | Description
 [**get_school_groups_available_schools**](DefaultApi.md#get_school_groups_available_schools) | **GET** /api/v1/school_groups/available_schools | 
 [**get_schools**](DefaultApi.md#get_schools) | **GET** /api/v1/schools | 
 [**get_schools_alma_mater**](DefaultApi.md#get_schools_alma_mater) | **GET** /api/v1/schools/alma_mater | 
+[**get_schools_count**](DefaultApi.md#get_schools_count) | **GET** /api/v1/schools/count | 
 [**get_season**](DefaultApi.md#get_season) | **GET** /api/v1/seasons/{seasonId} | 
 [**get_seasons**](DefaultApi.md#get_seasons) | **GET** /api/v1/seasons | 
 [**get_similar_coaches**](DefaultApi.md#get_similar_coaches) | **GET** /api/v1/coaches/{coachId}/similar_coaches | 
@@ -8852,7 +8853,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
-    context = 'context_example' # str | Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); 'financial' returns only NCAA financial report sports with finance-specific display labels (optional)
+    context = 'context_example' # str | Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball) (optional)
 
     try:
         api_response = api_instance.get_filter_options(context=context)
@@ -8869,7 +8870,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **context** | **str**| Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); &#39;financial&#39; returns only NCAA financial report sports with finance-specific display labels | [optional] 
+ **context** | **str**| Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball) | [optional] 
 
 ### Return type
 
@@ -13744,7 +13745,11 @@ This endpoint does not need any parameter.
 # **get_schools**
 > SchoolCollection get_schools(page=page, per_page=per_page, q=q)
 
-Retrieve some or all schools
+Retrieve schools for the scheduling search surface. Results are hardcoded
+to Division I schools only (WINAD-9417 / WINAD-9422); the filter lives at
+the query layer and cannot be disabled via params. Supports pagination
+(default `per_page=100`) and Ransack filtering via `q`.
+
 
 ### Example
 
@@ -13897,6 +13902,84 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Schools retrieved |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_schools_count**
+> GetSchoolsCount200Response get_schools_count()
+
+Return the total number of Division I schools. Like `/schools`, this is
+hardcoded to D1 only and is intended for the scheduling search surface.
+
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.get_schools_count200_response import GetSchoolsCount200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+
+    try:
+        api_response = api_instance.get_schools_count()
+        print("The response of DefaultApi->get_schools_count:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_schools_count: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**GetSchoolsCount200Response**](GetSchoolsCount200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Count returned |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
