@@ -32,6 +32,7 @@ class ScheduleGridSchool(BaseModel):
     short_name: Optional[StrictStr] = None
     logo_url: Optional[StrictStr] = None
     primary_contact_name: Optional[StrictStr] = None
+    primary_contact_email: Optional[StrictStr] = None
     primary_contact_phone: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "id",
@@ -39,6 +40,7 @@ class ScheduleGridSchool(BaseModel):
         "short_name",
         "logo_url",
         "primary_contact_name",
+        "primary_contact_email",
         "primary_contact_phone",
     ]
 
@@ -102,6 +104,14 @@ class ScheduleGridSchool(BaseModel):
         ):
             _dict["primary_contact_name"] = None
 
+        # set to None if primary_contact_email (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.primary_contact_email is None
+            and "primary_contact_email" in self.model_fields_set
+        ):
+            _dict["primary_contact_email"] = None
+
         # set to None if primary_contact_phone (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -128,6 +138,7 @@ class ScheduleGridSchool(BaseModel):
                 "short_name": obj.get("short_name"),
                 "logo_url": obj.get("logo_url"),
                 "primary_contact_name": obj.get("primary_contact_name"),
+                "primary_contact_email": obj.get("primary_contact_email"),
                 "primary_contact_phone": obj.get("primary_contact_phone"),
             }
         )

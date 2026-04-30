@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **short_name** | **str** |  | [optional] 
 **logo_url** | **str** |  | [optional] 
 **primary_contact_name** | **str** |  | [optional] 
+**primary_contact_email** | **str** |  | [optional] 
 **primary_contact_phone** | **str** |  | [optional] 
 **subdivision_name** | **str** |  | [optional] 
 **rank** | **int** | Current USNWR ranking (omitted when blank) | [optional] 
