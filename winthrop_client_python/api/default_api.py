@@ -28397,7 +28397,7 @@ class DefaultApi:
         context: Annotated[
             Optional[StrictStr],
             Field(
-                description="Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)"
+                description="Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); 'financial' returns only NCAA financial report sports with finance-specific display labels"
             ),
         ] = None,
         _request_timeout: Union[
@@ -28416,7 +28416,7 @@ class DefaultApi:
 
         Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
 
-        :param context: Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+        :param context: Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); 'financial' returns only NCAA financial report sports with finance-specific display labels
         :type context: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -28467,7 +28467,7 @@ class DefaultApi:
         context: Annotated[
             Optional[StrictStr],
             Field(
-                description="Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)"
+                description="Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); 'financial' returns only NCAA financial report sports with finance-specific display labels"
             ),
         ] = None,
         _request_timeout: Union[
@@ -28486,7 +28486,7 @@ class DefaultApi:
 
         Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
 
-        :param context: Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+        :param context: Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); 'financial' returns only NCAA financial report sports with finance-specific display labels
         :type context: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -28537,7 +28537,7 @@ class DefaultApi:
         context: Annotated[
             Optional[StrictStr],
             Field(
-                description="Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)"
+                description="Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); 'financial' returns only NCAA financial report sports with finance-specific display labels"
             ),
         ] = None,
         _request_timeout: Union[
@@ -28556,7 +28556,7 @@ class DefaultApi:
 
         Retrieve static filter options for coach/admin search (years, divisions, sports, position types, geo regions)
 
-        :param context: Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball)
+        :param context: Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); 'financial' returns only NCAA financial report sports with finance-specific display labels
         :type context: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

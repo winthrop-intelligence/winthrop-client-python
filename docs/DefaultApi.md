@@ -8853,7 +8853,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
-    context = 'context_example' # str | Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball) (optional)
+    context = 'context_example' # str | Filter context: 'gad' returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); 'financial' returns only NCAA financial report sports with finance-specific display labels (optional)
 
     try:
         api_response = api_instance.get_filter_options(context=context)
@@ -8870,7 +8870,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **context** | **str**| Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball) | [optional] 
+ **context** | **str**| Filter context: &#39;gad&#39; returns only D1/D2 divisions and guarantee sports (Football, M/W Basketball, Baseball, Softball, M/W Volleyball); &#39;financial&#39; returns only NCAA financial report sports with finance-specific display labels | [optional] 
 
 ### Return type
 
