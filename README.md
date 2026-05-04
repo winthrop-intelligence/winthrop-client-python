@@ -649,6 +649,7 @@ Class | Method | HTTP request | Description
  - [TeamScheduleDetailHeadCoach](docs/TeamScheduleDetailHeadCoach.md)
  - [TeamScheduleDetailSchool](docs/TeamScheduleDetailSchool.md)
  - [TeamScheduleDetailSeason](docs/TeamScheduleDetailSeason.md)
+ - [TeamScheduleDetailSport](docs/TeamScheduleDetailSport.md)
  - [TeamScheduleFavoriteDetail](docs/TeamScheduleFavoriteDetail.md)
  - [TeamScheduleFavoriteEntry](docs/TeamScheduleFavoriteEntry.md)
  - [TeamScheduleGamePosts](docs/TeamScheduleGamePosts.md)

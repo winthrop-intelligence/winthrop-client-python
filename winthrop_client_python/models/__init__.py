@@ -556,6 +556,9 @@ from winthrop_client_python.models.team_schedule_detail_school import (
 from winthrop_client_python.models.team_schedule_detail_season import (
     TeamScheduleDetailSeason,
 )
+from winthrop_client_python.models.team_schedule_detail_sport import (
+    TeamScheduleDetailSport,
+)
 from winthrop_client_python.models.team_schedule_favorite_detail import (
     TeamScheduleFavoriteDetail,
 )

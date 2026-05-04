@@ -300,6 +300,7 @@ docs/TeamScheduleDetailGame.md
 docs/TeamScheduleDetailHeadCoach.md
 docs/TeamScheduleDetailSchool.md
 docs/TeamScheduleDetailSeason.md
+docs/TeamScheduleDetailSport.md
 docs/TeamScheduleFavoriteDetail.md
 docs/TeamScheduleFavoriteEntry.md
 docs/TeamScheduleGamePosts.md
@@ -675,6 +676,7 @@ winthrop_client_python/models/team_schedule_detail_game.py
 winthrop_client_python/models/team_schedule_detail_head_coach.py
 winthrop_client_python/models/team_schedule_detail_school.py
 winthrop_client_python/models/team_schedule_detail_season.py
+winthrop_client_python/models/team_schedule_detail_sport.py
 winthrop_client_python/models/team_schedule_favorite_detail.py
 winthrop_client_python/models/team_schedule_favorite_entry.py
 winthrop_client_python/models/team_schedule_game_posts.py

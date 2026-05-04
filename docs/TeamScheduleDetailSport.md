@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
 **name_display** | **str** |  | [optional] 
+**abbreviation** | **str** |  | [optional] 
 
 ## Example
 

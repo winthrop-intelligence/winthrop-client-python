@@ -30,7 +30,8 @@ class TeamScheduleDetailSport(BaseModel):
     id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
     name_display: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["id", "name", "name_display"]
+    abbreviation: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "name_display", "abbreviation"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -69,6 +70,11 @@ class TeamScheduleDetailSport(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if abbreviation (nullable) is None
+        # and model_fields_set contains the field
+        if self.abbreviation is None and "abbreviation" in self.model_fields_set:
+            _dict["abbreviation"] = None
+
         return _dict
 
     @classmethod
@@ -85,6 +91,7 @@ class TeamScheduleDetailSport(BaseModel):
                 "id": obj.get("id"),
                 "name": obj.get("name"),
                 "name_display": obj.get("name_display"),
+                "abbreviation": obj.get("abbreviation"),
             }
         )
         return _obj

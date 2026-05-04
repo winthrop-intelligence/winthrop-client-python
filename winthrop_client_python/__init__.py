@@ -325,6 +325,7 @@ __all__ = [
     "TeamScheduleDetailHeadCoach",
     "TeamScheduleDetailSchool",
     "TeamScheduleDetailSeason",
+    "TeamScheduleDetailSport",
     "TeamScheduleFavoriteDetail",
     "TeamScheduleFavoriteEntry",
     "TeamScheduleGamePosts",
@@ -1153,6 +1154,9 @@ from winthrop_client_python.models.team_schedule_detail_school import (
 )
 from winthrop_client_python.models.team_schedule_detail_season import (
     TeamScheduleDetailSeason as TeamScheduleDetailSeason,
+)
+from winthrop_client_python.models.team_schedule_detail_sport import (
+    TeamScheduleDetailSport as TeamScheduleDetailSport,
 )
 from winthrop_client_python.models.team_schedule_favorite_detail import (
     TeamScheduleFavoriteDetail as TeamScheduleFavoriteDetail,
