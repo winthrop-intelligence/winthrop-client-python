@@ -60,8 +60,14 @@ __all__ = [
     "AthleticProfileShowTabSportsInner",
     "AuditedFinancialReportStatus",
     "AuditedFinancialReportStatusCollection",
+    "AvailableGameContract",
     "Avatar",
     "AverageCompensation",
+    "BulkCreateGames201Response",
+    "BulkCreateGames422Response",
+    "BulkCreateGames422ResponseErrorsValue",
+    "BulkCreateGamesRequest",
+    "BulkCreateGamesRequestGamesInner",
     "COLIAdjusted",
     "Cashflow",
     "CashflowCollection",
@@ -128,7 +134,6 @@ __all__ = [
     "ContactSearchEntry",
     "Contract",
     "ContractCollection",
-    "ContractTermOption",
     "CoworkerEntry",
     "CoworkerTenure",
     "CreateAccountUser422Response",
@@ -141,6 +146,8 @@ __all__ = [
     "CreateFavoritesCategoryRequest",
     "CreateGamePostSearchRequest",
     "CreateGamePostSearchRequestGamePost",
+    "CreateGameRequest",
+    "CreateGameRequestGame",
     "CreateNoteRequest",
     "CreatePasswordReset200Response",
     "CreatePasswordResetRequest",
@@ -193,6 +200,8 @@ __all__ = [
     "GameContractCollection",
     "GameContractSeriesEntry",
     "GameContractSeriesResponse",
+    "GameDetail",
+    "GameDetailAllOfGameContract",
     "GamePost",
     "GamePostCollection",
     "GamePostContact",
@@ -210,6 +219,7 @@ __all__ = [
     "GetLadFilterOptions200ResponsePositionTypesInner",
     "GetSchoolAlternateNames200Response",
     "GetSchoolAlternateNames404Response",
+    "GetSchoolsCount200Response",
     "GetTeamScheduleFavorites200ResponseInner",
     "GetTimeZones200Response",
     "GetWireChanges200Response",
@@ -265,6 +275,13 @@ __all__ = [
     "RequestedItem",
     "RequestedItemCollection",
     "RoleOption",
+    "ScheduleGridAvailableSchoolPost",
+    "ScheduleGridAvailableSchoolRow",
+    "ScheduleGridAvailableSchools",
+    "ScheduleGridGame",
+    "ScheduleGridGamePost",
+    "ScheduleGridSchool",
+    "ScheduleGridView",
     "School",
     "SchoolCollection",
     "SchoolContractEntry",
@@ -296,11 +313,10 @@ __all__ = [
     "SportCompensationResponse",
     "SportCompensationSubdivision",
     "SportOption",
+    "State",
     "Subdivision",
     "SubdivisionCollection",
     "Subscription",
-    "SubscriptionAcceptance",
-    "SubscriptionAcceptanceErrors",
     "SubscriptionCollection",
     "SystemSetting",
     "Tag",
@@ -314,6 +330,7 @@ __all__ = [
     "TeamScheduleDetailHeadCoach",
     "TeamScheduleDetailSchool",
     "TeamScheduleDetailSeason",
+    "TeamScheduleDetailSport",
     "TeamScheduleFavoriteDetail",
     "TeamScheduleFavoriteEntry",
     "TeamScheduleGamePosts",
@@ -352,8 +369,6 @@ __all__ = [
     "UpdatePasswordResetRequestUser",
     "UpdateSchoolGroupRequest",
     "UpdateSchoolGroupRequestSchoolGroup",
-    "UpdateSubscriptionAcceptanceRequest",
-    "UpdateSubscriptionAcceptanceRequestSubscription",
     "UpdateTeamScheduleFavoriteRequest",
     "UpdateUserRequest",
     "UpdateUserRequestUser",
@@ -478,9 +493,27 @@ from winthrop_client_python.models.audited_financial_report_status import (
 from winthrop_client_python.models.audited_financial_report_status_collection import (
     AuditedFinancialReportStatusCollection as AuditedFinancialReportStatusCollection,
 )
+from winthrop_client_python.models.available_game_contract import (
+    AvailableGameContract as AvailableGameContract,
+)
 from winthrop_client_python.models.avatar import Avatar as Avatar
 from winthrop_client_python.models.average_compensation import (
     AverageCompensation as AverageCompensation,
+)
+from winthrop_client_python.models.bulk_create_games201_response import (
+    BulkCreateGames201Response as BulkCreateGames201Response,
+)
+from winthrop_client_python.models.bulk_create_games422_response import (
+    BulkCreateGames422Response as BulkCreateGames422Response,
+)
+from winthrop_client_python.models.bulk_create_games422_response_errors_value import (
+    BulkCreateGames422ResponseErrorsValue as BulkCreateGames422ResponseErrorsValue,
+)
+from winthrop_client_python.models.bulk_create_games_request import (
+    BulkCreateGamesRequest as BulkCreateGamesRequest,
+)
+from winthrop_client_python.models.bulk_create_games_request_games_inner import (
+    BulkCreateGamesRequestGamesInner as BulkCreateGamesRequestGamesInner,
 )
 from winthrop_client_python.models.coli_adjusted import COLIAdjusted as COLIAdjusted
 from winthrop_client_python.models.cashflow import Cashflow as Cashflow
@@ -654,9 +687,6 @@ from winthrop_client_python.models.contract import Contract as Contract
 from winthrop_client_python.models.contract_collection import (
     ContractCollection as ContractCollection,
 )
-from winthrop_client_python.models.contract_term_option import (
-    ContractTermOption as ContractTermOption,
-)
 from winthrop_client_python.models.coworker_entry import CoworkerEntry as CoworkerEntry
 from winthrop_client_python.models.coworker_tenure import (
     CoworkerTenure as CoworkerTenure,
@@ -690,6 +720,12 @@ from winthrop_client_python.models.create_game_post_search_request import (
 )
 from winthrop_client_python.models.create_game_post_search_request_game_post import (
     CreateGamePostSearchRequestGamePost as CreateGamePostSearchRequestGamePost,
+)
+from winthrop_client_python.models.create_game_request import (
+    CreateGameRequest as CreateGameRequest,
+)
+from winthrop_client_python.models.create_game_request_game import (
+    CreateGameRequestGame as CreateGameRequestGame,
 )
 from winthrop_client_python.models.create_note_request import (
     CreateNoteRequest as CreateNoteRequest,
@@ -827,6 +863,10 @@ from winthrop_client_python.models.game_contract_series_entry import (
 from winthrop_client_python.models.game_contract_series_response import (
     GameContractSeriesResponse as GameContractSeriesResponse,
 )
+from winthrop_client_python.models.game_detail import GameDetail as GameDetail
+from winthrop_client_python.models.game_detail_all_of_game_contract import (
+    GameDetailAllOfGameContract as GameDetailAllOfGameContract,
+)
 from winthrop_client_python.models.game_post import GamePost as GamePost
 from winthrop_client_python.models.game_post_collection import (
     GamePostCollection as GamePostCollection,
@@ -871,6 +911,9 @@ from winthrop_client_python.models.get_school_alternate_names200_response import
 )
 from winthrop_client_python.models.get_school_alternate_names404_response import (
     GetSchoolAlternateNames404Response as GetSchoolAlternateNames404Response,
+)
+from winthrop_client_python.models.get_schools_count200_response import (
+    GetSchoolsCount200Response as GetSchoolsCount200Response,
 )
 from winthrop_client_python.models.get_team_schedule_favorites200_response_inner import (
     GetTeamScheduleFavorites200ResponseInner as GetTeamScheduleFavorites200ResponseInner,
@@ -993,6 +1036,27 @@ from winthrop_client_python.models.requested_item_collection import (
     RequestedItemCollection as RequestedItemCollection,
 )
 from winthrop_client_python.models.role_option import RoleOption as RoleOption
+from winthrop_client_python.models.schedule_grid_available_school_post import (
+    ScheduleGridAvailableSchoolPost as ScheduleGridAvailableSchoolPost,
+)
+from winthrop_client_python.models.schedule_grid_available_school_row import (
+    ScheduleGridAvailableSchoolRow as ScheduleGridAvailableSchoolRow,
+)
+from winthrop_client_python.models.schedule_grid_available_schools import (
+    ScheduleGridAvailableSchools as ScheduleGridAvailableSchools,
+)
+from winthrop_client_python.models.schedule_grid_game import (
+    ScheduleGridGame as ScheduleGridGame,
+)
+from winthrop_client_python.models.schedule_grid_game_post import (
+    ScheduleGridGamePost as ScheduleGridGamePost,
+)
+from winthrop_client_python.models.schedule_grid_school import (
+    ScheduleGridSchool as ScheduleGridSchool,
+)
+from winthrop_client_python.models.schedule_grid_view import (
+    ScheduleGridView as ScheduleGridView,
+)
 from winthrop_client_python.models.school import School as School
 from winthrop_client_python.models.school_collection import (
     SchoolCollection as SchoolCollection,
@@ -1070,17 +1134,12 @@ from winthrop_client_python.models.sport_compensation_subdivision import (
     SportCompensationSubdivision as SportCompensationSubdivision,
 )
 from winthrop_client_python.models.sport_option import SportOption as SportOption
+from winthrop_client_python.models.state import State as State
 from winthrop_client_python.models.subdivision import Subdivision as Subdivision
 from winthrop_client_python.models.subdivision_collection import (
     SubdivisionCollection as SubdivisionCollection,
 )
 from winthrop_client_python.models.subscription import Subscription as Subscription
-from winthrop_client_python.models.subscription_acceptance import (
-    SubscriptionAcceptance as SubscriptionAcceptance,
-)
-from winthrop_client_python.models.subscription_acceptance_errors import (
-    SubscriptionAcceptanceErrors as SubscriptionAcceptanceErrors,
-)
 from winthrop_client_python.models.subscription_collection import (
     SubscriptionCollection as SubscriptionCollection,
 )
@@ -1115,6 +1174,9 @@ from winthrop_client_python.models.team_schedule_detail_school import (
 )
 from winthrop_client_python.models.team_schedule_detail_season import (
     TeamScheduleDetailSeason as TeamScheduleDetailSeason,
+)
+from winthrop_client_python.models.team_schedule_detail_sport import (
+    TeamScheduleDetailSport as TeamScheduleDetailSport,
 )
 from winthrop_client_python.models.team_schedule_favorite_detail import (
     TeamScheduleFavoriteDetail as TeamScheduleFavoriteDetail,
@@ -1229,12 +1291,6 @@ from winthrop_client_python.models.update_school_group_request import (
 )
 from winthrop_client_python.models.update_school_group_request_school_group import (
     UpdateSchoolGroupRequestSchoolGroup as UpdateSchoolGroupRequestSchoolGroup,
-)
-from winthrop_client_python.models.update_subscription_acceptance_request import (
-    UpdateSubscriptionAcceptanceRequest as UpdateSubscriptionAcceptanceRequest,
-)
-from winthrop_client_python.models.update_subscription_acceptance_request_subscription import (
-    UpdateSubscriptionAcceptanceRequestSubscription as UpdateSubscriptionAcceptanceRequestSubscription,
 )
 from winthrop_client_python.models.update_team_schedule_favorite_request import (
     UpdateTeamScheduleFavoriteRequest as UpdateTeamScheduleFavoriteRequest,

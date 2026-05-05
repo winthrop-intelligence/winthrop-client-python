@@ -29,8 +29,14 @@ docs/AthleticProfileShowSportsOverviewInner.md
 docs/AthleticProfileShowTabSportsInner.md
 docs/AuditedFinancialReportStatus.md
 docs/AuditedFinancialReportStatusCollection.md
+docs/AvailableGameContract.md
 docs/Avatar.md
 docs/AverageCompensation.md
+docs/BulkCreateGames201Response.md
+docs/BulkCreateGames422Response.md
+docs/BulkCreateGames422ResponseErrorsValue.md
+docs/BulkCreateGamesRequest.md
+docs/BulkCreateGamesRequestGamesInner.md
 docs/COLIAdjusted.md
 docs/Cashflow.md
 docs/CashflowCollection.md
@@ -97,7 +103,6 @@ docs/ContactSearchCollection.md
 docs/ContactSearchEntry.md
 docs/Contract.md
 docs/ContractCollection.md
-docs/ContractTermOption.md
 docs/CoworkerEntry.md
 docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
@@ -110,6 +115,8 @@ docs/CreateFavoriteRequest.md
 docs/CreateFavoritesCategoryRequest.md
 docs/CreateGamePostSearchRequest.md
 docs/CreateGamePostSearchRequestGamePost.md
+docs/CreateGameRequest.md
+docs/CreateGameRequestGame.md
 docs/CreateNoteRequest.md
 docs/CreatePasswordReset200Response.md
 docs/CreatePasswordResetRequest.md
@@ -164,6 +171,8 @@ docs/GameContract.md
 docs/GameContractCollection.md
 docs/GameContractSeriesEntry.md
 docs/GameContractSeriesResponse.md
+docs/GameDetail.md
+docs/GameDetailAllOfGameContract.md
 docs/GamePost.md
 docs/GamePostCollection.md
 docs/GamePostContact.md
@@ -181,6 +190,7 @@ docs/GetLadFilterOptions200Response.md
 docs/GetLadFilterOptions200ResponsePositionTypesInner.md
 docs/GetSchoolAlternateNames200Response.md
 docs/GetSchoolAlternateNames404Response.md
+docs/GetSchoolsCount200Response.md
 docs/GetTeamScheduleFavorites200ResponseInner.md
 docs/GetTimeZones200Response.md
 docs/GetWireChanges200Response.md
@@ -239,6 +249,13 @@ docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
 docs/RoleOption.md
+docs/ScheduleGridAvailableSchoolPost.md
+docs/ScheduleGridAvailableSchoolRow.md
+docs/ScheduleGridAvailableSchools.md
+docs/ScheduleGridGame.md
+docs/ScheduleGridGamePost.md
+docs/ScheduleGridSchool.md
+docs/ScheduleGridView.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolContractEntry.md
@@ -271,11 +288,10 @@ docs/SportCompensationRankingsSchoolsInner.md
 docs/SportCompensationResponse.md
 docs/SportCompensationSubdivision.md
 docs/SportOption.md
+docs/State.md
 docs/Subdivision.md
 docs/SubdivisionCollection.md
 docs/Subscription.md
-docs/SubscriptionAcceptance.md
-docs/SubscriptionAcceptanceErrors.md
 docs/SubscriptionCollection.md
 docs/SystemSetting.md
 docs/Tag.md
@@ -289,6 +305,7 @@ docs/TeamScheduleDetailGame.md
 docs/TeamScheduleDetailHeadCoach.md
 docs/TeamScheduleDetailSchool.md
 docs/TeamScheduleDetailSeason.md
+docs/TeamScheduleDetailSport.md
 docs/TeamScheduleFavoriteDetail.md
 docs/TeamScheduleFavoriteEntry.md
 docs/TeamScheduleGamePosts.md
@@ -327,8 +344,6 @@ docs/UpdatePasswordResetRequest.md
 docs/UpdatePasswordResetRequestUser.md
 docs/UpdateSchoolGroupRequest.md
 docs/UpdateSchoolGroupRequestSchoolGroup.md
-docs/UpdateSubscriptionAcceptanceRequest.md
-docs/UpdateSubscriptionAcceptanceRequestSubscription.md
 docs/UpdateTeamScheduleFavoriteRequest.md
 docs/UpdateUserRequest.md
 docs/UpdateUserRequestUser.md
@@ -359,11 +374,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_contract_term_option.py
-test/test_subscription_acceptance.py
-test/test_subscription_acceptance_errors.py
-test/test_update_subscription_acceptance_request.py
-test/test_update_subscription_acceptance_request_subscription.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -406,8 +416,14 @@ winthrop_client_python/models/athletic_profile_show_sports_overview_inner.py
 winthrop_client_python/models/athletic_profile_show_tab_sports_inner.py
 winthrop_client_python/models/audited_financial_report_status.py
 winthrop_client_python/models/audited_financial_report_status_collection.py
+winthrop_client_python/models/available_game_contract.py
 winthrop_client_python/models/avatar.py
 winthrop_client_python/models/average_compensation.py
+winthrop_client_python/models/bulk_create_games201_response.py
+winthrop_client_python/models/bulk_create_games422_response.py
+winthrop_client_python/models/bulk_create_games422_response_errors_value.py
+winthrop_client_python/models/bulk_create_games_request.py
+winthrop_client_python/models/bulk_create_games_request_games_inner.py
 winthrop_client_python/models/cashflow.py
 winthrop_client_python/models/cashflow_collection.py
 winthrop_client_python/models/cashflow_entry.py
@@ -474,7 +490,6 @@ winthrop_client_python/models/contact_search_collection.py
 winthrop_client_python/models/contact_search_entry.py
 winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
-winthrop_client_python/models/contract_term_option.py
 winthrop_client_python/models/coworker_entry.py
 winthrop_client_python/models/coworker_tenure.py
 winthrop_client_python/models/create_account_user422_response.py
@@ -487,6 +502,8 @@ winthrop_client_python/models/create_favorite_request.py
 winthrop_client_python/models/create_favorites_category_request.py
 winthrop_client_python/models/create_game_post_search_request.py
 winthrop_client_python/models/create_game_post_search_request_game_post.py
+winthrop_client_python/models/create_game_request.py
+winthrop_client_python/models/create_game_request_game.py
 winthrop_client_python/models/create_note_request.py
 winthrop_client_python/models/create_password_reset200_response.py
 winthrop_client_python/models/create_password_reset_request.py
@@ -539,6 +556,8 @@ winthrop_client_python/models/game_contract.py
 winthrop_client_python/models/game_contract_collection.py
 winthrop_client_python/models/game_contract_series_entry.py
 winthrop_client_python/models/game_contract_series_response.py
+winthrop_client_python/models/game_detail.py
+winthrop_client_python/models/game_detail_all_of_game_contract.py
 winthrop_client_python/models/game_post.py
 winthrop_client_python/models/game_post_collection.py
 winthrop_client_python/models/game_post_contact.py
@@ -556,6 +575,7 @@ winthrop_client_python/models/get_lad_filter_options200_response.py
 winthrop_client_python/models/get_lad_filter_options200_response_position_types_inner.py
 winthrop_client_python/models/get_school_alternate_names200_response.py
 winthrop_client_python/models/get_school_alternate_names404_response.py
+winthrop_client_python/models/get_schools_count200_response.py
 winthrop_client_python/models/get_team_schedule_favorites200_response_inner.py
 winthrop_client_python/models/get_time_zones200_response.py
 winthrop_client_python/models/get_wire_changes200_response.py
@@ -611,6 +631,13 @@ winthrop_client_python/models/regenerate_raw_contract_pdf200_response.py
 winthrop_client_python/models/requested_item.py
 winthrop_client_python/models/requested_item_collection.py
 winthrop_client_python/models/role_option.py
+winthrop_client_python/models/schedule_grid_available_school_post.py
+winthrop_client_python/models/schedule_grid_available_school_row.py
+winthrop_client_python/models/schedule_grid_available_schools.py
+winthrop_client_python/models/schedule_grid_game.py
+winthrop_client_python/models/schedule_grid_game_post.py
+winthrop_client_python/models/schedule_grid_school.py
+winthrop_client_python/models/schedule_grid_view.py
 winthrop_client_python/models/school.py
 winthrop_client_python/models/school_collection.py
 winthrop_client_python/models/school_contract_entry.py
@@ -642,11 +669,10 @@ winthrop_client_python/models/sport_compensation_rankings_schools_inner.py
 winthrop_client_python/models/sport_compensation_response.py
 winthrop_client_python/models/sport_compensation_subdivision.py
 winthrop_client_python/models/sport_option.py
+winthrop_client_python/models/state.py
 winthrop_client_python/models/subdivision.py
 winthrop_client_python/models/subdivision_collection.py
 winthrop_client_python/models/subscription.py
-winthrop_client_python/models/subscription_acceptance.py
-winthrop_client_python/models/subscription_acceptance_errors.py
 winthrop_client_python/models/subscription_collection.py
 winthrop_client_python/models/system_setting.py
 winthrop_client_python/models/tag.py
@@ -660,6 +686,7 @@ winthrop_client_python/models/team_schedule_detail_game.py
 winthrop_client_python/models/team_schedule_detail_head_coach.py
 winthrop_client_python/models/team_schedule_detail_school.py
 winthrop_client_python/models/team_schedule_detail_season.py
+winthrop_client_python/models/team_schedule_detail_sport.py
 winthrop_client_python/models/team_schedule_favorite_detail.py
 winthrop_client_python/models/team_schedule_favorite_entry.py
 winthrop_client_python/models/team_schedule_game_posts.py
@@ -698,8 +725,6 @@ winthrop_client_python/models/update_password_reset_request.py
 winthrop_client_python/models/update_password_reset_request_user.py
 winthrop_client_python/models/update_school_group_request.py
 winthrop_client_python/models/update_school_group_request_school_group.py
-winthrop_client_python/models/update_subscription_acceptance_request.py
-winthrop_client_python/models/update_subscription_acceptance_request_subscription.py
 winthrop_client_python/models/update_team_schedule_favorite_request.py
 winthrop_client_python/models/update_user_request.py
 winthrop_client_python/models/update_user_request_user.py
