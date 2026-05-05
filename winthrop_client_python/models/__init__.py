@@ -78,6 +78,21 @@ from winthrop_client_python.models.audited_financial_report_status_collection im
 from winthrop_client_python.models.available_game_contract import AvailableGameContract
 from winthrop_client_python.models.avatar import Avatar
 from winthrop_client_python.models.average_compensation import AverageCompensation
+from winthrop_client_python.models.bulk_create_games201_response import (
+    BulkCreateGames201Response,
+)
+from winthrop_client_python.models.bulk_create_games422_response import (
+    BulkCreateGames422Response,
+)
+from winthrop_client_python.models.bulk_create_games422_response_errors_value import (
+    BulkCreateGames422ResponseErrorsValue,
+)
+from winthrop_client_python.models.bulk_create_games_request import (
+    BulkCreateGamesRequest,
+)
+from winthrop_client_python.models.bulk_create_games_request_games_inner import (
+    BulkCreateGamesRequestGamesInner,
+)
 from winthrop_client_python.models.coli_adjusted import COLIAdjusted
 from winthrop_client_python.models.cashflow import Cashflow
 from winthrop_client_python.models.cashflow_collection import CashflowCollection

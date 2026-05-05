@@ -101,6 +101,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**average_division_comp**](docs/DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp | 
 *DefaultApi* | [**average_school_comp**](docs/DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 
 *DefaultApi* | [**average_subdivision_comp**](docs/DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
+*DefaultApi* | [**bulk_create_games**](docs/DefaultApi.md#bulk_create_games) | **POST** /api/v1/games/bulk | 
 *DefaultApi* | [**compare_coli**](docs/DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
 *DefaultApi* | [**create_account_user**](docs/DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
 *DefaultApi* | [**create_cashflow**](docs/DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows | 
@@ -387,6 +388,11 @@ Class | Method | HTTP request | Description
  - [AvailableGameContract](docs/AvailableGameContract.md)
  - [Avatar](docs/Avatar.md)
  - [AverageCompensation](docs/AverageCompensation.md)
+ - [BulkCreateGames201Response](docs/BulkCreateGames201Response.md)
+ - [BulkCreateGames422Response](docs/BulkCreateGames422Response.md)
+ - [BulkCreateGames422ResponseErrorsValue](docs/BulkCreateGames422ResponseErrorsValue.md)
+ - [BulkCreateGamesRequest](docs/BulkCreateGamesRequest.md)
+ - [BulkCreateGamesRequestGamesInner](docs/BulkCreateGamesRequestGamesInner.md)
  - [COLIAdjusted](docs/COLIAdjusted.md)
  - [Cashflow](docs/Cashflow.md)
  - [CashflowCollection](docs/CashflowCollection.md)

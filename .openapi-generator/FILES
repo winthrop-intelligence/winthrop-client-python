@@ -32,6 +32,11 @@ docs/AuditedFinancialReportStatusCollection.md
 docs/AvailableGameContract.md
 docs/Avatar.md
 docs/AverageCompensation.md
+docs/BulkCreateGames201Response.md
+docs/BulkCreateGames422Response.md
+docs/BulkCreateGames422ResponseErrorsValue.md
+docs/BulkCreateGamesRequest.md
+docs/BulkCreateGamesRequestGamesInner.md
 docs/COLIAdjusted.md
 docs/Cashflow.md
 docs/CashflowCollection.md
@@ -369,6 +374,11 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_bulk_create_games201_response.py
+test/test_bulk_create_games422_response.py
+test/test_bulk_create_games422_response_errors_value.py
+test/test_bulk_create_games_request.py
+test/test_bulk_create_games_request_games_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -414,6 +424,11 @@ winthrop_client_python/models/audited_financial_report_status_collection.py
 winthrop_client_python/models/available_game_contract.py
 winthrop_client_python/models/avatar.py
 winthrop_client_python/models/average_compensation.py
+winthrop_client_python/models/bulk_create_games201_response.py
+winthrop_client_python/models/bulk_create_games422_response.py
+winthrop_client_python/models/bulk_create_games422_response_errors_value.py
+winthrop_client_python/models/bulk_create_games_request.py
+winthrop_client_python/models/bulk_create_games_request_games_inner.py
 winthrop_client_python/models/cashflow.py
 winthrop_client_python/models/cashflow_collection.py
 winthrop_client_python/models/cashflow_entry.py

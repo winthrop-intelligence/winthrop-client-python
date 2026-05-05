@@ -63,6 +63,11 @@ __all__ = [
     "AvailableGameContract",
     "Avatar",
     "AverageCompensation",
+    "BulkCreateGames201Response",
+    "BulkCreateGames422Response",
+    "BulkCreateGames422ResponseErrorsValue",
+    "BulkCreateGamesRequest",
+    "BulkCreateGamesRequestGamesInner",
     "COLIAdjusted",
     "Cashflow",
     "CashflowCollection",
@@ -494,6 +499,21 @@ from winthrop_client_python.models.available_game_contract import (
 from winthrop_client_python.models.avatar import Avatar as Avatar
 from winthrop_client_python.models.average_compensation import (
     AverageCompensation as AverageCompensation,
+)
+from winthrop_client_python.models.bulk_create_games201_response import (
+    BulkCreateGames201Response as BulkCreateGames201Response,
+)
+from winthrop_client_python.models.bulk_create_games422_response import (
+    BulkCreateGames422Response as BulkCreateGames422Response,
+)
+from winthrop_client_python.models.bulk_create_games422_response_errors_value import (
+    BulkCreateGames422ResponseErrorsValue as BulkCreateGames422ResponseErrorsValue,
+)
+from winthrop_client_python.models.bulk_create_games_request import (
+    BulkCreateGamesRequest as BulkCreateGamesRequest,
+)
+from winthrop_client_python.models.bulk_create_games_request_games_inner import (
+    BulkCreateGamesRequestGamesInner as BulkCreateGamesRequestGamesInner,
 )
 from winthrop_client_python.models.coli_adjusted import COLIAdjusted as COLIAdjusted
 from winthrop_client_python.models.cashflow import Cashflow as Cashflow
