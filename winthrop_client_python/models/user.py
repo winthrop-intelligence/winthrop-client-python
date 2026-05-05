@@ -56,9 +56,6 @@ class User(BaseModel):
     coach_id: Optional[StrictInt] = None
     divisions: Optional[List[Division]] = None
     roles: Optional[List[StrictStr]] = None
-    is_admin: Optional[StrictBool] = Field(
-        default=None, description="Whether the user is a data admin or super admin"
-    )
     can_see_compensation: Optional[StrictBool] = Field(
         default=None, description="Whether the user can view coach compensation data"
     )
@@ -148,7 +145,6 @@ class User(BaseModel):
         "coach_id",
         "divisions",
         "roles",
-        "is_admin",
         "can_see_compensation",
         "can_show_scouting",
         "can_show_game_contract",
@@ -314,7 +310,6 @@ class User(BaseModel):
                     else None
                 ),
                 "roles": obj.get("roles"),
-                "is_admin": obj.get("is_admin"),
                 "can_see_compensation": obj.get("can_see_compensation"),
                 "can_show_scouting": obj.get("can_show_scouting"),
                 "can_show_game_contract": obj.get("can_show_game_contract"),
