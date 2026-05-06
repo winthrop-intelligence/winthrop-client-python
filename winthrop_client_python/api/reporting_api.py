@@ -20,7 +20,6 @@ from pydantic import Field, StrictInt
 from typing import Any, Dict, Optional
 from typing_extensions import Annotated
 from winthrop_client_python.models.financial_qc import FinancialQc
-from winthrop_client_python.models.invoice_report_result import InvoiceReportResult
 
 from winthrop_client_python.api_client import ApiClient, RequestSerialized
 from winthrop_client_python.api_response import ApiResponse
@@ -1424,7 +1423,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> InvoiceReportResult:
+    ) -> object:
         """get_invoices
 
         Retrieve some or all client invoices
@@ -1465,7 +1464,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "InvoiceReportResult",
+            "200": "object",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1496,7 +1495,7 @@ class ReportingApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[InvoiceReportResult]:
+    ) -> ApiResponse[object]:
         """get_invoices
 
         Retrieve some or all client invoices
@@ -1537,7 +1536,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "InvoiceReportResult",
+            "200": "object",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1609,7 +1608,7 @@ class ReportingApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "InvoiceReportResult",
+            "200": "object",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout

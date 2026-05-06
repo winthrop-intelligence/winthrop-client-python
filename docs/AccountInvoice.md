@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **purchase_order_number** | **str** |  | [optional] 
 **due_date** | **date** |  | [optional] 
 **due_date_notes** | **str** |  | [optional] 
-**notes** | **str** |  | [optional] 
 **payment_received** | **date** |  | [optional] 
 **status** | **str** |  | [optional] 
 **reminders** | **bool** |  | [optional] 

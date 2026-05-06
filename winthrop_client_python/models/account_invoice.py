@@ -43,7 +43,6 @@ class AccountInvoice(BaseModel):
     purchase_order_number: Optional[StrictStr] = None
     due_date: Optional[date] = None
     due_date_notes: Optional[StrictStr] = None
-    notes: Optional[StrictStr] = None
     payment_received: Optional[date] = None
     status: Optional[StrictStr] = None
     reminders: Optional[StrictBool] = None
@@ -60,7 +59,6 @@ class AccountInvoice(BaseModel):
         "purchase_order_number",
         "due_date",
         "due_date_notes",
-        "notes",
         "payment_received",
         "status",
         "reminders",
@@ -134,11 +132,6 @@ class AccountInvoice(BaseModel):
         if self.due_date_notes is None and "due_date_notes" in self.model_fields_set:
             _dict["due_date_notes"] = None
 
-        # set to None if notes (nullable) is None
-        # and model_fields_set contains the field
-        if self.notes is None and "notes" in self.model_fields_set:
-            _dict["notes"] = None
-
         # set to None if payment_received (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -172,7 +165,6 @@ class AccountInvoice(BaseModel):
                 "purchase_order_number": obj.get("purchase_order_number"),
                 "due_date": obj.get("due_date"),
                 "due_date_notes": obj.get("due_date_notes"),
-                "notes": obj.get("notes"),
                 "payment_received": obj.get("payment_received"),
                 "status": obj.get("status"),
                 "reminders": obj.get("reminders"),
