@@ -18,6 +18,9 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.contact_search_coach_options_sports_inner import (
+    ContactSearchCoachOptionsSportsInner,
+)
 from winthrop_client_python.models.team_schedule_contact import TeamScheduleContact
 from winthrop_client_python.models.team_schedule_detail_game import (
     TeamScheduleDetailGame,
@@ -31,9 +34,6 @@ from winthrop_client_python.models.team_schedule_detail_school import (
 from winthrop_client_python.models.team_schedule_detail_season import (
     TeamScheduleDetailSeason,
 )
-from winthrop_client_python.models.team_schedule_detail_sport import (
-    TeamScheduleDetailSport,
-)
 from typing import Optional, Set
 from typing_extensions import Self
 
@@ -44,7 +44,7 @@ class TeamScheduleDetail(BaseModel):
     """  # noqa: E501
 
     school: Optional[TeamScheduleDetailSchool] = None
-    sport: Optional[TeamScheduleDetailSport] = None
+    sport: Optional[ContactSearchCoachOptionsSportsInner] = None
     season_year: Optional[StrictInt] = None
     performance_year: Optional[StrictInt] = None
     season: Optional[TeamScheduleDetailSeason] = None
@@ -155,7 +155,7 @@ class TeamScheduleDetail(BaseModel):
                     else None
                 ),
                 "sport": (
-                    TeamScheduleDetailSport.from_dict(obj["sport"])
+                    ContactSearchCoachOptionsSportsInner.from_dict(obj["sport"])
                     if obj.get("sport") is not None
                     else None
                 ),

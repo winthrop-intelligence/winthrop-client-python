@@ -18,28 +18,29 @@ import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.invoice_report_row import InvoiceReportRow
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class TeamScheduleDetailSchool(BaseModel):
+class InvoiceReportResult(BaseModel):
     """
-    TeamScheduleDetailSchool
+    InvoiceReportResult
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    logo_url: Optional[StrictStr] = None
-    city: Optional[StrictStr] = None
-    state_name: Optional[StrictStr] = None
-    conference_name: Optional[StrictStr] = None
+    current_page: Optional[StrictInt] = None
+    total_pages: Optional[StrictInt] = None
+    total_entries: Optional[StrictInt] = None
+    next_page: Optional[StrictStr] = None
+    previous_page: Optional[StrictStr] = None
+    invoices: Optional[List[InvoiceReportRow]] = None
     __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "logo_url",
-        "city",
-        "state_name",
-        "conference_name",
+        "current_page",
+        "total_pages",
+        "total_entries",
+        "next_page",
+        "previous_page",
+        "invoices",
     ]
 
     model_config = ConfigDict(
@@ -59,7 +60,7 @@ class TeamScheduleDetailSchool(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of TeamScheduleDetailSchool from a JSON string"""
+        """Create an instance of InvoiceReportResult from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,31 +80,28 @@ class TeamScheduleDetailSchool(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if logo_url (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of each item in invoices (list)
+        _items = []
+        if self.invoices:
+            for _item_invoices in self.invoices:
+                if _item_invoices:
+                    _items.append(_item_invoices.to_dict())
+            _dict["invoices"] = _items
+        # set to None if next_page (nullable) is None
         # and model_fields_set contains the field
-        if self.logo_url is None and "logo_url" in self.model_fields_set:
-            _dict["logo_url"] = None
+        if self.next_page is None and "next_page" in self.model_fields_set:
+            _dict["next_page"] = None
 
-        # set to None if city (nullable) is None
+        # set to None if previous_page (nullable) is None
         # and model_fields_set contains the field
-        if self.city is None and "city" in self.model_fields_set:
-            _dict["city"] = None
-
-        # set to None if state_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.state_name is None and "state_name" in self.model_fields_set:
-            _dict["state_name"] = None
-
-        # set to None if conference_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.conference_name is None and "conference_name" in self.model_fields_set:
-            _dict["conference_name"] = None
+        if self.previous_page is None and "previous_page" in self.model_fields_set:
+            _dict["previous_page"] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of TeamScheduleDetailSchool from a dict"""
+        """Create an instance of InvoiceReportResult from a dict"""
         if obj is None:
             return None
 
@@ -112,12 +110,16 @@ class TeamScheduleDetailSchool(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "logo_url": obj.get("logo_url"),
-                "city": obj.get("city"),
-                "state_name": obj.get("state_name"),
-                "conference_name": obj.get("conference_name"),
+                "current_page": obj.get("current_page"),
+                "total_pages": obj.get("total_pages"),
+                "total_entries": obj.get("total_entries"),
+                "next_page": obj.get("next_page"),
+                "previous_page": obj.get("previous_page"),
+                "invoices": (
+                    [InvoiceReportRow.from_dict(_item) for _item in obj["invoices"]]
+                    if obj.get("invoices") is not None
+                    else None
+                ),
             }
         )
         return _obj

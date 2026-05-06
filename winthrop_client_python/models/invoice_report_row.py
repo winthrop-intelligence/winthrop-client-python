@@ -16,31 +16,47 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from datetime import date
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.invoice_report_account import InvoiceReportAccount
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class TeamScheduleDetailSchool(BaseModel):
+class InvoiceReportRow(BaseModel):
     """
-    TeamScheduleDetailSchool
+    InvoiceReportRow
     """  # noqa: E501
 
     id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    logo_url: Optional[StrictStr] = None
-    city: Optional[StrictStr] = None
-    state_name: Optional[StrictStr] = None
-    conference_name: Optional[StrictStr] = None
+    invoice_date: Optional[date] = None
+    due_date: Optional[date] = None
+    payment_received: Optional[date] = None
+    status: Optional[StrictStr] = None
+    amount_dollars: Optional[Dict[str, Any]] = None
+    notes: Optional[StrictStr] = None
+    account: Optional[InvoiceReportAccount] = None
     __properties: ClassVar[List[str]] = [
         "id",
-        "name",
-        "logo_url",
-        "city",
-        "state_name",
-        "conference_name",
+        "invoice_date",
+        "due_date",
+        "payment_received",
+        "status",
+        "amount_dollars",
+        "notes",
+        "account",
     ]
+
+    @field_validator("status")
+    def status_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(["Pending", "Paid"]):
+            raise ValueError("must be one of enum values ('Pending', 'Paid')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -59,7 +75,7 @@ class TeamScheduleDetailSchool(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of TeamScheduleDetailSchool from a JSON string"""
+        """Create an instance of InvoiceReportRow from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,31 +95,27 @@ class TeamScheduleDetailSchool(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if logo_url (nullable) is None
+        # override the default output from pydantic by calling `to_dict()` of account
+        if self.account:
+            _dict["account"] = self.account.to_dict()
+        # set to None if payment_received (nullable) is None
         # and model_fields_set contains the field
-        if self.logo_url is None and "logo_url" in self.model_fields_set:
-            _dict["logo_url"] = None
+        if (
+            self.payment_received is None
+            and "payment_received" in self.model_fields_set
+        ):
+            _dict["payment_received"] = None
 
-        # set to None if city (nullable) is None
+        # set to None if notes (nullable) is None
         # and model_fields_set contains the field
-        if self.city is None and "city" in self.model_fields_set:
-            _dict["city"] = None
-
-        # set to None if state_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.state_name is None and "state_name" in self.model_fields_set:
-            _dict["state_name"] = None
-
-        # set to None if conference_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.conference_name is None and "conference_name" in self.model_fields_set:
-            _dict["conference_name"] = None
+        if self.notes is None and "notes" in self.model_fields_set:
+            _dict["notes"] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of TeamScheduleDetailSchool from a dict"""
+        """Create an instance of InvoiceReportRow from a dict"""
         if obj is None:
             return None
 
@@ -113,11 +125,17 @@ class TeamScheduleDetailSchool(BaseModel):
         _obj = cls.model_validate(
             {
                 "id": obj.get("id"),
-                "name": obj.get("name"),
-                "logo_url": obj.get("logo_url"),
-                "city": obj.get("city"),
-                "state_name": obj.get("state_name"),
-                "conference_name": obj.get("conference_name"),
+                "invoice_date": obj.get("invoice_date"),
+                "due_date": obj.get("due_date"),
+                "payment_received": obj.get("payment_received"),
+                "status": obj.get("status"),
+                "amount_dollars": obj.get("amount_dollars"),
+                "notes": obj.get("notes"),
+                "account": (
+                    InvoiceReportAccount.from_dict(obj["account"])
+                    if obj.get("account") is not None
+                    else None
+                ),
             }
         )
         return _obj
