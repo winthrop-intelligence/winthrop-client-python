@@ -280,6 +280,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_subdivision_sport_compensation**](docs/DefaultApi.md#get_subdivision_sport_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/sport_compensation | 
 *DefaultApi* | [**get_subdivisions**](docs/DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions | 
 *DefaultApi* | [**get_subscription**](docs/DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} | 
+*DefaultApi* | [**get_subscription_acceptance**](docs/DefaultApi.md#get_subscription_acceptance) | **GET** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} | 
 *DefaultApi* | [**get_subscriptions**](docs/DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions | 
 *DefaultApi* | [**get_system_settings**](docs/DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting | 
 *DefaultApi* | [**get_team_schedule_detail**](docs/DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} | 
@@ -330,6 +331,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_requested_item**](docs/DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**update_school_group**](docs/DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} | 
 *DefaultApi* | [**update_season**](docs/DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
+*DefaultApi* | [**update_subscription_acceptance**](docs/DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} | 
 *DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
 *DefaultApi* | [**update_user**](docs/DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
 *DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
@@ -337,6 +339,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
 *DefaultApi* | [**verify_user_intercollegiate_access**](docs/DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
 *DefaultApi* | [**view_raw_contract_file**](docs/DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file | 
+*DefaultApi* | [**view_subscription_acceptance_contract**](docs/DefaultApi.md#view_subscription_acceptance_contract) | **GET** /api/v1/subscription_acceptances/{subscriptionAcceptanceId}/contract | 
 *DossierApi* | [**university_dossier_report_dossier_winad_id_get**](docs/DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report
 *IntercollegiateApi* | [**create_news_feeds**](docs/IntercollegiateApi.md#create_news_feeds) | **POST** /wi_jobs/news_feeds | 
 *IntercollegiateApi* | [**get_job_post**](docs/IntercollegiateApi.md#get_job_post) | **GET** /wi_jobs/job_posts/{jobPostId} | 
@@ -459,6 +462,7 @@ Class | Method | HTTP request | Description
  - [ContactSearchEntry](docs/ContactSearchEntry.md)
  - [Contract](docs/Contract.md)
  - [ContractCollection](docs/ContractCollection.md)
+ - [ContractTermOption](docs/ContractTermOption.md)
  - [CoworkerEntry](docs/CoworkerEntry.md)
  - [CoworkerTenure](docs/CoworkerTenure.md)
  - [CreateAccountUser422Response](docs/CreateAccountUser422Response.md)
@@ -642,6 +646,8 @@ Class | Method | HTTP request | Description
  - [Subdivision](docs/Subdivision.md)
  - [SubdivisionCollection](docs/SubdivisionCollection.md)
  - [Subscription](docs/Subscription.md)
+ - [SubscriptionAcceptance](docs/SubscriptionAcceptance.md)
+ - [SubscriptionAcceptanceErrors](docs/SubscriptionAcceptanceErrors.md)
  - [SubscriptionCollection](docs/SubscriptionCollection.md)
  - [SystemSetting](docs/SystemSetting.md)
  - [Tag](docs/Tag.md)
@@ -694,6 +700,8 @@ Class | Method | HTTP request | Description
  - [UpdatePasswordResetRequestUser](docs/UpdatePasswordResetRequestUser.md)
  - [UpdateSchoolGroupRequest](docs/UpdateSchoolGroupRequest.md)
  - [UpdateSchoolGroupRequestSchoolGroup](docs/UpdateSchoolGroupRequestSchoolGroup.md)
+ - [UpdateSubscriptionAcceptanceRequest](docs/UpdateSubscriptionAcceptanceRequest.md)
+ - [UpdateSubscriptionAcceptanceRequestSubscription](docs/UpdateSubscriptionAcceptanceRequestSubscription.md)
  - [UpdateTeamScheduleFavoriteRequest](docs/UpdateTeamScheduleFavoriteRequest.md)
  - [UpdateUserRequest](docs/UpdateUserRequest.md)
  - [UpdateUserRequestUser](docs/UpdateUserRequestUser.md)

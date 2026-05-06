@@ -219,6 +219,7 @@ from winthrop_client_python.models.contact_search_collection import (
 from winthrop_client_python.models.contact_search_entry import ContactSearchEntry
 from winthrop_client_python.models.contract import Contract
 from winthrop_client_python.models.contract_collection import ContractCollection
+from winthrop_client_python.models.contract_term_option import ContractTermOption
 from winthrop_client_python.models.coworker_entry import CoworkerEntry
 from winthrop_client_python.models.coworker_tenure import CoworkerTenure
 from winthrop_client_python.models.create_account_user422_response import (
@@ -544,6 +545,10 @@ from winthrop_client_python.models.state import State
 from winthrop_client_python.models.subdivision import Subdivision
 from winthrop_client_python.models.subdivision_collection import SubdivisionCollection
 from winthrop_client_python.models.subscription import Subscription
+from winthrop_client_python.models.subscription_acceptance import SubscriptionAcceptance
+from winthrop_client_python.models.subscription_acceptance_errors import (
+    SubscriptionAcceptanceErrors,
+)
 from winthrop_client_python.models.subscription_collection import SubscriptionCollection
 from winthrop_client_python.models.system_setting import SystemSetting
 from winthrop_client_python.models.tag import Tag
@@ -669,6 +674,12 @@ from winthrop_client_python.models.update_school_group_request import (
 )
 from winthrop_client_python.models.update_school_group_request_school_group import (
     UpdateSchoolGroupRequestSchoolGroup,
+)
+from winthrop_client_python.models.update_subscription_acceptance_request import (
+    UpdateSubscriptionAcceptanceRequest,
+)
+from winthrop_client_python.models.update_subscription_acceptance_request_subscription import (
+    UpdateSubscriptionAcceptanceRequestSubscription,
 )
 from winthrop_client_python.models.update_team_schedule_favorite_request import (
     UpdateTeamScheduleFavoriteRequest,

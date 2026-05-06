@@ -277,6 +277,7 @@ from winthrop_client_python.models.state import State
 from winthrop_client_python.models.subdivision import Subdivision
 from winthrop_client_python.models.subdivision_collection import SubdivisionCollection
 from winthrop_client_python.models.subscription import Subscription
+from winthrop_client_python.models.subscription_acceptance import SubscriptionAcceptance
 from winthrop_client_python.models.subscription_collection import SubscriptionCollection
 from winthrop_client_python.models.system_setting import SystemSetting
 from winthrop_client_python.models.team_schedule_coaches import TeamScheduleCoaches
@@ -319,6 +320,9 @@ from winthrop_client_python.models.update_password_reset_request import (
 )
 from winthrop_client_python.models.update_school_group_request import (
     UpdateSchoolGroupRequest,
+)
+from winthrop_client_python.models.update_subscription_acceptance_request import (
+    UpdateSubscriptionAcceptanceRequest,
 )
 from winthrop_client_python.models.update_team_schedule_favorite_request import (
     UpdateTeamScheduleFavoriteRequest,
@@ -49647,6 +49651,289 @@ class DefaultApi:
         )
 
     @validate_call
+    def get_subscription_acceptance(
+        self,
+        subscription_acceptance_id: Annotated[
+            StrictStr, Field(description="ID or slug of the Subscription")
+        ],
+        acceptance_token: Annotated[
+            StrictStr, Field(description="Token from the subscription order email")
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SubscriptionAcceptance:
+        """get_subscription_acceptance
+
+        Retrieve token-scoped subscription order details
+
+        :param subscription_acceptance_id: ID or slug of the Subscription (required)
+        :type subscription_acceptance_id: str
+        :param acceptance_token: Token from the subscription order email (required)
+        :type acceptance_token: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_subscription_acceptance_serialize(
+            subscription_acceptance_id=subscription_acceptance_id,
+            acceptance_token=acceptance_token,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "SubscriptionAcceptance",
+            "400": "SubscriptionAcceptanceErrors",
+            "404": "SubscriptionAcceptanceErrors",
+            "422": "SubscriptionAcceptanceErrors",
+            "500": "SubscriptionAcceptanceErrors",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_subscription_acceptance_with_http_info(
+        self,
+        subscription_acceptance_id: Annotated[
+            StrictStr, Field(description="ID or slug of the Subscription")
+        ],
+        acceptance_token: Annotated[
+            StrictStr, Field(description="Token from the subscription order email")
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SubscriptionAcceptance]:
+        """get_subscription_acceptance
+
+        Retrieve token-scoped subscription order details
+
+        :param subscription_acceptance_id: ID or slug of the Subscription (required)
+        :type subscription_acceptance_id: str
+        :param acceptance_token: Token from the subscription order email (required)
+        :type acceptance_token: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_subscription_acceptance_serialize(
+            subscription_acceptance_id=subscription_acceptance_id,
+            acceptance_token=acceptance_token,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "SubscriptionAcceptance",
+            "400": "SubscriptionAcceptanceErrors",
+            "404": "SubscriptionAcceptanceErrors",
+            "422": "SubscriptionAcceptanceErrors",
+            "500": "SubscriptionAcceptanceErrors",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_subscription_acceptance_without_preload_content(
+        self,
+        subscription_acceptance_id: Annotated[
+            StrictStr, Field(description="ID or slug of the Subscription")
+        ],
+        acceptance_token: Annotated[
+            StrictStr, Field(description="Token from the subscription order email")
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_subscription_acceptance
+
+        Retrieve token-scoped subscription order details
+
+        :param subscription_acceptance_id: ID or slug of the Subscription (required)
+        :type subscription_acceptance_id: str
+        :param acceptance_token: Token from the subscription order email (required)
+        :type acceptance_token: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_subscription_acceptance_serialize(
+            subscription_acceptance_id=subscription_acceptance_id,
+            acceptance_token=acceptance_token,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "SubscriptionAcceptance",
+            "400": "SubscriptionAcceptanceErrors",
+            "404": "SubscriptionAcceptanceErrors",
+            "422": "SubscriptionAcceptanceErrors",
+            "500": "SubscriptionAcceptanceErrors",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_subscription_acceptance_serialize(
+        self,
+        subscription_acceptance_id,
+        acceptance_token,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if subscription_acceptance_id is not None:
+            _path_params["subscriptionAcceptanceId"] = subscription_acceptance_id
+        # process the query parameters
+        if acceptance_token is not None:
+
+            _query_params.append(("acceptance_token", acceptance_token))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = []
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/subscription_acceptances/{subscriptionAcceptanceId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def get_subscriptions(
         self,
         page: Annotated[
@@ -63597,6 +63884,314 @@ class DefaultApi:
         )
 
     @validate_call
+    def update_subscription_acceptance(
+        self,
+        subscription_acceptance_id: Annotated[
+            StrictStr, Field(description="ID or slug of the Subscription")
+        ],
+        acceptance_token: Annotated[
+            StrictStr, Field(description="Token from the subscription order email")
+        ],
+        update_subscription_acceptance_request: UpdateSubscriptionAcceptanceRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> SubscriptionAcceptance:
+        """update_subscription_acceptance
+
+        Accept a token-scoped subscription order
+
+        :param subscription_acceptance_id: ID or slug of the Subscription (required)
+        :type subscription_acceptance_id: str
+        :param acceptance_token: Token from the subscription order email (required)
+        :type acceptance_token: str
+        :param update_subscription_acceptance_request: (required)
+        :type update_subscription_acceptance_request: UpdateSubscriptionAcceptanceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._update_subscription_acceptance_serialize(
+            subscription_acceptance_id=subscription_acceptance_id,
+            acceptance_token=acceptance_token,
+            update_subscription_acceptance_request=update_subscription_acceptance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "SubscriptionAcceptance",
+            "400": "SubscriptionAcceptanceErrors",
+            "404": "SubscriptionAcceptanceErrors",
+            "422": "SubscriptionAcceptanceErrors",
+            "500": "SubscriptionAcceptanceErrors",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def update_subscription_acceptance_with_http_info(
+        self,
+        subscription_acceptance_id: Annotated[
+            StrictStr, Field(description="ID or slug of the Subscription")
+        ],
+        acceptance_token: Annotated[
+            StrictStr, Field(description="Token from the subscription order email")
+        ],
+        update_subscription_acceptance_request: UpdateSubscriptionAcceptanceRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[SubscriptionAcceptance]:
+        """update_subscription_acceptance
+
+        Accept a token-scoped subscription order
+
+        :param subscription_acceptance_id: ID or slug of the Subscription (required)
+        :type subscription_acceptance_id: str
+        :param acceptance_token: Token from the subscription order email (required)
+        :type acceptance_token: str
+        :param update_subscription_acceptance_request: (required)
+        :type update_subscription_acceptance_request: UpdateSubscriptionAcceptanceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._update_subscription_acceptance_serialize(
+            subscription_acceptance_id=subscription_acceptance_id,
+            acceptance_token=acceptance_token,
+            update_subscription_acceptance_request=update_subscription_acceptance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "SubscriptionAcceptance",
+            "400": "SubscriptionAcceptanceErrors",
+            "404": "SubscriptionAcceptanceErrors",
+            "422": "SubscriptionAcceptanceErrors",
+            "500": "SubscriptionAcceptanceErrors",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def update_subscription_acceptance_without_preload_content(
+        self,
+        subscription_acceptance_id: Annotated[
+            StrictStr, Field(description="ID or slug of the Subscription")
+        ],
+        acceptance_token: Annotated[
+            StrictStr, Field(description="Token from the subscription order email")
+        ],
+        update_subscription_acceptance_request: UpdateSubscriptionAcceptanceRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """update_subscription_acceptance
+
+        Accept a token-scoped subscription order
+
+        :param subscription_acceptance_id: ID or slug of the Subscription (required)
+        :type subscription_acceptance_id: str
+        :param acceptance_token: Token from the subscription order email (required)
+        :type acceptance_token: str
+        :param update_subscription_acceptance_request: (required)
+        :type update_subscription_acceptance_request: UpdateSubscriptionAcceptanceRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._update_subscription_acceptance_serialize(
+            subscription_acceptance_id=subscription_acceptance_id,
+            acceptance_token=acceptance_token,
+            update_subscription_acceptance_request=update_subscription_acceptance_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "SubscriptionAcceptance",
+            "400": "SubscriptionAcceptanceErrors",
+            "404": "SubscriptionAcceptanceErrors",
+            "422": "SubscriptionAcceptanceErrors",
+            "500": "SubscriptionAcceptanceErrors",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _update_subscription_acceptance_serialize(
+        self,
+        subscription_acceptance_id,
+        acceptance_token,
+        update_subscription_acceptance_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if subscription_acceptance_id is not None:
+            _path_params["subscriptionAcceptanceId"] = subscription_acceptance_id
+        # process the query parameters
+        if acceptance_token is not None:
+
+            _query_params.append(("acceptance_token", acceptance_token))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if update_subscription_acceptance_request is not None:
+            _body_params = update_subscription_acceptance_request
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params["Content-Type"] = _content_type
+        else:
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
+            )
+            if _default_content_type is not None:
+                _header_params["Content-Type"] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = []
+
+        return self.api_client.param_serialize(
+            method="PATCH",
+            resource_path="/api/v1/subscription_acceptances/{subscriptionAcceptanceId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def update_team_schedule_favorite(
         self,
         id: Annotated[StrictInt, Field(description="The favorite record ID")],
@@ -65416,6 +66011,289 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="GET",
             resource_path="/api/v1/raw_contracts/{raw_contractId}/view_file",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def view_subscription_acceptance_contract(
+        self,
+        subscription_acceptance_id: Annotated[
+            StrictStr, Field(description="ID or slug of the Subscription")
+        ],
+        acceptance_token: Annotated[
+            StrictStr, Field(description="Token from the subscription order email")
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> bytearray:
+        """view_subscription_acceptance_contract
+
+        Retrieve the token-scoped subscription contract PDF for inline viewing
+
+        :param subscription_acceptance_id: ID or slug of the Subscription (required)
+        :type subscription_acceptance_id: str
+        :param acceptance_token: Token from the subscription order email (required)
+        :type acceptance_token: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._view_subscription_acceptance_contract_serialize(
+            subscription_acceptance_id=subscription_acceptance_id,
+            acceptance_token=acceptance_token,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "bytearray",
+            "400": "SubscriptionAcceptanceErrors",
+            "404": "SubscriptionAcceptanceErrors",
+            "422": "SubscriptionAcceptanceErrors",
+            "500": "SubscriptionAcceptanceErrors",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def view_subscription_acceptance_contract_with_http_info(
+        self,
+        subscription_acceptance_id: Annotated[
+            StrictStr, Field(description="ID or slug of the Subscription")
+        ],
+        acceptance_token: Annotated[
+            StrictStr, Field(description="Token from the subscription order email")
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[bytearray]:
+        """view_subscription_acceptance_contract
+
+        Retrieve the token-scoped subscription contract PDF for inline viewing
+
+        :param subscription_acceptance_id: ID or slug of the Subscription (required)
+        :type subscription_acceptance_id: str
+        :param acceptance_token: Token from the subscription order email (required)
+        :type acceptance_token: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._view_subscription_acceptance_contract_serialize(
+            subscription_acceptance_id=subscription_acceptance_id,
+            acceptance_token=acceptance_token,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "bytearray",
+            "400": "SubscriptionAcceptanceErrors",
+            "404": "SubscriptionAcceptanceErrors",
+            "422": "SubscriptionAcceptanceErrors",
+            "500": "SubscriptionAcceptanceErrors",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def view_subscription_acceptance_contract_without_preload_content(
+        self,
+        subscription_acceptance_id: Annotated[
+            StrictStr, Field(description="ID or slug of the Subscription")
+        ],
+        acceptance_token: Annotated[
+            StrictStr, Field(description="Token from the subscription order email")
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """view_subscription_acceptance_contract
+
+        Retrieve the token-scoped subscription contract PDF for inline viewing
+
+        :param subscription_acceptance_id: ID or slug of the Subscription (required)
+        :type subscription_acceptance_id: str
+        :param acceptance_token: Token from the subscription order email (required)
+        :type acceptance_token: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._view_subscription_acceptance_contract_serialize(
+            subscription_acceptance_id=subscription_acceptance_id,
+            acceptance_token=acceptance_token,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "bytearray",
+            "400": "SubscriptionAcceptanceErrors",
+            "404": "SubscriptionAcceptanceErrors",
+            "422": "SubscriptionAcceptanceErrors",
+            "500": "SubscriptionAcceptanceErrors",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _view_subscription_acceptance_contract_serialize(
+        self,
+        subscription_acceptance_id,
+        acceptance_token,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if subscription_acceptance_id is not None:
+            _path_params["subscriptionAcceptanceId"] = subscription_acceptance_id
+        # process the query parameters
+        if acceptance_token is not None:
+
+            _query_params.append(("acceptance_token", acceptance_token))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/pdf", "application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = []
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/subscription_acceptances/{subscriptionAcceptanceId}/contract",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
