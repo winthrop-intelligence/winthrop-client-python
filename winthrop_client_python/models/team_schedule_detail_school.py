@@ -29,6 +29,7 @@ class TeamScheduleDetailSchool(BaseModel):
 
     id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
+    short_name: Optional[StrictStr] = None
     logo_url: Optional[StrictStr] = None
     city: Optional[StrictStr] = None
     state_name: Optional[StrictStr] = None
@@ -36,6 +37,7 @@ class TeamScheduleDetailSchool(BaseModel):
     __properties: ClassVar[List[str]] = [
         "id",
         "name",
+        "short_name",
         "logo_url",
         "city",
         "state_name",
@@ -79,6 +81,11 @@ class TeamScheduleDetailSchool(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if short_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.short_name is None and "short_name" in self.model_fields_set:
+            _dict["short_name"] = None
+
         # set to None if logo_url (nullable) is None
         # and model_fields_set contains the field
         if self.logo_url is None and "logo_url" in self.model_fields_set:
@@ -114,6 +121,7 @@ class TeamScheduleDetailSchool(BaseModel):
             {
                 "id": obj.get("id"),
                 "name": obj.get("name"),
+                "short_name": obj.get("short_name"),
                 "logo_url": obj.get("logo_url"),
                 "city": obj.get("city"),
                 "state_name": obj.get("state_name"),
