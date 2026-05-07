@@ -22,24 +22,24 @@ from typing import Optional, Set
 from typing_extensions import Self
 
 
-class TeamScheduleDetailSchool(BaseModel):
+class CoachCompensationTabQuartilesRowsInner(BaseModel):
     """
-    TeamScheduleDetailSchool
+    CoachCompensationTabQuartilesRowsInner
     """  # noqa: E501
 
-    id: Optional[StrictInt] = None
-    name: Optional[StrictStr] = None
-    logo_url: Optional[StrictStr] = None
-    city: Optional[StrictStr] = None
-    state_name: Optional[StrictStr] = None
-    conference_name: Optional[StrictStr] = None
+    group: Optional[StrictStr] = None
+    percent_rank: Optional[StrictInt] = None
+    q25_cents: StrictInt
+    q50_cents: StrictInt
+    q75_cents: StrictInt
+    q100_cents: StrictInt
     __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "logo_url",
-        "city",
-        "state_name",
-        "conference_name",
+        "group",
+        "percent_rank",
+        "q25_cents",
+        "q50_cents",
+        "q75_cents",
+        "q100_cents",
     ]
 
     model_config = ConfigDict(
@@ -59,7 +59,7 @@ class TeamScheduleDetailSchool(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of TeamScheduleDetailSchool from a JSON string"""
+        """Create an instance of CoachCompensationTabQuartilesRowsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -79,31 +79,21 @@ class TeamScheduleDetailSchool(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if logo_url (nullable) is None
+        # set to None if group (nullable) is None
         # and model_fields_set contains the field
-        if self.logo_url is None and "logo_url" in self.model_fields_set:
-            _dict["logo_url"] = None
+        if self.group is None and "group" in self.model_fields_set:
+            _dict["group"] = None
 
-        # set to None if city (nullable) is None
+        # set to None if percent_rank (nullable) is None
         # and model_fields_set contains the field
-        if self.city is None and "city" in self.model_fields_set:
-            _dict["city"] = None
-
-        # set to None if state_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.state_name is None and "state_name" in self.model_fields_set:
-            _dict["state_name"] = None
-
-        # set to None if conference_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.conference_name is None and "conference_name" in self.model_fields_set:
-            _dict["conference_name"] = None
+        if self.percent_rank is None and "percent_rank" in self.model_fields_set:
+            _dict["percent_rank"] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of TeamScheduleDetailSchool from a dict"""
+        """Create an instance of CoachCompensationTabQuartilesRowsInner from a dict"""
         if obj is None:
             return None
 
@@ -112,12 +102,12 @@ class TeamScheduleDetailSchool(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "logo_url": obj.get("logo_url"),
-                "city": obj.get("city"),
-                "state_name": obj.get("state_name"),
-                "conference_name": obj.get("conference_name"),
+                "group": obj.get("group"),
+                "percent_rank": obj.get("percent_rank"),
+                "q25_cents": obj.get("q25_cents"),
+                "q50_cents": obj.get("q50_cents"),
+                "q75_cents": obj.get("q75_cents"),
+                "q100_cents": obj.get("q100_cents"),
             }
         )
         return _obj

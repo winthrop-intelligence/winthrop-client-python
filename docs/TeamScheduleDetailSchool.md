@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
-**short_name** | **str** |  | [optional] 
 **logo_url** | **str** |  | [optional] 
 **city** | **str** |  | [optional] 
 **state_name** | **str** |  | [optional] 

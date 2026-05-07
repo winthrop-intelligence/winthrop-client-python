@@ -44,15 +44,11 @@ class GamePostDetail(BaseModel):
     id: Optional[StrictInt] = None
     school_id: Optional[StrictInt] = None
     school_name: Optional[StrictStr] = None
-    school_short_name: Optional[StrictStr] = None
     sport_id: Optional[StrictInt] = None
     sport_name: Optional[StrictStr] = None
     sport_slug: Optional[StrictStr] = Field(
         default=None,
         description="Sport name for URL construction (e.g. FOOTBALL, BASKETBALL_M)",
-    )
-    sport_abbreviation: Optional[StrictStr] = Field(
-        default=None, description="Short sport label (e.g. MBB, FB)"
     )
     start_date: Optional[date] = None
     end_date: Optional[date] = None
@@ -70,11 +66,9 @@ class GamePostDetail(BaseModel):
         "id",
         "school_id",
         "school_name",
-        "school_short_name",
         "sport_id",
         "sport_name",
         "sport_slug",
-        "sport_abbreviation",
         "start_date",
         "end_date",
         "description",
@@ -153,22 +147,6 @@ class GamePostDetail(BaseModel):
                 if _item_contacts:
                     _items.append(_item_contacts.to_dict())
             _dict["contacts"] = _items
-        # set to None if school_short_name (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.school_short_name is None
-            and "school_short_name" in self.model_fields_set
-        ):
-            _dict["school_short_name"] = None
-
-        # set to None if sport_abbreviation (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.sport_abbreviation is None
-            and "sport_abbreviation" in self.model_fields_set
-        ):
-            _dict["sport_abbreviation"] = None
-
         # set to None if start_date (nullable) is None
         # and model_fields_set contains the field
         if self.start_date is None and "start_date" in self.model_fields_set:
@@ -218,11 +196,9 @@ class GamePostDetail(BaseModel):
                 "id": obj.get("id"),
                 "school_id": obj.get("school_id"),
                 "school_name": obj.get("school_name"),
-                "school_short_name": obj.get("school_short_name"),
                 "sport_id": obj.get("sport_id"),
                 "sport_name": obj.get("sport_name"),
                 "sport_slug": obj.get("sport_slug"),
-                "sport_abbreviation": obj.get("sport_abbreviation"),
                 "start_date": obj.get("start_date"),
                 "end_date": obj.get("end_date"),
                 "description": obj.get("description"),

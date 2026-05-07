@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **total_compensations** | **int** |  | 
 **comparisons** | [**CoachCompensationTabComparisons**](CoachCompensationTabComparisons.md) |  | [optional] 
 **sidebar** | [**CoachCompensationTabSidebar**](CoachCompensationTabSidebar.md) |  | [optional] 
+**quartiles** | [**CoachCompensationTabQuartiles**](CoachCompensationTabQuartiles.md) |  | [optional] 
 
 ## Example
 

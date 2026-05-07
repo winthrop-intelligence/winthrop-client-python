@@ -27,6 +27,9 @@ from winthrop_client_python.models.coach_compensation_tab_chart_data import (
 from winthrop_client_python.models.coach_compensation_tab_comparisons import (
     CoachCompensationTabComparisons,
 )
+from winthrop_client_python.models.coach_compensation_tab_quartiles import (
+    CoachCompensationTabQuartiles,
+)
 from winthrop_client_python.models.coach_compensation_tab_sidebar import (
     CoachCompensationTabSidebar,
 )
@@ -45,6 +48,7 @@ class CoachCompensationTab(BaseModel):
     total_compensations: StrictInt
     comparisons: Optional[CoachCompensationTabComparisons] = None
     sidebar: Optional[CoachCompensationTabSidebar] = None
+    quartiles: Optional[CoachCompensationTabQuartiles] = None
     __properties: ClassVar[List[str]] = [
         "can_see_compensation",
         "chart_data",
@@ -52,6 +56,7 @@ class CoachCompensationTab(BaseModel):
         "total_compensations",
         "comparisons",
         "sidebar",
+        "quartiles",
     ]
 
     model_config = ConfigDict(
@@ -107,6 +112,14 @@ class CoachCompensationTab(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sidebar
         if self.sidebar:
             _dict["sidebar"] = self.sidebar.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of quartiles
+        if self.quartiles:
+            _dict["quartiles"] = self.quartiles.to_dict()
+        # set to None if quartiles (nullable) is None
+        # and model_fields_set contains the field
+        if self.quartiles is None and "quartiles" in self.model_fields_set:
+            _dict["quartiles"] = None
+
         return _dict
 
     @classmethod
@@ -143,6 +156,11 @@ class CoachCompensationTab(BaseModel):
                 "sidebar": (
                     CoachCompensationTabSidebar.from_dict(obj["sidebar"])
                     if obj.get("sidebar") is not None
+                    else None
+                ),
+                "quartiles": (
+                    CoachCompensationTabQuartiles.from_dict(obj["quartiles"])
+                    if obj.get("quartiles") is not None
                     else None
                 ),
             }
