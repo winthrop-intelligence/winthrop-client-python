@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **name_id** | **str** |  | [optional] 
 **short_name** | **str** |  | [optional] 
+**report_id** | **str** |  | [optional] 
+**report_label** | **str** |  | [optional] 
 
 ## Example
 
