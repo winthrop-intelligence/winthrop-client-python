@@ -66,3 +66,6 @@ target/
 .ipynb_checkpoints
 poetry.lock
 .DS_Store
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
