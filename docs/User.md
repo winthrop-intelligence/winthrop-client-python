@@ -33,6 +33,8 @@ Name | Type | Description | Notes
 **can_show_game_post** | **bool** | Whether the user can access the Games Wanted section | [optional] 
 **can_see_school_groups** | **bool** | Whether the user can access Custom School Groups | [optional] 
 **can_read_account** | **bool** | Whether the user can view account management | [optional] 
+**can_launch_intercollegiate** | **bool** | Whether the user can launch Intercollegiate direct access | [optional] 
+**intercollegiate_url** | **str** | Final Intercollegiate launch or marketing URL for the user | [optional] 
 **is_sport_specific** | **bool** |  | [optional] 
 **is_d2_only** | **bool** |  | [optional] 
 **is_conference_only** | **bool** |  | [optional] 
