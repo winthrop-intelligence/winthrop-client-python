@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **city** | **str** |  | [optional] 
 **state_name** | **str** |  | [optional] 
 **rpi** | **str** |  | [optional] 
+**net_rank** | **str** |  | [optional] 
 **compensation_cents** | **int** |  | [optional] 
 **game_contract_id** | **int** |  | [optional] 
 

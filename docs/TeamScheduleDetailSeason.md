@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **losses** | **int** |  | [optional] 
 **record_str** | **str** |  | [optional] 
 **rpi** | **int** |  | [optional] 
+**net_rank** | **int** |  | [optional] 
 **avg_rpi** | **int** |  | [optional] 
+**avg_net_rank** | **int** |  | [optional] 
 
 ## Example
 

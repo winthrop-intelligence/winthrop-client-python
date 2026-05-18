@@ -21,6 +21,8 @@ Name | Type | Description | Notes
 **home_school_score** | **int** | Final home-school score for completed games; null for games that have not been played | [optional] 
 **away_school_score** | **int** | Final away-school score for completed games; null for games that have not been played | [optional] 
 **overtime** | **bool** | True when the game went to overtime | [optional] 
+**created_by_school_id** | **int** | School account ID that created this game when entered by a school account; null for internal/admin/support or unknown sources | [optional] 
+**school_entered** | **bool** | True when this game was entered by a user from the school account represented by this grid column | [optional] 
 
 ## Example
 

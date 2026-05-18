@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **start_date** | **date** |  | [optional] 
 **end_date** | **date** |  | [optional] 
 **game_types** | **List[str]** | Game type names (e.g. HomeAndHome, GuaranteeNeeded) | [optional] 
+**created_by_school_id** | **int** | School account ID that created this post when entered by a school account; null for internal/admin/support or unknown sources | [optional] 
+**school_entered** | **bool** | True when this post was entered by a user from the owning school account | [optional] 
 
 ## Example
 

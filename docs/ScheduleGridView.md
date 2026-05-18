@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **schools** | [**List[ScheduleGridSchool]**](ScheduleGridSchool.md) |  | [optional] 
 **games** | **Dict[str, List[ScheduleGridGame]]** | Games keyed by school_id (as a string). Each school&#39;s list is filtered to games where that school is home or away. | [optional] 
 **game_posts** | **Dict[str, List[ScheduleGridGamePost]]** | Active game posts keyed by school_id (as a string) | [optional] 
+**onboarding** | [**ScheduleGridOnboarding**](ScheduleGridOnboarding.md) |  | [optional] 
 
 ## Example
 

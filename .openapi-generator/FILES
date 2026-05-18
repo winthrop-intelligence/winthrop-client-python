@@ -57,6 +57,8 @@ docs/CoachCompensationTabChartDataConferenceAvgOverTimeInner.md
 docs/CoachCompensationTabChartDataCurrentBreakdown.md
 docs/CoachCompensationTabChartDataTotalCompOverTimeInner.md
 docs/CoachCompensationTabComparisons.md
+docs/CoachCompensationTabQuartiles.md
+docs/CoachCompensationTabQuartilesRowsInner.md
 docs/CoachCompensationTabSidebar.md
 docs/CoachCompensationTabSidebarCoachingStaffInner.md
 docs/CoachCompensationTabSidebarContractsInner.md
@@ -255,6 +257,7 @@ docs/ScheduleGridAvailableSchoolRow.md
 docs/ScheduleGridAvailableSchools.md
 docs/ScheduleGridGame.md
 docs/ScheduleGridGamePost.md
+docs/ScheduleGridOnboarding.md
 docs/ScheduleGridSchool.md
 docs/ScheduleGridView.md
 docs/School.md
@@ -375,6 +378,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_coach_compensation_tab_quartiles.py
+test/test_coach_compensation_tab_quartiles_rows_inner.py
+test/test_schedule_grid_onboarding.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -444,6 +450,8 @@ winthrop_client_python/models/coach_compensation_tab_chart_data_conference_avg_o
 winthrop_client_python/models/coach_compensation_tab_chart_data_current_breakdown.py
 winthrop_client_python/models/coach_compensation_tab_chart_data_total_comp_over_time_inner.py
 winthrop_client_python/models/coach_compensation_tab_comparisons.py
+winthrop_client_python/models/coach_compensation_tab_quartiles.py
+winthrop_client_python/models/coach_compensation_tab_quartiles_rows_inner.py
 winthrop_client_python/models/coach_compensation_tab_sidebar.py
 winthrop_client_python/models/coach_compensation_tab_sidebar_coaching_staff_inner.py
 winthrop_client_python/models/coach_compensation_tab_sidebar_contracts_inner.py
@@ -638,6 +646,7 @@ winthrop_client_python/models/schedule_grid_available_school_row.py
 winthrop_client_python/models/schedule_grid_available_schools.py
 winthrop_client_python/models/schedule_grid_game.py
 winthrop_client_python/models/schedule_grid_game_post.py
+winthrop_client_python/models/schedule_grid_onboarding.py
 winthrop_client_python/models/schedule_grid_school.py
 winthrop_client_python/models/schedule_grid_view.py
 winthrop_client_python/models/school.py

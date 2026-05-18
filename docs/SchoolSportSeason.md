@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **wins** | **int** |  | [optional] 
 **losses** | **int** |  | [optional] 
 **rpi** | **float** |  | [optional] 
+**net_rank** | **float** |  | [optional] 
 **sos** | **float** |  | [optional] 
 
 ## Example

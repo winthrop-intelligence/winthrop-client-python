@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **position_sport** | **str** |  | 
 **record** | **str** |  | [optional] 
 **rpi** | **str** |  | [optional] 
+**net_rank** | **str** |  | [optional] 
 **apr_asr** | **str** |  | [optional] 
 **coach_apr** | **float** |  | [optional] 
 **departing** | **bool** |  | [optional] 

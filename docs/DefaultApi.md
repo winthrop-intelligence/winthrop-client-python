@@ -12622,7 +12622,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     sport_name = 'sport_name_example' # str | Sport name (e.g. FOOTBALL, BASKETBALL_M)
-    school_ids = [56] # List[int] | School IDs to include on the grid (max 8, ordering is preserved) (optional)
+    school_ids = [56] # List[int] | School IDs to include on the grid (max 12, ordering is preserved) (optional)
     year = 2026 # int | Four-digit season year. Defaults to the current year when omitted or invalid. (optional)
 
     try:
@@ -12641,7 +12641,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sport_name** | **str**| Sport name (e.g. FOOTBALL, BASKETBALL_M) | 
- **school_ids** | [**List[int]**](int.md)| School IDs to include on the grid (max 8, ordering is preserved) | [optional] 
+ **school_ids** | [**List[int]**](int.md)| School IDs to include on the grid (max 12, ordering is preserved) | [optional] 
  **year** | **int**| Four-digit season year. Defaults to the current year when omitted or invalid. | [optional] 
 
 ### Return type
@@ -12807,7 +12807,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     sport_name = 'sport_name_example' # str | Sport name (e.g. FOOTBALL, BASKETBALL_M)
-    school_ids = [56] # List[int] | School IDs to include on the grid (max 8, ordering is preserved) (optional)
+    school_ids = [56] # List[int] | School IDs to include on the grid (max 12, ordering is preserved) (optional)
     year = 2024 # int | Four-digit season year. Defaults to the current year when omitted or invalid. (optional)
 
     try:
@@ -12826,7 +12826,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sport_name** | **str**| Sport name (e.g. FOOTBALL, BASKETBALL_M) | 
- **school_ids** | [**List[int]**](int.md)| School IDs to include on the grid (max 8, ordering is preserved) | [optional] 
+ **school_ids** | [**List[int]**](int.md)| School IDs to include on the grid (max 12, ordering is preserved) | [optional] 
  **year** | **int**| Four-digit season year. Defaults to the current year when omitted or invalid. | [optional] 
 
 ### Return type
