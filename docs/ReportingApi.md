@@ -416,7 +416,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_invoices**
-> object get_invoices(page=page, q=q)
+> InvoiceReportResult get_invoices(page=page, q=q)
 
 Retrieve some or all client invoices
 
@@ -427,6 +427,7 @@ Retrieve some or all client invoices
 
 ```python
 import winthrop_client_python
+from winthrop_client_python.models.invoice_report_result import InvoiceReportResult
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -476,7 +477,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+[**InvoiceReportResult**](InvoiceReportResult.md)
 
 ### Authorization
 

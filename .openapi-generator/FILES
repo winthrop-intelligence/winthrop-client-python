@@ -203,6 +203,9 @@ docs/IdName.md
 docs/IncomeReport.md
 docs/IncomeReportCollection.md
 docs/IntercollegiateApi.md
+docs/InvoiceReportAccount.md
+docs/InvoiceReportResult.md
+docs/InvoiceReportRow.md
 docs/Job.md
 docs/JobCandidate.md
 docs/JobCollection.md
@@ -378,9 +381,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_coach_compensation_tab_quartiles.py
-test/test_coach_compensation_tab_quartiles_rows_inner.py
-test/test_schedule_grid_onboarding.py
+test/test_invoice_report_account.py
+test/test_invoice_report_result.py
+test/test_invoice_report_row.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -594,6 +597,9 @@ winthrop_client_python/models/http_validation_error.py
 winthrop_client_python/models/id_name.py
 winthrop_client_python/models/income_report.py
 winthrop_client_python/models/income_report_collection.py
+winthrop_client_python/models/invoice_report_account.py
+winthrop_client_python/models/invoice_report_result.py
+winthrop_client_python/models/invoice_report_row.py
 winthrop_client_python/models/job.py
 winthrop_client_python/models/job_candidate.py
 winthrop_client_python/models/job_collection.py
