@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **type** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
+**required** | **bool** | Whether the API requires this argument when launching the scraper. | [optional] [default to True]
 
 ## Example
 

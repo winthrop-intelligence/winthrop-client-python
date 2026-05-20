@@ -28,6 +28,7 @@ Method | HTTP request | Description
 [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset | 
 [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
+[**create_schedule_intent**](DefaultApi.md#create_schedule_intent) | **POST** /api/v1/schedule_intents | 
 [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
@@ -49,6 +50,7 @@ Method | HTTP request | Description
 [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} | 
 [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
+[**delete_schedule_intent**](DefaultApi.md#delete_schedule_intent) | **DELETE** /api/v1/schedule_intents/{scheduleIntentId} | 
 [**delete_school_group**](DefaultApi.md#delete_school_group) | **DELETE** /api/v1/school_groups/{schoolGroupId} | 
 [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
@@ -235,6 +237,7 @@ Method | HTTP request | Description
 [**update_password_reset**](DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset | 
 [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
 [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
+[**update_schedule_intent**](DefaultApi.md#update_schedule_intent) | **PATCH** /api/v1/schedule_intents/{scheduleIntentId} | 
 [**update_school_group**](DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} | 
 [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
 [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
@@ -2226,6 +2229,88 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_schedule_intent**
+> ScheduleIntentDetail create_schedule_intent(create_schedule_intent_request)
+
+Create a private /schedules grid marker (WINAD-9646). This is NOT a public Games Wanted post — it never reaches the /game_posts feed, the school-detail badge, or the digest email.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_schedule_intent_request import CreateScheduleIntentRequest
+from winthrop_client_python.models.schedule_intent_detail import ScheduleIntentDetail
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_schedule_intent_request = winthrop_client_python.CreateScheduleIntentRequest() # CreateScheduleIntentRequest | 
+
+    try:
+        api_response = api_instance.create_schedule_intent(create_schedule_intent_request)
+        print("The response of DefaultApi->create_schedule_intent:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_schedule_intent: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_schedule_intent_request** | [**CreateScheduleIntentRequest**](CreateScheduleIntentRequest.md)|  | 
+
+### Return type
+
+[**ScheduleIntentDetail**](ScheduleIntentDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Schedule intent created |  -  |
+**422** | Validation error |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_school_group**
 > SchoolGroupShow create_school_group(create_school_group_request)
 
@@ -3896,6 +3981,84 @@ void (empty response body)
 **204** | Requested item was deleted |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_schedule_intent**
+> delete_schedule_intent(schedule_intent_id)
+
+Delete a private /schedules grid marker
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    schedule_intent_id = 56 # int | 
+
+    try:
+        api_instance.delete_schedule_intent(schedule_intent_id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_schedule_intent: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **schedule_intent_id** | **int**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Schedule intent deleted |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -19200,6 +19363,91 @@ Name | Type | Description  | Notes
 **200** | Requested item was updated |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_schedule_intent**
+> ScheduleIntentDetail update_schedule_intent(schedule_intent_id, update_schedule_intent_request=update_schedule_intent_request)
+
+Update a private /schedules grid marker (replace its game-type designations).
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.schedule_intent_detail import ScheduleIntentDetail
+from winthrop_client_python.models.update_schedule_intent_request import UpdateScheduleIntentRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    schedule_intent_id = 56 # int | 
+    update_schedule_intent_request = winthrop_client_python.UpdateScheduleIntentRequest() # UpdateScheduleIntentRequest |  (optional)
+
+    try:
+        api_response = api_instance.update_schedule_intent(schedule_intent_id, update_schedule_intent_request=update_schedule_intent_request)
+        print("The response of DefaultApi->update_schedule_intent:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_schedule_intent: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **schedule_intent_id** | **int**|  | 
+ **update_schedule_intent_request** | [**UpdateScheduleIntentRequest**](UpdateScheduleIntentRequest.md)|  | [optional] 
+
+### Return type
+
+[**ScheduleIntentDetail**](ScheduleIntentDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Schedule intent updated |  -  |
+**422** | Validation error |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
