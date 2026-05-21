@@ -8,7 +8,9 @@ Name | Type | Description | Notes
 **school_id** | **int** |  | [optional] 
 **school_name** | **str** |  | [optional] 
 **avg** | **float** |  | [optional] 
+**net_avg** | **float** |  | [optional] 
 **by_year** | **Dict[str, Optional[float]]** |  | [optional] 
+**net_by_year** | **Dict[str, Optional[float]]** |  | [optional] 
 
 ## Example
 

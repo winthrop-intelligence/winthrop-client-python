@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **state_name** | **str** |  | [optional] 
 **opponent_rpi** | **int** |  | [optional] 
 **opponent_avg_rpi** | **int** |  | [optional] 
+**opponent_net_rank** | **int** |  | [optional] 
+**opponent_avg_net_rank** | **int** |  | [optional] 
 **result** | **str** |  | [optional] 
 **score** | **str** |  | [optional] 
 **overtime** | **int** |  | [optional] 

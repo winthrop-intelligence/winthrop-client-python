@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **losses** | **int** |  | [optional] 
 **ties** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
+**net_rank** | **int** |  | [optional] 
 **record_str** | **str** |  | [optional] 
 **conference_record** | **str** |  | [optional] 
 **postseason** | **str** |  | [optional] 

@@ -7,8 +7,10 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_football** | **bool** |  | [optional] 
 **years** | **List[int]** |  | [optional] 
+**net_years** | **List[int]** |  | [optional] 
 **schools** | [**List[SportCompensationRankingsSchoolsInner]**](SportCompensationRankingsSchoolsInner.md) |  | [optional] 
 **conference_avgs** | **Dict[str, Optional[float]]** |  | [optional] 
+**net_conference_avgs** | **Dict[str, Optional[float]]** |  | [optional] 
 
 ## Example
 

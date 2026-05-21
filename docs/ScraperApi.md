@@ -4,9 +4,172 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**delete_running_job**](ScraperApi.md#delete_running_job) | **DELETE** /ondemand-scrapers/jobs/{job_name} | Delete a running scraper job
+[**list_jobs**](ScraperApi.md#list_jobs) | **GET** /ondemand-scrapers/jobs | List running scraper jobs
 [**list_scrapers**](ScraperApi.md#list_scrapers) | **GET** /ondemand-scrapers/ | List all available scrapers
 [**run_scraper**](ScraperApi.md#run_scraper) | **POST** /ondemand-scrapers/run/{command} | Run a scraper
 
+
+# **delete_running_job**
+> delete_running_job(job_name)
+
+Delete a running scraper job
+
+Delete a running Kubernetes Job started by the run endpoint
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.ScraperApi(api_client)
+    job_name = 'job_name_example' # str | The Kubernetes Job name to delete
+
+    try:
+        # Delete a running scraper job
+        api_instance.delete_running_job(job_name)
+    except Exception as e:
+        print("Exception when calling ScraperApi->delete_running_job: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **job_name** | **str**| The Kubernetes Job name to delete | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The job was deleted |  -  |
+**401** | Unauthorized |  -  |
+**404** | The specified job was not found |  -  |
+**409** | The specified job exists but is not running |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_jobs**
+> List[RunningJob] list_jobs()
+
+List running scraper jobs
+
+List still-running Kubernetes Jobs started by the run endpoint
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.running_job import RunningJob
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.ScraperApi(api_client)
+
+    try:
+        # List running scraper jobs
+        api_response = api_instance.list_jobs()
+        print("The response of ScraperApi->list_jobs:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ScraperApi->list_jobs: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[RunningJob]**](RunningJob.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A list of running scraper jobs |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_scrapers**
 > List[Scraper] list_scrapers()

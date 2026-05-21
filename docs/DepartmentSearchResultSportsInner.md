@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **record** | **str** |  | [optional] 
 **conference_record** | **str** |  | [optional] 
 **rpi** | **int** |  | [optional] 
+**net_rank** | **int** |  | [optional] 
 
 ## Example
 

@@ -1,6 +1,6 @@
 # GamePostSearchResult
 
-Enriched game post search result with school, location, and RPI data
+Enriched game post search result with school, location, and ranking data
 
 ## Properties
 
@@ -27,12 +27,14 @@ Name | Type | Description | Notes
 **division_id** | **int** |  | [optional] 
 **division_name** | **str** |  | [optional] 
 **last_rpi** | **int** | Most recent RPI ranking | [optional] 
+**last_net_rank** | **int** | Most recent NET ranking | [optional] 
 **distance** | **float** | Distance in miles from user&#39;s school | [optional] 
 **avg_guarantee_paid** | **float** |  | [optional] 
 **avg_guarantee_received** | **float** |  | [optional] 
 **game_types_display** | **str** | Comma-separated list of game type names | [optional] 
 **created_by_name** | **str** | Full name of the user who created the game post | [optional] 
 **avg_rpi** | **int** | 5-year average RPI ranking | [optional] 
+**avg_net_rank** | **int** | 5-year average NET ranking | [optional] 
 **school_logo_url** | **str** | URL to school logo image (small variant) | [optional] 
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 

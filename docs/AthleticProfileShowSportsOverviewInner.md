@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **record** | **str** |  | [optional] 
 **apr** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
+**net_rank** | **int** |  | [optional] 
 **head_coach_comp_cents** | **int** |  | [optional] 
 **asst_pool_cents** | **int** |  | [optional] 
 

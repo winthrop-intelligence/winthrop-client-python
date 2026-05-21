@@ -29,6 +29,8 @@ Name | Type | Description | Notes
 **has_raw_contract** | **bool** |  | [optional] 
 **raw_contract_url** | **str** |  | [optional] 
 **raw_contract_filename** | **str** |  | [optional] 
+**can_download_raw_contract** | **bool** |  | [optional] 
+**can_see_admin_view** | **bool** |  | [optional] 
 **belongs_to_series** | **bool** |  | [optional] 
 **verified** | **bool** |  | [optional] 
 **unstract_text_state** | **str** |  | [optional] 

@@ -14,8 +14,11 @@ Name | Type | Description | Notes
 **game_type** | **str** |  | [optional] 
 **season_year** | **int** |  | [optional] 
 **cancel_fee_cents** | **int** |  | [optional] 
+**raw_contract_id** | **int** |  | [optional] 
 **has_raw_contract** | **bool** |  | [optional] 
+**can_download_raw_contract** | **bool** |  | [optional] 
 **raw_contract_url** | **str** |  | [optional] 
+**raw_contract_filename** | **str** |  | [optional] 
 **data** | [**List[GameContractSeriesEntry]**](GameContractSeriesEntry.md) |  | [optional] 
 
 ## Example

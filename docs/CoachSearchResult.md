@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **season_conference_position** | **int** |  | [optional] 
 **season_conference_num_positions** | **int** |  | [optional] 
 **rpi** | **float** |  | [optional] 
+**net_rank** | **float** |  | [optional] 
 **compensation_cents** | **int** | Total compensation in cents (included based on authorization) | [optional] 
 **base_salary_cents** | **int** | Base salary in cents (included based on authorization) | [optional] 
 **coli** | **float** | School&#39;s cost-of-living index (included based on authorization) | [optional] 

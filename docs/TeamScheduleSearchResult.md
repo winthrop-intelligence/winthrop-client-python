@@ -1,6 +1,6 @@
 # TeamScheduleSearchResult
 
-Enriched team schedule search result with contacts, RPI, returning percentages, and guarantee data
+Enriched team schedule search result with contacts, rankings, returning percentages, and guarantee data
 
 ## Properties
 
@@ -17,7 +17,9 @@ Name | Type | Description | Notes
 **sport_id** | **int** |  | [optional] 
 **sport_name** | **str** |  | [optional] 
 **last_rpi** | **int** | Most recent RPI ranking | [optional] 
+**last_net_rank** | **int** | Most recent NET ranking | [optional] 
 **avg_rpi** | **int** | 5-year average RPI ranking | [optional] 
+**avg_net_rank** | **int** | 5-year average NET ranking | [optional] 
 **distance** | **float** | Distance in miles from user&#39;s school | [optional] 
 **avg_guarantee_paid_cents** | **int** |  | [optional] 
 **avg_guarantee_received_cents** | **int** |  | [optional] 
