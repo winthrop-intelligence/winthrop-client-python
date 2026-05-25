@@ -12832,9 +12832,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_schedule_grid_available_schools**
-> ScheduleGridAvailableSchools get_schedule_grid_available_schools(sport_name, target_date, window_days=window_days, deal_types=deal_types, quality_tier=quality_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids, limit=limit)
+> ScheduleGridAvailableSchools get_schedule_grid_available_schools(sport_name, target_date, window_days=window_days, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids, limit=limit)
 
-Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, and distance.
+Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance.
 
 ### Example
 
@@ -12875,13 +12875,14 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     window_days = 1 # int | Number of days on either side of target_date to include (default 1) (optional) (default to 1)
     deal_types = ['deal_types_example'] # List[str] | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) (optional)
     quality_tier = 'quality_tier_example' # str | Restrict to a subdivision tier (optional)
+    net_ranking_tier = 'net_ranking_tier_example' # str | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Schools without a NET rank are excluded from every named tier; omit the param to leave results unfiltered. (optional)
     max_distance_miles = 56 # int | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin. (optional)
     user_school_id = 56 # int | Requesting user's school. Used as the origin for distance filtering and is always excluded from results. (optional)
     exclude_school_ids = [56] # List[int] | Additional school IDs to exclude from results (e.g. schools already on the grid) (optional)
     limit = 50 # int | Maximum rows to return (default 50, capped at 100) (optional) (default to 50)
 
     try:
-        api_response = api_instance.get_schedule_grid_available_schools(sport_name, target_date, window_days=window_days, deal_types=deal_types, quality_tier=quality_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids, limit=limit)
+        api_response = api_instance.get_schedule_grid_available_schools(sport_name, target_date, window_days=window_days, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids, limit=limit)
         print("The response of DefaultApi->get_schedule_grid_available_schools:\n")
         pprint(api_response)
     except Exception as e:
@@ -12900,6 +12901,7 @@ Name | Type | Description  | Notes
  **window_days** | **int**| Number of days on either side of target_date to include (default 1) | [optional] [default to 1]
  **deal_types** | [**List[str]**](str.md)| Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] 
  **quality_tier** | **str**| Restrict to a subdivision tier | [optional] 
+ **net_ranking_tier** | **str**| Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Schools without a NET rank are excluded from every named tier; omit the param to leave results unfiltered. | [optional] 
  **max_distance_miles** | **int**| Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] 
  **user_school_id** | **int**| Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] 
  **exclude_school_ids** | [**List[int]**](int.md)| Additional school IDs to exclude from results (e.g. schools already on the grid) | [optional] 
