@@ -8,6 +8,10 @@ Name | Type | Description | Notes
 **data** | [**List[GadSearchResult]**](GadSearchResult.md) |  | [optional] 
 **meta** | [**Meta**](Meta.md) |  | [optional] 
 **stats** | [**GadSearchStats**](GadSearchStats.md) |  | [optional] 
+**school_summary** | [**GadSchoolSummary**](GadSchoolSummary.md) |  | [optional] 
+**school_summary_error** | [**GadSummaryError**](GadSummaryError.md) |  | [optional] 
+**cohort_summary** | [**GadCohortSummary**](GadCohortSummary.md) |  | [optional] 
+**cohort_error** | [**GadCohortError**](GadCohortError.md) |  | [optional] 
 
 ## Example
 
