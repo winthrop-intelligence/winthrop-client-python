@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **title** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 
-**url** | **str** |  | [optional] 
+**job_url** | **str** |  | [optional] 
 **posted_at** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **school** | [**JobSchool**](JobSchool.md) |  | [optional] 
