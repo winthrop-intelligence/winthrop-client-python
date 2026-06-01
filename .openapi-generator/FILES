@@ -252,7 +252,6 @@ docs/RecruitingChartData.md
 docs/RecruitingConferenceEntry.md
 docs/RecruitingPositionEntry.md
 docs/RegenerateRawContractPdf200Response.md
-docs/RemoteJobPost.md
 docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
@@ -387,7 +386,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_remote_job_post.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -649,7 +647,6 @@ winthrop_client_python/models/recruiting_chart_data.py
 winthrop_client_python/models/recruiting_conference_entry.py
 winthrop_client_python/models/recruiting_position_entry.py
 winthrop_client_python/models/regenerate_raw_contract_pdf200_response.py
-winthrop_client_python/models/remote_job_post.py
 winthrop_client_python/models/requested_item.py
 winthrop_client_python/models/requested_item_collection.py
 winthrop_client_python/models/role_option.py
