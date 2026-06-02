@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
 **year** | **int** |  | [optional] 
+**has_file** | **bool** |  | [optional] 
 
 ## Example
 
