@@ -1,6 +1,6 @@
 # ScheduleGridSchool
 
-One of the up-to-eight schools rendered as a column on the schedule grid
+One of the up-to-twelve schools rendered as a column on the schedule grid
 
 ## Properties
 
