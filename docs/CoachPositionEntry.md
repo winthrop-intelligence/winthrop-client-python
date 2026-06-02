@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **record** | **str** |  | [optional] 
 **rpi** | **str** |  | [optional] 
 **net_rank** | **str** |  | [optional] 
+**ap_rank** | **str** |  | [optional] 
 **apr_asr** | **str** |  | [optional] 
 **coach_apr** | **float** |  | [optional] 
 **departing** | **bool** |  | [optional] 

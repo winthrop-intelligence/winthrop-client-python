@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **apr** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
+**ap_rank** | **int** |  | [optional] 
 **head_coach_comp_cents** | **int** |  | [optional] 
 **asst_pool_cents** | **int** |  | [optional] 
 
