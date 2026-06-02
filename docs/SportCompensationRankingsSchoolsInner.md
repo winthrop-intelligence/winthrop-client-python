@@ -9,8 +9,9 @@ Name | Type | Description | Notes
 **school_name** | **str** |  | [optional] 
 **avg** | **float** |  | [optional] 
 **net_avg** | **float** |  | [optional] 
-**by_year** | **Dict[str, Optional[float]]** |  | [optional] 
-**net_by_year** | **Dict[str, Optional[float]]** |  | [optional] 
+**by_year** | **Dict[str, Optional[float]]** | Primary ranking values by year. For football this is AP rank; otherwise this is RPI. | [optional] 
+**net_by_year** | **Dict[str, Optional[float]]** | NET ranking values by year for non-football sports. | [optional] 
+**ap_by_year** | **Dict[str, Optional[float]]** | AP ranking values by year for football. | [optional] 
 
 ## Example
 

@@ -6,11 +6,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **is_football** | **bool** |  | [optional] 
-**years** | **List[int]** |  | [optional] 
-**net_years** | **List[int]** |  | [optional] 
+**years** | **List[int]** | Primary ranking years. For football this is AP rank; otherwise this is RPI. | [optional] 
+**net_years** | **List[int]** | NET ranking years for non-football sports. | [optional] 
+**ap_years** | **List[int]** | AP ranking years for football. | [optional] 
 **schools** | [**List[SportCompensationRankingsSchoolsInner]**](SportCompensationRankingsSchoolsInner.md) |  | [optional] 
-**conference_avgs** | **Dict[str, Optional[float]]** |  | [optional] 
-**net_conference_avgs** | **Dict[str, Optional[float]]** |  | [optional] 
+**conference_avgs** | **Dict[str, Optional[float]]** | Primary ranking averages by year. For football this is AP rank; otherwise this is RPI. | [optional] 
+**net_conference_avgs** | **Dict[str, Optional[float]]** | NET ranking averages by year for non-football sports. | [optional] 
+**ap_conference_avgs** | **Dict[str, Optional[float]]** | AP ranking averages by year for football. | [optional] 
 
 ## Example
 
