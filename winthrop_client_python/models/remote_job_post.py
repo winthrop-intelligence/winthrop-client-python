@@ -25,25 +25,25 @@ from typing_extensions import Self
 
 class RemoteJobPost(BaseModel):
     """
-    RemoteJobPost
+    Full Central Jobs job post snapshot. Required nullable fields must be sent with null when blank.
     """  # noqa: E501
 
     id: StrictInt = Field(description="Remote job post ID")
     uid: Optional[StrictStr] = None
     title: StrictStr
     link: StrictStr
-    work_type: Optional[StrictStr] = None
-    description_md: Optional[StrictStr] = None
-    salary_summary: Optional[StrictStr] = None
+    work_type: Optional[StrictStr]
+    description_md: Optional[StrictStr]
+    salary_summary: Optional[StrictStr]
     school_id: StrictInt = Field(description="Remote school WinAD ID")
-    expired: Optional[StrictBool] = None
-    created_at: Optional[datetime] = None
+    expired: StrictBool
+    created_at: datetime
     updated_at: datetime
-    annual_salary: Optional[float] = None
-    min_salary: Optional[float] = None
-    max_salary: Optional[float] = None
-    pay_period: Optional[StrictStr] = None
-    required_years_of_experience: Optional[StrictInt] = None
+    annual_salary: Optional[float]
+    min_salary: Optional[float]
+    max_salary: Optional[float]
+    pay_period: Optional[StrictStr]
+    required_years_of_experience: Optional[StrictInt]
     __properties: ClassVar[List[str]] = [
         "id",
         "uid",
@@ -100,6 +100,49 @@ class RemoteJobPost(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if work_type (nullable) is None
+        # and model_fields_set contains the field
+        if self.work_type is None and "work_type" in self.model_fields_set:
+            _dict["work_type"] = None
+
+        # set to None if description_md (nullable) is None
+        # and model_fields_set contains the field
+        if self.description_md is None and "description_md" in self.model_fields_set:
+            _dict["description_md"] = None
+
+        # set to None if salary_summary (nullable) is None
+        # and model_fields_set contains the field
+        if self.salary_summary is None and "salary_summary" in self.model_fields_set:
+            _dict["salary_summary"] = None
+
+        # set to None if annual_salary (nullable) is None
+        # and model_fields_set contains the field
+        if self.annual_salary is None and "annual_salary" in self.model_fields_set:
+            _dict["annual_salary"] = None
+
+        # set to None if min_salary (nullable) is None
+        # and model_fields_set contains the field
+        if self.min_salary is None and "min_salary" in self.model_fields_set:
+            _dict["min_salary"] = None
+
+        # set to None if max_salary (nullable) is None
+        # and model_fields_set contains the field
+        if self.max_salary is None and "max_salary" in self.model_fields_set:
+            _dict["max_salary"] = None
+
+        # set to None if pay_period (nullable) is None
+        # and model_fields_set contains the field
+        if self.pay_period is None and "pay_period" in self.model_fields_set:
+            _dict["pay_period"] = None
+
+        # set to None if required_years_of_experience (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.required_years_of_experience is None
+            and "required_years_of_experience" in self.model_fields_set
+        ):
+            _dict["required_years_of_experience"] = None
+
         return _dict
 
     @classmethod

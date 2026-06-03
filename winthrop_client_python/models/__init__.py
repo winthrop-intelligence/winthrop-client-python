@@ -273,6 +273,12 @@ from winthrop_client_python.models.create_schedule_intent_request import (
 from winthrop_client_python.models.create_schedule_intent_request_schedule_intent import (
     CreateScheduleIntentRequestScheduleIntent,
 )
+from winthrop_client_python.models.create_schedule_tournament_request import (
+    CreateScheduleTournamentRequest,
+)
+from winthrop_client_python.models.create_schedule_tournament_request_schedule_tournament import (
+    CreateScheduleTournamentRequestScheduleTournament,
+)
 from winthrop_client_python.models.create_school_group_request import (
     CreateSchoolGroupRequest,
 )
@@ -507,9 +513,15 @@ from winthrop_client_python.models.schedule_grid_onboarding import (
 from winthrop_client_python.models.schedule_grid_schedule_intent import (
     ScheduleGridScheduleIntent,
 )
+from winthrop_client_python.models.schedule_grid_schedule_tournament import (
+    ScheduleGridScheduleTournament,
+)
 from winthrop_client_python.models.schedule_grid_school import ScheduleGridSchool
 from winthrop_client_python.models.schedule_grid_view import ScheduleGridView
 from winthrop_client_python.models.schedule_intent_detail import ScheduleIntentDetail
+from winthrop_client_python.models.schedule_tournament_detail import (
+    ScheduleTournamentDetail,
+)
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.models.school_contract_entry import SchoolContractEntry

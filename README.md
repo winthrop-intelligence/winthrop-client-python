@@ -122,6 +122,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 *DefaultApi* | [**create_schedule_intent**](docs/DefaultApi.md#create_schedule_intent) | **POST** /api/v1/schedule_intents | 
+*DefaultApi* | [**create_schedule_tournament**](docs/DefaultApi.md#create_schedule_tournament) | **POST** /api/v1/schedule_tournaments | 
 *DefaultApi* | [**create_school_group**](docs/DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 *DefaultApi* | [**create_season**](docs/DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 *DefaultApi* | [**create_team_schedule_favorite**](docs/DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
@@ -144,6 +145,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 *DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**delete_schedule_intent**](docs/DefaultApi.md#delete_schedule_intent) | **DELETE** /api/v1/schedule_intents/{scheduleIntentId} | 
+*DefaultApi* | [**delete_schedule_tournament**](docs/DefaultApi.md#delete_schedule_tournament) | **DELETE** /api/v1/schedule_tournaments/{scheduleTournamentId} | 
 *DefaultApi* | [**delete_school_group**](docs/DefaultApi.md#delete_school_group) | **DELETE** /api/v1/school_groups/{schoolGroupId} | 
 *DefaultApi* | [**delete_season**](docs/DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 *DefaultApi* | [**delete_team_schedule_favorite**](docs/DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
@@ -339,6 +341,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 *DefaultApi* | [**verify_otp_code**](docs/DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
 *DefaultApi* | [**verify_user_intercollegiate_access**](docs/DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
+*DefaultApi* | [**view_invoice_file**](docs/DefaultApi.md#view_invoice_file) | **GET** /api/v1/subscriptions/{subscriptionId}/invoices/{invoiceId}/view_file | 
 *DefaultApi* | [**view_raw_contract_file**](docs/DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file | 
 *DossierApi* | [**university_dossier_report_dossier_winad_id_get**](docs/DossierApi.md#university_dossier_report_dossier_winad_id_get) | **GET** /dossier/{winad_id}/ | University Dossier Report
 *IntercollegiateApi* | [**create_job_post**](docs/IntercollegiateApi.md#create_job_post) | **POST** /wi_jobs/job_posts | 
@@ -489,6 +492,8 @@ Class | Method | HTTP request | Description
  - [CreatePasswordResetRequestUser](docs/CreatePasswordResetRequestUser.md)
  - [CreateScheduleIntentRequest](docs/CreateScheduleIntentRequest.md)
  - [CreateScheduleIntentRequestScheduleIntent](docs/CreateScheduleIntentRequestScheduleIntent.md)
+ - [CreateScheduleTournamentRequest](docs/CreateScheduleTournamentRequest.md)
+ - [CreateScheduleTournamentRequestScheduleTournament](docs/CreateScheduleTournamentRequestScheduleTournament.md)
  - [CreateSchoolGroupRequest](docs/CreateSchoolGroupRequest.md)
  - [CreateSchoolGroupRequestSchoolGroup](docs/CreateSchoolGroupRequestSchoolGroup.md)
  - [CreateTeamScheduleFavorite201Response](docs/CreateTeamScheduleFavorite201Response.md)
@@ -623,9 +628,11 @@ Class | Method | HTTP request | Description
  - [ScheduleGridGame](docs/ScheduleGridGame.md)
  - [ScheduleGridOnboarding](docs/ScheduleGridOnboarding.md)
  - [ScheduleGridScheduleIntent](docs/ScheduleGridScheduleIntent.md)
+ - [ScheduleGridScheduleTournament](docs/ScheduleGridScheduleTournament.md)
  - [ScheduleGridSchool](docs/ScheduleGridSchool.md)
  - [ScheduleGridView](docs/ScheduleGridView.md)
  - [ScheduleIntentDetail](docs/ScheduleIntentDetail.md)
+ - [ScheduleTournamentDetail](docs/ScheduleTournamentDetail.md)
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
  - [SchoolContractEntry](docs/SchoolContractEntry.md)

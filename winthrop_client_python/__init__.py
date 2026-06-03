@@ -156,6 +156,8 @@ __all__ = [
     "CreatePasswordResetRequestUser",
     "CreateScheduleIntentRequest",
     "CreateScheduleIntentRequestScheduleIntent",
+    "CreateScheduleTournamentRequest",
+    "CreateScheduleTournamentRequestScheduleTournament",
     "CreateSchoolGroupRequest",
     "CreateSchoolGroupRequestSchoolGroup",
     "CreateTeamScheduleFavorite201Response",
@@ -290,9 +292,11 @@ __all__ = [
     "ScheduleGridGame",
     "ScheduleGridOnboarding",
     "ScheduleGridScheduleIntent",
+    "ScheduleGridScheduleTournament",
     "ScheduleGridSchool",
     "ScheduleGridView",
     "ScheduleIntentDetail",
+    "ScheduleTournamentDetail",
     "School",
     "SchoolCollection",
     "SchoolContractEntry",
@@ -764,6 +768,12 @@ from winthrop_client_python.models.create_schedule_intent_request import (
 from winthrop_client_python.models.create_schedule_intent_request_schedule_intent import (
     CreateScheduleIntentRequestScheduleIntent as CreateScheduleIntentRequestScheduleIntent,
 )
+from winthrop_client_python.models.create_schedule_tournament_request import (
+    CreateScheduleTournamentRequest as CreateScheduleTournamentRequest,
+)
+from winthrop_client_python.models.create_schedule_tournament_request_schedule_tournament import (
+    CreateScheduleTournamentRequestScheduleTournament as CreateScheduleTournamentRequestScheduleTournament,
+)
 from winthrop_client_python.models.create_school_group_request import (
     CreateSchoolGroupRequest as CreateSchoolGroupRequest,
 )
@@ -1090,6 +1100,9 @@ from winthrop_client_python.models.schedule_grid_onboarding import (
 from winthrop_client_python.models.schedule_grid_schedule_intent import (
     ScheduleGridScheduleIntent as ScheduleGridScheduleIntent,
 )
+from winthrop_client_python.models.schedule_grid_schedule_tournament import (
+    ScheduleGridScheduleTournament as ScheduleGridScheduleTournament,
+)
 from winthrop_client_python.models.schedule_grid_school import (
     ScheduleGridSchool as ScheduleGridSchool,
 )
@@ -1098,6 +1111,9 @@ from winthrop_client_python.models.schedule_grid_view import (
 )
 from winthrop_client_python.models.schedule_intent_detail import (
     ScheduleIntentDetail as ScheduleIntentDetail,
+)
+from winthrop_client_python.models.schedule_tournament_detail import (
+    ScheduleTournamentDetail as ScheduleTournamentDetail,
 )
 from winthrop_client_python.models.school import School as School
 from winthrop_client_python.models.school_collection import (

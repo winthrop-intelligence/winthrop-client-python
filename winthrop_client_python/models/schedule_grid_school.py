@@ -24,7 +24,7 @@ from typing_extensions import Self
 
 class ScheduleGridSchool(BaseModel):
     """
-    One of the up-to-eight schools rendered as a column on the schedule grid
+    One of the up-to-twelve schools rendered as a column on the schedule grid
     """  # noqa: E501
 
     id: Optional[StrictInt] = None

@@ -16,28 +16,25 @@ import pprint
 import re  # noqa: F401
 import json
 
+from datetime import date
 from pydantic import BaseModel, ConfigDict, Field, StrictInt
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class Filters(BaseModel):
+class CreateScheduleTournamentRequestScheduleTournament(BaseModel):
     """
-    Request body for the legacy coach search endpoint.
+    CreateScheduleTournamentRequestScheduleTournament
     """  # noqa: E501
 
-    priority_ids: Optional[List[StrictInt]] = Field(
-        default=None,
-        description="Coach IDs to prioritize at the top of the result set.",
+    sport_id: StrictInt
+    var_date: date = Field(alias="date")
+    name: Annotated[str, Field(min_length=3, strict=True, max_length=30)] = Field(
+        description='Tournament name (e.g. "Maui Invitational"). Trimmed before validation; must be 3–30 characters after trimming.'
     )
-    page: Optional[Annotated[int, Field(strict=True, ge=1)]] = 1
-    per_page: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = 100
-    q: Optional[Dict[str, Any]] = Field(
-        default=None, description="Ransack query parameters for filtering coaches."
-    )
-    __properties: ClassVar[List[str]] = ["priority_ids", "page", "per_page", "q"]
+    __properties: ClassVar[List[str]] = ["sport_id", "date", "name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -56,7 +53,7 @@ class Filters(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of Filters from a JSON string"""
+        """Create an instance of CreateScheduleTournamentRequestScheduleTournament from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -80,7 +77,7 @@ class Filters(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of Filters from a dict"""
+        """Create an instance of CreateScheduleTournamentRequestScheduleTournament from a dict"""
         if obj is None:
             return None
 
@@ -89,12 +86,9 @@ class Filters(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "priority_ids": obj.get("priority_ids"),
-                "page": obj.get("page") if obj.get("page") is not None else 1,
-                "per_page": (
-                    obj.get("per_page") if obj.get("per_page") is not None else 100
-                ),
-                "q": obj.get("q"),
+                "sport_id": obj.get("sport_id"),
+                "date": obj.get("date"),
+                "name": obj.get("name"),
             }
         )
         return _obj

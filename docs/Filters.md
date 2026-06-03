@@ -1,11 +1,15 @@
 # Filters
 
+Request body for the legacy coach search endpoint.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**filters** | **object** | Key-value pairs for filtering coaches | [optional] 
+**priority_ids** | **List[int]** | Coach IDs to prioritize at the top of the result set. | [optional] 
+**page** | **int** |  | [optional] [default to 1]
+**per_page** | **int** |  | [optional] [default to 100]
+**q** | **Dict[str, object]** | Ransack query parameters for filtering coaches. | [optional] 
 
 ## Example
 

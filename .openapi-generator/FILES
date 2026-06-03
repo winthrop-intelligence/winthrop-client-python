@@ -125,6 +125,8 @@ docs/CreatePasswordResetRequest.md
 docs/CreatePasswordResetRequestUser.md
 docs/CreateScheduleIntentRequest.md
 docs/CreateScheduleIntentRequestScheduleIntent.md
+docs/CreateScheduleTournamentRequest.md
+docs/CreateScheduleTournamentRequestScheduleTournament.md
 docs/CreateSchoolGroupRequest.md
 docs/CreateSchoolGroupRequestSchoolGroup.md
 docs/CreateTeamScheduleFavorite201Response.md
@@ -264,9 +266,11 @@ docs/ScheduleGridAvailableSchools.md
 docs/ScheduleGridGame.md
 docs/ScheduleGridOnboarding.md
 docs/ScheduleGridScheduleIntent.md
+docs/ScheduleGridScheduleTournament.md
 docs/ScheduleGridSchool.md
 docs/ScheduleGridView.md
 docs/ScheduleIntentDetail.md
+docs/ScheduleTournamentDetail.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolContractEntry.md
@@ -387,6 +391,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_create_schedule_tournament_request.py
+test/test_create_schedule_tournament_request_schedule_tournament.py
+test/test_schedule_grid_schedule_tournament.py
+test/test_schedule_tournament_detail.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -525,6 +533,8 @@ winthrop_client_python/models/create_password_reset_request.py
 winthrop_client_python/models/create_password_reset_request_user.py
 winthrop_client_python/models/create_schedule_intent_request.py
 winthrop_client_python/models/create_schedule_intent_request_schedule_intent.py
+winthrop_client_python/models/create_schedule_tournament_request.py
+winthrop_client_python/models/create_schedule_tournament_request_schedule_tournament.py
 winthrop_client_python/models/create_school_group_request.py
 winthrop_client_python/models/create_school_group_request_school_group.py
 winthrop_client_python/models/create_team_schedule_favorite201_response.py
@@ -659,9 +669,11 @@ winthrop_client_python/models/schedule_grid_available_schools.py
 winthrop_client_python/models/schedule_grid_game.py
 winthrop_client_python/models/schedule_grid_onboarding.py
 winthrop_client_python/models/schedule_grid_schedule_intent.py
+winthrop_client_python/models/schedule_grid_schedule_tournament.py
 winthrop_client_python/models/schedule_grid_school.py
 winthrop_client_python/models/schedule_grid_view.py
 winthrop_client_python/models/schedule_intent_detail.py
+winthrop_client_python/models/schedule_tournament_detail.py
 winthrop_client_python/models/school.py
 winthrop_client_python/models/school_collection.py
 winthrop_client_python/models/school_contract_entry.py
