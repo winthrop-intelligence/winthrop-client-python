@@ -17541,7 +17541,7 @@ Name | Type | Description  | Notes
 # **search_coaches**
 > CoachCollection search_coaches(filters=filters)
 
-Search Coaches by priority_ids
+Search coaches by priority_ids and Ransack filters
 
 ### Example
 
@@ -17615,6 +17615,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Coaches were found |  -  |
+**400** | Invalid parameters |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
