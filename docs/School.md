@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **conference** | [**Conference**](Conference.md) |  | [optional] 
 **division** | [**Division**](Division.md) |  | [optional] 
 **subdivisions** | [**List[Subdivision]**](Subdivision.md) |  | [optional] 
+**rank** | **int** | Latest sport-appropriate ranking (NET/AP/RPI). Only present when the schools index is queried with a sport_name; null when the school has no ranked season for that sport. | [optional] 
 
 ## Example
 
