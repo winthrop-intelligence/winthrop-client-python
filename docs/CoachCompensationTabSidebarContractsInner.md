@@ -13,6 +13,10 @@ Name | Type | Description | Notes
 **has_file** | **bool** |  | [optional] 
 **can_download** | **bool** |  | [optional] 
 **asset_file_name** | **str** |  | [optional] 
+**school_id** | **int** | School tied to the contract&#39;s most recent compensation (most recent year wins, lowest id as tiebreaker) | [optional] 
+**school_name** | **str** | Short or full name of the school for the contract&#39;s most recent compensation (most recent year wins, lowest id as tiebreaker) | [optional] 
+**position_title** | **str** | Display title of a representative position on that most-recent compensation, chosen as the position with the lowest id (e.g. \&quot;Head Coach\&quot;) | [optional] 
+**position_group** | **str** | Display name of the position-type group for the representative position selected for position_title (e.g. \&quot;Head Coaches\&quot;, \&quot;Assistant Coaches\&quot;) | [optional] 
 
 ## Example
 

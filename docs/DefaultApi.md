@@ -246,7 +246,6 @@ Method | HTTP request | Description
 [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 [**verify_otp_code**](DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
 [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
-[**view_invoice_file**](DefaultApi.md#view_invoice_file) | **GET** /api/v1/subscriptions/{subscriptionId}/invoices/{invoiceId}/view_file | 
 [**view_raw_contract_file**](DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file | 
 
 
@@ -17542,7 +17541,7 @@ Name | Type | Description  | Notes
 # **search_coaches**
 > CoachCollection search_coaches(filters=filters)
 
-Search coaches by priority_ids and Ransack filters
+Search Coaches by priority_ids
 
 ### Example
 
@@ -17616,7 +17615,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Coaches were found |  -  |
-**400** | Invalid parameters |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -20114,89 +20112,6 @@ Name | Type | Description  | Notes
 **200** | Successful response with the access granted status |  -  |
 **401** | Unauthorized |  -  |
 **404** | User Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **view_invoice_file**
-> bytearray view_invoice_file(subscription_id, invoice_id)
-
-Stream the generated invoice PDF for inline viewing
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    subscription_id = 56 # int | ID of the Subscription
-    invoice_id = 56 # int | ID of the Invoice
-
-    try:
-        api_response = api_instance.view_invoice_file(subscription_id, invoice_id)
-        print("The response of DefaultApi->view_invoice_file:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->view_invoice_file: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **subscription_id** | **int**| ID of the Subscription | 
- **invoice_id** | **int**| ID of the Invoice | 
-
-### Return type
-
-**bytearray**
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/pdf
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | PDF file stream |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

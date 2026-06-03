@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **losses** | **int** |  | [optional] 
 **rpi** | **float** |  | [optional] 
 **net_rank** | **float** |  | [optional] 
-**ap_rank** | **float** |  | [optional] 
 **sos** | **float** |  | [optional] 
 
 ## Example
