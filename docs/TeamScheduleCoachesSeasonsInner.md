@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **ties** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
-**ap_rank** | **int** |  | [optional] 
 **record_str** | **str** |  | [optional] 
 **conference_record** | **str** |  | [optional] 
 **postseason** | **str** |  | [optional] 

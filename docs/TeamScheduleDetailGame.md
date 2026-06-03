@@ -17,8 +17,6 @@ Name | Type | Description | Notes
 **opponent_avg_rpi** | **int** |  | [optional] 
 **opponent_net_rank** | **int** |  | [optional] 
 **opponent_avg_net_rank** | **int** |  | [optional] 
-**opponent_ap_rank** | **int** |  | [optional] 
-**opponent_avg_ap_rank** | **int** |  | [optional] 
 **result** | **str** |  | [optional] 
 **score** | **str** |  | [optional] 
 **overtime** | **int** |  | [optional] 

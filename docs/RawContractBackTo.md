@@ -5,9 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **str** |  | [optional] 
-**id** | **int** |  | [optional] 
-**name** | **str** |  | [optional] 
+**type** | **str** | Discriminator for the back-link target: &#39;coach&#39; for a coach contract, &#39;game&#39; for a game contract. | [optional] 
+**id** | **int** | Coach id when type is &#39;coach&#39;. Unused for &#39;game&#39; (use home_school_id / away_school_id instead). | [optional] 
+**name** | **str** | Coach name when type is &#39;coach&#39;. Unused for &#39;game&#39;. | [optional] 
+**position_title** | **str** | Representative position title for the coach contract (matches the coach profile sidebar contract row). | [optional] 
+**position_group** | **str** | Representative position group for the coach contract. | [optional] 
+**sport** | **str** | Sport for the coach (representative position) or game contract. | [optional] 
+**contract_start_on** | **date** | Coach contract start date. | [optional] 
+**contract_end_on** | **date** | Coach contract end date. | [optional] 
+**home_school_id** | **int** | Home school id when type is &#39;game&#39;. | [optional] 
+**home_school_name** | **str** | Home school name when type is &#39;game&#39;. | [optional] 
+**away_school_id** | **int** | Away school id when type is &#39;game&#39;. | [optional] 
+**away_school_name** | **str** | Away school name when type is &#39;game&#39;. | [optional] 
+**season_year** | **int** | Season year for the game contract (falls back to game_date year). | [optional] 
 
 ## Example
 

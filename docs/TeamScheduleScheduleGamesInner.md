@@ -17,8 +17,6 @@ Name | Type | Description | Notes
 **opponent_avg_rpi** | **int** |  | [optional] 
 **opponent_net_rank** | **int** |  | [optional] 
 **opponent_avg_net_rank** | **int** |  | [optional] 
-**opponent_ap_rank** | **int** |  | [optional] 
-**opponent_avg_ap_rank** | **int** |  | [optional] 
 **in_conference** | **bool** |  | [optional] 
 **has_contract** | **bool** |  | [optional] 
 **compensation_cents** | **int** |  | [optional] 

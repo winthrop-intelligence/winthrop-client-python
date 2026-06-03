@@ -10,10 +10,8 @@ Name | Type | Description | Notes
 **record_str** | **str** |  | [optional] 
 **rpi** | **int** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
-**ap_rank** | **int** |  | [optional] 
 **avg_rpi** | **int** |  | [optional] 
 **avg_net_rank** | **int** |  | [optional] 
-**avg_ap_rank** | **int** |  | [optional] 
 
 ## Example
 
