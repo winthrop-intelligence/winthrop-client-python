@@ -390,10 +390,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_schedule_tournament_request.py
-test/test_create_schedule_tournament_request_schedule_tournament.py
-test/test_schedule_grid_schedule_tournament.py
-test/test_schedule_tournament_detail.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
