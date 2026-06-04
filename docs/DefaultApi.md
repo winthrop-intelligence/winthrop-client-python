@@ -10513,9 +10513,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_gad_searches**
-> GadSearchResultCollection get_gad_searches(page=page, per_page=per_page, q=q)
+> GadSearchResultCollection get_gad_searches(page=page, per_page=per_page, q=q, distance_school_type=distance_school_type, include_school_summary=include_school_summary, season_window=season_window, include_cohort_summary=include_cohort_summary, buyer_cohort=buyer_cohort, seller_cohort=seller_cohort)
 
-Search game contracts (GAD) with filtering and pagination
+Search game contracts (GAD) with filtering and pagination. Optionally returns school-summary (median paid/received) and cohort-summary (NCAA cohort benchmark) aggregates alongside the paginated agreements.
 
 ### Example
 
@@ -10554,9 +10554,15 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     page = 1 # int | results page to retrieve. (optional) (default to 1)
     per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
+    distance_school_type = 'distance_school_type_example' # str | Top-level distance side (paired with q[distance_lt]). Only honored when the caller's account is tied to a school. (optional)
+    include_school_summary = True # bool | When true, also compute a per-school median paid_out / received block. Requires q[sport_id_eq] and a school filter (home_school_id_eq, away_school_id_eq, or home_school_id_or_away_school_id_eq). Mutually exclusive with include_cohort_summary. (optional)
+    season_window = 'season_window_example' # str | Window for school-summary / cohort-summary aggregations. last_3_completed_seasons auto-fills season_year_gteq/lteq with the three most recent completed NCAA academic years. (optional)
+    include_cohort_summary = True # bool | When true, also compute median/mean/min/max/count across the filtered cohort. Requires q[sport_id_eq]. Mutually exclusive with include_school_summary. (optional)
+    buyer_cohort = 'buyer_cohort_example' # str | Restrict the buyer (home/paying) side to one NCAA cohort. Resolved server-side via Subdivision / Division taxonomy. (optional)
+    seller_cohort = 'seller_cohort_example' # str | Restrict the seller (away/paid) side to one NCAA cohort. (optional)
 
     try:
-        api_response = api_instance.get_gad_searches(page=page, per_page=per_page, q=q)
+        api_response = api_instance.get_gad_searches(page=page, per_page=per_page, q=q, distance_school_type=distance_school_type, include_school_summary=include_school_summary, season_window=season_window, include_cohort_summary=include_cohort_summary, buyer_cohort=buyer_cohort, seller_cohort=seller_cohort)
         print("The response of DefaultApi->get_gad_searches:\n")
         pprint(api_response)
     except Exception as e:
@@ -10573,6 +10579,12 @@ Name | Type | Description  | Notes
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
  **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
+ **distance_school_type** | **str**| Top-level distance side (paired with q[distance_lt]). Only honored when the caller&#39;s account is tied to a school. | [optional] 
+ **include_school_summary** | **bool**| When true, also compute a per-school median paid_out / received block. Requires q[sport_id_eq] and a school filter (home_school_id_eq, away_school_id_eq, or home_school_id_or_away_school_id_eq). Mutually exclusive with include_cohort_summary. | [optional] 
+ **season_window** | **str**| Window for school-summary / cohort-summary aggregations. last_3_completed_seasons auto-fills season_year_gteq/lteq with the three most recent completed NCAA academic years. | [optional] 
+ **include_cohort_summary** | **bool**| When true, also compute median/mean/min/max/count across the filtered cohort. Requires q[sport_id_eq]. Mutually exclusive with include_school_summary. | [optional] 
+ **buyer_cohort** | **str**| Restrict the buyer (home/paying) side to one NCAA cohort. Resolved server-side via Subdivision / Division taxonomy. | [optional] 
+ **seller_cohort** | **str**| Restrict the seller (away/paid) side to one NCAA cohort. | [optional] 
 
 ### Return type
 
