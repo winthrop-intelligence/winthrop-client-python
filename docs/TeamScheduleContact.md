@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **title** | **str** | Position title (e.g. Director of Football Operations) | [optional] 
 **email** | **str** |  | [optional] 
 **phone** | **str** | Formatted phone number | [optional] 
+**mobile_phone** | **str** | Formatted mobile/cell phone number | [optional] 
 **avatar_url** | **str** | URL to coach avatar image (small cropped variant) | [optional] 
 
 ## Example
