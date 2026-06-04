@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **layout_preserved_pdf_text** | **str** |  | [optional] 
 **can_see_admin_view** | **bool** | Whether the current user can see the admin view for this contract | [optional] 
 **can_download** | **bool** | Whether the current user can download this contract&#39;s PDF | [optional] 
+**school_name** | **str** | Short or full name of the school the raw contract is tied to (matches school_id). Null when no school is linked. | [optional] 
 **pdf_preview_url** | **str** | Proxied URL for inline PDF viewing (no direct file access) | [optional] 
 **pdf_download_url** | **str** | Direct download URL (admin only) | [optional] 
 **has_file** | **bool** |  | [optional] 

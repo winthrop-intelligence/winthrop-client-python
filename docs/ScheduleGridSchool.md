@@ -1,6 +1,6 @@
 # ScheduleGridSchool
 
-One of the up-to-eight schools rendered as a column on the schedule grid
+One of the up-to-twelve schools rendered as a column on the schedule grid
 
 ## Properties
 
@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **primary_contact_name** | **str** |  | [optional] 
 **primary_contact_email** | **str** |  | [optional] 
 **primary_contact_phone** | **str** |  | [optional] 
+**rank** | **int** | Latest sport-appropriate ranking shown next to the school name (NET for basketball, AP for football, RPI otherwise). Always present on a grid school; the value is null when the school has no ranked season for the sport. | [optional] 
 
 ## Example
 
