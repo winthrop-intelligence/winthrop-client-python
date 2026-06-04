@@ -29,6 +29,7 @@ Method | HTTP request | Description
 [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
 [**create_schedule_intent**](DefaultApi.md#create_schedule_intent) | **POST** /api/v1/schedule_intents | 
+[**create_schedule_tournament**](DefaultApi.md#create_schedule_tournament) | **POST** /api/v1/schedule_tournaments | 
 [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
 [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
@@ -51,6 +52,7 @@ Method | HTTP request | Description
 [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
 [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 [**delete_schedule_intent**](DefaultApi.md#delete_schedule_intent) | **DELETE** /api/v1/schedule_intents/{scheduleIntentId} | 
+[**delete_schedule_tournament**](DefaultApi.md#delete_schedule_tournament) | **DELETE** /api/v1/schedule_tournaments/{scheduleTournamentId} | 
 [**delete_school_group**](DefaultApi.md#delete_school_group) | **DELETE** /api/v1/school_groups/{schoolGroupId} | 
 [**delete_season**](DefaultApi.md#delete_season) | **DELETE** /api/v1/seasons/{seasonId} | 
 [**delete_team_schedule_favorite**](DefaultApi.md#delete_team_schedule_favorite) | **DELETE** /api/v1/team_schedule_favorites/{id} | 
@@ -2312,6 +2314,89 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_schedule_tournament**
+> ScheduleTournamentDetail create_schedule_tournament(create_schedule_tournament_request)
+
+Create a private /schedules grid multi-team event (MTE) placeholder (WINAD-9818). Always scoped to the current user's account school (the school is taken from the session, not the request body) plus a permitted sport on a single date; opponents may be unknown when the event is added so no opponent FK is stored. At most one tournament per (school, sport, date). A tournament takes over the whole cell, so creating one destroys any overlapping ScheduleIntent availability marker for that cell. Cells render as "Tournament Name (MTE)".
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_schedule_tournament_request import CreateScheduleTournamentRequest
+from winthrop_client_python.models.schedule_tournament_detail import ScheduleTournamentDetail
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_schedule_tournament_request = winthrop_client_python.CreateScheduleTournamentRequest() # CreateScheduleTournamentRequest | 
+
+    try:
+        api_response = api_instance.create_schedule_tournament(create_schedule_tournament_request)
+        print("The response of DefaultApi->create_schedule_tournament:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_schedule_tournament: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_schedule_tournament_request** | [**CreateScheduleTournamentRequest**](CreateScheduleTournamentRequest.md)|  | 
+
+### Return type
+
+[**ScheduleTournamentDetail**](ScheduleTournamentDetail.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Schedule tournament created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden — not permitted to create a tournament for this sport |  -  |
+**422** | Validation error — missing/out-of-range name (3–30 chars), missing date, a tournament already exists for this (school, sport, date), or the current user&#39;s account has no school |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_school_group**
 > SchoolGroupShow create_school_group(create_school_group_request)
 
@@ -4059,6 +4144,85 @@ void (empty response body)
 |-------------|-------------|------------------|
 **204** | Schedule intent deleted |  -  |
 **401** | Unauthorized |  -  |
+**404** | Not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_schedule_tournament**
+> delete_schedule_tournament(schedule_tournament_id)
+
+Delete a private /schedules grid multi-team event (MTE) placeholder.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    schedule_tournament_id = 56 # int | 
+
+    try:
+        api_instance.delete_schedule_tournament(schedule_tournament_id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_schedule_tournament: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **schedule_tournament_id** | **int**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Schedule tournament deleted |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden — not owned by current user&#39;s school or sport not permitted |  -  |
 **404** | Not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -12749,7 +12913,7 @@ Name | Type | Description  | Notes
 # **get_schedule_grid**
 > ScheduleGridView get_schedule_grid(sport_name, school_ids=school_ids, year=year)
 
-Retrieve the schedule grid for a sport — season window, schools, games, and active game posts for up to eight selected schools.
+Retrieve the schedule grid for a sport — season window, schools (with scheduling contacts), games, private ScheduleIntent availability markers, private ScheduleTournament multi-team event (MTE) placeholders, and empty-schedule onboarding state for up to twelve selected schools.
 
 ### Example
 
@@ -12787,7 +12951,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     api_instance = winthrop_client_python.DefaultApi(api_client)
     sport_name = 'sport_name_example' # str | Sport name (e.g. FOOTBALL, BASKETBALL_M)
     school_ids = [56] # List[int] | School IDs to include on the grid (max 12, ordering is preserved) (optional)
-    year = 2026 # int | Four-digit season year. Defaults to the current year when omitted or invalid. (optional)
+    year = 2026 # int | Four-digit season year. Defaults to the current schedule season year when omitted. Must fall within the supported range (current season year - 4 through current season year + 1); malformed or out-of-range values return 422. (optional)
 
     try:
         api_response = api_instance.get_schedule_grid(sport_name, school_ids=school_ids, year=year)
@@ -12806,7 +12970,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sport_name** | **str**| Sport name (e.g. FOOTBALL, BASKETBALL_M) | 
  **school_ids** | [**List[int]**](int.md)| School IDs to include on the grid (max 12, ordering is preserved) | [optional] 
- **year** | **int**| Four-digit season year. Defaults to the current year when omitted or invalid. | [optional] 
+ **year** | **int**| Four-digit season year. Defaults to the current schedule season year when omitted. Must fall within the supported range (current season year - 4 through current season year + 1); malformed or out-of-range values return 422. | [optional] 
 
 ### Return type
 
@@ -12829,11 +12993,12 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Sport not found |  -  |
+**422** | year is malformed or outside the supported range |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_schedule_grid_available_schools**
-> ScheduleGridAvailableSchools get_schedule_grid_available_schools(sport_name, target_date, window_days=window_days, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids, limit=limit)
+> ScheduleGridAvailableSchools get_schedule_grid_available_schools(sport_name, target_date, window_days=window_days, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids)
 
 Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance.
 
@@ -12876,14 +13041,13 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     window_days = 1 # int | Number of days on either side of target_date to include (default 1) (optional) (default to 1)
     deal_types = ['deal_types_example'] # List[str] | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) (optional)
     quality_tier = 'quality_tier_example' # str | Restrict to a subdivision tier (optional)
-    net_ranking_tier = 'net_ranking_tier_example' # str | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Schools without a NET rank are excluded from every named tier; omit the param to leave results unfiltered. (optional)
+    net_ranking_tier = 'top_50' # str | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. (optional)
     max_distance_miles = 56 # int | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin. (optional)
     user_school_id = 56 # int | Requesting user's school. Used as the origin for distance filtering and is always excluded from results. (optional)
     exclude_school_ids = [56] # List[int] | Additional school IDs to exclude from results (e.g. schools already on the grid) (optional)
-    limit = 50 # int | Maximum rows to return (default 50, capped at 100) (optional) (default to 50)
 
     try:
-        api_response = api_instance.get_schedule_grid_available_schools(sport_name, target_date, window_days=window_days, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids, limit=limit)
+        api_response = api_instance.get_schedule_grid_available_schools(sport_name, target_date, window_days=window_days, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids)
         print("The response of DefaultApi->get_schedule_grid_available_schools:\n")
         pprint(api_response)
     except Exception as e:
@@ -12902,11 +13066,10 @@ Name | Type | Description  | Notes
  **window_days** | **int**| Number of days on either side of target_date to include (default 1) | [optional] [default to 1]
  **deal_types** | [**List[str]**](str.md)| Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] 
  **quality_tier** | **str**| Restrict to a subdivision tier | [optional] 
- **net_ranking_tier** | **str**| Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Schools without a NET rank are excluded from every named tier; omit the param to leave results unfiltered. | [optional] 
+ **net_ranking_tier** | **str**| Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] 
  **max_distance_miles** | **int**| Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] 
  **user_school_id** | **int**| Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] 
  **exclude_school_ids** | [**List[int]**](int.md)| Additional school IDs to exclude from results (e.g. schools already on the grid) | [optional] 
- **limit** | **int**| Maximum rows to return (default 50, capped at 100) | [optional] [default to 50]
 
 ### Return type
 
@@ -12936,7 +13099,7 @@ Name | Type | Description  | Notes
 # **get_schedule_grid_completed**
 > ScheduleGridView get_schedule_grid_completed(sport_name, school_ids=school_ids, year=year)
 
-Retrieve the completed-games schedule grid for a past season — season window, schools, and final results for up to eight selected schools. Game posts are not returned for completed seasons.
+Retrieve the completed-games schedule grid for a past season — season window, schools, and final results for up to twelve selected schools. ScheduleIntent and ScheduleTournament markers are not returned for completed seasons (both keys are emitted as empty objects).
 
 ### Example
 
@@ -12974,7 +13137,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     api_instance = winthrop_client_python.DefaultApi(api_client)
     sport_name = 'sport_name_example' # str | Sport name (e.g. FOOTBALL, BASKETBALL_M)
     school_ids = [56] # List[int] | School IDs to include on the grid (max 12, ordering is preserved) (optional)
-    year = 2024 # int | Four-digit season year. Defaults to the current year when omitted or invalid. (optional)
+    year = 2024 # int | Four-digit season year. Defaults to the current schedule season year when omitted. Must fall within the supported range (current season year - 4 through current season year + 1); malformed or out-of-range values return 422. (optional)
 
     try:
         api_response = api_instance.get_schedule_grid_completed(sport_name, school_ids=school_ids, year=year)
@@ -12993,7 +13156,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **sport_name** | **str**| Sport name (e.g. FOOTBALL, BASKETBALL_M) | 
  **school_ids** | [**List[int]**](int.md)| School IDs to include on the grid (max 12, ordering is preserved) | [optional] 
- **year** | **int**| Four-digit season year. Defaults to the current year when omitted or invalid. | [optional] 
+ **year** | **int**| Four-digit season year. Defaults to the current schedule season year when omitted. Must fall within the supported range (current season year - 4 through current season year + 1); malformed or out-of-range values return 422. | [optional] 
 
 ### Return type
 
@@ -13012,10 +13175,11 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Completed schedule grid. The season window runs from the first Monday of November of &#x60;year&#x60; through April 30 of &#x60;year + 1&#x60;, and &#x60;game_posts&#x60; is always an empty object. |  -  |
+**200** | Completed schedule grid. The season window runs from the first Monday of November of &#x60;year - 1&#x60; through December 31 of &#x60;year - 1&#x60;, and both &#x60;schedule_intents&#x60; and &#x60;schedule_tournaments&#x60; are always empty objects. |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Sport not found |  -  |
+**422** | year is malformed or outside the supported range |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -13998,7 +14162,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_schools**
-> SchoolCollection get_schools(page=page, per_page=per_page, q=q)
+> SchoolCollection get_schools(page=page, per_page=per_page, q=q, sport_name=sport_name)
 
 Retrieve some or all schools
 
@@ -14039,9 +14203,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     page = 1 # int | results page to retrieve. (optional) (default to 1)
     per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
+    sport_name = 'BASKETBALL_M' # str | A sport's internal name (e.g. `BASKETBALL_M`, `BASKETBALL_W`, `FOOTBALL`). When supplied, each returned school includes a `rank` field with its latest sport-appropriate ranking (NET/AP/RPI) for that sport. Unknown values are ignored and simply yield no rank. (optional)
 
     try:
-        api_response = api_instance.get_schools(page=page, per_page=per_page, q=q)
+        api_response = api_instance.get_schools(page=page, per_page=per_page, q=q, sport_name=sport_name)
         print("The response of DefaultApi->get_schools:\n")
         pprint(api_response)
     except Exception as e:
@@ -14058,6 +14223,7 @@ Name | Type | Description  | Notes
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
  **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
+ **sport_name** | **str**| A sport&#39;s internal name (e.g. &#x60;BASKETBALL_M&#x60;, &#x60;BASKETBALL_W&#x60;, &#x60;FOOTBALL&#x60;). When supplied, each returned school includes a &#x60;rank&#x60; field with its latest sport-appropriate ranking (NET/AP/RPI) for that sport. Unknown values are ignored and simply yield no rank. | [optional] 
 
 ### Return type
 

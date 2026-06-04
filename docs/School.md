@@ -44,6 +44,7 @@ Name | Type | Description | Notes
 **conference** | [**Conference**](Conference.md) |  | [optional] 
 **division** | [**Division**](Division.md) |  | [optional] 
 **subdivisions** | [**List[Subdivision]**](Subdivision.md) |  | [optional] 
+**rank** | **int** | Latest sport-appropriate ranking (NET for basketball, AP for football, RPI otherwise). Included only when the index is queried with &#x60;sport_name&#x60;; when included, the value is null for a school with no ranked season for that sport. | [optional] 
 
 ## Example
 
