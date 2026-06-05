@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
 **phone_dial** | **str** |  | [optional] 
+**mobile_phone** | **str** |  | [optional] 
+**mobile_phone_dial** | **str** |  | [optional] 
 
 ## Example
 
