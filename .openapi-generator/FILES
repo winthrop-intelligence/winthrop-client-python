@@ -398,14 +398,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_gad_cohort_error.py
-test/test_gad_cohort_summary.py
-test/test_gad_cohort_summary_buyer_filters.py
-test/test_gad_cohort_summary_seller_filters.py
-test/test_gad_school_summary.py
-test/test_gad_school_summary_school.py
-test/test_gad_school_summary_sport.py
-test/test_gad_summary_error.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
