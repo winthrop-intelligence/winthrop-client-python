@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **primary_contact_email** | **str** |  | [optional] 
 **primary_contact_phone** | **str** |  | [optional] 
 **primary_contact_mobile_phone** | **str** |  | [optional] 
+**primary_contact_scheduling_phone** | **str** | Primary contact&#39;s user-controlled scheduling phone (textable); null when unset | [optional] 
+**primary_contact_scheduling_phone_dial** | **str** | Dial-ready form of the primary contact&#39;s scheduling phone for tel links | [optional] 
 **rank** | **int** | Latest sport-appropriate ranking shown next to the school name (NET for basketball, AP for football, RPI otherwise). Always present on a grid school; the value is null when the school has no ranked season for the sport. | [optional] 
 
 ## Example

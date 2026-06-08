@@ -52,11 +52,11 @@ class GameDetail(BaseModel):
     home_school_name: Optional[StrictStr] = None
     away_school_name: Optional[StrictStr] = None
     state_name: Optional[StrictStr] = None
-    home_school_net_rank: Optional[StrictInt] = Field(
+    home_school_net_ranking: Optional[StrictInt] = Field(
         default=None,
         description="Latest NET ranking for the home team, or null when not loaded yet",
     )
-    away_school_net_rank: Optional[StrictInt] = Field(
+    away_school_net_ranking: Optional[StrictInt] = Field(
         default=None,
         description="Latest NET ranking for the away team, or null when not loaded yet",
     )
@@ -95,8 +95,8 @@ class GameDetail(BaseModel):
         "home_school_name",
         "away_school_name",
         "state_name",
-        "home_school_net_rank",
-        "away_school_net_rank",
+        "home_school_net_ranking",
+        "away_school_net_ranking",
         "home_school_sos_ranking",
         "away_school_sos_ranking",
         "rankings_season_year",
@@ -164,21 +164,21 @@ class GameDetail(BaseModel):
         if self.state_name is None and "state_name" in self.model_fields_set:
             _dict["state_name"] = None
 
-        # set to None if home_school_net_rank (nullable) is None
+        # set to None if home_school_net_ranking (nullable) is None
         # and model_fields_set contains the field
         if (
-            self.home_school_net_rank is None
-            and "home_school_net_rank" in self.model_fields_set
+            self.home_school_net_ranking is None
+            and "home_school_net_ranking" in self.model_fields_set
         ):
-            _dict["home_school_net_rank"] = None
+            _dict["home_school_net_ranking"] = None
 
-        # set to None if away_school_net_rank (nullable) is None
+        # set to None if away_school_net_ranking (nullable) is None
         # and model_fields_set contains the field
         if (
-            self.away_school_net_rank is None
-            and "away_school_net_rank" in self.model_fields_set
+            self.away_school_net_ranking is None
+            and "away_school_net_ranking" in self.model_fields_set
         ):
-            _dict["away_school_net_rank"] = None
+            _dict["away_school_net_ranking"] = None
 
         # set to None if home_school_sos_ranking (nullable) is None
         # and model_fields_set contains the field
@@ -243,8 +243,8 @@ class GameDetail(BaseModel):
                 "home_school_name": obj.get("home_school_name"),
                 "away_school_name": obj.get("away_school_name"),
                 "state_name": obj.get("state_name"),
-                "home_school_net_rank": obj.get("home_school_net_rank"),
-                "away_school_net_rank": obj.get("away_school_net_rank"),
+                "home_school_net_ranking": obj.get("home_school_net_ranking"),
+                "away_school_net_ranking": obj.get("away_school_net_ranking"),
                 "home_school_sos_ranking": obj.get("home_school_sos_ranking"),
                 "away_school_sos_ranking": obj.get("away_school_sos_ranking"),
                 "rankings_season_year": obj.get("rankings_season_year"),
