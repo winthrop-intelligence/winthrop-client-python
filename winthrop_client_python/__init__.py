@@ -136,6 +136,7 @@ __all__ = [
     "ContactSearchEntry",
     "Contract",
     "ContractCollection",
+    "ContractTermOption",
     "CoworkerEntry",
     "CoworkerTenure",
     "CreateAccountUser422Response",
@@ -339,6 +340,8 @@ __all__ = [
     "Subdivision",
     "SubdivisionCollection",
     "Subscription",
+    "SubscriptionAcceptance",
+    "SubscriptionAcceptanceErrors",
     "SubscriptionCollection",
     "SystemSetting",
     "Tag",
@@ -393,6 +396,8 @@ __all__ = [
     "UpdateScheduleIntentRequestScheduleIntent",
     "UpdateSchoolGroupRequest",
     "UpdateSchoolGroupRequestSchoolGroup",
+    "UpdateSubscriptionAcceptanceRequest",
+    "UpdateSubscriptionAcceptanceRequestSubscription",
     "UpdateTeamScheduleFavoriteRequest",
     "UpdateUserRequest",
     "UpdateUserRequestUser",
@@ -716,6 +721,9 @@ from winthrop_client_python.models.contact_search_entry import (
 from winthrop_client_python.models.contract import Contract as Contract
 from winthrop_client_python.models.contract_collection import (
     ContractCollection as ContractCollection,
+)
+from winthrop_client_python.models.contract_term_option import (
+    ContractTermOption as ContractTermOption,
 )
 from winthrop_client_python.models.coworker_entry import CoworkerEntry as CoworkerEntry
 from winthrop_client_python.models.coworker_tenure import (
@@ -1228,6 +1236,12 @@ from winthrop_client_python.models.subdivision_collection import (
     SubdivisionCollection as SubdivisionCollection,
 )
 from winthrop_client_python.models.subscription import Subscription as Subscription
+from winthrop_client_python.models.subscription_acceptance import (
+    SubscriptionAcceptance as SubscriptionAcceptance,
+)
+from winthrop_client_python.models.subscription_acceptance_errors import (
+    SubscriptionAcceptanceErrors as SubscriptionAcceptanceErrors,
+)
 from winthrop_client_python.models.subscription_collection import (
     SubscriptionCollection as SubscriptionCollection,
 )
@@ -1385,6 +1399,12 @@ from winthrop_client_python.models.update_school_group_request import (
 )
 from winthrop_client_python.models.update_school_group_request_school_group import (
     UpdateSchoolGroupRequestSchoolGroup as UpdateSchoolGroupRequestSchoolGroup,
+)
+from winthrop_client_python.models.update_subscription_acceptance_request import (
+    UpdateSubscriptionAcceptanceRequest as UpdateSubscriptionAcceptanceRequest,
+)
+from winthrop_client_python.models.update_subscription_acceptance_request_subscription import (
+    UpdateSubscriptionAcceptanceRequestSubscription as UpdateSubscriptionAcceptanceRequestSubscription,
 )
 from winthrop_client_python.models.update_team_schedule_favorite_request import (
     UpdateTeamScheduleFavoriteRequest as UpdateTeamScheduleFavoriteRequest,
