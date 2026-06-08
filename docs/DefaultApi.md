@@ -191,6 +191,7 @@ Method | HTTP request | Description
 [**get_subdivision_sport_compensation**](DefaultApi.md#get_subdivision_sport_compensation) | **GET** /api/v1/subdivisions/{subdivisionId}/sport_compensation | 
 [**get_subdivisions**](DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions | 
 [**get_subscription**](DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} | 
+[**get_subscription_acceptance**](DefaultApi.md#get_subscription_acceptance) | **GET** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} | 
 [**get_subscriptions**](DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions | 
 [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting | 
 [**get_team_schedule_detail**](DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} | 
@@ -242,6 +243,7 @@ Method | HTTP request | Description
 [**update_schedule_intent**](DefaultApi.md#update_schedule_intent) | **PATCH** /api/v1/schedule_intents/{scheduleIntentId} | 
 [**update_school_group**](DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} | 
 [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
+[**update_subscription_acceptance**](DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} | 
 [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
 [**update_user**](DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
 [**upsert_team_schedule_note**](DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
@@ -250,6 +252,7 @@ Method | HTTP request | Description
 [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
 [**view_invoice_file**](DefaultApi.md#view_invoice_file) | **GET** /api/v1/subscriptions/{subscriptionId}/invoices/{invoiceId}/view_file | 
 [**view_raw_contract_file**](DefaultApi.md#view_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/view_file | 
+[**view_subscription_acceptance_contract**](DefaultApi.md#view_subscription_acceptance_contract) | **GET** /api/v1/subscription_acceptances/{subscriptionAcceptanceId}/contract | 
 
 
 # **average_conference_comp**
@@ -13054,7 +13057,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     include_no_conflict = True # bool | When true (default), include assumed-eligible schools that have no marked conflict (no availability signal). Set false to drop them. Only meaningful in Specific-date mode. (optional) (default to True)
     match_tournaments = False # bool | When true (the MTE intent), match only schools advertising a ScheduleTournament for the sport rather than a deal-type availability post; deal_types and assumed-eligible rows are ignored. (optional) (default to False)
     deal_types = ['deal_types_example'] # List[str] | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) (optional)
-    quality_tier = 'quality_tier_example' # str | Restrict to a subdivision tier (optional)
+    quality_tier = 'power_4,mid_major' # str | Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. `power_4,mid_major`); the listed tiers are OR'd together. Omit the param (or pass every tier) for \"Any\" — no constraint. Unrecognized tiers are ignored. (optional)
     net_ranking_tier = 'top_50' # str | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. (optional)
     max_distance_miles = 56 # int | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin. (optional)
     user_school_id = 56 # int | Requesting user's school. Used as the origin for distance filtering and is always excluded from results. (optional)
@@ -13081,7 +13084,7 @@ Name | Type | Description  | Notes
  **include_no_conflict** | **bool**| When true (default), include assumed-eligible schools that have no marked conflict (no availability signal). Set false to drop them. Only meaningful in Specific-date mode. | [optional] [default to True]
  **match_tournaments** | **bool**| When true (the MTE intent), match only schools advertising a ScheduleTournament for the sport rather than a deal-type availability post; deal_types and assumed-eligible rows are ignored. | [optional] [default to False]
  **deal_types** | [**List[str]**](str.md)| Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] 
- **quality_tier** | **str**| Restrict to a subdivision tier | [optional] 
+ **quality_tier** | **str**| Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. &#x60;power_4,mid_major&#x60;); the listed tiers are OR&#39;d together. Omit the param (or pass every tier) for \&quot;Any\&quot; — no constraint. Unrecognized tiers are ignored. | [optional] 
  **net_ranking_tier** | **str**| Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] 
  **max_distance_miles** | **int**| Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] 
  **user_school_id** | **int**| Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] 
@@ -15580,6 +15583,77 @@ Name | Type | Description  | Notes
 **200** | Subscription was found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_subscription_acceptance**
+> SubscriptionAcceptance get_subscription_acceptance(subscription_acceptance_id, acceptance_token)
+
+Retrieve token-scoped subscription order details
+
+### Example
+
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.subscription_acceptance import SubscriptionAcceptance
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subscription_acceptance_id = 'subscription_acceptance_id_example' # str | ID or slug of the Subscription
+    acceptance_token = 'acceptance_token_example' # str | Token from the subscription order email
+
+    try:
+        api_response = api_instance.get_subscription_acceptance(subscription_acceptance_id, acceptance_token)
+        print("The response of DefaultApi->get_subscription_acceptance:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_subscription_acceptance: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_acceptance_id** | **str**| ID or slug of the Subscription | 
+ **acceptance_token** | **str**| Token from the subscription order email | 
+
+### Return type
+
+[**SubscriptionAcceptance**](SubscriptionAcceptance.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Subscription order details were found |  -  |
+**400** | Acceptance token is missing |  -  |
+**404** | Subscription was not found |  -  |
+**422** | Acceptance token is invalid |  -  |
+**500** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -19806,6 +19880,80 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_subscription_acceptance**
+> SubscriptionAcceptance update_subscription_acceptance(subscription_acceptance_id, acceptance_token, update_subscription_acceptance_request)
+
+Accept a token-scoped subscription order
+
+### Example
+
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.subscription_acceptance import SubscriptionAcceptance
+from winthrop_client_python.models.update_subscription_acceptance_request import UpdateSubscriptionAcceptanceRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subscription_acceptance_id = 'subscription_acceptance_id_example' # str | ID or slug of the Subscription
+    acceptance_token = 'acceptance_token_example' # str | Token from the subscription order email
+    update_subscription_acceptance_request = winthrop_client_python.UpdateSubscriptionAcceptanceRequest() # UpdateSubscriptionAcceptanceRequest | 
+
+    try:
+        api_response = api_instance.update_subscription_acceptance(subscription_acceptance_id, acceptance_token, update_subscription_acceptance_request)
+        print("The response of DefaultApi->update_subscription_acceptance:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_subscription_acceptance: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_acceptance_id** | **str**| ID or slug of the Subscription | 
+ **acceptance_token** | **str**| Token from the subscription order email | 
+ **update_subscription_acceptance_request** | [**UpdateSubscriptionAcceptanceRequest**](UpdateSubscriptionAcceptanceRequest.md)|  | 
+
+### Return type
+
+[**SubscriptionAcceptance**](SubscriptionAcceptance.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Subscription order was accepted or already accepted |  -  |
+**400** | Required parameters are missing |  -  |
+**404** | Subscription was not found |  -  |
+**422** | Acceptance token is invalid or validation failed |  -  |
+**500** | Unexpected error |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_team_schedule_favorite**
 > CreateTeamScheduleFavorite201Response update_team_schedule_favorite(id, update_team_schedule_favorite_request)
 
@@ -20459,6 +20607,76 @@ Name | Type | Description  | Notes
 **200** | PDF file stream |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **view_subscription_acceptance_contract**
+> bytearray view_subscription_acceptance_contract(subscription_acceptance_id, acceptance_token)
+
+Retrieve the token-scoped subscription contract PDF for inline viewing
+
+### Example
+
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subscription_acceptance_id = 'subscription_acceptance_id_example' # str | ID or slug of the Subscription
+    acceptance_token = 'acceptance_token_example' # str | Token from the subscription order email
+
+    try:
+        api_response = api_instance.view_subscription_acceptance_contract(subscription_acceptance_id, acceptance_token)
+        print("The response of DefaultApi->view_subscription_acceptance_contract:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->view_subscription_acceptance_contract: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_acceptance_id** | **str**| ID or slug of the Subscription | 
+ **acceptance_token** | **str**| Token from the subscription order email | 
+
+### Return type
+
+**bytearray**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/pdf, application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | PDF file stream |  -  |
+**400** | Acceptance token is missing |  -  |
+**404** | Contract or subscription was not found |  -  |
+**422** | Acceptance token is invalid |  -  |
+**500** | Unexpected error |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

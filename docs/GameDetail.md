@@ -26,6 +26,11 @@ Name | Type | Description | Notes
 **home_school_name** | **str** |  | [optional] 
 **away_school_name** | **str** |  | [optional] 
 **state_name** | **str** |  | [optional] 
+**home_school_net_rank** | **int** | Latest NET ranking for the home team, or null when not loaded yet | [optional] 
+**away_school_net_rank** | **int** | Latest NET ranking for the away team, or null when not loaded yet | [optional] 
+**home_school_sos_ranking** | **int** | Latest strength-of-schedule ranking for the home team, or null when not loaded yet | [optional] 
+**away_school_sos_ranking** | **int** | Latest strength-of-schedule ranking for the away team, or null when not loaded yet | [optional] 
+**rankings_season_year** | **int** | Season year the displayed NET/SOS rankings are from, or null when neither team has a ranked season | [optional] 
 **game_contract** | [**GameDetailAllOfGameContract**](GameDetailAllOfGameContract.md) |  | [optional] 
 
 ## Example

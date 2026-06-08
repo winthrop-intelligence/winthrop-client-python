@@ -105,6 +105,7 @@ docs/ContactSearchCollection.md
 docs/ContactSearchEntry.md
 docs/Contract.md
 docs/ContractCollection.md
+docs/ContractTermOption.md
 docs/CoworkerEntry.md
 docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
@@ -314,6 +315,8 @@ docs/State.md
 docs/Subdivision.md
 docs/SubdivisionCollection.md
 docs/Subscription.md
+docs/SubscriptionAcceptance.md
+docs/SubscriptionAcceptanceErrors.md
 docs/SubscriptionCollection.md
 docs/SystemSetting.md
 docs/Tag.md
@@ -368,6 +371,8 @@ docs/UpdateScheduleIntentRequest.md
 docs/UpdateScheduleIntentRequestScheduleIntent.md
 docs/UpdateSchoolGroupRequest.md
 docs/UpdateSchoolGroupRequestSchoolGroup.md
+docs/UpdateSubscriptionAcceptanceRequest.md
+docs/UpdateSubscriptionAcceptanceRequestSubscription.md
 docs/UpdateTeamScheduleFavoriteRequest.md
 docs/UpdateUserRequest.md
 docs/UpdateUserRequestUser.md
@@ -398,14 +403,11 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_gad_cohort_error.py
-test/test_gad_cohort_summary.py
-test/test_gad_cohort_summary_buyer_filters.py
-test/test_gad_cohort_summary_seller_filters.py
-test/test_gad_school_summary.py
-test/test_gad_school_summary_school.py
-test/test_gad_school_summary_sport.py
-test/test_gad_summary_error.py
+test/test_contract_term_option.py
+test/test_subscription_acceptance.py
+test/test_subscription_acceptance_errors.py
+test/test_update_subscription_acceptance_request.py
+test/test_update_subscription_acceptance_request_subscription.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -524,6 +526,7 @@ winthrop_client_python/models/contact_search_collection.py
 winthrop_client_python/models/contact_search_entry.py
 winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
+winthrop_client_python/models/contract_term_option.py
 winthrop_client_python/models/coworker_entry.py
 winthrop_client_python/models/coworker_tenure.py
 winthrop_client_python/models/create_account_user422_response.py
@@ -727,6 +730,8 @@ winthrop_client_python/models/state.py
 winthrop_client_python/models/subdivision.py
 winthrop_client_python/models/subdivision_collection.py
 winthrop_client_python/models/subscription.py
+winthrop_client_python/models/subscription_acceptance.py
+winthrop_client_python/models/subscription_acceptance_errors.py
 winthrop_client_python/models/subscription_collection.py
 winthrop_client_python/models/system_setting.py
 winthrop_client_python/models/tag.py
@@ -781,6 +786,8 @@ winthrop_client_python/models/update_schedule_intent_request.py
 winthrop_client_python/models/update_schedule_intent_request_schedule_intent.py
 winthrop_client_python/models/update_school_group_request.py
 winthrop_client_python/models/update_school_group_request_school_group.py
+winthrop_client_python/models/update_subscription_acceptance_request.py
+winthrop_client_python/models/update_subscription_acceptance_request_subscription.py
 winthrop_client_python/models/update_team_schedule_favorite_request.py
 winthrop_client_python/models/update_user_request.py
 winthrop_client_python/models/update_user_request_user.py
