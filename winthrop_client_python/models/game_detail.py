@@ -68,6 +68,10 @@ class GameDetail(BaseModel):
         default=None,
         description="Latest strength-of-schedule ranking for the away team, or null when not loaded yet",
     )
+    rankings_season_year: Optional[StrictInt] = Field(
+        default=None,
+        description="Season year the displayed NET/SOS rankings are from, or null when neither team has a ranked season",
+    )
     game_contract: Optional[GameDetailAllOfGameContract] = None
     __properties: ClassVar[List[str]] = [
         "id",
@@ -95,6 +99,7 @@ class GameDetail(BaseModel):
         "away_school_net_rank",
         "home_school_sos_ranking",
         "away_school_sos_ranking",
+        "rankings_season_year",
         "game_contract",
     ]
 
@@ -191,6 +196,14 @@ class GameDetail(BaseModel):
         ):
             _dict["away_school_sos_ranking"] = None
 
+        # set to None if rankings_season_year (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.rankings_season_year is None
+            and "rankings_season_year" in self.model_fields_set
+        ):
+            _dict["rankings_season_year"] = None
+
         # set to None if game_contract (nullable) is None
         # and model_fields_set contains the field
         if self.game_contract is None and "game_contract" in self.model_fields_set:
@@ -234,6 +247,7 @@ class GameDetail(BaseModel):
                 "away_school_net_rank": obj.get("away_school_net_rank"),
                 "home_school_sos_ranking": obj.get("home_school_sos_ranking"),
                 "away_school_sos_ranking": obj.get("away_school_sos_ranking"),
+                "rankings_season_year": obj.get("rankings_season_year"),
                 "game_contract": (
                     GameDetailAllOfGameContract.from_dict(obj["game_contract"])
                     if obj.get("game_contract") is not None
