@@ -76,6 +76,14 @@ class GamePostSearchResult(BaseModel):
     created_by_name: Optional[StrictStr] = Field(
         default=None, description="Full name of the user who created the game post"
     )
+    created_by_scheduling_phone: Optional[StrictStr] = Field(
+        default=None,
+        description="Post creator's user-controlled scheduling phone (textable); null when unset",
+    )
+    created_by_scheduling_phone_dial: Optional[StrictStr] = Field(
+        default=None,
+        description="Dial-ready form of the creator's scheduling phone for tel links",
+    )
     avg_rpi: Optional[StrictInt] = Field(
         default=None, description="5-year average RPI ranking"
     )
@@ -122,6 +130,8 @@ class GamePostSearchResult(BaseModel):
         "avg_guarantee_received",
         "game_types_display",
         "created_by_name",
+        "created_by_scheduling_phone",
+        "created_by_scheduling_phone_dial",
         "avg_rpi",
         "avg_net_rank",
         "avg_ap_rank",
@@ -300,6 +310,22 @@ class GamePostSearchResult(BaseModel):
         if self.created_by_name is None and "created_by_name" in self.model_fields_set:
             _dict["created_by_name"] = None
 
+        # set to None if created_by_scheduling_phone (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.created_by_scheduling_phone is None
+            and "created_by_scheduling_phone" in self.model_fields_set
+        ):
+            _dict["created_by_scheduling_phone"] = None
+
+        # set to None if created_by_scheduling_phone_dial (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.created_by_scheduling_phone_dial is None
+            and "created_by_scheduling_phone_dial" in self.model_fields_set
+        ):
+            _dict["created_by_scheduling_phone_dial"] = None
+
         # set to None if avg_rpi (nullable) is None
         # and model_fields_set contains the field
         if self.avg_rpi is None and "avg_rpi" in self.model_fields_set:
@@ -371,6 +397,10 @@ class GamePostSearchResult(BaseModel):
                 "avg_guarantee_received": obj.get("avg_guarantee_received"),
                 "game_types_display": obj.get("game_types_display"),
                 "created_by_name": obj.get("created_by_name"),
+                "created_by_scheduling_phone": obj.get("created_by_scheduling_phone"),
+                "created_by_scheduling_phone_dial": obj.get(
+                    "created_by_scheduling_phone_dial"
+                ),
                 "avg_rpi": obj.get("avg_rpi"),
                 "avg_net_rank": obj.get("avg_net_rank"),
                 "avg_ap_rank": obj.get("avg_ap_rank"),
