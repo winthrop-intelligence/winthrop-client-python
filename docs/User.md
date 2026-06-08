@@ -46,6 +46,8 @@ Name | Type | Description | Notes
 **school_state** | **str** |  | [optional] 
 **otp_required** | **bool** | Whether the user must verify OTP to access the application | [optional] 
 **time_zone** | **str** | User&#39;s time zone setting | [optional] 
+**scheduling_phone** | **str** | User-controlled scheduling phone number (textable cell preferred), stored separately from scraped coach phone and never overwritten by directory imports | [optional] 
+**scheduling_phone_default** | **str** | Existing phone number on file used to prefill the Edit Profile scheduling-phone field when no scheduling phone has been saved | [optional] 
 **scheduling_notifications** | **bool** | Whether user receives scheduling notifications | [optional] 
 **game_post_notifications** | **bool** | Whether user receives games wanted notifications | [optional] 
 **games_digest** | **bool** | Whether user receives scheduling digest emails | [optional] 
