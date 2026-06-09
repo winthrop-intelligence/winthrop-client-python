@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **phone_dial** | **str** |  | [optional] 
 **mobile_phone** | **str** |  | [optional] 
 **mobile_phone_dial** | **str** |  | [optional] 
+**scheduling_phone** | **str** | User-controlled scheduling phone (textable); null when unset, in which case clients fall back to phone | [optional] 
+**scheduling_phone_dial** | **str** | Dial-ready form of the scheduling phone for tel links | [optional] 
 
 ## Example
 
