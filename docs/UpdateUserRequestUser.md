@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **last_name** | **str** |  | [optional] 
 **email** | **str** |  | [optional] 
 **time_zone** | **str** |  | [optional] 
+**scheduling_phone** | **str** |  | [optional] 
 **scheduling_notifications** | **bool** |  | [optional] 
 **game_post_notifications** | **bool** |  | [optional] 
 **games_digest** | **bool** |  | [optional] 

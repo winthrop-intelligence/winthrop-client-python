@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **email** | **str** |  | [optional] 
 **phone** | **str** | Formatted phone number | [optional] 
 **mobile_phone** | **str** | Formatted mobile/cell phone number | [optional] 
+**scheduling_phone** | **str** | User-controlled scheduling phone (textable); null when unset | [optional] 
+**scheduling_phone_dial** | **str** | Dial-ready form of the scheduling phone for tel links | [optional] 
 **avatar_url** | **str** | URL to coach avatar image (small cropped variant) | [optional] 
 
 ## Example
