@@ -31,7 +31,8 @@ class GamePostSearchResultScheduleIntentsInner(BaseModel):
     id: Optional[StrictInt] = None
     var_date: Optional[date] = Field(default=None, alias="date")
     game_types: Optional[List[StrictStr]] = Field(
-        default=None, description="Game-type designations for this availability marker"
+        default=None,
+        description='Game-type designations for this availability marker, as plain display-name strings (e.g. "Home & Home"). Intentionally not the full GameType object — unlike GamePost.game_types, this field carries only the name_display values, so it is typed as an array of strings rather than $ref GameType.',
     )
     __properties: ClassVar[List[str]] = ["id", "date", "game_types"]
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **var_date** | **date** |  | [optional] 
-**game_types** | **List[str]** | Game-type designations for this availability marker | [optional] 
+**game_types** | **List[str]** | Game-type designations for this availability marker, as plain display-name strings (e.g. \&quot;Home &amp; Home\&quot;). Intentionally not the full GameType object — unlike GamePost.game_types, this field carries only the name_display values, so it is typed as an array of strings rather than $ref GameType. | [optional] 
 
 ## Example
 

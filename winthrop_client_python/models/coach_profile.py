@@ -49,6 +49,7 @@ class CoachProfile(BaseModel):
     current_school_name: Optional[StrictStr] = None
     current_school_id: Optional[StrictInt] = None
     current_sport_name: Optional[StrictStr] = None
+    current_position_title: Optional[StrictStr] = None
     current_position_types: List[StrictStr]
     avatar_url: Optional[StrictStr] = None
     can_see_compensation: StrictBool
@@ -79,6 +80,7 @@ class CoachProfile(BaseModel):
         "current_school_name",
         "current_school_id",
         "current_sport_name",
+        "current_position_title",
         "current_position_types",
         "avatar_url",
         "can_see_compensation",
@@ -215,6 +217,14 @@ class CoachProfile(BaseModel):
         ):
             _dict["current_sport_name"] = None
 
+        # set to None if current_position_title (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.current_position_title is None
+            and "current_position_title" in self.model_fields_set
+        ):
+            _dict["current_position_title"] = None
+
         # set to None if avatar_url (nullable) is None
         # and model_fields_set contains the field
         if self.avatar_url is None and "avatar_url" in self.model_fields_set:
@@ -255,6 +265,7 @@ class CoachProfile(BaseModel):
                 "current_school_name": obj.get("current_school_name"),
                 "current_school_id": obj.get("current_school_id"),
                 "current_sport_name": obj.get("current_sport_name"),
+                "current_position_title": obj.get("current_position_title"),
                 "current_position_types": obj.get("current_position_types"),
                 "avatar_url": obj.get("avatar_url"),
                 "can_see_compensation": obj.get("can_see_compensation"),
