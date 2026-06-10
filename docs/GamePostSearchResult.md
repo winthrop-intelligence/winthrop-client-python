@@ -43,6 +43,8 @@ Name | Type | Description | Notes
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 
 **can_manage** | **bool** | Whether the current user can manage this game post | [optional] 
+**games** | [**List[GamePostSearchResultGamesInner]**](GamePostSearchResultGamesInner.md) | Games already on the posting school&#39;s schedule for this sport, within the current scheduling-season window. Opponent fields are relative to the posting school. | [optional] 
+**schedule_intents** | [**List[GamePostSearchResultScheduleIntentsInner]**](GamePostSearchResultScheduleIntentsInner.md) | Private schedule-intent (requested availability) markers for the posting school and sport, within the current scheduling-season window. Only present for sports the requesting schedule user is permitted to see. | [optional] 
 
 ## Example
 
