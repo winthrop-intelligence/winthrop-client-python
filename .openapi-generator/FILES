@@ -195,6 +195,8 @@ docs/GamePostDetail.md
 docs/GamePostDetailCreatedBy.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
+docs/GamePostSearchResultGamesInner.md
+docs/GamePostSearchResultScheduleIntentsInner.md
 docs/GameType.md
 docs/GeoRegion.md
 docs/GetAccountUserActivation200Response.md
@@ -209,6 +211,10 @@ docs/GetSchoolsCount200Response.md
 docs/GetTeamScheduleFavorites200ResponseInner.md
 docs/GetTimeZones200Response.md
 docs/GetWireChanges200Response.md
+docs/GuaranteeBenchmarkError.md
+docs/GuaranteeBenchmarkStats.md
+docs/GuaranteeBenchmarkTable.md
+docs/GuaranteeBenchmarkTier.md
 docs/HTTPValidationError.md
 docs/HealthCheckFailure.md
 docs/HealthCheckSuccess.md
@@ -403,6 +409,12 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_game_post_search_result_games_inner.py
+test/test_game_post_search_result_schedule_intents_inner.py
+test/test_guarantee_benchmark_error.py
+test/test_guarantee_benchmark_stats.py
+test/test_guarantee_benchmark_table.py
+test/test_guarantee_benchmark_tier.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -609,6 +621,8 @@ winthrop_client_python/models/game_post_detail.py
 winthrop_client_python/models/game_post_detail_created_by.py
 winthrop_client_python/models/game_post_search_result.py
 winthrop_client_python/models/game_post_search_result_collection.py
+winthrop_client_python/models/game_post_search_result_games_inner.py
+winthrop_client_python/models/game_post_search_result_schedule_intents_inner.py
 winthrop_client_python/models/game_type.py
 winthrop_client_python/models/geo_region.py
 winthrop_client_python/models/get_account_user_activation200_response.py
@@ -623,6 +637,10 @@ winthrop_client_python/models/get_schools_count200_response.py
 winthrop_client_python/models/get_team_schedule_favorites200_response_inner.py
 winthrop_client_python/models/get_time_zones200_response.py
 winthrop_client_python/models/get_wire_changes200_response.py
+winthrop_client_python/models/guarantee_benchmark_error.py
+winthrop_client_python/models/guarantee_benchmark_stats.py
+winthrop_client_python/models/guarantee_benchmark_table.py
+winthrop_client_python/models/guarantee_benchmark_tier.py
 winthrop_client_python/models/health_check_failure.py
 winthrop_client_python/models/health_check_success.py
 winthrop_client_python/models/http_validation_error.py
