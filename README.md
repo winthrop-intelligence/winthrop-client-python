@@ -61,18 +61,17 @@ configuration = winthrop_client_python.Configuration(
     host = "http://api-gateway.default.svc.cluster.local"
 )
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
+# Human users should install the Winthrop CLI and run `winthrop login`.
+configuration.access_token = winthrop_client_python.WinthropClient.DeviceToken.access_token()
 
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+# Service accounts should continue to use RefreshToken/client_credentials.
+# Client libraries should never handle refresh tokens directly.
 
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+# Configure API key authorization: ApiKey, if required by your service account.
+# configuration.api_key['ApiKey'] = os.environ["API_KEY"]
 
-configuration.access_token = os.environ["ACCESS_TOKEN"]
+# Configure a service-account OAuth access token, if required.
+# configuration.access_token = os.environ["ACCESS_TOKEN"]
 
 
 # Enter a context with an instance of the API client
@@ -763,6 +762,21 @@ Class | Method | HTTP request | Description
 <a id="documentation-for-authorization"></a>
 ## Documentation For Authorization
 
+Human users should authenticate with the Winthrop CLI:
+
+```sh
+winthrop login
+```
+
+Then configure this Python client from the CLI-backed device token cache:
+
+```python
+configuration.access_token = winthrop_client_python.WinthropClient.DeviceToken.access_token()
+```
+
+Service accounts should continue to use `WinthropClient.RefreshToken` with
+`client_credentials` or another approved service-account access token flow.
+Client libraries never handle refresh tokens directly.
 
 Authentication schemes defined for the API:
 <a id="ApiKey"></a>
@@ -782,7 +796,5 @@ Authentication schemes defined for the API:
 
 
 ## Author
-
-
 
 
