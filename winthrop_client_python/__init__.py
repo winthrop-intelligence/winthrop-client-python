@@ -26,6 +26,7 @@ __all__ = [
     "ApiResponse",
     "ApiClient",
     "Configuration",
+    "WinthropClient",
     "OpenApiException",
     "ApiTypeError",
     "ApiValueError",
@@ -387,6 +388,7 @@ from winthrop_client_python.api.scraper_api import ScraperApi as ScraperApi
 from winthrop_client_python.api_response import ApiResponse as ApiResponse
 from winthrop_client_python.api_client import ApiClient as ApiClient
 from winthrop_client_python.configuration import Configuration as Configuration
+from winthrop_client_python.refresh_token import WinthropClient as WinthropClient
 from winthrop_client_python.exceptions import OpenApiException as OpenApiException
 from winthrop_client_python.exceptions import ApiTypeError as ApiTypeError
 from winthrop_client_python.exceptions import ApiValueError as ApiValueError
