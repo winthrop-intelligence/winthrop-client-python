@@ -403,11 +403,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_contract_term_option.py
-test/test_subscription_acceptance.py
-test/test_subscription_acceptance_errors.py
-test/test_update_subscription_acceptance_request.py
-test/test_update_subscription_acceptance_request_subscription.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
