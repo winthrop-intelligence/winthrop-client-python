@@ -34,6 +34,8 @@ Name | Type | Description | Notes
 **avg_guarantee_received** | **float** |  | [optional] 
 **game_types_display** | **str** | Comma-separated list of game type names | [optional] 
 **created_by_name** | **str** | Full name of the user who created the game post | [optional] 
+**created_by_scheduling_phone** | **str** | Post creator&#39;s user-controlled scheduling phone (textable); null when unset | [optional] 
+**created_by_scheduling_phone_dial** | **str** | Dial-ready form of the creator&#39;s scheduling phone for tel links | [optional] 
 **avg_rpi** | **int** | 5-year average RPI ranking | [optional] 
 **avg_net_rank** | **int** | 5-year average NET ranking | [optional] 
 **avg_ap_rank** | **int** | 5-year average AP ranking | [optional] 
