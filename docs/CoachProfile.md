@@ -27,7 +27,6 @@ Name | Type | Description | Notes
 **current_school_name** | **str** |  | [optional] 
 **current_school_id** | **int** |  | [optional] 
 **current_sport_name** | **str** |  | [optional] 
-**current_position_title** | **str** |  | [optional] 
 **current_position_types** | **List[str]** |  | 
 **avatar_url** | **str** |  | [optional] 
 **can_see_compensation** | **bool** |  | 

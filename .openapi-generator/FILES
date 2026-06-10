@@ -195,6 +195,8 @@ docs/GamePostDetail.md
 docs/GamePostDetailCreatedBy.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
+docs/GamePostSearchResultGamesInner.md
+docs/GamePostSearchResultScheduleIntentsInner.md
 docs/GameType.md
 docs/GeoRegion.md
 docs/GetAccountUserActivation200Response.md
@@ -403,6 +405,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_game_post_search_result_games_inner.py
+test/test_game_post_search_result_schedule_intents_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -609,6 +613,8 @@ winthrop_client_python/models/game_post_detail.py
 winthrop_client_python/models/game_post_detail_created_by.py
 winthrop_client_python/models/game_post_search_result.py
 winthrop_client_python/models/game_post_search_result_collection.py
+winthrop_client_python/models/game_post_search_result_games_inner.py
+winthrop_client_python/models/game_post_search_result_schedule_intents_inner.py
 winthrop_client_python/models/game_type.py
 winthrop_client_python/models/geo_region.py
 winthrop_client_python/models/get_account_user_activation200_response.py
