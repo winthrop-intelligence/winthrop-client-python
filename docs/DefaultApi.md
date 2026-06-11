@@ -141,6 +141,7 @@ Method | HTTP request | Description
 [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts | 
 [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games | 
 [**get_games_available_contracts**](DefaultApi.md#get_games_available_contracts) | **GET** /api/v1/games/available_contracts | 
+[**get_guarantee_benchmarks**](DefaultApi.md#get_guarantee_benchmarks) | **GET** /api/v1/guarantee_benchmarks | 
 [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
 [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
@@ -11439,6 +11440,86 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Compatible contracts |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_guarantee_benchmarks**
+> GuaranteeBenchmarkTable get_guarantee_benchmarks(sport_id)
+
+NCAA guarantee benchmarks for the scheduling sidebar (WINAD-9903). Returns, per Opponent Quality tier (power_4 / mid_major / smaller), the median/mean/min/max/count of game guarantees the tier pays out (home/buyer side) and receives (away/seller side) for one sport over the last three completed seasons. Permission filtered via the caller's ability.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.guarantee_benchmark_table import GuaranteeBenchmarkTable
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    sport_id = 56 # int | The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data.
+
+    try:
+        api_response = api_instance.get_guarantee_benchmarks(sport_id)
+        print("The response of DefaultApi->get_guarantee_benchmarks:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_guarantee_benchmarks: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sport_id** | **int**| The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data. | 
+
+### Return type
+
+[**GuaranteeBenchmarkTable**](GuaranteeBenchmarkTable.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Guarantee benchmark table, or a structured error block when sport_id is missing/unknown |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
