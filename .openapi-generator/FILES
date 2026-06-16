@@ -287,6 +287,8 @@ docs/ScheduleGridSchool.md
 docs/ScheduleGridView.md
 docs/ScheduleIntentDetail.md
 docs/ScheduleTournamentDetail.md
+docs/ScheduleUpdate.md
+docs/ScheduleUpdateCollection.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolContractEntry.md
@@ -411,14 +413,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_game_post_gap_count_collection.py
-test/test_game_post_gap_count_collection_data_inner.py
-test/test_game_post_search_result_games_inner.py
-test/test_game_post_search_result_schedule_intents_inner.py
-test/test_guarantee_benchmark_error.py
-test/test_guarantee_benchmark_stats.py
-test/test_guarantee_benchmark_table.py
-test/test_guarantee_benchmark_tier.py
+test/test_schedule_update.py
+test/test_schedule_update_collection.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -714,6 +710,8 @@ winthrop_client_python/models/schedule_grid_school.py
 winthrop_client_python/models/schedule_grid_view.py
 winthrop_client_python/models/schedule_intent_detail.py
 winthrop_client_python/models/schedule_tournament_detail.py
+winthrop_client_python/models/schedule_update.py
+winthrop_client_python/models/schedule_update_collection.py
 winthrop_client_python/models/school.py
 winthrop_client_python/models/school_collection.py
 winthrop_client_python/models/school_contract_entry.py

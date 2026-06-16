@@ -560,6 +560,10 @@ from winthrop_client_python.models.schedule_intent_detail import ScheduleIntentD
 from winthrop_client_python.models.schedule_tournament_detail import (
     ScheduleTournamentDetail,
 )
+from winthrop_client_python.models.schedule_update import ScheduleUpdate
+from winthrop_client_python.models.schedule_update_collection import (
+    ScheduleUpdateCollection,
+)
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.models.school_contract_entry import SchoolContractEntry

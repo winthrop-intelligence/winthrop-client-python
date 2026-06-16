@@ -313,6 +313,8 @@ __all__ = [
     "ScheduleGridView",
     "ScheduleIntentDetail",
     "ScheduleTournamentDetail",
+    "ScheduleUpdate",
+    "ScheduleUpdateCollection",
     "School",
     "SchoolCollection",
     "SchoolContractEntry",
@@ -1184,6 +1186,12 @@ from winthrop_client_python.models.schedule_intent_detail import (
 )
 from winthrop_client_python.models.schedule_tournament_detail import (
     ScheduleTournamentDetail as ScheduleTournamentDetail,
+)
+from winthrop_client_python.models.schedule_update import (
+    ScheduleUpdate as ScheduleUpdate,
+)
+from winthrop_client_python.models.schedule_update_collection import (
+    ScheduleUpdateCollection as ScheduleUpdateCollection,
 )
 from winthrop_client_python.models.school import School as School
 from winthrop_client_python.models.school_collection import (
