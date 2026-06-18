@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **sport_id** | **int** |  | 
-**start_date** | **date** |  | 
+**var_date** | **date** | WINAD-9908: the post&#39;s single open day. Optional; replaces the legacy start_date in the slim-create payload (start_date is left null on these posts). | [optional] 
 **description** | **str** |  | [optional] 
 **game_type_ids** | **List[int]** |  | [optional] 
 

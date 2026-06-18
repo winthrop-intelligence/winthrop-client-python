@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,12 +29,16 @@ class BulkCreateGamePostSearchesRequestPostsInner(BaseModel):
     """  # noqa: E501
 
     sport_id: StrictInt
-    start_date: date
+    var_date: Optional[date] = Field(
+        default=None,
+        description="WINAD-9908: the post's single open day. Optional; replaces the legacy start_date in the slim-create payload (start_date is left null on these posts).",
+        alias="date",
+    )
     description: Optional[StrictStr] = None
     game_type_ids: Optional[List[StrictInt]] = None
     __properties: ClassVar[List[str]] = [
         "sport_id",
-        "start_date",
+        "date",
         "description",
         "game_type_ids",
     ]
@@ -90,7 +94,7 @@ class BulkCreateGamePostSearchesRequestPostsInner(BaseModel):
         _obj = cls.model_validate(
             {
                 "sport_id": obj.get("sport_id"),
-                "start_date": obj.get("start_date"),
+                "date": obj.get("date"),
                 "description": obj.get("description"),
                 "game_type_ids": obj.get("game_type_ids"),
             }
