@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List[GamePostSearchResult]**](GamePostSearchResult.md) |  | [optional] 
 **meta** | [**Meta**](Meta.md) |  | [optional] 
+**active_posts_total** | **int** | WINAD-9909: raw count of active posts matching the filters (the \&quot;N active posts\&quot; headline). Cards are grouped one per school, so meta.total_entries counts schools, not posts. | [optional] 
 
 ## Example
 
