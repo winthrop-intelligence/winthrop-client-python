@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**average_division_comp**](DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp | 
 [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 
 [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
+[**bulk_create_game_post_searches**](DefaultApi.md#bulk_create_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_create | 
 [**bulk_create_games**](DefaultApi.md#bulk_create_games) | **POST** /api/v1/games/bulk | 
 [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
 [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
@@ -25,6 +26,7 @@ Method | HTTP request | Description
 [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes | 
+[**create_page_view**](DefaultApi.md#create_page_view) | **POST** /api/v1/page_views | 
 [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset | 
 [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
@@ -137,10 +139,12 @@ Method | HTTP request | Description
 [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
 [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} | 
+[**get_game_post_search_gap_counts**](DefaultApi.md#get_game_post_search_gap_counts) | **GET** /api/v1/game_post_searches/gap_counts | 
 [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches | 
 [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts | 
 [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games | 
 [**get_games_available_contracts**](DefaultApi.md#get_games_available_contracts) | **GET** /api/v1/games/available_contracts | 
+[**get_guarantee_benchmarks**](DefaultApi.md#get_guarantee_benchmarks) | **GET** /api/v1/guarantee_benchmarks | 
 [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
 [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
@@ -162,6 +166,7 @@ Method | HTTP request | Description
 [**get_schedule_grid**](DefaultApi.md#get_schedule_grid) | **GET** /api/v1/schedule_grid/{sport_name} | 
 [**get_schedule_grid_available_schools**](DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools | 
 [**get_schedule_grid_completed**](DefaultApi.md#get_schedule_grid_completed) | **GET** /api/v1/schedule_grid/{sport_name}/completed | 
+[**get_schedule_updates**](DefaultApi.md#get_schedule_updates) | **GET** /api/v1/schedule_updates | 
 [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
@@ -600,6 +605,89 @@ Name | Type | Description  | Notes
 **200** | Average compensation calculated |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **bulk_create_game_post_searches**
+> BulkGamePostSearchResult bulk_create_game_post_searches(bulk_create_game_post_searches_request)
+
+WINAD-9908: publish the slim-create flow as one GamePost per (open date × deal type) in a single request. Created in one transaction (a bad entry rolls the whole batch back) and a single consolidated alert fires for the batch instead of one email per post. Each post is a single day (end_date is forced nil server-side).
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.bulk_create_game_post_searches_request import BulkCreateGamePostSearchesRequest
+from winthrop_client_python.models.bulk_game_post_search_result import BulkGamePostSearchResult
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    bulk_create_game_post_searches_request = winthrop_client_python.BulkCreateGamePostSearchesRequest() # BulkCreateGamePostSearchesRequest | 
+
+    try:
+        api_response = api_instance.bulk_create_game_post_searches(bulk_create_game_post_searches_request)
+        print("The response of DefaultApi->bulk_create_game_post_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->bulk_create_game_post_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulk_create_game_post_searches_request** | [**BulkCreateGamePostSearchesRequest**](BulkCreateGamePostSearchesRequest.md)|  | 
+
+### Return type
+
+[**BulkGamePostSearchResult**](BulkGamePostSearchResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Posts created |  -  |
+**422** | Validation error or empty batch |  -  |
+**403** | Forbidden — only school accounts can create game posts |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2002,6 +2090,89 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Note created |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_page_view**
+> PageView create_page_view(create_page_view_request)
+
+Record a page view for the current user
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_page_view_request import CreatePageViewRequest
+from winthrop_client_python.models.page_view import PageView
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_page_view_request = winthrop_client_python.CreatePageViewRequest() # CreatePageViewRequest | 
+
+    try:
+        api_response = api_instance.create_page_view(create_page_view_request)
+        print("The response of DefaultApi->create_page_view:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_page_view: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_page_view_request** | [**CreatePageViewRequest**](CreatePageViewRequest.md)|  | 
+
+### Return type
+
+[**PageView**](PageView.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Page view recorded |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**422** | Unprocessable - route is required |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11101,8 +11272,91 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_game_post_search_gap_counts**
+> GamePostGapCountCollection get_game_post_search_gap_counts(windows, q=q)
+
+Counts-only companion to the game post search for the sidebar schedule-gaps module (WINAD-9904). Accepts the same q filters as the search plus 1-10 date windows, and returns the number of active feed posts overlapping each window — each count equals what applying that window as a date filter to the search would return.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.game_post_gap_count_collection import GamePostGapCountCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    windows = ['windows_example'] # List[str] | 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_game_post_search_gap_counts(windows, q=q)
+        print("The response of DefaultApi->get_game_post_search_gap_counts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_game_post_search_gap_counts: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **windows** | [**List[str]**](str.md)| 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges | 
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**GamePostGapCountCollection**](GamePostGapCountCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Overlapping-post count per requested window, in request order |  -  |
+**422** | Missing, malformed, inverted, or too many windows |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_game_post_searches**
-> GamePostSearchResultCollection get_game_post_searches(page=page, per_page=per_page, q=q)
+> GamePostSearchResultCollection get_game_post_searches(page=page, per_page=per_page, q=q, group_by_school=group_by_school)
 
 Search game posts with enriched data including school info, location, RPI, etc.
 
@@ -11143,9 +11397,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     page = 1 # int | results page to retrieve. (optional) (default to 1)
     per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
+    group_by_school = True # bool | When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. (optional)
 
     try:
-        api_response = api_instance.get_game_post_searches(page=page, per_page=per_page, q=q)
+        api_response = api_instance.get_game_post_searches(page=page, per_page=per_page, q=q, group_by_school=group_by_school)
         print("The response of DefaultApi->get_game_post_searches:\n")
         pprint(api_response)
     except Exception as e:
@@ -11162,6 +11417,7 @@ Name | Type | Description  | Notes
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
  **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
+ **group_by_school** | **bool**| When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. | [optional] 
 
 ### Return type
 
@@ -11439,6 +11695,86 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Compatible contracts |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_guarantee_benchmarks**
+> GuaranteeBenchmarkTable get_guarantee_benchmarks(sport_id)
+
+NCAA guarantee benchmarks for the scheduling sidebar (WINAD-9903). Returns, per Opponent Quality tier (power_4 / mid_major / smaller), the median/mean/min/max/count of game guarantees the tier pays out (home/buyer side) and receives (away/seller side) for one sport over the last three completed seasons. Permission filtered via the caller's ability.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.guarantee_benchmark_table import GuaranteeBenchmarkTable
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    sport_id = 56 # int | The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data.
+
+    try:
+        api_response = api_instance.get_guarantee_benchmarks(sport_id)
+        print("The response of DefaultApi->get_guarantee_benchmarks:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_guarantee_benchmarks: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sport_id** | **int**| The sport to benchmark. Required; a missing or unknown sport returns a structured error block instead of tier data. | 
+
+### Return type
+
+[**GuaranteeBenchmarkTable**](GuaranteeBenchmarkTable.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Guarantee benchmark table, or a structured error block when sport_id is missing/unknown |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -13199,6 +13535,90 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **404** | Sport not found |  -  |
 **422** | year is malformed or outside the supported range |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_schedule_updates**
+> ScheduleUpdateCollection get_schedule_updates(sport_name, limit=limit)
+
+Recently Updated dashboard sidebar module (WINAD-9930). Returns the schools whose schedules changed most recently for a sport — games added, availabilities added / adjusted / removed (a filled date), and MTE slots — one row per school keyed by its latest update, newest first. Each row's change summary aggregates that school's edits in the 24h window ending at its latest update.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.schedule_update_collection import ScheduleUpdateCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    sport_name = 'sport_name_example' # str | Sport name (e.g. FOOTBALL, BASKETBALL_M)
+    limit = 8 # int | Max rows to return (default 8, capped at 25). (optional) (default to 8)
+
+    try:
+        api_response = api_instance.get_schedule_updates(sport_name, limit=limit)
+        print("The response of DefaultApi->get_schedule_updates:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_schedule_updates: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sport_name** | **str**| Sport name (e.g. FOOTBALL, BASKETBALL_M) | 
+ **limit** | **int**| Max rows to return (default 8, capped at 25). | [optional] [default to 8]
+
+### Return type
+
+[**ScheduleUpdateCollection**](ScheduleUpdateCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Recently-updated schools for the sport, newest first |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Sport not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
