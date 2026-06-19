@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List[GamePostSearchResult]**](GamePostSearchResult.md) |  | [optional] 
 **meta** | [**Meta**](Meta.md) |  | [optional] 
+**active_posts_total** | **int** | Raw count of active posts matching the filters (the \&quot;N active posts\&quot; headline). Only present/meaningful when group_by_school&#x3D;true: cards are then grouped one per school, so meta.total_entries counts schools while this counts posts. Absent for the per-post listing (group_by_school false/absent). | [optional] 
 
 ## Example
 
