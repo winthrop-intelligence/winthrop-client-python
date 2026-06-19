@@ -30,6 +30,9 @@ from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.game_post_search_result_games_inner import (
     GamePostSearchResultGamesInner,
 )
+from winthrop_client_python.models.game_post_search_result_posts_inner import (
+    GamePostSearchResultPostsInner,
+)
 from winthrop_client_python.models.game_post_search_result_schedule_intents_inner import (
     GamePostSearchResultScheduleIntentsInner,
 )
@@ -107,6 +110,10 @@ class GamePostSearchResult(BaseModel):
     can_manage: Optional[StrictBool] = Field(
         default=None, description="Whether the current user can manage this game post"
     )
+    posts: Optional[List[GamePostSearchResultPostsInner]] = Field(
+        default=None,
+        description="The posting school's own active Games Wanted posts for this sport, one entry per day (the card's date chips). Present only when group_by_school=true, where the feed is grouped one row per school so this aggregates every post for the school.",
+    )
     games: Optional[List[GamePostSearchResultGamesInner]] = Field(
         default=None,
         description="Games already on the posting school's schedule for this sport, within the current scheduling-season window. Opponent fields are relative to the posting school.",
@@ -153,6 +160,7 @@ class GamePostSearchResult(BaseModel):
         "latitude",
         "longitude",
         "can_manage",
+        "posts",
         "games",
         "schedule_intents",
     ]
@@ -204,6 +212,13 @@ class GamePostSearchResult(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in posts (list)
+        _items = []
+        if self.posts:
+            for _item_posts in self.posts:
+                if _item_posts:
+                    _items.append(_item_posts.to_dict())
+            _dict["posts"] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in games (list)
         _items = []
         if self.games:
@@ -438,6 +453,14 @@ class GamePostSearchResult(BaseModel):
                 "latitude": obj.get("latitude"),
                 "longitude": obj.get("longitude"),
                 "can_manage": obj.get("can_manage"),
+                "posts": (
+                    [
+                        GamePostSearchResultPostsInner.from_dict(_item)
+                        for _item in obj["posts"]
+                    ]
+                    if obj.get("posts") is not None
+                    else None
+                ),
                 "games": (
                     [
                         GamePostSearchResultGamesInner.from_dict(_item)

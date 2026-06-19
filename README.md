@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 *DefaultApi* | [**create_job_post**](docs/DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 *DefaultApi* | [**create_note**](docs/DefaultApi.md#create_note) | **POST** /api/v1/notes | 
+*DefaultApi* | [**create_page_view**](docs/DefaultApi.md#create_page_view) | **POST** /api/v1/page_views | 
 *DefaultApi* | [**create_password_reset**](docs/DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset | 
 *DefaultApi* | [**create_position**](docs/DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 *DefaultApi* | [**create_requested_item**](docs/DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
@@ -495,6 +496,7 @@ Class | Method | HTTP request | Description
  - [CreateGameRequest](docs/CreateGameRequest.md)
  - [CreateGameRequestGame](docs/CreateGameRequestGame.md)
  - [CreateNoteRequest](docs/CreateNoteRequest.md)
+ - [CreatePageViewRequest](docs/CreatePageViewRequest.md)
  - [CreatePasswordReset200Response](docs/CreatePasswordReset200Response.md)
  - [CreatePasswordResetRequest](docs/CreatePasswordResetRequest.md)
  - [CreatePasswordResetRequestUser](docs/CreatePasswordResetRequestUser.md)
@@ -570,6 +572,7 @@ Class | Method | HTTP request | Description
  - [GamePostSearchResult](docs/GamePostSearchResult.md)
  - [GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
  - [GamePostSearchResultGamesInner](docs/GamePostSearchResultGamesInner.md)
+ - [GamePostSearchResultPostsInner](docs/GamePostSearchResultPostsInner.md)
  - [GamePostSearchResultScheduleIntentsInner](docs/GamePostSearchResultScheduleIntentsInner.md)
  - [GameType](docs/GameType.md)
  - [GeoRegion](docs/GeoRegion.md)
@@ -619,6 +622,7 @@ Class | Method | HTTP request | Description
  - [NewsFeed](docs/NewsFeed.md)
  - [NewsFeedCollection](docs/NewsFeedCollection.md)
  - [Note](docs/Note.md)
+ - [PageView](docs/PageView.md)
  - [PerformanceChartCoach](docs/PerformanceChartCoach.md)
  - [PerformanceChartData](docs/PerformanceChartData.md)
  - [PerformanceChartRecord](docs/PerformanceChartRecord.md)

@@ -16,26 +16,27 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.game_post_search_result import GamePostSearchResult
-from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class GamePostSearchResultCollection(BaseModel):
+class CreatePageViewRequest(BaseModel):
     """
-    GamePostSearchResultCollection
+    CreatePageViewRequest
     """  # noqa: E501
 
-    data: Optional[List[GamePostSearchResult]] = None
-    meta: Optional[Meta] = None
-    active_posts_total: Optional[StrictInt] = Field(
+    route: StrictStr = Field(description="The frontend route (pathname) being viewed")
+    search: Optional[StrictStr] = Field(
         default=None,
-        description='Raw count of active posts matching the filters (the "N active posts" headline). Only present/meaningful when group_by_school=true: cards are then grouped one per school, so meta.total_entries counts schools while this counts posts. Absent for the per-post listing (group_by_school false/absent).',
+        description='The query string for the viewed route, including the leading "?"',
     )
-    __properties: ClassVar[List[str]] = ["data", "meta", "active_posts_total"]
+    tab: Optional[StrictStr] = Field(
+        default=None,
+        description='Client-derived feature area for the route (e.g. coach, gad, rad, deals). Server validates against an allowlist and falls back to "other".',
+    )
+    __properties: ClassVar[List[str]] = ["route", "search", "tab"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -54,7 +55,7 @@ class GamePostSearchResultCollection(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GamePostSearchResultCollection from a JSON string"""
+        """Create an instance of CreatePageViewRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,21 +75,11 @@ class GamePostSearchResultCollection(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict["data"] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict["meta"] = self.meta.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GamePostSearchResultCollection from a dict"""
+        """Create an instance of CreatePageViewRequest from a dict"""
         if obj is None:
             return None
 
@@ -97,15 +88,9 @@ class GamePostSearchResultCollection(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "data": (
-                    [GamePostSearchResult.from_dict(_item) for _item in obj["data"]]
-                    if obj.get("data") is not None
-                    else None
-                ),
-                "meta": (
-                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
-                ),
-                "active_posts_total": obj.get("active_posts_total"),
+                "route": obj.get("route"),
+                "search": obj.get("search"),
+                "tab": obj.get("tab"),
             }
         )
         return _obj

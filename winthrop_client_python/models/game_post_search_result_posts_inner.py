@@ -16,26 +16,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from datetime import date
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.game_post_search_result import GamePostSearchResult
-from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class GamePostSearchResultCollection(BaseModel):
+class GamePostSearchResultPostsInner(BaseModel):
     """
-    GamePostSearchResultCollection
+    GamePostSearchResultPostsInner
     """  # noqa: E501
 
-    data: Optional[List[GamePostSearchResult]] = None
-    meta: Optional[Meta] = None
-    active_posts_total: Optional[StrictInt] = Field(
-        default=None,
-        description='Raw count of active posts matching the filters (the "N active posts" headline). Only present/meaningful when group_by_school=true: cards are then grouped one per school, so meta.total_entries counts schools while this counts posts. Absent for the per-post listing (group_by_school false/absent).',
+    var_date: Optional[date] = Field(alias="date")
+    game_types: List[StrictStr] = Field(
+        description="Raw game-type names for this posted day (drive deal-type chip colors)."
     )
-    __properties: ClassVar[List[str]] = ["data", "meta", "active_posts_total"]
+    __properties: ClassVar[List[str]] = ["date", "game_types"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -54,7 +51,7 @@ class GamePostSearchResultCollection(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GamePostSearchResultCollection from a JSON string"""
+        """Create an instance of GamePostSearchResultPostsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -74,21 +71,16 @@ class GamePostSearchResultCollection(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
-        _items = []
-        if self.data:
-            for _item_data in self.data:
-                if _item_data:
-                    _items.append(_item_data.to_dict())
-            _dict["data"] = _items
-        # override the default output from pydantic by calling `to_dict()` of meta
-        if self.meta:
-            _dict["meta"] = self.meta.to_dict()
+        # set to None if var_date (nullable) is None
+        # and model_fields_set contains the field
+        if self.var_date is None and "var_date" in self.model_fields_set:
+            _dict["date"] = None
+
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GamePostSearchResultCollection from a dict"""
+        """Create an instance of GamePostSearchResultPostsInner from a dict"""
         if obj is None:
             return None
 
@@ -96,16 +88,6 @@ class GamePostSearchResultCollection(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {
-                "data": (
-                    [GamePostSearchResult.from_dict(_item) for _item in obj["data"]]
-                    if obj.get("data") is not None
-                    else None
-                ),
-                "meta": (
-                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
-                ),
-                "active_posts_total": obj.get("active_posts_total"),
-            }
+            {"date": obj.get("date"), "game_types": obj.get("game_types")}
         )
         return _obj

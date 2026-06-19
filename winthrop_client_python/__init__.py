@@ -155,6 +155,7 @@ __all__ = [
     "CreateGameRequest",
     "CreateGameRequestGame",
     "CreateNoteRequest",
+    "CreatePageViewRequest",
     "CreatePasswordReset200Response",
     "CreatePasswordResetRequest",
     "CreatePasswordResetRequestUser",
@@ -230,6 +231,7 @@ __all__ = [
     "GamePostSearchResult",
     "GamePostSearchResultCollection",
     "GamePostSearchResultGamesInner",
+    "GamePostSearchResultPostsInner",
     "GamePostSearchResultScheduleIntentsInner",
     "GameType",
     "GeoRegion",
@@ -279,6 +281,7 @@ __all__ = [
     "NewsFeed",
     "NewsFeedCollection",
     "Note",
+    "PageView",
     "PerformanceChartCoach",
     "PerformanceChartData",
     "PerformanceChartRecord",
@@ -790,6 +793,9 @@ from winthrop_client_python.models.create_game_request_game import (
 from winthrop_client_python.models.create_note_request import (
     CreateNoteRequest as CreateNoteRequest,
 )
+from winthrop_client_python.models.create_page_view_request import (
+    CreatePageViewRequest as CreatePageViewRequest,
+)
 from winthrop_client_python.models.create_password_reset200_response import (
     CreatePasswordReset200Response as CreatePasswordReset200Response,
 )
@@ -991,6 +997,9 @@ from winthrop_client_python.models.game_post_search_result_collection import (
 from winthrop_client_python.models.game_post_search_result_games_inner import (
     GamePostSearchResultGamesInner as GamePostSearchResultGamesInner,
 )
+from winthrop_client_python.models.game_post_search_result_posts_inner import (
+    GamePostSearchResultPostsInner as GamePostSearchResultPostsInner,
+)
 from winthrop_client_python.models.game_post_search_result_schedule_intents_inner import (
     GamePostSearchResultScheduleIntentsInner as GamePostSearchResultScheduleIntentsInner,
 )
@@ -1104,6 +1113,7 @@ from winthrop_client_python.models.news_feed_collection import (
     NewsFeedCollection as NewsFeedCollection,
 )
 from winthrop_client_python.models.note import Note as Note
+from winthrop_client_python.models.page_view import PageView as PageView
 from winthrop_client_python.models.performance_chart_coach import (
     PerformanceChartCoach as PerformanceChartCoach,
 )

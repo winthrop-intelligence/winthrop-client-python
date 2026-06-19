@@ -268,6 +268,7 @@ from winthrop_client_python.models.create_game_post_search_request_game_post imp
 from winthrop_client_python.models.create_game_request import CreateGameRequest
 from winthrop_client_python.models.create_game_request_game import CreateGameRequestGame
 from winthrop_client_python.models.create_note_request import CreateNoteRequest
+from winthrop_client_python.models.create_page_view_request import CreatePageViewRequest
 from winthrop_client_python.models.create_password_reset200_response import (
     CreatePasswordReset200Response,
 )
@@ -415,6 +416,9 @@ from winthrop_client_python.models.game_post_search_result_collection import (
 from winthrop_client_python.models.game_post_search_result_games_inner import (
     GamePostSearchResultGamesInner,
 )
+from winthrop_client_python.models.game_post_search_result_posts_inner import (
+    GamePostSearchResultPostsInner,
+)
 from winthrop_client_python.models.game_post_search_result_schedule_intents_inner import (
     GamePostSearchResultScheduleIntentsInner,
 )
@@ -508,6 +512,7 @@ from winthrop_client_python.models.new_account_user_response import (
 from winthrop_client_python.models.news_feed import NewsFeed
 from winthrop_client_python.models.news_feed_collection import NewsFeedCollection
 from winthrop_client_python.models.note import Note
+from winthrop_client_python.models.page_view import PageView
 from winthrop_client_python.models.performance_chart_coach import PerformanceChartCoach
 from winthrop_client_python.models.performance_chart_data import PerformanceChartData
 from winthrop_client_python.models.performance_chart_record import (

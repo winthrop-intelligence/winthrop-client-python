@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
 [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes | 
+[**create_page_view**](DefaultApi.md#create_page_view) | **POST** /api/v1/page_views | 
 [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset | 
 [**create_position**](DefaultApi.md#create_position) | **POST** /api/v1/positions | 
 [**create_requested_item**](DefaultApi.md#create_requested_item) | **POST** /api/v1/requested_items | 
@@ -2089,6 +2090,89 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Note created |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_page_view**
+> PageView create_page_view(create_page_view_request)
+
+Record a page view for the current user
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_page_view_request import CreatePageViewRequest
+from winthrop_client_python.models.page_view import PageView
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_page_view_request = winthrop_client_python.CreatePageViewRequest() # CreatePageViewRequest | 
+
+    try:
+        api_response = api_instance.create_page_view(create_page_view_request)
+        print("The response of DefaultApi->create_page_view:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_page_view: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_page_view_request** | [**CreatePageViewRequest**](CreatePageViewRequest.md)|  | 
+
+### Return type
+
+[**PageView**](PageView.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Page view recorded |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**422** | Unprocessable - route is required |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11272,7 +11356,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_game_post_searches**
-> GamePostSearchResultCollection get_game_post_searches(page=page, per_page=per_page, q=q)
+> GamePostSearchResultCollection get_game_post_searches(page=page, per_page=per_page, q=q, group_by_school=group_by_school)
 
 Search game posts with enriched data including school info, location, RPI, etc.
 
@@ -11313,9 +11397,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     page = 1 # int | results page to retrieve. (optional) (default to 1)
     per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
+    group_by_school = True # bool | When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. (optional)
 
     try:
-        api_response = api_instance.get_game_post_searches(page=page, per_page=per_page, q=q)
+        api_response = api_instance.get_game_post_searches(page=page, per_page=per_page, q=q, group_by_school=group_by_school)
         print("The response of DefaultApi->get_game_post_searches:\n")
         pprint(api_response)
     except Exception as e:
@@ -11332,6 +11417,7 @@ Name | Type | Description  | Notes
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
  **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
+ **group_by_school** | **bool**| When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. | [optional] 
 
 ### Return type
 
