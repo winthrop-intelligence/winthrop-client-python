@@ -43,6 +43,9 @@ Name | Type | Description | Notes
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 
 **can_manage** | **bool** | Whether the current user can manage this game post | [optional] 
+**posts** | [**List[GamePostSearchResultPostsInner]**](GamePostSearchResultPostsInner.md) | The posting school&#39;s own active Games Wanted posts for this sport, one entry per day (the card&#39;s date chips). Present only when group_by_school&#x3D;true, where the feed is grouped one row per school so this aggregates every post for the school. | [optional] 
+**games** | [**List[GamePostSearchResultGamesInner]**](GamePostSearchResultGamesInner.md) | Games already on the posting school&#39;s schedule for this sport, within the current scheduling-season window. Opponent fields are relative to the posting school. | [optional] 
+**schedule_intents** | [**List[GamePostSearchResultScheduleIntentsInner]**](GamePostSearchResultScheduleIntentsInner.md) | Private schedule-intent (requested availability) markers for the posting school and sport, within the current scheduling-season window. Only present for sports the requesting schedule user is permitted to see. | [optional] 
 
 ## Example
 
