@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**create_game_post**](DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts | 
 [**create_game_post_search**](DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
 [**create_job_post**](DefaultApi.md#create_job_post) | **POST** /central_jobs/job_posts | Create a job post
+[**create_mcp_event**](DefaultApi.md#create_mcp_event) | **POST** /api/v1/mcp_events | 
 [**create_note**](DefaultApi.md#create_note) | **POST** /api/v1/notes | 
 [**create_page_view**](DefaultApi.md#create_page_view) | **POST** /api/v1/page_views | 
 [**create_password_reset**](DefaultApi.md#create_password_reset) | **POST** /api/v1/password_reset | 
@@ -2009,6 +2010,90 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Job post was created |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_mcp_event**
+> McpEvent create_mcp_event(create_mcp_event_request)
+
+Ingest an MCP (Model Context Protocol) event for the current user. The request is idempotent per user on `event_uuid` - re-submitting the same `event_uuid` returns the previously stored event with a 200 status instead of creating a duplicate.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_mcp_event_request import CreateMcpEventRequest
+from winthrop_client_python.models.mcp_event import McpEvent
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_mcp_event_request = winthrop_client_python.CreateMcpEventRequest() # CreateMcpEventRequest | 
+
+    try:
+        api_response = api_instance.create_mcp_event(create_mcp_event_request)
+        print("The response of DefaultApi->create_mcp_event:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_mcp_event: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_mcp_event_request** | [**CreateMcpEventRequest**](CreateMcpEventRequest.md)|  | 
+
+### Return type
+
+[**McpEvent**](McpEvent.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Existing event returned (idempotent re-submission) |  -  |
+**201** | Event created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - token lacks the winad_self scope |  -  |
+**422** | Validation errors |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
