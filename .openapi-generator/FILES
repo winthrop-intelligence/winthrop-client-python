@@ -195,6 +195,9 @@ docs/GameContractSeriesResponse.md
 docs/GameDetail.md
 docs/GameDetailAllOfGameContract.md
 docs/GamePost.md
+docs/GamePostAvailabilityCollection.md
+docs/GamePostAvailabilityCollectionGroupsInner.md
+docs/GamePostAvailabilityCollectionGroupsInnerPostsInner.md
 docs/GamePostCollection.md
 docs/GamePostContact.md
 docs/GamePostDetail.md
@@ -426,9 +429,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_mcp_event_request.py
-test/test_create_mcp_event_request_mcp_event.py
-test/test_mcp_event.py
+test/test_game_post_availability_collection.py
+test/test_game_post_availability_collection_groups_inner.py
+test/test_game_post_availability_collection_groups_inner_posts_inner.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -635,6 +638,9 @@ winthrop_client_python/models/game_contract_series_response.py
 winthrop_client_python/models/game_detail.py
 winthrop_client_python/models/game_detail_all_of_game_contract.py
 winthrop_client_python/models/game_post.py
+winthrop_client_python/models/game_post_availability_collection.py
+winthrop_client_python/models/game_post_availability_collection_groups_inner.py
+winthrop_client_python/models/game_post_availability_collection_groups_inner_posts_inner.py
 winthrop_client_python/models/game_post_collection.py
 winthrop_client_python/models/game_post_contact.py
 winthrop_client_python/models/game_post_detail.py
