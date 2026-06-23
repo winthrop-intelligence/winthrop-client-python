@@ -140,6 +140,7 @@ Method | HTTP request | Description
 [**get_game_contracts**](DefaultApi.md#get_game_contracts) | **GET** /api/v1/game_contracts | 
 [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
 [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} | 
+[**get_game_post_search_availabilities**](DefaultApi.md#get_game_post_search_availabilities) | **GET** /api/v1/game_post_searches/availabilities | 
 [**get_game_post_search_gap_counts**](DefaultApi.md#get_game_post_search_gap_counts) | **GET** /api/v1/game_post_searches/gap_counts | 
 [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches | 
 [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts | 
@@ -11354,6 +11355,87 @@ Name | Type | Description  | Notes
 **200** | Game post detail |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_game_post_search_availabilities**
+> GamePostAvailabilityCollection get_game_post_search_availabilities(q=q)
+
+Full-scan companion to the game post search for the sidebar "Posted Availabilities" module. Scans every active post for the sport (q[sport_name_eq] is required), buckets them by deal type, and returns each bucket's total post count plus its most-recent posts deduped by school (capped server-side). Each post carries the school's most recent posted date for that bucket (WINAD-9908 single `date`, falling back to start_date when empty).
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.game_post_availability_collection import GamePostAvailabilityCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    q = None # object | Ransack query (optional)
+
+    try:
+        api_response = api_instance.get_game_post_search_availabilities(q=q)
+        print("The response of DefaultApi->get_game_post_search_availabilities:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_game_post_search_availabilities: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | [**object**](.md)| Ransack query | [optional] 
+
+### Return type
+
+[**GamePostAvailabilityCollection**](GamePostAvailabilityCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Per-deal-type availability breakdown for the sport |  -  |
+**422** | Missing sport (q[sport_name_eq] is required) |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
