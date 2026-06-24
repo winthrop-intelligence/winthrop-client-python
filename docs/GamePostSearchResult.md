@@ -6,7 +6,6 @@ Enriched game post search result with school, location, and ranking data
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**game_post_id** | **int** | Game post ID | [optional] 
 **id** | **int** | FilSportGamePost ID | [optional] 
 **school_id** | **int** |  | [optional] 
 **school_name** | **str** |  | [optional] 
@@ -43,9 +42,10 @@ Name | Type | Description | Notes
 **latitude** | **float** |  | [optional] 
 **longitude** | **float** |  | [optional] 
 **can_manage** | **bool** | Whether the current user can manage this game post | [optional] 
-**posts** | [**List[GamePostSearchResultPostsInner]**](GamePostSearchResultPostsInner.md) | The posting school&#39;s own active Games Wanted posts for this sport, one entry per day (the card&#39;s date chips). Present only when group_by_school&#x3D;true, where the feed is grouped one row per school so this aggregates every post for the school. | [optional] 
+**posts** | [**List[GamePostSearchResultPostsInner]**](GamePostSearchResultPostsInner.md) | The posting school&#39;s own active Games Wanted posts for this sport, one entry per post (each carrying its id). Present only when group_by_school&#x3D;true, where the feed is grouped one row per school so this aggregates every post for the school. The card collapses same-day posts into chips; the school+sport show page lists each. With post_details&#x3D;true each entry also carries the per-post detail fields below. | [optional] 
 **games** | [**List[GamePostSearchResultGamesInner]**](GamePostSearchResultGamesInner.md) | Games already on the posting school&#39;s schedule for this sport, within the current scheduling-season window. Opponent fields are relative to the posting school. | [optional] 
 **schedule_intents** | [**List[GamePostSearchResultScheduleIntentsInner]**](GamePostSearchResultScheduleIntentsInner.md) | Private schedule-intent (requested availability) markers for the posting school and sport, within the current scheduling-season window. Only present for sports the requesting schedule user is permitted to see. | [optional] 
+**contacts** | [**List[GamePostSearchResultContactsInner]**](GamePostSearchResultContactsInner.md) | School+sport scheduling contacts, shared across the school&#39;s posts. Present only with post_details&#x3D;true (the school+sport show page). | [optional] 
 
 ## Example
 
