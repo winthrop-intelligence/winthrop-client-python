@@ -5,8 +5,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **int** | GamePost ID — the specific post this entry represents. | 
 **var_date** | **date** |  | 
-**game_types** | **List[str]** | Raw game-type names for this posted day (drive deal-type chip colors). | 
+**game_types** | **List[str]** | Raw game-type names for this post (drive deal-type chip colors). | 
+**status** | **str** | Present only with post_details&#x3D;true. | [optional] 
+**start_date** | **date** | Present only with post_details&#x3D;true. | [optional] 
+**end_date** | **date** | Present only with post_details&#x3D;true. | [optional] 
+**description** | **str** | Present only with post_details&#x3D;true. | [optional] 
+**game_types_display** | **str** | Comma-separated game type names. Present only with post_details&#x3D;true. | [optional] 
+**expires_on** | **date** | Present only with post_details&#x3D;true. | [optional] 
+**created_at** | **datetime** | Present only with post_details&#x3D;true. | [optional] 
+**can_manage** | **bool** | Whether the current user can manage this post. Present only with post_details&#x3D;true. | [optional] 
+**created_by** | [**GamePostSearchResultPostsInnerCreatedBy**](GamePostSearchResultPostsInnerCreatedBy.md) |  | [optional] 
 
 ## Example
 
