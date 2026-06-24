@@ -37530,7 +37530,7 @@ class DefaultApi:
         post_details: Annotated[
             Optional[StrictBool],
             Field(
-                description="When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only)."
+                description="When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only)."
             ),
         ] = None,
         _request_timeout: Union[
@@ -37557,7 +37557,7 @@ class DefaultApi:
         :type q: object
         :param group_by_school: When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
         :type group_by_school: bool
-        :param post_details: When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
+        :param post_details: When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
         :type post_details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -37627,7 +37627,7 @@ class DefaultApi:
         post_details: Annotated[
             Optional[StrictBool],
             Field(
-                description="When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only)."
+                description="When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only)."
             ),
         ] = None,
         _request_timeout: Union[
@@ -37654,7 +37654,7 @@ class DefaultApi:
         :type q: object
         :param group_by_school: When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
         :type group_by_school: bool
-        :param post_details: When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
+        :param post_details: When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
         :type post_details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -37724,7 +37724,7 @@ class DefaultApi:
         post_details: Annotated[
             Optional[StrictBool],
             Field(
-                description="When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only)."
+                description="When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only)."
             ),
         ] = None,
         _request_timeout: Union[
@@ -37751,7 +37751,7 @@ class DefaultApi:
         :type q: object
         :param group_by_school: When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing.
         :type group_by_school: bool
-        :param post_details: When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
+        :param post_details: When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only).
         :type post_details: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request

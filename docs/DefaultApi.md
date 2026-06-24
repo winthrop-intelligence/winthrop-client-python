@@ -11655,7 +11655,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     per_page = 20 # int | number of results per page. (optional) (default to 20)
     q = None # object | Ransack query (optional)
     group_by_school = True # bool | When true, returns one row per school+sport (the school's newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. (optional)
-    post_details = True # bool | When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only). (optional)
+    post_details = True # bool | When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only). (optional)
 
     try:
         api_response = api_instance.get_game_post_searches(page=page, per_page=per_page, q=q, group_by_school=group_by_school, post_details=post_details)
@@ -11676,7 +11676,7 @@ Name | Type | Description  | Notes
  **per_page** | **int**| number of results per page. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query | [optional] 
  **group_by_school** | **bool**| When true, returns one row per school+sport (the school&#39;s newest post as the representative, newest school first) and pagination counts schools. When false/absent, returns the per-post listing. | [optional] 
- **post_details** | **bool**| When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only). | [optional] 
+ **post_details** | **bool**| When true, each posts[] entry is enriched with the per-post detail fields (status, start_date, end_date, description, game_types_display, expires_on, created_at, can_manage, created_by) and the result carries the shared school+sport contacts[]. Used by the school+sport show page. When false/absent, posts[] stays lean (id, date, game_types only). | [optional] 
 
 ### Return type
 
