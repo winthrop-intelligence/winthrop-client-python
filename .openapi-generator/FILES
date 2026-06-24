@@ -195,6 +195,9 @@ docs/GameContractSeriesResponse.md
 docs/GameDetail.md
 docs/GameDetailAllOfGameContract.md
 docs/GamePost.md
+docs/GamePostAvailabilityCollection.md
+docs/GamePostAvailabilityCollectionGroupsInner.md
+docs/GamePostAvailabilityCollectionGroupsInnerPostsInner.md
 docs/GamePostCollection.md
 docs/GamePostContact.md
 docs/GamePostDetail.md
@@ -203,8 +206,10 @@ docs/GamePostGapCountCollection.md
 docs/GamePostGapCountCollectionDataInner.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
+docs/GamePostSearchResultContactsInner.md
 docs/GamePostSearchResultGamesInner.md
 docs/GamePostSearchResultPostsInner.md
+docs/GamePostSearchResultPostsInnerCreatedBy.md
 docs/GamePostSearchResultScheduleIntentsInner.md
 docs/GameType.md
 docs/GeoRegion.md
@@ -287,6 +292,10 @@ docs/RegenerateRawContractPdf200Response.md
 docs/ReportingApi.md
 docs/RequestedItem.md
 docs/RequestedItemCollection.md
+docs/RequestedItemNote.md
+docs/RequestedItemNoteInput.md
+docs/RequestedItemNoteInputRiNote.md
+docs/RequestedItemNoteResponse.md
 docs/RoleOption.md
 docs/RunningJob.md
 docs/ScheduleGridAvailableSchoolPost.md
@@ -426,9 +435,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_mcp_event_request.py
-test/test_create_mcp_event_request_mcp_event.py
-test/test_mcp_event.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -635,6 +641,9 @@ winthrop_client_python/models/game_contract_series_response.py
 winthrop_client_python/models/game_detail.py
 winthrop_client_python/models/game_detail_all_of_game_contract.py
 winthrop_client_python/models/game_post.py
+winthrop_client_python/models/game_post_availability_collection.py
+winthrop_client_python/models/game_post_availability_collection_groups_inner.py
+winthrop_client_python/models/game_post_availability_collection_groups_inner_posts_inner.py
 winthrop_client_python/models/game_post_collection.py
 winthrop_client_python/models/game_post_contact.py
 winthrop_client_python/models/game_post_detail.py
@@ -643,8 +652,10 @@ winthrop_client_python/models/game_post_gap_count_collection.py
 winthrop_client_python/models/game_post_gap_count_collection_data_inner.py
 winthrop_client_python/models/game_post_search_result.py
 winthrop_client_python/models/game_post_search_result_collection.py
+winthrop_client_python/models/game_post_search_result_contacts_inner.py
 winthrop_client_python/models/game_post_search_result_games_inner.py
 winthrop_client_python/models/game_post_search_result_posts_inner.py
+winthrop_client_python/models/game_post_search_result_posts_inner_created_by.py
 winthrop_client_python/models/game_post_search_result_schedule_intents_inner.py
 winthrop_client_python/models/game_type.py
 winthrop_client_python/models/geo_region.py
@@ -724,6 +735,10 @@ winthrop_client_python/models/recruiting_position_entry.py
 winthrop_client_python/models/regenerate_raw_contract_pdf200_response.py
 winthrop_client_python/models/requested_item.py
 winthrop_client_python/models/requested_item_collection.py
+winthrop_client_python/models/requested_item_note.py
+winthrop_client_python/models/requested_item_note_input.py
+winthrop_client_python/models/requested_item_note_input_ri_note.py
+winthrop_client_python/models/requested_item_note_response.py
 winthrop_client_python/models/role_option.py
 winthrop_client_python/models/running_job.py
 winthrop_client_python/models/schedule_grid_available_school_post.py
