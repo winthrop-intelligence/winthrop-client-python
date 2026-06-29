@@ -215,6 +215,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_filter_options_all_schools**](docs/DefaultApi.md#get_filter_options_all_schools) | **GET** /api/v1/filter_options/all_schools | 
 *DefaultApi* | [**get_filter_options_conferences**](docs/DefaultApi.md#get_filter_options_conferences) | **GET** /api/v1/filter_options/conferences | 
 *DefaultApi* | [**get_filter_options_deal_types**](docs/DefaultApi.md#get_filter_options_deal_types) | **GET** /api/v1/filter_options/deal_types | 
+*DefaultApi* | [**get_filter_options_foia_requestable_deal_types**](docs/DefaultApi.md#get_filter_options_foia_requestable_deal_types) | **GET** /api/v1/filter_options/foia_requestable_deal_types | 
 *DefaultApi* | [**get_filter_options_game_types**](docs/DefaultApi.md#get_filter_options_game_types) | **GET** /api/v1/filter_options/game_types | 
 *DefaultApi* | [**get_filter_options_school_groups**](docs/DefaultApi.md#get_filter_options_school_groups) | **GET** /api/v1/filter_options/school_groups | 
 *DefaultApi* | [**get_filter_options_schools**](docs/DefaultApi.md#get_filter_options_schools) | **GET** /api/v1/filter_options/schools | 
@@ -581,8 +582,10 @@ Class | Method | HTTP request | Description
  - [GamePostGapCountCollectionDataInner](docs/GamePostGapCountCollectionDataInner.md)
  - [GamePostSearchResult](docs/GamePostSearchResult.md)
  - [GamePostSearchResultCollection](docs/GamePostSearchResultCollection.md)
+ - [GamePostSearchResultContactsInner](docs/GamePostSearchResultContactsInner.md)
  - [GamePostSearchResultGamesInner](docs/GamePostSearchResultGamesInner.md)
  - [GamePostSearchResultPostsInner](docs/GamePostSearchResultPostsInner.md)
+ - [GamePostSearchResultPostsInnerCreatedBy](docs/GamePostSearchResultPostsInnerCreatedBy.md)
  - [GamePostSearchResultScheduleIntentsInner](docs/GamePostSearchResultScheduleIntentsInner.md)
  - [GameType](docs/GameType.md)
  - [GeoRegion](docs/GeoRegion.md)

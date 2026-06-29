@@ -426,11 +426,17 @@ from winthrop_client_python.models.game_post_search_result import GamePostSearch
 from winthrop_client_python.models.game_post_search_result_collection import (
     GamePostSearchResultCollection,
 )
+from winthrop_client_python.models.game_post_search_result_contacts_inner import (
+    GamePostSearchResultContactsInner,
+)
 from winthrop_client_python.models.game_post_search_result_games_inner import (
     GamePostSearchResultGamesInner,
 )
 from winthrop_client_python.models.game_post_search_result_posts_inner import (
     GamePostSearchResultPostsInner,
+)
+from winthrop_client_python.models.game_post_search_result_posts_inner_created_by import (
+    GamePostSearchResultPostsInnerCreatedBy,
 )
 from winthrop_client_python.models.game_post_search_result_schedule_intents_inner import (
     GamePostSearchResultScheduleIntentsInner,

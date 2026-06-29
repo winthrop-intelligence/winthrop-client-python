@@ -235,8 +235,10 @@ __all__ = [
     "GamePostGapCountCollectionDataInner",
     "GamePostSearchResult",
     "GamePostSearchResultCollection",
+    "GamePostSearchResultContactsInner",
     "GamePostSearchResultGamesInner",
     "GamePostSearchResultPostsInner",
+    "GamePostSearchResultPostsInnerCreatedBy",
     "GamePostSearchResultScheduleIntentsInner",
     "GameType",
     "GeoRegion",
@@ -1023,11 +1025,17 @@ from winthrop_client_python.models.game_post_search_result import (
 from winthrop_client_python.models.game_post_search_result_collection import (
     GamePostSearchResultCollection as GamePostSearchResultCollection,
 )
+from winthrop_client_python.models.game_post_search_result_contacts_inner import (
+    GamePostSearchResultContactsInner as GamePostSearchResultContactsInner,
+)
 from winthrop_client_python.models.game_post_search_result_games_inner import (
     GamePostSearchResultGamesInner as GamePostSearchResultGamesInner,
 )
 from winthrop_client_python.models.game_post_search_result_posts_inner import (
     GamePostSearchResultPostsInner as GamePostSearchResultPostsInner,
+)
+from winthrop_client_python.models.game_post_search_result_posts_inner_created_by import (
+    GamePostSearchResultPostsInnerCreatedBy as GamePostSearchResultPostsInnerCreatedBy,
 )
 from winthrop_client_python.models.game_post_search_result_schedule_intents_inner import (
     GamePostSearchResultScheduleIntentsInner as GamePostSearchResultScheduleIntentsInner,

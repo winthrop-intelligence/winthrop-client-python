@@ -17,16 +17,11 @@ import re  # noqa: F401
 import json
 
 from datetime import date, datetime
-from pydantic import (
-    BaseModel,
-    ConfigDict,
-    Field,
-    StrictBool,
-    StrictInt,
-    StrictStr,
-    field_validator,
-)
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from winthrop_client_python.models.game_post_search_result_contacts_inner import (
+    GamePostSearchResultContactsInner,
+)
 from winthrop_client_python.models.game_post_search_result_games_inner import (
     GamePostSearchResultGamesInner,
 )
@@ -45,40 +40,23 @@ class GamePostSearchResult(BaseModel):
     Enriched game post search result with school, location, and ranking data
     """  # noqa: E501
 
-    game_post_id: Optional[StrictInt] = Field(default=None, description="Game post ID")
     id: Optional[StrictInt] = Field(default=None, description="FilSportGamePost ID")
     school_id: Optional[StrictInt] = None
     school_name: Optional[StrictStr] = None
     sport_id: Optional[StrictInt] = None
     sport_name: Optional[StrictStr] = None
     start_date: Optional[date] = None
-    end_date: Optional[date] = None
     end_date_display: Optional[date] = None
     description: Optional[StrictStr] = None
-    status: Optional[StrictStr] = None
-    expires_on: Optional[date] = None
     created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
     city: Optional[StrictStr] = None
     state_name: Optional[StrictStr] = None
-    conference_id: Optional[StrictInt] = None
-    conference_name: Optional[StrictStr] = None
-    division_id: Optional[StrictInt] = None
-    division_name: Optional[StrictStr] = None
     last_rpi: Optional[StrictInt] = Field(
         default=None, description="Most recent RPI ranking"
-    )
-    last_net_rank: Optional[StrictInt] = Field(
-        default=None, description="Most recent NET ranking"
-    )
-    last_ap_rank: Optional[StrictInt] = Field(
-        default=None, description="Most recent AP ranking"
     )
     distance: Optional[float] = Field(
         default=None, description="Distance in miles from user's school"
     )
-    avg_guarantee_paid: Optional[float] = None
-    avg_guarantee_received: Optional[float] = None
     game_types_display: Optional[StrictStr] = Field(
         default=None, description="Comma-separated list of game type names"
     )
@@ -93,26 +71,15 @@ class GamePostSearchResult(BaseModel):
         default=None,
         description="Dial-ready form of the creator's scheduling phone for tel links",
     )
-    avg_rpi: Optional[StrictInt] = Field(
-        default=None, description="5-year average RPI ranking"
-    )
     avg_net_rank: Optional[StrictInt] = Field(
         default=None, description="5-year average NET ranking"
-    )
-    avg_ap_rank: Optional[StrictInt] = Field(
-        default=None, description="5-year average AP ranking"
     )
     school_logo_url: Optional[StrictStr] = Field(
         default=None, description="URL to school logo image (small variant)"
     )
-    latitude: Optional[float] = None
-    longitude: Optional[float] = None
-    can_manage: Optional[StrictBool] = Field(
-        default=None, description="Whether the current user can manage this game post"
-    )
     posts: Optional[List[GamePostSearchResultPostsInner]] = Field(
         default=None,
-        description="The posting school's own active Games Wanted posts for this sport, one entry per day (the card's date chips). Present only when group_by_school=true, where the feed is grouped one row per school so this aggregates every post for the school.",
+        description="The posting school's own active Games Wanted posts for this sport, one entry per post (each carrying its id). Present only when group_by_school=true, where the feed is grouped one row per school so this aggregates every post for the school. The card collapses same-day posts into chips; the school+sport show page lists each. With post_details=true each entry also carries the per-post detail fields below.",
     )
     games: Optional[List[GamePostSearchResultGamesInner]] = Field(
         default=None,
@@ -122,58 +89,35 @@ class GamePostSearchResult(BaseModel):
         default=None,
         description="Private schedule-intent (requested availability) markers for the posting school and sport, within the current scheduling-season window. Only present for sports the requesting schedule user is permitted to see.",
     )
+    contacts: Optional[List[GamePostSearchResultContactsInner]] = Field(
+        default=None,
+        description="School+sport scheduling contacts, shared across the school's posts. Present only with post_details=true (the school+sport show page).",
+    )
     __properties: ClassVar[List[str]] = [
-        "game_post_id",
         "id",
         "school_id",
         "school_name",
         "sport_id",
         "sport_name",
         "start_date",
-        "end_date",
         "end_date_display",
         "description",
-        "status",
-        "expires_on",
         "created_at",
-        "updated_at",
         "city",
         "state_name",
-        "conference_id",
-        "conference_name",
-        "division_id",
-        "division_name",
         "last_rpi",
-        "last_net_rank",
-        "last_ap_rank",
         "distance",
-        "avg_guarantee_paid",
-        "avg_guarantee_received",
         "game_types_display",
         "created_by_name",
         "created_by_scheduling_phone",
         "created_by_scheduling_phone_dial",
-        "avg_rpi",
         "avg_net_rank",
-        "avg_ap_rank",
         "school_logo_url",
-        "latitude",
-        "longitude",
-        "can_manage",
         "posts",
         "games",
         "schedule_intents",
+        "contacts",
     ]
-
-    @field_validator("status")
-    def status_validate_enum(cls, value):
-        """Validates the enum"""
-        if value is None:
-            return value
-
-        if value not in set(["Active", "Inactive"]):
-            raise ValueError("must be one of enum values ('Active', 'Inactive')")
-        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -233,6 +177,13 @@ class GamePostSearchResult(BaseModel):
                 if _item_schedule_intents:
                     _items.append(_item_schedule_intents.to_dict())
             _dict["schedule_intents"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in contacts (list)
+        _items = []
+        if self.contacts:
+            for _item_contacts in self.contacts:
+                if _item_contacts:
+                    _items.append(_item_contacts.to_dict())
+            _dict["contacts"] = _items
         # set to None if school_name (nullable) is None
         # and model_fields_set contains the field
         if self.school_name is None and "school_name" in self.model_fields_set:
@@ -248,11 +199,6 @@ class GamePostSearchResult(BaseModel):
         if self.start_date is None and "start_date" in self.model_fields_set:
             _dict["start_date"] = None
 
-        # set to None if end_date (nullable) is None
-        # and model_fields_set contains the field
-        if self.end_date is None and "end_date" in self.model_fields_set:
-            _dict["end_date"] = None
-
         # set to None if end_date_display (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -266,16 +212,6 @@ class GamePostSearchResult(BaseModel):
         if self.description is None and "description" in self.model_fields_set:
             _dict["description"] = None
 
-        # set to None if expires_on (nullable) is None
-        # and model_fields_set contains the field
-        if self.expires_on is None and "expires_on" in self.model_fields_set:
-            _dict["expires_on"] = None
-
-        # set to None if updated_at (nullable) is None
-        # and model_fields_set contains the field
-        if self.updated_at is None and "updated_at" in self.model_fields_set:
-            _dict["updated_at"] = None
-
         # set to None if city (nullable) is None
         # and model_fields_set contains the field
         if self.city is None and "city" in self.model_fields_set:
@@ -286,61 +222,15 @@ class GamePostSearchResult(BaseModel):
         if self.state_name is None and "state_name" in self.model_fields_set:
             _dict["state_name"] = None
 
-        # set to None if conference_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.conference_id is None and "conference_id" in self.model_fields_set:
-            _dict["conference_id"] = None
-
-        # set to None if conference_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.conference_name is None and "conference_name" in self.model_fields_set:
-            _dict["conference_name"] = None
-
-        # set to None if division_id (nullable) is None
-        # and model_fields_set contains the field
-        if self.division_id is None and "division_id" in self.model_fields_set:
-            _dict["division_id"] = None
-
-        # set to None if division_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.division_name is None and "division_name" in self.model_fields_set:
-            _dict["division_name"] = None
-
         # set to None if last_rpi (nullable) is None
         # and model_fields_set contains the field
         if self.last_rpi is None and "last_rpi" in self.model_fields_set:
             _dict["last_rpi"] = None
 
-        # set to None if last_net_rank (nullable) is None
-        # and model_fields_set contains the field
-        if self.last_net_rank is None and "last_net_rank" in self.model_fields_set:
-            _dict["last_net_rank"] = None
-
-        # set to None if last_ap_rank (nullable) is None
-        # and model_fields_set contains the field
-        if self.last_ap_rank is None and "last_ap_rank" in self.model_fields_set:
-            _dict["last_ap_rank"] = None
-
         # set to None if distance (nullable) is None
         # and model_fields_set contains the field
         if self.distance is None and "distance" in self.model_fields_set:
             _dict["distance"] = None
-
-        # set to None if avg_guarantee_paid (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.avg_guarantee_paid is None
-            and "avg_guarantee_paid" in self.model_fields_set
-        ):
-            _dict["avg_guarantee_paid"] = None
-
-        # set to None if avg_guarantee_received (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.avg_guarantee_received is None
-            and "avg_guarantee_received" in self.model_fields_set
-        ):
-            _dict["avg_guarantee_received"] = None
 
         # set to None if game_types_display (nullable) is None
         # and model_fields_set contains the field
@@ -371,35 +261,15 @@ class GamePostSearchResult(BaseModel):
         ):
             _dict["created_by_scheduling_phone_dial"] = None
 
-        # set to None if avg_rpi (nullable) is None
-        # and model_fields_set contains the field
-        if self.avg_rpi is None and "avg_rpi" in self.model_fields_set:
-            _dict["avg_rpi"] = None
-
         # set to None if avg_net_rank (nullable) is None
         # and model_fields_set contains the field
         if self.avg_net_rank is None and "avg_net_rank" in self.model_fields_set:
             _dict["avg_net_rank"] = None
 
-        # set to None if avg_ap_rank (nullable) is None
-        # and model_fields_set contains the field
-        if self.avg_ap_rank is None and "avg_ap_rank" in self.model_fields_set:
-            _dict["avg_ap_rank"] = None
-
         # set to None if school_logo_url (nullable) is None
         # and model_fields_set contains the field
         if self.school_logo_url is None and "school_logo_url" in self.model_fields_set:
             _dict["school_logo_url"] = None
-
-        # set to None if latitude (nullable) is None
-        # and model_fields_set contains the field
-        if self.latitude is None and "latitude" in self.model_fields_set:
-            _dict["latitude"] = None
-
-        # set to None if longitude (nullable) is None
-        # and model_fields_set contains the field
-        if self.longitude is None and "longitude" in self.model_fields_set:
-            _dict["longitude"] = None
 
         return _dict
 
@@ -414,45 +284,27 @@ class GamePostSearchResult(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "game_post_id": obj.get("game_post_id"),
                 "id": obj.get("id"),
                 "school_id": obj.get("school_id"),
                 "school_name": obj.get("school_name"),
                 "sport_id": obj.get("sport_id"),
                 "sport_name": obj.get("sport_name"),
                 "start_date": obj.get("start_date"),
-                "end_date": obj.get("end_date"),
                 "end_date_display": obj.get("end_date_display"),
                 "description": obj.get("description"),
-                "status": obj.get("status"),
-                "expires_on": obj.get("expires_on"),
                 "created_at": obj.get("created_at"),
-                "updated_at": obj.get("updated_at"),
                 "city": obj.get("city"),
                 "state_name": obj.get("state_name"),
-                "conference_id": obj.get("conference_id"),
-                "conference_name": obj.get("conference_name"),
-                "division_id": obj.get("division_id"),
-                "division_name": obj.get("division_name"),
                 "last_rpi": obj.get("last_rpi"),
-                "last_net_rank": obj.get("last_net_rank"),
-                "last_ap_rank": obj.get("last_ap_rank"),
                 "distance": obj.get("distance"),
-                "avg_guarantee_paid": obj.get("avg_guarantee_paid"),
-                "avg_guarantee_received": obj.get("avg_guarantee_received"),
                 "game_types_display": obj.get("game_types_display"),
                 "created_by_name": obj.get("created_by_name"),
                 "created_by_scheduling_phone": obj.get("created_by_scheduling_phone"),
                 "created_by_scheduling_phone_dial": obj.get(
                     "created_by_scheduling_phone_dial"
                 ),
-                "avg_rpi": obj.get("avg_rpi"),
                 "avg_net_rank": obj.get("avg_net_rank"),
-                "avg_ap_rank": obj.get("avg_ap_rank"),
                 "school_logo_url": obj.get("school_logo_url"),
-                "latitude": obj.get("latitude"),
-                "longitude": obj.get("longitude"),
-                "can_manage": obj.get("can_manage"),
                 "posts": (
                     [
                         GamePostSearchResultPostsInner.from_dict(_item)
@@ -475,6 +327,14 @@ class GamePostSearchResult(BaseModel):
                         for _item in obj["schedule_intents"]
                     ]
                     if obj.get("schedule_intents") is not None
+                    else None
+                ),
+                "contacts": (
+                    [
+                        GamePostSearchResultContactsInner.from_dict(_item)
+                        for _item in obj["contacts"]
+                    ]
+                    if obj.get("contacts") is not None
                     else None
                 ),
             }
