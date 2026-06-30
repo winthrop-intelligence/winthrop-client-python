@@ -7,6 +7,7 @@ Enriched game post search result with school, location, and ranking data
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | FilSportGamePost ID | [optional] 
+**publish_group_id** | **UUID** | Identifies the publish (one \&quot;Post game wanted\&quot; action) this card represents. Shared by every post created in the same publish, so the grouped feed renders one card per publish. Null for legacy posts. | [optional] 
 **school_id** | **int** |  | [optional] 
 **school_name** | **str** |  | [optional] 
 **sport_id** | **int** |  | [optional] 
