@@ -2584,7 +2584,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_schedule_intent**
-> ScheduleIntentDetail create_schedule_intent(create_schedule_intent_request)
+> ScheduleIntentDetail create_schedule_intent(create_schedule_intent_request, skip_game_post_sync=skip_game_post_sync)
 
 Create a private /schedules grid marker (WINAD-9646). This is NOT a public Games Wanted post — it never reaches the /game_posts feed, the school-detail badge, or the digest email.
 
@@ -2624,9 +2624,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     create_schedule_intent_request = winthrop_client_python.CreateScheduleIntentRequest() # CreateScheduleIntentRequest | 
+    skip_game_post_sync = True # bool | WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn't publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live.  (optional)
 
     try:
-        api_response = api_instance.create_schedule_intent(create_schedule_intent_request)
+        api_response = api_instance.create_schedule_intent(create_schedule_intent_request, skip_game_post_sync=skip_game_post_sync)
         print("The response of DefaultApi->create_schedule_intent:\n")
         pprint(api_response)
     except Exception as e:
@@ -2641,6 +2642,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **create_schedule_intent_request** | [**CreateScheduleIntentRequest**](CreateScheduleIntentRequest.md)|  | 
+ **skip_game_post_sync** | **bool**| WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn&#39;t publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live.  | [optional] 
 
 ### Return type
 
@@ -4422,7 +4424,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_schedule_intent**
-> delete_schedule_intent(schedule_intent_id)
+> delete_schedule_intent(schedule_intent_id, skip_game_post_sync=skip_game_post_sync)
 
 Delete a private /schedules grid marker
 
@@ -4460,9 +4462,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     schedule_intent_id = 56 # int | 
+    skip_game_post_sync = True # bool | WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn't publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live.  (optional)
 
     try:
-        api_instance.delete_schedule_intent(schedule_intent_id)
+        api_instance.delete_schedule_intent(schedule_intent_id, skip_game_post_sync=skip_game_post_sync)
     except Exception as e:
         print("Exception when calling DefaultApi->delete_schedule_intent: %s\n" % e)
 ```
@@ -4475,6 +4478,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **schedule_intent_id** | **int**|  | 
+ **skip_game_post_sync** | **bool**| WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn&#39;t publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live.  | [optional] 
 
 ### Return type
 
@@ -19448,7 +19452,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_favorite**
-> UpdateFavorite200Response update_favorite(id, update_favorite_request)
+> CreateFavorite201Response update_favorite(id, update_favorite_request)
 
 Update a favorite (e.g. reassign to a different category)
 
@@ -19459,7 +19463,7 @@ Update a favorite (e.g. reassign to a different category)
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.update_favorite200_response import UpdateFavorite200Response
+from winthrop_client_python.models.create_favorite201_response import CreateFavorite201Response
 from winthrop_client_python.models.update_favorite_request import UpdateFavoriteRequest
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -19510,7 +19514,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**UpdateFavorite200Response**](UpdateFavorite200Response.md)
+[**CreateFavorite201Response**](CreateFavorite201Response.md)
 
 ### Authorization
 
@@ -20465,7 +20469,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_schedule_intent**
-> ScheduleIntentDetail update_schedule_intent(schedule_intent_id, update_schedule_intent_request=update_schedule_intent_request)
+> ScheduleIntentDetail update_schedule_intent(schedule_intent_id, skip_game_post_sync=skip_game_post_sync, update_schedule_intent_request=update_schedule_intent_request)
 
 Update a private /schedules grid marker (replace its game-type designations).
 
@@ -20505,10 +20509,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     schedule_intent_id = 56 # int | 
+    skip_game_post_sync = True # bool | WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn't publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live.  (optional)
     update_schedule_intent_request = winthrop_client_python.UpdateScheduleIntentRequest() # UpdateScheduleIntentRequest |  (optional)
 
     try:
-        api_response = api_instance.update_schedule_intent(schedule_intent_id, update_schedule_intent_request=update_schedule_intent_request)
+        api_response = api_instance.update_schedule_intent(schedule_intent_id, skip_game_post_sync=skip_game_post_sync, update_schedule_intent_request=update_schedule_intent_request)
         print("The response of DefaultApi->update_schedule_intent:\n")
         pprint(api_response)
     except Exception as e:
@@ -20523,6 +20528,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **schedule_intent_id** | **int**|  | 
+ **skip_game_post_sync** | **bool**| WINAD-10041: when true, persists the ScheduleIntent WITHOUT syncing the public Games Wanted GamePost(s) for that cell. Sent by the slim editor (/game_posts/new) so composing chips doesn&#39;t publish until the user clicks Publish; the schedules grid omits it and keeps the public post in lockstep with the cell live.  | [optional] 
  **update_schedule_intent_request** | [**UpdateScheduleIntentRequest**](UpdateScheduleIntentRequest.md)|  | [optional] 
 
 ### Return type

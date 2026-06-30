@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | 
 **favoritable_id** | **int** |  | 
-**favorites_category_id** | **int** | The list (category) the favorite was saved to | [optional] 
 
 ## Example
 
