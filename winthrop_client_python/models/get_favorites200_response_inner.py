@@ -30,7 +30,7 @@ class GetFavorites200ResponseInner(BaseModel):
     id: StrictInt = Field(description="The favorite record ID")
     favoritable_id: StrictInt = Field(description="The favorited record's ID")
     favorites_category_id: Optional[StrictInt] = Field(
-        default=None, description="Category ID (only when detailed=1)"
+        default=None, description="ID of the list (category) this favorite belongs to."
     )
     category_name: Optional[StrictStr] = Field(
         default=None, description="Category name (only when detailed=1)"

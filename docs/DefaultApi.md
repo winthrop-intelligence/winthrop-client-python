@@ -19452,7 +19452,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **update_favorite**
-> CreateFavorite201Response update_favorite(id, update_favorite_request)
+> UpdateFavorite200Response update_favorite(id, update_favorite_request)
 
 Update a favorite (e.g. reassign to a different category)
 
@@ -19463,7 +19463,7 @@ Update a favorite (e.g. reassign to a different category)
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.create_favorite201_response import CreateFavorite201Response
+from winthrop_client_python.models.update_favorite200_response import UpdateFavorite200Response
 from winthrop_client_python.models.update_favorite_request import UpdateFavoriteRequest
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -19514,7 +19514,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CreateFavorite201Response**](CreateFavorite201Response.md)
+[**UpdateFavorite200Response**](UpdateFavorite200Response.md)
 
 ### Authorization
 

@@ -416,6 +416,7 @@ __all__ = [
     "UpdateAccountUserActivationRequestUser",
     "UpdateAccountUserRequest",
     "UpdateAccountUserRequestUser",
+    "UpdateFavorite200Response",
     "UpdateFavoriteRequest",
     "UpdateFavoritesCategoryRequest",
     "UpdateGamePostSearchRequest",
@@ -1487,6 +1488,9 @@ from winthrop_client_python.models.update_account_user_request import (
 )
 from winthrop_client_python.models.update_account_user_request_user import (
     UpdateAccountUserRequestUser as UpdateAccountUserRequestUser,
+)
+from winthrop_client_python.models.update_favorite200_response import (
+    UpdateFavorite200Response as UpdateFavorite200Response,
 )
 from winthrop_client_python.models.update_favorite_request import (
     UpdateFavoriteRequest as UpdateFavoriteRequest,

@@ -779,6 +779,9 @@ from winthrop_client_python.models.update_account_user_request import (
 from winthrop_client_python.models.update_account_user_request_user import (
     UpdateAccountUserRequestUser,
 )
+from winthrop_client_python.models.update_favorite200_response import (
+    UpdateFavorite200Response,
+)
 from winthrop_client_python.models.update_favorite_request import UpdateFavoriteRequest
 from winthrop_client_python.models.update_favorites_category_request import (
     UpdateFavoritesCategoryRequest,

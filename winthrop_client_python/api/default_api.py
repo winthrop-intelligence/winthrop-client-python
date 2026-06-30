@@ -349,6 +349,9 @@ from winthrop_client_python.models.update_account_user_activation_request import
 from winthrop_client_python.models.update_account_user_request import (
     UpdateAccountUserRequest,
 )
+from winthrop_client_python.models.update_favorite200_response import (
+    UpdateFavorite200Response,
+)
 from winthrop_client_python.models.update_favorite_request import UpdateFavoriteRequest
 from winthrop_client_python.models.update_favorites_category_request import (
     UpdateFavoritesCategoryRequest,
@@ -63982,7 +63985,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> CreateFavorite201Response:
+    ) -> UpdateFavorite200Response:
         """update_favorite
 
         Update a favorite (e.g. reassign to a different category)
@@ -64023,7 +64026,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "CreateFavorite201Response",
+            "200": "UpdateFavorite200Response",
             "401": None,
         }
         response_data = self.api_client.call_api(
@@ -64051,7 +64054,7 @@ class DefaultApi:
         _content_type: Optional[StrictStr] = None,
         _headers: Optional[Dict[StrictStr, Any]] = None,
         _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[CreateFavorite201Response]:
+    ) -> ApiResponse[UpdateFavorite200Response]:
         """update_favorite
 
         Update a favorite (e.g. reassign to a different category)
@@ -64092,7 +64095,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "CreateFavorite201Response",
+            "200": "UpdateFavorite200Response",
             "401": None,
         }
         response_data = self.api_client.call_api(
@@ -64161,7 +64164,7 @@ class DefaultApi:
         )
 
         _response_types_map: Dict[str, Optional[str]] = {
-            "200": "CreateFavorite201Response",
+            "200": "UpdateFavorite200Response",
             "401": None,
         }
         response_data = self.api_client.call_api(
