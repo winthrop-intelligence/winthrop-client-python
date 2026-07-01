@@ -1,6 +1,6 @@
 [project]
 name = "winthrop_client_python"
-version = "1.53.24"
+version = "1.53.24-dev.10067"
 description = "Winthrop Intelligence Internal API"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},
