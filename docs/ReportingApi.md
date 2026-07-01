@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**get_coach_history**](ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history | 
 [**get_conferenceships**](ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships | 
 [**get_foia_details**](ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details | 
+[**get_foia_follow_up_report**](ReportingApi.md#get_foia_follow_up_report) | **GET** /api/v1/reports/foia_follow_up_report | 
 [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games | 
 [**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices | 
 [**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests | 
@@ -332,6 +333,108 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Foia details were found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_foia_follow_up_report**
+> FoiaFollowUpReportResponse get_foia_follow_up_report(scope, page=page, per_page=per_page, sort_by=sort_by, foia_label_id=foia_label_id, school_id=school_id, state=state, follow_up_date_lte=follow_up_date_lte, include_not_due=include_not_due, show_processed_today=show_processed_today, include_direct_contact=include_direct_contact)
+
+Retrieve read-only FOIA follow-up rows for Codex follow-up drafting and FOIA freshness dashboards
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.foia_follow_up_report_response import FoiaFollowUpReportResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.ReportingApi(api_client)
+    scope = 'scope_example' # str | 
+    page = 1 # int | Results page to retrieve. (optional) (default to 1)
+    per_page = 40 # int | Number of rows per page. Values above 200 are capped at 200. (optional) (default to 40)
+    sort_by = follow_up_date_asc # str | Sort field with optional _asc or _desc suffix. (optional) (default to follow_up_date_asc)
+    foia_label_id = 56 # int |  (optional)
+    school_id = 56 # int |  (optional)
+    state = 'state_example' # str | School state id, abbreviation, or display name. (optional)
+    follow_up_date_lte = '2013-10-20' # date |  (optional)
+    include_not_due = False # bool |  (optional) (default to False)
+    show_processed_today = false # str |  (optional) (default to false)
+    include_direct_contact = False # bool |  (optional) (default to False)
+
+    try:
+        api_response = api_instance.get_foia_follow_up_report(scope, page=page, per_page=per_page, sort_by=sort_by, foia_label_id=foia_label_id, school_id=school_id, state=state, follow_up_date_lte=follow_up_date_lte, include_not_due=include_not_due, show_processed_today=show_processed_today, include_direct_contact=include_direct_contact)
+        print("The response of ReportingApi->get_foia_follow_up_report:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReportingApi->get_foia_follow_up_report: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **str**|  | 
+ **page** | **int**| Results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| Number of rows per page. Values above 200 are capped at 200. | [optional] [default to 40]
+ **sort_by** | **str**| Sort field with optional _asc or _desc suffix. | [optional] [default to follow_up_date_asc]
+ **foia_label_id** | **int**|  | [optional] 
+ **school_id** | **int**|  | [optional] 
+ **state** | **str**| School state id, abbreviation, or display name. | [optional] 
+ **follow_up_date_lte** | **date**|  | [optional] 
+ **include_not_due** | **bool**|  | [optional] [default to False]
+ **show_processed_today** | **str**|  | [optional] [default to false]
+ **include_direct_contact** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**FoiaFollowUpReportResponse**](FoiaFollowUpReportResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | FOIA follow-up report rows were found |  -  |
+**400** | Invalid report parameters |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
