@@ -444,14 +444,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_foia_follow_up_contact.py
-test/test_foia_follow_up_gmail_search_hints.py
-test/test_foia_follow_up_recent_received_item.py
-test/test_foia_follow_up_report_meta.py
-test/test_foia_follow_up_report_response.py
-test/test_foia_follow_up_report_row.py
-test/test_foia_follow_up_requestable_data.py
-test/test_foia_follow_up_requested_item.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
