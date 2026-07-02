@@ -44446,6 +44446,12 @@ class DefaultApi:
                 description="Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered."
             ),
         ] = None,
+        torvik_ranking_tier: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered."
+            ),
+        ] = None,
         max_distance_miles: Annotated[
             Optional[StrictInt],
             Field(
@@ -44478,7 +44484,7 @@ class DefaultApi:
     ) -> ScheduleGridAvailableSchools:
         """get_schedule_grid_available_schools
 
-        Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
+        Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, T-Rank tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
 
         :param sport_name: Sport name (e.g. FOOTBALL, BASKETBALL_M) (required)
         :type sport_name: str
@@ -44496,6 +44502,8 @@ class DefaultApi:
         :type quality_tier: str
         :param net_ranking_tier: Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
         :type net_ranking_tier: str
+        :param torvik_ranking_tier: Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
+        :type torvik_ranking_tier: str
         :param max_distance_miles: Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
         :type max_distance_miles: int
         :param user_school_id: Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
@@ -44533,6 +44541,7 @@ class DefaultApi:
             deal_types=deal_types,
             quality_tier=quality_tier,
             net_ranking_tier=net_ranking_tier,
+            torvik_ranking_tier=torvik_ranking_tier,
             max_distance_miles=max_distance_miles,
             user_school_id=user_school_id,
             exclude_school_ids=exclude_school_ids,
@@ -44606,6 +44615,12 @@ class DefaultApi:
                 description="Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered."
             ),
         ] = None,
+        torvik_ranking_tier: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered."
+            ),
+        ] = None,
         max_distance_miles: Annotated[
             Optional[StrictInt],
             Field(
@@ -44638,7 +44653,7 @@ class DefaultApi:
     ) -> ApiResponse[ScheduleGridAvailableSchools]:
         """get_schedule_grid_available_schools
 
-        Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
+        Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, T-Rank tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
 
         :param sport_name: Sport name (e.g. FOOTBALL, BASKETBALL_M) (required)
         :type sport_name: str
@@ -44656,6 +44671,8 @@ class DefaultApi:
         :type quality_tier: str
         :param net_ranking_tier: Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
         :type net_ranking_tier: str
+        :param torvik_ranking_tier: Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
+        :type torvik_ranking_tier: str
         :param max_distance_miles: Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
         :type max_distance_miles: int
         :param user_school_id: Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
@@ -44693,6 +44710,7 @@ class DefaultApi:
             deal_types=deal_types,
             quality_tier=quality_tier,
             net_ranking_tier=net_ranking_tier,
+            torvik_ranking_tier=torvik_ranking_tier,
             max_distance_miles=max_distance_miles,
             user_school_id=user_school_id,
             exclude_school_ids=exclude_school_ids,
@@ -44766,6 +44784,12 @@ class DefaultApi:
                 description="Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered."
             ),
         ] = None,
+        torvik_ranking_tier: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered."
+            ),
+        ] = None,
         max_distance_miles: Annotated[
             Optional[StrictInt],
             Field(
@@ -44798,7 +44822,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """get_schedule_grid_available_schools
 
-        Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
+        Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, T-Rank tier, and distance. Omit target_date for an \"Any date\" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
 
         :param sport_name: Sport name (e.g. FOOTBALL, BASKETBALL_M) (required)
         :type sport_name: str
@@ -44816,6 +44840,8 @@ class DefaultApi:
         :type quality_tier: str
         :param net_ranking_tier: Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
         :type net_ranking_tier: str
+        :param torvik_ranking_tier: Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
+        :type torvik_ranking_tier: str
         :param max_distance_miles: Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
         :type max_distance_miles: int
         :param user_school_id: Requesting user's school. Used as the origin for distance filtering and is always excluded from results.
@@ -44853,6 +44879,7 @@ class DefaultApi:
             deal_types=deal_types,
             quality_tier=quality_tier,
             net_ranking_tier=net_ranking_tier,
+            torvik_ranking_tier=torvik_ranking_tier,
             max_distance_miles=max_distance_miles,
             user_school_id=user_school_id,
             exclude_school_ids=exclude_school_ids,
@@ -44884,6 +44911,7 @@ class DefaultApi:
         deal_types,
         quality_tier,
         net_ranking_tier,
+        torvik_ranking_tier,
         max_distance_miles,
         user_school_id,
         exclude_school_ids,
@@ -44947,6 +44975,10 @@ class DefaultApi:
         if net_ranking_tier is not None:
 
             _query_params.append(("net_ranking_tier", net_ranking_tier))
+
+        if torvik_ranking_tier is not None:
+
+            _query_params.append(("torvik_ranking_tier", torvik_ranking_tier))
 
         if max_distance_miles is not None:
 
