@@ -7,6 +7,7 @@ Enriched game post search result with school, location, and ranking data
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** | FilSportGamePost ID | [optional] 
+**publish_group_id** | **UUID** | Identifies the publish (one \&quot;Post game wanted\&quot; action) this card represents. Shared by every post created in the same publish, so the grouped feed renders one card per publish. Null for legacy posts. | [optional] 
 **school_id** | **int** |  | [optional] 
 **school_name** | **str** |  | [optional] 
 **sport_id** | **int** |  | [optional] 
@@ -27,7 +28,7 @@ Name | Type | Description | Notes
 **school_logo_url** | **str** | URL to school logo image (small variant) | [optional] 
 **posts** | [**List[GamePostSearchResultPostsInner]**](GamePostSearchResultPostsInner.md) | The posting school&#39;s own active Games Wanted posts for this sport, one entry per post (each carrying its id). Present only when group_by_school&#x3D;true, where the feed is grouped one row per school so this aggregates every post for the school. The card collapses same-day posts into chips; the school+sport show page lists each. With post_details&#x3D;true each entry also carries the per-post detail fields below. | [optional] 
 **games** | [**List[GamePostSearchResultGamesInner]**](GamePostSearchResultGamesInner.md) | Games already on the posting school&#39;s schedule for this sport, within the current scheduling-season window. Opponent fields are relative to the posting school. | [optional] 
-**schedule_intents** | [**List[GamePostSearchResultScheduleIntentsInner]**](GamePostSearchResultScheduleIntentsInner.md) | Private schedule-intent (requested availability) markers for the posting school and sport, within the current scheduling-season window. Only present for sports the requesting schedule user is permitted to see. | [optional] 
+**schedule_intents** | [**List[GamePostSearchResultScheduleIntentsInner]**](GamePostSearchResultScheduleIntentsInner.md) | The posting school+sport&#39;s schedule-intent (availability) markers within the current scheduling-season window, only present for sports the requesting schedule user is permitted to see. WINAD-10093: these drive the feed card&#39;s displayed dates (the card is grouped per publish, but its dates come from the school&#39;s durable availability calendar, so deleting or expiring one publish group never shrinks a sibling card&#39;s dates). The private \&quot;Pending\&quot; marker is stripped: a Pending-only cell is omitted and a mixed cell drops the Pending type. | [optional] 
 **contacts** | [**List[GamePostSearchResultContactsInner]**](GamePostSearchResultContactsInner.md) | School+sport scheduling contacts, shared across the school&#39;s posts. Present only with post_details&#x3D;true (the school+sport show page). | [optional] 
 
 ## Example
