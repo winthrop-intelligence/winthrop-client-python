@@ -52,12 +52,20 @@ Name | Type | Description | Notes
 **all_foia_contacts** | [**List[FoiaFollowUpContact]**](FoiaFollowUpContact.md) |  | [optional] 
 **escalation_contacts** | [**List[FoiaFollowUpContact]**](FoiaFollowUpContact.md) |  | [optional] 
 **requested_items** | [**List[FoiaFollowUpRequestedItem]**](FoiaFollowUpRequestedItem.md) |  | [optional] 
+**pending_count** | **int** |  | [optional] 
+**received_count** | **int** |  | [optional] 
+**not_available_count** | **int** |  | [optional] 
+**accounted_for_count** | **int** |  | [optional] 
+**total_count** | **int** |  | [optional] 
+**completion_percentage** | **float** | accounted_for_count / total_count rounded to 4 decimal places; 0.0 when total_count is 0 | [optional] 
 **last_requested_item_received_at** | **datetime** |  | [optional] 
 **received_items_last_7d_count** | **int** |  | [optional] 
 **received_items_last_14d_count** | **int** |  | [optional] 
 **received_items_last_30d_count** | **int** |  | [optional] 
 **received_after_last_followup_count** | **int** |  | [optional] 
 **recent_received_items** | [**List[FoiaFollowUpRecentReceivedItem]**](FoiaFollowUpRecentReceivedItem.md) |  | [optional] 
+**foia_notes** | [**List[FoiaFollowUpNote]**](FoiaFollowUpNote.md) |  | [optional] 
+**school_notes** | [**List[FoiaFollowUpNote]**](FoiaFollowUpNote.md) |  | [optional] 
 
 ## Example
 
