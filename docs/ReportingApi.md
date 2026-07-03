@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**get_conferenceships**](ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships | 
 [**get_foia_details**](ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details | 
 [**get_foia_follow_up_report**](ReportingApi.md#get_foia_follow_up_report) | **GET** /api/v1/reports/foia_follow_up_report | 
+[**get_foia_requested_item_status_breakdown**](ReportingApi.md#get_foia_requested_item_status_breakdown) | **GET** /api/v1/reports/foia_requested_item_status_breakdown | 
 [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games | 
 [**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices | 
 [**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests | 
@@ -432,6 +433,102 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | FOIA follow-up report rows were found |  -  |
+**400** | Invalid report parameters |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_foia_requested_item_status_breakdown**
+> FoiaRequestedItemStatusBreakdownResponse get_foia_requested_item_status_breakdown(group_by=group_by, period=period, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, foia_label_id=foia_label_id, school_id=school_id, state=state, include_direct_contact=include_direct_contact)
+
+Retrieve read-only grouped requested-item status counts for FOIA freshness reporting widgets
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.foia_requested_item_status_breakdown_response import FoiaRequestedItemStatusBreakdownResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.ReportingApi(api_client)
+    group_by = 'updated_period,requestable_type' # str | Comma-separated grouping dimensions. Defaults to both dimensions. (optional) (default to 'updated_period,requestable_type')
+    period = day # str | Calendar bucket size for the updated_period dimension. Weeks are ISO weeks starting Monday. (optional) (default to day)
+    updated_at_gte = '2013-10-20' # date | Include items updated on or after this date. (optional)
+    updated_at_lte = '2013-10-20' # date | Include items updated on or before this date. (optional)
+    foia_label_id = 56 # int |  (optional)
+    school_id = 56 # int |  (optional)
+    state = 'state_example' # str | School state id, abbreviation, or display name. (optional)
+    include_direct_contact = False # bool |  (optional) (default to False)
+
+    try:
+        api_response = api_instance.get_foia_requested_item_status_breakdown(group_by=group_by, period=period, updated_at_gte=updated_at_gte, updated_at_lte=updated_at_lte, foia_label_id=foia_label_id, school_id=school_id, state=state, include_direct_contact=include_direct_contact)
+        print("The response of ReportingApi->get_foia_requested_item_status_breakdown:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReportingApi->get_foia_requested_item_status_breakdown: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **group_by** | **str**| Comma-separated grouping dimensions. Defaults to both dimensions. | [optional] [default to &#39;updated_period,requestable_type&#39;]
+ **period** | **str**| Calendar bucket size for the updated_period dimension. Weeks are ISO weeks starting Monday. | [optional] [default to day]
+ **updated_at_gte** | **date**| Include items updated on or after this date. | [optional] 
+ **updated_at_lte** | **date**| Include items updated on or before this date. | [optional] 
+ **foia_label_id** | **int**|  | [optional] 
+ **school_id** | **int**|  | [optional] 
+ **state** | **str**| School state id, abbreviation, or display name. | [optional] 
+ **include_direct_contact** | **bool**|  | [optional] [default to False]
+
+### Return type
+
+[**FoiaRequestedItemStatusBreakdownResponse**](FoiaRequestedItemStatusBreakdownResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Grouped requested-item status counts were found |  -  |
 **400** | Invalid report parameters |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
