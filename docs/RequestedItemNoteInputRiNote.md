@@ -5,7 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**note** | **str** | Note text to create or append. Leading and trailing whitespace is trimmed; blank or whitespace-only values are rejected. | 
+**note** | **str** | Note text to create, replace, or append. Leading and trailing whitespace is trimmed; blank or whitespace-only values are rejected. | 
+**append** | **bool** | When true, append the note text to any existing note (skipped if the text is already present as an entry). When false or omitted, replace the existing note content. | [optional] [default to False]
 
 ## Example
 

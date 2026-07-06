@@ -1,12 +1,13 @@
 # TeamScheduleSearchResultHomeContracts
 
+Guarantee contracts where the school is the home/paying side, limited to contracts the caller can view.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**avg_paid_cents** | **int** |  | [optional] 
-**recent** | [**List[TeamScheduleRecentContract]**](TeamScheduleRecentContract.md) |  | [optional] 
+**avg_paid_cents** | **int** | Mean comp_cents of the school&#39;s last 10 signed Guarantee contracts as the home side, excluding zero/blank comp. | [optional] 
+**recent** | [**List[TeamScheduleRecentContract]**](TeamScheduleRecentContract.md) | Up to 3 most recent past-dated single-game Guarantee contracts (series excluded), newest first. | [optional] 
 
 ## Example
 
