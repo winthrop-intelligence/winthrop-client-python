@@ -33,6 +33,7 @@ docs/AvailableGameContract.md
 docs/Avatar.md
 docs/AverageCompensation.md
 docs/BulkCreateGamePostSearchesRequest.md
+docs/BulkCreateGamePostSearchesRequestIntentsInner.md
 docs/BulkCreateGamePostSearchesRequestPostsInner.md
 docs/BulkCreateGames201Response.md
 docs/BulkCreateGames422Response.md
@@ -40,6 +41,8 @@ docs/BulkCreateGames422ResponseErrorsValue.md
 docs/BulkCreateGamesRequest.md
 docs/BulkCreateGamesRequestGamesInner.md
 docs/BulkGamePostSearchResult.md
+docs/BulkUpdateGamePostSearchesRequest.md
+docs/BulkUpdateGamePostSearchesRequestPostsInner.md
 docs/COLIAdjusted.md
 docs/Cashflow.md
 docs/CashflowCollection.md
@@ -172,6 +175,7 @@ docs/FinancialSearchResult.md
 docs/FinancialSearchResultCollection.md
 docs/FoiaFollowUpContact.md
 docs/FoiaFollowUpGmailSearchHints.md
+docs/FoiaFollowUpNote.md
 docs/FoiaFollowUpRecentReceivedItem.md
 docs/FoiaFollowUpReportMeta.md
 docs/FoiaFollowUpReportResponse.md
@@ -182,6 +186,12 @@ docs/FoiaLabel.md
 docs/FoiaLabelCollection.md
 docs/FoiaRequest.md
 docs/FoiaRequestCollection.md
+docs/FoiaRequestedItemStatusBreakdownMeta.md
+docs/FoiaRequestedItemStatusBreakdownResponse.md
+docs/FoiaRequestedItemStatusBreakdownRow.md
+docs/FoiaRequestedItemStatusTransitionRow.md
+docs/FoiaRequestedItemStatusTransitionsMeta.md
+docs/FoiaRequestedItemStatusTransitionsResponse.md
 docs/GadCohortError.md
 docs/GadCohortSummary.md
 docs/GadCohortSummaryBuyerFilters.md
@@ -210,8 +220,6 @@ docs/GamePostCollection.md
 docs/GamePostContact.md
 docs/GamePostDetail.md
 docs/GamePostDetailCreatedBy.md
-docs/GamePostGapCountCollection.md
-docs/GamePostGapCountCollectionDataInner.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
 docs/GamePostSearchResultContactsInner.md
@@ -237,6 +245,9 @@ docs/GuaranteeBenchmarkError.md
 docs/GuaranteeBenchmarkStats.md
 docs/GuaranteeBenchmarkTable.md
 docs/GuaranteeBenchmarkTier.md
+docs/GuaranteeEconomics.md
+docs/GuaranteeEconomicsError.md
+docs/GuaranteeEconomicsSide.md
 docs/HTTPValidationError.md
 docs/HealthCheckFailure.md
 docs/HealthCheckSuccess.md
@@ -444,6 +455,19 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_bulk_create_game_post_searches_request_intents_inner.py
+test/test_bulk_update_game_post_searches_request.py
+test/test_bulk_update_game_post_searches_request_posts_inner.py
+test/test_foia_follow_up_note.py
+test/test_foia_requested_item_status_breakdown_meta.py
+test/test_foia_requested_item_status_breakdown_response.py
+test/test_foia_requested_item_status_breakdown_row.py
+test/test_foia_requested_item_status_transition_row.py
+test/test_foia_requested_item_status_transitions_meta.py
+test/test_foia_requested_item_status_transitions_response.py
+test/test_guarantee_economics.py
+test/test_guarantee_economics_error.py
+test/test_guarantee_economics_side.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -490,6 +514,7 @@ winthrop_client_python/models/available_game_contract.py
 winthrop_client_python/models/avatar.py
 winthrop_client_python/models/average_compensation.py
 winthrop_client_python/models/bulk_create_game_post_searches_request.py
+winthrop_client_python/models/bulk_create_game_post_searches_request_intents_inner.py
 winthrop_client_python/models/bulk_create_game_post_searches_request_posts_inner.py
 winthrop_client_python/models/bulk_create_games201_response.py
 winthrop_client_python/models/bulk_create_games422_response.py
@@ -497,6 +522,8 @@ winthrop_client_python/models/bulk_create_games422_response_errors_value.py
 winthrop_client_python/models/bulk_create_games_request.py
 winthrop_client_python/models/bulk_create_games_request_games_inner.py
 winthrop_client_python/models/bulk_game_post_search_result.py
+winthrop_client_python/models/bulk_update_game_post_searches_request.py
+winthrop_client_python/models/bulk_update_game_post_searches_request_posts_inner.py
 winthrop_client_python/models/cashflow.py
 winthrop_client_python/models/cashflow_collection.py
 winthrop_client_python/models/cashflow_entry.py
@@ -627,6 +654,7 @@ winthrop_client_python/models/financial_search_result.py
 winthrop_client_python/models/financial_search_result_collection.py
 winthrop_client_python/models/foia_follow_up_contact.py
 winthrop_client_python/models/foia_follow_up_gmail_search_hints.py
+winthrop_client_python/models/foia_follow_up_note.py
 winthrop_client_python/models/foia_follow_up_recent_received_item.py
 winthrop_client_python/models/foia_follow_up_report_meta.py
 winthrop_client_python/models/foia_follow_up_report_response.py
@@ -637,6 +665,12 @@ winthrop_client_python/models/foia_label.py
 winthrop_client_python/models/foia_label_collection.py
 winthrop_client_python/models/foia_request.py
 winthrop_client_python/models/foia_request_collection.py
+winthrop_client_python/models/foia_requested_item_status_breakdown_meta.py
+winthrop_client_python/models/foia_requested_item_status_breakdown_response.py
+winthrop_client_python/models/foia_requested_item_status_breakdown_row.py
+winthrop_client_python/models/foia_requested_item_status_transition_row.py
+winthrop_client_python/models/foia_requested_item_status_transitions_meta.py
+winthrop_client_python/models/foia_requested_item_status_transitions_response.py
 winthrop_client_python/models/gad_cohort_error.py
 winthrop_client_python/models/gad_cohort_summary.py
 winthrop_client_python/models/gad_cohort_summary_buyer_filters.py
@@ -665,8 +699,6 @@ winthrop_client_python/models/game_post_collection.py
 winthrop_client_python/models/game_post_contact.py
 winthrop_client_python/models/game_post_detail.py
 winthrop_client_python/models/game_post_detail_created_by.py
-winthrop_client_python/models/game_post_gap_count_collection.py
-winthrop_client_python/models/game_post_gap_count_collection_data_inner.py
 winthrop_client_python/models/game_post_search_result.py
 winthrop_client_python/models/game_post_search_result_collection.py
 winthrop_client_python/models/game_post_search_result_contacts_inner.py
@@ -692,6 +724,9 @@ winthrop_client_python/models/guarantee_benchmark_error.py
 winthrop_client_python/models/guarantee_benchmark_stats.py
 winthrop_client_python/models/guarantee_benchmark_table.py
 winthrop_client_python/models/guarantee_benchmark_tier.py
+winthrop_client_python/models/guarantee_economics.py
+winthrop_client_python/models/guarantee_economics_error.py
+winthrop_client_python/models/guarantee_economics_side.py
 winthrop_client_python/models/health_check_failure.py
 winthrop_client_python/models/health_check_success.py
 winthrop_client_python/models/http_validation_error.py
