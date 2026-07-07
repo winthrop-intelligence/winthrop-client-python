@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **job_url** | **str** |  | [optional] 
 **posted_at** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
+**remote_id** | **int** |  | [optional] 
+**expired** | **bool** | Raw posts.expired flag; matches what q[expired_eq] filters on and is not derived from expired_at. | [optional] 
 **school** | [**JobSchool**](JobSchool.md) |  | [optional] 
 **departments** | [**List[JobDepartment]**](JobDepartment.md) |  | [optional] 
 **sports** | [**List[JobSport]**](JobSport.md) |  | [optional] 
