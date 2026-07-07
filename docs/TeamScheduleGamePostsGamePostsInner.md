@@ -7,6 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **game_post_id** | **int** |  | [optional] 
+**publish_group_id** | **UUID** | Identifies the publish (one \&quot;Post game wanted\&quot; action) this post belongs to. Shared by every post in the same publish so the Games Wanted tab can collapse them into one row; null for legacy posts that predate publish groups. | [optional] 
+**var_date** | **date** | The post&#39;s single open day (the &#x60;date&#x60; column, falling back to &#x60;start_date&#x60;). | [optional] 
 **display_date** | **str** |  | [optional] 
 **game_types** | **str** |  | [optional] 
 **description** | **str** |  | [optional] 

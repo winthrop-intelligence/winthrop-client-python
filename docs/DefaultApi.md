@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
 [**bulk_create_game_post_searches**](DefaultApi.md#bulk_create_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_create | 
 [**bulk_create_games**](DefaultApi.md#bulk_create_games) | **POST** /api/v1/games/bulk | 
+[**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update | 
 [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
 [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
 [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows | 
@@ -143,7 +144,6 @@ Method | HTTP request | Description
 [**get_game_post**](DefaultApi.md#get_game_post) | **GET** /api/v1/game_posts/{gamePostId} | 
 [**get_game_post_search**](DefaultApi.md#get_game_post_search) | **GET** /api/v1/game_post_searches/{gamePostSearchId} | 
 [**get_game_post_search_availabilities**](DefaultApi.md#get_game_post_search_availabilities) | **GET** /api/v1/game_post_searches/availabilities | 
-[**get_game_post_search_gap_counts**](DefaultApi.md#get_game_post_search_gap_counts) | **GET** /api/v1/game_post_searches/gap_counts | 
 [**get_game_post_searches**](DefaultApi.md#get_game_post_searches) | **GET** /api/v1/game_post_searches | 
 [**get_game_posts**](DefaultApi.md#get_game_posts) | **GET** /api/v1/game_posts | 
 [**get_games**](DefaultApi.md#get_games) | **GET** /api/v1/games | 
@@ -616,7 +616,7 @@ Name | Type | Description  | Notes
 # **bulk_create_game_post_searches**
 > BulkGamePostSearchResult bulk_create_game_post_searches(bulk_create_game_post_searches_request)
 
-WINAD-9908: publish the slim-create flow as one GamePost per (open date × deal type) in a single request. Created in one transaction (a bad entry rolls the whole batch back) and a single consolidated alert fires for the batch instead of one email per post. Each post is a single day (end_date is forced nil server-side).
+WINAD-9908: publish the slim-create flow as one GamePost per (open date × deal type) in a single request. Created in one transaction (a bad entry rolls the whole batch back) and a single consolidated alert fires for the batch instead of one email per post. Each post is a single day (end_date is forced nil server-side). WINAD-10067: the slim editor no longer writes grid markers live — it stages availability/pending edits and commits them here. In the same transaction the school's ScheduleIntents are reconciled to `intents` for the `season_start`..`season_end` window, and any Active post in that window whose day is no longer open is removed. WINAD-10093: the feed renders a card's dates from ScheduleIntents, so this also guarantees a non-Pending ScheduleIntent for every posted open day (even when `intents` is omitted) and protects those days from the intent reconciliation.
 
 ### Example
 
@@ -781,6 +781,89 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **422** | Validation error — the whole batch was rolled back |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **bulk_update_game_post_searches**
+> BulkGamePostSearchResult bulk_update_game_post_searches(bulk_update_game_post_searches_request)
+
+WINAD-10067: save an edited Games Wanted card (publish group). Reconciles the card's Active posts to the submitted open days and shared message: a day already on this card is updated (id kept), a day on another card is left alone, a genuinely-new day is created under this publish_group_id, and a day the card no longer lists is deleted. Scoped to the caller's own school + group; fires no alert (an edit must not re-blast the instant Games Wanted email). WINAD-10067: the slim editor stages its grid edits and commits them here too — in the same transaction the school's ScheduleIntents are reconciled to `intents` for the `season_start`..`season_end` window, protecting days another card still owns so an edit never clears a sibling card's markers. WINAD-10093: this card's own posted days are protected too, and a non-Pending ScheduleIntent is guaranteed for each. Dropping a day from the card deletes only its post — the day's ScheduleIntent (availability) stays unless the grid itself cleared it.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.bulk_game_post_search_result import BulkGamePostSearchResult
+from winthrop_client_python.models.bulk_update_game_post_searches_request import BulkUpdateGamePostSearchesRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    bulk_update_game_post_searches_request = winthrop_client_python.BulkUpdateGamePostSearchesRequest() # BulkUpdateGamePostSearchesRequest | 
+
+    try:
+        api_response = api_instance.bulk_update_game_post_searches(bulk_update_game_post_searches_request)
+        print("The response of DefaultApi->bulk_update_game_post_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->bulk_update_game_post_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulk_update_game_post_searches_request** | [**BulkUpdateGamePostSearchesRequest**](BulkUpdateGamePostSearchesRequest.md)|  | 
+
+### Return type
+
+[**BulkGamePostSearchResult**](BulkGamePostSearchResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Publish group reconciled |  -  |
+**422** | Validation error, empty batch, or unknown publish group |  -  |
+**403** | Forbidden — only school accounts can edit game posts |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -2498,7 +2581,7 @@ Name | Type | Description  | Notes
 # **create_requested_item_ri_note**
 > RequestedItemNoteResponse create_requested_item_ri_note(requested_item_id, requested_item_note_input)
 
-Create or append a note attached to a requested item
+Create or replace the note attached to a requested item. When `append` is true, the note text is appended to any existing note instead of replacing it.
 
 ### Example
 
@@ -2535,7 +2618,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
-    requested_item_id = 56 # int | ID of requested item whose note should be created or appended
+    requested_item_id = 56 # int | ID of requested item whose note should be created, replaced, or appended
     requested_item_note_input = winthrop_client_python.RequestedItemNoteInput() # RequestedItemNoteInput | Requested item note content
 
     try:
@@ -2553,7 +2636,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requested_item_id** | **int**| ID of requested item whose note should be created or appended | 
+ **requested_item_id** | **int**| ID of requested item whose note should be created, replaced, or appended | 
  **requested_item_note_input** | [**RequestedItemNoteInput**](RequestedItemNoteInput.md)| Requested item note content | 
 
 ### Return type
@@ -2573,7 +2656,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Requested item note already existed and was returned or appended |  -  |
+**200** | Requested item note already existed and was replaced or appended |  -  |
 **201** | Requested item note was created |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
@@ -4027,7 +4110,7 @@ void (empty response body)
 # **delete_game_post_search**
 > DeleteContactSearch200Response delete_game_post_search(game_post_search_id)
 
-Delete a game post
+Delete a game post. WINAD-10093: removes only this post (the caller scopes a card delete to its publish group). The cell's ScheduleIntent is left intact — the feed and /schedules grid source displayed availability from ScheduleIntents, so a deleted card never shrinks a sibling card's dates.
 
 ### Example
 
@@ -11606,89 +11689,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_game_post_search_gap_counts**
-> GamePostGapCountCollection get_game_post_search_gap_counts(windows, q=q)
-
-Counts-only companion to the game post search for the sidebar schedule-gaps module (WINAD-9904). Accepts the same q filters as the search plus 1-10 date windows, and returns the number of active feed posts overlapping each window — each count equals what applying that window as a date filter to the search would return.
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.game_post_gap_count_collection import GamePostGapCountCollection
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    windows = ['windows_example'] # List[str] | 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges
-    q = None # object | Ransack query (optional)
-
-    try:
-        api_response = api_instance.get_game_post_search_gap_counts(windows, q=q)
-        print("The response of DefaultApi->get_game_post_search_gap_counts:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_game_post_search_gap_counts: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **windows** | [**List[str]**](str.md)| 1-10 inclusive date windows as YYYY-MM-DD..YYYY-MM-DD ranges | 
- **q** | [**object**](.md)| Ransack query | [optional] 
-
-### Return type
-
-[**GamePostGapCountCollection**](GamePostGapCountCollection.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Overlapping-post count per requested window, in request order |  -  |
-**422** | Missing, malformed, inverted, or too many windows |  -  |
-**401** | Unauthorized |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_game_post_searches**
 > GamePostSearchResultCollection get_game_post_searches(page=page, per_page=per_page, q=q, group_by_school=group_by_school, post_details=post_details)
 
@@ -11953,7 +11953,9 @@ List GameContracts compatible with the given sport + school pair, for the
 Edit Game sheet's Contract picker. Matches either direction
 (home=A,away=B or home=B,away=A). Uses
 `GameContract.filtered_for_game`. Capped at 50 rows, ordered by game
-date descending.
+date descending. Rows are permission-filtered to contracts the caller's
+ability can view. Requires sport_id plus at least one of
+home_school_id/away_school_id — broader queries return an empty list.
 
 
 ### Example
@@ -13767,9 +13769,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_schedule_grid_available_schools**
-> ScheduleGridAvailableSchools get_schedule_grid_available_schools(sport_name, target_date=target_date, window_days=window_days, include_no_conflict=include_no_conflict, match_tournaments=match_tournaments, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids)
+> ScheduleGridAvailableSchools get_schedule_grid_available_schools(sport_name, target_date=target_date, window_days=window_days, include_no_conflict=include_no_conflict, match_tournaments=match_tournaments, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, torvik_ranking_tier=torvik_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids)
 
-Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, and distance. Omit target_date for an "Any date" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
+Find schools that are available to play around a target date, with optional filters for window size, deal type, quality tier, NET ranking tier, T-Rank tier, and distance. Omit target_date for an "Any date" market browse (no window). Set match_tournaments=true to match schools advertising a ScheduleTournament (MTE) instead of a deal-type post.
 
 ### Example
 
@@ -13813,12 +13815,13 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     deal_types = ['deal_types_example'] # List[str] | Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) (optional)
     quality_tier = 'power_4,mid_major' # str | Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. `power_4,mid_major`); the listed tiers are OR'd together. Omit the param (or pass every tier) for \"Any\" — no constraint. Unrecognized tiers are ignored. (optional)
     net_ranking_tier = 'top_50' # str | Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. (optional)
+    torvik_ranking_tier = 'top_50' # str | Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. (optional)
     max_distance_miles = 56 # int | Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin. (optional)
     user_school_id = 56 # int | Requesting user's school. Used as the origin for distance filtering and is always excluded from results. (optional)
     exclude_school_ids = [56] # List[int] | Additional school IDs to exclude from results (e.g. schools already on the grid) (optional)
 
     try:
-        api_response = api_instance.get_schedule_grid_available_schools(sport_name, target_date=target_date, window_days=window_days, include_no_conflict=include_no_conflict, match_tournaments=match_tournaments, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids)
+        api_response = api_instance.get_schedule_grid_available_schools(sport_name, target_date=target_date, window_days=window_days, include_no_conflict=include_no_conflict, match_tournaments=match_tournaments, deal_types=deal_types, quality_tier=quality_tier, net_ranking_tier=net_ranking_tier, torvik_ranking_tier=torvik_ranking_tier, max_distance_miles=max_distance_miles, user_school_id=user_school_id, exclude_school_ids=exclude_school_ids)
         print("The response of DefaultApi->get_schedule_grid_available_schools:\n")
         pprint(api_response)
     except Exception as e:
@@ -13840,6 +13843,7 @@ Name | Type | Description  | Notes
  **deal_types** | [**List[str]**](str.md)| Filter by one or more GameType names (e.g. HomeAndHome, GuaranteeOffered) | [optional] 
  **quality_tier** | **str**| Restrict to one or more subdivision tiers (power_4, mid_major, smaller). Accepts a single tier or a comma-separated list for multi-select (e.g. &#x60;power_4,mid_major&#x60;); the listed tiers are OR&#39;d together. Omit the param (or pass every tier) for \&quot;Any\&quot; — no constraint. Unrecognized tiers are ignored. | [optional] 
  **net_ranking_tier** | **str**| Restrict to a NET ranking band (latest non-null NET rank for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a NET rank are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] 
+ **torvik_ranking_tier** | **str**| Restrict to a T-Rank (Bart Torvik) band, mirroring net_ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as &#x60;custom_&lt;min&gt;_&lt;max&gt;&#x60;, where either bound may be blank for an open-ended range (e.g. &#x60;custom_50_&#x60; &#x3D;&gt; 50 and up, &#x60;custom__120&#x60; &#x3D;&gt; up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered. | [optional] 
  **max_distance_miles** | **int**| Maximum distance (miles) from the user&#39;s school. Requires user_school_id to resolve a coordinate origin. | [optional] 
  **user_school_id** | **int**| Requesting user&#39;s school. Used as the origin for distance filtering and is always excluded from results. | [optional] 
  **exclude_school_ids** | [**List[int]**](int.md)| Additional school IDs to exclude from results (e.g. schools already on the grid) | [optional] 
@@ -17321,7 +17325,7 @@ Name | Type | Description  | Notes
 # **get_team_schedule_searches**
 > TeamScheduleSearchResultCollection get_team_schedule_searches(page=page, per_page=per_page, q=q, sport_name=sport_name, exclude_already_scheduled=exclude_already_scheduled, exclude_conference=exclude_conference)
 
-Search team schedules with enriched data including contacts, RPI, returning percentages, and guarantee contract info.
+Search team schedules with enriched data including contacts, RPI, returning percentages, and guarantee contract info. Guarantee contract data (home_contracts/away_contracts) is permission-filtered to contracts the caller's ability can view; for users without guarantee access the home_contracts/away_contracts objects are omitted entirely, and the avg_guarantee_paid_cents/avg_guarantee_received_cents aggregate fields are null unless the caller can view aggregate guarantee amounts.
 
 ### Example
 
