@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**create_news_feeds**](IntercollegiateApi.md#create_news_feeds) | **POST** /wi_jobs/news_feeds | 
 [**get_job_post**](IntercollegiateApi.md#get_job_post) | **GET** /wi_jobs/job_posts/{jobPostId} | 
 [**get_job_post_interest_leads**](IntercollegiateApi.md#get_job_post_interest_leads) | **GET** /wi_jobs/job_post_interest_leads | 
+[**get_job_post_salary_benchmark**](IntercollegiateApi.md#get_job_post_salary_benchmark) | **GET** /wi_jobs/job_posts/salary_benchmark | 
 [**get_job_posts**](IntercollegiateApi.md#get_job_posts) | **GET** /wi_jobs/job_posts | 
 [**get_news_feeds**](IntercollegiateApi.md#get_news_feeds) | **GET** /wi_jobs/news_feeds | 
 
@@ -255,6 +256,108 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Interest leads were found |  -  |
 **400** | Invalid request — a supplied date/submitted_after/submitted_before value could not be parsed. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Insufficient scope |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_job_post_salary_benchmark**
+> JobPostSalaryBenchmark get_job_post_salary_benchmark(role_query=role_query, department=department, sport=sport, conference=conference, division=division, school_query=school_query, peer_set=peer_set, date_range_start=date_range_start, date_range_end=date_range_end, salary_basis=salary_basis, response_format=response_format)
+
+Benchmark recent posted salary ranges for comparable Intercollegiate job posts. This endpoint uses posted job salary fields only and does not use executed WinAD compensation data.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.job_post_salary_benchmark import JobPostSalaryBenchmark
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.IntercollegiateApi(api_client)
+    role_query = 'role_query_example' # str | Natural-language role/title query, such as athletics HR or Assistant AD Marketing. (optional)
+    department = 'department_example' # str | Department filter, such as Human Resources, Marketing, or Business Office. (optional)
+    sport = 'sport_example' # str | Sport filter. (optional)
+    conference = 'conference_example' # str | Conference name or nickname filter, such as SEC. (optional)
+    division = 'division_example' # str | Division or subdivision filter, such as Division I, DI, FBS, or Power 4. (optional)
+    school_query = 'school_query_example' # str | School name, short name, local ID, or WinAD ID filter. (optional)
+    peer_set = ['peer_set_example'] # List[str] | Explicit peer school names or IDs. May be supplied multiple times or comma-separated. (optional)
+    date_range_start = '2013-10-20' # date | Start of the posted_at date window. Defaults to six months ago. (optional)
+    date_range_end = '2013-10-20' # date | End of the posted_at date window. Defaults to today. (optional)
+    salary_basis = posted_range # str | Salary basis requested for the benchmark. (optional) (default to posted_range)
+    response_format = concise # str | Concise returns up to five representative posts; detailed returns up to ten. (optional) (default to concise)
+
+    try:
+        api_response = api_instance.get_job_post_salary_benchmark(role_query=role_query, department=department, sport=sport, conference=conference, division=division, school_query=school_query, peer_set=peer_set, date_range_start=date_range_start, date_range_end=date_range_end, salary_basis=salary_basis, response_format=response_format)
+        print("The response of IntercollegiateApi->get_job_post_salary_benchmark:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling IntercollegiateApi->get_job_post_salary_benchmark: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **role_query** | **str**| Natural-language role/title query, such as athletics HR or Assistant AD Marketing. | [optional] 
+ **department** | **str**| Department filter, such as Human Resources, Marketing, or Business Office. | [optional] 
+ **sport** | **str**| Sport filter. | [optional] 
+ **conference** | **str**| Conference name or nickname filter, such as SEC. | [optional] 
+ **division** | **str**| Division or subdivision filter, such as Division I, DI, FBS, or Power 4. | [optional] 
+ **school_query** | **str**| School name, short name, local ID, or WinAD ID filter. | [optional] 
+ **peer_set** | [**List[str]**](str.md)| Explicit peer school names or IDs. May be supplied multiple times or comma-separated. | [optional] 
+ **date_range_start** | **date**| Start of the posted_at date window. Defaults to six months ago. | [optional] 
+ **date_range_end** | **date**| End of the posted_at date window. Defaults to today. | [optional] 
+ **salary_basis** | **str**| Salary basis requested for the benchmark. | [optional] [default to posted_range]
+ **response_format** | **str**| Concise returns up to five representative posts; detailed returns up to ten. | [optional] [default to concise]
+
+### Return type
+
+[**JobPostSalaryBenchmark**](JobPostSalaryBenchmark.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Posted salary benchmark packet. |  -  |
+**400** | Invalid request parameters. |  -  |
 **401** | Unauthorized |  -  |
 **403** | Insufficient scope |  -  |
 
