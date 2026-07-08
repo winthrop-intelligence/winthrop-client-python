@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**get_conferenceships**](ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships | 
 [**get_foia_details**](ReportingApi.md#get_foia_details) | **GET** /api/v1/reports/foia_details | 
 [**get_foia_follow_up_report**](ReportingApi.md#get_foia_follow_up_report) | **GET** /api/v1/reports/foia_follow_up_report | 
+[**get_foia_request_followup_history**](ReportingApi.md#get_foia_request_followup_history) | **GET** /api/v1/reports/foia_request_followup_history | 
 [**get_foia_requested_item_status_breakdown**](ReportingApi.md#get_foia_requested_item_status_breakdown) | **GET** /api/v1/reports/foia_requested_item_status_breakdown | 
 [**get_foia_requested_item_status_transitions**](ReportingApi.md#get_foia_requested_item_status_transitions) | **GET** /api/v1/reports/foia_requested_item_status_transitions | 
 [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games | 
@@ -434,6 +435,100 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | FOIA follow-up report rows were found |  -  |
+**400** | Invalid report parameters |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_foia_request_followup_history**
+> FoiaRequestFollowUpHistoryResponse get_foia_request_followup_history(foia_request_id=foia_request_id, school_id=school_id, foia_label_id=foia_label_id, changed_at_gte=changed_at_gte, changed_at_lte=changed_at_lte, page=page, per_page=per_page)
+
+Retrieve read-only FOIA request follow-up history sourced from audit versions. Rows are historical change events for follow-up-related request fields, so one FOIA request can appear multiple times. Label and school fields reflect each request's current associations, and only active requests with unarchived labels are included. When no changed_at filters are supplied, the endpoint defaults to the most recent 366 days.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.foia_request_follow_up_history_response import FoiaRequestFollowUpHistoryResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.ReportingApi(api_client)
+    foia_request_id = 56 # int |  (optional)
+    school_id = 56 # int |  (optional)
+    foia_label_id = 56 # int |  (optional)
+    changed_at_gte = 'changed_at_gte_example' # str | Include changes on or after this ISO-8601 date or datetime. Date-only values start at the beginning of the day. Defaults to 366 days before changed_at_lte or now. (optional)
+    changed_at_lte = 'changed_at_lte_example' # str | Include changes on or before this ISO-8601 date or datetime. Date-only values run through the end of the day. Defaults to now; the effective window may span at most 366 days. (optional)
+    page = 1 # int |  (optional) (default to 1)
+    per_page = 40 # int | Values above the maximum are capped. (optional) (default to 40)
+
+    try:
+        api_response = api_instance.get_foia_request_followup_history(foia_request_id=foia_request_id, school_id=school_id, foia_label_id=foia_label_id, changed_at_gte=changed_at_gte, changed_at_lte=changed_at_lte, page=page, per_page=per_page)
+        print("The response of ReportingApi->get_foia_request_followup_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReportingApi->get_foia_request_followup_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_request_id** | **int**|  | [optional] 
+ **school_id** | **int**|  | [optional] 
+ **foia_label_id** | **int**|  | [optional] 
+ **changed_at_gte** | **str**| Include changes on or after this ISO-8601 date or datetime. Date-only values start at the beginning of the day. Defaults to 366 days before changed_at_lte or now. | [optional] 
+ **changed_at_lte** | **str**| Include changes on or before this ISO-8601 date or datetime. Date-only values run through the end of the day. Defaults to now; the effective window may span at most 366 days. | [optional] 
+ **page** | **int**|  | [optional] [default to 1]
+ **per_page** | **int**| Values above the maximum are capped. | [optional] [default to 40]
+
+### Return type
+
+[**FoiaRequestFollowUpHistoryResponse**](FoiaRequestFollowUpHistoryResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | FOIA request follow-up history rows were found |  -  |
 **400** | Invalid report parameters |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
