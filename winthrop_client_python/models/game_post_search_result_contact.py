@@ -37,6 +37,10 @@ class GamePostSearchResultContact(BaseModel):
     """  # noqa: E501
 
     name: Optional[StrictStr] = Field(description="Contact coach's full name.")
+    title: Optional[StrictStr] = Field(
+        default=None,
+        description='The contact coach\'s designation (e.g. "Associate AD"); null when none is on file.',
+    )
     office: GamePostSearchResultContactOffice
     cell: GamePostSearchResultContactCell
     email: GamePostSearchResultContactEmail
@@ -49,6 +53,7 @@ class GamePostSearchResultContact(BaseModel):
     )
     __properties: ClassVar[List[str]] = [
         "name",
+        "title",
         "office",
         "cell",
         "email",
@@ -107,6 +112,11 @@ class GamePostSearchResultContact(BaseModel):
         if self.name is None and "name" in self.model_fields_set:
             _dict["name"] = None
 
+        # set to None if title (nullable) is None
+        # and model_fields_set contains the field
+        if self.title is None and "title" in self.model_fields_set:
+            _dict["title"] = None
+
         # set to None if scheduling_phone (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -137,6 +147,7 @@ class GamePostSearchResultContact(BaseModel):
         _obj = cls.model_validate(
             {
                 "name": obj.get("name"),
+                "title": obj.get("title"),
                 "office": (
                     GamePostSearchResultContactOffice.from_dict(obj["office"])
                     if obj.get("office") is not None

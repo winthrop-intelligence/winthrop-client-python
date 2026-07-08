@@ -7,6 +7,7 @@ WINAD-10053: the school+sport scheduling contact for this card, sourced exactly 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** | Contact coach&#39;s full name. | 
+**title** | **str** | The contact coach&#39;s designation (e.g. \&quot;Associate AD\&quot;); null when none is on file. | [optional] 
 **office** | [**GamePostSearchResultContactOffice**](GamePostSearchResultContactOffice.md) |  | 
 **cell** | [**GamePostSearchResultContactCell**](GamePostSearchResultContactCell.md) |  | 
 **email** | [**GamePostSearchResultContactEmail**](GamePostSearchResultContactEmail.md) |  | 
