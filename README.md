@@ -361,6 +361,7 @@ Class | Method | HTTP request | Description
 *IntercollegiateApi* | [**create_news_feeds**](docs/IntercollegiateApi.md#create_news_feeds) | **POST** /wi_jobs/news_feeds | 
 *IntercollegiateApi* | [**get_job_post**](docs/IntercollegiateApi.md#get_job_post) | **GET** /wi_jobs/job_posts/{jobPostId} | 
 *IntercollegiateApi* | [**get_job_post_interest_leads**](docs/IntercollegiateApi.md#get_job_post_interest_leads) | **GET** /wi_jobs/job_post_interest_leads | 
+*IntercollegiateApi* | [**get_job_post_salary_benchmark**](docs/IntercollegiateApi.md#get_job_post_salary_benchmark) | **GET** /wi_jobs/job_posts/salary_benchmark | 
 *IntercollegiateApi* | [**get_job_posts**](docs/IntercollegiateApi.md#get_job_posts) | **GET** /wi_jobs/job_posts | 
 *IntercollegiateApi* | [**get_news_feeds**](docs/IntercollegiateApi.md#get_news_feeds) | **GET** /wi_jobs/news_feeds | 
 *ReportingApi* | [**get_coach_contract_requests**](docs/ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests | 
@@ -658,6 +659,14 @@ Class | Method | HTTP request | Description
  - [JobPostInterestLeadCandidate](docs/JobPostInterestLeadCandidate.md)
  - [JobPostInterestLeadCollection](docs/JobPostInterestLeadCollection.md)
  - [JobPostInterestLeadJob](docs/JobPostInterestLeadJob.md)
+ - [JobPostSalaryBenchmark](docs/JobPostSalaryBenchmark.md)
+ - [JobPostSalaryBenchmarkPost](docs/JobPostSalaryBenchmarkPost.md)
+ - [JobPostSalaryBenchmarkProvenance](docs/JobPostSalaryBenchmarkProvenance.md)
+ - [JobPostSalaryBenchmarkSalaryBasisNotes](docs/JobPostSalaryBenchmarkSalaryBasisNotes.md)
+ - [JobPostSalaryBenchmarkSample](docs/JobPostSalaryBenchmarkSample.md)
+ - [JobPostSalaryBenchmarkScope](docs/JobPostSalaryBenchmarkScope.md)
+ - [JobPostSalaryBenchmarkScopeDateWindow](docs/JobPostSalaryBenchmarkScopeDateWindow.md)
+ - [JobPostSalarySummary](docs/JobPostSalarySummary.md)
  - [JobSchool](docs/JobSchool.md)
  - [JobSport](docs/JobSport.md)
  - [Link](docs/Link.md)

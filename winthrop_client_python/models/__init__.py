@@ -599,6 +599,28 @@ from winthrop_client_python.models.job_post_interest_lead_collection import (
 from winthrop_client_python.models.job_post_interest_lead_job import (
     JobPostInterestLeadJob,
 )
+from winthrop_client_python.models.job_post_salary_benchmark import (
+    JobPostSalaryBenchmark,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_post import (
+    JobPostSalaryBenchmarkPost,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_provenance import (
+    JobPostSalaryBenchmarkProvenance,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_salary_basis_notes import (
+    JobPostSalaryBenchmarkSalaryBasisNotes,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_sample import (
+    JobPostSalaryBenchmarkSample,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_scope import (
+    JobPostSalaryBenchmarkScope,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_scope_date_window import (
+    JobPostSalaryBenchmarkScopeDateWindow,
+)
+from winthrop_client_python.models.job_post_salary_summary import JobPostSalarySummary
 from winthrop_client_python.models.job_school import JobSchool
 from winthrop_client_python.models.job_sport import JobSport
 from winthrop_client_python.models.link import Link

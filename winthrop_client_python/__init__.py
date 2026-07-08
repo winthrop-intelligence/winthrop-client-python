@@ -306,6 +306,14 @@ __all__ = [
     "JobPostInterestLeadCandidate",
     "JobPostInterestLeadCollection",
     "JobPostInterestLeadJob",
+    "JobPostSalaryBenchmark",
+    "JobPostSalaryBenchmarkPost",
+    "JobPostSalaryBenchmarkProvenance",
+    "JobPostSalaryBenchmarkSalaryBasisNotes",
+    "JobPostSalaryBenchmarkSample",
+    "JobPostSalaryBenchmarkScope",
+    "JobPostSalaryBenchmarkScopeDateWindow",
+    "JobPostSalarySummary",
     "JobSchool",
     "JobSport",
     "Link",
@@ -1249,6 +1257,30 @@ from winthrop_client_python.models.job_post_interest_lead_collection import (
 )
 from winthrop_client_python.models.job_post_interest_lead_job import (
     JobPostInterestLeadJob as JobPostInterestLeadJob,
+)
+from winthrop_client_python.models.job_post_salary_benchmark import (
+    JobPostSalaryBenchmark as JobPostSalaryBenchmark,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_post import (
+    JobPostSalaryBenchmarkPost as JobPostSalaryBenchmarkPost,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_provenance import (
+    JobPostSalaryBenchmarkProvenance as JobPostSalaryBenchmarkProvenance,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_salary_basis_notes import (
+    JobPostSalaryBenchmarkSalaryBasisNotes as JobPostSalaryBenchmarkSalaryBasisNotes,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_sample import (
+    JobPostSalaryBenchmarkSample as JobPostSalaryBenchmarkSample,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_scope import (
+    JobPostSalaryBenchmarkScope as JobPostSalaryBenchmarkScope,
+)
+from winthrop_client_python.models.job_post_salary_benchmark_scope_date_window import (
+    JobPostSalaryBenchmarkScopeDateWindow as JobPostSalaryBenchmarkScopeDateWindow,
+)
+from winthrop_client_python.models.job_post_salary_summary import (
+    JobPostSalarySummary as JobPostSalarySummary,
 )
 from winthrop_client_python.models.job_school import JobSchool as JobSchool
 from winthrop_client_python.models.job_sport import JobSport as JobSport
