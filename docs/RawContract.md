@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **migrated_successfully** | **bool** |  | [optional] 
 **migration_failure_reason** | **str** |  | [optional] 
 **unstract_pdf_text** | **str** |  | [optional] 
-**unstract_responses_details** | **str** |  | [optional] 
+**unstract_responses_details** | **object** |  | [optional] 
 **layout_preserved_pdf_text** | **str** |  | [optional] 
 **can_see_admin_view** | **bool** | Whether the current user can see the admin view for this contract | [optional] 
 **can_download** | **bool** | Whether the current user can download this contract&#39;s PDF | [optional] 
