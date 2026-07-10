@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **game_date_display** | **str** |  | [optional] 
 **opponent_id** | **int** |  | [optional] 
 **opponent_name** | **str** |  | [optional] 
+**opponent_schedule_profile_eligible** | **bool** | WINAD-10097 - whether the opponent has a supported D1/D2 schedule profile; when false the opponent name renders as plain text. | [optional] 
 **location** | **str** |  | [optional] 
 **city** | **str** |  | [optional] 
 **state_name** | **str** |  | [optional] 

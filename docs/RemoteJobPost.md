@@ -1,5 +1,6 @@
 # RemoteJobPost
 
+Full Central Jobs job post snapshot. Required nullable fields must be sent with null when blank.
 
 ## Properties
 
@@ -9,18 +10,18 @@ Name | Type | Description | Notes
 **uid** | **str** |  | [optional] 
 **title** | **str** |  | 
 **link** | **str** |  | 
-**work_type** | **str** |  | [optional] 
-**description_md** | **str** |  | [optional] 
-**salary_summary** | **str** |  | [optional] 
+**work_type** | **str** |  | 
+**description_md** | **str** |  | 
+**salary_summary** | **str** |  | 
 **school_id** | **int** | Remote school WinAD ID | 
-**expired** | **bool** |  | [optional] 
-**created_at** | **datetime** |  | [optional] 
+**expired** | **bool** |  | 
+**created_at** | **datetime** |  | 
 **updated_at** | **datetime** |  | 
-**annual_salary** | **float** |  | [optional] 
-**min_salary** | **float** |  | [optional] 
-**max_salary** | **float** |  | [optional] 
-**pay_period** | **str** |  | [optional] 
-**required_years_of_experience** | **int** |  | [optional] 
+**annual_salary** | **float** |  | 
+**min_salary** | **float** |  | 
+**max_salary** | **float** |  | 
+**pay_period** | **str** |  | 
+**required_years_of_experience** | **int** |  | 
 
 ## Example
 

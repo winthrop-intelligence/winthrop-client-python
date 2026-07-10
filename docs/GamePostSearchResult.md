@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **publish_group_id** | **UUID** | Identifies the publish (one \&quot;Post game wanted\&quot; action) this card represents. Shared by every post created in the same publish, so the grouped feed renders one card per publish. Null for legacy posts. | [optional] 
 **school_id** | **int** |  | [optional] 
 **school_name** | **str** |  | [optional] 
+**schedule_profile_eligible** | **bool** | WINAD-10097 - whether the posting school has a supported D1/D2 schedule profile. When false the card omits its \&quot;View school profile\&quot; / school-name links to /schedules/:sport/:school_id. | [optional] 
 **sport_id** | **int** |  | [optional] 
 **sport_name** | **str** |  | [optional] 
 **start_date** | **date** |  | [optional] 
