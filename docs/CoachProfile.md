@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **hometown_city** | **str** |  | [optional] 
 **hometown_state** | **str** |  | [optional] 
 **alma_mater_name** | **str** |  | [optional] 
-**alma_mater_year** | **int** |  | [optional] 
+**alma_mater_year** | **str** |  | [optional] 
 **twitter_handle** | **str** |  | [optional] 
 **twitter_verified** | **bool** |  | 
 **linkedin** | **str** |  | [optional] 

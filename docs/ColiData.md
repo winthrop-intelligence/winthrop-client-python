@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**adjusted_salary_cents** | **int** |  | 
+**adjusted_salary_cents** | **float** |  | 
 **city** | **str** |  | 
 
 ## Example

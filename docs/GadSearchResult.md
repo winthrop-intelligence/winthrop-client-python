@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **cancelled** | **bool** |  | [optional] 
 **season_year** | **int** |  | [optional] 
 **game_date** | **date** |  | [optional] 
-**game_date_tbd** | **bool** |  | [optional] 
+**game_date_tbd** | **str** |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
 **belongs_to_series** | **bool** |  | [optional] 
 **can_link_home_school** | **bool** |  | [optional] 

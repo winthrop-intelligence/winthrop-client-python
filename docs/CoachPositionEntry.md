@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **school_id** | **int** |  | 
 **position_sport** | **str** |  | 
 **record** | **str** |  | [optional] 
-**rpi** | **str** |  | [optional] 
-**net_rank** | **str** |  | [optional] 
+**rpi** | **int** |  | [optional] 
+**net_rank** | **int** |  | [optional] 
 **ap_rank** | **str** |  | [optional] 
 **apr_asr** | **str** |  | [optional] 
 **coach_apr** | **float** |  | [optional] 
