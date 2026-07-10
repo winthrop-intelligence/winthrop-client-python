@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **deal_type** | **str** | Representative deal type of the added availabilities; null when none applies | [optional] 
 **deal_type_count** | **int** | Count of added dates of that deal type; only set for buy/sell | [optional] 
 **updated_at** | **datetime** | The school&#39;s most-recent schedule-update timestamp (sort key) | 
+**schedule_profile_eligible** | **bool** | WINAD-10097 - whether the school has a supported D1/D2 schedule profile. When false the frontend renders the school name as plain text instead of linking to /schedules/:sport/:school_id. | 
 
 ## Example
 

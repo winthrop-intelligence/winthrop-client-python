@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **primary_contact_scheduling_phone** | **str** | Primary contact&#39;s user-controlled scheduling phone (textable); null when unset | [optional] 
 **primary_contact_scheduling_phone_dial** | **str** | Dial-ready form of the primary contact&#39;s scheduling phone for tel links | [optional] 
 **rank** | **int** | Latest sport-appropriate ranking shown next to the school name (NET for basketball, AP for football, RPI otherwise). Always present on a grid school; the value is null when the school has no ranked season for the sport. | [optional] 
+**schedule_profile_eligible** | **bool** | WINAD-10097 - whether the school has a supported D1/D2 schedule profile. When false the column header renders the school name as plain text instead of a link to /schedules/:sport/:school_id. | [optional] 
 
 ## Example
 

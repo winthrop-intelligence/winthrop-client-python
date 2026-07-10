@@ -16823,7 +16823,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Team schedule detail |  -  |
 **401** | Unauthorized |  -  |
-**404** | Not Found |  -  |
+**404** | Not Found, or (WINAD-10097) the school is not D1/D2 and has no supported schedule profile. In the latter case the response body is the JSON object {\&quot;error\&quot;:\&quot;schedule_profile_unsupported\&quot;}. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
