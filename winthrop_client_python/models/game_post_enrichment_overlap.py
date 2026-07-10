@@ -18,16 +18,16 @@ import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.game_post_search_result_overlap_line_ups_inner import (
-    GamePostSearchResultOverlapLineUpsInner,
+from winthrop_client_python.models.game_post_enrichment_overlap_line_ups_inner import (
+    GamePostEnrichmentOverlapLineUpsInner,
 )
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class GamePostSearchResultOverlap(BaseModel):
+class GamePostEnrichmentOverlap(BaseModel):
     """
-    WINAD-10052/10053: availability overlap between the requesting viewer's own school and this posting school for the sport, computed by AvailabilityOverlapMatcher. Both sides are read from schedule_intents, so every lined-up date is a subset of the availability the card shows. When present and the viewer has no school (e.g. a super-admin or conference account) or no dates line up, total is 0 with an empty line_ups array (the no-overlap state, never an error). WINAD: OMITTED when q[defer_enrichment] is set (the dashboard feed) — deferred to POST /game_post_searches/enrichment so the feed cards paint first. Present on the inline path (the show page's post_details response).
+    Availability overlap between the requesting viewer's own school and this posting school for the sport (AvailabilityOverlapMatcher). Same shape as GamePostSearchResult.overlap: when the viewer has no school or no dates line up, total is 0 with an empty line_ups array (the no-overlap state).
     """  # noqa: E501
 
     total: StrictInt = Field(description="Number of dates that line up on both sides.")
@@ -38,7 +38,7 @@ class GamePostSearchResultOverlap(BaseModel):
         default=None,
         description='Ready-made pill summary, e.g. "3 dates line up · 2 strong". Null when there is no overlap (total 0).',
     )
-    line_ups: List[GamePostSearchResultOverlapLineUpsInner] = Field(
+    line_ups: List[GamePostEnrichmentOverlapLineUpsInner] = Field(
         description="One entry per lined-up date, strong (guarantee, home-and-home, any_format, mte, neutral_site) before possible, each tier ordered by ascending date."
     )
     __properties: ClassVar[List[str]] = [
@@ -65,7 +65,7 @@ class GamePostSearchResultOverlap(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GamePostSearchResultOverlap from a JSON string"""
+        """Create an instance of GamePostEnrichmentOverlap from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -101,7 +101,7 @@ class GamePostSearchResultOverlap(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GamePostSearchResultOverlap from a dict"""
+        """Create an instance of GamePostEnrichmentOverlap from a dict"""
         if obj is None:
             return None
 
@@ -115,7 +115,7 @@ class GamePostSearchResultOverlap(BaseModel):
                 "rollup_text": obj.get("rollup_text"),
                 "line_ups": (
                     [
-                        GamePostSearchResultOverlapLineUpsInner.from_dict(_item)
+                        GamePostEnrichmentOverlapLineUpsInner.from_dict(_item)
                         for _item in obj["line_ups"]
                     ]
                     if obj.get("line_ups") is not None

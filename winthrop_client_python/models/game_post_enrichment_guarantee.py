@@ -22,9 +22,9 @@ from typing import Optional, Set
 from typing_extensions import Self
 
 
-class GamePostSearchResultGuarantee(BaseModel):
+class GamePostEnrichmentGuarantee(BaseModel):
     """
-    WINAD-10054: the school's 3-yr median guarantee economics (from SchoolGuaranteeEconomicsBatchQuery) — what it typically receives when it travels and pays when it hosts, in cents. Medians/estimates, labelled \"3-yr median\" in the UI (rounded, e.g. $90K), never a hard quote. Each side is null when the school has no qualifying history; the whole block is null when it has neither, or when the viewer lacks the guarantee- aggregate grant — the UI hides the chip rather than showing $0. WINAD: OMITTED (key absent, not null) when q[defer_enrichment] is set (the dashboard feed) — deferred to POST /game_post_searches/enrichment. Present on the inline path (the show page's post_details response).
+    The school's 3-yr median guarantee economics (SchoolGuaranteeEconomicsBatchQuery) in cents — same shape as GamePostSearchResult.guarantee. Each side is null when the school has no qualifying history; the whole block is null when it has neither, or when the viewer lacks the guarantee-aggregate grant.
     """  # noqa: E501
 
     host_median_cents: Optional[StrictInt] = Field(
@@ -65,7 +65,7 @@ class GamePostSearchResultGuarantee(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of GamePostSearchResultGuarantee from a JSON string"""
+        """Create an instance of GamePostEnrichmentGuarantee from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -121,7 +121,7 @@ class GamePostSearchResultGuarantee(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of GamePostSearchResultGuarantee from a dict"""
+        """Create an instance of GamePostEnrichmentGuarantee from a dict"""
         if obj is None:
             return None
 

@@ -197,6 +197,7 @@ __all__ = [
     "DossierReportResponse",
     "EditAccountUser",
     "EditAccountUserResponse",
+    "EnrichGamePostSearchesRequest",
     "FilterPositionType",
     "Filters",
     "FinancialQc",
@@ -252,6 +253,12 @@ __all__ = [
     "GamePostContact",
     "GamePostDetail",
     "GamePostDetailCreatedBy",
+    "GamePostEnrichment",
+    "GamePostEnrichmentCollection",
+    "GamePostEnrichmentGuarantee",
+    "GamePostEnrichmentOverlap",
+    "GamePostEnrichmentOverlapLineUpsInner",
+    "GamePostEnrichmentScheduleIntentsInner",
     "GamePostSearchResult",
     "GamePostSearchResultCollection",
     "GamePostSearchResultContact",
@@ -965,6 +972,9 @@ from winthrop_client_python.models.edit_account_user import (
 from winthrop_client_python.models.edit_account_user_response import (
     EditAccountUserResponse as EditAccountUserResponse,
 )
+from winthrop_client_python.models.enrich_game_post_searches_request import (
+    EnrichGamePostSearchesRequest as EnrichGamePostSearchesRequest,
+)
 from winthrop_client_python.models.filter_position_type import (
     FilterPositionType as FilterPositionType,
 )
@@ -1113,6 +1123,24 @@ from winthrop_client_python.models.game_post_detail import (
 )
 from winthrop_client_python.models.game_post_detail_created_by import (
     GamePostDetailCreatedBy as GamePostDetailCreatedBy,
+)
+from winthrop_client_python.models.game_post_enrichment import (
+    GamePostEnrichment as GamePostEnrichment,
+)
+from winthrop_client_python.models.game_post_enrichment_collection import (
+    GamePostEnrichmentCollection as GamePostEnrichmentCollection,
+)
+from winthrop_client_python.models.game_post_enrichment_guarantee import (
+    GamePostEnrichmentGuarantee as GamePostEnrichmentGuarantee,
+)
+from winthrop_client_python.models.game_post_enrichment_overlap import (
+    GamePostEnrichmentOverlap as GamePostEnrichmentOverlap,
+)
+from winthrop_client_python.models.game_post_enrichment_overlap_line_ups_inner import (
+    GamePostEnrichmentOverlapLineUpsInner as GamePostEnrichmentOverlapLineUpsInner,
+)
+from winthrop_client_python.models.game_post_enrichment_schedule_intents_inner import (
+    GamePostEnrichmentScheduleIntentsInner as GamePostEnrichmentScheduleIntentsInner,
 )
 from winthrop_client_python.models.game_post_search_result import (
     GamePostSearchResult as GamePostSearchResult,

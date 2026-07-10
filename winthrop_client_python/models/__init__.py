@@ -362,6 +362,9 @@ from winthrop_client_python.models.edit_account_user import EditAccountUser
 from winthrop_client_python.models.edit_account_user_response import (
     EditAccountUserResponse,
 )
+from winthrop_client_python.models.enrich_game_post_searches_request import (
+    EnrichGamePostSearchesRequest,
+)
 from winthrop_client_python.models.filter_position_type import FilterPositionType
 from winthrop_client_python.models.filters import Filters
 from winthrop_client_python.models.financial_qc import FinancialQc
@@ -474,6 +477,22 @@ from winthrop_client_python.models.game_post_contact import GamePostContact
 from winthrop_client_python.models.game_post_detail import GamePostDetail
 from winthrop_client_python.models.game_post_detail_created_by import (
     GamePostDetailCreatedBy,
+)
+from winthrop_client_python.models.game_post_enrichment import GamePostEnrichment
+from winthrop_client_python.models.game_post_enrichment_collection import (
+    GamePostEnrichmentCollection,
+)
+from winthrop_client_python.models.game_post_enrichment_guarantee import (
+    GamePostEnrichmentGuarantee,
+)
+from winthrop_client_python.models.game_post_enrichment_overlap import (
+    GamePostEnrichmentOverlap,
+)
+from winthrop_client_python.models.game_post_enrichment_overlap_line_ups_inner import (
+    GamePostEnrichmentOverlapLineUpsInner,
+)
+from winthrop_client_python.models.game_post_enrichment_schedule_intents_inner import (
+    GamePostEnrichmentScheduleIntentsInner,
 )
 from winthrop_client_python.models.game_post_search_result import GamePostSearchResult
 from winthrop_client_python.models.game_post_search_result_collection import (
