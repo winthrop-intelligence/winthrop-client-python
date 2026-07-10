@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **last_net_rank** | **int** |  | [optional] 
 **avg_rpi** | **int** |  | [optional] 
 **avg_net_rank** | **int** |  | [optional] 
+**schedule_profile_eligible** | **bool** | WINAD-10097 - whether the school has a supported D1/D2 schedule profile. When false the row renders as plain text instead of a link. | [optional] 
 
 ## Example
 
