@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **var_date** | **date** |  | 
 **game_types** | **List[str]** | Raw game-type names for this post (drive deal-type chip colors). | 
 **status** | **str** | Present only with post_details&#x3D;true. | [optional] 
+**publish_group_id** | **UUID** | The publish (one \&quot;Post game wanted\&quot; action) this post belongs to; a group delete on the show page scopes to it. Present only with post_details&#x3D;true. | [optional] 
 **start_date** | **date** | Present only with post_details&#x3D;true. | [optional] 
 **end_date** | **date** | Present only with post_details&#x3D;true. | [optional] 
 **description** | **str** | Present only with post_details&#x3D;true. | [optional] 
