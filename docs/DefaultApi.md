@@ -173,6 +173,7 @@ Method | HTTP request | Description
 [**get_schedule_grid_available_schools**](DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools | 
 [**get_schedule_grid_completed**](DefaultApi.md#get_schedule_grid_completed) | **GET** /api/v1/schedule_grid/{sport_name}/completed | 
 [**get_schedule_updates**](DefaultApi.md#get_schedule_updates) | **GET** /api/v1/schedule_updates | 
+[**get_scheduling_contacts**](DefaultApi.md#get_scheduling_contacts) | **GET** /api/v1/scheduling_contacts | 
 [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
@@ -14124,6 +14125,87 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Sport not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_scheduling_contacts**
+> SchedulingContactsResponse get_scheduling_contacts(sport=sport)
+
+WINAD-10119 — the Scheduling Contacts directory. One primary scheduling contact per school for the given sport, enriched with distance from the viewer's school and open Games Wanted post count. verified/verified_at are stubbed until the admin capability lands (WINAD-10122).
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.scheduling_contacts_response import SchedulingContactsResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    sport = 'sport_example' # str | Scheduling sport name, e.g. BASKETBALL_M. (optional)
+
+    try:
+        api_response = api_instance.get_scheduling_contacts(sport=sport)
+        print("The response of DefaultApi->get_scheduling_contacts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_scheduling_contacts: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sport** | **str**| Scheduling sport name, e.g. BASKETBALL_M. | [optional] 
+
+### Return type
+
+[**SchedulingContactsResponse**](SchedulingContactsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Scheduling contacts directory |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

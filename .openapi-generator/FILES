@@ -342,6 +342,11 @@ docs/ScheduleIntentDetail.md
 docs/ScheduleTournamentDetail.md
 docs/ScheduleUpdate.md
 docs/ScheduleUpdateCollection.md
+docs/SchedulingContact.md
+docs/SchedulingContactConference.md
+docs/SchedulingContactPerson.md
+docs/SchedulingContactSchool.md
+docs/SchedulingContactsResponse.md
 docs/School.md
 docs/SchoolCollection.md
 docs/SchoolContractEntry.md
@@ -467,6 +472,11 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_scheduling_contact.py
+test/test_scheduling_contact_conference.py
+test/test_scheduling_contact_person.py
+test/test_scheduling_contact_school.py
+test/test_scheduling_contacts_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -817,6 +827,11 @@ winthrop_client_python/models/schedule_intent_detail.py
 winthrop_client_python/models/schedule_tournament_detail.py
 winthrop_client_python/models/schedule_update.py
 winthrop_client_python/models/schedule_update_collection.py
+winthrop_client_python/models/scheduling_contact.py
+winthrop_client_python/models/scheduling_contact_conference.py
+winthrop_client_python/models/scheduling_contact_person.py
+winthrop_client_python/models/scheduling_contact_school.py
+winthrop_client_python/models/scheduling_contacts_response.py
 winthrop_client_python/models/school.py
 winthrop_client_python/models/school_collection.py
 winthrop_client_python/models/school_contract_entry.py
