@@ -32,6 +32,7 @@ class GetFilterOptions200Response(BaseModel):
     """  # noqa: E501
 
     years: Optional[List[StrictInt]] = None
+    financial_years: Optional[List[StrictInt]] = None
     current_year: Optional[StrictInt] = None
     current_financials_year: Optional[StrictInt] = None
     divisions: Optional[List[IdName]] = None
@@ -43,6 +44,7 @@ class GetFilterOptions200Response(BaseModel):
     compensation_types: Optional[List[StrictStr]] = None
     __properties: ClassVar[List[str]] = [
         "years",
+        "financial_years",
         "current_year",
         "current_financials_year",
         "divisions",
@@ -133,6 +135,7 @@ class GetFilterOptions200Response(BaseModel):
         _obj = cls.model_validate(
             {
                 "years": obj.get("years"),
+                "financial_years": obj.get("financial_years"),
                 "current_year": obj.get("current_year"),
                 "current_financials_year": obj.get("current_financials_year"),
                 "divisions": (
