@@ -91,6 +91,13 @@ docs/ComparisonSection.md
 docs/ComparisonSectionCoachesInner.md
 docs/Compensation.md
 docs/CompensationCollection.md
+docs/CompensationComparisonCohortStats.md
+docs/CompensationComparisonCompVisibility.md
+docs/CompensationComparisonResolvedScope.md
+docs/CompensationComparisonResolvedScopeConference.md
+docs/CompensationComparisonResolvedScopeSchoolsInner.md
+docs/CompensationComparisonResult.md
+docs/CompensationComparisonRow.md
 docs/CompensationRow.md
 docs/Conference.md
 docs/ConferenceAdminCompensationResponse.md
@@ -233,6 +240,7 @@ docs/GamePostSearchResultScheduleIntentsInner.md
 docs/GameType.md
 docs/GeoRegion.md
 docs/GetAccountUserActivation200Response.md
+docs/GetCompensationComparisons400Response.md
 docs/GetFavorites200ResponseInner.md
 docs/GetFavoritesCategories200ResponseInner.md
 docs/GetFilterOptions200Response.md
@@ -352,7 +360,6 @@ docs/SchoolFinancialDetailSport.md
 docs/SchoolFinancialGroup.md
 docs/SchoolFinancialSummary.md
 docs/SchoolGameContractsResponse.md
-docs/SchoolGameContractsResponseSchool.md
 docs/SchoolGroupShow.md
 docs/SchoolInfo.md
 docs/SchoolNoComp.md
@@ -467,6 +474,14 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_compensation_comparison_cohort_stats.py
+test/test_compensation_comparison_comp_visibility.py
+test/test_compensation_comparison_resolved_scope.py
+test/test_compensation_comparison_resolved_scope_conference.py
+test/test_compensation_comparison_resolved_scope_schools_inner.py
+test/test_compensation_comparison_result.py
+test/test_compensation_comparison_row.py
+test/test_get_compensation_comparisons400_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -571,6 +586,13 @@ winthrop_client_python/models/comparison_section.py
 winthrop_client_python/models/comparison_section_coaches_inner.py
 winthrop_client_python/models/compensation.py
 winthrop_client_python/models/compensation_collection.py
+winthrop_client_python/models/compensation_comparison_cohort_stats.py
+winthrop_client_python/models/compensation_comparison_comp_visibility.py
+winthrop_client_python/models/compensation_comparison_resolved_scope.py
+winthrop_client_python/models/compensation_comparison_resolved_scope_conference.py
+winthrop_client_python/models/compensation_comparison_resolved_scope_schools_inner.py
+winthrop_client_python/models/compensation_comparison_result.py
+winthrop_client_python/models/compensation_comparison_row.py
 winthrop_client_python/models/compensation_row.py
 winthrop_client_python/models/conference.py
 winthrop_client_python/models/conference_admin_compensation_response.py
@@ -711,6 +733,7 @@ winthrop_client_python/models/game_post_search_result_schedule_intents_inner.py
 winthrop_client_python/models/game_type.py
 winthrop_client_python/models/geo_region.py
 winthrop_client_python/models/get_account_user_activation200_response.py
+winthrop_client_python/models/get_compensation_comparisons400_response.py
 winthrop_client_python/models/get_favorites200_response_inner.py
 winthrop_client_python/models/get_favorites_categories200_response_inner.py
 winthrop_client_python/models/get_filter_options200_response.py
@@ -827,7 +850,6 @@ winthrop_client_python/models/school_financial_detail_sport.py
 winthrop_client_python/models/school_financial_group.py
 winthrop_client_python/models/school_financial_summary.py
 winthrop_client_python/models/school_game_contracts_response.py
-winthrop_client_python/models/school_game_contracts_response_school.py
 winthrop_client_python/models/school_group_show.py
 winthrop_client_python/models/school_info.py
 winthrop_client_python/models/school_no_comp.py
