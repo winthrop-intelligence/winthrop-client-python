@@ -64,6 +64,7 @@ Method | HTTP request | Description
 [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
 [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} | 
 [**download_raw_contract_file**](DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download | 
+[**enrich_game_post_searches**](DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment | 
 [**export_revenue_searches**](DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export | 
 [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
 [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
@@ -165,6 +166,7 @@ Method | HTTP request | Description
 [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} | 
 [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts | 
 [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
+[**get_requested_item_review_context**](DefaultApi.md#get_requested_item_review_context) | **GET** /api/v1/requested_items/{requestedItemId}/review_context | 
 [**get_requested_item_ri_note**](DefaultApi.md#get_requested_item_ri_note) | **GET** /api/v1/requested_items/{requestedItemId}/ri_note | 
 [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 [**get_revenue_search**](DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} | 
@@ -5139,6 +5141,87 @@ Name | Type | Description  | Notes
 **200** | Watermarked PDF attachment |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **enrich_game_post_searches**
+> GamePostEnrichmentCollection enrich_game_post_searches(enrich_game_post_searches_request)
+
+Async companion to GET /game_post_searches. The dashboard feed sends q[defer_enrichment]=true so its cards paint first without the slow per-card computes; this returns those deferred blocks — availability overlap, guarantee economics, and the schedule-intent "open windows" — for the loaded page's [school_id, sport_id] pairs, which the client merges onto each card. POST (not GET) because ~35 pairs are sent as a JSON body. Runs neither the search nor the grouping — just the two heavy per-card computes plus the poster intents.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.enrich_game_post_searches_request import EnrichGamePostSearchesRequest
+from winthrop_client_python.models.game_post_enrichment_collection import GamePostEnrichmentCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    enrich_game_post_searches_request = winthrop_client_python.EnrichGamePostSearchesRequest() # EnrichGamePostSearchesRequest | 
+
+    try:
+        api_response = api_instance.enrich_game_post_searches(enrich_game_post_searches_request)
+        print("The response of DefaultApi->enrich_game_post_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->enrich_game_post_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **enrich_game_post_searches_request** | [**EnrichGamePostSearchesRequest**](EnrichGamePostSearchesRequest.md)|  | 
+
+### Return type
+
+[**GamePostEnrichmentCollection**](GamePostEnrichmentCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The deferred per-card blocks, one row per requested pair. |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11693,7 +11776,7 @@ Name | Type | Description  | Notes
 # **get_game_post_searches**
 > GamePostSearchResultCollection get_game_post_searches(page=page, per_page=per_page, q=q, group_by_school=group_by_school, post_details=post_details)
 
-Search game posts with enriched data including school info, location, RPI, etc.
+Search game posts with enriched data including school info, location, RPI, etc. WINAD: pass q[defer_enrichment]=true (the dashboard feed) to omit the slow per-card blocks — overlap, guarantee, and schedule_intents — from each row so the cards paint first; POST /game_post_searches/enrichment then returns those blocks for the loaded pairs. The inline path (e.g. post_details) leaves the flag off and keeps them on each row.
 
 ### Example
 
@@ -13426,6 +13509,91 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Requested item was found |  -  |
 **401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_requested_item_review_context**
+> RequestedItemReviewContext get_requested_item_review_context(requested_item_id, if_none_match=if_none_match)
+
+Retrieve the canonical review context for a requested item, including its display title and type, current note text, parent FOIA request with the legacy admin URL, and any single unambiguous existing document the caller is authorized to see.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.requested_item_review_context import RequestedItemReviewContext
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | ID of requested item whose review context should be retrieved
+    if_none_match = 'if_none_match_example' # str | ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload. (optional)
+
+    try:
+        api_response = api_instance.get_requested_item_review_context(requested_item_id, if_none_match=if_none_match)
+        print("The response of DefaultApi->get_requested_item_review_context:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_requested_item_review_context: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**| ID of requested item whose review context should be retrieved | 
+ **if_none_match** | **str**| ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload. | [optional] 
+
+### Return type
+
+[**RequestedItemReviewContext**](RequestedItemReviewContext.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Requested item review context was found |  * ETag - Entity tag for the current review context; send it back via If-None-Match for conditional requests. <br>  |
+**304** | Not Modified — the review context matching the ETag supplied in If-None-Match is still current; no body is returned. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
