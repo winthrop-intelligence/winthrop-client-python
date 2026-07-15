@@ -259,6 +259,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_raw_contract**](docs/DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} | 
 *DefaultApi* | [**get_raw_contracts**](docs/DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts | 
 *DefaultApi* | [**get_requested_item**](docs/DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
+*DefaultApi* | [**get_requested_item_review_context**](docs/DefaultApi.md#get_requested_item_review_context) | **GET** /api/v1/requested_items/{requestedItemId}/review_context | 
 *DefaultApi* | [**get_requested_item_ri_note**](docs/DefaultApi.md#get_requested_item_ri_note) | **GET** /api/v1/requested_items/{requestedItemId}/ri_note | 
 *DefaultApi* | [**get_requested_items**](docs/DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 *DefaultApi* | [**get_revenue_search**](docs/DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} | 
@@ -724,6 +725,10 @@ Class | Method | HTTP request | Description
  - [RequestedItemNoteInput](docs/RequestedItemNoteInput.md)
  - [RequestedItemNoteInputRiNote](docs/RequestedItemNoteInputRiNote.md)
  - [RequestedItemNoteResponse](docs/RequestedItemNoteResponse.md)
+ - [RequestedItemReviewContext](docs/RequestedItemReviewContext.md)
+ - [RequestedItemReviewContextDocument](docs/RequestedItemReviewContextDocument.md)
+ - [RequestedItemReviewContextFoiaRequest](docs/RequestedItemReviewContextFoiaRequest.md)
+ - [RequestedItemReviewContextRequestedItem](docs/RequestedItemReviewContextRequestedItem.md)
  - [RoleOption](docs/RoleOption.md)
  - [RunningJob](docs/RunningJob.md)
  - [ScheduleGridAvailableSchoolPost](docs/ScheduleGridAvailableSchoolPost.md)

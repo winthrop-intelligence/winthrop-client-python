@@ -367,6 +367,10 @@ __all__ = [
     "RequestedItemNoteInput",
     "RequestedItemNoteInputRiNote",
     "RequestedItemNoteResponse",
+    "RequestedItemReviewContext",
+    "RequestedItemReviewContextDocument",
+    "RequestedItemReviewContextFoiaRequest",
+    "RequestedItemReviewContextRequestedItem",
     "RoleOption",
     "RunningJob",
     "ScheduleGridAvailableSchoolPost",
@@ -1419,6 +1423,18 @@ from winthrop_client_python.models.requested_item_note_input_ri_note import (
 )
 from winthrop_client_python.models.requested_item_note_response import (
     RequestedItemNoteResponse as RequestedItemNoteResponse,
+)
+from winthrop_client_python.models.requested_item_review_context import (
+    RequestedItemReviewContext as RequestedItemReviewContext,
+)
+from winthrop_client_python.models.requested_item_review_context_document import (
+    RequestedItemReviewContextDocument as RequestedItemReviewContextDocument,
+)
+from winthrop_client_python.models.requested_item_review_context_foia_request import (
+    RequestedItemReviewContextFoiaRequest as RequestedItemReviewContextFoiaRequest,
+)
+from winthrop_client_python.models.requested_item_review_context_requested_item import (
+    RequestedItemReviewContextRequestedItem as RequestedItemReviewContextRequestedItem,
 )
 from winthrop_client_python.models.role_option import RoleOption as RoleOption
 from winthrop_client_python.models.running_job import RunningJob as RunningJob

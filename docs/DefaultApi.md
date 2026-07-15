@@ -166,6 +166,7 @@ Method | HTTP request | Description
 [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} | 
 [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts | 
 [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
+[**get_requested_item_review_context**](DefaultApi.md#get_requested_item_review_context) | **GET** /api/v1/requested_items/{requestedItemId}/review_context | 
 [**get_requested_item_ri_note**](DefaultApi.md#get_requested_item_ri_note) | **GET** /api/v1/requested_items/{requestedItemId}/ri_note | 
 [**get_requested_items**](DefaultApi.md#get_requested_items) | **GET** /api/v1/requested_items | 
 [**get_revenue_search**](DefaultApi.md#get_revenue_search) | **GET** /api/v1/revenue_searches/{revenueSearchId} | 
@@ -13509,6 +13510,91 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Requested item was found |  -  |
 **401** | Unauthorized |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_requested_item_review_context**
+> RequestedItemReviewContext get_requested_item_review_context(requested_item_id, if_none_match=if_none_match)
+
+Retrieve the canonical review context for a requested item, including its display title and type, current note text, parent FOIA request with the legacy admin URL, and any single unambiguous existing document the caller is authorized to see.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.requested_item_review_context import RequestedItemReviewContext
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | ID of requested item whose review context should be retrieved
+    if_none_match = 'if_none_match_example' # str | ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload. (optional)
+
+    try:
+        api_response = api_instance.get_requested_item_review_context(requested_item_id, if_none_match=if_none_match)
+        print("The response of DefaultApi->get_requested_item_review_context:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_requested_item_review_context: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**| ID of requested item whose review context should be retrieved | 
+ **if_none_match** | **str**| ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload. | [optional] 
+
+### Return type
+
+[**RequestedItemReviewContext**](RequestedItemReviewContext.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Requested item review context was found |  * ETag - Entity tag for the current review context; send it back via If-None-Match for conditional requests. <br>  |
+**304** | Not Modified — the review context matching the ETag supplied in If-None-Match is still current; no body is returned. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

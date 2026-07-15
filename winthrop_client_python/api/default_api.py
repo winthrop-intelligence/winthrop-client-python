@@ -297,6 +297,9 @@ from winthrop_client_python.models.requested_item_note_input import (
 from winthrop_client_python.models.requested_item_note_response import (
     RequestedItemNoteResponse,
 )
+from winthrop_client_python.models.requested_item_review_context import (
+    RequestedItemReviewContext,
+)
 from winthrop_client_python.models.schedule_grid_available_schools import (
     ScheduleGridAvailableSchools,
 )
@@ -43775,6 +43778,305 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="GET",
             resource_path="/api/v1/requested_items/{requestedItemId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_requested_item_review_context(
+        self,
+        requested_item_id: Annotated[
+            StrictInt,
+            Field(
+                description="ID of requested item whose review context should be retrieved"
+            ),
+        ],
+        if_none_match: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RequestedItemReviewContext:
+        """get_requested_item_review_context
+
+        Retrieve the canonical review context for a requested item, including its display title and type, current note text, parent FOIA request with the legacy admin URL, and any single unambiguous existing document the caller is authorized to see.
+
+        :param requested_item_id: ID of requested item whose review context should be retrieved (required)
+        :type requested_item_id: int
+        :param if_none_match: ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload.
+        :type if_none_match: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_requested_item_review_context_serialize(
+            requested_item_id=requested_item_id,
+            if_none_match=if_none_match,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "RequestedItemReviewContext",
+            "304": None,
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_requested_item_review_context_with_http_info(
+        self,
+        requested_item_id: Annotated[
+            StrictInt,
+            Field(
+                description="ID of requested item whose review context should be retrieved"
+            ),
+        ],
+        if_none_match: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[RequestedItemReviewContext]:
+        """get_requested_item_review_context
+
+        Retrieve the canonical review context for a requested item, including its display title and type, current note text, parent FOIA request with the legacy admin URL, and any single unambiguous existing document the caller is authorized to see.
+
+        :param requested_item_id: ID of requested item whose review context should be retrieved (required)
+        :type requested_item_id: int
+        :param if_none_match: ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload.
+        :type if_none_match: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_requested_item_review_context_serialize(
+            requested_item_id=requested_item_id,
+            if_none_match=if_none_match,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "RequestedItemReviewContext",
+            "304": None,
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_requested_item_review_context_without_preload_content(
+        self,
+        requested_item_id: Annotated[
+            StrictInt,
+            Field(
+                description="ID of requested item whose review context should be retrieved"
+            ),
+        ],
+        if_none_match: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_requested_item_review_context
+
+        Retrieve the canonical review context for a requested item, including its display title and type, current note text, parent FOIA request with the legacy admin URL, and any single unambiguous existing document the caller is authorized to see.
+
+        :param requested_item_id: ID of requested item whose review context should be retrieved (required)
+        :type requested_item_id: int
+        :param if_none_match: ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload.
+        :type if_none_match: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_requested_item_review_context_serialize(
+            requested_item_id=requested_item_id,
+            if_none_match=if_none_match,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "RequestedItemReviewContext",
+            "304": None,
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_requested_item_review_context_serialize(
+        self,
+        requested_item_id,
+        if_none_match,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if requested_item_id is not None:
+            _path_params["requestedItemId"] = requested_item_id
+        # process the query parameters
+        # process the header parameters
+        if if_none_match is not None:
+            _header_params["If-None-Match"] = if_none_match
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/requested_items/{requestedItemId}/review_context",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

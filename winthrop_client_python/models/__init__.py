@@ -710,6 +710,18 @@ from winthrop_client_python.models.requested_item_note_input_ri_note import (
 from winthrop_client_python.models.requested_item_note_response import (
     RequestedItemNoteResponse,
 )
+from winthrop_client_python.models.requested_item_review_context import (
+    RequestedItemReviewContext,
+)
+from winthrop_client_python.models.requested_item_review_context_document import (
+    RequestedItemReviewContextDocument,
+)
+from winthrop_client_python.models.requested_item_review_context_foia_request import (
+    RequestedItemReviewContextFoiaRequest,
+)
+from winthrop_client_python.models.requested_item_review_context_requested_item import (
+    RequestedItemReviewContextRequestedItem,
+)
 from winthrop_client_python.models.role_option import RoleOption
 from winthrop_client_python.models.running_job import RunningJob
 from winthrop_client_python.models.schedule_grid_available_school_post import (

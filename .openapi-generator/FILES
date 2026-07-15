@@ -341,6 +341,10 @@ docs/RequestedItemNote.md
 docs/RequestedItemNoteInput.md
 docs/RequestedItemNoteInputRiNote.md
 docs/RequestedItemNoteResponse.md
+docs/RequestedItemReviewContext.md
+docs/RequestedItemReviewContextDocument.md
+docs/RequestedItemReviewContextFoiaRequest.md
+docs/RequestedItemReviewContextRequestedItem.md
 docs/RoleOption.md
 docs/RunningJob.md
 docs/ScheduleGridAvailableSchoolPost.md
@@ -486,6 +490,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_requested_item_review_context.py
+test/test_requested_item_review_context_document.py
+test/test_requested_item_review_context_foia_request.py
+test/test_requested_item_review_context_requested_item.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -835,6 +843,10 @@ winthrop_client_python/models/requested_item_note.py
 winthrop_client_python/models/requested_item_note_input.py
 winthrop_client_python/models/requested_item_note_input_ri_note.py
 winthrop_client_python/models/requested_item_note_response.py
+winthrop_client_python/models/requested_item_review_context.py
+winthrop_client_python/models/requested_item_review_context_document.py
+winthrop_client_python/models/requested_item_review_context_foia_request.py
+winthrop_client_python/models/requested_item_review_context_requested_item.py
 winthrop_client_python/models/role_option.py
 winthrop_client_python/models/running_job.py
 winthrop_client_python/models/schedule_grid_available_school_post.py
