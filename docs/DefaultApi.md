@@ -64,6 +64,7 @@ Method | HTTP request | Description
 [**delete_team_schedule_note**](DefaultApi.md#delete_team_schedule_note) | **DELETE** /api/v1/team_schedule_notes/{fil_team_id} | 
 [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} | 
 [**download_raw_contract_file**](DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download | 
+[**enrich_game_post_searches**](DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment | 
 [**export_revenue_searches**](DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export | 
 [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
 [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
@@ -173,6 +174,7 @@ Method | HTTP request | Description
 [**get_schedule_grid_available_schools**](DefaultApi.md#get_schedule_grid_available_schools) | **GET** /api/v1/schedule_grid/{sport_name}/available_schools | 
 [**get_schedule_grid_completed**](DefaultApi.md#get_schedule_grid_completed) | **GET** /api/v1/schedule_grid/{sport_name}/completed | 
 [**get_schedule_updates**](DefaultApi.md#get_schedule_updates) | **GET** /api/v1/schedule_updates | 
+[**get_scheduling_contacts**](DefaultApi.md#get_scheduling_contacts) | **GET** /api/v1/scheduling_contacts | 
 [**get_school**](DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 [**get_school_alternate_names**](DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
@@ -5139,6 +5141,87 @@ Name | Type | Description  | Notes
 **200** | Watermarked PDF attachment |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **enrich_game_post_searches**
+> GamePostEnrichmentCollection enrich_game_post_searches(enrich_game_post_searches_request)
+
+Async companion to GET /game_post_searches. The dashboard feed sends q[defer_enrichment]=true so its cards paint first without the slow per-card computes; this returns those deferred blocks — availability overlap, guarantee economics, and the schedule-intent "open windows" — for the loaded page's [school_id, sport_id] pairs, which the client merges onto each card. POST (not GET) because ~35 pairs are sent as a JSON body. Runs neither the search nor the grouping — just the two heavy per-card computes plus the poster intents.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.enrich_game_post_searches_request import EnrichGamePostSearchesRequest
+from winthrop_client_python.models.game_post_enrichment_collection import GamePostEnrichmentCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    enrich_game_post_searches_request = winthrop_client_python.EnrichGamePostSearchesRequest() # EnrichGamePostSearchesRequest | 
+
+    try:
+        api_response = api_instance.enrich_game_post_searches(enrich_game_post_searches_request)
+        print("The response of DefaultApi->enrich_game_post_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->enrich_game_post_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **enrich_game_post_searches_request** | [**EnrichGamePostSearchesRequest**](EnrichGamePostSearchesRequest.md)|  | 
+
+### Return type
+
+[**GamePostEnrichmentCollection**](GamePostEnrichmentCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The deferred per-card blocks, one row per requested pair. |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11693,7 +11776,7 @@ Name | Type | Description  | Notes
 # **get_game_post_searches**
 > GamePostSearchResultCollection get_game_post_searches(page=page, per_page=per_page, q=q, group_by_school=group_by_school, post_details=post_details)
 
-Search game posts with enriched data including school info, location, RPI, etc.
+Search game posts with enriched data including school info, location, RPI, etc. WINAD: pass q[defer_enrichment]=true (the dashboard feed) to omit the slow per-card blocks — overlap, guarantee, and schedule_intents — from each row so the cards paint first; POST /game_post_searches/enrichment then returns those blocks for the loaded pairs. The inline path (e.g. post_details) leaves the flag off and keeps them on each row.
 
 ### Example
 
@@ -14124,6 +14207,87 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Sport not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_scheduling_contacts**
+> SchedulingContactsResponse get_scheduling_contacts(sport=sport)
+
+WINAD-10119 — the Scheduling Contacts directory. One primary scheduling contact per school for the given sport, enriched with distance from the viewer's school and open Games Wanted post count. verified/verified_at reflect the admin-set verification on the contact (WINAD-10122).
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.scheduling_contacts_response import SchedulingContactsResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    sport = 'sport_example' # str | Scheduling sport name, e.g. BASKETBALL_M. (optional)
+
+    try:
+        api_response = api_instance.get_scheduling_contacts(sport=sport)
+        print("The response of DefaultApi->get_scheduling_contacts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_scheduling_contacts: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sport** | **str**| Scheduling sport name, e.g. BASKETBALL_M. | [optional] 
+
+### Return type
+
+[**SchedulingContactsResponse**](SchedulingContactsResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Scheduling contacts directory |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
