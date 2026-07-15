@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **title** | **str** |  | 
 **coach_id** | **int** |  | 
+**photo_url** | **str** | Cropped coach avatar path; null when the coach has no image. | 
 
 ## Example
 

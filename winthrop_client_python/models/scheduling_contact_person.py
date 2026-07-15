@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,7 +30,10 @@ class SchedulingContactPerson(BaseModel):
     name: Optional[StrictStr]
     title: Optional[StrictStr]
     coach_id: Optional[StrictInt]
-    __properties: ClassVar[List[str]] = ["name", "title", "coach_id"]
+    photo_url: Optional[StrictStr] = Field(
+        description="Cropped coach avatar path; null when the coach has no image."
+    )
+    __properties: ClassVar[List[str]] = ["name", "title", "coach_id", "photo_url"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -84,6 +87,11 @@ class SchedulingContactPerson(BaseModel):
         if self.coach_id is None and "coach_id" in self.model_fields_set:
             _dict["coach_id"] = None
 
+        # set to None if photo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.photo_url is None and "photo_url" in self.model_fields_set:
+            _dict["photo_url"] = None
+
         return _dict
 
     @classmethod
@@ -100,6 +108,7 @@ class SchedulingContactPerson(BaseModel):
                 "name": obj.get("name"),
                 "title": obj.get("title"),
                 "coach_id": obj.get("coach_id"),
+                "photo_url": obj.get("photo_url"),
             }
         )
         return _obj
