@@ -18,8 +18,8 @@ import json
 
 from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.school_game_contracts_response_school import (
-    SchoolGameContractsResponseSchool,
+from winthrop_client_python.models.compensation_comparison_resolved_scope_schools_inner import (
+    CompensationComparisonResolvedScopeSchoolsInner,
 )
 from winthrop_client_python.models.school_sport_section import SchoolSportSection
 from typing import Optional, Set
@@ -31,7 +31,7 @@ class SchoolGameContractsResponse(BaseModel):
     SchoolGameContractsResponse
     """  # noqa: E501
 
-    school: Optional[SchoolGameContractsResponseSchool] = None
+    school: Optional[CompensationComparisonResolvedScopeSchoolsInner] = None
     sports: Optional[List[SchoolSportSection]] = None
     __properties: ClassVar[List[str]] = ["school", "sports"]
 
@@ -96,7 +96,9 @@ class SchoolGameContractsResponse(BaseModel):
         _obj = cls.model_validate(
             {
                 "school": (
-                    SchoolGameContractsResponseSchool.from_dict(obj["school"])
+                    CompensationComparisonResolvedScopeSchoolsInner.from_dict(
+                        obj["school"]
+                    )
                     if obj.get("school") is not None
                     else None
                 ),

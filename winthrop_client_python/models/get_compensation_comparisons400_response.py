@@ -16,29 +16,40 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class SchedulingContactSchool(BaseModel):
+class GetCompensationComparisons400Response(BaseModel):
     """
-    SchedulingContactSchool
+    GetCompensationComparisons400Response
     """  # noqa: E501
 
-    id: StrictInt
-    name: StrictStr
-    schedule_profile_eligible: StrictBool
-    logo_url: Optional[StrictStr] = Field(
-        description="Cropped school logo URL (small variant); null when the school has no logo — the card/dialog falls back to initials."
-    )
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "schedule_profile_eligible",
-        "logo_url",
-    ]
+    errors: Optional[List[StrictStr]] = None
+    error_type: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["errors", "error_type"]
+
+    @field_validator("error_type")
+    def error_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(
+            [
+                "missing_scope",
+                "missing_role",
+                "invalid_param",
+                "scope_too_large",
+                "sport_not_permitted",
+            ]
+        ):
+            raise ValueError(
+                "must be one of enum values ('missing_scope', 'missing_role', 'invalid_param', 'scope_too_large', 'sport_not_permitted')"
+            )
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -57,7 +68,7 @@ class SchedulingContactSchool(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SchedulingContactSchool from a JSON string"""
+        """Create an instance of GetCompensationComparisons400Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,16 +88,11 @@ class SchedulingContactSchool(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if logo_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.logo_url is None and "logo_url" in self.model_fields_set:
-            _dict["logo_url"] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SchedulingContactSchool from a dict"""
+        """Create an instance of GetCompensationComparisons400Response from a dict"""
         if obj is None:
             return None
 
@@ -94,11 +100,6 @@ class SchedulingContactSchool(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate(
-            {
-                "id": obj.get("id"),
-                "name": obj.get("name"),
-                "schedule_profile_eligible": obj.get("schedule_profile_eligible"),
-                "logo_url": obj.get("logo_url"),
-            }
+            {"errors": obj.get("errors"), "error_type": obj.get("error_type")}
         )
         return _obj

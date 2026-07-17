@@ -92,6 +92,7 @@ Method | HTTP request | Description
 [**get_coach_searches**](DefaultApi.md#get_coach_searches) | **GET** /api/v1/coach_searches | 
 [**get_coaches**](DefaultApi.md#get_coaches) | **GET** /api/v1/coaches | 
 [**get_compensation**](DefaultApi.md#get_compensation) | **GET** /api/v1/compensations/{compensationId} | 
+[**get_compensation_comparisons**](DefaultApi.md#get_compensation_comparisons) | **GET** /api/v1/compensation_comparisons | 
 [**get_compensations**](DefaultApi.md#get_compensations) | **GET** /api/v1/compensations | 
 [**get_conference**](DefaultApi.md#get_conference) | **GET** /api/v1/conferences/{conferenceId} | 
 [**get_conference_admin_compensation**](DefaultApi.md#get_conference_admin_compensation) | **GET** /api/v1/conferences/{conferenceId}/admin_compensation | 
@@ -7434,6 +7435,107 @@ Name | Type | Description  | Notes
 **200** | Compensation was found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_compensation_comparisons**
+> CompensationComparisonResult get_compensation_comparisons(school_ids=school_ids, conference_id=conference_id, sport_id=sport_id, position_type_id=position_type_id, title_include=title_include, title_exclude=title_exclude, year=year, include_missing=include_missing, per_school_limit=per_school_limit, max_rows=max_rows)
+
+Cross-school coach/administrator role compensation comparison (MCP-174). Expands the requested schools and/or conference, matches the queried role by position type and/or title terms, classifies each candidate's raw title (clean_match / assistant / chief_of_staff / hybrid_coach_gm / related_role), applies per-row compensation permission gating, and returns cohort stats with explicit denominator counts. One row per school/match candidate; schools with no match surface as no_role_match or school_not_accessible rows when include_missing is true.
+Known limitation: administrator records, and coach records when no sport_id is given, are matched against WinAD views that collapse to one record per person per year, so a person holding multiple same-year positions may surface under a different position than the queried role (a response warning flags the no-sport case). Sport-scoped coach matching is per-position and unaffected.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.compensation_comparison_result import CompensationComparisonResult
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_ids = [56] # List[int] | Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type=scope_too_large. (optional)
+    conference_id = 56 # int | Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type=scope_too_large. (optional)
+    sport_id = 56 # int | Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead. (optional)
+    position_type_id = 56 # int | Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[]. (optional)
+    title_include = ['title_include_example'] # List[str] | Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param. (optional)
+    title_exclude = ['title_exclude_example'] # List[str] | Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param. (optional)
+    year = 56 # int | Compensation season year; defaults to the current season year. (optional)
+    include_missing = True # bool | Emit a synthesized no_role_match / school_not_accessible row per school with no candidates. (optional) (default to True)
+    per_school_limit = 3 # int | Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected. (optional) (default to 3)
+    max_rows = 60 # int | Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected. (optional) (default to 60)
+
+    try:
+        api_response = api_instance.get_compensation_comparisons(school_ids=school_ids, conference_id=conference_id, sport_id=sport_id, position_type_id=position_type_id, title_include=title_include, title_exclude=title_exclude, year=year, include_missing=include_missing, per_school_limit=per_school_limit, max_rows=max_rows)
+        print("The response of DefaultApi->get_compensation_comparisons:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_compensation_comparisons: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_ids** | [**List[int]**](int.md)| Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type&#x3D;scope_too_large. | [optional] 
+ **conference_id** | **int**| Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type&#x3D;scope_too_large. | [optional] 
+ **sport_id** | **int**| Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead. | [optional] 
+ **position_type_id** | **int**| Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[]. | [optional] 
+ **title_include** | [**List[str]**](str.md)| Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type&#x3D;invalid_param. | [optional] 
+ **title_exclude** | [**List[str]**](str.md)| Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type&#x3D;invalid_param. | [optional] 
+ **year** | **int**| Compensation season year; defaults to the current season year. | [optional] 
+ **include_missing** | **bool**| Emit a synthesized no_role_match / school_not_accessible row per school with no candidates. | [optional] [default to True]
+ **per_school_limit** | **int**| Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected. | [optional] [default to 3]
+ **max_rows** | **int**| Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected. | [optional] [default to 60]
+
+### Return type
+
+[**CompensationComparisonResult**](CompensationComparisonResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Comparison rows plus cohort stats with explicit denominators |  -  |
+**400** | Invalid request (missing_scope, missing_role, invalid_param, scope_too_large, sport_not_permitted) |  -  |
+**401** | Unauthorized |  -  |
+**403** | Authenticated token lacks the winad_read OAuth scope |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

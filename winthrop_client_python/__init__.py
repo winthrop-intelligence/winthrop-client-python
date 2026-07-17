@@ -122,6 +122,13 @@ __all__ = [
     "ComparisonSectionCoachesInner",
     "Compensation",
     "CompensationCollection",
+    "CompensationComparisonCohortStats",
+    "CompensationComparisonCompVisibility",
+    "CompensationComparisonResolvedScope",
+    "CompensationComparisonResolvedScopeConference",
+    "CompensationComparisonResolvedScopeSchoolsInner",
+    "CompensationComparisonResult",
+    "CompensationComparisonRow",
     "CompensationRow",
     "Conference",
     "ConferenceAdminCompensationResponse",
@@ -276,6 +283,7 @@ __all__ = [
     "GameType",
     "GeoRegion",
     "GetAccountUserActivation200Response",
+    "GetCompensationComparisons400Response",
     "GetFavorites200ResponseInner",
     "GetFavoritesCategories200ResponseInner",
     "GetFilterOptions200Response",
@@ -401,7 +409,6 @@ __all__ = [
     "SchoolFinancialGroup",
     "SchoolFinancialSummary",
     "SchoolGameContractsResponse",
-    "SchoolGameContractsResponseSchool",
     "SchoolGroupShow",
     "SchoolInfo",
     "SchoolNoComp",
@@ -772,6 +779,27 @@ from winthrop_client_python.models.comparison_section_coaches_inner import (
 from winthrop_client_python.models.compensation import Compensation as Compensation
 from winthrop_client_python.models.compensation_collection import (
     CompensationCollection as CompensationCollection,
+)
+from winthrop_client_python.models.compensation_comparison_cohort_stats import (
+    CompensationComparisonCohortStats as CompensationComparisonCohortStats,
+)
+from winthrop_client_python.models.compensation_comparison_comp_visibility import (
+    CompensationComparisonCompVisibility as CompensationComparisonCompVisibility,
+)
+from winthrop_client_python.models.compensation_comparison_resolved_scope import (
+    CompensationComparisonResolvedScope as CompensationComparisonResolvedScope,
+)
+from winthrop_client_python.models.compensation_comparison_resolved_scope_conference import (
+    CompensationComparisonResolvedScopeConference as CompensationComparisonResolvedScopeConference,
+)
+from winthrop_client_python.models.compensation_comparison_resolved_scope_schools_inner import (
+    CompensationComparisonResolvedScopeSchoolsInner as CompensationComparisonResolvedScopeSchoolsInner,
+)
+from winthrop_client_python.models.compensation_comparison_result import (
+    CompensationComparisonResult as CompensationComparisonResult,
+)
+from winthrop_client_python.models.compensation_comparison_row import (
+    CompensationComparisonRow as CompensationComparisonRow,
 )
 from winthrop_client_python.models.compensation_row import (
     CompensationRow as CompensationRow,
@@ -1199,6 +1227,9 @@ from winthrop_client_python.models.geo_region import GeoRegion as GeoRegion
 from winthrop_client_python.models.get_account_user_activation200_response import (
     GetAccountUserActivation200Response as GetAccountUserActivation200Response,
 )
+from winthrop_client_python.models.get_compensation_comparisons400_response import (
+    GetCompensationComparisons400Response as GetCompensationComparisons400Response,
+)
 from winthrop_client_python.models.get_favorites200_response_inner import (
     GetFavorites200ResponseInner as GetFavorites200ResponseInner,
 )
@@ -1519,9 +1550,6 @@ from winthrop_client_python.models.school_financial_summary import (
 )
 from winthrop_client_python.models.school_game_contracts_response import (
     SchoolGameContractsResponse as SchoolGameContractsResponse,
-)
-from winthrop_client_python.models.school_game_contracts_response_school import (
-    SchoolGameContractsResponseSchool as SchoolGameContractsResponseSchool,
 )
 from winthrop_client_python.models.school_group_show import (
     SchoolGroupShow as SchoolGroupShow,

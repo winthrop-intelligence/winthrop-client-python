@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **contacts** | [**List[SchedulingContact]**](SchedulingContact.md) |  | 
 **viewer_school_name** | **str** | The viewer&#39;s own school name, or null for non-school accounts. | 
+**viewer_school_logo_url** | **str** | The viewer&#39;s own school logo URL (small variant) — the scheduling Message dialog sender badge; null when no school or no logo. | 
 **viewer_has_location** | **bool** | Whether the viewer&#39;s school has coordinates (Near me availability). | 
 
 ## Example

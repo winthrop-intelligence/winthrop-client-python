@@ -16,29 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class SchedulingContactSchool(BaseModel):
+class CompensationComparisonResolvedScopeSchoolsInner(BaseModel):
     """
-    SchedulingContactSchool
+    CompensationComparisonResolvedScopeSchoolsInner
     """  # noqa: E501
 
-    id: StrictInt
-    name: StrictStr
-    schedule_profile_eligible: StrictBool
-    logo_url: Optional[StrictStr] = Field(
-        description="Cropped school logo URL (small variant); null when the school has no logo — the card/dialog falls back to initials."
-    )
-    __properties: ClassVar[List[str]] = [
-        "id",
-        "name",
-        "schedule_profile_eligible",
-        "logo_url",
-    ]
+    id: Optional[StrictInt] = None
+    name: Optional[StrictStr] = None
+    short_name: Optional[StrictStr] = None
+    __properties: ClassVar[List[str]] = ["id", "name", "short_name"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -57,7 +49,7 @@ class SchedulingContactSchool(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of SchedulingContactSchool from a JSON string"""
+        """Create an instance of CompensationComparisonResolvedScopeSchoolsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -77,16 +69,16 @@ class SchedulingContactSchool(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if logo_url (nullable) is None
+        # set to None if short_name (nullable) is None
         # and model_fields_set contains the field
-        if self.logo_url is None and "logo_url" in self.model_fields_set:
-            _dict["logo_url"] = None
+        if self.short_name is None and "short_name" in self.model_fields_set:
+            _dict["short_name"] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of SchedulingContactSchool from a dict"""
+        """Create an instance of CompensationComparisonResolvedScopeSchoolsInner from a dict"""
         if obj is None:
             return None
 
@@ -97,8 +89,7 @@ class SchedulingContactSchool(BaseModel):
             {
                 "id": obj.get("id"),
                 "name": obj.get("name"),
-                "schedule_profile_eligible": obj.get("schedule_profile_eligible"),
-                "logo_url": obj.get("logo_url"),
+                "short_name": obj.get("short_name"),
             }
         )
         return _obj

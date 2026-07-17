@@ -86,6 +86,9 @@ from winthrop_client_python.models.coach_videos_tab import CoachVideosTab
 from winthrop_client_python.models.coli_data import ColiData
 from winthrop_client_python.models.compensation import Compensation
 from winthrop_client_python.models.compensation_collection import CompensationCollection
+from winthrop_client_python.models.compensation_comparison_result import (
+    CompensationComparisonResult,
+)
 from winthrop_client_python.models.conference import Conference
 from winthrop_client_python.models.conference_admin_compensation_response import (
     ConferenceAdminCompensationResponse,
@@ -23632,6 +23635,596 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="GET",
             resource_path="/api/v1/compensations/{compensationId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_compensation_comparisons(
+        self,
+        school_ids: Annotated[
+            Optional[Annotated[List[StrictInt], Field(max_length=40)]],
+            Field(
+                description="Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type=scope_too_large."
+            ),
+        ] = None,
+        conference_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type=scope_too_large."
+            ),
+        ] = None,
+        sport_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead."
+            ),
+        ] = None,
+        position_type_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[]."
+            ),
+        ] = None,
+        title_include: Annotated[
+            Optional[
+                Annotated[
+                    List[Annotated[str, Field(strict=True, max_length=60)]],
+                    Field(max_length=10),
+                ]
+            ],
+            Field(
+                description="Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param."
+            ),
+        ] = None,
+        title_exclude: Annotated[
+            Optional[
+                Annotated[
+                    List[Annotated[str, Field(strict=True, max_length=60)]],
+                    Field(max_length=10),
+                ]
+            ],
+            Field(
+                description="Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param."
+            ),
+        ] = None,
+        year: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Compensation season year; defaults to the current season year."
+            ),
+        ] = None,
+        include_missing: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Emit a synthesized no_role_match / school_not_accessible row per school with no candidates."
+            ),
+        ] = None,
+        per_school_limit: Annotated[
+            Optional[Annotated[int, Field(le=10, strict=True, ge=1)]],
+            Field(
+                description="Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected."
+            ),
+        ] = None,
+        max_rows: Annotated[
+            Optional[Annotated[int, Field(le=200, strict=True, ge=1)]],
+            Field(
+                description="Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> CompensationComparisonResult:
+        """get_compensation_comparisons
+
+        Cross-school coach/administrator role compensation comparison (MCP-174). Expands the requested schools and/or conference, matches the queried role by position type and/or title terms, classifies each candidate's raw title (clean_match / assistant / chief_of_staff / hybrid_coach_gm / related_role), applies per-row compensation permission gating, and returns cohort stats with explicit denominator counts. One row per school/match candidate; schools with no match surface as no_role_match or school_not_accessible rows when include_missing is true. Known limitation: administrator records, and coach records when no sport_id is given, are matched against WinAD views that collapse to one record per person per year, so a person holding multiple same-year positions may surface under a different position than the queried role (a response warning flags the no-sport case). Sport-scoped coach matching is per-position and unaffected.
+
+        :param school_ids: Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type=scope_too_large.
+        :type school_ids: List[int]
+        :param conference_id: Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type=scope_too_large.
+        :type conference_id: int
+        :param sport_id: Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead.
+        :type sport_id: int
+        :param position_type_id: Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[].
+        :type position_type_id: int
+        :param title_include: Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param.
+        :type title_include: List[str]
+        :param title_exclude: Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param.
+        :type title_exclude: List[str]
+        :param year: Compensation season year; defaults to the current season year.
+        :type year: int
+        :param include_missing: Emit a synthesized no_role_match / school_not_accessible row per school with no candidates.
+        :type include_missing: bool
+        :param per_school_limit: Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected.
+        :type per_school_limit: int
+        :param max_rows: Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected.
+        :type max_rows: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_compensation_comparisons_serialize(
+            school_ids=school_ids,
+            conference_id=conference_id,
+            sport_id=sport_id,
+            position_type_id=position_type_id,
+            title_include=title_include,
+            title_exclude=title_exclude,
+            year=year,
+            include_missing=include_missing,
+            per_school_limit=per_school_limit,
+            max_rows=max_rows,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "CompensationComparisonResult",
+            "400": "GetCompensationComparisons400Response",
+            "401": None,
+            "403": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_compensation_comparisons_with_http_info(
+        self,
+        school_ids: Annotated[
+            Optional[Annotated[List[StrictInt], Field(max_length=40)]],
+            Field(
+                description="Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type=scope_too_large."
+            ),
+        ] = None,
+        conference_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type=scope_too_large."
+            ),
+        ] = None,
+        sport_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead."
+            ),
+        ] = None,
+        position_type_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[]."
+            ),
+        ] = None,
+        title_include: Annotated[
+            Optional[
+                Annotated[
+                    List[Annotated[str, Field(strict=True, max_length=60)]],
+                    Field(max_length=10),
+                ]
+            ],
+            Field(
+                description="Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param."
+            ),
+        ] = None,
+        title_exclude: Annotated[
+            Optional[
+                Annotated[
+                    List[Annotated[str, Field(strict=True, max_length=60)]],
+                    Field(max_length=10),
+                ]
+            ],
+            Field(
+                description="Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param."
+            ),
+        ] = None,
+        year: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Compensation season year; defaults to the current season year."
+            ),
+        ] = None,
+        include_missing: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Emit a synthesized no_role_match / school_not_accessible row per school with no candidates."
+            ),
+        ] = None,
+        per_school_limit: Annotated[
+            Optional[Annotated[int, Field(le=10, strict=True, ge=1)]],
+            Field(
+                description="Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected."
+            ),
+        ] = None,
+        max_rows: Annotated[
+            Optional[Annotated[int, Field(le=200, strict=True, ge=1)]],
+            Field(
+                description="Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[CompensationComparisonResult]:
+        """get_compensation_comparisons
+
+        Cross-school coach/administrator role compensation comparison (MCP-174). Expands the requested schools and/or conference, matches the queried role by position type and/or title terms, classifies each candidate's raw title (clean_match / assistant / chief_of_staff / hybrid_coach_gm / related_role), applies per-row compensation permission gating, and returns cohort stats with explicit denominator counts. One row per school/match candidate; schools with no match surface as no_role_match or school_not_accessible rows when include_missing is true. Known limitation: administrator records, and coach records when no sport_id is given, are matched against WinAD views that collapse to one record per person per year, so a person holding multiple same-year positions may surface under a different position than the queried role (a response warning flags the no-sport case). Sport-scoped coach matching is per-position and unaffected.
+
+        :param school_ids: Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type=scope_too_large.
+        :type school_ids: List[int]
+        :param conference_id: Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type=scope_too_large.
+        :type conference_id: int
+        :param sport_id: Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead.
+        :type sport_id: int
+        :param position_type_id: Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[].
+        :type position_type_id: int
+        :param title_include: Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param.
+        :type title_include: List[str]
+        :param title_exclude: Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param.
+        :type title_exclude: List[str]
+        :param year: Compensation season year; defaults to the current season year.
+        :type year: int
+        :param include_missing: Emit a synthesized no_role_match / school_not_accessible row per school with no candidates.
+        :type include_missing: bool
+        :param per_school_limit: Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected.
+        :type per_school_limit: int
+        :param max_rows: Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected.
+        :type max_rows: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_compensation_comparisons_serialize(
+            school_ids=school_ids,
+            conference_id=conference_id,
+            sport_id=sport_id,
+            position_type_id=position_type_id,
+            title_include=title_include,
+            title_exclude=title_exclude,
+            year=year,
+            include_missing=include_missing,
+            per_school_limit=per_school_limit,
+            max_rows=max_rows,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "CompensationComparisonResult",
+            "400": "GetCompensationComparisons400Response",
+            "401": None,
+            "403": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_compensation_comparisons_without_preload_content(
+        self,
+        school_ids: Annotated[
+            Optional[Annotated[List[StrictInt], Field(max_length=40)]],
+            Field(
+                description="Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type=scope_too_large."
+            ),
+        ] = None,
+        conference_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type=scope_too_large."
+            ),
+        ] = None,
+        sport_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead."
+            ),
+        ] = None,
+        position_type_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[]."
+            ),
+        ] = None,
+        title_include: Annotated[
+            Optional[
+                Annotated[
+                    List[Annotated[str, Field(strict=True, max_length=60)]],
+                    Field(max_length=10),
+                ]
+            ],
+            Field(
+                description="Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param."
+            ),
+        ] = None,
+        title_exclude: Annotated[
+            Optional[
+                Annotated[
+                    List[Annotated[str, Field(strict=True, max_length=60)]],
+                    Field(max_length=10),
+                ]
+            ],
+            Field(
+                description="Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param."
+            ),
+        ] = None,
+        year: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Compensation season year; defaults to the current season year."
+            ),
+        ] = None,
+        include_missing: Annotated[
+            Optional[StrictBool],
+            Field(
+                description="Emit a synthesized no_role_match / school_not_accessible row per school with no candidates."
+            ),
+        ] = None,
+        per_school_limit: Annotated[
+            Optional[Annotated[int, Field(le=10, strict=True, ge=1)]],
+            Field(
+                description="Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected."
+            ),
+        ] = None,
+        max_rows: Annotated[
+            Optional[Annotated[int, Field(le=200, strict=True, ge=1)]],
+            Field(
+                description="Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_compensation_comparisons
+
+        Cross-school coach/administrator role compensation comparison (MCP-174). Expands the requested schools and/or conference, matches the queried role by position type and/or title terms, classifies each candidate's raw title (clean_match / assistant / chief_of_staff / hybrid_coach_gm / related_role), applies per-row compensation permission gating, and returns cohort stats with explicit denominator counts. One row per school/match candidate; schools with no match surface as no_role_match or school_not_accessible rows when include_missing is true. Known limitation: administrator records, and coach records when no sport_id is given, are matched against WinAD views that collapse to one record per person per year, so a person holding multiple same-year positions may surface under a different position than the queried role (a response warning flags the no-sport case). Sport-scoped coach matching is per-position and unaffected.
+
+        :param school_ids: Explicit school ids to compare, kept in request order. Provide school_ids[] and/or conference_id. More than 40 ids is rejected with error_type=scope_too_large.
+        :type school_ids: List[int]
+        :param conference_id: Conference scope; expands to member schools (conferenceship members when sport_id is given, primary members otherwise). The combined resolved scope (explicit schools plus conference members) is capped at 40 schools; beyond that the request is rejected with error_type=scope_too_large.
+        :type conference_id: int
+        :param sport_id: Sport scope for coach candidates. Administrator records are not sport-scoped; their rows carry a caveat instead.
+        :type sport_id: int
+        :param position_type_id: Position type for the queried role (expands to the group when the id is a group stub). Provide position_type_id and/or title_include[].
+        :type position_type_id: int
+        :param title_include: Title words/phrases that strengthen a match (ILIKE, OR-combined with the position-type arm). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param.
+        :type title_include: List[str]
+        :param title_exclude: Title words/phrases that exclude a candidate (ILIKE). More than 10 terms or terms over 60 chars are rejected with error_type=invalid_param.
+        :type title_exclude: List[str]
+        :param year: Compensation season year; defaults to the current season year.
+        :type year: int
+        :param include_missing: Emit a synthesized no_role_match / school_not_accessible row per school with no candidates.
+        :type include_missing: bool
+        :param per_school_limit: Max candidate rows per school (best matches kept; cohort stats still cover the full matching set). Out-of-range values are silently clamped to 1..10, not rejected.
+        :type per_school_limit: int
+        :param max_rows: Overall row cap for token safety; sets resolved_scope.truncated when it bites. Out-of-range values are silently clamped to 1..200, not rejected.
+        :type max_rows: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_compensation_comparisons_serialize(
+            school_ids=school_ids,
+            conference_id=conference_id,
+            sport_id=sport_id,
+            position_type_id=position_type_id,
+            title_include=title_include,
+            title_exclude=title_exclude,
+            year=year,
+            include_missing=include_missing,
+            per_school_limit=per_school_limit,
+            max_rows=max_rows,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "CompensationComparisonResult",
+            "400": "GetCompensationComparisons400Response",
+            "401": None,
+            "403": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_compensation_comparisons_serialize(
+        self,
+        school_ids,
+        conference_id,
+        sport_id,
+        position_type_id,
+        title_include,
+        title_exclude,
+        year,
+        include_missing,
+        per_school_limit,
+        max_rows,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            "school_ids[]": "multi",
+            "title_include[]": "multi",
+            "title_exclude[]": "multi",
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if school_ids is not None:
+
+            _query_params.append(("school_ids[]", school_ids))
+
+        if conference_id is not None:
+
+            _query_params.append(("conference_id", conference_id))
+
+        if sport_id is not None:
+
+            _query_params.append(("sport_id", sport_id))
+
+        if position_type_id is not None:
+
+            _query_params.append(("position_type_id", position_type_id))
+
+        if title_include is not None:
+
+            _query_params.append(("title_include[]", title_include))
+
+        if title_exclude is not None:
+
+            _query_params.append(("title_exclude[]", title_exclude))
+
+        if year is not None:
+
+            _query_params.append(("year", year))
+
+        if include_missing is not None:
+
+            _query_params.append(("include_missing", include_missing))
+
+        if per_school_limit is not None:
+
+            _query_params.append(("per_school_limit", per_school_limit))
+
+        if max_rows is not None:
+
+            _query_params.append(("max_rows", max_rows))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/compensation_comparisons",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
