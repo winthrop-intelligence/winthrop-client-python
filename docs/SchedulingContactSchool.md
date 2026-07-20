@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | 
 **name** | **str** |  | 
 **schedule_profile_eligible** | **bool** |  | 
+**logo_url** | **str** | Cropped school logo URL (small variant); null when the school has no logo — the card/dialog falls back to initials. | 
 
 ## Example
 
