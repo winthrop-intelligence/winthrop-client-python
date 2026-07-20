@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **progress** | [**JobProgress**](JobProgress.md) |  | 
 **created_at** | **str** |  | [optional] 
 **completed_at** | **str** |  | [optional] 
+**uploaded_file_id** | **str** |  | [optional] 
 **error** | **str** |  | [optional] 
 
 ## Example

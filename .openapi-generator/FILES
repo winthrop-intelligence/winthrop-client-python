@@ -275,7 +275,6 @@ docs/GuaranteeEconomics.md
 docs/GuaranteeEconomicsError.md
 docs/GuaranteeEconomicsSide.md
 docs/HTTPValidationError.md
-docs/HealthApi.md
 docs/HealthCheckFailure.md
 docs/HealthCheckSuccess.md
 docs/IdName.md
@@ -513,7 +512,6 @@ winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
 winthrop_client_python/api/default_api.py
 winthrop_client_python/api/dossier_api.py
-winthrop_client_python/api/health_api.py
 winthrop_client_python/api/intercollegiate_api.py
 winthrop_client_python/api/ml_athletic_api.py
 winthrop_client_python/api/ocr_api.py
