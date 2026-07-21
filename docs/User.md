@@ -42,6 +42,8 @@ Name | Type | Description | Notes
 **coli_index** | **float** | Cost of living index for the user&#39;s school | [optional] 
 **subscription_type** | **str** |  | [optional] 
 **schedule_sports** | [**List[UserScheduleSportsInner]**](UserScheduleSportsInner.md) | Sports the user can access for game scheduling | [optional] 
+**school_name** | **str** | Viewer&#39;s own school name (school accounts only) — the scheduling Message dialog sender identity | [optional] 
+**school_logo_url** | **str** | Viewer&#39;s own school logo URL (small variant); null when no school or no logo — dialog falls back to initials | [optional] 
 **school_city** | **str** |  | [optional] 
 **school_state** | **str** |  | [optional] 
 **otp_required** | **bool** | Whether the user must verify OTP to access the application | [optional] 
