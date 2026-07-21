@@ -5,11 +5,16 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ad_status** | **str** |  | [optional] 
 **ad_name** | **str** |  | [optional] 
 **ad_coach_id** | **int** |  | [optional] 
 **ad_salary_cents** | **int** |  | [optional] 
+**financials_reported** | **bool** |  | [optional] 
 **revenue_cents** | **int** |  | [optional] 
 **expense_cents** | **int** |  | [optional] 
+**budget_rank** | **int** |  | [optional] 
+**budget_rank_of** | **int** |  | [optional] 
+**budget_rank_conference_name** | **str** |  | [optional] 
 **deals** | [**List[DepartmentSearchResultDepartmentDealsInner]**](DepartmentSearchResultDepartmentDealsInner.md) |  | [optional] 
 
 ## Example

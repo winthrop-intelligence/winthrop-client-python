@@ -29,6 +29,8 @@ Name | Type | Description | Notes
 **current_sport_name** | **str** |  | [optional] 
 **current_position_title** | **str** |  | [optional] 
 **current_position_types** | **List[str]** |  | 
+**header_position_season_year_str** | **str** |  | 
+**header_position_historical** | **bool** |  | 
 **avatar_url** | **str** |  | [optional] 
 **can_see_compensation** | **bool** |  | 
 **can_see_videos** | **bool** |  | 

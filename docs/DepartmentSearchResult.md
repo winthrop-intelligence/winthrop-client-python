@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **conference_id** | **int** |  | [optional] 
 **division_name** | **str** |  | [optional] 
 **division_id** | **int** |  | [optional] 
+**subdivision_name** | **str** |  | [optional] 
 **usnwr_ranking** | **int** |  | [optional] 
 **directors_cup_ranking** | **int** |  | [optional] 
 **is_private** | **bool** |  | [optional] 

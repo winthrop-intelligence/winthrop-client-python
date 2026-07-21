@@ -9365,7 +9365,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_department_searches**
-> DepartmentSearchResultCollection get_department_searches(page=page, q=q)
+> DepartmentSearchResultCollection get_department_searches(page=page, year=year, q=q)
 
 Search school departments with filtering and pagination
 
@@ -9404,10 +9404,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     page = 1 # int | results page to retrieve. (optional) (default to 1)
+    year = 56 # int | Financial report season year to use for department financials and season-scoped staff data (optional)
     q = None # object | Ransack query (optional)
 
     try:
-        api_response = api_instance.get_department_searches(page=page, q=q)
+        api_response = api_instance.get_department_searches(page=page, year=year, q=q)
         print("The response of DefaultApi->get_department_searches:\n")
         pprint(api_response)
     except Exception as e:
@@ -9422,6 +9423,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **year** | **int**| Financial report season year to use for department financials and season-scoped staff data | [optional] 
  **q** | [**object**](.md)| Ransack query | [optional] 
 
 ### Return type
