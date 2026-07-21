@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**average_division_comp**](DefaultApi.md#average_division_comp) | **GET** /api/v1/compensations/average_division_comp | 
 [**average_school_comp**](DefaultApi.md#average_school_comp) | **GET** /api/v1/compensations/average_school_comp | 
 [**average_subdivision_comp**](DefaultApi.md#average_subdivision_comp) | **GET** /api/v1/compensations/average_subdivision_comp | 
+[**batch_guarantee_economics**](DefaultApi.md#batch_guarantee_economics) | **POST** /api/v1/guarantee_economics/batch | 
 [**bulk_create_game_post_searches**](DefaultApi.md#bulk_create_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_create | 
 [**bulk_create_games**](DefaultApi.md#bulk_create_games) | **POST** /api/v1/games/bulk | 
 [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update | 
@@ -615,6 +616,87 @@ Name | Type | Description  | Notes
 **200** | Average compensation calculated |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **batch_guarantee_economics**
+> GuaranteeEconomicsBatch batch_guarantee_economics(batch_guarantee_economics_request)
+
+Batch companion to GET /guarantee_economics (WINAD-10147). Returns the same per-school host/travel median guarantee economics — with the identical gad_filters deep-link target — for a page of [school_id, sport_id] pairs in one request, so list surfaces (Find Opponent sheet, schedule grid, Games Wanted feed) stop firing one singular request per row. POST (not GET) because a full sheet's ~364 pairs are sent as a JSON body. Permission- critical: callers without guarantee aggregate access get every pair's host/travel as null, indistinguishable from schools with no qualifying games.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.batch_guarantee_economics_request import BatchGuaranteeEconomicsRequest
+from winthrop_client_python.models.guarantee_economics_batch import GuaranteeEconomicsBatch
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    batch_guarantee_economics_request = winthrop_client_python.BatchGuaranteeEconomicsRequest() # BatchGuaranteeEconomicsRequest | 
+
+    try:
+        api_response = api_instance.batch_guarantee_economics(batch_guarantee_economics_request)
+        print("The response of DefaultApi->batch_guarantee_economics:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->batch_guarantee_economics: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **batch_guarantee_economics_request** | [**BatchGuaranteeEconomicsRequest**](BatchGuaranteeEconomicsRequest.md)|  | 
+
+### Return type
+
+[**GuaranteeEconomicsBatch**](GuaranteeEconomicsBatch.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Host/travel medians + deep-link filters per requested pair, plus the shared season window. |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

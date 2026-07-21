@@ -32,6 +32,7 @@ docs/AuditedFinancialReportStatusCollection.md
 docs/AvailableGameContract.md
 docs/Avatar.md
 docs/AverageCompensation.md
+docs/BatchGuaranteeEconomicsRequest.md
 docs/BulkCreateGamePostSearchesRequest.md
 docs/BulkCreateGamePostSearchesRequestIntentsInner.md
 docs/BulkCreateGamePostSearchesRequestPostsInner.md
@@ -272,6 +273,8 @@ docs/GuaranteeBenchmarkStats.md
 docs/GuaranteeBenchmarkTable.md
 docs/GuaranteeBenchmarkTier.md
 docs/GuaranteeEconomics.md
+docs/GuaranteeEconomicsBatch.md
+docs/GuaranteeEconomicsBatchPair.md
 docs/GuaranteeEconomicsError.md
 docs/GuaranteeEconomicsSide.md
 docs/HTTPValidationError.md
@@ -507,6 +510,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_batch_guarantee_economics_request.py
+test/test_guarantee_economics_batch.py
+test/test_guarantee_economics_batch_pair.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -553,6 +559,7 @@ winthrop_client_python/models/audited_financial_report_status_collection.py
 winthrop_client_python/models/available_game_contract.py
 winthrop_client_python/models/avatar.py
 winthrop_client_python/models/average_compensation.py
+winthrop_client_python/models/batch_guarantee_economics_request.py
 winthrop_client_python/models/bulk_create_game_post_searches_request.py
 winthrop_client_python/models/bulk_create_game_post_searches_request_intents_inner.py
 winthrop_client_python/models/bulk_create_game_post_searches_request_posts_inner.py
@@ -791,6 +798,8 @@ winthrop_client_python/models/guarantee_benchmark_stats.py
 winthrop_client_python/models/guarantee_benchmark_table.py
 winthrop_client_python/models/guarantee_benchmark_tier.py
 winthrop_client_python/models/guarantee_economics.py
+winthrop_client_python/models/guarantee_economics_batch.py
+winthrop_client_python/models/guarantee_economics_batch_pair.py
 winthrop_client_python/models/guarantee_economics_error.py
 winthrop_client_python/models/guarantee_economics_side.py
 winthrop_client_python/models/health_check_failure.py
