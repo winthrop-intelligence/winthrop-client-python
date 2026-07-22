@@ -510,9 +510,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_batch_guarantee_economics_request.py
-test/test_guarantee_economics_batch.py
-test/test_guarantee_economics_batch_pair.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
