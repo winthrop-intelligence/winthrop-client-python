@@ -6,8 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **seasons** | **List[str]** |  | 
-**records** | [**List[PerformanceChartRecord]**](PerformanceChartRecord.md) |  | 
-**coaches** | [**List[PerformanceChartCoach]**](PerformanceChartCoach.md) |  | 
+**records** | [**List[Optional[PerformanceChartRecord]]**](PerformanceChartRecord.md) |  | 
+**coaches** | [**List[Optional[PerformanceChartCoach]]**](PerformanceChartCoach.md) |  | 
 
 ## Example
 
