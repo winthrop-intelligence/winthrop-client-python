@@ -134,6 +134,7 @@ docs/CreateGamePostSearchRequest.md
 docs/CreateGamePostSearchRequestGamePost.md
 docs/CreateGameRequest.md
 docs/CreateGameRequestGame.md
+docs/CreateJobJson.md
 docs/CreateMcpEventRequest.md
 docs/CreateMcpEventRequestMcpEvent.md
 docs/CreateNoteRequest.md
@@ -287,9 +288,11 @@ docs/InvoiceReportAccount.md
 docs/InvoiceReportResult.md
 docs/InvoiceReportRow.md
 docs/Job.md
+docs/JobAccepted.md
 docs/JobCandidate.md
 docs/JobCollection.md
 docs/JobDepartment.md
+docs/JobOptions.md
 docs/JobPost.md
 docs/JobPostCollection.md
 docs/JobPostInterestLead.md
@@ -304,8 +307,13 @@ docs/JobPostSalaryBenchmarkSample.md
 docs/JobPostSalaryBenchmarkScope.md
 docs/JobPostSalaryBenchmarkScopeDateWindow.md
 docs/JobPostSalarySummary.md
+docs/JobProgress.md
+docs/JobResult.md
 docs/JobSchool.md
+docs/JobSource.md
 docs/JobSport.md
+docs/JobStatus.md
+docs/JobStatusBatch.md
 docs/Link.md
 docs/LinkCollection.md
 docs/LinkCollection1.md
@@ -321,6 +329,8 @@ docs/NewAccountUserResponse.md
 docs/NewsFeed.md
 docs/NewsFeedCollection.md
 docs/Note.md
+docs/OcrApi.md
+docs/PageResult.md
 docs/PageView.md
 docs/PerformanceChartCoach.md
 docs/PerformanceChartData.md
@@ -507,6 +517,7 @@ winthrop_client_python/api/default_api.py
 winthrop_client_python/api/dossier_api.py
 winthrop_client_python/api/intercollegiate_api.py
 winthrop_client_python/api/ml_athletic_api.py
+winthrop_client_python/api/ocr_api.py
 winthrop_client_python/api/reporting_api.py
 winthrop_client_python/api/scraper_api.py
 winthrop_client_python/api_client.py
@@ -647,6 +658,7 @@ winthrop_client_python/models/create_game_post_search_request.py
 winthrop_client_python/models/create_game_post_search_request_game_post.py
 winthrop_client_python/models/create_game_request.py
 winthrop_client_python/models/create_game_request_game.py
+winthrop_client_python/models/create_job_json.py
 winthrop_client_python/models/create_mcp_event_request.py
 winthrop_client_python/models/create_mcp_event_request_mcp_event.py
 winthrop_client_python/models/create_note_request.py
@@ -797,9 +809,11 @@ winthrop_client_python/models/invoice_report_account.py
 winthrop_client_python/models/invoice_report_result.py
 winthrop_client_python/models/invoice_report_row.py
 winthrop_client_python/models/job.py
+winthrop_client_python/models/job_accepted.py
 winthrop_client_python/models/job_candidate.py
 winthrop_client_python/models/job_collection.py
 winthrop_client_python/models/job_department.py
+winthrop_client_python/models/job_options.py
 winthrop_client_python/models/job_post.py
 winthrop_client_python/models/job_post_collection.py
 winthrop_client_python/models/job_post_interest_lead.py
@@ -814,8 +828,13 @@ winthrop_client_python/models/job_post_salary_benchmark_sample.py
 winthrop_client_python/models/job_post_salary_benchmark_scope.py
 winthrop_client_python/models/job_post_salary_benchmark_scope_date_window.py
 winthrop_client_python/models/job_post_salary_summary.py
+winthrop_client_python/models/job_progress.py
+winthrop_client_python/models/job_result.py
 winthrop_client_python/models/job_school.py
+winthrop_client_python/models/job_source.py
 winthrop_client_python/models/job_sport.py
+winthrop_client_python/models/job_status.py
+winthrop_client_python/models/job_status_batch.py
 winthrop_client_python/models/link.py
 winthrop_client_python/models/link_collection.py
 winthrop_client_python/models/link_collection1.py
@@ -830,6 +849,7 @@ winthrop_client_python/models/new_account_user_response.py
 winthrop_client_python/models/news_feed.py
 winthrop_client_python/models/news_feed_collection.py
 winthrop_client_python/models/note.py
+winthrop_client_python/models/page_result.py
 winthrop_client_python/models/page_view.py
 winthrop_client_python/models/performance_chart_coach.py
 winthrop_client_python/models/performance_chart_data.py

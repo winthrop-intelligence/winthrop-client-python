@@ -371,6 +371,10 @@ Class | Method | HTTP request | Description
 *IntercollegiateApi* | [**get_job_posts**](docs/IntercollegiateApi.md#get_job_posts) | **GET** /wi_jobs/job_posts | 
 *IntercollegiateApi* | [**get_news_feeds**](docs/IntercollegiateApi.md#get_news_feeds) | **GET** /wi_jobs/news_feeds | 
 *IntercollegiateApi* | [**sync_job_post**](docs/IntercollegiateApi.md#sync_job_post) | **PUT** /wi_jobs/job_posts/{jobPostId}/sync | 
+*OcrApi* | [**create_job_ocr_v1_jobs_post**](docs/OcrApi.md#create_job_ocr_v1_jobs_post) | **POST** /ocr/v1/jobs | Submit an OCR job for a Google Drive file
+*OcrApi* | [**job_result_ocr_v1_jobs_job_id_result_get**](docs/OcrApi.md#job_result_ocr_v1_jobs_job_id_result_get) | **GET** /ocr/v1/jobs/{job_id}/result | Fetch the full result
+*OcrApi* | [**job_status_batch_ocr_v1_jobs_get**](docs/OcrApi.md#job_status_batch_ocr_v1_jobs_get) | **GET** /ocr/v1/jobs | Poll many jobs in one request
+*OcrApi* | [**job_status_ocr_v1_jobs_job_id_get**](docs/OcrApi.md#job_status_ocr_v1_jobs_job_id_get) | **GET** /ocr/v1/jobs/{job_id} | Poll one job
 *ReportingApi* | [**get_coach_contract_requests**](docs/ReportingApi.md#get_coach_contract_requests) | **GET** /api/v1/reports/coach_contract_requests | 
 *ReportingApi* | [**get_coach_history**](docs/ReportingApi.md#get_coach_history) | **GET** /api/v1/reports/coach_history | 
 *ReportingApi* | [**get_conferenceships**](docs/ReportingApi.md#get_conferenceships) | **GET** /api/v1/reports/conferenceships | 
@@ -525,6 +529,7 @@ Class | Method | HTTP request | Description
  - [CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
  - [CreateGameRequest](docs/CreateGameRequest.md)
  - [CreateGameRequestGame](docs/CreateGameRequestGame.md)
+ - [CreateJobJson](docs/CreateJobJson.md)
  - [CreateMcpEventRequest](docs/CreateMcpEventRequest.md)
  - [CreateMcpEventRequestMcpEvent](docs/CreateMcpEventRequestMcpEvent.md)
  - [CreateNoteRequest](docs/CreateNoteRequest.md)
@@ -675,9 +680,11 @@ Class | Method | HTTP request | Description
  - [InvoiceReportResult](docs/InvoiceReportResult.md)
  - [InvoiceReportRow](docs/InvoiceReportRow.md)
  - [Job](docs/Job.md)
+ - [JobAccepted](docs/JobAccepted.md)
  - [JobCandidate](docs/JobCandidate.md)
  - [JobCollection](docs/JobCollection.md)
  - [JobDepartment](docs/JobDepartment.md)
+ - [JobOptions](docs/JobOptions.md)
  - [JobPost](docs/JobPost.md)
  - [JobPostCollection](docs/JobPostCollection.md)
  - [JobPostInterestLead](docs/JobPostInterestLead.md)
@@ -692,8 +699,13 @@ Class | Method | HTTP request | Description
  - [JobPostSalaryBenchmarkScope](docs/JobPostSalaryBenchmarkScope.md)
  - [JobPostSalaryBenchmarkScopeDateWindow](docs/JobPostSalaryBenchmarkScopeDateWindow.md)
  - [JobPostSalarySummary](docs/JobPostSalarySummary.md)
+ - [JobProgress](docs/JobProgress.md)
+ - [JobResult](docs/JobResult.md)
  - [JobSchool](docs/JobSchool.md)
+ - [JobSource](docs/JobSource.md)
  - [JobSport](docs/JobSport.md)
+ - [JobStatus](docs/JobStatus.md)
+ - [JobStatusBatch](docs/JobStatusBatch.md)
  - [Link](docs/Link.md)
  - [LinkCollection](docs/LinkCollection.md)
  - [LinkCollection1](docs/LinkCollection1.md)
@@ -708,6 +720,7 @@ Class | Method | HTTP request | Description
  - [NewsFeed](docs/NewsFeed.md)
  - [NewsFeedCollection](docs/NewsFeedCollection.md)
  - [Note](docs/Note.md)
+ - [PageResult](docs/PageResult.md)
  - [PageView](docs/PageView.md)
  - [PerformanceChartCoach](docs/PerformanceChartCoach.md)
  - [PerformanceChartData](docs/PerformanceChartData.md)

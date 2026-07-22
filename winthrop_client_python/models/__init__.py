@@ -300,6 +300,7 @@ from winthrop_client_python.models.create_game_post_search_request_game_post imp
 )
 from winthrop_client_python.models.create_game_request import CreateGameRequest
 from winthrop_client_python.models.create_game_request_game import CreateGameRequestGame
+from winthrop_client_python.models.create_job_json import CreateJobJson
 from winthrop_client_python.models.create_mcp_event_request import CreateMcpEventRequest
 from winthrop_client_python.models.create_mcp_event_request_mcp_event import (
     CreateMcpEventRequestMcpEvent,
@@ -636,9 +637,11 @@ from winthrop_client_python.models.invoice_report_account import InvoiceReportAc
 from winthrop_client_python.models.invoice_report_result import InvoiceReportResult
 from winthrop_client_python.models.invoice_report_row import InvoiceReportRow
 from winthrop_client_python.models.job import Job
+from winthrop_client_python.models.job_accepted import JobAccepted
 from winthrop_client_python.models.job_candidate import JobCandidate
 from winthrop_client_python.models.job_collection import JobCollection
 from winthrop_client_python.models.job_department import JobDepartment
+from winthrop_client_python.models.job_options import JobOptions
 from winthrop_client_python.models.job_post import JobPost
 from winthrop_client_python.models.job_post_collection import JobPostCollection
 from winthrop_client_python.models.job_post_interest_lead import JobPostInterestLead
@@ -673,8 +676,13 @@ from winthrop_client_python.models.job_post_salary_benchmark_scope_date_window i
     JobPostSalaryBenchmarkScopeDateWindow,
 )
 from winthrop_client_python.models.job_post_salary_summary import JobPostSalarySummary
+from winthrop_client_python.models.job_progress import JobProgress
+from winthrop_client_python.models.job_result import JobResult
 from winthrop_client_python.models.job_school import JobSchool
+from winthrop_client_python.models.job_source import JobSource
 from winthrop_client_python.models.job_sport import JobSport
+from winthrop_client_python.models.job_status import JobStatus
+from winthrop_client_python.models.job_status_batch import JobStatusBatch
 from winthrop_client_python.models.link import Link
 from winthrop_client_python.models.link_collection import LinkCollection
 from winthrop_client_python.models.link_collection1 import LinkCollection1
@@ -697,6 +705,7 @@ from winthrop_client_python.models.new_account_user_response import (
 from winthrop_client_python.models.news_feed import NewsFeed
 from winthrop_client_python.models.news_feed_collection import NewsFeedCollection
 from winthrop_client_python.models.note import Note
+from winthrop_client_python.models.page_result import PageResult
 from winthrop_client_python.models.page_view import PageView
 from winthrop_client_python.models.performance_chart_coach import PerformanceChartCoach
 from winthrop_client_python.models.performance_chart_data import PerformanceChartData

@@ -21,6 +21,7 @@ __all__ = [
     "DefaultApi",
     "DossierApi",
     "IntercollegiateApi",
+    "OcrApi",
     "ReportingApi",
     "ScraperApi",
     "ApiResponse",
@@ -165,6 +166,7 @@ __all__ = [
     "CreateGamePostSearchRequestGamePost",
     "CreateGameRequest",
     "CreateGameRequestGame",
+    "CreateJobJson",
     "CreateMcpEventRequest",
     "CreateMcpEventRequestMcpEvent",
     "CreateNoteRequest",
@@ -315,9 +317,11 @@ __all__ = [
     "InvoiceReportResult",
     "InvoiceReportRow",
     "Job",
+    "JobAccepted",
     "JobCandidate",
     "JobCollection",
     "JobDepartment",
+    "JobOptions",
     "JobPost",
     "JobPostCollection",
     "JobPostInterestLead",
@@ -332,8 +336,13 @@ __all__ = [
     "JobPostSalaryBenchmarkScope",
     "JobPostSalaryBenchmarkScopeDateWindow",
     "JobPostSalarySummary",
+    "JobProgress",
+    "JobResult",
     "JobSchool",
+    "JobSource",
     "JobSport",
+    "JobStatus",
+    "JobStatusBatch",
     "Link",
     "LinkCollection",
     "LinkCollection1",
@@ -348,6 +357,7 @@ __all__ = [
     "NewsFeed",
     "NewsFeedCollection",
     "Note",
+    "PageResult",
     "PageView",
     "PerformanceChartCoach",
     "PerformanceChartData",
@@ -528,6 +538,7 @@ from winthrop_client_python.api.dossier_api import DossierApi as DossierApi
 from winthrop_client_python.api.intercollegiate_api import (
     IntercollegiateApi as IntercollegiateApi,
 )
+from winthrop_client_python.api.ocr_api import OcrApi as OcrApi
 from winthrop_client_python.api.reporting_api import ReportingApi as ReportingApi
 from winthrop_client_python.api.scraper_api import ScraperApi as ScraperApi
 
@@ -904,6 +915,7 @@ from winthrop_client_python.models.create_game_request import (
 from winthrop_client_python.models.create_game_request_game import (
     CreateGameRequestGame as CreateGameRequestGame,
 )
+from winthrop_client_python.models.create_job_json import CreateJobJson as CreateJobJson
 from winthrop_client_python.models.create_mcp_event_request import (
     CreateMcpEventRequest as CreateMcpEventRequest,
 )
@@ -1320,9 +1332,11 @@ from winthrop_client_python.models.invoice_report_row import (
     InvoiceReportRow as InvoiceReportRow,
 )
 from winthrop_client_python.models.job import Job as Job
+from winthrop_client_python.models.job_accepted import JobAccepted as JobAccepted
 from winthrop_client_python.models.job_candidate import JobCandidate as JobCandidate
 from winthrop_client_python.models.job_collection import JobCollection as JobCollection
 from winthrop_client_python.models.job_department import JobDepartment as JobDepartment
+from winthrop_client_python.models.job_options import JobOptions as JobOptions
 from winthrop_client_python.models.job_post import JobPost as JobPost
 from winthrop_client_python.models.job_post_collection import (
     JobPostCollection as JobPostCollection,
@@ -1363,8 +1377,15 @@ from winthrop_client_python.models.job_post_salary_benchmark_scope_date_window i
 from winthrop_client_python.models.job_post_salary_summary import (
     JobPostSalarySummary as JobPostSalarySummary,
 )
+from winthrop_client_python.models.job_progress import JobProgress as JobProgress
+from winthrop_client_python.models.job_result import JobResult as JobResult
 from winthrop_client_python.models.job_school import JobSchool as JobSchool
+from winthrop_client_python.models.job_source import JobSource as JobSource
 from winthrop_client_python.models.job_sport import JobSport as JobSport
+from winthrop_client_python.models.job_status import JobStatus as JobStatus
+from winthrop_client_python.models.job_status_batch import (
+    JobStatusBatch as JobStatusBatch,
+)
 from winthrop_client_python.models.link import Link as Link
 from winthrop_client_python.models.link_collection import (
     LinkCollection as LinkCollection,
@@ -1393,6 +1414,7 @@ from winthrop_client_python.models.news_feed_collection import (
     NewsFeedCollection as NewsFeedCollection,
 )
 from winthrop_client_python.models.note import Note as Note
+from winthrop_client_python.models.page_result import PageResult as PageResult
 from winthrop_client_python.models.page_view import PageView as PageView
 from winthrop_client_python.models.performance_chart_coach import (
     PerformanceChartCoach as PerformanceChartCoach,
