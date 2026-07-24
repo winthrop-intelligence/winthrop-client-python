@@ -88,6 +88,7 @@ Name | Type | Description  | Notes
 **201** | The approved decision was applied |  -  |
 **409** | The request changed after review or this message has a different prior decision |  -  |
 **422** | Invalid or inconsistent effect bundle |  -  |
+**503** | The configured FOIA inbox automation actor is unavailable |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 

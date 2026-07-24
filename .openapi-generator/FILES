@@ -200,6 +200,7 @@ docs/FoiaInboxCompensationException.md
 docs/FoiaInboxEffects.md
 docs/FoiaInboxEffectsFoiaRequest.md
 docs/FoiaInboxEffectsRequestedItemsInner.md
+docs/FoiaInboxErrorsResponse.md
 docs/FoiaInboxExpectedCompensation.md
 docs/FoiaInboxExpectedPosition.md
 docs/FoiaInboxExpectedRequestedItem.md
@@ -530,6 +531,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_foia_inbox_errors_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -742,6 +744,7 @@ winthrop_client_python/models/foia_inbox_compensation_exception.py
 winthrop_client_python/models/foia_inbox_effects.py
 winthrop_client_python/models/foia_inbox_effects_foia_request.py
 winthrop_client_python/models/foia_inbox_effects_requested_items_inner.py
+winthrop_client_python/models/foia_inbox_errors_response.py
 winthrop_client_python/models/foia_inbox_expected_compensation.py
 winthrop_client_python/models/foia_inbox_expected_position.py
 winthrop_client_python/models/foia_inbox_expected_requested_item.py
