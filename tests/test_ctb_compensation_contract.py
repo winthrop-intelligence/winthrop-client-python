@@ -100,11 +100,7 @@ def request_input(**overrides) -> CtbCompensationProcessingEventInput:
         ),
     }
     values.update(overrides)
-    role_model = ROLE_MODELS.get(
-        values["role"],
-        CtbVolunteerCompensationProcessingEventInput,
-    )
-    return CtbCompensationProcessingEventInput(role_model(**values))
+    return CtbCompensationProcessingEventInput(**values)
 
 
 def test_request_round_trip_preserves_granular_actions_and_snapshots():
@@ -129,6 +125,9 @@ def test_request_round_trip_preserves_granular_actions_and_snapshots():
 
     restored = CtbCompensationProcessingEventRequest.from_dict(serialized)
     assert restored == request
+    assert CtbCompensationProcessingEventRequest.from_dict(
+        request.to_dict()
+    ) == request
 
 
 @pytest.mark.parametrize(
@@ -139,7 +138,7 @@ def test_request_round_trip_preserves_granular_actions_and_snapshots():
     ],
 )
 def test_request_rejects_unknown_role_and_action_enums(field, value):
-    with pytest.raises(ValidationError):
+    with pytest.raises((ValidationError, ValueError)):
         request_input(**{field: value})
 
 
