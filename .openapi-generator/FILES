@@ -541,9 +541,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_ctb_graduate_assistant_compensation_processing_event_input.py
-test/test_ctb_not_employed_compensation_processing_event_input.py
-test/test_ctb_volunteer_compensation_processing_event_input.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py

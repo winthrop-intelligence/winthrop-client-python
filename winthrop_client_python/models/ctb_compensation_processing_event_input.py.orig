@@ -36,13 +36,6 @@ from pydantic import StrictStr, Field
 from typing import Union, List, Set, Optional, Dict
 from typing_extensions import Literal, Self
 
-CTB_COMPENSATION_ROLE_SCHEMAS = {
-    "volunteer": CtbVolunteerCompensationProcessingEventInput,
-    "graduate_assistant": CtbGraduateAssistantCompensationProcessingEventInput,
-    "not_employed": CtbNotEmployedCompensationProcessingEventInput,
-}
-
-
 CTBCOMPENSATIONPROCESSINGEVENTINPUT_ONE_OF_SCHEMAS = [
     "CtbGraduateAssistantCompensationProcessingEventInput",
     "CtbNotEmployedCompensationProcessingEventInput",
@@ -98,24 +91,8 @@ class CtbCompensationProcessingEventInput(BaseModel):
                     "If a position argument is used, keyword arguments cannot be used."
                 )
             super().__init__(actual_instance=args[0])
-        elif "actual_instance" in kwargs:
-            super().__init__(**kwargs)
         else:
-            role = kwargs.get("role")
-            schema = CTB_COMPENSATION_ROLE_SCHEMAS.get(role)
-            if schema is None:
-                raise ValueError(
-                    "No CTB compensation input schema is registered for role "
-                    f"`{role}`"
-                )
-            super().__init__(actual_instance=schema(**kwargs))
-
-    @classmethod
-    def _schema_for_role(cls, role: Any):
-        schema = CTB_COMPENSATION_ROLE_SCHEMAS.get(role)
-        if schema is None:
-            raise ValueError(f"Unsupported CTB compensation role: `{role}`")
-        return schema
+            super().__init__(**kwargs)
 
     @field_validator("actual_instance")
     def actual_instance_must_validate_oneof(cls, v):
@@ -160,25 +137,54 @@ class CtbCompensationProcessingEventInput(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Union[str, Dict[str, Any]]) -> Self:
-        if isinstance(obj, str):
-            return cls.from_json(obj)
-        if not isinstance(obj, dict):
-            raise ValueError(
-                "CtbCompensationProcessingEventInput requires an object"
-            )
-        schema = cls._schema_for_role(obj.get("role"))
-        return cls(schema.from_dict(obj))
+        return cls.from_json(json.dumps(obj))
 
     @classmethod
     def from_json(cls, json_str: str) -> Self:
         """Returns the object represented by the json string"""
+        instance = cls.model_construct()
+        error_messages = []
+        match = 0
+
+        # deserialize data into CtbVolunteerCompensationProcessingEventInput
         try:
-            payload = json.loads(json_str)
-        except (TypeError, json.JSONDecodeError) as error:
+            instance.actual_instance = (
+                CtbVolunteerCompensationProcessingEventInput.from_json(json_str)
+            )
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into CtbGraduateAssistantCompensationProcessingEventInput
+        try:
+            instance.actual_instance = (
+                CtbGraduateAssistantCompensationProcessingEventInput.from_json(json_str)
+            )
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # deserialize data into CtbNotEmployedCompensationProcessingEventInput
+        try:
+            instance.actual_instance = (
+                CtbNotEmployedCompensationProcessingEventInput.from_json(json_str)
+            )
+            match += 1
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+
+        if match > 1:
+            # more than 1 match
             raise ValueError(
-                "CtbCompensationProcessingEventInput requires valid JSON"
-            ) from error
-        return cls.from_dict(payload)
+                "Multiple matches found when deserializing the JSON string into CtbCompensationProcessingEventInput with oneOf schemas: CtbGraduateAssistantCompensationProcessingEventInput, CtbNotEmployedCompensationProcessingEventInput, CtbVolunteerCompensationProcessingEventInput. Details: "
+                + ", ".join(error_messages)
+            )
+        elif match == 0:
+            # no match
+            raise ValueError(
+                "No match found when deserializing the JSON string into CtbCompensationProcessingEventInput with oneOf schemas: CtbGraduateAssistantCompensationProcessingEventInput, CtbNotEmployedCompensationProcessingEventInput, CtbVolunteerCompensationProcessingEventInput. Details: "
+                + ", ".join(error_messages)
+            )
+        else:
+            return instance
 
     def to_json(self) -> str:
         """Returns the JSON representation of the actual instance"""
