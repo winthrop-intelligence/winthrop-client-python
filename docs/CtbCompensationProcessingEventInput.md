@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **requested_item_id** | **int** |  | 
 **compensation_id** | **int** |  | 
 **role** | **str** | CTB compensation-availability interpretation selected in the reviewed decision. | 
-**actions** | **List[str]** | Volunteer and graduate assistant permit all five actions; not employed permits only requested-item status/note and compensation status. | 
+**actions** | **List[str]** | Granular actions approved for the reviewed not-employed exception. | 
 **expected_request** | [**CtbCompensationExpectedRequest**](CtbCompensationExpectedRequest.md) |  | 
 **expected_requested_item** | [**FoiaInboxExpectedRequestedItem**](FoiaInboxExpectedRequestedItem.md) |  | 
 **expected_compensation** | [**FoiaInboxExpectedCompensation**](FoiaInboxExpectedCompensation.md) |  | 
