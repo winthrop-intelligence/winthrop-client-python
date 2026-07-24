@@ -18,6 +18,15 @@ from winthrop_client_python.models.ctb_compensation_processing_event_response im
 from winthrop_client_python.models.ctb_compensation_expected_request import (
     CtbCompensationExpectedRequest,
 )
+from winthrop_client_python.models.ctb_graduate_assistant_compensation_processing_event_input import (
+    CtbGraduateAssistantCompensationProcessingEventInput,
+)
+from winthrop_client_python.models.ctb_not_employed_compensation_processing_event_input import (
+    CtbNotEmployedCompensationProcessingEventInput,
+)
+from winthrop_client_python.models.ctb_volunteer_compensation_processing_event_input import (
+    CtbVolunteerCompensationProcessingEventInput,
+)
 from winthrop_client_python.models.foia_inbox_expected_compensation import (
     FoiaInboxExpectedCompensation,
 )
@@ -39,6 +48,12 @@ ALL_ACTIONS = [
     "add_compensation_note",
     "add_position_type",
 ]
+NOT_EMPLOYED_ACTIONS = ALL_ACTIONS[:3]
+ROLE_MODELS = {
+    "volunteer": CtbVolunteerCompensationProcessingEventInput,
+    "graduate_assistant": CtbGraduateAssistantCompensationProcessingEventInput,
+    "not_employed": CtbNotEmployedCompensationProcessingEventInput,
+}
 
 
 def request_input(**overrides) -> CtbCompensationProcessingEventInput:
@@ -85,7 +100,11 @@ def request_input(**overrides) -> CtbCompensationProcessingEventInput:
         ),
     }
     values.update(overrides)
-    return CtbCompensationProcessingEventInput(**values)
+    role_model = ROLE_MODELS.get(
+        values["role"],
+        CtbVolunteerCompensationProcessingEventInput,
+    )
+    return CtbCompensationProcessingEventInput(role_model(**values))
 
 
 def test_request_round_trip_preserves_granular_actions_and_snapshots():
@@ -122,6 +141,42 @@ def test_request_round_trip_preserves_granular_actions_and_snapshots():
 def test_request_rejects_unknown_role_and_action_enums(field, value):
     with pytest.raises(ValidationError):
         request_input(**{field: value})
+
+
+@pytest.mark.parametrize(
+    ("role", "actions", "model"),
+    [
+        (
+            "volunteer",
+            ALL_ACTIONS,
+            CtbVolunteerCompensationProcessingEventInput,
+        ),
+        (
+            "graduate_assistant",
+            ALL_ACTIONS,
+            CtbGraduateAssistantCompensationProcessingEventInput,
+        ),
+        (
+            "not_employed",
+            NOT_EMPLOYED_ACTIONS,
+            CtbNotEmployedCompensationProcessingEventInput,
+        ),
+    ],
+)
+def test_role_specific_inputs_accept_only_their_action_bundle(
+    role,
+    actions,
+    model,
+):
+    event = request_input(role=role, actions=actions)
+
+    assert isinstance(event.actual_instance, model)
+    assert event.to_dict()["actions"] == actions
+
+
+def test_not_employed_rejects_position_and_comment_actions():
+    with pytest.raises(ValidationError):
+        request_input(role="not_employed", actions=ALL_ACTIONS)
 
 
 def test_response_round_trip_preserves_idempotency_and_applied_subset():
