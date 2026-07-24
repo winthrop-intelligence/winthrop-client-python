@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** |  | [optional] 
 **updated_by_school** | **date** |  | [optional] 
+**updated_by_wi** | **date** |  | [optional] 
 **note** | **str** |  | [optional] 
 
 ## Example
