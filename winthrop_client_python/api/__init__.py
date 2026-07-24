@@ -4,6 +4,7 @@
 from winthrop_client_python.api.ml_athletic_api import MlAthleticApi
 from winthrop_client_python.api.default_api import DefaultApi
 from winthrop_client_python.api.dossier_api import DossierApi
+from winthrop_client_python.api.foia_inbox_api import FoiaInboxApi
 from winthrop_client_python.api.intercollegiate_api import IntercollegiateApi
 from winthrop_client_python.api.ocr_api import OcrApi
 from winthrop_client_python.api.reporting_api import ReportingApi
