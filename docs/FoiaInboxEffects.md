@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **foia_request** | [**FoiaInboxEffectsFoiaRequest**](FoiaInboxEffectsFoiaRequest.md) |  | [optional] 
-**requested_items** | [**List[FoiaInboxEffectsRequestedItemsInner]**](FoiaInboxEffectsRequestedItemsInner.md) |  | [optional] 
 **compensation_exceptions** | [**List[FoiaInboxCompensationException]**](FoiaInboxCompensationException.md) |  | [optional] 
 
 ## Example

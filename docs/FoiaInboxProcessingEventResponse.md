@@ -5,19 +5,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** |  | [optional] 
-**mailbox** | **str** |  | [optional] 
-**gmail_message_id** | **str** |  | [optional] 
-**gmail_thread_id** | **str** |  | [optional] 
-**run_id** | **str** |  | [optional] 
-**foia_request_id** | **int** |  | [optional] 
-**school_id** | **int** |  | [optional] 
-**decision_sha256** | **str** |  | [optional] 
-**request_sha256** | **str** |  | [optional] 
-**status** | **str** |  | [optional] 
-**applied_at** | **datetime** |  | [optional] 
-**result** | **Dict[str, object]** |  | [optional] 
-**idempotent** | **bool** |  | [optional] 
+**id** | **int** |  | 
+**mailbox** | **str** |  | 
+**gmail_message_id** | **str** |  | 
+**gmail_thread_id** | **str** |  | 
+**run_id** | **str** |  | 
+**foia_request_id** | **int** |  | 
+**school_id** | **int** |  | 
+**decision_sha256** | **str** |  | 
+**request_sha256** | **str** |  | 
+**status** | **str** |  | 
+**applied_at** | **datetime** |  | 
+**result** | **Dict[str, object]** |  | 
+**idempotent** | **bool** |  | 
 
 ## Example
 
