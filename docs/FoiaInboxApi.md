@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | An identical prior decision was returned idempotently or a reviewed failed attempt was retried |  -  |
+**200** | An existing identical event was returned idempotently, resumed from pending, or retried after review |  -  |
 **201** | The approved decision was applied |  -  |
 **409** | The request changed after review or this message has a different prior decision |  -  |
 **422** | Invalid or inconsistent effect bundle |  -  |
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_foia_inbox_candidates**
-> FoiaInboxCandidatesResponse get_foia_inbox_candidates(page=page, per_page=per_page, school_id=school_id, foia_request_id=foia_request_id)
+> FoiaInboxCandidatesResponse get_foia_inbox_candidates(page=page, per_page=per_page, school_id=school_id, foia_request_id=foia_request_id, if_none_match=if_none_match)
 
 Retrieve active FOIA requests on active labels for explainable inbox matching
 
@@ -137,9 +137,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     per_page = 100 # int |  (optional) (default to 100)
     school_id = 56 # int |  (optional)
     foia_request_id = 56 # int |  (optional)
+    if_none_match = 'if_none_match_example' # str | ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload. (optional)
 
     try:
-        api_response = api_instance.get_foia_inbox_candidates(page=page, per_page=per_page, school_id=school_id, foia_request_id=foia_request_id)
+        api_response = api_instance.get_foia_inbox_candidates(page=page, per_page=per_page, school_id=school_id, foia_request_id=foia_request_id, if_none_match=if_none_match)
         print("The response of FoiaInboxApi->get_foia_inbox_candidates:\n")
         pprint(api_response)
     except Exception as e:
@@ -157,6 +158,7 @@ Name | Type | Description  | Notes
  **per_page** | **int**|  | [optional] [default to 100]
  **school_id** | **int**|  | [optional] 
  **foia_request_id** | **int**|  | [optional] 
+ **if_none_match** | **str**| ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload. | [optional] 
 
 ### Return type
 
@@ -175,7 +177,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Active FOIA inbox matching candidates |  -  |
+**200** | Active FOIA inbox matching candidates |  * ETag - Entity tag for the current review context; send it back via If-None-Match for conditional requests. <br>  |
+**304** | Not Modified — the candidate page matching the ETag supplied in If-None-Match is still current; no body is returned. |  -  |
 **400** | Invalid filter or pagination parameter |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
