@@ -4,14 +4,14 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_foia_inbox_processing_event**](FoiaInboxApi.md#create_foia_inbox_processing_event) | **POST** /api/v1/foia_inbox_processing_events | 
+[**apply_foia_inbox**](FoiaInboxApi.md#apply_foia_inbox) | **POST** /api/v1/foia_inbox_apply | 
 [**get_foia_inbox_candidates**](FoiaInboxApi.md#get_foia_inbox_candidates) | **GET** /api/v1/foia_inbox_candidates | 
 
 
-# **create_foia_inbox_processing_event**
-> FoiaInboxProcessingEventResponse create_foia_inbox_processing_event(foia_inbox_processing_event_request)
+# **apply_foia_inbox**
+> FoiaInboxApplyResponse apply_foia_inbox(foia_inbox_apply_request)
 
-Atomically apply one approved Gmail message decision to one FOIA request
+Atomically apply one approved Gmail message decision to one FOIA request. A retry whose selected final state is already present returns already_applied without duplicating effects.
 
 ### Example
 
@@ -20,8 +20,8 @@ Atomically apply one approved Gmail message decision to one FOIA request
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.foia_inbox_processing_event_request import FoiaInboxProcessingEventRequest
-from winthrop_client_python.models.foia_inbox_processing_event_response import FoiaInboxProcessingEventResponse
+from winthrop_client_python.models.foia_inbox_apply_request import FoiaInboxApplyRequest
+from winthrop_client_python.models.foia_inbox_apply_response import FoiaInboxApplyResponse
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -48,14 +48,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.FoiaInboxApi(api_client)
-    foia_inbox_processing_event_request = winthrop_client_python.FoiaInboxProcessingEventRequest() # FoiaInboxProcessingEventRequest | 
+    foia_inbox_apply_request = winthrop_client_python.FoiaInboxApplyRequest() # FoiaInboxApplyRequest | 
 
     try:
-        api_response = api_instance.create_foia_inbox_processing_event(foia_inbox_processing_event_request)
-        print("The response of FoiaInboxApi->create_foia_inbox_processing_event:\n")
+        api_response = api_instance.apply_foia_inbox(foia_inbox_apply_request)
+        print("The response of FoiaInboxApi->apply_foia_inbox:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling FoiaInboxApi->create_foia_inbox_processing_event: %s\n" % e)
+        print("Exception when calling FoiaInboxApi->apply_foia_inbox: %s\n" % e)
 ```
 
 
@@ -65,11 +65,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **foia_inbox_processing_event_request** | [**FoiaInboxProcessingEventRequest**](FoiaInboxProcessingEventRequest.md)|  | 
+ **foia_inbox_apply_request** | [**FoiaInboxApplyRequest**](FoiaInboxApplyRequest.md)|  | 
 
 ### Return type
 
-[**FoiaInboxProcessingEventResponse**](FoiaInboxProcessingEventResponse.md)
+[**FoiaInboxApplyResponse**](FoiaInboxApplyResponse.md)
 
 ### Authorization
 
@@ -84,9 +84,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | An identical prior decision was returned idempotently or a reviewed failed attempt was retried |  -  |
-**201** | The approved decision was applied |  -  |
-**409** | The request changed after review or this message has a different prior decision |  -  |
+**200** | The approved decision was applied, or its selected final state was already present |  -  |
+**409** | Reviewed state changed and the selected final state is not already present |  -  |
 **422** | Invalid or inconsistent effect bundle |  -  |
 **503** | The configured FOIA inbox automation actor is unavailable |  -  |
 **401** | Unauthorized |  -  |
@@ -95,7 +94,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_foia_inbox_candidates**
-> FoiaInboxCandidatesResponse get_foia_inbox_candidates(page=page, per_page=per_page, school_id=school_id, foia_request_id=foia_request_id)
+> FoiaInboxCandidatesResponse get_foia_inbox_candidates(page=page, per_page=per_page, school_id=school_id, foia_request_id=foia_request_id, if_none_match=if_none_match)
 
 Retrieve active FOIA requests on active labels for explainable inbox matching
 
@@ -137,9 +136,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     per_page = 100 # int |  (optional) (default to 100)
     school_id = 56 # int |  (optional)
     foia_request_id = 56 # int |  (optional)
+    if_none_match = 'if_none_match_example' # str | ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload. (optional)
 
     try:
-        api_response = api_instance.get_foia_inbox_candidates(page=page, per_page=per_page, school_id=school_id, foia_request_id=foia_request_id)
+        api_response = api_instance.get_foia_inbox_candidates(page=page, per_page=per_page, school_id=school_id, foia_request_id=foia_request_id, if_none_match=if_none_match)
         print("The response of FoiaInboxApi->get_foia_inbox_candidates:\n")
         pprint(api_response)
     except Exception as e:
@@ -157,6 +157,7 @@ Name | Type | Description  | Notes
  **per_page** | **int**|  | [optional] [default to 100]
  **school_id** | **int**|  | [optional] 
  **foia_request_id** | **int**|  | [optional] 
+ **if_none_match** | **str**| ETag from a previous response; when it still matches, the server responds 304 Not Modified instead of re-sending the payload. | [optional] 
 
 ### Return type
 
@@ -175,7 +176,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Active FOIA inbox matching candidates |  -  |
+**200** | Active FOIA inbox matching candidates |  * ETag - Entity tag for the current review context; send it back via If-None-Match for conditional requests. <br>  |
+**304** | Not Modified — the candidate page matching the ETag supplied in If-None-Match is still current; no body is returned. |  -  |
 **400** | Invalid filter or pagination parameter |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |

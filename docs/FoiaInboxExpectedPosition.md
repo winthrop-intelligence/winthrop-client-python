@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**position_id** | **int** |  | [optional] 
-**coach_id** | **int** |  | [optional] 
-**school_id** | **int** |  | [optional] 
-**year** | **int** |  | [optional] 
-**position_type_ids** | **List[int]** |  | [optional] 
+**position_id** | **int** |  | 
+**coach_id** | **int** |  | 
+**school_id** | **int** |  | 
+**year** | **int** |  | 
+**position_type_ids** | **List[int]** |  | 
 
 ## Example
 

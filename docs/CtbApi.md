@@ -4,11 +4,11 @@ All URIs are relative to *http://api-gateway.default.svc.cluster.local*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**create_ctb_compensation_processing_event**](CtbApi.md#create_ctb_compensation_processing_event) | **POST** /api/v1/ctb_compensation_processing_events | 
+[**apply_ctb_compensation**](CtbApi.md#apply_ctb_compensation) | **POST** /api/v1/ctb_compensation_apply | 
 
 
-# **create_ctb_compensation_processing_event**
-> CtbCompensationProcessingEventResponse create_ctb_compensation_processing_event(ctb_compensation_processing_event_request)
+# **apply_ctb_compensation**
+> CtbCompensationApplyResponse apply_ctb_compensation(ctb_compensation_apply_request)
 
 Atomically apply one reviewed CTB compensation availability exception
 
@@ -19,8 +19,8 @@ Atomically apply one reviewed CTB compensation availability exception
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.ctb_compensation_processing_event_request import CtbCompensationProcessingEventRequest
-from winthrop_client_python.models.ctb_compensation_processing_event_response import CtbCompensationProcessingEventResponse
+from winthrop_client_python.models.ctb_compensation_apply_request import CtbCompensationApplyRequest
+from winthrop_client_python.models.ctb_compensation_apply_response import CtbCompensationApplyResponse
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -47,14 +47,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.CtbApi(api_client)
-    ctb_compensation_processing_event_request = winthrop_client_python.CtbCompensationProcessingEventRequest() # CtbCompensationProcessingEventRequest | 
+    ctb_compensation_apply_request = winthrop_client_python.CtbCompensationApplyRequest() # CtbCompensationApplyRequest | 
 
     try:
-        api_response = api_instance.create_ctb_compensation_processing_event(ctb_compensation_processing_event_request)
-        print("The response of CtbApi->create_ctb_compensation_processing_event:\n")
+        api_response = api_instance.apply_ctb_compensation(ctb_compensation_apply_request)
+        print("The response of CtbApi->apply_ctb_compensation:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling CtbApi->create_ctb_compensation_processing_event: %s\n" % e)
+        print("Exception when calling CtbApi->apply_ctb_compensation: %s\n" % e)
 ```
 
 
@@ -64,11 +64,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **ctb_compensation_processing_event_request** | [**CtbCompensationProcessingEventRequest**](CtbCompensationProcessingEventRequest.md)|  | 
+ **ctb_compensation_apply_request** | [**CtbCompensationApplyRequest**](CtbCompensationApplyRequest.md)|  | 
 
 ### Return type
 
-[**CtbCompensationProcessingEventResponse**](CtbCompensationProcessingEventResponse.md)
+[**CtbCompensationApplyResponse**](CtbCompensationApplyResponse.md)
 
 ### Authorization
 
@@ -83,9 +83,8 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | An identical prior CTB decision was returned idempotently |  -  |
-**201** | The reviewed CTB compensation decision was applied |  -  |
-**409** | Reviewed state changed or the idempotency identity conflicts |  -  |
+**200** | The reviewed CTB decision was applied or was already present |  -  |
+**409** | Reviewed WinAD state changed and the selected final state is not fully present |  -  |
 **422** | Invalid or inconsistent CTB compensation effect |  -  |
 **503** | The configured CTB automation actor is unavailable |  -  |
 **401** | Unauthorized |  -  |
