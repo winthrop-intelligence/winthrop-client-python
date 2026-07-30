@@ -46425,12 +46425,6 @@ class DefaultApi:
                 description="Restrict to a band of the sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered."
             ),
         ] = None,
-        net_ranking_tier: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="Deprecated legacy name for `ranking_tier` (WINAD-10196), kept while generated clients still emit it. Same tier vocabulary and `custom_<min>_<max>` encoding. Ignored when `ranking_tier` is also present."
-            ),
-        ] = None,
         torvik_ranking_tier: Annotated[
             Optional[StrictStr],
             Field(
@@ -46487,8 +46481,6 @@ class DefaultApi:
         :type quality_tier: str
         :param ranking_tier: Restrict to a band of the sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
         :type ranking_tier: str
-        :param net_ranking_tier: Deprecated legacy name for `ranking_tier` (WINAD-10196), kept while generated clients still emit it. Same tier vocabulary and `custom_<min>_<max>` encoding. Ignored when `ranking_tier` is also present.
-        :type net_ranking_tier: str
         :param torvik_ranking_tier: Restrict to a T-Rank (Bart Torvik) band, mirroring ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
         :type torvik_ranking_tier: str
         :param max_distance_miles: Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
@@ -46528,7 +46520,6 @@ class DefaultApi:
             deal_types=deal_types,
             quality_tier=quality_tier,
             ranking_tier=ranking_tier,
-            net_ranking_tier=net_ranking_tier,
             torvik_ranking_tier=torvik_ranking_tier,
             max_distance_miles=max_distance_miles,
             user_school_id=user_school_id,
@@ -46603,12 +46594,6 @@ class DefaultApi:
                 description="Restrict to a band of the sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered."
             ),
         ] = None,
-        net_ranking_tier: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="Deprecated legacy name for `ranking_tier` (WINAD-10196), kept while generated clients still emit it. Same tier vocabulary and `custom_<min>_<max>` encoding. Ignored when `ranking_tier` is also present."
-            ),
-        ] = None,
         torvik_ranking_tier: Annotated[
             Optional[StrictStr],
             Field(
@@ -46665,8 +46650,6 @@ class DefaultApi:
         :type quality_tier: str
         :param ranking_tier: Restrict to a band of the sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
         :type ranking_tier: str
-        :param net_ranking_tier: Deprecated legacy name for `ranking_tier` (WINAD-10196), kept while generated clients still emit it. Same tier vocabulary and `custom_<min>_<max>` encoding. Ignored when `ranking_tier` is also present.
-        :type net_ranking_tier: str
         :param torvik_ranking_tier: Restrict to a T-Rank (Bart Torvik) band, mirroring ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
         :type torvik_ranking_tier: str
         :param max_distance_miles: Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
@@ -46706,7 +46689,6 @@ class DefaultApi:
             deal_types=deal_types,
             quality_tier=quality_tier,
             ranking_tier=ranking_tier,
-            net_ranking_tier=net_ranking_tier,
             torvik_ranking_tier=torvik_ranking_tier,
             max_distance_miles=max_distance_miles,
             user_school_id=user_school_id,
@@ -46781,12 +46763,6 @@ class DefaultApi:
                 description="Restrict to a band of the sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered."
             ),
         ] = None,
-        net_ranking_tier: Annotated[
-            Optional[StrictStr],
-            Field(
-                description="Deprecated legacy name for `ranking_tier` (WINAD-10196), kept while generated clients still emit it. Same tier vocabulary and `custom_<min>_<max>` encoding. Ignored when `ranking_tier` is also present."
-            ),
-        ] = None,
         torvik_ranking_tier: Annotated[
             Optional[StrictStr],
             Field(
@@ -46843,8 +46819,6 @@ class DefaultApi:
         :type quality_tier: str
         :param ranking_tier: Restrict to a band of the sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, latest non-null RPI for every other sport. Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without the metric are excluded from every tier. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
         :type ranking_tier: str
-        :param net_ranking_tier: Deprecated legacy name for `ranking_tier` (WINAD-10196), kept while generated clients still emit it. Same tier vocabulary and `custom_<min>_<max>` encoding. Ignored when `ranking_tier` is also present.
-        :type net_ranking_tier: str
         :param torvik_ranking_tier: Restrict to a T-Rank (Bart Torvik) band, mirroring ranking_tier (latest non-null 3-year T-Rank average for the requested sport). Accepts a named tier (top_50, 51_100, 101_200, 201_plus) or a custom inclusive range encoded as `custom_<min>_<max>`, where either bound may be blank for an open-ended range (e.g. `custom_50_` => 50 and up, `custom__120` => up to 120). Schools without a T-Rank are excluded from every tier. T-Rank is basketball-only, so this filter is ignored for non-basketball sports. Unrecognized or invalid values are ignored (treated as no filter); omit the param to leave results unfiltered.
         :type torvik_ranking_tier: str
         :param max_distance_miles: Maximum distance (miles) from the user's school. Requires user_school_id to resolve a coordinate origin.
@@ -46884,7 +46858,6 @@ class DefaultApi:
             deal_types=deal_types,
             quality_tier=quality_tier,
             ranking_tier=ranking_tier,
-            net_ranking_tier=net_ranking_tier,
             torvik_ranking_tier=torvik_ranking_tier,
             max_distance_miles=max_distance_miles,
             user_school_id=user_school_id,
@@ -46917,7 +46890,6 @@ class DefaultApi:
         deal_types,
         quality_tier,
         ranking_tier,
-        net_ranking_tier,
         torvik_ranking_tier,
         max_distance_miles,
         user_school_id,
@@ -46982,10 +46954,6 @@ class DefaultApi:
         if ranking_tier is not None:
 
             _query_params.append(("ranking_tier", ranking_tier))
-
-        if net_ranking_tier is not None:
-
-            _query_params.append(("net_ranking_tier", net_ranking_tier))
 
         if torvik_ranking_tier is not None:
 
