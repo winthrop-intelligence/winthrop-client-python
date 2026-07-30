@@ -90,7 +90,12 @@ class GamePostSearchResult(BaseModel):
         description="Dial-ready form of the creator's scheduling phone for tel links",
     )
     avg_net_rank: Optional[StrictInt] = Field(
-        default=None, description="5-year average NET ranking"
+        default=None,
+        description="3-season average NET ranking (basketball's ranking window)",
+    )
+    avg_rpi: Optional[StrictInt] = Field(
+        default=None,
+        description="5-season average RPI ranking — the value non-basketball feed cards display and the ranking filter compares against, so the card matches the filter that surfaced it. `last_rpi` remains for surfaces that show the latest value.",
     )
     school_logo_url: Optional[StrictStr] = Field(
         default=None, description="URL to school logo image (small variant)"
@@ -135,6 +140,7 @@ class GamePostSearchResult(BaseModel):
         "created_by_scheduling_phone",
         "created_by_scheduling_phone_dial",
         "avg_net_rank",
+        "avg_rpi",
         "school_logo_url",
         "posts",
         "games",
@@ -309,6 +315,11 @@ class GamePostSearchResult(BaseModel):
         if self.avg_net_rank is None and "avg_net_rank" in self.model_fields_set:
             _dict["avg_net_rank"] = None
 
+        # set to None if avg_rpi (nullable) is None
+        # and model_fields_set contains the field
+        if self.avg_rpi is None and "avg_rpi" in self.model_fields_set:
+            _dict["avg_rpi"] = None
+
         # set to None if school_logo_url (nullable) is None
         # and model_fields_set contains the field
         if self.school_logo_url is None and "school_logo_url" in self.model_fields_set:
@@ -359,6 +370,7 @@ class GamePostSearchResult(BaseModel):
                     "created_by_scheduling_phone_dial"
                 ),
                 "avg_net_rank": obj.get("avg_net_rank"),
+                "avg_rpi": obj.get("avg_rpi"),
                 "school_logo_url": obj.get("school_logo_url"),
                 "posts": (
                     [
