@@ -54,10 +54,10 @@ class TeamScheduleSearchResult(BaseModel):
         default=None, description="Most recent AP ranking"
     )
     avg_rpi: Optional[StrictInt] = Field(
-        default=None, description="5-year average RPI ranking"
+        default=None, description="3-year average RPI ranking"
     )
     avg_net_rank: Optional[StrictInt] = Field(
-        default=None, description="5-year average NET ranking"
+        default=None, description="3-year average NET ranking"
     )
     avg_ap_rank: Optional[StrictInt] = Field(
         default=None, description="5-year average AP ranking"

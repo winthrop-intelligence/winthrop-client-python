@@ -62,15 +62,15 @@ class GameDetail(BaseModel):
     state_name: Optional[StrictStr] = None
     home_school_ranking: Optional[StrictInt] = Field(
         default=None,
-        description="Latest value of the sport's primary ranking metric for the home team (WINAD-10197) — NET for basketball, RPI otherwise. Null when the team has no ranked season for that metric.",
+        description="Latest value of the sport's primary ranking metric for the home team (WINAD-10197) — NET for basketball, AP for football, RPI otherwise. Null when the team has no ranked season for that metric.",
     )
     away_school_ranking: Optional[StrictInt] = Field(
         default=None,
-        description="Latest value of the sport's primary ranking metric for the away team (WINAD-10197) — NET for basketball, RPI otherwise. Null when the team has no ranked season for that metric.",
+        description="Latest value of the sport's primary ranking metric for the away team (WINAD-10197) — NET for basketball, AP for football, RPI otherwise. Null when the team has no ranked season for that metric.",
     )
     ranking_metric: Optional[StrictStr] = Field(
         default=None,
-        description="Label of the primary ranking metric the *_school_ranking values were read from, for display (WINAD-10197). Null on create/update responses, which do not run the ranking lookups.",
+        description="Label of the primary ranking metric the *_school_ranking values were read from, for display (WINAD-10197). AP covers football, whose seasons carry no NET/RPI. Null on create/update responses, which do not run the ranking lookups.",
     )
     home_school_sos_ranking: Optional[StrictInt] = Field(
         default=None,
@@ -82,7 +82,7 @@ class GameDetail(BaseModel):
     )
     rankings_season_year: Optional[StrictInt] = Field(
         default=None,
-        description="Season year the displayed NET/SOS rankings are from, or null when neither team has a ranked season",
+        description="Season year the displayed primary-metric/SOS rankings are from, or null when neither team has a ranked season",
     )
     game_contract: Optional[GameDetailAllOfGameContract] = None
     __properties: ClassVar[List[str]] = [
@@ -122,8 +122,8 @@ class GameDetail(BaseModel):
         if value is None:
             return value
 
-        if value not in set(["NET", "RPI"]):
-            raise ValueError("must be one of enum values ('NET', 'RPI')")
+        if value not in set(["NET", "RPI", "AP"]):
+            raise ValueError("must be one of enum values ('NET', 'RPI', 'AP')")
         return value
 
     model_config = ConfigDict(

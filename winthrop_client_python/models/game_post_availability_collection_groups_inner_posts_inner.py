@@ -38,10 +38,18 @@ class GamePostAvailabilityCollectionGroupsInnerPostsInner(BaseModel):
         description="The school's most recent posted date in this bucket; null for a fully flexible post.",
         alias="date",
     )
-    last_rpi: Optional[StrictInt] = None
-    last_net_rank: Optional[StrictInt] = None
-    avg_rpi: Optional[StrictInt] = None
-    avg_net_rank: Optional[StrictInt] = None
+    last_rpi: Optional[StrictInt] = Field(
+        default=None, description="Most recent RPI ranking"
+    )
+    last_net_rank: Optional[StrictInt] = Field(
+        default=None, description="Most recent NET ranking"
+    )
+    avg_rpi: Optional[StrictInt] = Field(
+        default=None, description="3-year average RPI ranking"
+    )
+    avg_net_rank: Optional[StrictInt] = Field(
+        default=None, description="3-year average NET ranking"
+    )
     schedule_profile_eligible: Optional[StrictBool] = Field(
         default=None,
         description="WINAD-10097 - whether the school has a supported D1/D2 schedule profile. When false the row renders as plain text instead of a link.",

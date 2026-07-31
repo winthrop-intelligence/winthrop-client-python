@@ -41,7 +41,7 @@ class ScheduleGridAvailableSchoolRow(BaseModel):
     subdivision_name: Optional[StrictStr] = None
     rank: Optional[StrictInt] = Field(
         default=None,
-        description="Latest known NET rank for the requested sport (omitted when blank)",
+        description="The sport's primary ranking metric (WINAD-10196) — 3-year average NET rank for basketball, 3-year average RPI for every other sport (omitted when blank)",
     )
     torvik_rank: Optional[StrictInt] = Field(
         default=None,

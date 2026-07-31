@@ -90,12 +90,11 @@ class GamePostSearchResult(BaseModel):
         description="Dial-ready form of the creator's scheduling phone for tel links",
     )
     avg_net_rank: Optional[StrictInt] = Field(
-        default=None,
-        description="3-season average NET ranking (basketball's ranking window)",
+        default=None, description="3-year average NET ranking"
     )
     avg_rpi: Optional[StrictInt] = Field(
         default=None,
-        description="5-season average RPI ranking — the value non-basketball feed cards display and the ranking filter compares against, so the card matches the filter that surfaced it. `last_rpi` remains for surfaces that show the latest value.",
+        description="3-year average RPI ranking (WINAD-10196 — the value non-basketball feed cards display, matching the basis the ranking filter compares against)",
     )
     school_logo_url: Optional[StrictStr] = Field(
         default=None, description="URL to school logo image (small variant)"

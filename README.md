@@ -117,6 +117,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**create_favorites_category**](docs/DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 *DefaultApi* | [**create_foia_label**](docs/DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 *DefaultApi* | [**create_foia_request**](docs/DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
+*DefaultApi* | [**create_frs_export**](docs/DefaultApi.md#create_frs_export) | **POST** /api/v1/frs_exports | 
 *DefaultApi* | [**create_game**](docs/DefaultApi.md#create_game) | **POST** /api/v1/games | 
 *DefaultApi* | [**create_game_post**](docs/DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts | 
 *DefaultApi* | [**create_game_post_search**](docs/DefaultApi.md#create_game_post_search) | **POST** /api/v1/game_post_searches | 
@@ -232,6 +233,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_foia_labels**](docs/DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 *DefaultApi* | [**get_foia_request**](docs/DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
 *DefaultApi* | [**get_foia_requests**](docs/DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
+*DefaultApi* | [**get_frs_export_school_search**](docs/DefaultApi.md#get_frs_export_school_search) | **GET** /api/v1/frs_exports/school_search | 
+*DefaultApi* | [**get_frs_exports**](docs/DefaultApi.md#get_frs_exports) | **GET** /api/v1/frs_exports | 
 *DefaultApi* | [**get_gad_search_detail**](docs/DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail | 
 *DefaultApi* | [**get_gad_searches**](docs/DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 *DefaultApi* | [**get_game**](docs/DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
@@ -250,6 +253,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_income_report**](docs/DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 *DefaultApi* | [**get_income_reports**](docs/DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
 *DefaultApi* | [**get_job_post**](docs/DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
+*DefaultApi* | [**get_job_post_disagreements**](docs/DefaultApi.md#get_job_post_disagreements) | **GET** /central_jobs/job_posts/disagreements | List unresolved LLM/ML athletics classification disagreements
 *DefaultApi* | [**get_job_posts**](docs/DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts
 *DefaultApi* | [**get_lad_filter_options**](docs/DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options | 
 *DefaultApi* | [**get_ncaa_financial_report_status**](docs/DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
@@ -328,6 +332,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_wire_changes**](docs/DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
 *DefaultApi* | [**list_notes**](docs/DefaultApi.md#list_notes) | **GET** /api/v1/notes/list | 
 *DefaultApi* | [**regenerate_raw_contract_pdf**](docs/DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
+*DefaultApi* | [**resolve_frs_export**](docs/DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve | 
+*DefaultApi* | [**retry_frs_export**](docs/DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry | 
 *DefaultApi* | [**search_coaches**](docs/DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
 *DefaultApi* | [**send_otp_code**](docs/DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
 *DefaultApi* | [**unstract_raw_contract_pdf_text**](docs/DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
@@ -346,6 +352,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_game_contract**](docs/DefaultApi.md#update_game_contract) | **PATCH** /api/v1/game_contracts/{game_contractId} | 
 *DefaultApi* | [**update_game_post_search**](docs/DefaultApi.md#update_game_post_search) | **PATCH** /api/v1/game_post_searches/{gamePostSearchId} | 
 *DefaultApi* | [**update_job_post**](docs/DefaultApi.md#update_job_post) | **PATCH** /central_jobs/job_posts/{jobPostId} | Update a job post
+*DefaultApi* | [**update_job_post_human_override**](docs/DefaultApi.md#update_job_post_human_override) | **PATCH** /central_jobs/job_posts/{jobPostId}/human_override | Set the human_override_is_athletics value for one job post
 *DefaultApi* | [**update_note**](docs/DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} | 
 *DefaultApi* | [**update_password_reset**](docs/DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset | 
 *DefaultApi* | [**update_position**](docs/DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
@@ -528,6 +535,8 @@ Class | Method | HTTP request | Description
  - [CreateFavorite201Response](docs/CreateFavorite201Response.md)
  - [CreateFavoriteRequest](docs/CreateFavoriteRequest.md)
  - [CreateFavoritesCategoryRequest](docs/CreateFavoritesCategoryRequest.md)
+ - [CreateFrsExport422Response](docs/CreateFrsExport422Response.md)
+ - [CreateFrsExportRequest](docs/CreateFrsExportRequest.md)
  - [CreateGamePostSearchRequest](docs/CreateGamePostSearchRequest.md)
  - [CreateGamePostSearchRequestGamePost](docs/CreateGamePostSearchRequestGamePost.md)
  - [CreateGameRequest](docs/CreateGameRequest.md)
@@ -628,6 +637,13 @@ Class | Method | HTTP request | Description
  - [FoiaRequestedItemStatusTransitionRow](docs/FoiaRequestedItemStatusTransitionRow.md)
  - [FoiaRequestedItemStatusTransitionsMeta](docs/FoiaRequestedItemStatusTransitionsMeta.md)
  - [FoiaRequestedItemStatusTransitionsResponse](docs/FoiaRequestedItemStatusTransitionsResponse.md)
+ - [FrsExport](docs/FrsExport.md)
+ - [FrsExportConfig](docs/FrsExportConfig.md)
+ - [FrsExportsResponse](docs/FrsExportsResponse.md)
+ - [FrsResolveRequest](docs/FrsResolveRequest.md)
+ - [FrsResolvedPopulation](docs/FrsResolvedPopulation.md)
+ - [FrsResolvedSchool](docs/FrsResolvedSchool.md)
+ - [FrsSchoolSearchResponse](docs/FrsSchoolSearchResponse.md)
  - [GadCohortError](docs/GadCohortError.md)
  - [GadCohortSummary](docs/GadCohortSummary.md)
  - [GadCohortSummaryBuyerFilters](docs/GadCohortSummaryBuyerFilters.md)
@@ -703,6 +719,9 @@ Class | Method | HTTP request | Description
  - [HTTPValidationError](docs/HTTPValidationError.md)
  - [HealthCheckFailure](docs/HealthCheckFailure.md)
  - [HealthCheckSuccess](docs/HealthCheckSuccess.md)
+ - [HumanOverrideRequest](docs/HumanOverrideRequest.md)
+ - [HumanOverrideRequestJobPost](docs/HumanOverrideRequestJobPost.md)
+ - [HumanOverrideResult](docs/HumanOverrideResult.md)
  - [IdName](docs/IdName.md)
  - [IncomeReport](docs/IncomeReport.md)
  - [IncomeReportCollection](docs/IncomeReportCollection.md)
@@ -717,6 +736,8 @@ Class | Method | HTTP request | Description
  - [JobOptions](docs/JobOptions.md)
  - [JobPost](docs/JobPost.md)
  - [JobPostCollection](docs/JobPostCollection.md)
+ - [JobPostDisagreement](docs/JobPostDisagreement.md)
+ - [JobPostDisagreementCollection](docs/JobPostDisagreementCollection.md)
  - [JobPostInterestLead](docs/JobPostInterestLead.md)
  - [JobPostInterestLeadCandidate](docs/JobPostInterestLeadCandidate.md)
  - [JobPostInterestLeadCollection](docs/JobPostInterestLeadCollection.md)
@@ -785,6 +806,7 @@ Class | Method | HTTP request | Description
  - [RequestedItemReviewContextDocument](docs/RequestedItemReviewContextDocument.md)
  - [RequestedItemReviewContextFoiaRequest](docs/RequestedItemReviewContextFoiaRequest.md)
  - [RequestedItemReviewContextRequestedItem](docs/RequestedItemReviewContextRequestedItem.md)
+ - [RetryFrsExport422Response](docs/RetryFrsExport422Response.md)
  - [RoleOption](docs/RoleOption.md)
  - [RunningJob](docs/RunningJob.md)
  - [ScheduleGridAvailableSchoolPost](docs/ScheduleGridAvailableSchoolPost.md)
@@ -826,7 +848,6 @@ Class | Method | HTTP request | Description
  - [ScraperArgDef](docs/ScraperArgDef.md)
  - [Season](docs/Season.md)
  - [SeasonCollection](docs/SeasonCollection.md)
- - [SendOtpCode422Response](docs/SendOtpCode422Response.md)
  - [SnapshotIncomeReport](docs/SnapshotIncomeReport.md)
  - [Sport](docs/Sport.md)
  - [SportCollection](docs/SportCollection.md)

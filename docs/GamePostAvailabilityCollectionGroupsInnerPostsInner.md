@@ -11,10 +11,10 @@ Name | Type | Description | Notes
 **school_name** | **str** |  | [optional] 
 **sport_name** | **str** |  | [optional] 
 **var_date** | **date** | The school&#39;s most recent posted date in this bucket; null for a fully flexible post. | [optional] 
-**last_rpi** | **int** |  | [optional] 
-**last_net_rank** | **int** |  | [optional] 
-**avg_rpi** | **int** |  | [optional] 
-**avg_net_rank** | **int** |  | [optional] 
+**last_rpi** | **int** | Most recent RPI ranking | [optional] 
+**last_net_rank** | **int** | Most recent NET ranking | [optional] 
+**avg_rpi** | **int** | 3-year average RPI ranking | [optional] 
+**avg_net_rank** | **int** | 3-year average NET ranking | [optional] 
 **schedule_profile_eligible** | **bool** | WINAD-10097 - whether the school has a supported D1/D2 schedule profile. When false the row renders as plain text instead of a link. | [optional] 
 
 ## Example
