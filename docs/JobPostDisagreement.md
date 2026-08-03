@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **created_at** | **datetime** |  | [optional] 
 **llm_is_athletics** | **bool** |  | [optional] 
 **ml_is_athletics** | **bool** |  | [optional] 
-**reasoning** | **str** |  | [optional] 
+**reasoning** | **str** | Work-type summary reasoning. This is not an athletics-classification justification. | [optional] 
 **admin_url** | **str** |  | [optional] 
 **novelty** | **str** |  | [optional] 
 

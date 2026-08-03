@@ -9,6 +9,9 @@ Name | Type | Description | Notes
 **compensation_id** | **int** |  | 
 **role** | **str** |  | 
 **actions** | **List[str]** |  | 
+**requested_item_note** | **str** |  | 
+**compensation_comment** | **str** |  | 
+**position_ids** | **List[int]** |  | 
 
 ## Example
 

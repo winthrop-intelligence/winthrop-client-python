@@ -159,8 +159,10 @@ docs/CtbCompensationApplyInput.md
 docs/CtbCompensationApplyRequest.md
 docs/CtbCompensationApplyResponse.md
 docs/CtbCompensationExpectedRequest.md
+docs/CtbFoundationEmployeeCompensationApplyInput.md
 docs/CtbGraduateAssistantCompensationApplyInput.md
 docs/CtbNotEmployedCompensationApplyInput.md
+docs/CtbThirdPartyContractorCompensationApplyInput.md
 docs/CtbVolunteerCompensationApplyInput.md
 docs/Deal.md
 docs/DealCollection.md
@@ -553,11 +555,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_human_override_request.py
-test/test_human_override_request_job_post.py
-test/test_human_override_result.py
-test/test_job_post_disagreement.py
-test/test_job_post_disagreement_collection.py
+test/test_ctb_foundation_employee_compensation_apply_input.py
+test/test_ctb_third_party_contractor_compensation_apply_input.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -732,8 +731,10 @@ winthrop_client_python/models/ctb_compensation_apply_input.py
 winthrop_client_python/models/ctb_compensation_apply_request.py
 winthrop_client_python/models/ctb_compensation_apply_response.py
 winthrop_client_python/models/ctb_compensation_expected_request.py
+winthrop_client_python/models/ctb_foundation_employee_compensation_apply_input.py
 winthrop_client_python/models/ctb_graduate_assistant_compensation_apply_input.py
 winthrop_client_python/models/ctb_not_employed_compensation_apply_input.py
+winthrop_client_python/models/ctb_third_party_contractor_compensation_apply_input.py
 winthrop_client_python/models/ctb_volunteer_compensation_apply_input.py
 winthrop_client_python/models/deal.py
 winthrop_client_python/models/deal_collection.py

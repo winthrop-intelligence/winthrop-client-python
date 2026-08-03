@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **compensation_id** | **int** |  | 
 **role** | **str** | CTB compensation-availability interpretation selected in the reviewed decision. | 
 **actions** | **List[str]** | Granular actions approved for the reviewed not-employed exception. | 
+**requested_item_note** | **str** | Exact reviewed entry to append when add_requested_item_note is selected. | [optional] 
+**compensation_comment** | **str** | Exact reviewed sentence to append when add_compensation_note is selected. | [optional] 
+**position_ids** | **List[int]** | Reviewed compensation positions to update when add_position_type is selected. | [optional] 
 **expected_request** | [**CtbCompensationExpectedRequest**](CtbCompensationExpectedRequest.md) |  | 
 **expected_requested_item** | [**FoiaInboxExpectedRequestedItem**](FoiaInboxExpectedRequestedItem.md) |  | 
 **expected_compensation** | [**FoiaInboxExpectedCompensation**](FoiaInboxExpectedCompensation.md) |  | 
