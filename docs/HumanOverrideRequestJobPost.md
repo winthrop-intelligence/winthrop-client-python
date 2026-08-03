@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **human_override_is_athletics** | **bool** |  | 
+**expected_source_fingerprint** | **str** | Optional fingerprint of the source snapshot used for the human decision. | [optional] 
 
 ## Example
 
