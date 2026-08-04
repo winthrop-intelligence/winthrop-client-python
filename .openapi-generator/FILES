@@ -563,14 +563,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_foia_inbox_add_cc_effect.py
-test/test_foia_inbox_contact.py
-test/test_foia_inbox_contact_changes.py
-test/test_foia_inbox_contact_effect.py
-test/test_foia_inbox_contact_input.py
-test/test_foia_inbox_contact_result.py
-test/test_foia_inbox_replace_lead_effect.py
-test/test_foia_inbox_update_contact_effect.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
