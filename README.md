@@ -278,6 +278,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_scheduling_contacts**](docs/DefaultApi.md#get_scheduling_contacts) | **GET** /api/v1/scheduling_contacts | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+*DefaultApi* | [**get_school_department_financials**](docs/DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials | 
 *DefaultApi* | [**get_school_game_contracts**](docs/DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
 *DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
 *DefaultApi* | [**get_school_group_admin_compensation**](docs/DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation | 
@@ -606,6 +607,14 @@ Class | Method | HTTP request | Description
  - [DeleteAccountUser200Response](docs/DeleteAccountUser200Response.md)
  - [DeleteContactSearch200Response](docs/DeleteContactSearch200Response.md)
  - [DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
+ - [DepartmentFinancialsLedger](docs/DepartmentFinancialsLedger.md)
+ - [DepartmentFinancialsLedgerLine](docs/DepartmentFinancialsLedgerLine.md)
+ - [DepartmentFinancialsNetResult](docs/DepartmentFinancialsNetResult.md)
+ - [DepartmentFinancialsQuadrant](docs/DepartmentFinancialsQuadrant.md)
+ - [DepartmentFinancialsQuadrantPoint](docs/DepartmentFinancialsQuadrantPoint.md)
+ - [DepartmentFinancialsRankLine](docs/DepartmentFinancialsRankLine.md)
+ - [DepartmentFinancialsTrendEntry](docs/DepartmentFinancialsTrendEntry.md)
+ - [DepartmentFinancialsUnplottedSchool](docs/DepartmentFinancialsUnplottedSchool.md)
  - [DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
@@ -859,6 +868,9 @@ Class | Method | HTTP request | Description
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
  - [SchoolContractEntry](docs/SchoolContractEntry.md)
+ - [SchoolDepartmentFinancials](docs/SchoolDepartmentFinancials.md)
+ - [SchoolDepartmentFinancialsConference](docs/SchoolDepartmentFinancialsConference.md)
+ - [SchoolDepartmentFinancialsSchool](docs/SchoolDepartmentFinancialsSchool.md)
  - [SchoolFinancialDetail](docs/SchoolFinancialDetail.md)
  - [SchoolFinancialDetailGroup](docs/SchoolFinancialDetailGroup.md)
  - [SchoolFinancialDetailSibling](docs/SchoolFinancialDetailSibling.md)

@@ -479,6 +479,30 @@ from winthrop_client_python.models.delete_contact_search200_response import (
 from winthrop_client_python.models.delete_favorite200_response import (
     DeleteFavorite200Response,
 )
+from winthrop_client_python.models.department_financials_ledger import (
+    DepartmentFinancialsLedger,
+)
+from winthrop_client_python.models.department_financials_ledger_line import (
+    DepartmentFinancialsLedgerLine,
+)
+from winthrop_client_python.models.department_financials_net_result import (
+    DepartmentFinancialsNetResult,
+)
+from winthrop_client_python.models.department_financials_quadrant import (
+    DepartmentFinancialsQuadrant,
+)
+from winthrop_client_python.models.department_financials_quadrant_point import (
+    DepartmentFinancialsQuadrantPoint,
+)
+from winthrop_client_python.models.department_financials_rank_line import (
+    DepartmentFinancialsRankLine,
+)
+from winthrop_client_python.models.department_financials_trend_entry import (
+    DepartmentFinancialsTrendEntry,
+)
+from winthrop_client_python.models.department_financials_unplotted_school import (
+    DepartmentFinancialsUnplottedSchool,
+)
 from winthrop_client_python.models.department_search_result import (
     DepartmentSearchResult,
 )
@@ -992,6 +1016,15 @@ from winthrop_client_python.models.scheduling_contacts_response import (
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.models.school_contract_entry import SchoolContractEntry
+from winthrop_client_python.models.school_department_financials import (
+    SchoolDepartmentFinancials,
+)
+from winthrop_client_python.models.school_department_financials_conference import (
+    SchoolDepartmentFinancialsConference,
+)
+from winthrop_client_python.models.school_department_financials_school import (
+    SchoolDepartmentFinancialsSchool,
+)
 from winthrop_client_python.models.school_financial_detail import SchoolFinancialDetail
 from winthrop_client_python.models.school_financial_detail_group import (
     SchoolFinancialDetailGroup,

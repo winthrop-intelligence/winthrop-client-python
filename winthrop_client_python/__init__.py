@@ -235,6 +235,14 @@ __all__ = [
     "DeleteAccountUser200Response",
     "DeleteContactSearch200Response",
     "DeleteFavorite200Response",
+    "DepartmentFinancialsLedger",
+    "DepartmentFinancialsLedgerLine",
+    "DepartmentFinancialsNetResult",
+    "DepartmentFinancialsQuadrant",
+    "DepartmentFinancialsQuadrantPoint",
+    "DepartmentFinancialsRankLine",
+    "DepartmentFinancialsTrendEntry",
+    "DepartmentFinancialsUnplottedSchool",
     "DepartmentSearchResult",
     "DepartmentSearchResultCollection",
     "DepartmentSearchResultDepartment",
@@ -488,6 +496,9 @@ __all__ = [
     "School",
     "SchoolCollection",
     "SchoolContractEntry",
+    "SchoolDepartmentFinancials",
+    "SchoolDepartmentFinancialsConference",
+    "SchoolDepartmentFinancialsSchool",
     "SchoolFinancialDetail",
     "SchoolFinancialDetailGroup",
     "SchoolFinancialDetailSibling",
@@ -1182,6 +1193,30 @@ from winthrop_client_python.models.delete_contact_search200_response import (
 from winthrop_client_python.models.delete_favorite200_response import (
     DeleteFavorite200Response as DeleteFavorite200Response,
 )
+from winthrop_client_python.models.department_financials_ledger import (
+    DepartmentFinancialsLedger as DepartmentFinancialsLedger,
+)
+from winthrop_client_python.models.department_financials_ledger_line import (
+    DepartmentFinancialsLedgerLine as DepartmentFinancialsLedgerLine,
+)
+from winthrop_client_python.models.department_financials_net_result import (
+    DepartmentFinancialsNetResult as DepartmentFinancialsNetResult,
+)
+from winthrop_client_python.models.department_financials_quadrant import (
+    DepartmentFinancialsQuadrant as DepartmentFinancialsQuadrant,
+)
+from winthrop_client_python.models.department_financials_quadrant_point import (
+    DepartmentFinancialsQuadrantPoint as DepartmentFinancialsQuadrantPoint,
+)
+from winthrop_client_python.models.department_financials_rank_line import (
+    DepartmentFinancialsRankLine as DepartmentFinancialsRankLine,
+)
+from winthrop_client_python.models.department_financials_trend_entry import (
+    DepartmentFinancialsTrendEntry as DepartmentFinancialsTrendEntry,
+)
+from winthrop_client_python.models.department_financials_unplotted_school import (
+    DepartmentFinancialsUnplottedSchool as DepartmentFinancialsUnplottedSchool,
+)
 from winthrop_client_python.models.department_search_result import (
     DepartmentSearchResult as DepartmentSearchResult,
 )
@@ -1846,6 +1881,15 @@ from winthrop_client_python.models.school_collection import (
 )
 from winthrop_client_python.models.school_contract_entry import (
     SchoolContractEntry as SchoolContractEntry,
+)
+from winthrop_client_python.models.school_department_financials import (
+    SchoolDepartmentFinancials as SchoolDepartmentFinancials,
+)
+from winthrop_client_python.models.school_department_financials_conference import (
+    SchoolDepartmentFinancialsConference as SchoolDepartmentFinancialsConference,
+)
+from winthrop_client_python.models.school_department_financials_school import (
+    SchoolDepartmentFinancialsSchool as SchoolDepartmentFinancialsSchool,
 )
 from winthrop_client_python.models.school_financial_detail import (
     SchoolFinancialDetail as SchoolFinancialDetail,
