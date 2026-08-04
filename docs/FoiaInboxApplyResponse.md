@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **decision_sha256** | **str** |  | 
 **request_sha256** | **str** |  | 
 **status** | **str** |  | 
+**foia_contact_results** | [**List[FoiaInboxContactResult]**](FoiaInboxContactResult.md) | Typed authoritative read-back for selected FOIA-contact effects; empty when none were selected. | [optional] 
 **result** | **Dict[str, object]** |  | 
 
 ## Example

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **foia_request** | [**FoiaInboxEffectsFoiaRequest**](FoiaInboxEffectsFoiaRequest.md) |  | [optional] 
 **compensation_exceptions** | [**List[FoiaInboxCompensationException]**](FoiaInboxCompensationException.md) |  | [optional] 
+**foia_contacts** | [**List[FoiaInboxContactEffect]**](FoiaInboxContactEffect.md) | Each existing FOIA contact may be targeted by at most one effect in the reviewed atomic bundle. | [optional] 
 
 ## Example
 

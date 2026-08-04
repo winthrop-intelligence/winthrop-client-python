@@ -11,7 +11,7 @@ Method | HTTP request | Description
 # **apply_foia_inbox**
 > FoiaInboxApplyResponse apply_foia_inbox(foia_inbox_apply_request)
 
-Atomically apply one approved Gmail message decision to one FOIA request. A retry whose selected final state is already present returns already_applied without duplicating effects.
+Atomically apply one approved Gmail message decision to one FOIA request. Supported contact effects are limited to FOIA-contact add-CC, update, and in-place Lead replacement; no contact delete is available. A receipt-backed retry whose selected final state is still present returns already_applied without duplicating effects.
 
 ### Example
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The approved decision was applied, or its selected final state was already present |  -  |
-**409** | Reviewed state changed and the selected final state is not already present |  -  |
+**409** | Reviewed state changed, an idempotency key was reused for different input, or the selected final state is no longer present |  -  |
 **422** | Invalid or inconsistent effect bundle |  -  |
 **503** | The configured FOIA inbox automation actor is unavailable |  -  |
 **401** | Unauthorized |  -  |
