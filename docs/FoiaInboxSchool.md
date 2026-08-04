@@ -13,7 +13,9 @@ Name | Type | Description | Notes
 **state** | **str** |  | [optional] 
 **state_name** | **str** |  | [optional] 
 **portal_site** | **str** |  | [optional] 
-**contacts** | **List[Dict[str, object]]** |  | [optional] 
+**contacts** | **List[Dict[str, object]]** | Legacy FOIA-contact projection retained for existing clients. New clients should use foia_contacts. | [optional] 
+**foia_contacts** | [**List[FoiaInboxContact]**](FoiaInboxContact.md) | FOIA contacts only; this never includes account or scheduling contacts. | [optional] 
+**foia_contacts_sha256** | **str** | Deterministic checksum of the ordered foia_contacts collection for stale-state protection. | [optional] 
 **notes** | [**List[FoiaInboxNote]**](FoiaInboxNote.md) |  | [optional] 
 
 ## Example
