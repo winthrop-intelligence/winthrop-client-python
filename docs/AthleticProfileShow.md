@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **sport_overview** | [**AthleticProfileShowSportOverview**](AthleticProfileShowSportOverview.md) |  | [optional] 
 **sport_coach_staff** | [**AthleticProfileShowSportCoachStaff**](AthleticProfileShowSportCoachStaff.md) |  | [optional] 
 **sport_financials** | [**AthleticProfileShowSportFinancials**](AthleticProfileShowSportFinancials.md) |  | [optional] 
+**sport_guarantees** | [**AthleticProfileShowSportGuarantees**](AthleticProfileShowSportGuarantees.md) |  | [optional] 
+**sport_history** | [**AthleticProfileShowSportHistory**](AthleticProfileShowSportHistory.md) |  | [optional] 
 **sponsored_count** | **int** |  | [optional] 
 **personnel** | [**List[AthleticProfileShowPersonnelInner]**](AthleticProfileShowPersonnelInner.md) |  | [optional] 
 **personnel_total_count** | **int** |  | [optional] 

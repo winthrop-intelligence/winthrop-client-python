@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **net_rank** | **int** |  | [optional] 
 **postseason** | **str** |  | [optional] 
 **head_coach_name** | **str** |  | [optional] 
+**head_coach_interim** | **bool** | True when the season&#39;s seat-holder is filed only as INTERIM_HEAD_COACH. | [optional] 
 
 ## Example
 

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **contract_end_on** | **date** |  | [optional] 
 **contract_on_file** | **bool** |  | [optional] 
 **at_will** | **bool** |  | [optional] 
+**interim** | **bool** | True when the resolved seat-holder&#39;s position is interim-only. | [optional] 
 **first_season_year** | **int** |  | [optional] 
 **career_season_count** | **int** | Total recorded head-coach seasons across schools; career rows are capped at 12 selected seasons. | [optional] 
 **year_one** | [**AthleticProfileShowSportCoachStaffHeadCoachYearOne**](AthleticProfileShowSportCoachStaffHeadCoachYearOne.md) |  | [optional] 

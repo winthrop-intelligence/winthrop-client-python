@@ -45,6 +45,10 @@ class AthleticProfileShowSportCoachStaffHeadCoach(BaseModel):
     contract_end_on: Optional[date] = None
     contract_on_file: Optional[StrictBool] = None
     at_will: Optional[StrictBool] = None
+    interim: Optional[StrictBool] = Field(
+        default=None,
+        description="True when the resolved seat-holder's position is interim-only.",
+    )
     first_season_year: Optional[StrictInt] = None
     career_season_count: Optional[StrictInt] = Field(
         default=None,
@@ -69,6 +73,7 @@ class AthleticProfileShowSportCoachStaffHeadCoach(BaseModel):
         "contract_end_on",
         "contract_on_file",
         "at_will",
+        "interim",
         "first_season_year",
         "career_season_count",
         "year_one",
@@ -211,6 +216,7 @@ class AthleticProfileShowSportCoachStaffHeadCoach(BaseModel):
                 "contract_end_on": obj.get("contract_end_on"),
                 "contract_on_file": obj.get("contract_on_file"),
                 "at_will": obj.get("at_will"),
+                "interim": obj.get("interim"),
                 "first_season_year": obj.get("first_season_year"),
                 "career_season_count": obj.get("career_season_count"),
                 "year_one": (

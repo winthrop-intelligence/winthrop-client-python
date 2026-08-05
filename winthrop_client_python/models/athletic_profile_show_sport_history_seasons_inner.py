@@ -16,35 +16,38 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class AthleticProfileShowSportOverviewSeasonsInner(BaseModel):
+class AthleticProfileShowSportHistorySeasonsInner(BaseModel):
     """
-    AthleticProfileShowSportOverviewSeasonsInner
+    AthleticProfileShowSportHistorySeasonsInner
     """  # noqa: E501
 
     year: Optional[StrictInt] = None
+    coach_id: Optional[StrictInt] = None
+    coach_name: Optional[StrictStr] = None
+    interim: Optional[StrictBool] = None
     record: Optional[StrictStr] = None
     conference_record: Optional[StrictStr] = None
     net_rank: Optional[StrictInt] = None
+    rpi: Optional[StrictInt] = None
     postseason: Optional[StrictStr] = None
-    head_coach_name: Optional[StrictStr] = None
-    head_coach_interim: Optional[StrictBool] = Field(
-        default=None,
-        description="True when the season's seat-holder is filed only as INTERIM_HEAD_COACH.",
-    )
+    spend_cents: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = [
         "year",
+        "coach_id",
+        "coach_name",
+        "interim",
         "record",
         "conference_record",
         "net_rank",
+        "rpi",
         "postseason",
-        "head_coach_name",
-        "head_coach_interim",
+        "spend_cents",
     ]
 
     model_config = ConfigDict(
@@ -64,7 +67,7 @@ class AthleticProfileShowSportOverviewSeasonsInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AthleticProfileShowSportOverviewSeasonsInner from a JSON string"""
+        """Create an instance of AthleticProfileShowSportHistorySeasonsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,21 +87,54 @@ class AthleticProfileShowSportOverviewSeasonsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if coach_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.coach_id is None and "coach_id" in self.model_fields_set:
+            _dict["coach_id"] = None
+
+        # set to None if coach_name (nullable) is None
+        # and model_fields_set contains the field
+        if self.coach_name is None and "coach_name" in self.model_fields_set:
+            _dict["coach_name"] = None
+
+        # set to None if record (nullable) is None
+        # and model_fields_set contains the field
+        if self.record is None and "record" in self.model_fields_set:
+            _dict["record"] = None
+
+        # set to None if conference_record (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.conference_record is None
+            and "conference_record" in self.model_fields_set
+        ):
+            _dict["conference_record"] = None
+
         # set to None if net_rank (nullable) is None
         # and model_fields_set contains the field
         if self.net_rank is None and "net_rank" in self.model_fields_set:
             _dict["net_rank"] = None
 
-        # set to None if head_coach_name (nullable) is None
+        # set to None if rpi (nullable) is None
         # and model_fields_set contains the field
-        if self.head_coach_name is None and "head_coach_name" in self.model_fields_set:
-            _dict["head_coach_name"] = None
+        if self.rpi is None and "rpi" in self.model_fields_set:
+            _dict["rpi"] = None
+
+        # set to None if postseason (nullable) is None
+        # and model_fields_set contains the field
+        if self.postseason is None and "postseason" in self.model_fields_set:
+            _dict["postseason"] = None
+
+        # set to None if spend_cents (nullable) is None
+        # and model_fields_set contains the field
+        if self.spend_cents is None and "spend_cents" in self.model_fields_set:
+            _dict["spend_cents"] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AthleticProfileShowSportOverviewSeasonsInner from a dict"""
+        """Create an instance of AthleticProfileShowSportHistorySeasonsInner from a dict"""
         if obj is None:
             return None
 
@@ -108,12 +144,15 @@ class AthleticProfileShowSportOverviewSeasonsInner(BaseModel):
         _obj = cls.model_validate(
             {
                 "year": obj.get("year"),
+                "coach_id": obj.get("coach_id"),
+                "coach_name": obj.get("coach_name"),
+                "interim": obj.get("interim"),
                 "record": obj.get("record"),
                 "conference_record": obj.get("conference_record"),
                 "net_rank": obj.get("net_rank"),
+                "rpi": obj.get("rpi"),
                 "postseason": obj.get("postseason"),
-                "head_coach_name": obj.get("head_coach_name"),
-                "head_coach_interim": obj.get("head_coach_interim"),
+                "spend_cents": obj.get("spend_cents"),
             }
         )
         return _obj

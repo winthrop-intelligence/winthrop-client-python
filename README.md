@@ -168,6 +168,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 *DefaultApi* | [**get_administrator_searches**](docs/DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 *DefaultApi* | [**get_administrators**](docs/DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
+*DefaultApi* | [**get_athletic_profile_report**](docs/DefaultApi.md#get_athletic_profile_report) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId}/report | 
 *DefaultApi* | [**get_athletic_profile_search**](docs/DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} | 
 *DefaultApi* | [**get_audited_financial_report_status**](docs/DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 *DefaultApi* | [**get_audited_financial_report_statuses**](docs/DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
@@ -451,6 +452,15 @@ Class | Method | HTTP request | Description
  - [AthleticProfileShowSportFinancialsFrsSplit](docs/AthleticProfileShowSportFinancialsFrsSplit.md)
  - [AthleticProfileShowSportFinancialsQuadrant](docs/AthleticProfileShowSportFinancialsQuadrant.md)
  - [AthleticProfileShowSportFinancialsQuadrantPointsInner](docs/AthleticProfileShowSportFinancialsQuadrantPointsInner.md)
+ - [AthleticProfileShowSportGuarantees](docs/AthleticProfileShowSportGuarantees.md)
+ - [AthleticProfileShowSportGuaranteesAgreementsInner](docs/AthleticProfileShowSportGuaranteesAgreementsInner.md)
+ - [AthleticProfileShowSportGuaranteesQuadrant](docs/AthleticProfileShowSportGuaranteesQuadrant.md)
+ - [AthleticProfileShowSportGuaranteesQuadrantPointsInner](docs/AthleticProfileShowSportGuaranteesQuadrantPointsInner.md)
+ - [AthleticProfileShowSportGuaranteesSummary](docs/AthleticProfileShowSportGuaranteesSummary.md)
+ - [AthleticProfileShowSportHistory](docs/AthleticProfileShowSportHistory.md)
+ - [AthleticProfileShowSportHistoryChurn](docs/AthleticProfileShowSportHistoryChurn.md)
+ - [AthleticProfileShowSportHistoryChurnTransitionsInner](docs/AthleticProfileShowSportHistoryChurnTransitionsInner.md)
+ - [AthleticProfileShowSportHistorySeasonsInner](docs/AthleticProfileShowSportHistorySeasonsInner.md)
  - [AthleticProfileShowSportOverview](docs/AthleticProfileShowSportOverview.md)
  - [AthleticProfileShowSportOverviewGuarantees](docs/AthleticProfileShowSportOverviewGuarantees.md)
  - [AthleticProfileShowSportOverviewGuaranteesUpcomingInner](docs/AthleticProfileShowSportOverviewGuaranteesUpcomingInner.md)

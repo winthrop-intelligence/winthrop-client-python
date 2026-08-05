@@ -74,6 +74,7 @@ Method | HTTP request | Description
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
+[**get_athletic_profile_report**](DefaultApi.md#get_athletic_profile_report) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId}/report | 
 [**get_athletic_profile_search**](DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} | 
 [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
@@ -5960,6 +5961,97 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Administrators were found |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_athletic_profile_report**
+> bytearray get_athletic_profile_report(athletic_profile_search_id, sport, year=year, scope=scope, tab=tab, appendix=appendix)
+
+Download a sport profile view as a letter-format PDF report (WINAD-10211). Department scopes are rejected with 422 until their report pages exist.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    athletic_profile_search_id = 56 # int | School ID
+    sport = 'sport_example' # str | Sport key (non-ADMIN)
+    year = 56 # int | Season year (defaults to the current season) (optional)
+    scope = full # str | Report scope (optional) (default to full)
+    tab = overview # str | Tab key when scope=tab (optional) (default to overview)
+    appendix = 1 # str | Include the sources appendix ('1' default, '0' to omit) (optional) (default to 1)
+
+    try:
+        api_response = api_instance.get_athletic_profile_report(athletic_profile_search_id, sport, year=year, scope=scope, tab=tab, appendix=appendix)
+        print("The response of DefaultApi->get_athletic_profile_report:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_athletic_profile_report: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **athletic_profile_search_id** | **int**| School ID | 
+ **sport** | **str**| Sport key (non-ADMIN) | 
+ **year** | **int**| Season year (defaults to the current season) | [optional] 
+ **scope** | **str**| Report scope | [optional] [default to full]
+ **tab** | **str**| Tab key when scope&#x3D;tab | [optional] [default to overview]
+ **appendix** | **str**| Include the sources appendix (&#39;1&#39; default, &#39;0&#39; to omit) | [optional] [default to 1]
+
+### Return type
+
+**bytearray**
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/pdf
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | PDF report attachment |  -  |
+**401** | Unauthorized |  -  |
+**404** | Not found |  -  |
+**422** | Department report pages are pending |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,6 +30,10 @@ class AthleticProfileShowSportOverviewHeadCoach(BaseModel):
 
     coach_id: Optional[StrictInt] = None
     name: Optional[StrictStr] = None
+    interim: Optional[StrictBool] = Field(
+        default=None,
+        description="True when the resolved seat-holder's position is interim-only.",
+    )
     first_season_year: Optional[StrictInt] = None
     comp_cents: Optional[StrictInt] = None
     comp_rank: Optional[StrictInt] = None
@@ -44,6 +48,7 @@ class AthleticProfileShowSportOverviewHeadCoach(BaseModel):
     __properties: ClassVar[List[str]] = [
         "coach_id",
         "name",
+        "interim",
         "first_season_year",
         "comp_cents",
         "comp_rank",
@@ -169,6 +174,7 @@ class AthleticProfileShowSportOverviewHeadCoach(BaseModel):
             {
                 "coach_id": obj.get("coach_id"),
                 "name": obj.get("name"),
+                "interim": obj.get("interim"),
                 "first_season_year": obj.get("first_season_year"),
                 "comp_cents": obj.get("comp_cents"),
                 "comp_rank": obj.get("comp_rank"),

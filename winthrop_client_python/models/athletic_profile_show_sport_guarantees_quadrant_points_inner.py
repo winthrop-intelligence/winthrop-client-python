@@ -16,35 +16,34 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class AthleticProfileShowSportOverviewSeasonsInner(BaseModel):
+class AthleticProfileShowSportGuaranteesQuadrantPointsInner(BaseModel):
     """
-    AthleticProfileShowSportOverviewSeasonsInner
+    AthleticProfileShowSportGuaranteesQuadrantPointsInner
     """  # noqa: E501
 
-    year: Optional[StrictInt] = None
-    record: Optional[StrictStr] = None
-    conference_record: Optional[StrictStr] = None
+    school_id: Optional[StrictInt] = None
+    name: Optional[StrictStr] = None
+    short_name: Optional[StrictStr] = None
+    colors: Optional[StrictStr] = None
+    is_subject: Optional[StrictBool] = None
+    bought_cents: Optional[StrictInt] = None
+    bought_count: Optional[StrictInt] = None
     net_rank: Optional[StrictInt] = None
-    postseason: Optional[StrictStr] = None
-    head_coach_name: Optional[StrictStr] = None
-    head_coach_interim: Optional[StrictBool] = Field(
-        default=None,
-        description="True when the season's seat-holder is filed only as INTERIM_HEAD_COACH.",
-    )
     __properties: ClassVar[List[str]] = [
-        "year",
-        "record",
-        "conference_record",
+        "school_id",
+        "name",
+        "short_name",
+        "colors",
+        "is_subject",
+        "bought_cents",
+        "bought_count",
         "net_rank",
-        "postseason",
-        "head_coach_name",
-        "head_coach_interim",
     ]
 
     model_config = ConfigDict(
@@ -64,7 +63,7 @@ class AthleticProfileShowSportOverviewSeasonsInner(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AthleticProfileShowSportOverviewSeasonsInner from a JSON string"""
+        """Create an instance of AthleticProfileShowSportGuaranteesQuadrantPointsInner from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -84,21 +83,26 @@ class AthleticProfileShowSportOverviewSeasonsInner(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # set to None if colors (nullable) is None
+        # and model_fields_set contains the field
+        if self.colors is None and "colors" in self.model_fields_set:
+            _dict["colors"] = None
+
+        # set to None if bought_cents (nullable) is None
+        # and model_fields_set contains the field
+        if self.bought_cents is None and "bought_cents" in self.model_fields_set:
+            _dict["bought_cents"] = None
+
         # set to None if net_rank (nullable) is None
         # and model_fields_set contains the field
         if self.net_rank is None and "net_rank" in self.model_fields_set:
             _dict["net_rank"] = None
 
-        # set to None if head_coach_name (nullable) is None
-        # and model_fields_set contains the field
-        if self.head_coach_name is None and "head_coach_name" in self.model_fields_set:
-            _dict["head_coach_name"] = None
-
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AthleticProfileShowSportOverviewSeasonsInner from a dict"""
+        """Create an instance of AthleticProfileShowSportGuaranteesQuadrantPointsInner from a dict"""
         if obj is None:
             return None
 
@@ -107,13 +111,14 @@ class AthleticProfileShowSportOverviewSeasonsInner(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "year": obj.get("year"),
-                "record": obj.get("record"),
-                "conference_record": obj.get("conference_record"),
+                "school_id": obj.get("school_id"),
+                "name": obj.get("name"),
+                "short_name": obj.get("short_name"),
+                "colors": obj.get("colors"),
+                "is_subject": obj.get("is_subject"),
+                "bought_cents": obj.get("bought_cents"),
+                "bought_count": obj.get("bought_count"),
                 "net_rank": obj.get("net_rank"),
-                "postseason": obj.get("postseason"),
-                "head_coach_name": obj.get("head_coach_name"),
-                "head_coach_interim": obj.get("head_coach_interim"),
             }
         )
         return _obj

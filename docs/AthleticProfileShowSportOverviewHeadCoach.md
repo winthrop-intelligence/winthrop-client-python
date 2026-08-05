@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coach_id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
+**interim** | **bool** | True when the resolved seat-holder&#39;s position is interim-only. | [optional] 
 **first_season_year** | **int** |  | [optional] 
 **comp_cents** | **int** |  | [optional] 
 **comp_rank** | **int** |  | [optional] 

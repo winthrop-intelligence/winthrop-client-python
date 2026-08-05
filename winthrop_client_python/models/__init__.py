@@ -123,6 +123,33 @@ from winthrop_client_python.models.athletic_profile_show_sport_financials_quadra
 from winthrop_client_python.models.athletic_profile_show_sport_financials_quadrant_points_inner import (
     AthleticProfileShowSportFinancialsQuadrantPointsInner,
 )
+from winthrop_client_python.models.athletic_profile_show_sport_guarantees import (
+    AthleticProfileShowSportGuarantees,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_guarantees_agreements_inner import (
+    AthleticProfileShowSportGuaranteesAgreementsInner,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_guarantees_quadrant import (
+    AthleticProfileShowSportGuaranteesQuadrant,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_guarantees_quadrant_points_inner import (
+    AthleticProfileShowSportGuaranteesQuadrantPointsInner,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_guarantees_summary import (
+    AthleticProfileShowSportGuaranteesSummary,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_history import (
+    AthleticProfileShowSportHistory,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_history_churn import (
+    AthleticProfileShowSportHistoryChurn,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_history_churn_transitions_inner import (
+    AthleticProfileShowSportHistoryChurnTransitionsInner,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_history_seasons_inner import (
+    AthleticProfileShowSportHistorySeasonsInner,
+)
 from winthrop_client_python.models.athletic_profile_show_sport_overview import (
     AthleticProfileShowSportOverview,
 )

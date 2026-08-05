@@ -51,6 +51,12 @@ from winthrop_client_python.models.athletic_profile_show_sport_coach_staff impor
 from winthrop_client_python.models.athletic_profile_show_sport_financials import (
     AthleticProfileShowSportFinancials,
 )
+from winthrop_client_python.models.athletic_profile_show_sport_guarantees import (
+    AthleticProfileShowSportGuarantees,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_history import (
+    AthleticProfileShowSportHistory,
+)
 from winthrop_client_python.models.athletic_profile_show_sport_overview import (
     AthleticProfileShowSportOverview,
 )
@@ -82,6 +88,8 @@ class AthleticProfileShow(BaseModel):
     sport_overview: Optional[AthleticProfileShowSportOverview] = None
     sport_coach_staff: Optional[AthleticProfileShowSportCoachStaff] = None
     sport_financials: Optional[AthleticProfileShowSportFinancials] = None
+    sport_guarantees: Optional[AthleticProfileShowSportGuarantees] = None
+    sport_history: Optional[AthleticProfileShowSportHistory] = None
     sponsored_count: Optional[StrictInt] = None
     personnel: Optional[List[AthleticProfileShowPersonnelInner]] = None
     personnel_total_count: Optional[StrictInt] = None
@@ -105,6 +113,8 @@ class AthleticProfileShow(BaseModel):
         "sport_overview",
         "sport_coach_staff",
         "sport_financials",
+        "sport_guarantees",
+        "sport_history",
         "sponsored_count",
         "personnel",
         "personnel_total_count",
@@ -192,6 +202,12 @@ class AthleticProfileShow(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of sport_financials
         if self.sport_financials:
             _dict["sport_financials"] = self.sport_financials.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of sport_guarantees
+        if self.sport_guarantees:
+            _dict["sport_guarantees"] = self.sport_guarantees.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of sport_history
+        if self.sport_history:
+            _dict["sport_history"] = self.sport_history.to_dict()
         # override the default output from pydantic by calling `to_dict()` of each item in personnel (list)
         _items = []
         if self.personnel:
@@ -255,6 +271,19 @@ class AthleticProfileShow(BaseModel):
             and "sport_financials" in self.model_fields_set
         ):
             _dict["sport_financials"] = None
+
+        # set to None if sport_guarantees (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.sport_guarantees is None
+            and "sport_guarantees" in self.model_fields_set
+        ):
+            _dict["sport_guarantees"] = None
+
+        # set to None if sport_history (nullable) is None
+        # and model_fields_set contains the field
+        if self.sport_history is None and "sport_history" in self.model_fields_set:
+            _dict["sport_history"] = None
 
         # set to None if financials (nullable) is None
         # and model_fields_set contains the field
@@ -334,6 +363,18 @@ class AthleticProfileShow(BaseModel):
                         obj["sport_financials"]
                     )
                     if obj.get("sport_financials") is not None
+                    else None
+                ),
+                "sport_guarantees": (
+                    AthleticProfileShowSportGuarantees.from_dict(
+                        obj["sport_guarantees"]
+                    )
+                    if obj.get("sport_guarantees") is not None
+                    else None
+                ),
+                "sport_history": (
+                    AthleticProfileShowSportHistory.from_dict(obj["sport_history"])
+                    if obj.get("sport_history") is not None
                     else None
                 ),
                 "sponsored_count": obj.get("sponsored_count"),
