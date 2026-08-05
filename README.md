@@ -280,6 +280,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
 *DefaultApi* | [**get_school_department_financials**](docs/DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials | 
+*DefaultApi* | [**get_school_department_overview**](docs/DefaultApi.md#get_school_department_overview) | **GET** /api/v1/schools/{schoolId}/department_overview | 
 *DefaultApi* | [**get_school_game_contracts**](docs/DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
 *DefaultApi* | [**get_school_group**](docs/DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
 *DefaultApi* | [**get_school_group_admin_compensation**](docs/DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation | 
@@ -625,6 +626,18 @@ Class | Method | HTTP request | Description
  - [DepartmentFinancialsRankLine](docs/DepartmentFinancialsRankLine.md)
  - [DepartmentFinancialsTrendEntry](docs/DepartmentFinancialsTrendEntry.md)
  - [DepartmentFinancialsUnplottedSchool](docs/DepartmentFinancialsUnplottedSchool.md)
+ - [DepartmentOverviewDollarShares](docs/DepartmentOverviewDollarShares.md)
+ - [DepartmentOverviewFlowSummary](docs/DepartmentOverviewFlowSummary.md)
+ - [DepartmentOverviewHeadlineStat](docs/DepartmentOverviewHeadlineStat.md)
+ - [DepartmentOverviewNeighbour](docs/DepartmentOverviewNeighbour.md)
+ - [DepartmentOverviewNonReportingSchool](docs/DepartmentOverviewNonReportingSchool.md)
+ - [DepartmentOverviewProvenance](docs/DepartmentOverviewProvenance.md)
+ - [DepartmentOverviewQuadrantPoint](docs/DepartmentOverviewQuadrantPoint.md)
+ - [DepartmentOverviewResultsGap](docs/DepartmentOverviewResultsGap.md)
+ - [DepartmentOverviewResultsQuadrant](docs/DepartmentOverviewResultsQuadrant.md)
+ - [DepartmentOverviewShareLine](docs/DepartmentOverviewShareLine.md)
+ - [DepartmentOverviewTopLine](docs/DepartmentOverviewTopLine.md)
+ - [DepartmentOverviewUnplottedSchool](docs/DepartmentOverviewUnplottedSchool.md)
  - [DepartmentSearchResult](docs/DepartmentSearchResult.md)
  - [DepartmentSearchResultCollection](docs/DepartmentSearchResultCollection.md)
  - [DepartmentSearchResultDepartment](docs/DepartmentSearchResultDepartment.md)
@@ -879,8 +892,9 @@ Class | Method | HTTP request | Description
  - [SchoolCollection](docs/SchoolCollection.md)
  - [SchoolContractEntry](docs/SchoolContractEntry.md)
  - [SchoolDepartmentFinancials](docs/SchoolDepartmentFinancials.md)
- - [SchoolDepartmentFinancialsConference](docs/SchoolDepartmentFinancialsConference.md)
- - [SchoolDepartmentFinancialsSchool](docs/SchoolDepartmentFinancialsSchool.md)
+ - [SchoolDepartmentOverview](docs/SchoolDepartmentOverview.md)
+ - [SchoolDepartmentOverviewConference](docs/SchoolDepartmentOverviewConference.md)
+ - [SchoolDepartmentOverviewSchool](docs/SchoolDepartmentOverviewSchool.md)
  - [SchoolFinancialDetail](docs/SchoolFinancialDetail.md)
  - [SchoolFinancialDetailGroup](docs/SchoolFinancialDetailGroup.md)
  - [SchoolFinancialDetailSibling](docs/SchoolFinancialDetailSibling.md)

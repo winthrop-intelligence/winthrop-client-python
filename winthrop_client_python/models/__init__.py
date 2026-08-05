@@ -530,6 +530,42 @@ from winthrop_client_python.models.department_financials_trend_entry import (
 from winthrop_client_python.models.department_financials_unplotted_school import (
     DepartmentFinancialsUnplottedSchool,
 )
+from winthrop_client_python.models.department_overview_dollar_shares import (
+    DepartmentOverviewDollarShares,
+)
+from winthrop_client_python.models.department_overview_flow_summary import (
+    DepartmentOverviewFlowSummary,
+)
+from winthrop_client_python.models.department_overview_headline_stat import (
+    DepartmentOverviewHeadlineStat,
+)
+from winthrop_client_python.models.department_overview_neighbour import (
+    DepartmentOverviewNeighbour,
+)
+from winthrop_client_python.models.department_overview_non_reporting_school import (
+    DepartmentOverviewNonReportingSchool,
+)
+from winthrop_client_python.models.department_overview_provenance import (
+    DepartmentOverviewProvenance,
+)
+from winthrop_client_python.models.department_overview_quadrant_point import (
+    DepartmentOverviewQuadrantPoint,
+)
+from winthrop_client_python.models.department_overview_results_gap import (
+    DepartmentOverviewResultsGap,
+)
+from winthrop_client_python.models.department_overview_results_quadrant import (
+    DepartmentOverviewResultsQuadrant,
+)
+from winthrop_client_python.models.department_overview_share_line import (
+    DepartmentOverviewShareLine,
+)
+from winthrop_client_python.models.department_overview_top_line import (
+    DepartmentOverviewTopLine,
+)
+from winthrop_client_python.models.department_overview_unplotted_school import (
+    DepartmentOverviewUnplottedSchool,
+)
 from winthrop_client_python.models.department_search_result import (
     DepartmentSearchResult,
 )
@@ -1046,11 +1082,14 @@ from winthrop_client_python.models.school_contract_entry import SchoolContractEn
 from winthrop_client_python.models.school_department_financials import (
     SchoolDepartmentFinancials,
 )
-from winthrop_client_python.models.school_department_financials_conference import (
-    SchoolDepartmentFinancialsConference,
+from winthrop_client_python.models.school_department_overview import (
+    SchoolDepartmentOverview,
 )
-from winthrop_client_python.models.school_department_financials_school import (
-    SchoolDepartmentFinancialsSchool,
+from winthrop_client_python.models.school_department_overview_conference import (
+    SchoolDepartmentOverviewConference,
+)
+from winthrop_client_python.models.school_department_overview_school import (
+    SchoolDepartmentOverviewSchool,
 )
 from winthrop_client_python.models.school_financial_detail import SchoolFinancialDetail
 from winthrop_client_python.models.school_financial_detail_group import (

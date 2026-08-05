@@ -33,11 +33,11 @@ from winthrop_client_python.models.department_financials_rank_line import (
 from winthrop_client_python.models.department_financials_trend_entry import (
     DepartmentFinancialsTrendEntry,
 )
-from winthrop_client_python.models.school_department_financials_conference import (
-    SchoolDepartmentFinancialsConference,
+from winthrop_client_python.models.school_department_overview_conference import (
+    SchoolDepartmentOverviewConference,
 )
-from winthrop_client_python.models.school_department_financials_school import (
-    SchoolDepartmentFinancialsSchool,
+from winthrop_client_python.models.school_department_overview_school import (
+    SchoolDepartmentOverviewSchool,
 )
 from typing import Optional, Set
 from typing_extensions import Self
@@ -48,8 +48,8 @@ class SchoolDepartmentFinancials(BaseModel):
     SchoolDepartmentFinancials
     """  # noqa: E501
 
-    school: SchoolDepartmentFinancialsSchool
-    conference: Optional[SchoolDepartmentFinancialsConference]
+    school: SchoolDepartmentOverviewSchool
+    conference: Optional[SchoolDepartmentOverviewConference]
     latest_filed_year: Optional[StrictInt]
     selected_year: Optional[StrictInt]
     available_years: List[StrictInt]
@@ -199,12 +199,12 @@ class SchoolDepartmentFinancials(BaseModel):
         _obj = cls.model_validate(
             {
                 "school": (
-                    SchoolDepartmentFinancialsSchool.from_dict(obj["school"])
+                    SchoolDepartmentOverviewSchool.from_dict(obj["school"])
                     if obj.get("school") is not None
                     else None
                 ),
                 "conference": (
-                    SchoolDepartmentFinancialsConference.from_dict(obj["conference"])
+                    SchoolDepartmentOverviewConference.from_dict(obj["conference"])
                     if obj.get("conference") is not None
                     else None
                 ),
