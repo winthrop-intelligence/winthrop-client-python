@@ -530,6 +530,36 @@ from winthrop_client_python.models.department_financials_trend_entry import (
 from winthrop_client_python.models.department_financials_unplotted_school import (
     DepartmentFinancialsUnplottedSchool,
 )
+from winthrop_client_python.models.department_guarantees_agreement import (
+    DepartmentGuaranteesAgreement,
+)
+from winthrop_client_python.models.department_guarantees_agreement_opponent import (
+    DepartmentGuaranteesAgreementOpponent,
+)
+from winthrop_client_python.models.department_guarantees_committed_side import (
+    DepartmentGuaranteesCommittedSide,
+)
+from winthrop_client_python.models.department_guarantees_filed_line import (
+    DepartmentGuaranteesFiledLine,
+)
+from winthrop_client_python.models.department_guarantees_market import (
+    DepartmentGuaranteesMarket,
+)
+from winthrop_client_python.models.department_guarantees_market_side import (
+    DepartmentGuaranteesMarketSide,
+)
+from winthrop_client_python.models.department_guarantees_quadrant import (
+    DepartmentGuaranteesQuadrant,
+)
+from winthrop_client_python.models.department_guarantees_quadrant_point import (
+    DepartmentGuaranteesQuadrantPoint,
+)
+from winthrop_client_python.models.department_guarantees_sport_ledger import (
+    DepartmentGuaranteesSportLedger,
+)
+from winthrop_client_python.models.department_guarantees_trend_entry import (
+    DepartmentGuaranteesTrendEntry,
+)
 from winthrop_client_python.models.department_overview_dollar_shares import (
     DepartmentOverviewDollarShares,
 )
@@ -1081,6 +1111,12 @@ from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.models.school_contract_entry import SchoolContractEntry
 from winthrop_client_python.models.school_department_financials import (
     SchoolDepartmentFinancials,
+)
+from winthrop_client_python.models.school_department_guarantees import (
+    SchoolDepartmentGuarantees,
+)
+from winthrop_client_python.models.school_department_guarantees_school import (
+    SchoolDepartmentGuaranteesSchool,
 )
 from winthrop_client_python.models.school_department_overview import (
     SchoolDepartmentOverview,

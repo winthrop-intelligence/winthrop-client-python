@@ -252,6 +252,16 @@ __all__ = [
     "DepartmentFinancialsRankLine",
     "DepartmentFinancialsTrendEntry",
     "DepartmentFinancialsUnplottedSchool",
+    "DepartmentGuaranteesAgreement",
+    "DepartmentGuaranteesAgreementOpponent",
+    "DepartmentGuaranteesCommittedSide",
+    "DepartmentGuaranteesFiledLine",
+    "DepartmentGuaranteesMarket",
+    "DepartmentGuaranteesMarketSide",
+    "DepartmentGuaranteesQuadrant",
+    "DepartmentGuaranteesQuadrantPoint",
+    "DepartmentGuaranteesSportLedger",
+    "DepartmentGuaranteesTrendEntry",
     "DepartmentOverviewDollarShares",
     "DepartmentOverviewFlowSummary",
     "DepartmentOverviewHeadlineStat",
@@ -518,6 +528,8 @@ __all__ = [
     "SchoolCollection",
     "SchoolContractEntry",
     "SchoolDepartmentFinancials",
+    "SchoolDepartmentGuarantees",
+    "SchoolDepartmentGuaranteesSchool",
     "SchoolDepartmentOverview",
     "SchoolDepartmentOverviewConference",
     "SchoolDepartmentOverviewSchool",
@@ -1266,6 +1278,36 @@ from winthrop_client_python.models.department_financials_trend_entry import (
 from winthrop_client_python.models.department_financials_unplotted_school import (
     DepartmentFinancialsUnplottedSchool as DepartmentFinancialsUnplottedSchool,
 )
+from winthrop_client_python.models.department_guarantees_agreement import (
+    DepartmentGuaranteesAgreement as DepartmentGuaranteesAgreement,
+)
+from winthrop_client_python.models.department_guarantees_agreement_opponent import (
+    DepartmentGuaranteesAgreementOpponent as DepartmentGuaranteesAgreementOpponent,
+)
+from winthrop_client_python.models.department_guarantees_committed_side import (
+    DepartmentGuaranteesCommittedSide as DepartmentGuaranteesCommittedSide,
+)
+from winthrop_client_python.models.department_guarantees_filed_line import (
+    DepartmentGuaranteesFiledLine as DepartmentGuaranteesFiledLine,
+)
+from winthrop_client_python.models.department_guarantees_market import (
+    DepartmentGuaranteesMarket as DepartmentGuaranteesMarket,
+)
+from winthrop_client_python.models.department_guarantees_market_side import (
+    DepartmentGuaranteesMarketSide as DepartmentGuaranteesMarketSide,
+)
+from winthrop_client_python.models.department_guarantees_quadrant import (
+    DepartmentGuaranteesQuadrant as DepartmentGuaranteesQuadrant,
+)
+from winthrop_client_python.models.department_guarantees_quadrant_point import (
+    DepartmentGuaranteesQuadrantPoint as DepartmentGuaranteesQuadrantPoint,
+)
+from winthrop_client_python.models.department_guarantees_sport_ledger import (
+    DepartmentGuaranteesSportLedger as DepartmentGuaranteesSportLedger,
+)
+from winthrop_client_python.models.department_guarantees_trend_entry import (
+    DepartmentGuaranteesTrendEntry as DepartmentGuaranteesTrendEntry,
+)
 from winthrop_client_python.models.department_overview_dollar_shares import (
     DepartmentOverviewDollarShares as DepartmentOverviewDollarShares,
 )
@@ -1969,6 +2011,12 @@ from winthrop_client_python.models.school_contract_entry import (
 )
 from winthrop_client_python.models.school_department_financials import (
     SchoolDepartmentFinancials as SchoolDepartmentFinancials,
+)
+from winthrop_client_python.models.school_department_guarantees import (
+    SchoolDepartmentGuarantees as SchoolDepartmentGuarantees,
+)
+from winthrop_client_python.models.school_department_guarantees_school import (
+    SchoolDepartmentGuaranteesSchool as SchoolDepartmentGuaranteesSchool,
 )
 from winthrop_client_python.models.school_department_overview import (
     SchoolDepartmentOverview as SchoolDepartmentOverview,
