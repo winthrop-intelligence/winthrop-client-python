@@ -5,8 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**school** | [**SchoolDepartmentFinancialsSchool**](SchoolDepartmentFinancialsSchool.md) |  | 
-**conference** | [**SchoolDepartmentFinancialsConference**](SchoolDepartmentFinancialsConference.md) |  | 
+**school** | [**SchoolDepartmentOverviewSchool**](SchoolDepartmentOverviewSchool.md) |  | 
+**conference** | [**SchoolDepartmentOverviewConference**](SchoolDepartmentOverviewConference.md) |  | 
 **latest_filed_year** | **int** |  | 
 **selected_year** | **int** |  | 
 **available_years** | **List[int]** |  | 
