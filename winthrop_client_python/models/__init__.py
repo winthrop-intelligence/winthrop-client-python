@@ -506,6 +506,75 @@ from winthrop_client_python.models.delete_contact_search200_response import (
 from winthrop_client_python.models.delete_favorite200_response import (
     DeleteFavorite200Response,
 )
+from winthrop_client_python.models.department_administrator_staff_row import (
+    DepartmentAdministratorStaffRow,
+)
+from winthrop_client_python.models.department_administrators990_officer import (
+    DepartmentAdministrators990Officer,
+)
+from winthrop_client_python.models.department_administrators_ad_office import (
+    DepartmentAdministratorsAdOffice,
+)
+from winthrop_client_python.models.department_administrators_ad_profile import (
+    DepartmentAdministratorsAdProfile,
+)
+from winthrop_client_python.models.department_administrators_ad_seat import (
+    DepartmentAdministratorsAdSeat,
+)
+from winthrop_client_python.models.department_administrators_basis import (
+    DepartmentAdministratorsBasis,
+)
+from winthrop_client_python.models.department_administrators_recent_move import (
+    DepartmentAdministratorsRecentMove,
+)
+from winthrop_client_python.models.department_administrators_scorecard import (
+    DepartmentAdministratorsScorecard,
+)
+from winthrop_client_python.models.department_administrators_scorecard_gap import (
+    DepartmentAdministratorsScorecardGap,
+)
+from winthrop_client_python.models.department_administrators_scorecard_point import (
+    DepartmentAdministratorsScorecardPoint,
+)
+from winthrop_client_python.models.department_administrators_staff_stats import (
+    DepartmentAdministratorsStaffStats,
+)
+from winthrop_client_python.models.department_coach_pay import DepartmentCoachPay
+from winthrop_client_python.models.department_coach_quadrant_point import (
+    DepartmentCoachQuadrantPoint,
+)
+from winthrop_client_python.models.department_coach_result import DepartmentCoachResult
+from winthrop_client_python.models.department_coach_seat import DepartmentCoachSeat
+from winthrop_client_python.models.department_coach_seat_coach import (
+    DepartmentCoachSeatCoach,
+)
+from winthrop_client_python.models.department_coach_seat_sport import (
+    DepartmentCoachSeatSport,
+)
+from winthrop_client_python.models.department_coach_verdict import (
+    DepartmentCoachVerdict,
+)
+from winthrop_client_python.models.department_coaches_basis import (
+    DepartmentCoachesBasis,
+)
+from winthrop_client_python.models.department_coaches_clock_row import (
+    DepartmentCoachesClockRow,
+)
+from winthrop_client_python.models.department_coaches_contract_clocks import (
+    DepartmentCoachesContractClocks,
+)
+from winthrop_client_python.models.department_coaches_portfolio_shape import (
+    DepartmentCoachesPortfolioShape,
+)
+from winthrop_client_python.models.department_coaches_quadrant import (
+    DepartmentCoachesQuadrant,
+)
+from winthrop_client_python.models.department_coaches_result_window import (
+    DepartmentCoachesResultWindow,
+)
+from winthrop_client_python.models.department_coaches_shape_entry import (
+    DepartmentCoachesShapeEntry,
+)
 from winthrop_client_python.models.department_financials_eada_category import (
     DepartmentFinancialsEadaCategory,
 )
@@ -1031,6 +1100,9 @@ from winthrop_client_python.models.position_type_group import PositionTypeGroup
 from winthrop_client_python.models.predict_body import PredictBody
 from winthrop_client_python.models.predict_failure import PredictFailure
 from winthrop_client_python.models.predict_success import PredictSuccess
+from winthrop_client_python.models.quadrant_unplotted_school import (
+    QuadrantUnplottedSchool,
+)
 from winthrop_client_python.models.raw_contract import RawContract
 from winthrop_client_python.models.raw_contract_back_to import RawContractBackTo
 from winthrop_client_python.models.raw_contract_collection import RawContractCollection
@@ -1124,6 +1196,12 @@ from winthrop_client_python.models.scheduling_contacts_response import (
 from winthrop_client_python.models.school import School
 from winthrop_client_python.models.school_collection import SchoolCollection
 from winthrop_client_python.models.school_contract_entry import SchoolContractEntry
+from winthrop_client_python.models.school_department_administrators import (
+    SchoolDepartmentAdministrators,
+)
+from winthrop_client_python.models.school_department_coaches import (
+    SchoolDepartmentCoaches,
+)
 from winthrop_client_python.models.school_department_financials import (
     SchoolDepartmentFinancials,
 )

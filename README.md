@@ -279,6 +279,8 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_scheduling_contacts**](docs/DefaultApi.md#get_scheduling_contacts) | **GET** /api/v1/scheduling_contacts | 
 *DefaultApi* | [**get_school**](docs/DefaultApi.md#get_school) | **GET** /api/v1/schools/{schoolId} | 
 *DefaultApi* | [**get_school_alternate_names**](docs/DefaultApi.md#get_school_alternate_names) | **GET** /api/v1/schools/{schoolId}/alternate_names | 
+*DefaultApi* | [**get_school_department_administrators**](docs/DefaultApi.md#get_school_department_administrators) | **GET** /api/v1/schools/{schoolId}/department_administrators | 
+*DefaultApi* | [**get_school_department_coaches**](docs/DefaultApi.md#get_school_department_coaches) | **GET** /api/v1/schools/{schoolId}/department_coaches | 
 *DefaultApi* | [**get_school_department_financials**](docs/DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials | 
 *DefaultApi* | [**get_school_department_guarantees**](docs/DefaultApi.md#get_school_department_guarantees) | **GET** /api/v1/schools/{schoolId}/department_guarantees | 
 *DefaultApi* | [**get_school_department_overview**](docs/DefaultApi.md#get_school_department_overview) | **GET** /api/v1/schools/{schoolId}/department_overview | 
@@ -619,6 +621,31 @@ Class | Method | HTTP request | Description
  - [DeleteAccountUser200Response](docs/DeleteAccountUser200Response.md)
  - [DeleteContactSearch200Response](docs/DeleteContactSearch200Response.md)
  - [DeleteFavorite200Response](docs/DeleteFavorite200Response.md)
+ - [DepartmentAdministratorStaffRow](docs/DepartmentAdministratorStaffRow.md)
+ - [DepartmentAdministrators990Officer](docs/DepartmentAdministrators990Officer.md)
+ - [DepartmentAdministratorsAdOffice](docs/DepartmentAdministratorsAdOffice.md)
+ - [DepartmentAdministratorsAdProfile](docs/DepartmentAdministratorsAdProfile.md)
+ - [DepartmentAdministratorsAdSeat](docs/DepartmentAdministratorsAdSeat.md)
+ - [DepartmentAdministratorsBasis](docs/DepartmentAdministratorsBasis.md)
+ - [DepartmentAdministratorsRecentMove](docs/DepartmentAdministratorsRecentMove.md)
+ - [DepartmentAdministratorsScorecard](docs/DepartmentAdministratorsScorecard.md)
+ - [DepartmentAdministratorsScorecardGap](docs/DepartmentAdministratorsScorecardGap.md)
+ - [DepartmentAdministratorsScorecardPoint](docs/DepartmentAdministratorsScorecardPoint.md)
+ - [DepartmentAdministratorsStaffStats](docs/DepartmentAdministratorsStaffStats.md)
+ - [DepartmentCoachPay](docs/DepartmentCoachPay.md)
+ - [DepartmentCoachQuadrantPoint](docs/DepartmentCoachQuadrantPoint.md)
+ - [DepartmentCoachResult](docs/DepartmentCoachResult.md)
+ - [DepartmentCoachSeat](docs/DepartmentCoachSeat.md)
+ - [DepartmentCoachSeatCoach](docs/DepartmentCoachSeatCoach.md)
+ - [DepartmentCoachSeatSport](docs/DepartmentCoachSeatSport.md)
+ - [DepartmentCoachVerdict](docs/DepartmentCoachVerdict.md)
+ - [DepartmentCoachesBasis](docs/DepartmentCoachesBasis.md)
+ - [DepartmentCoachesClockRow](docs/DepartmentCoachesClockRow.md)
+ - [DepartmentCoachesContractClocks](docs/DepartmentCoachesContractClocks.md)
+ - [DepartmentCoachesPortfolioShape](docs/DepartmentCoachesPortfolioShape.md)
+ - [DepartmentCoachesQuadrant](docs/DepartmentCoachesQuadrant.md)
+ - [DepartmentCoachesResultWindow](docs/DepartmentCoachesResultWindow.md)
+ - [DepartmentCoachesShapeEntry](docs/DepartmentCoachesShapeEntry.md)
  - [DepartmentFinancialsEadaCategory](docs/DepartmentFinancialsEadaCategory.md)
  - [DepartmentFinancialsEadaCoaching](docs/DepartmentFinancialsEadaCoaching.md)
  - [DepartmentFinancialsEadaLedger](docs/DepartmentFinancialsEadaLedger.md)
@@ -862,6 +889,7 @@ Class | Method | HTTP request | Description
  - [PredictBody](docs/PredictBody.md)
  - [PredictFailure](docs/PredictFailure.md)
  - [PredictSuccess](docs/PredictSuccess.md)
+ - [QuadrantUnplottedSchool](docs/QuadrantUnplottedSchool.md)
  - [RawContract](docs/RawContract.md)
  - [RawContractBackTo](docs/RawContractBackTo.md)
  - [RawContractCollection](docs/RawContractCollection.md)
@@ -907,6 +935,8 @@ Class | Method | HTTP request | Description
  - [School](docs/School.md)
  - [SchoolCollection](docs/SchoolCollection.md)
  - [SchoolContractEntry](docs/SchoolContractEntry.md)
+ - [SchoolDepartmentAdministrators](docs/SchoolDepartmentAdministrators.md)
+ - [SchoolDepartmentCoaches](docs/SchoolDepartmentCoaches.md)
  - [SchoolDepartmentFinancials](docs/SchoolDepartmentFinancials.md)
  - [SchoolDepartmentGuarantees](docs/SchoolDepartmentGuarantees.md)
  - [SchoolDepartmentGuaranteesSchool](docs/SchoolDepartmentGuaranteesSchool.md)
