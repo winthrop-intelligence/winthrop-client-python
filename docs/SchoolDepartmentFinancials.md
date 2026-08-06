@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **revenue** | [**DepartmentFinancialsLedger**](DepartmentFinancialsLedger.md) |  | 
 **expenses** | [**DepartmentFinancialsLedger**](DepartmentFinancialsLedger.md) |  | 
 **trend** | [**List[DepartmentFinancialsTrendEntry]**](DepartmentFinancialsTrendEntry.md) |  | 
+**eada_ledger** | [**DepartmentFinancialsEadaLedger**](DepartmentFinancialsEadaLedger.md) |  | 
+**eada_coaching** | [**DepartmentFinancialsEadaCoaching**](DepartmentFinancialsEadaCoaching.md) |  | 
 
 ## Example
 
