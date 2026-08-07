@@ -264,6 +264,7 @@ __all__ = [
     "DepartmentCoachVerdict",
     "DepartmentCoachesBasis",
     "DepartmentCoachesClockRow",
+    "DepartmentCoachesClockRowPeopleInner",
     "DepartmentCoachesContractClocks",
     "DepartmentCoachesPortfolioShape",
     "DepartmentCoachesQuadrant",
@@ -1346,6 +1347,9 @@ from winthrop_client_python.models.department_coaches_basis import (
 )
 from winthrop_client_python.models.department_coaches_clock_row import (
     DepartmentCoachesClockRow as DepartmentCoachesClockRow,
+)
+from winthrop_client_python.models.department_coaches_clock_row_people_inner import (
+    DepartmentCoachesClockRowPeopleInner as DepartmentCoachesClockRowPeopleInner,
 )
 from winthrop_client_python.models.department_coaches_contract_clocks import (
     DepartmentCoachesContractClocks as DepartmentCoachesContractClocks,

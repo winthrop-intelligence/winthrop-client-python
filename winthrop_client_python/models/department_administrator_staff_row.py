@@ -51,6 +51,7 @@ class DepartmentAdministratorStaffRow(BaseModel):
     comp_estimated: StrictBool = Field(
         description="True when the amount is a 990 filing rather than a salary record — the asterisk"
     )
+    photo_url: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
         "coach_id",
         "friendly_id",
@@ -62,6 +63,7 @@ class DepartmentAdministratorStaffRow(BaseModel):
         "comp_cents",
         "comp_basis",
         "comp_estimated",
+        "photo_url",
     ]
 
     @field_validator("comp_basis")
@@ -136,6 +138,11 @@ class DepartmentAdministratorStaffRow(BaseModel):
         if self.comp_basis is None and "comp_basis" in self.model_fields_set:
             _dict["comp_basis"] = None
 
+        # set to None if photo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.photo_url is None and "photo_url" in self.model_fields_set:
+            _dict["photo_url"] = None
+
         return _dict
 
     @classmethod
@@ -159,6 +166,7 @@ class DepartmentAdministratorStaffRow(BaseModel):
                 "comp_cents": obj.get("comp_cents"),
                 "comp_basis": obj.get("comp_basis"),
                 "comp_estimated": obj.get("comp_estimated"),
+                "photo_url": obj.get("photo_url"),
             }
         )
         return _obj

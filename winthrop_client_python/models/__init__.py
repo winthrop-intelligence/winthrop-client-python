@@ -560,6 +560,9 @@ from winthrop_client_python.models.department_coaches_basis import (
 from winthrop_client_python.models.department_coaches_clock_row import (
     DepartmentCoachesClockRow,
 )
+from winthrop_client_python.models.department_coaches_clock_row_people_inner import (
+    DepartmentCoachesClockRowPeopleInner,
+)
 from winthrop_client_python.models.department_coaches_contract_clocks import (
     DepartmentCoachesContractClocks,
 )

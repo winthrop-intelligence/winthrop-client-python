@@ -51,6 +51,7 @@ class DepartmentAdministratorsAdSeat(BaseModel):
     comp_year: Optional[StrictInt] = Field(
         description="The compensation record's own year — the vintage label for 990 amounts"
     )
+    photo_url: Optional[StrictStr]
     __properties: ClassVar[List[str]] = [
         "coach_id",
         "friendly_id",
@@ -64,6 +65,7 @@ class DepartmentAdministratorsAdSeat(BaseModel):
         "comp_estimated",
         "tenure_years",
         "comp_year",
+        "photo_url",
     ]
 
     @field_validator("comp_basis")
@@ -148,6 +150,11 @@ class DepartmentAdministratorsAdSeat(BaseModel):
         if self.comp_year is None and "comp_year" in self.model_fields_set:
             _dict["comp_year"] = None
 
+        # set to None if photo_url (nullable) is None
+        # and model_fields_set contains the field
+        if self.photo_url is None and "photo_url" in self.model_fields_set:
+            _dict["photo_url"] = None
+
         return _dict
 
     @classmethod
@@ -173,6 +180,7 @@ class DepartmentAdministratorsAdSeat(BaseModel):
                 "comp_estimated": obj.get("comp_estimated"),
                 "tenure_years": obj.get("tenure_years"),
                 "comp_year": obj.get("comp_year"),
+                "photo_url": obj.get("photo_url"),
             }
         )
         return _obj
