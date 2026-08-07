@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **year** | **int** |  | [optional] 
 **coach_id** | **int** |  | [optional] 
 **coach_name** | **str** |  | [optional] 
+**coach_last_name** | **str** | Structured last name of the seat-holder — may be multi-word (\&quot;Hughley Jr\&quot;), never derived by splitting the full name. | [optional] 
 **interim** | **bool** |  | [optional] 
 **record** | **str** |  | [optional] 
 **conference_record** | **str** |  | [optional] 

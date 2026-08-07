@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coach_name** | **str** |  | [optional] 
+**coach_last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **school_short_name** | **str** |  | [optional] 
 **comp_cents** | **int** |  | [optional] 
 **is_subject** | **bool** |  | [optional] 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **conference_name** | **str** |  | [optional] 
 **sport_id** | **int** |  | [optional] 
 **basketball** | **bool** |  | [optional] 
+**results_lens** | **str** | The ranking this sport is read through — NET for basketball, RPI for every other sport. Rank fields ship for both metrics; the lens names the one a surface may claim. | [optional] 
 **agreements** | [**List[AthleticProfileShowSportGuaranteesAgreementsInner]**](AthleticProfileShowSportGuaranteesAgreementsInner.md) |  | [optional] 
 **summary** | [**AthleticProfileShowSportGuaranteesSummary**](AthleticProfileShowSportGuaranteesSummary.md) |  | [optional] 
 **quadrant** | [**AthleticProfileShowSportGuaranteesQuadrant**](AthleticProfileShowSportGuaranteesQuadrant.md) |  | [optional] 
