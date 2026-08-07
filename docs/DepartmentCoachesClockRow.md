@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **sport_abbrev** | **str** |  | 
 **group** | **str** |  | 
 **names** | **List[str]** |  | 
+**people** | [**List[DepartmentCoachesClockRowPeopleInner]**](DepartmentCoachesClockRowPeopleInner.md) |  | 
 **state** | **str** |  | 
 **var_date** | **str** |  | 
 **approximate** | **bool** |  | 

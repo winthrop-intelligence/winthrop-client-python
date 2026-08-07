@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **season_year** | **int** |  | [optional] 
 **from_coach_name** | **str** |  | [optional] 
+**from_coach_last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **to_coach_name** | **str** |  | [optional] 
+**to_coach_last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **settlement_raw_contract_id** | **int** |  | [optional] 
 
 ## Example

@@ -232,6 +232,7 @@ docs/DepartmentCoachSeatSport.md
 docs/DepartmentCoachVerdict.md
 docs/DepartmentCoachesBasis.md
 docs/DepartmentCoachesClockRow.md
+docs/DepartmentCoachesClockRowPeopleInner.md
 docs/DepartmentCoachesContractClocks.md
 docs/DepartmentCoachesPortfolioShape.md
 docs/DepartmentCoachesQuadrant.md
@@ -464,8 +465,13 @@ docs/Logo.md
 docs/McpEvent.md
 docs/Meta.md
 docs/MlAthleticApi.md
+docs/NcaaFinancialParticipationSummary.md
+docs/NcaaFinancialReportItemGroup.md
+docs/NcaaFinancialReportItemValue.md
 docs/NcaaFinancialReportStatus.md
 docs/NcaaFinancialReportStatusCollection.md
+docs/NcaaFinancialSourceAggregate.md
+docs/NcaaFinancialStat.md
 docs/NewAccountUserResponse.md
 docs/NewsFeed.md
 docs/NewsFeedCollection.md
@@ -660,6 +666,12 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_department_coaches_clock_row_people_inner.py
+test/test_ncaa_financial_participation_summary.py
+test/test_ncaa_financial_report_item_group.py
+test/test_ncaa_financial_report_item_value.py
+test/test_ncaa_financial_source_aggregate.py
+test/test_ncaa_financial_stat.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -906,6 +918,7 @@ winthrop_client_python/models/department_coach_seat_sport.py
 winthrop_client_python/models/department_coach_verdict.py
 winthrop_client_python/models/department_coaches_basis.py
 winthrop_client_python/models/department_coaches_clock_row.py
+winthrop_client_python/models/department_coaches_clock_row_people_inner.py
 winthrop_client_python/models/department_coaches_contract_clocks.py
 winthrop_client_python/models/department_coaches_portfolio_shape.py
 winthrop_client_python/models/department_coaches_quadrant.py
@@ -1134,8 +1147,13 @@ winthrop_client_python/models/location_inner.py
 winthrop_client_python/models/logo.py
 winthrop_client_python/models/mcp_event.py
 winthrop_client_python/models/meta.py
+winthrop_client_python/models/ncaa_financial_participation_summary.py
+winthrop_client_python/models/ncaa_financial_report_item_group.py
+winthrop_client_python/models/ncaa_financial_report_item_value.py
 winthrop_client_python/models/ncaa_financial_report_status.py
 winthrop_client_python/models/ncaa_financial_report_status_collection.py
+winthrop_client_python/models/ncaa_financial_source_aggregate.py
+winthrop_client_python/models/ncaa_financial_stat.py
 winthrop_client_python/models/new_account_user_response.py
 winthrop_client_python/models/news_feed.py
 winthrop_client_python/models/news_feed_collection.py

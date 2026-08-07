@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **season_year** | **int** |  | [optional] 
 **conference_name** | **str** |  | [optional] 
+**results_lens** | **str** | The ranking this sport is read through — NET for basketball, RPI for every other sport. Rank fields ship for both metrics; the lens names the one a surface may claim. | [optional] 
 **seasons** | [**List[AthleticProfileShowSportOverviewSeasonsInner]**](AthleticProfileShowSportOverviewSeasonsInner.md) |  | [optional] 
 **head_coach** | [**AthleticProfileShowSportOverviewHeadCoach**](AthleticProfileShowSportOverviewHeadCoach.md) |  | [optional] 
 **pay_ladder** | [**List[AthleticProfileShowSportOverviewPayLadderInner]**](AthleticProfileShowSportOverviewPayLadderInner.md) |  | [optional] 

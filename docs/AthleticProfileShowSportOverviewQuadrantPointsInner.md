@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **spend_cents** | **int** |  | [optional] 
 **spend_year** | **int** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
-**net_year** | **int** |  | [optional] 
+**rpi** | **int** |  | [optional] 
 **record** | **str** |  | [optional] 
 
 ## Example

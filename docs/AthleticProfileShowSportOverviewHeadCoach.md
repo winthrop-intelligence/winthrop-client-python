@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coach_id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
+**last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **interim** | **bool** | True when the resolved seat-holder&#39;s position is interim-only. | [optional] 
 **first_season_year** | **int** |  | [optional] 
 **comp_cents** | **int** |  | [optional] 
@@ -19,6 +20,7 @@ Name | Type | Description | Notes
 **assistant_count** | **int** |  | [optional] 
 **staff_pool_cents** | **int** |  | [optional] 
 **staff_pool_all_on_file** | **bool** |  | [optional] 
+**staff_pool_on_file_count** | **int** | Assistants on the season&#39;s staff whose compensation has a filed contract, so the card can give a partly-filed pool its provenance (\&quot;$825,000 · 4 of 5 on file\&quot;). Null when compensation is not permitted or the season has no staff on file.  | [optional] 
 
 ## Example
 

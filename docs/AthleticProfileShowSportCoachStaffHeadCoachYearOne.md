@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **record** | **str** |  | [optional] 
 **conference_record** | **str** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
+**rpi** | **int** |  | [optional] 
 
 ## Example
 

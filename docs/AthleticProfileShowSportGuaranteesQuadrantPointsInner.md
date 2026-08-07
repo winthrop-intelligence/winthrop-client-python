@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **bought_cents** | **int** |  | [optional] 
 **bought_count** | **int** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
+**rpi** | **int** |  | [optional] 
 
 ## Example
 
