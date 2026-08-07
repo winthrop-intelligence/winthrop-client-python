@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **season_year** | **int** |  | [optional] 
 **conference_name** | **str** |  | [optional] 
-**quadrant_points** | [**List[AthleticProfileShowSportCoachStaffQuadrantPointsInner]**](AthleticProfileShowSportCoachStaffQuadrantPointsInner.md) | One entry per cohort school — head-coach pay vs NET. | [optional] 
+**results_lens** | **str** | The ranking this sport is read through — NET for basketball, RPI for every other sport. Rank fields ship for both metrics; the lens names the one a surface may claim. | [optional] 
+**quadrant_points** | [**List[AthleticProfileShowSportCoachStaffQuadrantPointsInner]**](AthleticProfileShowSportCoachStaffQuadrantPointsInner.md) | One entry per cohort school — head-coach pay vs the sport&#39;s results rank. | [optional] 
 **head_coach** | [**AthleticProfileShowSportCoachStaffHeadCoach**](AthleticProfileShowSportCoachStaffHeadCoach.md) |  | [optional] 
 **assistants** | [**List[AthleticProfileShowSportCoachStaffAssistantsInner]**](AthleticProfileShowSportCoachStaffAssistantsInner.md) |  | [optional] 
 **staff_pool** | [**AthleticProfileShowSportCoachStaffStaffPool**](AthleticProfileShowSportCoachStaffStaffPool.md) |  | [optional] 

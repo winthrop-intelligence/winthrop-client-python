@@ -6,7 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **opponent_short_name** | **str** |  | [optional] 
-**comp_cents** | **int** |  | [optional] 
+**comp_cents** | **int** | Null when the agreement is filed comp_tbd — an amount-pending game is never a priced one. | [optional] 
 **game_date** | **date** |  | [optional] 
 
 ## Example

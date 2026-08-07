@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **school_short_name** | **str** |  | [optional] 
 **record** | **str** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
+**rpi** | **int** |  | [optional] 
 **postseason** | **str** |  | [optional] 
 **is_subject_school** | **bool** |  | [optional] 
 

@@ -11,9 +11,10 @@ Name | Type | Description | Notes
 **colors** | **str** |  | [optional] 
 **is_subject** | **bool** |  | [optional] 
 **coach_name** | **str** |  | [optional] 
+**coach_last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **comp_cents** | **int** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
-**net_year** | **int** |  | [optional] 
+**rpi** | **int** |  | [optional] 
 **record** | **str** |  | [optional] 
 
 ## Example

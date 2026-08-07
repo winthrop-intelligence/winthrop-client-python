@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **record** | **str** |  | [optional] 
 **conference_record** | **str** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
+**rpi** | **int** |  | [optional] 
 **postseason** | **str** |  | [optional] 
 **head_coach_name** | **str** |  | [optional] 
+**head_coach_last_name** | **str** | Structured last name of the seat-holder — may be multi-word (\&quot;Hughley Jr\&quot;), never derived by splitting the full name. | [optional] 
 **head_coach_interim** | **bool** | True when the season&#39;s seat-holder is filed only as INTERIM_HEAD_COACH. | [optional] 
 
 ## Example

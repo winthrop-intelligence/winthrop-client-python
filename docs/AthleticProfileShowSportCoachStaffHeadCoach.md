@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coach_id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
+**last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **comp_cents** | **int** |  | [optional] 
 **base_salary_cents** | **int** |  | [optional] 
 **comp_rank** | **int** |  | [optional] 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 **first_season_year** | **int** |  | [optional] 
 **career_season_count** | **int** | Total recorded head-coach seasons across schools; career rows are capped at 12 selected seasons. | [optional] 
 **year_one** | [**AthleticProfileShowSportCoachStaffHeadCoachYearOne**](AthleticProfileShowSportCoachStaffHeadCoachYearOne.md) |  | [optional] 
-**career** | [**List[AthleticProfileShowSportCoachStaffHeadCoachCareerInner]**](AthleticProfileShowSportCoachStaffHeadCoachCareerInner.md) | Head-coach seasons across schools, most recent first, empty placeholder seasons excluded, capped at 12. | [optional] 
+**career** | [**List[AthleticProfileShowSportCoachStaffHeadCoachCareerInner]**](AthleticProfileShowSportCoachStaffHeadCoachCareerInner.md) | Head-coach seasons across schools, most recent first, seasons with nothing filed under the active lens excluded, capped at 12. | [optional] 
 
 ## Example
 

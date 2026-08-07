@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **coach_id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
+**last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **title** | **str** |  | [optional] 
 **comp_cents** | **int** |  | [optional] 
 **contract_end_on** | **date** |  | [optional] 

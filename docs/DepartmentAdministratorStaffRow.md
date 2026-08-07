@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **comp_cents** | **int** | Null in private mode and for viewers without the administrator_compensation ability | 
 **comp_basis** | **str** |  | 
 **comp_estimated** | **bool** | True when the amount is a 990 filing rather than a salary record — the asterisk | 
+**photo_url** | **str** |  | [optional] 
 
 ## Example
 
