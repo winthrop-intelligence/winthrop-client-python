@@ -666,12 +666,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_department_coaches_clock_row_people_inner.py
-test/test_ncaa_financial_participation_summary.py
-test/test_ncaa_financial_report_item_group.py
-test/test_ncaa_financial_report_item_value.py
-test/test_ncaa_financial_source_aggregate.py
-test/test_ncaa_financial_stat.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
