@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **colors** | **str** |  | 
 **exp_total_cents** | **int** |  | 
 **rev_total_cents** | **int** |  | 
+**basis** | **str** | Which report the totals were read from. Private peers with no FRS filing plot from their federal EADA institution totals — a separate report with different definitions, so the page must mark these points rather than present the two bases as one filing. | 
+**basis_year** | **int** | EADA reporting year the totals came from (may trail the FRS fiscal year the rest of the page shows). Null for FRS points. | 
 
 ## Example
 
