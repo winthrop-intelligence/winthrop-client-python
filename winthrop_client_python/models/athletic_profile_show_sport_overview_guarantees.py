@@ -39,7 +39,16 @@ class AthleticProfileShowSportOverviewGuarantees(BaseModel):
     all_on_file: Optional[StrictBool] = None
     upcoming: Optional[
         List[AthleticProfileShowSportOverviewGuaranteesUpcomingInner]
-    ] = None
+    ] = Field(
+        default=None,
+        description="Dated agreements still to be played, soonest first (max 3).",
+    )
+    recent: Optional[List[AthleticProfileShowSportOverviewGuaranteesUpcomingInner]] = (
+        Field(
+            default=None,
+            description="Dated agreements already played, most recent first (max 3). The overview's bridge to the Guarantees tab for a season that has been played out, where nothing is upcoming. ",
+        )
+    )
     __properties: ClassVar[List[str]] = [
         "agreements_count",
         "priced_count",
@@ -47,6 +56,7 @@ class AthleticProfileShowSportOverviewGuarantees(BaseModel):
         "in_cents",
         "all_on_file",
         "upcoming",
+        "recent",
     ]
 
     model_config = ConfigDict(
@@ -93,6 +103,13 @@ class AthleticProfileShowSportOverviewGuarantees(BaseModel):
                 if _item_upcoming:
                     _items.append(_item_upcoming.to_dict())
             _dict["upcoming"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in recent (list)
+        _items = []
+        if self.recent:
+            for _item_recent in self.recent:
+                if _item_recent:
+                    _items.append(_item_recent.to_dict())
+            _dict["recent"] = _items
         return _dict
 
     @classmethod
@@ -119,6 +136,16 @@ class AthleticProfileShowSportOverviewGuarantees(BaseModel):
                         for _item in obj["upcoming"]
                     ]
                     if obj.get("upcoming") is not None
+                    else None
+                ),
+                "recent": (
+                    [
+                        AthleticProfileShowSportOverviewGuaranteesUpcomingInner.from_dict(
+                            _item
+                        )
+                        for _item in obj["recent"]
+                    ]
+                    if obj.get("recent") is not None
                     else None
                 ),
             }

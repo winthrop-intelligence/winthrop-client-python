@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -29,7 +29,10 @@ class AthleticProfileShowSportOverviewGuaranteesUpcomingInner(BaseModel):
     """  # noqa: E501
 
     opponent_short_name: Optional[StrictStr] = None
-    comp_cents: Optional[StrictInt] = None
+    comp_cents: Optional[StrictInt] = Field(
+        default=None,
+        description="Null when the agreement is filed comp_tbd — an amount-pending game is never a priced one.",
+    )
     game_date: Optional[date] = None
     __properties: ClassVar[List[str]] = [
         "opponent_short_name",
@@ -81,6 +84,11 @@ class AthleticProfileShowSportOverviewGuaranteesUpcomingInner(BaseModel):
             and "opponent_short_name" in self.model_fields_set
         ):
             _dict["opponent_short_name"] = None
+
+        # set to None if comp_cents (nullable) is None
+        # and model_fields_set contains the field
+        if self.comp_cents is None and "comp_cents" in self.model_fields_set:
+            _dict["comp_cents"] = None
 
         return _dict
 

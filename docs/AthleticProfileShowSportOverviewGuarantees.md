@@ -10,7 +10,8 @@ Name | Type | Description | Notes
 **out_cents** | **int** |  | [optional] 
 **in_cents** | **int** |  | [optional] 
 **all_on_file** | **bool** |  | [optional] 
-**upcoming** | [**List[AthleticProfileShowSportOverviewGuaranteesUpcomingInner]**](AthleticProfileShowSportOverviewGuaranteesUpcomingInner.md) |  | [optional] 
+**upcoming** | [**List[AthleticProfileShowSportOverviewGuaranteesUpcomingInner]**](AthleticProfileShowSportOverviewGuaranteesUpcomingInner.md) | Dated agreements still to be played, soonest first (max 3). | [optional] 
+**recent** | [**List[AthleticProfileShowSportOverviewGuaranteesUpcomingInner]**](AthleticProfileShowSportOverviewGuaranteesUpcomingInner.md) | Dated agreements already played, most recent first (max 3). The overview&#39;s bridge to the Guarantees tab for a season that has been played out, where nothing is upcoming.  | [optional] 
 
 ## Example
 

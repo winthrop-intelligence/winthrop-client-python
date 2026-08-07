@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **assistant_count** | **int** |  | [optional] 
 **staff_pool_cents** | **int** |  | [optional] 
 **staff_pool_all_on_file** | **bool** |  | [optional] 
+**staff_pool_on_file_count** | **int** | Assistants on the season&#39;s staff whose compensation has a filed contract, so the card can give a partly-filed pool its provenance (\&quot;$825,000 · 4 of 5 on file\&quot;). Null when compensation is not permitted or the season has no staff on file.  | [optional] 
 
 ## Example
 

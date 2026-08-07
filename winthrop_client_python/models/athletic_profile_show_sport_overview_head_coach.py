@@ -49,6 +49,10 @@ class AthleticProfileShowSportOverviewHeadCoach(BaseModel):
     assistant_count: Optional[StrictInt] = None
     staff_pool_cents: Optional[StrictInt] = None
     staff_pool_all_on_file: Optional[StrictBool] = None
+    staff_pool_on_file_count: Optional[StrictInt] = Field(
+        default=None,
+        description='Assistants on the season\'s staff whose compensation has a filed contract, so the card can give a partly-filed pool its provenance ("$825,000 · 4 of 5 on file"). Null when compensation is not permitted or the season has no staff on file. ',
+    )
     __properties: ClassVar[List[str]] = [
         "coach_id",
         "name",
@@ -65,6 +69,7 @@ class AthleticProfileShowSportOverviewHeadCoach(BaseModel):
         "assistant_count",
         "staff_pool_cents",
         "staff_pool_all_on_file",
+        "staff_pool_on_file_count",
     ]
 
     model_config = ConfigDict(
@@ -169,6 +174,14 @@ class AthleticProfileShowSportOverviewHeadCoach(BaseModel):
         ):
             _dict["staff_pool_all_on_file"] = None
 
+        # set to None if staff_pool_on_file_count (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.staff_pool_on_file_count is None
+            and "staff_pool_on_file_count" in self.model_fields_set
+        ):
+            _dict["staff_pool_on_file_count"] = None
+
         return _dict
 
     @classmethod
@@ -197,6 +210,7 @@ class AthleticProfileShowSportOverviewHeadCoach(BaseModel):
                 "assistant_count": obj.get("assistant_count"),
                 "staff_pool_cents": obj.get("staff_pool_cents"),
                 "staff_pool_all_on_file": obj.get("staff_pool_all_on_file"),
+                "staff_pool_on_file_count": obj.get("staff_pool_on_file_count"),
             }
         )
         return _obj
