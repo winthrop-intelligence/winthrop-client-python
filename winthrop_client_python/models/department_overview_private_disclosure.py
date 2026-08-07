@@ -16,33 +16,23 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict
+from typing import Any, ClassVar, Dict, List
+from winthrop_client_python.models.department_overview_private_disclosure_line import (
+    DepartmentOverviewPrivateDisclosureLine,
+)
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class AthleticProfileShowPermissions(BaseModel):
+class DepartmentOverviewPrivateDisclosure(BaseModel):
     """
-    AthleticProfileShowPermissions
+    DepartmentOverviewPrivateDisclosure
     """  # noqa: E501
 
-    can_see_personnel: Optional[StrictBool] = None
-    can_see_compensation: Optional[StrictBool] = None
-    can_see_financials: Optional[StrictBool] = None
-    can_see_eada_financials: Optional[StrictBool] = None
-    can_see_deals: Optional[StrictBool] = None
-    can_see_guarantees: Optional[StrictBool] = None
-    can_show_schedule: Optional[StrictBool] = None
-    __properties: ClassVar[List[str]] = [
-        "can_see_personnel",
-        "can_see_compensation",
-        "can_see_financials",
-        "can_see_eada_financials",
-        "can_see_deals",
-        "can_see_guarantees",
-        "can_show_schedule",
-    ]
+    first_class: List[DepartmentOverviewPrivateDisclosureLine]
+    degrades: List[DepartmentOverviewPrivateDisclosureLine]
+    __properties: ClassVar[List[str]] = ["first_class", "degrades"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -61,7 +51,7 @@ class AthleticProfileShowPermissions(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of AthleticProfileShowPermissions from a JSON string"""
+        """Create an instance of DepartmentOverviewPrivateDisclosure from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -81,11 +71,25 @@ class AthleticProfileShowPermissions(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of each item in first_class (list)
+        _items = []
+        if self.first_class:
+            for _item_first_class in self.first_class:
+                if _item_first_class:
+                    _items.append(_item_first_class.to_dict())
+            _dict["first_class"] = _items
+        # override the default output from pydantic by calling `to_dict()` of each item in degrades (list)
+        _items = []
+        if self.degrades:
+            for _item_degrades in self.degrades:
+                if _item_degrades:
+                    _items.append(_item_degrades.to_dict())
+            _dict["degrades"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of AthleticProfileShowPermissions from a dict"""
+        """Create an instance of DepartmentOverviewPrivateDisclosure from a dict"""
         if obj is None:
             return None
 
@@ -94,13 +98,22 @@ class AthleticProfileShowPermissions(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "can_see_personnel": obj.get("can_see_personnel"),
-                "can_see_compensation": obj.get("can_see_compensation"),
-                "can_see_financials": obj.get("can_see_financials"),
-                "can_see_eada_financials": obj.get("can_see_eada_financials"),
-                "can_see_deals": obj.get("can_see_deals"),
-                "can_see_guarantees": obj.get("can_see_guarantees"),
-                "can_show_schedule": obj.get("can_show_schedule"),
+                "first_class": (
+                    [
+                        DepartmentOverviewPrivateDisclosureLine.from_dict(_item)
+                        for _item in obj["first_class"]
+                    ]
+                    if obj.get("first_class") is not None
+                    else None
+                ),
+                "degrades": (
+                    [
+                        DepartmentOverviewPrivateDisclosureLine.from_dict(_item)
+                        for _item in obj["degrades"]
+                    ]
+                    if obj.get("degrades") is not None
+                    else None
+                ),
             }
         )
         return _obj

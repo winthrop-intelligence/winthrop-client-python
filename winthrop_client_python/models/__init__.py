@@ -662,6 +662,30 @@ from winthrop_client_python.models.department_overview_neighbour import (
 from winthrop_client_python.models.department_overview_non_reporting_school import (
     DepartmentOverviewNonReportingSchool,
 )
+from winthrop_client_python.models.department_overview_private_ad import (
+    DepartmentOverviewPrivateAd,
+)
+from winthrop_client_python.models.department_overview_private_ad_comp import (
+    DepartmentOverviewPrivateAdComp,
+)
+from winthrop_client_python.models.department_overview_private_basis import (
+    DepartmentOverviewPrivateBasis,
+)
+from winthrop_client_python.models.department_overview_private_coverage import (
+    DepartmentOverviewPrivateCoverage,
+)
+from winthrop_client_python.models.department_overview_private_disclosure import (
+    DepartmentOverviewPrivateDisclosure,
+)
+from winthrop_client_python.models.department_overview_private_disclosure_line import (
+    DepartmentOverviewPrivateDisclosureLine,
+)
+from winthrop_client_python.models.department_overview_private_results import (
+    DepartmentOverviewPrivateResults,
+)
+from winthrop_client_python.models.department_overview_private_spend import (
+    DepartmentOverviewPrivateSpend,
+)
 from winthrop_client_python.models.department_overview_provenance import (
     DepartmentOverviewProvenance,
 )

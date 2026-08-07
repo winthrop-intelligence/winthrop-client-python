@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.department_overview_dollar_shares import (
     DepartmentOverviewDollarShares,
@@ -26,6 +26,24 @@ from winthrop_client_python.models.department_overview_flow_summary import (
 )
 from winthrop_client_python.models.department_overview_headline_stat import (
     DepartmentOverviewHeadlineStat,
+)
+from winthrop_client_python.models.department_overview_private_ad import (
+    DepartmentOverviewPrivateAd,
+)
+from winthrop_client_python.models.department_overview_private_basis import (
+    DepartmentOverviewPrivateBasis,
+)
+from winthrop_client_python.models.department_overview_private_coverage import (
+    DepartmentOverviewPrivateCoverage,
+)
+from winthrop_client_python.models.department_overview_private_disclosure import (
+    DepartmentOverviewPrivateDisclosure,
+)
+from winthrop_client_python.models.department_overview_private_results import (
+    DepartmentOverviewPrivateResults,
+)
+from winthrop_client_python.models.department_overview_private_spend import (
+    DepartmentOverviewPrivateSpend,
 )
 from winthrop_client_python.models.department_overview_provenance import (
     DepartmentOverviewProvenance,
@@ -67,6 +85,16 @@ class SchoolDepartmentOverview(BaseModel):
     dollar_shares: Optional[DepartmentOverviewDollarShares]
     provenance: Optional[DepartmentOverviewProvenance]
     results_gap: Optional[DepartmentOverviewResultsGap]
+    mode: Optional[StrictStr] = Field(
+        default=None,
+        description="Which basis the tab renders. A private school has no FRS filing, so every FRS-derived module is null and the private_* modules carry the page.",
+    )
+    private_spend: Optional[DepartmentOverviewPrivateSpend] = None
+    private_results: Optional[DepartmentOverviewPrivateResults] = None
+    private_coverage: Optional[DepartmentOverviewPrivateCoverage] = None
+    private_disclosure: Optional[DepartmentOverviewPrivateDisclosure] = None
+    private_ad: Optional[DepartmentOverviewPrivateAd] = None
+    private_basis: Optional[DepartmentOverviewPrivateBasis] = None
     __properties: ClassVar[List[str]] = [
         "school",
         "conference",
@@ -81,7 +109,24 @@ class SchoolDepartmentOverview(BaseModel):
         "dollar_shares",
         "provenance",
         "results_gap",
+        "mode",
+        "private_spend",
+        "private_results",
+        "private_coverage",
+        "private_disclosure",
+        "private_ad",
+        "private_basis",
     ]
+
+    @field_validator("mode")
+    def mode_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(["public", "private_eada"]):
+            raise ValueError("must be one of enum values ('public', 'private_eada')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -162,6 +207,24 @@ class SchoolDepartmentOverview(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of results_gap
         if self.results_gap:
             _dict["results_gap"] = self.results_gap.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of private_spend
+        if self.private_spend:
+            _dict["private_spend"] = self.private_spend.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of private_results
+        if self.private_results:
+            _dict["private_results"] = self.private_results.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of private_coverage
+        if self.private_coverage:
+            _dict["private_coverage"] = self.private_coverage.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of private_disclosure
+        if self.private_disclosure:
+            _dict["private_disclosure"] = self.private_disclosure.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of private_ad
+        if self.private_ad:
+            _dict["private_ad"] = self.private_ad.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of private_basis
+        if self.private_basis:
+            _dict["private_basis"] = self.private_basis.to_dict()
         # set to None if conference (nullable) is None
         # and model_fields_set contains the field
         if self.conference is None and "conference" in self.model_fields_set:
@@ -228,6 +291,42 @@ class SchoolDepartmentOverview(BaseModel):
         # and model_fields_set contains the field
         if self.results_gap is None and "results_gap" in self.model_fields_set:
             _dict["results_gap"] = None
+
+        # set to None if private_spend (nullable) is None
+        # and model_fields_set contains the field
+        if self.private_spend is None and "private_spend" in self.model_fields_set:
+            _dict["private_spend"] = None
+
+        # set to None if private_results (nullable) is None
+        # and model_fields_set contains the field
+        if self.private_results is None and "private_results" in self.model_fields_set:
+            _dict["private_results"] = None
+
+        # set to None if private_coverage (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.private_coverage is None
+            and "private_coverage" in self.model_fields_set
+        ):
+            _dict["private_coverage"] = None
+
+        # set to None if private_disclosure (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.private_disclosure is None
+            and "private_disclosure" in self.model_fields_set
+        ):
+            _dict["private_disclosure"] = None
+
+        # set to None if private_ad (nullable) is None
+        # and model_fields_set contains the field
+        if self.private_ad is None and "private_ad" in self.model_fields_set:
+            _dict["private_ad"] = None
+
+        # set to None if private_basis (nullable) is None
+        # and model_fields_set contains the field
+        if self.private_basis is None and "private_basis" in self.model_fields_set:
+            _dict["private_basis"] = None
 
         return _dict
 
@@ -302,6 +401,39 @@ class SchoolDepartmentOverview(BaseModel):
                 "results_gap": (
                     DepartmentOverviewResultsGap.from_dict(obj["results_gap"])
                     if obj.get("results_gap") is not None
+                    else None
+                ),
+                "mode": obj.get("mode"),
+                "private_spend": (
+                    DepartmentOverviewPrivateSpend.from_dict(obj["private_spend"])
+                    if obj.get("private_spend") is not None
+                    else None
+                ),
+                "private_results": (
+                    DepartmentOverviewPrivateResults.from_dict(obj["private_results"])
+                    if obj.get("private_results") is not None
+                    else None
+                ),
+                "private_coverage": (
+                    DepartmentOverviewPrivateCoverage.from_dict(obj["private_coverage"])
+                    if obj.get("private_coverage") is not None
+                    else None
+                ),
+                "private_disclosure": (
+                    DepartmentOverviewPrivateDisclosure.from_dict(
+                        obj["private_disclosure"]
+                    )
+                    if obj.get("private_disclosure") is not None
+                    else None
+                ),
+                "private_ad": (
+                    DepartmentOverviewPrivateAd.from_dict(obj["private_ad"])
+                    if obj.get("private_ad") is not None
+                    else None
+                ),
+                "private_basis": (
+                    DepartmentOverviewPrivateBasis.from_dict(obj["private_basis"])
+                    if obj.get("private_basis") is not None
                     else None
                 ),
             }

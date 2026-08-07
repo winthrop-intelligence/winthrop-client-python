@@ -298,6 +298,14 @@ __all__ = [
     "DepartmentOverviewHeadlineStat",
     "DepartmentOverviewNeighbour",
     "DepartmentOverviewNonReportingSchool",
+    "DepartmentOverviewPrivateAd",
+    "DepartmentOverviewPrivateAdComp",
+    "DepartmentOverviewPrivateBasis",
+    "DepartmentOverviewPrivateCoverage",
+    "DepartmentOverviewPrivateDisclosure",
+    "DepartmentOverviewPrivateDisclosureLine",
+    "DepartmentOverviewPrivateResults",
+    "DepartmentOverviewPrivateSpend",
     "DepartmentOverviewProvenance",
     "DepartmentOverviewQuadrantPoint",
     "DepartmentOverviewResultsGap",
@@ -1454,6 +1462,30 @@ from winthrop_client_python.models.department_overview_neighbour import (
 )
 from winthrop_client_python.models.department_overview_non_reporting_school import (
     DepartmentOverviewNonReportingSchool as DepartmentOverviewNonReportingSchool,
+)
+from winthrop_client_python.models.department_overview_private_ad import (
+    DepartmentOverviewPrivateAd as DepartmentOverviewPrivateAd,
+)
+from winthrop_client_python.models.department_overview_private_ad_comp import (
+    DepartmentOverviewPrivateAdComp as DepartmentOverviewPrivateAdComp,
+)
+from winthrop_client_python.models.department_overview_private_basis import (
+    DepartmentOverviewPrivateBasis as DepartmentOverviewPrivateBasis,
+)
+from winthrop_client_python.models.department_overview_private_coverage import (
+    DepartmentOverviewPrivateCoverage as DepartmentOverviewPrivateCoverage,
+)
+from winthrop_client_python.models.department_overview_private_disclosure import (
+    DepartmentOverviewPrivateDisclosure as DepartmentOverviewPrivateDisclosure,
+)
+from winthrop_client_python.models.department_overview_private_disclosure_line import (
+    DepartmentOverviewPrivateDisclosureLine as DepartmentOverviewPrivateDisclosureLine,
+)
+from winthrop_client_python.models.department_overview_private_results import (
+    DepartmentOverviewPrivateResults as DepartmentOverviewPrivateResults,
+)
+from winthrop_client_python.models.department_overview_private_spend import (
+    DepartmentOverviewPrivateSpend as DepartmentOverviewPrivateSpend,
 )
 from winthrop_client_python.models.department_overview_provenance import (
     DepartmentOverviewProvenance as DepartmentOverviewProvenance,
