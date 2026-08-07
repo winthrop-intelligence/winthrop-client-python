@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **comp_estimated** | **bool** |  | 
 **tenure_years** | **int** | Seasons since first holding the AD position type at this school, inclusive | 
 **comp_year** | **int** | The compensation record&#39;s own year — the vintage label for 990 amounts | 
+**photo_url** | **str** |  | 
 
 ## Example
 
