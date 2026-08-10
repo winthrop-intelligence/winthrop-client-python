@@ -6,10 +6,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** |  | 
-**updated_at** | **datetime** |  | 
+**foia_label_id** | **int** |  | 
 **updated_by_school** | **date** |  | 
 **updated_by_wi** | **date** |  | 
-**foia_notes_sha256** | **str** |  | 
+**follow_up_date** | **date** | Required when the request effects set status or updated_by_wi, which can recalculate the follow-up date. | [optional] 
 
 ## Example
 

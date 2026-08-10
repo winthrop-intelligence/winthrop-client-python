@@ -672,12 +672,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_game_contract_apply_response.py
-test/test_game_contract_apply_response_actions_value.py
-test/test_game_contract_apply_response_actor.py
-test/test_game_contract_apply_response_pdf_processing.py
-test/test_game_contract_apply_response_source_document.py
-test/test_game_contracts_api.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
