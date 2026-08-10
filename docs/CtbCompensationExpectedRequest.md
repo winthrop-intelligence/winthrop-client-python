@@ -6,10 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** |  | 
-**updated_at** | **datetime** |  | 
+**foia_label_id** | **int** |  | 
 **updated_by_school** | **date** |  | 
 **updated_by_wi** | **date** |  | 
-**foia_notes_sha256** | **str** |  | 
 
 ## Example
 

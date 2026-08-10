@@ -6,8 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** |  | 
-**updated_at** | **datetime** |  | 
-**ri_note_sha256** | **str** |  | 
 
 ## Example
 

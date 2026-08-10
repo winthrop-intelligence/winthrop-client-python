@@ -10,9 +10,7 @@ Name | Type | Description | Notes
 **coach_id** | **int** |  | 
 **contract_status** | **str** |  | 
 **comment** | **str** |  | 
-**updated_at** | **datetime** |  | 
-**positions_sha256** | **str** |  | 
-**positions** | [**List[FoiaInboxExpectedPosition]**](FoiaInboxExpectedPosition.md) |  | [optional] 
+**positions** | [**List[FoiaInboxExpectedPosition]**](FoiaInboxExpectedPosition.md) |  | 
 
 ## Example
 

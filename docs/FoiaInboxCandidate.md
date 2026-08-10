@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **follow_up_date** | **date** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
-**foia_notes_sha256** | **str** |  | 
 **foia_notes** | [**List[FoiaInboxNote]**](FoiaInboxNote.md) |  | [optional] 
 **requested_items** | [**List[FoiaInboxRequestedItem]**](FoiaInboxRequestedItem.md) |  | 
 
