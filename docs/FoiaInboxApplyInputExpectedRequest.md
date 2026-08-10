@@ -6,10 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **status** | **str** |  | 
-**updated_at** | **datetime** |  | 
 **updated_by_school** | **date** |  | 
 **updated_by_wi** | **date** |  | 
-**foia_notes_sha256** | **str** |  | 
 
 ## Example
 

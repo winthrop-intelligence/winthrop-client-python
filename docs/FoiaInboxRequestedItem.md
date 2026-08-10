@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **coach_id** | **int** |  | [optional] 
 **coach_name** | **str** |  | [optional] 
 **note** | **str** |  | [optional] 
-**ri_note_sha256** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **requestable_data** | [**FoiaInboxRequestableData**](FoiaInboxRequestableData.md) |  | [optional] 
