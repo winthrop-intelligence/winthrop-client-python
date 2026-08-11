@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **name** | **str** | Favoritable record name (only when detailed&#x3D;1) | [optional] 
 **school_id** | **int** | School ID for FilTeam/Deal favorites (only when detailed&#x3D;1) | [optional] 
 **sport_name** | **str** | Sport name for FilTeam favorites (only when detailed&#x3D;1) | [optional] 
+**avatar_url** | **str** | App-relative path to the coach&#39;s cropped avatar thumbnail for Coach favorites (only when detailed&#x3D;1). Null when the coach has no usable image, in which case the client falls back to initials. | [optional] 
 
 ## Example
 
