@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **conference_record** | **str** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
+**conference_wins** | **int** |  | [optional] 
 **postseason** | **str** |  | [optional] 
 **spend_cents** | **int** |  | [optional] 
 
