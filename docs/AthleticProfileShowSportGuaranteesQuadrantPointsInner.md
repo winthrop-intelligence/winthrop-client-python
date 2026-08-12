@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **bought_count** | **int** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
+**conference_wins** | **int** |  | [optional] 
 
 ## Example
 

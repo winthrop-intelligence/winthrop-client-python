@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **conference_record** | **str** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
+**conference_wins** | **int** |  | [optional] 
 **postseason** | **str** |  | [optional] 
 **head_coach_name** | **str** |  | [optional] 
 **head_coach_last_name** | **str** | Structured last name of the seat-holder — may be multi-word (\&quot;Hughley Jr\&quot;), never derived by splitting the full name. | [optional] 
