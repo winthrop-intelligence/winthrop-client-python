@@ -403,6 +403,7 @@ docs/GetCompensationComparisons400Response.md
 docs/GetFavorites200ResponseInner.md
 docs/GetFavoritesCategories200ResponseInner.md
 docs/GetFilterOptions200Response.md
+docs/GetGadSearchSeasonFacets200Response.md
 docs/GetLadFilterOptions200Response.md
 docs/GetLadFilterOptions200ResponsePositionTypesInner.md
 docs/GetSchoolAlternateNames200Response.md
@@ -672,6 +673,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_get_gad_search_season_facets200_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -1087,6 +1089,7 @@ winthrop_client_python/models/get_compensation_comparisons400_response.py
 winthrop_client_python/models/get_favorites200_response_inner.py
 winthrop_client_python/models/get_favorites_categories200_response_inner.py
 winthrop_client_python/models/get_filter_options200_response.py
+winthrop_client_python/models/get_gad_search_season_facets200_response.py
 winthrop_client_python/models/get_lad_filter_options200_response.py
 winthrop_client_python/models/get_lad_filter_options200_response_position_types_inner.py
 winthrop_client_python/models/get_school_alternate_names200_response.py

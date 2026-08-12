@@ -143,6 +143,7 @@ Method | HTTP request | Description
 [**get_frs_export_school_search**](DefaultApi.md#get_frs_export_school_search) | **GET** /api/v1/frs_exports/school_search | 
 [**get_frs_exports**](DefaultApi.md#get_frs_exports) | **GET** /api/v1/frs_exports | 
 [**get_gad_search_detail**](DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail | 
+[**get_gad_search_season_facets**](DefaultApi.md#get_gad_search_season_facets) | **GET** /api/v1/gad_searches/season_facets | 
 [**get_gad_searches**](DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 [**get_game**](DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
 [**get_game_contract**](DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
@@ -11632,6 +11633,88 @@ Name | Type | Description  | Notes
 **200** | Game contract detail |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_gad_search_season_facets**
+> GetGadSearchSeasonFacets200Response get_gad_search_season_facets(q=q, distance_school_type=distance_school_type)
+
+Season years that would still return rows under the given filters, newest first. Season itself is excluded from the calculation, so choosing a season does not collapse the list. Answered without running the search, so the client can reconcile an unsatisfiable season before it renders results rather than after.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.get_gad_search_season_facets200_response import GetGadSearchSeasonFacets200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    q = None # object | Ransack query (optional)
+    distance_school_type = 'distance_school_type_example' # str | Top-level distance side (paired with q[distance_lt]). Only honored when the caller's account is tied to a school. (optional)
+
+    try:
+        api_response = api_instance.get_gad_search_season_facets(q=q, distance_school_type=distance_school_type)
+        print("The response of DefaultApi->get_gad_search_season_facets:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_gad_search_season_facets: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | [**object**](.md)| Ransack query | [optional] 
+ **distance_school_type** | **str**| Top-level distance side (paired with q[distance_lt]). Only honored when the caller&#39;s account is tied to a school. | [optional] 
+
+### Return type
+
+[**GetGadSearchSeasonFacets200Response**](GetGadSearchSeasonFacets200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Season years matching the filters |  -  |
+**401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
