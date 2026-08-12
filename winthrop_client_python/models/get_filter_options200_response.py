@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.filter_position_type import FilterPositionType
 from winthrop_client_python.models.geo_region import GeoRegion
@@ -32,10 +32,6 @@ class GetFilterOptions200Response(BaseModel):
     """  # noqa: E501
 
     years: Optional[List[StrictInt]] = None
-    season_years_by_sport: Optional[Dict[str, List[StrictInt]]] = Field(
-        default=None,
-        description="Season years that have guarantee contracts, keyed by sport id. Always a subset of `years`. Sports with no accessible contracts are omitted. Populated only when `context=gad`; an empty object otherwise.",
-    )
     financial_years: Optional[List[StrictInt]] = None
     current_year: Optional[StrictInt] = None
     current_financials_year: Optional[StrictInt] = None
@@ -48,7 +44,6 @@ class GetFilterOptions200Response(BaseModel):
     compensation_types: Optional[List[StrictStr]] = None
     __properties: ClassVar[List[str]] = [
         "years",
-        "season_years_by_sport",
         "financial_years",
         "current_year",
         "current_financials_year",
@@ -140,7 +135,6 @@ class GetFilterOptions200Response(BaseModel):
         _obj = cls.model_validate(
             {
                 "years": obj.get("years"),
-                "season_years_by_sport": obj.get("season_years_by_sport"),
                 "financial_years": obj.get("financial_years"),
                 "current_year": obj.get("current_year"),
                 "current_financials_year": obj.get("current_financials_year"),

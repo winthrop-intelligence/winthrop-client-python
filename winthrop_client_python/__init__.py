@@ -433,6 +433,7 @@ __all__ = [
     "GetFavorites200ResponseInner",
     "GetFavoritesCategories200ResponseInner",
     "GetFilterOptions200Response",
+    "GetGadSearchSeasonFacets200Response",
     "GetLadFilterOptions200Response",
     "GetLadFilterOptions200ResponsePositionTypesInner",
     "GetSchoolAlternateNames200Response",
@@ -1839,6 +1840,9 @@ from winthrop_client_python.models.get_favorites_categories200_response_inner im
 )
 from winthrop_client_python.models.get_filter_options200_response import (
     GetFilterOptions200Response as GetFilterOptions200Response,
+)
+from winthrop_client_python.models.get_gad_search_season_facets200_response import (
+    GetGadSearchSeasonFacets200Response as GetGadSearchSeasonFacets200Response,
 )
 from winthrop_client_python.models.get_lad_filter_options200_response import (
     GetLadFilterOptions200Response as GetLadFilterOptions200Response,

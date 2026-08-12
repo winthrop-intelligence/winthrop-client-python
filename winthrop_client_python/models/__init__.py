@@ -964,6 +964,9 @@ from winthrop_client_python.models.get_favorites_categories200_response_inner im
 from winthrop_client_python.models.get_filter_options200_response import (
     GetFilterOptions200Response,
 )
+from winthrop_client_python.models.get_gad_search_season_facets200_response import (
+    GetGadSearchSeasonFacets200Response,
+)
 from winthrop_client_python.models.get_lad_filter_options200_response import (
     GetLadFilterOptions200Response,
 )

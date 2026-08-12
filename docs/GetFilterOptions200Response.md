@@ -6,7 +6,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **years** | **List[int]** |  | [optional] 
-**season_years_by_sport** | **Dict[str, List[int]]** | Season years that have guarantee contracts, keyed by sport id. Always a subset of &#x60;years&#x60;. Sports with no accessible contracts are omitted. Populated only when &#x60;context&#x3D;gad&#x60;; an empty object otherwise. | [optional] 
 **financial_years** | **List[int]** |  | [optional] 
 **current_year** | **int** |  | [optional] 
 **current_financials_year** | **int** |  | [optional] 

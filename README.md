@@ -237,6 +237,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_frs_export_school_search**](docs/DefaultApi.md#get_frs_export_school_search) | **GET** /api/v1/frs_exports/school_search | 
 *DefaultApi* | [**get_frs_exports**](docs/DefaultApi.md#get_frs_exports) | **GET** /api/v1/frs_exports | 
 *DefaultApi* | [**get_gad_search_detail**](docs/DefaultApi.md#get_gad_search_detail) | **GET** /api/v1/gad_searches/{id}/detail | 
+*DefaultApi* | [**get_gad_search_season_facets**](docs/DefaultApi.md#get_gad_search_season_facets) | **GET** /api/v1/gad_searches/season_facets | 
 *DefaultApi* | [**get_gad_searches**](docs/DefaultApi.md#get_gad_searches) | **GET** /api/v1/gad_searches | 
 *DefaultApi* | [**get_game**](docs/DefaultApi.md#get_game) | **GET** /api/v1/games/{gameId} | 
 *DefaultApi* | [**get_game_contract**](docs/DefaultApi.md#get_game_contract) | **GET** /api/v1/game_contracts/{game_contractId} | 
@@ -810,6 +811,7 @@ Class | Method | HTTP request | Description
  - [GetFavorites200ResponseInner](docs/GetFavorites200ResponseInner.md)
  - [GetFavoritesCategories200ResponseInner](docs/GetFavoritesCategories200ResponseInner.md)
  - [GetFilterOptions200Response](docs/GetFilterOptions200Response.md)
+ - [GetGadSearchSeasonFacets200Response](docs/GetGadSearchSeasonFacets200Response.md)
  - [GetLadFilterOptions200Response](docs/GetLadFilterOptions200Response.md)
  - [GetLadFilterOptions200ResponsePositionTypesInner](docs/GetLadFilterOptions200ResponsePositionTypesInner.md)
  - [GetSchoolAlternateNames200Response](docs/GetSchoolAlternateNames200Response.md)
