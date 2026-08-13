@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **spend_year** | **int** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
+**conference_wins** | **int** |  | [optional] 
 **record** | **str** |  | [optional] 
 
 ## Example

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **can_see_personnel** | **bool** |  | [optional] 
 **can_see_compensation** | **bool** |  | [optional] 
 **can_see_financials** | **bool** |  | [optional] 
+**can_see_eada_financials** | **bool** |  | [optional] 
 **can_see_deals** | **bool** |  | [optional] 
 **can_see_guarantees** | **bool** |  | [optional] 
 **can_show_schedule** | **bool** |  | [optional] 

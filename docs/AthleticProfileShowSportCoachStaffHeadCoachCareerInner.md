@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **record** | **str** |  | [optional] 
 **net_rank** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
+**conference_wins** | **int** |  | [optional] 
 **postseason** | **str** |  | [optional] 
 **is_subject_school** | **bool** |  | [optional] 
 
