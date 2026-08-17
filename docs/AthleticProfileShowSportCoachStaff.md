@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **season_year** | **int** |  | [optional] 
 **conference_name** | **str** |  | [optional] 
-**results_lens** | **str** | The results metric this surface is read through, resolved per season from the sport&#39;s rank chain (NET → RPI for basketball, RPI otherwise) with CONF_WINS as the fallback when no rank is filed (WINAD-10259). Metric fields ship for every column; the lens names the one a surface may claim. | [optional] 
+**results_lens** | **str** | The results metric this surface is read through, resolved per season from the sport&#39;s rank chain (NET for basketball, CONF_WINS for football, RPI otherwise) with CONF_WINS as the fallback when no rank is filed (WINAD-10259, WINAD-10268). Metric fields ship for every column; the lens names the one a surface may claim. | [optional] 
 **quadrant_points** | [**List[AthleticProfileShowSportCoachStaffQuadrantPointsInner]**](AthleticProfileShowSportCoachStaffQuadrantPointsInner.md) | One entry per cohort school — head-coach pay vs the sport&#39;s results rank. | [optional] 
 **head_coach** | [**AthleticProfileShowSportCoachStaffHeadCoach**](AthleticProfileShowSportCoachStaffHeadCoach.md) |  | [optional] 
 **assistants** | [**List[AthleticProfileShowSportCoachStaffAssistantsInner]**](AthleticProfileShowSportCoachStaffAssistantsInner.md) |  | [optional] 
