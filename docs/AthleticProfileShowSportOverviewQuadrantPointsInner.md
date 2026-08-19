@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **net_rank** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
 **conference_wins** | **int** |  | [optional] 
-**record** | **str** |  | [optional] 
+**record** | **str** | Overall record for the season the point plots (results_year), null when that season filed none. | [optional] 
+**conference_record** | **str** | Conference record for the season the point plots — the pair a conference-wins value is read against (WINAD-10268). Null when that season filed none. | [optional] 
 
 ## Example
 

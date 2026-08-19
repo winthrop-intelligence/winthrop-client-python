@@ -1,5 +1,6 @@
 # AthleticProfileShowSportGuaranteesSummary
 
+Cash for the selected season only, never the whole window — the ledger may span seasons but this totals the one the page is on.
 
 ## Properties
 
