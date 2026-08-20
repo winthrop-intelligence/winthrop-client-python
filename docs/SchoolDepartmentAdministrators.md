@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **staff** | [**List[DepartmentAdministratorStaffRow]**](DepartmentAdministratorStaffRow.md) |  | 
 **staff_stats** | [**DepartmentAdministratorsStaffStats**](DepartmentAdministratorsStaffStats.md) |  | 
 **ad_office** | [**DepartmentAdministratorsAdOffice**](DepartmentAdministratorsAdOffice.md) |  | 
-**recent_moves** | [**List[DepartmentAdministratorsRecentMove]**](DepartmentAdministratorsRecentMove.md) |  | 
 **scorecard** | [**DepartmentAdministratorsScorecard**](DepartmentAdministratorsScorecard.md) |  | 
 **scorecard_gap** | [**DepartmentAdministratorsScorecardGap**](DepartmentAdministratorsScorecardGap.md) |  | 
 **officers_990** | [**List[DepartmentAdministrators990Officer]**](DepartmentAdministrators990Officer.md) |  | 
