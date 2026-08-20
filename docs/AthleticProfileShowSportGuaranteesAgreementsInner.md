@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
+**season_year** | **int** | The season this agreement belongs to. Equal to season_year at the top level for every sport but football, whose ledger spans agreement_window. | [optional] 
 **opponent_id** | **int** |  | [optional] 
 **opponent_name** | **str** |  | [optional] 
 **opponent_short_name** | **str** |  | [optional] 
