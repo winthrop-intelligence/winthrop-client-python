@@ -46,7 +46,7 @@ Name | Type | Description | Notes
 **prev_net_rank** | **int** |  | [optional] 
 **ap_rank** | **int** |  | [optional] 
 **prev_ap_rank** | **int** |  | [optional] 
-**cfp_rank** | **int** |  | [optional] 
+**cfp_rank** | **int** |  | [optional] [readonly] 
 **torvik_rank** | **int** |  | [optional] [readonly] 
 **non_conference_sos_ranking** | **int** |  | [optional] 
 **conference_sos_ranking** | **int** |  | [optional] 
