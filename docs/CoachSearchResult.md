@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **division_id** | **int** |  | [optional] 
 **year** | **int** |  | [optional] 
 **coach_friendly_id** | **str** |  | [optional] 
+**visible** | **bool** | Whether the coach appears on customer-facing surfaces | [optional] 
 **position_types** | **List[str]** |  | [optional] 
 **sport_name** | **str** |  | [optional] 
 **sport_full_name** | **str** |  | [optional] 
