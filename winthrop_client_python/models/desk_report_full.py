@@ -138,9 +138,9 @@ class DeskReportFull(BaseModel):
     @field_validator("rerun_cadence")
     def rerun_cadence_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(["false", "quarterly", "on_new_filing", "on_new_deal"]):
+        if value not in set(["off", "quarterly", "on_new_filing", "on_new_deal"]):
             raise ValueError(
-                "must be one of enum values ('false', 'quarterly', 'on_new_filing', 'on_new_deal')"
+                "must be one of enum values ('off', 'quarterly', 'on_new_filing', 'on_new_deal')"
             )
         return value
 

@@ -87,6 +87,46 @@ class DeskRequest(BaseModel):
             )
         return value
 
+    @field_validator("cta_key")
+    def cta_key_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(
+            [
+                "another-sport",
+                "different-peers",
+                "push-on-this",
+                "ask-anything",
+                "make-report",
+                "candidate-list",
+                "extension-raise-scenario",
+                "buyout-schedule",
+                "recruit-position",
+                "retention-raise-case",
+                "staff-benchmark-all-sports",
+                "run-bid-process",
+                "draft-counter",
+                "bid-one-pager",
+                "budget-proposal",
+                "case-for-support",
+                "rerun-on-filing",
+                "board-deck",
+                "defend-line",
+                "track-actuals",
+                "model-termination",
+                "compare-exposure",
+                "peer-buyout-alert",
+                "walk-us-through",
+                "board-version",
+            ]
+        ):
+            raise ValueError(
+                "must be one of enum values ('another-sport', 'different-peers', 'push-on-this', 'ask-anything', 'make-report', 'candidate-list', 'extension-raise-scenario', 'buyout-schedule', 'recruit-position', 'retention-raise-case', 'staff-benchmark-all-sports', 'run-bid-process', 'draft-counter', 'bid-one-pager', 'budget-proposal', 'case-for-support', 'rerun-on-filing', 'board-deck', 'defend-line', 'track-actuals', 'model-termination', 'compare-exposure', 'peer-buyout-alert', 'walk-us-through', 'board-version')"
+            )
+        return value
+
     model_config = ConfigDict(
         populate_by_name=True,
         validate_assignment=True,
