@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
 **leader** | **bool** |  | 
+**visible** | **bool** | Whether the coach appears on customer-facing surfaces | [optional] 
 **hometown_city** | **str** |  | [optional] 
 **hometown_state** | **str** |  | [optional] 
 **alma_mater_name** | **str** |  | [optional] 
