@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **gender_code** | **str** |  | [optional] 
 **emerging** | **bool** |  | [optional] 
 **meet_sport** | **bool** |  | [optional] 
+**visible** | **bool** | Operator-controlled customer-publication flag. When false, the Sport is hidden from ordinary customer credentials and only returned to superadmin/trusted service credentials. | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **ncaa_id** | **str** |  | [optional] 
