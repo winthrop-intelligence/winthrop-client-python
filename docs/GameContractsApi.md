@@ -10,7 +10,7 @@ Method | HTTP request | Description
 # **apply_game_contract**
 > GameContractApplyResponse apply_game_contract(plan, raw_contract_file)
 
-Atomically apply an approved game contract review plan — creates one RawContract for the uploaded PDF, one GameContract per approved action, and links each contract to its approved existing Games
+Atomically apply an approved game contract review plan — creates one RawContract for the uploaded PDF, one GameContract per approved action, and links each contract to its approved existing Games. Supported game_type values are Guarantee, Neutral, Tournament, and Exhibition; neutral-site Tournament occurrences may omit the home school (home_school_id null, away_school_id required).
 
 ### Example
 
