@@ -49,11 +49,7 @@ class DeskRequest(BaseModel):
     source_report_uuid: Optional[StrictStr]
     cta_key: Optional[StrictStr]
     client_note: Optional[StrictStr] = Field(
-        description="The needs-more-info note shown on the customer's pending card. Was `admin_note`, which read as internal-only while being rendered to the customer — a naming trap on a live field. The old key still ships alongside this one until the generated client is regenerated from this spec; drop it then. "
-    )
-    admin_note: Optional[StrictStr] = Field(
-        default=None,
-        description="Deprecated alias for client_note. Remove once clients are regenerated.",
+        description="The needs-more-info note shown on the customer's pending card. Was `admin_note`, which read as internal-only while being rendered to the customer — a naming trap on a live field. "
     )
     __properties: ClassVar[List[str]] = [
         "uuid",
@@ -68,7 +64,6 @@ class DeskRequest(BaseModel):
         "source_report_uuid",
         "cta_key",
         "client_note",
-        "admin_note",
     ]
 
     @field_validator("category")
@@ -206,11 +201,6 @@ class DeskRequest(BaseModel):
         if self.client_note is None and "client_note" in self.model_fields_set:
             _dict["client_note"] = None
 
-        # set to None if admin_note (nullable) is None
-        # and model_fields_set contains the field
-        if self.admin_note is None and "admin_note" in self.model_fields_set:
-            _dict["admin_note"] = None
-
         return _dict
 
     @classmethod
@@ -236,7 +226,6 @@ class DeskRequest(BaseModel):
                 "source_report_uuid": obj.get("source_report_uuid"),
                 "cta_key": obj.get("cta_key"),
                 "client_note": obj.get("client_note"),
-                "admin_note": obj.get("admin_note"),
             }
         )
         return _obj
