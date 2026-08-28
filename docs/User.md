@@ -25,6 +25,7 @@ Name | Type | Description | Notes
 **can_show_game_contract** | **bool** | Whether the user can view game contract/guarantee data | [optional] 
 **can_see_coaches** | **bool** | Whether the user can access the Coaches section | [optional] 
 **can_see_administrators** | **bool** | Whether the user can access the Administrators section | [optional] 
+**can_see_eada_financials** | **bool** | Whether the user can access the normalized EADA institution/sport financials API (WINAD-10370). A class-level check; per-school visibility (e.g. division-scoped subscriptions, private-school access) is still enforced per-request. | [optional] 
 **can_show_financials** | **bool** | Whether the user can access the Financials section | [optional] 
 **can_show_deals** | **bool** | Whether the user can access the Vendors section | [optional] 
 **can_show_benchmark** | **bool** | Whether the user can access the Benchmark section | [optional] 
