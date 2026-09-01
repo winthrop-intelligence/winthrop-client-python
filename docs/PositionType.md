@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **position_type_group** | [**PositionTypeGroup**](PositionTypeGroup.md) |  | [optional] 
 **force_display_title** | **bool** |  | [optional] 
 **intercollegiate_only** | **bool** |  | [optional] 
+**visible** | **bool** | Operator-controlled customer-publication flag. When false, the PositionType is hidden from ordinary customer credentials and only returned to superadmin/trusted service credentials. | [optional] 
 
 ## Example
 

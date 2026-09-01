@@ -492,6 +492,7 @@ docs/PositionCollection.md
 docs/PositionEntry.md
 docs/PositionSportStat.md
 docs/PositionType.md
+docs/PositionTypeCollection.md
 docs/PositionTypeGroup.md
 docs/PredictBody.md
 docs/PredictFailure.md
@@ -675,6 +676,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_position_type_collection.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -1177,6 +1179,7 @@ winthrop_client_python/models/position_collection.py
 winthrop_client_python/models/position_entry.py
 winthrop_client_python/models/position_sport_stat.py
 winthrop_client_python/models/position_type.py
+winthrop_client_python/models/position_type_collection.py
 winthrop_client_python/models/position_type_group.py
 winthrop_client_python/models/predict_body.py
 winthrop_client_python/models/predict_failure.py
