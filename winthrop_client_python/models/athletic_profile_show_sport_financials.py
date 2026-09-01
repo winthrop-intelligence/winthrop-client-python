@@ -17,7 +17,7 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build import (
     AthleticProfileShowSportFinancialsCostBuild,
@@ -45,6 +45,10 @@ class AthleticProfileShowSportFinancials(BaseModel):
 
     season_year: Optional[StrictInt] = None
     conference_name: Optional[StrictStr] = None
+    available_fiscal_years: Optional[List[StrictInt]] = Field(
+        default=None,
+        description="Window fiscal years the school has any financial data for (own FRS sport/institution filings for publics, matched EADA sport/institution reports), oldest first; drives the FY stepper. Empty when every source is missing.",
+    )
     quadrant: Optional[AthleticProfileShowSportFinancialsQuadrant] = None
     frs_split: Optional[AthleticProfileShowSportFinancialsFrsSplit] = None
     cost_build: Optional[AthleticProfileShowSportFinancialsCostBuild] = None
@@ -54,6 +58,7 @@ class AthleticProfileShowSportFinancials(BaseModel):
     __properties: ClassVar[List[str]] = [
         "season_year",
         "conference_name",
+        "available_fiscal_years",
         "quadrant",
         "frs_split",
         "cost_build",
@@ -144,6 +149,7 @@ class AthleticProfileShowSportFinancials(BaseModel):
             {
                 "season_year": obj.get("season_year"),
                 "conference_name": obj.get("conference_name"),
+                "available_fiscal_years": obj.get("available_fiscal_years"),
                 "quadrant": (
                     AthleticProfileShowSportFinancialsQuadrant.from_dict(
                         obj["quadrant"]

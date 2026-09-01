@@ -33,7 +33,7 @@ class FinancialComparisonRankedRow(BaseModel):
     source: StrictStr
     year: Optional[StrictInt] = None
     fallback_reason: Optional[StrictStr] = None
-    value: Optional[Any] = Field(
+    value: float = Field(
         description="The metric's raw typed value for this school/source"
     )
     comparability_state: Optional[StrictStr] = None
@@ -115,11 +115,6 @@ class FinancialComparisonRankedRow(BaseModel):
         # and model_fields_set contains the field
         if self.fallback_reason is None and "fallback_reason" in self.model_fields_set:
             _dict["fallback_reason"] = None
-
-        # set to None if value (nullable) is None
-        # and model_fields_set contains the field
-        if self.value is None and "value" in self.model_fields_set:
-            _dict["value"] = None
 
         # set to None if comparability_state (nullable) is None
         # and model_fields_set contains the field

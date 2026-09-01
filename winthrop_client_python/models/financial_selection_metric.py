@@ -38,7 +38,7 @@ class FinancialSelectionMetric(BaseModel):
         description="The source's own metric id — identical to canonical_metric_id for NCAA/FRS lines, the EADA-native field name (e.g. exp_men) for EADA metrics translated onto the shared vocabulary at sport grain."
     )
     label: Optional[StrictStr] = None
-    value: Optional[Any] = Field(
+    value: Optional[float] = Field(
         default=None,
         description="Raw typed value (whole dollars for usd fields — not cents)",
     )

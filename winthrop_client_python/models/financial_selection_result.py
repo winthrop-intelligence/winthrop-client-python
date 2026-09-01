@@ -46,7 +46,7 @@ class FinancialSelectionResult(BaseModel):
     )
     fallback_reason: Optional[StrictStr] = Field(
         default=None,
-        description="sport_not_mapped_to_eada marks a WinAD sport with no EADA crosswalk row at all (a mapping gap, not a missing filing); source_not_permitted_for_viewer also covers best_available/both requests where the viewer holds neither source ability for this school.",
+        description="sport_not_mapped_to_eada marks a WinAD sport with no EADA crosswalk row at all (a mapping gap, not a missing filing); source_not_permitted_for_viewer also covers best_available/both requests where the viewer holds neither source ability for this school. ncaa_frs_suppressed_private_school marks the NCAA FRS result for a private school — suppressed by policy for every viewer, whatever legacy data exists; the three *_used_eada reasons distinguish WHY best_available is showing EADA (no filing / viewer permission / private-school policy) so the UI never claims a filing gap when the truth is suppression.",
     )
     comparability_summary: StrictStr = Field(
         description="Most-conservative comparability_state across this result's metrics (not_comparable outranks comparison_only outranks mergeable; source_only is the fallback default)."
@@ -85,13 +85,16 @@ class FinancialSelectionResult(BaseModel):
         if value not in set(
             [
                 "ncaa_frs_unavailable_used_eada",
+                "ncaa_frs_not_permitted_used_eada",
+                "ncaa_frs_private_school_used_eada",
+                "ncaa_frs_suppressed_private_school",
                 "no_report_available_for_any_source",
                 "source_not_permitted_for_viewer",
                 "sport_not_mapped_to_eada",
             ]
         ):
             raise ValueError(
-                "must be one of enum values ('ncaa_frs_unavailable_used_eada', 'no_report_available_for_any_source', 'source_not_permitted_for_viewer', 'sport_not_mapped_to_eada')"
+                "must be one of enum values ('ncaa_frs_unavailable_used_eada', 'ncaa_frs_not_permitted_used_eada', 'ncaa_frs_private_school_used_eada', 'ncaa_frs_suppressed_private_school', 'no_report_available_for_any_source', 'source_not_permitted_for_viewer', 'sport_not_mapped_to_eada')"
             )
         return value
 

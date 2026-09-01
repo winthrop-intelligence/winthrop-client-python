@@ -41,7 +41,7 @@ class EadaNormalizedMetric(BaseModel):
     )
     label: Optional[StrictStr] = None
     definition: Optional[StrictStr] = None
-    value: Optional[Any] = Field(
+    value: Optional[float] = Field(
         description="Raw typed-column value (whole dollars for usd fields — not cents)"
     )
     unit: Optional[StrictStr]

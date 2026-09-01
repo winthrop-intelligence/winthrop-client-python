@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **source** | **str** |  | 
 **year** | **int** |  | [optional] 
 **fallback_reason** | **str** |  | [optional] 
-**value** | **object** | The metric&#39;s raw typed value for this school/source | 
+**value** | **float** | The metric&#39;s raw typed value for this school/source | 
 **comparability_state** | **str** |  | [optional] 
 
 ## Example

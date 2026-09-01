@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **season_year** | **int** |  | [optional] 
 **conference_name** | **str** |  | [optional] 
+**available_fiscal_years** | **List[int]** | Window fiscal years the school has any financial data for (own FRS sport/institution filings for publics, matched EADA sport/institution reports), oldest first; drives the FY stepper. Empty when every source is missing. | [optional] 
 **quadrant** | [**AthleticProfileShowSportFinancialsQuadrant**](AthleticProfileShowSportFinancialsQuadrant.md) |  | [optional] 
 **frs_split** | [**AthleticProfileShowSportFinancialsFrsSplit**](AthleticProfileShowSportFinancialsFrsSplit.md) |  | [optional] 
 **cost_build** | [**AthleticProfileShowSportFinancialsCostBuild**](AthleticProfileShowSportFinancialsCostBuild.md) |  | [optional] 
