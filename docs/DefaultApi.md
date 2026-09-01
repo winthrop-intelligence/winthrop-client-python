@@ -121,6 +121,8 @@ Method | HTTP request | Description
 [**get_department_searches**](DefaultApi.md#get_department_searches) | **GET** /api/v1/department_searches | 
 [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
+[**get_eada_financial_searches**](DefaultApi.md#get_eada_financial_searches) | **GET** /api/v1/eada_financial_searches | 
+[**get_eada_metrics**](DefaultApi.md#get_eada_metrics) | **GET** /api/v1/eada_metrics | 
 [**get_edit_account_user**](DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit | 
 [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
 [**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
@@ -135,6 +137,7 @@ Method | HTTP request | Description
 [**get_filter_options_states**](DefaultApi.md#get_filter_options_states) | **GET** /api/v1/filter_options/states | 
 [**get_filter_options_subdivisions**](DefaultApi.md#get_filter_options_subdivisions) | **GET** /api/v1/filter_options/subdivisions | 
 [**get_filter_options_vendors**](DefaultApi.md#get_filter_options_vendors) | **GET** /api/v1/filter_options/vendors | 
+[**get_financial_comparisons**](DefaultApi.md#get_financial_comparisons) | **GET** /api/v1/financial_comparisons | 
 [**get_financial_searches**](DefaultApi.md#get_financial_searches) | **GET** /api/v1/financial_searches | 
 [**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} | 
 [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
@@ -191,6 +194,8 @@ Method | HTTP request | Description
 [**get_school_department_financials**](DefaultApi.md#get_school_department_financials) | **GET** /api/v1/schools/{schoolId}/department_financials | 
 [**get_school_department_guarantees**](DefaultApi.md#get_school_department_guarantees) | **GET** /api/v1/schools/{schoolId}/department_guarantees | 
 [**get_school_department_overview**](DefaultApi.md#get_school_department_overview) | **GET** /api/v1/schools/{schoolId}/department_overview | 
+[**get_school_eada_financials**](DefaultApi.md#get_school_eada_financials) | **GET** /api/v1/schools/{schoolId}/eada_financials | 
+[**get_school_financial_selection**](DefaultApi.md#get_school_financial_selection) | **GET** /api/v1/schools/{schoolId}/financial_selection | 
 [**get_school_game_contracts**](DefaultApi.md#get_school_game_contracts) | **GET** /api/v1/schools/{schoolId}/game_contracts | 
 [**get_school_group**](DefaultApi.md#get_school_group) | **GET** /api/v1/school_groups/{schoolGroupId} | 
 [**get_school_group_admin_compensation**](DefaultApi.md#get_school_group_admin_compensation) | **GET** /api/v1/school_groups/{schoolGroupId}/admin_compensation | 
@@ -9881,6 +9886,197 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_eada_financial_searches**
+> EadaFinancialSearchResponse get_eada_financial_searches(year, page=page, per_page=per_page, q=q, grain=grain, sport_code=sport_code, family=family, gender=gender, metric=metric, include=include)
+
+WINAD-10370 — paginated cross-school EADA cohort search for one exact reporting year and grain (institution or sport). Scoped to schools the viewer holds see_eada_financials on, including private schools with an EADA-only grant.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.eada_financial_search_response import EadaFinancialSearchResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    year = 56 # int | Exact reporting year. Required.
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    q = None # object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. (optional)
+    grain = institution # str |  (optional) (default to institution)
+    sport_code = 'sport_code_example' # str |  (optional)
+    family = 'family_example' # str |  (optional)
+    gender = 'gender_example' # str |  (optional)
+    metric = 'metric_example' # str |  (optional)
+    include = 'include_example' # str | Comma-separated inclusions. `source_payload` requires a data admin/super admin viewer (403 otherwise). (optional)
+
+    try:
+        api_response = api_instance.get_eada_financial_searches(year, page=page, per_page=per_page, q=q, grain=grain, sport_code=sport_code, family=family, gender=gender, metric=metric, include=include)
+        print("The response of DefaultApi->get_eada_financial_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_eada_financial_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **year** | **int**| Exact reporting year. Required. | 
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] 
+ **grain** | **str**|  | [optional] [default to institution]
+ **sport_code** | **str**|  | [optional] 
+ **family** | **str**|  | [optional] 
+ **gender** | **str**|  | [optional] 
+ **metric** | **str**|  | [optional] 
+ **include** | **str**| Comma-separated inclusions. &#x60;source_payload&#x60; requires a data admin/super admin viewer (403 otherwise). | [optional] 
+
+### Return type
+
+[**EadaFinancialSearchResponse**](EadaFinancialSearchResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Cohort search results |  -  |
+**400** | Bad Request — year missing or not a 4-digit year, or grain invalid |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden — no see_eada_financials grant, or include&#x3D;source_payload requested without the required admin tier |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_eada_metrics**
+> EadaMetricCatalogResponse get_eada_metrics(page=page, per_page=per_page, report_type=report_type, canonical_only=canonical_only, comparability_state=comparability_state, search=search)
+
+WINAD-10370 — serves the WINAD-10371 metric/source-field catalog so API consumers can retrieve field definitions (label, description, unit, grain, comparability metadata) without hardcoding them. Reference data; returns the full filtered set (no see_eada_financials gate).
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.eada_metric_catalog_response import EadaMetricCatalogResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    report_type = 'report_type_example' # str |  (optional)
+    canonical_only = True # bool | When true, only entries that already carry a canonical_metric_id. (optional)
+    comparability_state = 'comparability_state_example' # str |  (optional)
+    search = 'search_example' # str | Case-insensitive substring match against source_key, label, or canonical_metric_id. (optional)
+
+    try:
+        api_response = api_instance.get_eada_metrics(page=page, per_page=per_page, report_type=report_type, canonical_only=canonical_only, comparability_state=comparability_state, search=search)
+        print("The response of DefaultApi->get_eada_metrics:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_eada_metrics: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **report_type** | **str**|  | [optional] 
+ **canonical_only** | **bool**| When true, only entries that already carry a canonical_metric_id. | [optional] 
+ **comparability_state** | **str**|  | [optional] 
+ **search** | **str**| Case-insensitive substring match against source_key, label, or canonical_metric_id. | [optional] 
+
+### Return type
+
+[**EadaMetricCatalogResponse**](EadaMetricCatalogResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Catalog entries |  -  |
+**400** | Bad Request — invalid report_type |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_edit_account_user**
 > EditAccountUserResponse get_edit_account_user(account_user_id)
 
@@ -10980,6 +11176,98 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Vendors retrieved |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_financial_comparisons**
+> FinancialComparisonResponse get_financial_comparisons(school_ids, source=source, grain=grain, sport_name=sport_name, year=year, metric=metric)
+
+WINAD-10369 — cohort-level source-aware financial comparison (e.g. one conference plus a couple of out-of-conference peers). Runs Financials::SourceSelection independently per school (never merges line items across schools' reports) and, when metric is given, adds Financials::Comparison's mixed-source ranking on top — a catalog-approved (comparability_state mergeable) canonical metric gets one blended ranking across sources; every other metric gets per-source rankings only, kept visibly separate. A school id the viewer holds neither see_financials nor see_eada_financials on for is silently dropped from the cohort rather than 403ing the whole request.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.financial_comparison_response import FinancialComparisonResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_ids = [56] # List[int] | One or more School ids to compare. Required. More than 40 distinct ids is rejected with a 400.
+    source = best_available # str |  (optional) (default to best_available)
+    grain = institution # str |  (optional) (default to institution)
+    sport_name = 'sport_name_example' # str | Required when grain is sport. (optional)
+    year = 56 # int | Exact reporting year. Omit for each source's own latest, resolved independently per school and per source. (optional)
+    metric = 'metric_example' # str | Canonical (or source-native) metric id to compare. Required to receive a comparison ranking — omitted, the response still returns each school's full per-source results with comparison null. (optional)
+
+    try:
+        api_response = api_instance.get_financial_comparisons(school_ids, source=source, grain=grain, sport_name=sport_name, year=year, metric=metric)
+        print("The response of DefaultApi->get_financial_comparisons:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_financial_comparisons: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_ids** | [**List[int]**](int.md)| One or more School ids to compare. Required. More than 40 distinct ids is rejected with a 400. | 
+ **source** | **str**|  | [optional] [default to best_available]
+ **grain** | **str**|  | [optional] [default to institution]
+ **sport_name** | **str**| Required when grain is sport. | [optional] 
+ **year** | **int**| Exact reporting year. Omit for each source&#39;s own latest, resolved independently per school and per source. | [optional] 
+ **metric** | **str**| Canonical (or source-native) metric id to compare. Required to receive a comparison ranking — omitted, the response still returns each school&#39;s full per-source results with comparison null. | [optional] 
+
+### Return type
+
+[**FinancialComparisonResponse**](FinancialComparisonResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Per-school source-aware results, plus a cross-school ranking when metric is given |  -  |
+**400** | Bad Request — school_ids missing or over the 40-id cap, source/grain invalid, year not a 4-digit year, or sport_name missing when grain is sport |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden — viewer holds neither see_financials nor see_eada_financials at all |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -15659,6 +15947,196 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden — private school or no financials permission |  -  |
 **404** | Not found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_school_eada_financials**
+> SchoolEadaFinancials get_school_eada_financials(school_id, year, grain=grain, sport_code=sport_code, family=family, gender=gender, metric=metric, include=include)
+
+WINAD-10370 — normalized EADA institution and sport financials for a school at an exact reporting year. Never substitutes a different year when the requested one is missing — institution.found/sports.found are explicit instead. Requires the see_eada_financials capability (exposed via GET /users/me as can_see_eada_financials).
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.school_eada_financials import SchoolEadaFinancials
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_id = 56 # int | ID of the School
+    year = 56 # int | Exact reporting year to look up. Required — there is no \"latest year\" default, and a missing year is never substituted with another one.
+    grain = 'grain_example' # str | Restrict the response to one grain. Omit for both institution and sports. (optional)
+    sport_code = 'sport_code_example' # str | Restrict sport-grain results to one EADA source sport code. (optional)
+    family = 'family_example' # str | Restrict metrics to one family (e.g. coaching, student_aid, recruiting_expense, operating_expense, revenue_expense, participation). operating_expense exists at both grains. An unknown family — including one valid only at a grain the request excludes — is a 400, never a silently empty list. (optional)
+    gender = 'gender_example' # str | Restrict metrics to one gender dimension (men, women, coed, all_genders). (optional)
+    metric = 'metric_example' # str | Restrict to one metric, matched case-insensitively against its canonical metric id, column name, or raw source field. (optional)
+    include = 'include_example' # str | Comma-separated list of optional inclusions. `source_payload` returns each report's full raw imported row; requires a data admin or super admin viewer, and is explicitly forbidden (403) rather than silently dropped when requested by anyone else. (optional)
+
+    try:
+        api_response = api_instance.get_school_eada_financials(school_id, year, grain=grain, sport_code=sport_code, family=family, gender=gender, metric=metric, include=include)
+        print("The response of DefaultApi->get_school_eada_financials:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_school_eada_financials: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_id** | **int**| ID of the School | 
+ **year** | **int**| Exact reporting year to look up. Required — there is no \&quot;latest year\&quot; default, and a missing year is never substituted with another one. | 
+ **grain** | **str**| Restrict the response to one grain. Omit for both institution and sports. | [optional] 
+ **sport_code** | **str**| Restrict sport-grain results to one EADA source sport code. | [optional] 
+ **family** | **str**| Restrict metrics to one family (e.g. coaching, student_aid, recruiting_expense, operating_expense, revenue_expense, participation). operating_expense exists at both grains. An unknown family — including one valid only at a grain the request excludes — is a 400, never a silently empty list. | [optional] 
+ **gender** | **str**| Restrict metrics to one gender dimension (men, women, coed, all_genders). | [optional] 
+ **metric** | **str**| Restrict to one metric, matched case-insensitively against its canonical metric id, column name, or raw source field. | [optional] 
+ **include** | **str**| Comma-separated list of optional inclusions. &#x60;source_payload&#x60; returns each report&#39;s full raw imported row; requires a data admin or super admin viewer, and is explicitly forbidden (403) rather than silently dropped when requested by anyone else. | [optional] 
+
+### Return type
+
+[**SchoolEadaFinancials**](SchoolEadaFinancials.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Normalized EADA financials for the school and exact year |  -  |
+**400** | Bad Request — year missing or not a 4-digit year; grain, family, gender, or metric not a known value for the request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden — no see_eada_financials grant for this school, or include&#x3D;source_payload requested without the required admin tier |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_school_financial_selection**
+> FinancialSelection get_school_financial_selection(school_id, source=source, grain=grain, sport_name=sport_name, year=year, metric=metric)
+
+WINAD-10369 — one school's source-aware financial selection (eada | ncaa_frs | best_available | both) at institution or sport grain, layered on WINAD-10370's EADA API and the existing NCAA/FRS CashflowSum/Cashflow data via Financials::SourceSelection. best_available never 403s for a partial grant — it silently narrows to whichever source(s) the viewer can see for this school; requesting a single source (eada or ncaa_frs) the viewer cannot see for this school is a 403.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.financial_selection import FinancialSelection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_id = 56 # int | ID of the School
+    source = best_available # str |  (optional) (default to best_available)
+    grain = institution # str |  (optional) (default to institution)
+    sport_name = 'sport_name_example' # str | Required when grain is sport. (optional)
+    year = 56 # int | Exact reporting year. Omit for each source's own latest report, resolved independently per source. (optional)
+    metric = 'metric_example' # str | Restrict to one canonical (or source-native) metric id. (optional)
+
+    try:
+        api_response = api_instance.get_school_financial_selection(school_id, source=source, grain=grain, sport_name=sport_name, year=year, metric=metric)
+        print("The response of DefaultApi->get_school_financial_selection:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_school_financial_selection: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_id** | **int**| ID of the School | 
+ **source** | **str**|  | [optional] [default to best_available]
+ **grain** | **str**|  | [optional] [default to institution]
+ **sport_name** | **str**| Required when grain is sport. | [optional] 
+ **year** | **int**| Exact reporting year. Omit for each source&#39;s own latest report, resolved independently per source. | [optional] 
+ **metric** | **str**| Restrict to one canonical (or source-native) metric id. | [optional] 
+
+### Return type
+
+[**FinancialSelection**](FinancialSelection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Source-aware financial selection for the school |  -  |
+**400** | Bad Request — source/grain invalid, year not a 4-digit year, or sport_name missing when grain is sport |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden — no see_financials/see_eada_financials grant for this school covering the requested source |  -  |
+**404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
