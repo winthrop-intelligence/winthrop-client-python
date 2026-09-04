@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **is_subject** | **bool** |  | [optional] 
 **spend_cents** | **int** |  | [optional] 
 **revenue_cents** | **int** |  | [optional] 
+**basis** | **str** | Which report this program&#39;s money was read from. Private peers with no FRS sport filing plot from their federal EADA sport row — a separate report with different definitions, so the page marks these points rather than presenting the two bases as one filing (WINAD-10385). | [optional] 
+**basis_year** | **int** | EADA reporting year the figures came from (may differ from the quadrant&#39;s FRS fiscal_year). Null for FRS points. | [optional] 
 
 ## Example
 
