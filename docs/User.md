@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **can_show_game_post** | **bool** | Whether the user can access the Games Wanted section | [optional] 
 **can_see_school_groups** | **bool** | Whether the user can access Custom School Groups | [optional] 
 **can_read_account** | **bool** | Whether the user can view account management | [optional] 
+**can_show_desk** | **bool** | Whether The Desk exists for this user (WINAD-10415 / D-29): super admin, or at least one LIVE report published to their account or to every school. One flag gates the whole feature — nav entry, /desk/* routes, gallery, reader, downloads, archive and every ask affordance. Computed per request, so a publish or a hide shows on the next fetch.  | [optional] 
 **can_launch_intercollegiate** | **bool** | Whether the user can launch Intercollegiate direct access | [optional] 
 **intercollegiate_url** | **str** | Final Intercollegiate launch or marketing URL for the user | [optional] 
 **is_sport_specific** | **bool** |  | [optional] 
