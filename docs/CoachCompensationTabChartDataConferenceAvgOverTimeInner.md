@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **year** | **int** |  | [optional] 
+**conference_name** | **str** | The conference the average is drawn from, per year — the comp chart&#39;s series label. Null when the year has no conference on file (the view sends null for \&quot;N/A\&quot; and for a blank name).  | [optional] 
 **avg_cents** | **int** |  | [optional] 
 
 ## Example

@@ -43,7 +43,9 @@ class DeskAdminQueueRow(BaseModel):
     kind: StrictStr
     status: StrictStr
     title: StrictStr
-    account: DeskAdminAccount
+    account: Optional[DeskAdminAccount] = Field(
+        description="The row's audience; null = every school (WINAD-10415 / D-29)"
+    )
     requested_by: Optional[StrictStr]
     ask_body: Optional[StrictStr]
     ask_category: Optional[StrictStr] = Field(
@@ -214,6 +216,11 @@ class DeskAdminQueueRow(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of account
         if self.account:
             _dict["account"] = self.account.to_dict()
+        # set to None if account (nullable) is None
+        # and model_fields_set contains the field
+        if self.account is None and "account" in self.model_fields_set:
+            _dict["account"] = None
+
         # set to None if requested_by (nullable) is None
         # and model_fields_set contains the field
         if self.requested_by is None and "requested_by" in self.model_fields_set:

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **kind** | **str** |  | 
 **status** | **str** |  | 
 **title** | **str** |  | 
-**account** | [**DeskAdminAccount**](DeskAdminAccount.md) |  | 
+**account** | [**DeskAdminAccount**](DeskAdminAccount.md) | The row&#39;s audience; null &#x3D; every school (WINAD-10415 / D-29) | 
 **requested_by** | **str** |  | 
 **ask_body** | **str** |  | 
 **ask_category** | **str** | The customer&#39;s 03.1 tile choice; null when none was picked | 

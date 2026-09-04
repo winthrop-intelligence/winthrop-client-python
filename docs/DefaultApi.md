@@ -10859,10 +10859,9 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Desk reports retrieved |  -  |
+**200** | Desk reports retrieved. A caller whose Desk is off (can_show_desk false) is answered with an EMPTY LIST, never a 403 — the routes must not confirm the feature exists (WINAD-10415 / D-29).  |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden (wrong scope, or a token with no account) |  -  |
-**200 (empty)** | A caller whose Desk is off (can_show_desk false) is answered with an empty list, never a 403 — the routes must not confirm the feature exists (WINAD-10415 / D-29).  |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
