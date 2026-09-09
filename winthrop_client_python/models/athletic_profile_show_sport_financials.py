@@ -28,8 +28,14 @@ from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_p
 from winthrop_client_python.models.athletic_profile_show_sport_financials_dept_line import (
     AthleticProfileShowSportFinancialsDeptLine,
 )
+from winthrop_client_python.models.athletic_profile_show_sport_financials_eada_sport_line import (
+    AthleticProfileShowSportFinancialsEadaSportLine,
+)
 from winthrop_client_python.models.athletic_profile_show_sport_financials_frs_split import (
     AthleticProfileShowSportFinancialsFrsSplit,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_financials_program_cost_per_win import (
+    AthleticProfileShowSportFinancialsProgramCostPerWin,
 )
 from winthrop_client_python.models.athletic_profile_show_sport_financials_quadrant import (
     AthleticProfileShowSportFinancialsQuadrant,
@@ -51,8 +57,12 @@ class AthleticProfileShowSportFinancials(BaseModel):
     )
     quadrant: Optional[AthleticProfileShowSportFinancialsQuadrant] = None
     frs_split: Optional[AthleticProfileShowSportFinancialsFrsSplit] = None
+    eada_sport_line: Optional[AthleticProfileShowSportFinancialsEadaSportLine] = None
     cost_build: Optional[AthleticProfileShowSportFinancialsCostBuild] = None
     cost_per_win: Optional[AthleticProfileShowSportFinancialsCostPerWin] = None
+    program_cost_per_win: Optional[
+        AthleticProfileShowSportFinancialsProgramCostPerWin
+    ] = None
     dept_line: Optional[AthleticProfileShowSportFinancialsDeptLine] = None
     as_of: Optional[date] = None
     __properties: ClassVar[List[str]] = [
@@ -61,8 +71,10 @@ class AthleticProfileShowSportFinancials(BaseModel):
         "available_fiscal_years",
         "quadrant",
         "frs_split",
+        "eada_sport_line",
         "cost_build",
         "cost_per_win",
+        "program_cost_per_win",
         "dept_line",
         "as_of",
     ]
@@ -110,12 +122,18 @@ class AthleticProfileShowSportFinancials(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of frs_split
         if self.frs_split:
             _dict["frs_split"] = self.frs_split.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of eada_sport_line
+        if self.eada_sport_line:
+            _dict["eada_sport_line"] = self.eada_sport_line.to_dict()
         # override the default output from pydantic by calling `to_dict()` of cost_build
         if self.cost_build:
             _dict["cost_build"] = self.cost_build.to_dict()
         # override the default output from pydantic by calling `to_dict()` of cost_per_win
         if self.cost_per_win:
             _dict["cost_per_win"] = self.cost_per_win.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of program_cost_per_win
+        if self.program_cost_per_win:
+            _dict["program_cost_per_win"] = self.program_cost_per_win.to_dict()
         # override the default output from pydantic by calling `to_dict()` of dept_line
         if self.dept_line:
             _dict["dept_line"] = self.dept_line.to_dict()
@@ -124,10 +142,23 @@ class AthleticProfileShowSportFinancials(BaseModel):
         if self.conference_name is None and "conference_name" in self.model_fields_set:
             _dict["conference_name"] = None
 
+        # set to None if eada_sport_line (nullable) is None
+        # and model_fields_set contains the field
+        if self.eada_sport_line is None and "eada_sport_line" in self.model_fields_set:
+            _dict["eada_sport_line"] = None
+
         # set to None if cost_per_win (nullable) is None
         # and model_fields_set contains the field
         if self.cost_per_win is None and "cost_per_win" in self.model_fields_set:
             _dict["cost_per_win"] = None
+
+        # set to None if program_cost_per_win (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.program_cost_per_win is None
+            and "program_cost_per_win" in self.model_fields_set
+        ):
+            _dict["program_cost_per_win"] = None
 
         # set to None if dept_line (nullable) is None
         # and model_fields_set contains the field
@@ -164,6 +195,13 @@ class AthleticProfileShowSportFinancials(BaseModel):
                     if obj.get("frs_split") is not None
                     else None
                 ),
+                "eada_sport_line": (
+                    AthleticProfileShowSportFinancialsEadaSportLine.from_dict(
+                        obj["eada_sport_line"]
+                    )
+                    if obj.get("eada_sport_line") is not None
+                    else None
+                ),
                 "cost_build": (
                     AthleticProfileShowSportFinancialsCostBuild.from_dict(
                         obj["cost_build"]
@@ -176,6 +214,13 @@ class AthleticProfileShowSportFinancials(BaseModel):
                         obj["cost_per_win"]
                     )
                     if obj.get("cost_per_win") is not None
+                    else None
+                ),
+                "program_cost_per_win": (
+                    AthleticProfileShowSportFinancialsProgramCostPerWin.from_dict(
+                        obj["program_cost_per_win"]
+                    )
+                    if obj.get("program_cost_per_win") is not None
                     else None
                 ),
                 "dept_line": (

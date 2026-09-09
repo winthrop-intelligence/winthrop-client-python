@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_per_win_cheapest import (
     AthleticProfileShowSportFinancialsCostPerWinCheapest,
@@ -33,6 +33,10 @@ class AthleticProfileShowSportFinancialsCostPerWin(BaseModel):
     bench_cents: Optional[StrictInt] = None
     wins: Optional[StrictInt] = None
     per_win_cents: Optional[StrictInt] = None
+    comp_basis: Optional[StrictStr] = Field(
+        default=None,
+        description="The compensation filing basis; cohort median and cheapest are withheld and cohort_size is 0 on the 990 basis.",
+    )
     cohort_median_per_win_cents: Optional[StrictInt] = None
     cohort_size: Optional[StrictInt] = None
     cheapest: Optional[AthleticProfileShowSportFinancialsCostPerWinCheapest] = None
@@ -40,10 +44,21 @@ class AthleticProfileShowSportFinancialsCostPerWin(BaseModel):
         "bench_cents",
         "wins",
         "per_win_cents",
+        "comp_basis",
         "cohort_median_per_win_cents",
         "cohort_size",
         "cheapest",
     ]
+
+    @field_validator("comp_basis")
+    def comp_basis_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(["contract", "990"]):
+            raise ValueError("must be one of enum values ('contract', '990')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -114,6 +129,7 @@ class AthleticProfileShowSportFinancialsCostPerWin(BaseModel):
                 "bench_cents": obj.get("bench_cents"),
                 "wins": obj.get("wins"),
                 "per_win_cents": obj.get("per_win_cents"),
+                "comp_basis": obj.get("comp_basis"),
                 "cohort_median_per_win_cents": obj.get("cohort_median_per_win_cents"),
                 "cohort_size": obj.get("cohort_size"),
                 "cheapest": (

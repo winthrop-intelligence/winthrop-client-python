@@ -19,6 +19,7 @@ import json
 from pydantic import (
     BaseModel,
     ConfigDict,
+    Field,
     StrictBool,
     StrictInt,
     StrictStr,
@@ -41,9 +42,26 @@ class DepartmentSearchResultDepartment(BaseModel):
     ad_name: Optional[StrictStr] = None
     ad_coach_id: Optional[StrictInt] = None
     ad_salary_cents: Optional[StrictInt] = None
-    financials_reported: Optional[StrictBool] = None
+    financials_reported: Optional[StrictBool] = Field(
+        default=None,
+        description='Whether this row\'s own source reported figures: NCAA FRS for a public school, EADA for a private one (WINAD-10383). Not "does any source hold figures" — a public school with no FRS filing is false even where an EADA filing exists, because public rows do not fall back.',
+    )
+    financials_basis: Optional[StrictStr] = Field(
+        default=None,
+        description="Which report revenue_cents/expense_cents were read from. Public schools report NCAA FRS and never fall back; private schools report EADA, and their FRS figures are suppressed for every viewer. Null when the row's source reported nothing, and also when the viewer's subscription does not carry EADA for that school.",
+    )
+    financials_basis_year: Optional[StrictInt] = Field(
+        default=None,
+        description="The filing year those figures come from: the list's financials_year when the school filed it, otherwise that school's newest filing. An EADA row can therefore report a year the rest of the page is not on.",
+    )
     revenue_cents: Optional[StrictInt] = None
     expense_cents: Optional[StrictInt] = None
+    football_revenue_cents: Optional[StrictInt] = Field(
+        default=None, description="EADA sport-split revenue; null on an FRS row."
+    )
+    mens_basketball_revenue_cents: Optional[StrictInt] = Field(
+        default=None, description="EADA sport-split revenue; null on an FRS row."
+    )
     budget_rank: Optional[StrictInt] = None
     budget_rank_of: Optional[StrictInt] = None
     budget_rank_conference_name: Optional[StrictStr] = None
@@ -54,8 +72,12 @@ class DepartmentSearchResultDepartment(BaseModel):
         "ad_coach_id",
         "ad_salary_cents",
         "financials_reported",
+        "financials_basis",
+        "financials_basis_year",
         "revenue_cents",
         "expense_cents",
+        "football_revenue_cents",
+        "mens_basketball_revenue_cents",
         "budget_rank",
         "budget_rank_of",
         "budget_rank_conference_name",
@@ -72,6 +94,16 @@ class DepartmentSearchResultDepartment(BaseModel):
             raise ValueError(
                 "must be one of enum values ('filled', 'interim', 'vacant')"
             )
+        return value
+
+    @field_validator("financials_basis")
+    def financials_basis_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(["frs", "eada"]):
+            raise ValueError("must be one of enum values ('frs', 'eada')")
         return value
 
     model_config = ConfigDict(
@@ -133,6 +165,22 @@ class DepartmentSearchResultDepartment(BaseModel):
         if self.ad_salary_cents is None and "ad_salary_cents" in self.model_fields_set:
             _dict["ad_salary_cents"] = None
 
+        # set to None if financials_basis (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.financials_basis is None
+            and "financials_basis" in self.model_fields_set
+        ):
+            _dict["financials_basis"] = None
+
+        # set to None if financials_basis_year (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.financials_basis_year is None
+            and "financials_basis_year" in self.model_fields_set
+        ):
+            _dict["financials_basis_year"] = None
+
         # set to None if revenue_cents (nullable) is None
         # and model_fields_set contains the field
         if self.revenue_cents is None and "revenue_cents" in self.model_fields_set:
@@ -142,6 +190,22 @@ class DepartmentSearchResultDepartment(BaseModel):
         # and model_fields_set contains the field
         if self.expense_cents is None and "expense_cents" in self.model_fields_set:
             _dict["expense_cents"] = None
+
+        # set to None if football_revenue_cents (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.football_revenue_cents is None
+            and "football_revenue_cents" in self.model_fields_set
+        ):
+            _dict["football_revenue_cents"] = None
+
+        # set to None if mens_basketball_revenue_cents (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.mens_basketball_revenue_cents is None
+            and "mens_basketball_revenue_cents" in self.model_fields_set
+        ):
+            _dict["mens_basketball_revenue_cents"] = None
 
         # set to None if budget_rank (nullable) is None
         # and model_fields_set contains the field
@@ -179,8 +243,14 @@ class DepartmentSearchResultDepartment(BaseModel):
                 "ad_coach_id": obj.get("ad_coach_id"),
                 "ad_salary_cents": obj.get("ad_salary_cents"),
                 "financials_reported": obj.get("financials_reported"),
+                "financials_basis": obj.get("financials_basis"),
+                "financials_basis_year": obj.get("financials_basis_year"),
                 "revenue_cents": obj.get("revenue_cents"),
                 "expense_cents": obj.get("expense_cents"),
+                "football_revenue_cents": obj.get("football_revenue_cents"),
+                "mens_basketball_revenue_cents": obj.get(
+                    "mens_basketball_revenue_cents"
+                ),
                 "budget_rank": obj.get("budget_rank"),
                 "budget_rank_of": obj.get("budget_rank_of"),
                 "budget_rank_conference_name": obj.get("budget_rank_conference_name"),

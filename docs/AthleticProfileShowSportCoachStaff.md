@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **season_year** | **int** |  | [optional] 
 **conference_name** | **str** |  | [optional] 
 **results_lens** | **str** | The results metric this surface is read through, resolved per season from the sport&#39;s rank chain (NET for basketball, CONF_WINS for football, RPI otherwise) with CONF_WINS as the fallback when no rank is filed (WINAD-10259, WINAD-10268). Metric fields ship for every column; the lens names the one a surface may claim. | [optional] 
+**comp_basis** | **str** | Which filing this tab&#39;s comp column reads. A private school files no coach contracts, so its seats&#39; pay comes from the school&#39;s IRS 990 — the same rule DepartmentCoaches applies in its private_990 mode, so the two tabs cannot name different money for one coach (WINAD-10406). Null when the viewer may not see compensation at all. | [optional] 
 **quadrant_points** | [**List[AthleticProfileShowSportCoachStaffQuadrantPointsInner]**](AthleticProfileShowSportCoachStaffQuadrantPointsInner.md) | One entry per cohort school — head-coach pay vs the sport&#39;s results rank. | [optional] 
 **head_coach** | [**AthleticProfileShowSportCoachStaffHeadCoach**](AthleticProfileShowSportCoachStaffHeadCoach.md) |  | [optional] 
 **assistants** | [**List[AthleticProfileShowSportCoachStaffAssistantsInner]**](AthleticProfileShowSportCoachStaffAssistantsInner.md) |  | [optional] 

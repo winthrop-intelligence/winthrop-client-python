@@ -27,7 +27,7 @@ from typing_extensions import Self
 
 class DepartmentOverviewPrivateDisclosure(BaseModel):
     """
-    DepartmentOverviewPrivateDisclosure
+    Dead since WINAD-10390, which replaced the disclosure lists with the coaching-pay and department-snapshot cards. Always null; the key survives only because the pinned client still requires it.
     """  # noqa: E501
 
     first_class: List[DepartmentOverviewPrivateDisclosureLine]

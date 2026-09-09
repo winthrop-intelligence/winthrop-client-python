@@ -16,7 +16,15 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StrictBool,
+    StrictInt,
+    StrictStr,
+    field_validator,
+)
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -42,6 +50,10 @@ class AthleticProfileShowSportHistorySeasonsInner(BaseModel):
     conference_wins: Optional[StrictInt] = None
     postseason: Optional[StrictStr] = None
     spend_cents: Optional[StrictInt] = None
+    spend_basis: Optional[StrictStr] = Field(
+        default=None,
+        description="Which report this season's spend was read from. A private school files no NCAA FRS sport split, so its trail reads that season's own federal EADA sport filing instead of being withheld (WINAD-10408). Never walked back to a neighbouring year's filing — a season plotted from another season's money would be a fabricated point — so this is null wherever that season filed nothing.",
+    )
     __properties: ClassVar[List[str]] = [
         "year",
         "coach_id",
@@ -55,7 +67,18 @@ class AthleticProfileShowSportHistorySeasonsInner(BaseModel):
         "conference_wins",
         "postseason",
         "spend_cents",
+        "spend_basis",
     ]
+
+    @field_validator("spend_basis")
+    def spend_basis_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(["frs", "eada"]):
+            raise ValueError("must be one of enum values ('frs', 'eada')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -147,6 +170,11 @@ class AthleticProfileShowSportHistorySeasonsInner(BaseModel):
         if self.spend_cents is None and "spend_cents" in self.model_fields_set:
             _dict["spend_cents"] = None
 
+        # set to None if spend_basis (nullable) is None
+        # and model_fields_set contains the field
+        if self.spend_basis is None and "spend_basis" in self.model_fields_set:
+            _dict["spend_basis"] = None
+
         return _dict
 
     @classmethod
@@ -172,6 +200,7 @@ class AthleticProfileShowSportHistorySeasonsInner(BaseModel):
                 "conference_wins": obj.get("conference_wins"),
                 "postseason": obj.get("postseason"),
                 "spend_cents": obj.get("spend_cents"),
+                "spend_basis": obj.get("spend_basis"),
             }
         )
         return _obj

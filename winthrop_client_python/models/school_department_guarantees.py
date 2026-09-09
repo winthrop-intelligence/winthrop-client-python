@@ -30,6 +30,9 @@ from winthrop_client_python.models.department_guarantees_market import (
 from winthrop_client_python.models.department_guarantees_quadrant import (
     DepartmentGuaranteesQuadrant,
 )
+from winthrop_client_python.models.department_guarantees_slate_coverage import (
+    DepartmentGuaranteesSlateCoverage,
+)
 from winthrop_client_python.models.department_guarantees_sport_ledger import (
     DepartmentGuaranteesSportLedger,
 )
@@ -64,6 +67,7 @@ class SchoolDepartmentGuarantees(BaseModel):
     sports: List[DepartmentGuaranteesSportLedger]
     market: Optional[DepartmentGuaranteesMarket]
     trend: List[DepartmentGuaranteesTrendEntry]
+    slate_coverage: Optional[DepartmentGuaranteesSlateCoverage]
     __properties: ClassVar[List[str]] = [
         "school",
         "conference",
@@ -78,6 +82,7 @@ class SchoolDepartmentGuarantees(BaseModel):
         "sports",
         "market",
         "trend",
+        "slate_coverage",
     ]
 
     model_config = ConfigDict(
@@ -152,6 +157,9 @@ class SchoolDepartmentGuarantees(BaseModel):
                 if _item_trend:
                     _items.append(_item_trend.to_dict())
             _dict["trend"] = _items
+        # override the default output from pydantic by calling `to_dict()` of slate_coverage
+        if self.slate_coverage:
+            _dict["slate_coverage"] = self.slate_coverage.to_dict()
         # set to None if conference (nullable) is None
         # and model_fields_set contains the field
         if self.conference is None and "conference" in self.model_fields_set:
@@ -184,6 +192,11 @@ class SchoolDepartmentGuarantees(BaseModel):
         # and model_fields_set contains the field
         if self.market is None and "market" in self.model_fields_set:
             _dict["market"] = None
+
+        # set to None if slate_coverage (nullable) is None
+        # and model_fields_set contains the field
+        if self.slate_coverage is None and "slate_coverage" in self.model_fields_set:
+            _dict["slate_coverage"] = None
 
         return _dict
 
@@ -251,6 +264,11 @@ class SchoolDepartmentGuarantees(BaseModel):
                         for _item in obj["trend"]
                     ]
                     if obj.get("trend") is not None
+                    else None
+                ),
+                "slate_coverage": (
+                    DepartmentGuaranteesSlateCoverage.from_dict(obj["slate_coverage"])
+                    if obj.get("slate_coverage") is not None
                     else None
                 ),
             }

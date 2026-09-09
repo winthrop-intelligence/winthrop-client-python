@@ -96,11 +96,17 @@ from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_b
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_assistant_pool import (
     AthleticProfileShowSportFinancialsCostBuildAssistantPool,
 )
+from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_game_day_operating import (
+    AthleticProfileShowSportFinancialsCostBuildGameDayOperating,
+)
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_guarantees_net import (
     AthleticProfileShowSportFinancialsCostBuildGuaranteesNet,
 )
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_head_coach import (
     AthleticProfileShowSportFinancialsCostBuildHeadCoach,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_head_coach_undisclosed import (
+    AthleticProfileShowSportFinancialsCostBuildHeadCoachUndisclosed,
 )
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_support_staff_inner import (
     AthleticProfileShowSportFinancialsCostBuildSupportStaffInner,
@@ -114,8 +120,17 @@ from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_p
 from winthrop_client_python.models.athletic_profile_show_sport_financials_dept_line import (
     AthleticProfileShowSportFinancialsDeptLine,
 )
+from winthrop_client_python.models.athletic_profile_show_sport_financials_eada_sport_line import (
+    AthleticProfileShowSportFinancialsEadaSportLine,
+)
 from winthrop_client_python.models.athletic_profile_show_sport_financials_frs_split import (
     AthleticProfileShowSportFinancialsFrsSplit,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_financials_program_cost_per_win import (
+    AthleticProfileShowSportFinancialsProgramCostPerWin,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_financials_program_cost_per_win_cheapest import (
+    AthleticProfileShowSportFinancialsProgramCostPerWinCheapest,
 )
 from winthrop_client_python.models.athletic_profile_show_sport_financials_quadrant import (
     AthleticProfileShowSportFinancialsQuadrant,
@@ -649,6 +664,9 @@ from winthrop_client_python.models.department_guarantees_quadrant import (
 from winthrop_client_python.models.department_guarantees_quadrant_point import (
     DepartmentGuaranteesQuadrantPoint,
 )
+from winthrop_client_python.models.department_guarantees_slate_coverage import (
+    DepartmentGuaranteesSlateCoverage,
+)
 from winthrop_client_python.models.department_guarantees_sport_ledger import (
     DepartmentGuaranteesSportLedger,
 )
@@ -679,8 +697,11 @@ from winthrop_client_python.models.department_overview_private_ad_comp import (
 from winthrop_client_python.models.department_overview_private_basis import (
     DepartmentOverviewPrivateBasis,
 )
-from winthrop_client_python.models.department_overview_private_coverage import (
-    DepartmentOverviewPrivateCoverage,
+from winthrop_client_python.models.department_overview_private_coaching_pay import (
+    DepartmentOverviewPrivateCoachingPay,
+)
+from winthrop_client_python.models.department_overview_private_coaching_pay_row import (
+    DepartmentOverviewPrivateCoachingPayRow,
 )
 from winthrop_client_python.models.department_overview_private_disclosure import (
     DepartmentOverviewPrivateDisclosure,
@@ -688,8 +709,17 @@ from winthrop_client_python.models.department_overview_private_disclosure import
 from winthrop_client_python.models.department_overview_private_disclosure_line import (
     DepartmentOverviewPrivateDisclosureLine,
 )
+from winthrop_client_python.models.department_overview_private_flagship import (
+    DepartmentOverviewPrivateFlagship,
+)
 from winthrop_client_python.models.department_overview_private_results import (
     DepartmentOverviewPrivateResults,
+)
+from winthrop_client_python.models.department_overview_private_snapshot import (
+    DepartmentOverviewPrivateSnapshot,
+)
+from winthrop_client_python.models.department_overview_private_snapshot_line import (
+    DepartmentOverviewPrivateSnapshotLine,
 )
 from winthrop_client_python.models.department_overview_private_spend import (
     DepartmentOverviewPrivateSpend,

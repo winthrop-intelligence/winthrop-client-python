@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -30,11 +30,26 @@ class AthleticProfileShowSportFinancialsDeptLine(BaseModel):
     fiscal_year: Optional[StrictInt] = None
     dept_coaching_cents: Optional[StrictInt] = None
     bench_cents: Optional[StrictInt] = None
+    basis: Optional[StrictStr] = Field(
+        default=None,
+        description="NCAA FRS department coaching line, or for a private school the EADA head+assistant coaching pool.",
+    )
     __properties: ClassVar[List[str]] = [
         "fiscal_year",
         "dept_coaching_cents",
         "bench_cents",
+        "basis",
     ]
+
+    @field_validator("basis")
+    def basis_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(["frs", "eada"]):
+            raise ValueError("must be one of enum values ('frs', 'eada')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -89,6 +104,7 @@ class AthleticProfileShowSportFinancialsDeptLine(BaseModel):
                 "fiscal_year": obj.get("fiscal_year"),
                 "dept_coaching_cents": obj.get("dept_coaching_cents"),
                 "bench_cents": obj.get("bench_cents"),
+                "basis": obj.get("basis"),
             }
         )
         return _obj

@@ -71,13 +71,18 @@ __all__ = [
     "AthleticProfileShowSportFinancials",
     "AthleticProfileShowSportFinancialsCostBuild",
     "AthleticProfileShowSportFinancialsCostBuildAssistantPool",
+    "AthleticProfileShowSportFinancialsCostBuildGameDayOperating",
     "AthleticProfileShowSportFinancialsCostBuildGuaranteesNet",
     "AthleticProfileShowSportFinancialsCostBuildHeadCoach",
+    "AthleticProfileShowSportFinancialsCostBuildHeadCoachUndisclosed",
     "AthleticProfileShowSportFinancialsCostBuildSupportStaffInner",
     "AthleticProfileShowSportFinancialsCostPerWin",
     "AthleticProfileShowSportFinancialsCostPerWinCheapest",
     "AthleticProfileShowSportFinancialsDeptLine",
+    "AthleticProfileShowSportFinancialsEadaSportLine",
     "AthleticProfileShowSportFinancialsFrsSplit",
+    "AthleticProfileShowSportFinancialsProgramCostPerWin",
+    "AthleticProfileShowSportFinancialsProgramCostPerWinCheapest",
     "AthleticProfileShowSportFinancialsQuadrant",
     "AthleticProfileShowSportFinancialsQuadrantPointsInner",
     "AthleticProfileShowSportGuarantees",
@@ -294,6 +299,7 @@ __all__ = [
     "DepartmentGuaranteesMarketSide",
     "DepartmentGuaranteesQuadrant",
     "DepartmentGuaranteesQuadrantPoint",
+    "DepartmentGuaranteesSlateCoverage",
     "DepartmentGuaranteesSportLedger",
     "DepartmentGuaranteesTrendEntry",
     "DepartmentOverviewDollarShares",
@@ -304,10 +310,14 @@ __all__ = [
     "DepartmentOverviewPrivateAd",
     "DepartmentOverviewPrivateAdComp",
     "DepartmentOverviewPrivateBasis",
-    "DepartmentOverviewPrivateCoverage",
+    "DepartmentOverviewPrivateCoachingPay",
+    "DepartmentOverviewPrivateCoachingPayRow",
     "DepartmentOverviewPrivateDisclosure",
     "DepartmentOverviewPrivateDisclosureLine",
+    "DepartmentOverviewPrivateFlagship",
     "DepartmentOverviewPrivateResults",
+    "DepartmentOverviewPrivateSnapshot",
+    "DepartmentOverviewPrivateSnapshotLine",
     "DepartmentOverviewPrivateSpend",
     "DepartmentOverviewProvenance",
     "DepartmentOverviewQuadrantPoint",
@@ -891,11 +901,17 @@ from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_b
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_assistant_pool import (
     AthleticProfileShowSportFinancialsCostBuildAssistantPool as AthleticProfileShowSportFinancialsCostBuildAssistantPool,
 )
+from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_game_day_operating import (
+    AthleticProfileShowSportFinancialsCostBuildGameDayOperating as AthleticProfileShowSportFinancialsCostBuildGameDayOperating,
+)
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_guarantees_net import (
     AthleticProfileShowSportFinancialsCostBuildGuaranteesNet as AthleticProfileShowSportFinancialsCostBuildGuaranteesNet,
 )
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_head_coach import (
     AthleticProfileShowSportFinancialsCostBuildHeadCoach as AthleticProfileShowSportFinancialsCostBuildHeadCoach,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_head_coach_undisclosed import (
+    AthleticProfileShowSportFinancialsCostBuildHeadCoachUndisclosed as AthleticProfileShowSportFinancialsCostBuildHeadCoachUndisclosed,
 )
 from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_build_support_staff_inner import (
     AthleticProfileShowSportFinancialsCostBuildSupportStaffInner as AthleticProfileShowSportFinancialsCostBuildSupportStaffInner,
@@ -909,8 +925,17 @@ from winthrop_client_python.models.athletic_profile_show_sport_financials_cost_p
 from winthrop_client_python.models.athletic_profile_show_sport_financials_dept_line import (
     AthleticProfileShowSportFinancialsDeptLine as AthleticProfileShowSportFinancialsDeptLine,
 )
+from winthrop_client_python.models.athletic_profile_show_sport_financials_eada_sport_line import (
+    AthleticProfileShowSportFinancialsEadaSportLine as AthleticProfileShowSportFinancialsEadaSportLine,
+)
 from winthrop_client_python.models.athletic_profile_show_sport_financials_frs_split import (
     AthleticProfileShowSportFinancialsFrsSplit as AthleticProfileShowSportFinancialsFrsSplit,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_financials_program_cost_per_win import (
+    AthleticProfileShowSportFinancialsProgramCostPerWin as AthleticProfileShowSportFinancialsProgramCostPerWin,
+)
+from winthrop_client_python.models.athletic_profile_show_sport_financials_program_cost_per_win_cheapest import (
+    AthleticProfileShowSportFinancialsProgramCostPerWinCheapest as AthleticProfileShowSportFinancialsProgramCostPerWinCheapest,
 )
 from winthrop_client_python.models.athletic_profile_show_sport_financials_quadrant import (
     AthleticProfileShowSportFinancialsQuadrant as AthleticProfileShowSportFinancialsQuadrant,
@@ -1524,6 +1549,9 @@ from winthrop_client_python.models.department_guarantees_quadrant import (
 from winthrop_client_python.models.department_guarantees_quadrant_point import (
     DepartmentGuaranteesQuadrantPoint as DepartmentGuaranteesQuadrantPoint,
 )
+from winthrop_client_python.models.department_guarantees_slate_coverage import (
+    DepartmentGuaranteesSlateCoverage as DepartmentGuaranteesSlateCoverage,
+)
 from winthrop_client_python.models.department_guarantees_sport_ledger import (
     DepartmentGuaranteesSportLedger as DepartmentGuaranteesSportLedger,
 )
@@ -1554,8 +1582,11 @@ from winthrop_client_python.models.department_overview_private_ad_comp import (
 from winthrop_client_python.models.department_overview_private_basis import (
     DepartmentOverviewPrivateBasis as DepartmentOverviewPrivateBasis,
 )
-from winthrop_client_python.models.department_overview_private_coverage import (
-    DepartmentOverviewPrivateCoverage as DepartmentOverviewPrivateCoverage,
+from winthrop_client_python.models.department_overview_private_coaching_pay import (
+    DepartmentOverviewPrivateCoachingPay as DepartmentOverviewPrivateCoachingPay,
+)
+from winthrop_client_python.models.department_overview_private_coaching_pay_row import (
+    DepartmentOverviewPrivateCoachingPayRow as DepartmentOverviewPrivateCoachingPayRow,
 )
 from winthrop_client_python.models.department_overview_private_disclosure import (
     DepartmentOverviewPrivateDisclosure as DepartmentOverviewPrivateDisclosure,
@@ -1563,8 +1594,17 @@ from winthrop_client_python.models.department_overview_private_disclosure import
 from winthrop_client_python.models.department_overview_private_disclosure_line import (
     DepartmentOverviewPrivateDisclosureLine as DepartmentOverviewPrivateDisclosureLine,
 )
+from winthrop_client_python.models.department_overview_private_flagship import (
+    DepartmentOverviewPrivateFlagship as DepartmentOverviewPrivateFlagship,
+)
 from winthrop_client_python.models.department_overview_private_results import (
     DepartmentOverviewPrivateResults as DepartmentOverviewPrivateResults,
+)
+from winthrop_client_python.models.department_overview_private_snapshot import (
+    DepartmentOverviewPrivateSnapshot as DepartmentOverviewPrivateSnapshot,
+)
+from winthrop_client_python.models.department_overview_private_snapshot_line import (
+    DepartmentOverviewPrivateSnapshotLine as DepartmentOverviewPrivateSnapshotLine,
 )
 from winthrop_client_python.models.department_overview_private_spend import (
     DepartmentOverviewPrivateSpend as DepartmentOverviewPrivateSpend,

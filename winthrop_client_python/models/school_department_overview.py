@@ -33,14 +33,20 @@ from winthrop_client_python.models.department_overview_private_ad import (
 from winthrop_client_python.models.department_overview_private_basis import (
     DepartmentOverviewPrivateBasis,
 )
-from winthrop_client_python.models.department_overview_private_coverage import (
-    DepartmentOverviewPrivateCoverage,
+from winthrop_client_python.models.department_overview_private_coaching_pay import (
+    DepartmentOverviewPrivateCoachingPay,
 )
 from winthrop_client_python.models.department_overview_private_disclosure import (
     DepartmentOverviewPrivateDisclosure,
 )
+from winthrop_client_python.models.department_overview_private_flagship import (
+    DepartmentOverviewPrivateFlagship,
+)
 from winthrop_client_python.models.department_overview_private_results import (
     DepartmentOverviewPrivateResults,
+)
+from winthrop_client_python.models.department_overview_private_snapshot import (
+    DepartmentOverviewPrivateSnapshot,
 )
 from winthrop_client_python.models.department_overview_private_spend import (
     DepartmentOverviewPrivateSpend,
@@ -91,10 +97,12 @@ class SchoolDepartmentOverview(BaseModel):
     )
     private_spend: Optional[DepartmentOverviewPrivateSpend] = None
     private_results: Optional[DepartmentOverviewPrivateResults] = None
-    private_coverage: Optional[DepartmentOverviewPrivateCoverage] = None
     private_disclosure: Optional[DepartmentOverviewPrivateDisclosure] = None
+    private_coaching_pay: Optional[DepartmentOverviewPrivateCoachingPay] = None
+    private_snapshot: Optional[DepartmentOverviewPrivateSnapshot] = None
     private_ad: Optional[DepartmentOverviewPrivateAd] = None
     private_basis: Optional[DepartmentOverviewPrivateBasis] = None
+    private_flagship: Optional[DepartmentOverviewPrivateFlagship] = None
     __properties: ClassVar[List[str]] = [
         "school",
         "conference",
@@ -112,10 +120,12 @@ class SchoolDepartmentOverview(BaseModel):
         "mode",
         "private_spend",
         "private_results",
-        "private_coverage",
         "private_disclosure",
+        "private_coaching_pay",
+        "private_snapshot",
         "private_ad",
         "private_basis",
+        "private_flagship",
     ]
 
     @field_validator("mode")
@@ -213,18 +223,24 @@ class SchoolDepartmentOverview(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of private_results
         if self.private_results:
             _dict["private_results"] = self.private_results.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of private_coverage
-        if self.private_coverage:
-            _dict["private_coverage"] = self.private_coverage.to_dict()
         # override the default output from pydantic by calling `to_dict()` of private_disclosure
         if self.private_disclosure:
             _dict["private_disclosure"] = self.private_disclosure.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of private_coaching_pay
+        if self.private_coaching_pay:
+            _dict["private_coaching_pay"] = self.private_coaching_pay.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of private_snapshot
+        if self.private_snapshot:
+            _dict["private_snapshot"] = self.private_snapshot.to_dict()
         # override the default output from pydantic by calling `to_dict()` of private_ad
         if self.private_ad:
             _dict["private_ad"] = self.private_ad.to_dict()
         # override the default output from pydantic by calling `to_dict()` of private_basis
         if self.private_basis:
             _dict["private_basis"] = self.private_basis.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of private_flagship
+        if self.private_flagship:
+            _dict["private_flagship"] = self.private_flagship.to_dict()
         # set to None if conference (nullable) is None
         # and model_fields_set contains the field
         if self.conference is None and "conference" in self.model_fields_set:
@@ -302,14 +318,6 @@ class SchoolDepartmentOverview(BaseModel):
         if self.private_results is None and "private_results" in self.model_fields_set:
             _dict["private_results"] = None
 
-        # set to None if private_coverage (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.private_coverage is None
-            and "private_coverage" in self.model_fields_set
-        ):
-            _dict["private_coverage"] = None
-
         # set to None if private_disclosure (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -317,6 +325,22 @@ class SchoolDepartmentOverview(BaseModel):
             and "private_disclosure" in self.model_fields_set
         ):
             _dict["private_disclosure"] = None
+
+        # set to None if private_coaching_pay (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.private_coaching_pay is None
+            and "private_coaching_pay" in self.model_fields_set
+        ):
+            _dict["private_coaching_pay"] = None
+
+        # set to None if private_snapshot (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.private_snapshot is None
+            and "private_snapshot" in self.model_fields_set
+        ):
+            _dict["private_snapshot"] = None
 
         # set to None if private_ad (nullable) is None
         # and model_fields_set contains the field
@@ -327,6 +351,14 @@ class SchoolDepartmentOverview(BaseModel):
         # and model_fields_set contains the field
         if self.private_basis is None and "private_basis" in self.model_fields_set:
             _dict["private_basis"] = None
+
+        # set to None if private_flagship (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.private_flagship is None
+            and "private_flagship" in self.model_fields_set
+        ):
+            _dict["private_flagship"] = None
 
         return _dict
 
@@ -414,16 +446,23 @@ class SchoolDepartmentOverview(BaseModel):
                     if obj.get("private_results") is not None
                     else None
                 ),
-                "private_coverage": (
-                    DepartmentOverviewPrivateCoverage.from_dict(obj["private_coverage"])
-                    if obj.get("private_coverage") is not None
-                    else None
-                ),
                 "private_disclosure": (
                     DepartmentOverviewPrivateDisclosure.from_dict(
                         obj["private_disclosure"]
                     )
                     if obj.get("private_disclosure") is not None
+                    else None
+                ),
+                "private_coaching_pay": (
+                    DepartmentOverviewPrivateCoachingPay.from_dict(
+                        obj["private_coaching_pay"]
+                    )
+                    if obj.get("private_coaching_pay") is not None
+                    else None
+                ),
+                "private_snapshot": (
+                    DepartmentOverviewPrivateSnapshot.from_dict(obj["private_snapshot"])
+                    if obj.get("private_snapshot") is not None
                     else None
                 ),
                 "private_ad": (
@@ -434,6 +473,11 @@ class SchoolDepartmentOverview(BaseModel):
                 "private_basis": (
                     DepartmentOverviewPrivateBasis.from_dict(obj["private_basis"])
                     if obj.get("private_basis") is not None
+                    else None
+                ),
+                "private_flagship": (
+                    DepartmentOverviewPrivateFlagship.from_dict(obj["private_flagship"])
+                    if obj.get("private_flagship") is not None
                     else None
                 ),
             }

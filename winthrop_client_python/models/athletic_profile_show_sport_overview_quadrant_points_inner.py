@@ -16,7 +16,15 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StrictBool,
+    StrictInt,
+    StrictStr,
+    field_validator,
+)
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -34,6 +42,10 @@ class AthleticProfileShowSportOverviewQuadrantPointsInner(BaseModel):
     is_subject: Optional[StrictBool] = None
     spend_cents: Optional[StrictInt] = None
     spend_year: Optional[StrictInt] = None
+    spend_basis: Optional[StrictStr] = Field(
+        default=None,
+        description="Which report this program's spend was read from. A private peer files no NCAA FRS sport split, so it plots from its own federal EADA sport row instead of going unplotted (WINAD-10402) — a separate report with different definitions, so each dot names its own source rather than the chart implying one. Null where no spend was filed at all.",
+    )
     net_rank: Optional[StrictInt] = None
     rpi: Optional[StrictInt] = None
     conference_wins: Optional[StrictInt] = None
@@ -53,12 +65,23 @@ class AthleticProfileShowSportOverviewQuadrantPointsInner(BaseModel):
         "is_subject",
         "spend_cents",
         "spend_year",
+        "spend_basis",
         "net_rank",
         "rpi",
         "conference_wins",
         "record",
         "conference_record",
     ]
+
+    @field_validator("spend_basis")
+    def spend_basis_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(["frs", "eada"]):
+            raise ValueError("must be one of enum values ('frs', 'eada')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -112,6 +135,11 @@ class AthleticProfileShowSportOverviewQuadrantPointsInner(BaseModel):
         if self.spend_year is None and "spend_year" in self.model_fields_set:
             _dict["spend_year"] = None
 
+        # set to None if spend_basis (nullable) is None
+        # and model_fields_set contains the field
+        if self.spend_basis is None and "spend_basis" in self.model_fields_set:
+            _dict["spend_basis"] = None
+
         # set to None if net_rank (nullable) is None
         # and model_fields_set contains the field
         if self.net_rank is None and "net_rank" in self.model_fields_set:
@@ -160,6 +188,7 @@ class AthleticProfileShowSportOverviewQuadrantPointsInner(BaseModel):
                 "is_subject": obj.get("is_subject"),
                 "spend_cents": obj.get("spend_cents"),
                 "spend_year": obj.get("spend_year"),
+                "spend_basis": obj.get("spend_basis"),
                 "net_rank": obj.get("net_rank"),
                 "rpi": obj.get("rpi"),
                 "conference_wins": obj.get("conference_wins"),
