@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **comp_cents** | **int** |  | [optional] 
 **on_file** | **bool** |  | [optional] 
+**comp_basis** | **str** | Which filing the figure is read from — a contract, or the school&#39;s IRS 990 for a private school. | [optional] 
+**comp_fiscal_year** | **int** | The 990&#39;s filing year; null for a contract figure. | [optional] 
 
 ## Example
 
