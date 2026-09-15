@@ -16,8 +16,8 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictBytes, StrictStr
+from typing import Any, ClassVar, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
@@ -25,7 +25,7 @@ from typing_extensions import Self
 
 class PublishAdminDeskReportRequest(BaseModel):
     """
-    PublishAdminDeskReportRequest
+    First publication sends body_html and optional note/change_note/renotify fields. Publishing a new version requires update, a JSON-encoded DeskAdminReportPublishUpdate; top-level publication fields are ignored when update is present. File uploads require multipart/form-data and travel in downloads[pdf], downloads[xlsx] and downloads[pptx]. An update without new files may also send the JSON-encoded update field as application/json.
     """  # noqa: E501
 
     body_html: Optional[StrictStr] = None
@@ -34,13 +34,47 @@ class PublishAdminDeskReportRequest(BaseModel):
     )
     change_note: Optional[Annotated[str, Field(strict=True, max_length=200)]] = Field(
         default=None,
-        description="What changed for the reader (D-23). Required when the report already has a live version — an update without one is refused (422, nothing stored). ",
+        description="Reader-facing explanation; new versions send this inside update instead.",
     )
     renotify: Optional[StrictBool] = Field(
         default=None,
-        description="Request notification for a new version; effective only when publish notifications are enabled.",
+        description="Request notification; effective only when publish notifications are enabled.",
     )
-    __properties: ClassVar[List[str]] = ["body_html", "note", "change_note", "renotify"]
+    update: Optional[StrictStr] = Field(
+        default=None,
+        description="JSON-encoded DeskAdminReportPublishUpdate. Required for a new version, omitted for first publication. Only edited fields need to be sent. ",
+    )
+    downloads_pdf: Optional[
+        Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]
+    ] = Field(
+        default=None,
+        description="PDF replacement or addition; multipart updates only.",
+        alias="downloads[pdf]",
+    )
+    downloads_xlsx: Optional[
+        Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]
+    ] = Field(
+        default=None,
+        description="XLSX replacement or addition; multipart updates only.",
+        alias="downloads[xlsx]",
+    )
+    downloads_pptx: Optional[
+        Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]]
+    ] = Field(
+        default=None,
+        description="PPTX replacement or addition; multipart updates only.",
+        alias="downloads[pptx]",
+    )
+    __properties: ClassVar[List[str]] = [
+        "body_html",
+        "note",
+        "change_note",
+        "renotify",
+        "update",
+        "downloads[pdf]",
+        "downloads[xlsx]",
+        "downloads[pptx]",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -111,6 +145,10 @@ class PublishAdminDeskReportRequest(BaseModel):
                 "note": obj.get("note"),
                 "change_note": obj.get("change_note"),
                 "renotify": obj.get("renotify"),
+                "update": obj.get("update"),
+                "downloads[pdf]": obj.get("downloads[pdf]"),
+                "downloads[xlsx]": obj.get("downloads[xlsx]"),
+                "downloads[pptx]": obj.get("downloads[pptx]"),
             }
         )
         return _obj
