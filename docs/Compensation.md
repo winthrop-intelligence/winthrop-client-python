@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **talent_fee** | **int** |  | [optional] 
 **is_car_provided** | **bool** |  | [optional] 
 **country_club_dues_cents** | **int** |  | [optional] 
-**coach_id** | **int** |  | [optional] 
+**coach_id** | **int** | Required on creation. Existing coach-less records may return null. Updates may omit this field or send its unchanged value. To change an existing compensation&#39;s identity, move the linked position. | [optional] 
 **buyout_terms** | **str** |  | [optional] 
 **executed_on** | **datetime** |  | [optional] 
 **expires_on** | **datetime** |  | [optional] 
@@ -32,8 +32,8 @@ Name | Type | Description | Notes
 **compensation_type** | **str** |  | [optional] 
 **media_link** | **str** |  | [optional] 
 **contract_status_id** | **int** |  | [optional] 
-**year** | **int** |  | [optional] 
-**school_id** | **int** |  | [optional] 
+**year** | **int** | Required on creation. Updates may omit this field or send its unchanged value. To change an existing compensation&#39;s identity, move the linked position. | [optional] 
+**school_id** | **int** | Required on creation. Updates may omit this field or send its unchanged value. To change an existing compensation&#39;s identity, move the linked position. | [optional] 
 **contract** | [**Contract**](Contract.md) |  | [optional] 
 
 ## Example
