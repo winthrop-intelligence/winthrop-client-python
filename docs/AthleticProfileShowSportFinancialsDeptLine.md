@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **fiscal_year** | **int** |  | [optional] 
 **dept_coaching_cents** | **int** |  | [optional] 
 **bench_cents** | **int** |  | [optional] 
+**basis** | **str** | NCAA FRS department coaching line, or for a private school the EADA head+assistant coaching pool. | [optional] 
 
 ## Example
 

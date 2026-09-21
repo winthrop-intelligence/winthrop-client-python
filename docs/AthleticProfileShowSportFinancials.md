@@ -8,10 +8,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **season_year** | **int** |  | [optional] 
 **conference_name** | **str** |  | [optional] 
+**available_fiscal_years** | **List[int]** | Window fiscal years the school has any financial data for (own FRS sport/institution filings for publics, matched EADA sport/institution reports), oldest first; drives the FY stepper. Empty when every source is missing. | [optional] 
 **quadrant** | [**AthleticProfileShowSportFinancialsQuadrant**](AthleticProfileShowSportFinancialsQuadrant.md) |  | [optional] 
 **frs_split** | [**AthleticProfileShowSportFinancialsFrsSplit**](AthleticProfileShowSportFinancialsFrsSplit.md) |  | [optional] 
+**eada_sport_line** | [**AthleticProfileShowSportFinancialsEadaSportLine**](AthleticProfileShowSportFinancialsEadaSportLine.md) |  | [optional] 
 **cost_build** | [**AthleticProfileShowSportFinancialsCostBuild**](AthleticProfileShowSportFinancialsCostBuild.md) |  | [optional] 
 **cost_per_win** | [**AthleticProfileShowSportFinancialsCostPerWin**](AthleticProfileShowSportFinancialsCostPerWin.md) |  | [optional] 
+**program_cost_per_win** | [**AthleticProfileShowSportFinancialsProgramCostPerWin**](AthleticProfileShowSportFinancialsProgramCostPerWin.md) |  | [optional] 
 **dept_line** | [**AthleticProfileShowSportFinancialsDeptLine**](AthleticProfileShowSportFinancialsDeptLine.md) |  | [optional] 
 **as_of** | **date** |  | [optional] 
 
