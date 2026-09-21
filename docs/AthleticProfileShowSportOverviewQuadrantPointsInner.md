@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **is_subject** | **bool** |  | [optional] 
 **spend_cents** | **int** |  | [optional] 
 **spend_year** | **int** |  | [optional] 
+**spend_basis** | **str** | Which report this program&#39;s spend was read from. A private peer files no NCAA FRS sport split, so it plots from its own federal EADA sport row instead of going unplotted (WINAD-10402) — a separate report with different definitions, so each dot names its own source rather than the chart implying one. Null where no spend was filed at all. | [optional] 
 **net_rank** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
 **conference_wins** | **int** |  | [optional] 
