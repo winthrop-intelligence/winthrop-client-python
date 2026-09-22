@@ -58,19 +58,18 @@ class CoachSearchResult(BaseModel):
     ap_rank: Optional[float] = None
     compensation_cents: Optional[StrictInt] = Field(
         default=None,
-        description="Total compensation in cents (included based on authorization). On a search of the current season this is the latest known salary for the row's assignment (WINAD-10478): the season's own record when it carries a usable total, otherwise the most recent usable record from the same coach, school, sport and position types up to two seasons back. Any other season reports that season's own record. The comp filters, the compensation sort and comp_stats read the same value.",
+        description="Total compensation in cents (included based on authorization)",
     )
     base_salary_cents: Optional[StrictInt] = Field(
         default=None,
-        description="Base salary in cents (included based on authorization), read from the same record as compensation_cents.",
+        description="Base salary in cents (included based on authorization)",
     )
     coli: Optional[float] = Field(
         default=None,
         description="School's cost-of-living index (included based on authorization)",
     )
     compensation_type: Optional[StrictStr] = Field(
-        default=None,
-        description="Compensation type (included based on authorization), read from the same record as compensation_cents; so are the compensation_* component fields below.",
+        default=None, description="Compensation type (included based on authorization)"
     )
     compensation_contingent_bonus: Optional[StrictBool] = None
     compensation_deferred_comp_cents: Optional[StrictInt] = None
@@ -81,21 +80,33 @@ class CoachSearchResult(BaseModel):
     compensation_talent_fee: Optional[StrictInt] = None
     compensation_county_club_membership_paid: Optional[StrictBool] = None
     compensation_media_link: Optional[StrictStr] = None
-    compensation_source_year: Optional[StrictInt] = Field(
+    latest_known_fallback: Optional[StrictBool] = Field(
         default=None,
-        description="Season end year of the compensation record the figures come from (included based on authorization; null when no record is on file). Equals year unless compensation_is_fallback is true.",
+        description="True when the searched season has no usable annual total for this assignment but an earlier season of the same unbroken job (same coach, school, sport and position types in every season between) does, so the latest_known_* fields carry that older record as display-only context (included based on authorization). It never changes compensation_cents, the comp filters, the compensation sort or comp_stats.",
     )
-    compensation_is_fallback: Optional[StrictBool] = Field(
+    latest_known_compensation_cents: Optional[StrictInt] = Field(
         default=None,
-        description="True when the figures were carried forward from an earlier season of the same assignment because the current season has no usable record (included based on authorization). Always false outside the current season.",
+        description="Total of that older record in cents; null unless latest_known_fallback.",
     )
-    compensation_source_compensation_id: Optional[StrictInt] = Field(
+    latest_known_base_salary_cents: Optional[StrictInt] = Field(
         default=None,
-        description="The compensation record the figures come from (included based on authorization).",
+        description="Base salary of that older record in cents; null unless latest_known_fallback.",
     )
-    compensation_source_raw_contract_id: Optional[StrictInt] = Field(
+    latest_known_compensation_type: Optional[StrictStr] = Field(
         default=None,
-        description="The document behind that record, when one is on file and the viewer may open it. Distinct from raw_contract_id, which stays the current position's contract document.",
+        description="Compensation type of that older record; null unless latest_known_fallback.",
+    )
+    latest_known_source_year: Optional[StrictInt] = Field(
+        default=None,
+        description="Season end year the older record was filed for (2024 means 2023–24); null unless latest_known_fallback. Always earlier than year.",
+    )
+    latest_known_source_compensation_id: Optional[StrictInt] = Field(
+        default=None,
+        description="The older compensation record's id; null unless latest_known_fallback.",
+    )
+    latest_known_source_raw_contract_id: Optional[StrictInt] = Field(
+        default=None,
+        description="The document behind the older record, present only when one is on file and the viewer may open it. Distinct from raw_contract_id, which stays the current position's contract document.",
     )
     contract_starts_on: Optional[date] = None
     contract_expires_on: Optional[date] = None
@@ -141,10 +152,13 @@ class CoachSearchResult(BaseModel):
         "compensation_talent_fee",
         "compensation_county_club_membership_paid",
         "compensation_media_link",
-        "compensation_source_year",
-        "compensation_is_fallback",
-        "compensation_source_compensation_id",
-        "compensation_source_raw_contract_id",
+        "latest_known_fallback",
+        "latest_known_compensation_cents",
+        "latest_known_base_salary_cents",
+        "latest_known_compensation_type",
+        "latest_known_source_year",
+        "latest_known_source_compensation_id",
+        "latest_known_source_raw_contract_id",
         "contract_starts_on",
         "contract_expires_on",
         "contract_at_will",
@@ -397,29 +411,53 @@ class CoachSearchResult(BaseModel):
         ):
             _dict["compensation_media_link"] = None
 
-        # set to None if compensation_source_year (nullable) is None
+        # set to None if latest_known_compensation_cents (nullable) is None
         # and model_fields_set contains the field
         if (
-            self.compensation_source_year is None
-            and "compensation_source_year" in self.model_fields_set
+            self.latest_known_compensation_cents is None
+            and "latest_known_compensation_cents" in self.model_fields_set
         ):
-            _dict["compensation_source_year"] = None
+            _dict["latest_known_compensation_cents"] = None
 
-        # set to None if compensation_source_compensation_id (nullable) is None
+        # set to None if latest_known_base_salary_cents (nullable) is None
         # and model_fields_set contains the field
         if (
-            self.compensation_source_compensation_id is None
-            and "compensation_source_compensation_id" in self.model_fields_set
+            self.latest_known_base_salary_cents is None
+            and "latest_known_base_salary_cents" in self.model_fields_set
         ):
-            _dict["compensation_source_compensation_id"] = None
+            _dict["latest_known_base_salary_cents"] = None
 
-        # set to None if compensation_source_raw_contract_id (nullable) is None
+        # set to None if latest_known_compensation_type (nullable) is None
         # and model_fields_set contains the field
         if (
-            self.compensation_source_raw_contract_id is None
-            and "compensation_source_raw_contract_id" in self.model_fields_set
+            self.latest_known_compensation_type is None
+            and "latest_known_compensation_type" in self.model_fields_set
         ):
-            _dict["compensation_source_raw_contract_id"] = None
+            _dict["latest_known_compensation_type"] = None
+
+        # set to None if latest_known_source_year (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.latest_known_source_year is None
+            and "latest_known_source_year" in self.model_fields_set
+        ):
+            _dict["latest_known_source_year"] = None
+
+        # set to None if latest_known_source_compensation_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.latest_known_source_compensation_id is None
+            and "latest_known_source_compensation_id" in self.model_fields_set
+        ):
+            _dict["latest_known_source_compensation_id"] = None
+
+        # set to None if latest_known_source_raw_contract_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.latest_known_source_raw_contract_id is None
+            and "latest_known_source_raw_contract_id" in self.model_fields_set
+        ):
+            _dict["latest_known_source_raw_contract_id"] = None
 
         # set to None if contract_starts_on (nullable) is None
         # and model_fields_set contains the field
@@ -518,13 +556,22 @@ class CoachSearchResult(BaseModel):
                     "compensation_county_club_membership_paid"
                 ),
                 "compensation_media_link": obj.get("compensation_media_link"),
-                "compensation_source_year": obj.get("compensation_source_year"),
-                "compensation_is_fallback": obj.get("compensation_is_fallback"),
-                "compensation_source_compensation_id": obj.get(
-                    "compensation_source_compensation_id"
+                "latest_known_fallback": obj.get("latest_known_fallback"),
+                "latest_known_compensation_cents": obj.get(
+                    "latest_known_compensation_cents"
                 ),
-                "compensation_source_raw_contract_id": obj.get(
-                    "compensation_source_raw_contract_id"
+                "latest_known_base_salary_cents": obj.get(
+                    "latest_known_base_salary_cents"
+                ),
+                "latest_known_compensation_type": obj.get(
+                    "latest_known_compensation_type"
+                ),
+                "latest_known_source_year": obj.get("latest_known_source_year"),
+                "latest_known_source_compensation_id": obj.get(
+                    "latest_known_source_compensation_id"
+                ),
+                "latest_known_source_raw_contract_id": obj.get(
+                    "latest_known_source_raw_contract_id"
                 ),
                 "contract_starts_on": obj.get("contract_starts_on"),
                 "contract_expires_on": obj.get("contract_expires_on"),

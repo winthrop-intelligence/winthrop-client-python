@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.snapshot_income_report import SnapshotIncomeReport
 from typing import Optional, Set
@@ -25,52 +25,26 @@ from typing_extensions import Self
 
 class CoachSnapshot(BaseModel):
     """
-    Compensation resolves for the selected assignment in the system's current season, carrying forward at most two seasons within the same continuous job. History stays as reported. The snapshot is null without compensation access or a selected position. season_year_str, performance, income reports and current contract fields retain their assignment context; compensation_source_year identifies the salary's actual season. Hourly current records retain their stored values and type; no annualization occurs.
+    CoachSnapshot
     """  # noqa: E501
 
     season_year_str: StrictStr
-    base_comp_cents: Optional[StrictInt] = Field(
-        description="Base from the resolved compensation record, in cents; null when unavailable."
-    )
-    total_comp_cents: Optional[StrictInt] = Field(
-        description="Guaranteed total from the same resolved record, in cents; null when unavailable."
-    )
-    compensation_type: Optional[StrictStr] = Field(
-        description="Resolved record's type, or null when compensation is unavailable."
-    )
-    compensation_source_year: Optional[StrictInt] = Field(
-        description="Salary source season end year; null when unavailable, never inferred from contract dates."
-    )
-    compensation_is_fallback: StrictBool = Field(
-        description="True only when salary comes from an earlier eligible season; false when unavailable."
-    )
-    compensation_source_compensation_id: Optional[StrictInt] = Field(
-        description="Resolved compensation id; null when unavailable. Gated with amounts by compensation access."
-    )
-    compensation_source_raw_contract_id: Optional[StrictInt] = Field(
-        default=None,
-        description="Salary source document id; omitted unless both its contract and document are authorized.",
-    )
-    buyout_terms: Optional[StrictStr]
+    base_comp_cents: Optional[StrictInt] = None
+    total_comp_cents: Optional[StrictInt] = None
+    compensation_type: StrictStr
+    buyout_terms: Optional[StrictStr] = None
     record: Optional[StrictStr] = None
     contract_start: Optional[StrictStr] = None
     contract_end: Optional[StrictStr] = None
     contract_at_will: Optional[StrictBool] = None
-    raw_contract_id: Optional[StrictInt] = Field(
-        default=None,
-        description="Selected position's current contract document, never replaced by the salary source document.",
-    )
+    raw_contract_id: Optional[StrictInt] = None
     income_reports: Optional[List[SnapshotIncomeReport]] = None
-    asst_coach_pool_cents: Optional[StrictInt]
+    asst_coach_pool_cents: Optional[StrictInt] = None
     __properties: ClassVar[List[str]] = [
         "season_year_str",
         "base_comp_cents",
         "total_comp_cents",
         "compensation_type",
-        "compensation_source_year",
-        "compensation_is_fallback",
-        "compensation_source_compensation_id",
-        "compensation_source_raw_contract_id",
         "buyout_terms",
         "record",
         "contract_start",
@@ -138,30 +112,6 @@ class CoachSnapshot(BaseModel):
         ):
             _dict["total_comp_cents"] = None
 
-        # set to None if compensation_type (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.compensation_type is None
-            and "compensation_type" in self.model_fields_set
-        ):
-            _dict["compensation_type"] = None
-
-        # set to None if compensation_source_year (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.compensation_source_year is None
-            and "compensation_source_year" in self.model_fields_set
-        ):
-            _dict["compensation_source_year"] = None
-
-        # set to None if compensation_source_compensation_id (nullable) is None
-        # and model_fields_set contains the field
-        if (
-            self.compensation_source_compensation_id is None
-            and "compensation_source_compensation_id" in self.model_fields_set
-        ):
-            _dict["compensation_source_compensation_id"] = None
-
         # set to None if buyout_terms (nullable) is None
         # and model_fields_set contains the field
         if self.buyout_terms is None and "buyout_terms" in self.model_fields_set:
@@ -220,14 +170,6 @@ class CoachSnapshot(BaseModel):
                 "base_comp_cents": obj.get("base_comp_cents"),
                 "total_comp_cents": obj.get("total_comp_cents"),
                 "compensation_type": obj.get("compensation_type"),
-                "compensation_source_year": obj.get("compensation_source_year"),
-                "compensation_is_fallback": obj.get("compensation_is_fallback"),
-                "compensation_source_compensation_id": obj.get(
-                    "compensation_source_compensation_id"
-                ),
-                "compensation_source_raw_contract_id": obj.get(
-                    "compensation_source_raw_contract_id"
-                ),
                 "buyout_terms": obj.get("buyout_terms"),
                 "record": obj.get("record"),
                 "contract_start": obj.get("contract_start"),
