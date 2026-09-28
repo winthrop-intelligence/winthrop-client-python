@@ -187,9 +187,7 @@ Method | HTTP request | Description
 [**get_position_types**](DefaultApi.md#get_position_types) | **GET** /api/v1/position_types | 
 [**get_positions**](DefaultApi.md#get_positions) | **GET** /api/v1/positions | 
 [**get_raw_contract**](DefaultApi.md#get_raw_contract) | **GET** /api/v1/raw_contracts/{raw_contractId} | 
-[**get_raw_contract_ocr_text**](DefaultApi.md#get_raw_contract_ocr_text) | **GET** /api/v1/raw_contracts/{raw_contractId}/ocr_text | 
 [**get_raw_contracts**](DefaultApi.md#get_raw_contracts) | **GET** /api/v1/raw_contracts | 
-[**get_reconciliation_positions**](DefaultApi.md#get_reconciliation_positions) | **GET** /api/v1/reconciliation_positions | 
 [**get_requested_item**](DefaultApi.md#get_requested_item) | **GET** /api/v1/requested_items/{requestedItemId} | 
 [**get_requested_item_review_context**](DefaultApi.md#get_requested_item_review_context) | **GET** /api/v1/requested_items/{requestedItemId}/review_context | 
 [**get_requested_item_ri_note**](DefaultApi.md#get_requested_item_ri_note) | **GET** /api/v1/requested_items/{requestedItemId}/ri_note | 
@@ -15370,90 +15368,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_raw_contract_ocr_text**
-> GetRawContractOcrText200Response get_raw_contract_ocr_text(raw_contract_id)
-
-Return the contract's Mistral OCR text; if not yet stored, OCR the PDF on demand and return it
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.get_raw_contract_ocr_text200_response import GetRawContractOcrText200Response
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    raw_contract_id = 56 # int | ID of the RawContract
-
-    try:
-        api_response = api_instance.get_raw_contract_ocr_text(raw_contract_id)
-        print("The response of DefaultApi->get_raw_contract_ocr_text:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_raw_contract_ocr_text: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **raw_contract_id** | **int**| ID of the RawContract | 
-
-### Return type
-
-[**GetRawContractOcrText200Response**](GetRawContractOcrText200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OCR text (source &#39;cached&#39; when already stored, &#39;fresh&#39; when just OCR&#39;d) |  -  |
-**304** | Not Modified (conditional GET matched the cached text&#39;s ETag) |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden (insufficient scope, or a hidden-coach document) |  -  |
-**404** | Not Found |  -  |
-**422** | No file attached, or OCR failed to produce text |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_raw_contracts**
 > RawContractCollection get_raw_contracts(page=page, per_page=per_page, q=q)
 
@@ -15536,93 +15450,6 @@ Name | Type | Description  | Notes
 **200** | Raw Contracts were found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_reconciliation_positions**
-> ReconciliationPositionCollection get_reconciliation_positions(page=page, per_page=per_page, q=q)
-
-Compact read-only position data for reconciliation. Supports the same Ransack filters as positions, including school_id_eq + season_year_eq for rosters, coach_id_in + season_year_gteq for recent history, and coach_id_in without a year bound for full history. Accepts nested or JSON-encoded q. Sorts (or s) may be an array or comma-separated string using id, coach_id, season_id, season_year, school_id, season_sport_id, title or departing, with optional asc/desc directions. Other sort fields or malformed sort input return 400; collection sorting is excluded to prevent duplicate positions. id asc is the default and is appended as a tie-breaker unless an explicit id sort is supplied. As with positions, non-managers cannot read hidden-coach positions or identities; coach-less positions remain readable. Shared entities occur once per page in included and are referenced by ID from data. Biography URLs are retained; biography text, athletic directors, images and compensation are omitted. Use the existing coach detail endpoint only when biography text is needed. Pagination is live, not a frozen snapshot.
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.reconciliation_position_collection import ReconciliationPositionCollection
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 100 # int | Positive page size; requests above 100 are clamped to 100. (optional) (default to 100)
-    q = None # object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. (optional)
-
-    try:
-        api_response = api_instance.get_reconciliation_positions(page=page, per_page=per_page, q=q)
-        print("The response of DefaultApi->get_reconciliation_positions:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_reconciliation_positions: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| Positive page size; requests above 100 are clamped to 100. | [optional] [default to 100]
- **q** | [**object**](.md)| Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] 
-
-### Return type
-
-[**ReconciliationPositionCollection**](ReconciliationPositionCollection.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Compact positions and page-local shared entities, including empty results. |  -  |
-**304** | Unchanged response for the supplied If-None-Match header. |  -  |
-**400** | Invalid pagination, JSON query encoding, or unsupported sort. |  -  |
-**401** | Unauthorized. |  -  |
-**403** | Missing winad_read scope or Position read permission. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

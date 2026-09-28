@@ -6,7 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **str** |  | 
-**title** | **str** |  | 
+**title** | **str** | The first ranked assignment&#39;s title (WINAD-10522); null when none. | 
+**assignments** | [**List[PersonAssignment]**](PersonAssignment.md) | The coach&#39;s current-season positions at this school, ranked primary first: the directory sport&#39;s positions, or every sport&#39;s when the coach holds none in it. | [optional] 
 **coach_id** | **int** |  | 
 **photo_url** | **str** | Cropped coach avatar path; null when the coach has no image. | 
 

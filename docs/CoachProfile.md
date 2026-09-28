@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **current_position_types** | **List[str]** |  | 
 **header_position_season_year_str** | **str** |  | 
 **header_position_historical** | **bool** |  | 
+**header_assignments** | [**List[PersonAssignment]**](PersonAssignment.md) | Every position in the coach&#39;s latest season year, ranked primary first (WINAD-10522). Sport-specific subscriptions only list their sports. Empty when none are visible. | [optional] 
 **avatar_url** | **str** |  | [optional] 
 **can_see_compensation** | **bool** |  | 
 **can_see_videos** | **bool** |  | 

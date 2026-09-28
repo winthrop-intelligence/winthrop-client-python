@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **initials** | **str** |  | [optional] 
 **position_types** | **List[str]** |  | [optional] 
+**assignments** | [**List[PersonAssignment]**](PersonAssignment.md) | This staff member&#39;s positions in the card&#39;s season, ranked primary first (WINAD-10522) | [optional] 
 **salary_cents** | **int** |  | [optional] 
 **avatar_url** | **str** |  | [optional] 
 
