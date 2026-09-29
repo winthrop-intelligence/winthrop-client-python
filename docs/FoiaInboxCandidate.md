@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **updated_by_school** | **date** |  | [optional] 
 **updated_by_wi** | **date** |  | [optional] 
 **follow_up_date** | **date** |  | [optional] 
+**follow_up_date_explicit** | **bool** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **foia_notes** | [**List[FoiaInboxNote]**](FoiaInboxNote.md) |  | [optional] 

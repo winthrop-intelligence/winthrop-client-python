@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **decision_sha256** | **str** |  | 
 **request_sha256** | **str** |  | 
 **status** | **str** |  | 
-**result** | **Dict[str, object]** |  | 
+**result** | [**FoiaInboxApplyResponseResult**](FoiaInboxApplyResponseResult.md) |  | 
 
 ## Example
 

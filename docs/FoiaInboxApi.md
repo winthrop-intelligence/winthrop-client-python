@@ -11,7 +11,7 @@ Method | HTTP request | Description
 # **apply_foia_inbox**
 > FoiaInboxApplyResponse apply_foia_inbox(foia_inbox_apply_request)
 
-Atomically apply one approved Gmail message decision to one FOIA request. A retry whose selected final state is already present returns already_applied without duplicating effects.
+Atomically apply one approved Gmail message decision to one FOIA request, including setting or resetting an explicit follow-up date. A retry whose selected final state is already present returns already_applied without duplicating effects.
 
 ### Example
 
