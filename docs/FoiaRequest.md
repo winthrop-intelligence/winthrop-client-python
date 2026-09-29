@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **updated_by_id** | **int** |  | [optional] 
 **state** | **str** |  | 
 **foia_label_id** | **int** |  | [optional] 
+**follow_up_date** | **date** |  | [optional] [readonly] 
+**follow_up_date_explicit** | **bool** |  | [optional] [readonly] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 

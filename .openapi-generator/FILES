@@ -358,6 +358,8 @@ docs/FoiaInboxApplyInput.md
 docs/FoiaInboxApplyInputExpectedRequest.md
 docs/FoiaInboxApplyRequest.md
 docs/FoiaInboxApplyResponse.md
+docs/FoiaInboxApplyResponseResult.md
+docs/FoiaInboxApplyResponseResultFoiaRequest.md
 docs/FoiaInboxCandidate.md
 docs/FoiaInboxCandidatesMeta.md
 docs/FoiaInboxCandidatesResponse.md
@@ -741,17 +743,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_get_raw_contract_ocr_text200_response.py
-test/test_get_raw_contract_ocr_text422_response.py
-test/test_newer_season_context.py
-test/test_reconciliation_coach.py
-test/test_reconciliation_included.py
-test/test_reconciliation_pagination.py
-test/test_reconciliation_position.py
-test/test_reconciliation_position_collection.py
-test/test_reconciliation_position_type.py
-test/test_reconciliation_school.py
-test/test_reconciliation_sport.py
+test/test_foia_inbox_apply_response_result.py
+test/test_foia_inbox_apply_response_result_foia_request.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -1123,6 +1116,8 @@ winthrop_client_python/models/foia_inbox_apply_input.py
 winthrop_client_python/models/foia_inbox_apply_input_expected_request.py
 winthrop_client_python/models/foia_inbox_apply_request.py
 winthrop_client_python/models/foia_inbox_apply_response.py
+winthrop_client_python/models/foia_inbox_apply_response_result.py
+winthrop_client_python/models/foia_inbox_apply_response_result_foia_request.py
 winthrop_client_python/models/foia_inbox_candidate.py
 winthrop_client_python/models/foia_inbox_candidates_meta.py
 winthrop_client_python/models/foia_inbox_candidates_response.py

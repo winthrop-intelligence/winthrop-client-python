@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **foia_label_id** | **int** |  | 
 **updated_by_school** | **date** |  | 
 **updated_by_wi** | **date** |  | 
-**follow_up_date** | **date** | Required when the request effects set status or updated_by_wi, which can recalculate the follow-up date. | [optional] 
+**follow_up_date** | **date** | Required when the request effects set status, updated_by_wi, follow_up_date, or reset_follow_up_date. | [optional] 
+**follow_up_date_explicit** | **bool** | Required when the request effects set follow_up_date or reset_follow_up_date. Rejects the write with 409 if the explicit marker changed since review, even when the calendar date is unchanged. | [optional] 
+**updated_at** | **datetime** | Required when the request effects set follow_up_date or reset_follow_up_date. Revision token from the reviewed candidate row (microsecond precision); any intervening edit changes it, so a replayed payload cannot reapply a date over a later human correction and returns 409. A retry of a write that succeeded is still recognized from the resulting state and returns already_applied. | [optional] 
 
 ## Example
 
