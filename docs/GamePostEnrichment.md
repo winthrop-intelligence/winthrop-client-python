@@ -1,14 +1,16 @@
 # GamePostEnrichment
 
-WINAD: one row of the deferred per-card blocks returned by POST /game_post_searches/enrichment, keyed by [school_id, sport_id] so the client merges it onto every feed card sharing that pair. Shapes mirror GamePostSearchResult exactly (the feed omits overlap/guarantee/schedule_intents under q[defer_enrichment] and this endpoint fills them in a beat later).
+WINAD: one row of the deferred per-card blocks returned by POST /game_post_searches/enrichment, keyed by [school_id, sport_id, season_year] so the client merges it onto the feed card for that school, sport and season (WINAD-10539). Shapes mirror GamePostSearchResult exactly (the feed omits overlap/guarantee/schedule_intents under q[defer_enrichment] and this endpoint fills them in a beat later).
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**season_year** | **int** | The card key&#39;s ending season year (2027–28 is 2028); a two-element request reads the scheduling target season. | [optional] 
+**posts** | [**List[GamePostEnrichmentPostsInner]**](GamePostEnrichmentPostsInner.md) | The card&#39;s authorized active posts in this season, each with its season metadata. | [optional] 
 **school_id** | **int** |  | 
 **sport_id** | **int** |  | 
-**schedule_intents** | [**List[GamePostEnrichmentScheduleIntentsInner]**](GamePostEnrichmentScheduleIntentsInner.md) | The posting school+sport&#39;s schedule-intent (availability) markers within the current scheduling-season window (the card&#39;s \&quot;open windows\&quot;), only for sports the requesting schedule user is permitted to see. Same shape and source as GamePostSearchResult.schedule_intents; the private \&quot;Pending\&quot; marker is stripped (a Pending-only cell is omitted, a mixed cell drops the Pending type). | 
+**schedule_intents** | [**List[GamePostEnrichmentScheduleIntentsInner]**](GamePostEnrichmentScheduleIntentsInner.md) | The posting school+sport&#39;s schedule-intent (availability) markers within the card&#39;s season window (the card&#39;s \&quot;open windows\&quot;), only for sports the requesting schedule user is permitted to see. Same shape and source as GamePostSearchResult.schedule_intents; the private \&quot;Pending\&quot; marker is stripped (a Pending-only cell is omitted, a mixed cell drops the Pending type). | 
 **overlap** | [**GamePostEnrichmentOverlap**](GamePostEnrichmentOverlap.md) |  | 
 **guarantee** | [**GamePostEnrichmentGuarantee**](GamePostEnrichmentGuarantee.md) |  | [optional] 
 
