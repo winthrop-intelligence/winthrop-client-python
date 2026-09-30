@@ -34,8 +34,6 @@ Name | Type | Description | Notes
 **linkedin_scraping_disabled** | **bool** |  | [optional] 
 **twitter_scraping_disabled** | **bool** |  | [optional] 
 **email_scraping_disabled** | **bool** |  | [optional] 
-**mobility_index** | **int** |  | [optional] 
-**has_new_job** | **bool** |  | [optional] 
 **visible** | **bool** | Whether the coach appears on customer-facing surfaces. Also clears the Coach-level FOIA gate; FOIA eligibility additionally requires a current position with a requestable PositionType outside the Hidden Coaches group. | [optional] 
 
 ## Example

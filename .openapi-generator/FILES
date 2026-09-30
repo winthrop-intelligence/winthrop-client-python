@@ -157,6 +157,8 @@ docs/ContactSearchEntry.md
 docs/Contract.md
 docs/ContractCollection.md
 docs/ContractTermOption.md
+docs/ContractVerification.md
+docs/ContractVerificationInput.md
 docs/CoworkerEntry.md
 docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
@@ -165,6 +167,7 @@ docs/CreateAccountUserRequestUser.md
 docs/CreateAdminDeskReportArtifact201Response.md
 docs/CreateContactSearchRequest.md
 docs/CreateContactSearchRequestContact.md
+docs/CreateContractVerificationRequest.md
 docs/CreateDeskRequest201Response.md
 docs/CreateDeskRequestRequest.md
 docs/CreateFavorite201Response.md
@@ -453,6 +456,7 @@ docs/GameType.md
 docs/GeoRegion.md
 docs/GetAccountUserActivation200Response.md
 docs/GetCompensationComparisons400Response.md
+docs/GetContractVerifications200Response.md
 docs/GetFavorites200ResponseInner.md
 docs/GetFavoritesCategories200ResponseInner.md
 docs/GetFilterOptions200Response.md
@@ -743,8 +747,10 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_foia_inbox_apply_response_result.py
-test/test_foia_inbox_apply_response_result_foia_request.py
+test/test_contract_verification.py
+test/test_contract_verification_input.py
+test/test_create_contract_verification_request.py
+test/test_get_contract_verifications200_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -919,6 +925,8 @@ winthrop_client_python/models/contact_search_entry.py
 winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
 winthrop_client_python/models/contract_term_option.py
+winthrop_client_python/models/contract_verification.py
+winthrop_client_python/models/contract_verification_input.py
 winthrop_client_python/models/coworker_entry.py
 winthrop_client_python/models/coworker_tenure.py
 winthrop_client_python/models/create_account_user422_response.py
@@ -927,6 +935,7 @@ winthrop_client_python/models/create_account_user_request_user.py
 winthrop_client_python/models/create_admin_desk_report_artifact201_response.py
 winthrop_client_python/models/create_contact_search_request.py
 winthrop_client_python/models/create_contact_search_request_contact.py
+winthrop_client_python/models/create_contract_verification_request.py
 winthrop_client_python/models/create_desk_request201_response.py
 winthrop_client_python/models/create_desk_request_request.py
 winthrop_client_python/models/create_favorite201_response.py
@@ -1210,6 +1219,7 @@ winthrop_client_python/models/game_type.py
 winthrop_client_python/models/geo_region.py
 winthrop_client_python/models/get_account_user_activation200_response.py
 winthrop_client_python/models/get_compensation_comparisons400_response.py
+winthrop_client_python/models/get_contract_verifications200_response.py
 winthrop_client_python/models/get_favorites200_response_inner.py
 winthrop_client_python/models/get_favorites_categories200_response_inner.py
 winthrop_client_python/models/get_filter_options200_response.py

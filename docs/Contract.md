@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **end_on** | **date** |  | [optional] 
 **at_will** | **bool** |  | [optional] 
 **verified** | **bool** |  | [optional] 
+**pending** | **bool** | Pending contracts are undated PDFs awaiting entry. They skip the date validations, cannot be linked to a compensation, and are hidden from customers. Filter with q[pending_eq]&#x3D;true. | [optional] 
 **contractable_type** | **str** |  | [optional] 
 **contractable_id** | **int** |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
