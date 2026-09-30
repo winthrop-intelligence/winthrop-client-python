@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **school_id** | **int** |  | [optional] 
 **school_name** | **str** |  | [optional] 
 **sport_name** | **str** |  | [optional] 
+**season_year** | **int** | Ending year of the posted date’s July-to-June season. | [optional] 
 **var_date** | **date** | The school&#39;s most recent posted date in this bucket; null for a fully flexible post. | [optional] 
 **last_rpi** | **int** |  | [optional] 
 **last_net_rank** | **int** |  | [optional] 
