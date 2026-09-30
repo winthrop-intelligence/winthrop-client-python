@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
 [**create_contact_search**](DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches | 
+[**create_contract_verification**](DefaultApi.md#create_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications | Append a contract verification event
 [**create_desk_report_archive**](DefaultApi.md#create_desk_report_archive) | **POST** /api/v1/desk_reports/{uuid}/archive | 
 [**create_desk_report_opened**](DefaultApi.md#create_desk_report_opened) | **POST** /api/v1/desk_reports/{uuid}/opened | 
 [**create_desk_request**](DefaultApi.md#create_desk_request) | **POST** /api/v1/desk_requests | 
@@ -122,6 +123,7 @@ Method | HTTP request | Description
 [**get_contact_searches**](DefaultApi.md#get_contact_searches) | **GET** /api/v1/contact_searches | 
 [**get_contacts**](DefaultApi.md#get_contacts) | **GET** /api/v1/contacts | 
 [**get_contract**](DefaultApi.md#get_contract) | **GET** /api/v1/contracts/{contractId} | 
+[**get_contract_verifications**](DefaultApi.md#get_contract_verifications) | **GET** /api/v1/raw_contracts/{raw_contractId}/verifications | List the contract&#39;s verification history
 [**get_contracts**](DefaultApi.md#get_contracts) | **GET** /api/v1/contracts | 
 [**get_deal**](DefaultApi.md#get_deal) | **GET** /api/v1/deals/{dealId} | 
 [**get_deal_searches**](DefaultApi.md#get_deal_searches) | **GET** /api/v1/deal_searches | 
@@ -1743,6 +1745,98 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden - requires account admin role |  -  |
 **422** | Unable to create the Contact |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_contract_verification**
+> ContractVerification create_contract_verification(raw_contract_id, create_contract_verification_request)
+
+Append a contract verification event
+
+Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.contract_verification import ContractVerification
+from winthrop_client_python.models.create_contract_verification_request import CreateContractVerificationRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    raw_contract_id = 56 # int | 
+    create_contract_verification_request = winthrop_client_python.CreateContractVerificationRequest() # CreateContractVerificationRequest | 
+
+    try:
+        # Append a contract verification event
+        api_response = api_instance.create_contract_verification(raw_contract_id, create_contract_verification_request)
+        print("The response of DefaultApi->create_contract_verification:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_contract_verification: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **raw_contract_id** | **int**|  | 
+ **create_contract_verification_request** | [**CreateContractVerificationRequest**](CreateContractVerificationRequest.md)|  | 
+
+### Return type
+
+[**ContractVerification**](ContractVerification.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Existing agent event returned for a matching retry |  -  |
+**201** | Verification event created |  -  |
+**400** | Missing or malformed request envelope |  -  |
+**401** | Unauthorized |  -  |
+**403** | Missing winad_verify token/application scope, persisted resource owner, or parent read permission |  -  |
+**404** | RawContract not found |  -  |
+**409** | Agent run was already recorded with a different payload |  -  |
+**422** | Invalid event or document without a Contract; errors are keyed by field |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -10023,6 +10117,98 @@ Name | Type | Description  | Notes
 **200** | Contract was found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_contract_verifications**
+> GetContractVerifications200Response get_contract_verifications(raw_contract_id, page=page, per_page=per_page, q=q)
+
+List the contract's verification history
+
+Requires read access to the parent RawContract. Returns events for its Contract, including checks of replaced PDFs, ordered by verified_at DESC and id DESC. Documents without a Contract return an empty collection. Events are deleted with their owning Contract; deleted verifiers and coaches are returned as null references.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.get_contract_verifications200_response import GetContractVerifications200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    raw_contract_id = 56 # int | 
+    page = 56 # int |  (optional)
+    per_page = 56 # int | Page size, capped at 100; defaults to 35. (optional)
+    q = None # object | Ransack filters on scalar verification fields only; association traversal and scalar predicates on the seasons array are disabled. Ordering is always by check time and id descending. (optional)
+
+    try:
+        # List the contract's verification history
+        api_response = api_instance.get_contract_verifications(raw_contract_id, page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_contract_verifications:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_contract_verifications: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **raw_contract_id** | **int**|  | 
+ **page** | **int**|  | [optional] 
+ **per_page** | **int**| Page size, capped at 100; defaults to 35. | [optional] 
+ **q** | [**object**](.md)| Ransack filters on scalar verification fields only; association traversal and scalar predicates on the seasons array are disabled. Ordering is always by check time and id descending. | [optional] 
+
+### Return type
+
+[**GetContractVerifications200Response**](GetContractVerifications200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Verification history |  -  |
+**304** | History has not changed |  -  |
+**401** | Unauthorized |  -  |
+**403** | Missing winad_read scope or parent read permission |  -  |
+**404** | RawContract not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
