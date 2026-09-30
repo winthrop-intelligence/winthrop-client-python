@@ -33,11 +33,7 @@ from winthrop_client_python import rest
 from winthrop_client_python.exceptions import (
     ApiValueError,
     ApiException,
-    BadRequestException,
     UnauthorizedException,
-    ForbiddenException,
-    NotFoundException,
-    ServiceException,
 )
 
 RequestSerialized = Tuple[str, str, Dict[str, str], Optional[str], List[str]]
@@ -263,11 +259,57 @@ class ApiClient:
                 post_params=post_params,
                 _request_timeout=_request_timeout,
             )
+            if response_data.status == 401:
+                response_data = self._retry_with_device_token(
+                    response_data,
+                    method,
+                    url,
+                    header_params,
+                    body,
+                    post_params,
+                    _request_timeout,
+                )
 
         except ApiException as e:
             raise e
 
         return response_data
+
+    def _retry_with_device_token(
+        self,
+        response_data,
+        method,
+        url,
+        header_params=None,
+        body=None,
+        post_params=None,
+        _request_timeout=None,
+    ) -> rest.RESTResponse:
+        from winthrop_client_python.refresh_token import WinthropClient
+
+        current_token = self.configuration.access_token
+        if not WinthropClient.DeviceToken.has_cached_token(current_token):
+            return response_data
+
+        WinthropClient.DeviceToken.clear_cache()
+        refreshed_token = WinthropClient.DeviceToken.refresh_access_token()
+        self.configuration.access_token = refreshed_token
+
+        retry_headers = dict(header_params or {})
+        retry_headers["Authorization"] = "Bearer " + refreshed_token
+
+        retry_response = self.rest_client.request(
+            method,
+            url,
+            headers=retry_headers,
+            body=body,
+            post_params=post_params,
+            _request_timeout=_request_timeout,
+        )
+        if retry_response.status == 401:
+            raise UnauthorizedException(http_resp=retry_response)
+
+        return retry_response
 
     def response_deserialize(
         self,
@@ -376,7 +418,8 @@ class ApiClient:
                 obj_dict = obj.__dict__
 
         if isinstance(obj_dict, list):
-            # here we handle instances that can either be a list or something else, and only became a real list by calling to_dict()
+            # here we handle instances that can either be a list or something
+            # else, and only became a real list by calling to_dict()
             return self.sanitize_for_serialization(obj_dict)
 
         return {
