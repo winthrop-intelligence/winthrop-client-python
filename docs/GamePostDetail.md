@@ -6,6 +6,8 @@ Full game post detail with contacts and creator info
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**season_year** | **int** | Ending year of the post&#39;s July-to-June season, derived from date (legacy start_date). | [optional] 
+**outside_target_season** | **bool** | Whether the post belongs to a season other than the server scheduling target. | [optional] 
 **id** | **int** |  | [optional] 
 **school_id** | **int** |  | [optional] 
 **school_name** | **str** |  | [optional] 
