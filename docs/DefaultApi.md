@@ -18,6 +18,7 @@ Method | HTTP request | Description
 [**create_admin_desk_report_artifact**](DefaultApi.md#create_admin_desk_report_artifact) | **POST** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts | 
 [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows | 
 [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
+[**create_compensation**](DefaultApi.md#create_compensation) | **POST** /api/v1/compensations | 
 [**create_conference**](DefaultApi.md#create_conference) | **POST** /api/v1/conferences | 
 [**create_conferenceship**](DefaultApi.md#create_conferenceship) | **POST** /api/v1/conferenceships | 
 [**create_contact_search**](DefaultApi.md#create_contact_search) | **POST** /api/v1/contact_searches | 
@@ -1500,6 +1501,89 @@ Name | Type | Description  | Notes
 **201** | Coach was created |  -  |
 **401** | Unauthorized |  -  |
 **422** | Unable to create coach |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_compensation**
+> CompensationCreated create_compensation(create_compensation_request)
+
+Create the compensation for one coach, school, and year, typically a missing future, contract-covered season. Compensation coach, school, and year are derived from the coach's positions, so the positions are resolved first, modeled on the coach contract CSV uploader. If the coach already has positions at school_id in that year they are used and nothing is copied. Otherwise the positions the coach holds at that school in the latest earlier year are copied into the requested year (the same title and position types, creating the season if needed), and the new compensation is linked to them. If the coach has no earlier position at that school there is nothing to copy and the request is refused; create the position first. Positions that already exist in the requested year are used as they are; sports the earlier year has but the requested year lacks are not added. One target year per request, at most 15 years ahead. Fields other than the documented compensation fields are refused rather than ignored (is_car_provided is accepted on creation only; PATCH does not update it). When contract_id is supplied it must be a non-pending contract of the same coach, and unless contract_status_id is sent the compensation is marked complete, as the CSV uploader does; an explicitly sent contract_status_id is kept. Every value is checked as sent. Ids, the year and the cents amounts must be whole numbers (an integer or a string of digits, with no commas, decimals or text, within the 32-bit integer range), booleans must be true or false, dates must be YYYY-MM-DD, and an array or object is refused for a scalar field, each with a field-specific 422; nothing is silently dropped or coerced. The whole request is one transaction, so on any error nothing is saved. If a background job cannot be queued after the row was saved, the compensation is still returned with 201 and the problem is reported to Sentry. Requires a super admin and the winad_write OAuth scope. To change an existing compensation use PATCH /compensations/{compensationId}. API clients in winthrop-clients must be regenerated to expose this operation.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.compensation_created import CompensationCreated
+from winthrop_client_python.models.create_compensation_request import CreateCompensationRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_compensation_request = winthrop_client_python.CreateCompensationRequest() # CreateCompensationRequest | Compensation to create. coach_id, school_id, and year are required; contract_id and contract_status_id are optional.
+
+    try:
+        api_response = api_instance.create_compensation(create_compensation_request)
+        print("The response of DefaultApi->create_compensation:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_compensation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_compensation_request** | [**CreateCompensationRequest**](CreateCompensationRequest.md)| Compensation to create. coach_id, school_id, and year are required; contract_id and contract_status_id are optional. | 
+
+### Return type
+
+[**CompensationCreated**](CompensationCreated.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Compensation was created and linked to every position of the coach at that school in that year. created_positions_count and created_position_ids report the positions that were copied (empty when they already existed). |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden. The token lacks the winad_write OAuth scope or the user is not permitted to create compensations. |  -  |
+**422** | Unable to create the compensation, and nothing is saved. Returned when coach_id, school_id, or year is missing or invalid (year must have four digits and be at most 15 years ahead); the compensation object contains an unknown field; contract_status_id does not exist or the COMPLETE contract status is not configured; the coach or school does not exist; a compensation already exists for that coach, school, and year (the message names its id; update it with PATCH instead); the coach has no earlier position at that school to copy from, or the copy is refused (positions at another school in that year, departing or terminated source positions, several source positions in one sport, source positions without position types); contract_id does not exist, belongs to a different coach, or is a pending contract; or a compensation value is invalid. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
