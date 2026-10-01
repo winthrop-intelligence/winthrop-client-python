@@ -5,6 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**target_season_year** | **int** | Server scheduling target ending year; basketball flips January 1. | [optional] 
+**selectable_season_years** | **List[int]** | Current July-to-June season ending year plus the next two, ascending. | [optional] 
 **id** | **int** |  | [optional] 
 **email** | **str** |  | [optional] 
 **first_name** | **str** |  | [optional] 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pairs** | **List[List[int]]** | The loaded page&#39;s [school_id, sport_id] pairs. Malformed or non-positive pairs are ignored; duplicates are de-duped. | 
+**pairs** | **List[List[int]]** | The loaded page&#39;s [school_id, sport_id, season_year] card keys. A two-element [school_id, sport_id] pair (a client from before per-post seasons) reads the sport&#39;s scheduling target season. Malformed or non-positive keys are ignored; duplicates are de-duped. | 
 
 ## Example
 

@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **short_name** | **str** |  | [optional] 
 **logo_url** | **str** |  | [optional] 
 **primary_contact_name** | **str** |  | [optional] 
+**primary_contact_title** | **str** | Actual role at this school, shared with the Games Wanted feed; null when absent | [optional] 
 **primary_contact_email** | **str** |  | [optional] 
 **primary_contact_phone** | **str** |  | [optional] 
 **primary_contact_mobile_phone** | **str** |  | [optional] 
