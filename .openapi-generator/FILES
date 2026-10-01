@@ -168,6 +168,7 @@ docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
 docs/CreateAccountUserRequest.md
 docs/CreateAccountUserRequestUser.md
+docs/CreateAdminDeskReport503Response.md
 docs/CreateAdminDeskReportArtifact201Response.md
 docs/CreateCompensationRequest.md
 docs/CreateContactSearchRequest.md
@@ -339,6 +340,7 @@ docs/DeskReportsResponseMeta.md
 docs/DeskRequest.md
 docs/DeskRequestContext.md
 docs/DeskRequestsResponse.md
+docs/DeskSettings.md
 docs/DirectorsCupSchool.md
 docs/Division.md
 docs/DivisionCollection.md
@@ -713,6 +715,7 @@ docs/UpdateAccountUserRequestUser.md
 docs/UpdateAdminDeskRequest200Response.md
 docs/UpdateAdminDeskRequest200ResponseData.md
 docs/UpdateAdminDeskRequestRequest.md
+docs/UpdateAdminDeskSettings422Response.md
 docs/UpdateFavorite200Response.md
 docs/UpdateFavoriteRequest.md
 docs/UpdateFavoritesCategoryRequest.md
@@ -760,9 +763,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_compensation_create_request.py
-test/test_compensation_created.py
-test/test_create_compensation_request.py
+test/test_create_admin_desk_report503_response.py
+test/test_desk_settings.py
+test/test_update_admin_desk_settings422_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -948,6 +951,7 @@ winthrop_client_python/models/coworker_tenure.py
 winthrop_client_python/models/create_account_user422_response.py
 winthrop_client_python/models/create_account_user_request.py
 winthrop_client_python/models/create_account_user_request_user.py
+winthrop_client_python/models/create_admin_desk_report503_response.py
 winthrop_client_python/models/create_admin_desk_report_artifact201_response.py
 winthrop_client_python/models/create_compensation_request.py
 winthrop_client_python/models/create_contact_search_request.py
@@ -1117,6 +1121,7 @@ winthrop_client_python/models/desk_reports_response_meta.py
 winthrop_client_python/models/desk_request.py
 winthrop_client_python/models/desk_request_context.py
 winthrop_client_python/models/desk_requests_response.py
+winthrop_client_python/models/desk_settings.py
 winthrop_client_python/models/directors_cup_school.py
 winthrop_client_python/models/division.py
 winthrop_client_python/models/division_collection.py
@@ -1483,6 +1488,7 @@ winthrop_client_python/models/update_account_user_request_user.py
 winthrop_client_python/models/update_admin_desk_request200_response.py
 winthrop_client_python/models/update_admin_desk_request200_response_data.py
 winthrop_client_python/models/update_admin_desk_request_request.py
+winthrop_client_python/models/update_admin_desk_settings422_response.py
 winthrop_client_python/models/update_favorite200_response.py
 winthrop_client_python/models/update_favorite_request.py
 winthrop_client_python/models/update_favorites_category_request.py

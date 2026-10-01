@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **headline_stats** | [**List[DeskHeadlineStat]**](DeskHeadlineStat.md) |  | [optional] 
 **composition** | [**DeskComposition**](DeskComposition.md) |  | [optional] 
 **draft_body_html** | **str** |  | [optional] 
+**status** | **str** | Work lifecycle only; neither value publishes the draft. Delivered is idempotent and cannot restart. | [optional] 
+**mark_in_progress** | **bool** | Mark the draft In progress after saving (WINAD-10567); drafts only. | [optional] 
 **account_id** | **int** | Re-scope the report (WINAD-10415 / D-29). Omit to leave the audience alone; send an account id to move it to that school. Null or \&quot;\&quot; returns 422. An unauthored cover kicker follows the new audience. Refused (422) for any audience change on an ask-linked report, or when a hidden report&#39;s replacement would leave the new audience.  | [optional] 
 
 ## Example

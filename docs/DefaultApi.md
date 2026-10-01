@@ -83,6 +83,7 @@ Method | HTTP request | Description
 [**get_admin_desk_report**](DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} | 
 [**get_admin_desk_reports**](DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports | 
 [**get_admin_desk_requests**](DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests | 
+[**get_admin_desk_settings**](DefaultApi.md#get_admin_desk_settings) | **GET** /api/v1/admin/desk_settings | 
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
@@ -278,6 +279,7 @@ Method | HTTP request | Description
 [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation | 
 [**update_admin_desk_report**](DefaultApi.md#update_admin_desk_report) | **PATCH** /api/v1/admin/desk_reports/{uuid} | 
 [**update_admin_desk_request**](DefaultApi.md#update_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid} | 
+[**update_admin_desk_settings**](DefaultApi.md#update_admin_desk_settings) | **PATCH** /api/v1/admin/desk_settings | 
 [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} | 
 [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
 [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
@@ -1169,7 +1171,9 @@ Name | Type | Description  | Notes
 
 Create a draft: the destination account, the cover fields, optionally the staged draft
 body and the queue ask it answers (desk_request_uuid, same account — the ask moves to
-building). Mints the public uuid; POST /{uuid}/publish attaches the body.
+building with winad_write; draft-only tokens leave ask status unchanged).
+Accepts desk_draft_write or winad_write and requires a persisted super-admin user.
+Mints the public uuid; publishing requires a separate winad_write token.
 
 
 ### Example
@@ -1248,6 +1252,7 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **404** | Unknown account or ask |  -  |
 **422** | Validation failed |  -  |
+**503** | Draft saved, but the work-start email could not be queued. Reuse draft_uuid and mark it in progress to retry. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1258,6 +1263,8 @@ Upload a download (PDF / XLSX / PPTX) to a report in any status. One row per kin
 uploading an existing kind replaces its file (06.5 Replace); a kind the report lacks is
 added (06.5 Add, D-20). On a live report the file is served to the client at once — no
 version is minted here; the update screen's Publish update is what mints one.
+With desk_draft_write (without winad_write), only drafts accept uploads; live and
+hidden reports return 403. Artifact deletion still requires winad_write.
 
 
 ### Example
@@ -6783,6 +6790,83 @@ Name | Type | Description  | Notes
 **200** | Queue retrieved |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_desk_settings**
+> DeskSettings get_admin_desk_settings()
+
+Read database-backed Desk notification settings. Requires a persisted super admin.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.desk_settings import DeskSettings
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+
+    try:
+        api_response = api_instance.get_admin_desk_settings()
+        print("The response of DefaultApi->get_admin_desk_settings:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_desk_settings: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**DeskSettings**](DeskSettings.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Saved settings; defaults to disabled with no copy address |  -  |
+**401** | Authentication required |  -  |
+**403** | Persisted super admin and read scope required |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -21969,9 +22053,8 @@ must pass the report format check. A reader change_note, expected_version_number
 meaningful change are required. The expected version is the version_number the editor
 loaded; a mismatch returns 409 before any changes or uploads are applied.
 Hidden reports must be restored first. Ask-linked reports cannot change account. Reports
-without a school cannot be published. Publish email is off unless DESK_NOTIFICATIONS_ENABLED
-is exactly true. When enabled, first editions notify the active audience; updates notify
-only with renotify true. Notification fields report enqueue results, not completed delivery.
+without a school cannot be published. Publish email is controlled by the database-backed notification switch in Admin Desk Settings in every environment. When enabled, it goes to the eligible selected audience, each once. Everyone means all active eligible readers on the account; named selections narrow that audience. A first edition emails the resolved recipients; an
+update emails only eligible recipients never notified for this report. Legacy renotify is ignored. Notification fields report enqueue results, not completed delivery.
 
 
 ### Example
@@ -22786,6 +22869,20 @@ Update the cover fields and/or the staged draft body (blank clears it). Drafts o
 a live or hidden report answers 422 — it changes through Publish update (after a
 restore, for a hidden one), so readers never see a change with no version behind it.
 
+`mark_in_progress: true` is "Mark in progress" on the draft (WINAD-10567), after any
+edits in the same request are saved. A draft built from an ask marks the ask. A draft
+Tyler started himself needs an eligible audience in "Who can see it" (Everyone or named recipients; 422 if empty); the
+first time only, and when Desk email is on, they are emailed "We've begun work on
+<title>" and the desk gets one copy. If the email cannot be queued the start is undone
+and the answer is 503.
+
+`status: building` is an alias for mark_in_progress. `status: delivered` records
+work delivery without publishing: status remains draft and admin_status becomes
+delivered. A linked report delivers its ask instead. Repeating delivery is a no-op;
+delivered work cannot restart. Both transitions accept desk_draft_write for a persisted
+super-admin. Other status values are denied (403 for draft-only tokens, otherwise 422).
+Do not combine delivered with mark_in_progress. Publication remains a separate action.
+
 
 ### Example
 
@@ -22864,7 +22961,8 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
-**422** | Validation failed |  -  |
+**422** | Validation failed, or mark_in_progress on a draft with no eligible recipients |  -  |
+**503** | mark_in_progress could not queue its email; the start was undone |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -22874,7 +22972,14 @@ Name | Type | Description  | Notes
 Manual ask flip — building, delivered, or closed. needs_info
 (awaiting_client) is D-16's endpoint. `closed` is the junk/duplicate
 exit: the ask leaves the customer's rack and Tyler's open tabs without
-a report and without mail.
+a report and without mail. `building` is "Mark in progress"
+(WINAD-10567, shown as In progress): the first time an ask goes in
+progress, the asker is emailed "We've begun work on <name>" and the
+desk gets one copy, when Desk email is on. Later flips send nothing.
+If that email cannot be queued, the ask is put back and the answer is 503.
+A persisted super-admin may use desk_draft_write for building or delivered only.
+All other statuses require winad_write; the draft scope never grants publishing
+or needs_info access.
 
 
 ### Example
@@ -22955,6 +23060,90 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Status outside building/delivered/closed, or a delivered ask being reopened |  -  |
+**503** | The \&quot;We&#39;ve begun work\&quot; email could not be queued; the ask was put back |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_admin_desk_settings**
+> DeskSettings update_admin_desk_settings(desk_settings)
+
+Save settings atomically using the lock_version returned by GET. Reject stale saves with 409. Audit the actor and old/new values. No ENV fallback.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.desk_settings import DeskSettings
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    desk_settings = winthrop_client_python.DeskSettings() # DeskSettings | 
+
+    try:
+        api_response = api_instance.update_admin_desk_settings(desk_settings)
+        print("The response of DefaultApi->update_admin_desk_settings:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_admin_desk_settings: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **desk_settings** | [**DeskSettings**](DeskSettings.md)|  | 
+
+### Return type
+
+[**DeskSettings**](DeskSettings.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Settings saved |  -  |
+**401** | Authentication required |  -  |
+**403** | Persisted super admin and write scope required |  -  |
+**409** | Settings changed since this form loaded. Refresh before retrying. |  -  |
+**422** | Invalid settings; errors keyed by field. Copy email is required when enabled. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
