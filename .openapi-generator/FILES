@@ -136,6 +136,8 @@ docs/CompensationComparisonResolvedScopeConference.md
 docs/CompensationComparisonResolvedScopeSchoolsInner.md
 docs/CompensationComparisonResult.md
 docs/CompensationComparisonRow.md
+docs/CompensationCreateRequest.md
+docs/CompensationCreated.md
 docs/CompensationRow.md
 docs/Conference.md
 docs/ConferenceAdminCompensationResponse.md
@@ -167,6 +169,7 @@ docs/CreateAccountUser422Response.md
 docs/CreateAccountUserRequest.md
 docs/CreateAccountUserRequestUser.md
 docs/CreateAdminDeskReportArtifact201Response.md
+docs/CreateCompensationRequest.md
 docs/CreateContactSearchRequest.md
 docs/CreateContactSearchRequestContact.md
 docs/CreateContractVerificationRequest.md
@@ -757,16 +760,9 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_contract_errors_response.py
-test/test_contracts_api.py
-test/test_game_post_enrichment_posts_inner.py
-test/test_pending_contract_created.py
-test/test_publish_pending_contract_compensation.py
-test/test_publish_pending_contract_compensation_base_salary.py
-test/test_publish_pending_contract_compensation_one_time_bonus.py
-test/test_publish_pending_contract_request.py
-test/test_published_contract.py
-test/test_published_contract_all_of_compensations.py
+test/test_compensation_create_request.py
+test/test_compensation_created.py
+test/test_create_compensation_request.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -921,6 +917,8 @@ winthrop_client_python/models/compensation_comparison_resolved_scope_conference.
 winthrop_client_python/models/compensation_comparison_resolved_scope_schools_inner.py
 winthrop_client_python/models/compensation_comparison_result.py
 winthrop_client_python/models/compensation_comparison_row.py
+winthrop_client_python/models/compensation_create_request.py
+winthrop_client_python/models/compensation_created.py
 winthrop_client_python/models/compensation_row.py
 winthrop_client_python/models/conference.py
 winthrop_client_python/models/conference_admin_compensation_response.py
@@ -951,6 +949,7 @@ winthrop_client_python/models/create_account_user422_response.py
 winthrop_client_python/models/create_account_user_request.py
 winthrop_client_python/models/create_account_user_request_user.py
 winthrop_client_python/models/create_admin_desk_report_artifact201_response.py
+winthrop_client_python/models/create_compensation_request.py
 winthrop_client_python/models/create_contact_search_request.py
 winthrop_client_python/models/create_contact_search_request_contact.py
 winthrop_client_python/models/create_contract_verification_request.py
