@@ -156,9 +156,11 @@ docs/ContactSearchCollection.md
 docs/ContactSearchEntry.md
 docs/Contract.md
 docs/ContractCollection.md
+docs/ContractErrorsResponse.md
 docs/ContractTermOption.md
 docs/ContractVerification.md
 docs/ContractVerificationInput.md
+docs/ContractsApi.md
 docs/CoworkerEntry.md
 docs/CoworkerTenure.md
 docs/CreateAccountUser422Response.md
@@ -437,6 +439,7 @@ docs/GamePostEnrichmentCollection.md
 docs/GamePostEnrichmentGuarantee.md
 docs/GamePostEnrichmentOverlap.md
 docs/GamePostEnrichmentOverlapLineUpsInner.md
+docs/GamePostEnrichmentPostsInner.md
 docs/GamePostEnrichmentScheduleIntentsInner.md
 docs/GamePostSearchResult.md
 docs/GamePostSearchResultCollection.md
@@ -541,6 +544,7 @@ docs/NewsFeed.md
 docs/NewsFeedCollection.md
 docs/Note.md
 docs/PageView.md
+docs/PendingContractCreated.md
 docs/PerformanceChartCoach.md
 docs/PerformanceChartData.md
 docs/PerformanceChartRecord.md
@@ -747,13 +751,14 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_contract_verification.py
-test/test_contract_verification_input.py
-test/test_create_contract_verification_request.py
-test/test_get_contract_verifications200_response.py
+test/test_contract_errors_response.py
+test/test_contracts_api.py
+test/test_game_post_enrichment_posts_inner.py
+test/test_pending_contract_created.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
+winthrop_client_python/api/contracts_api.py
 winthrop_client_python/api/ctb_api.py
 winthrop_client_python/api/default_api.py
 winthrop_client_python/api/dossier_api.py
@@ -924,6 +929,7 @@ winthrop_client_python/models/contact_search_collection.py
 winthrop_client_python/models/contact_search_entry.py
 winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
+winthrop_client_python/models/contract_errors_response.py
 winthrop_client_python/models/contract_term_option.py
 winthrop_client_python/models/contract_verification.py
 winthrop_client_python/models/contract_verification_input.py
@@ -1200,6 +1206,7 @@ winthrop_client_python/models/game_post_enrichment_collection.py
 winthrop_client_python/models/game_post_enrichment_guarantee.py
 winthrop_client_python/models/game_post_enrichment_overlap.py
 winthrop_client_python/models/game_post_enrichment_overlap_line_ups_inner.py
+winthrop_client_python/models/game_post_enrichment_posts_inner.py
 winthrop_client_python/models/game_post_enrichment_schedule_intents_inner.py
 winthrop_client_python/models/game_post_search_result.py
 winthrop_client_python/models/game_post_search_result_collection.py
@@ -1302,6 +1309,7 @@ winthrop_client_python/models/news_feed.py
 winthrop_client_python/models/news_feed_collection.py
 winthrop_client_python/models/note.py
 winthrop_client_python/models/page_view.py
+winthrop_client_python/models/pending_contract_created.py
 winthrop_client_python/models/performance_chart_coach.py
 winthrop_client_python/models/performance_chart_data.py
 winthrop_client_python/models/performance_chart_record.py
