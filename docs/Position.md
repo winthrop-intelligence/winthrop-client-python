@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **title** | **str** |  | [optional] 
 **name_display** | **str** |  | [optional] 
 **departing** | **bool** |  | [optional] 
+**terminated** | **bool** | Stored terminated flag of the position. Read-only in this API. null means unknown. | [optional] [readonly] 
 **departing_set_at** | **datetime** |  | [optional] 
 **suppress_departing_set_at** | **bool** | Write-only control flag for trusted automation. When true and departing is set to true, WinAD does not stamp departing_set_at, so historical/catch-up departures are not published as current wire events. Ignored on responses. | [optional] 
 **creation_reason** | **str** |  | [optional] 
