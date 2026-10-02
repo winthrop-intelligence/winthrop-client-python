@@ -760,9 +760,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_compensation_create_request.py
-test/test_compensation_created.py
-test/test_create_compensation_request.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
