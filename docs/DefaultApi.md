@@ -82,6 +82,7 @@ Method | HTTP request | Description
 [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 [**get_admin_desk_report**](DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} | 
 [**get_admin_desk_reports**](DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports | 
+[**get_admin_desk_request**](DefaultApi.md#get_admin_desk_request) | **GET** /api/v1/admin/desk_requests/{uuid} | 
 [**get_admin_desk_requests**](DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests | 
 [**get_admin_desk_settings**](DefaultApi.md#get_admin_desk_settings) | **GET** /api/v1/admin/desk_settings | 
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
@@ -6703,6 +6704,88 @@ Name | Type | Description  | Notes
 **200** | Desk reports retrieved |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden (not a super admin) |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_desk_request**
+> GetAdminDeskRequest200Response get_admin_desk_request(uuid)
+
+Read an ask directly, including asks linked to saved reports. Super-admin only.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.get_admin_desk_request200_response import GetAdminDeskRequest200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    uuid = 'uuid_example' # str | 
+
+    try:
+        api_response = api_instance.get_admin_desk_request(uuid)
+        print("The response of DefaultApi->get_admin_desk_request:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_desk_request: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**|  | 
+
+### Return type
+
+[**GetAdminDeskRequest200Response**](GetAdminDeskRequest200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Ask retrieved with its own lifecycle status, independent of queue membership |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Ask not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -21951,6 +22034,10 @@ This endpoint does not need any parameter.
 Tyler edited on screen, verbatim: the email renders exactly them, and the same body
 becomes the note on the customer's pending card unless an explicit client_note is given.
 
+Requires Desk settings `needs_info_emails_enabled`. When disabled, returns 403
+without changing the ask or pausing its clock. The mailer rechecks the setting
+at execution; suppressed jobs complete and are not replayed when re-enabled.
+
 Sendable from `new`, `building` AND `awaiting_client`: a follow-up can resolve to nobody
 (a churned account) or simply go unread, and refusing the second send left publishing a
 report as the only way out of the ask. A re-send never restarts the pause.
@@ -22035,7 +22122,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Sent back |  -  |
 **401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
+**403** | Not authorized, or Needs info emails disabled in Desk settings |  -  |
 **404** | Not Found |  -  |
 **422** | Missing follow-up copy, or an ask that cannot be sent back |  -  |
 

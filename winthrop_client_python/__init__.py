@@ -493,6 +493,7 @@ __all__ = [
     "GameType",
     "GeoRegion",
     "GetAccountUserActivation200Response",
+    "GetAdminDeskRequest200Response",
     "GetCompensationComparisons400Response",
     "GetContractVerifications200Response",
     "GetFavorites200ResponseInner",
@@ -2102,6 +2103,9 @@ from winthrop_client_python.models.game_type import GameType as GameType
 from winthrop_client_python.models.geo_region import GeoRegion as GeoRegion
 from winthrop_client_python.models.get_account_user_activation200_response import (
     GetAccountUserActivation200Response as GetAccountUserActivation200Response,
+)
+from winthrop_client_python.models.get_admin_desk_request200_response import (
+    GetAdminDeskRequest200Response as GetAdminDeskRequest200Response,
 )
 from winthrop_client_python.models.get_compensation_comparisons400_response import (
     GetCompensationComparisons400Response as GetCompensationComparisons400Response,

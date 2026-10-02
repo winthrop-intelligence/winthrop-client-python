@@ -179,6 +179,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_account_users**](docs/DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 *DefaultApi* | [**get_admin_desk_report**](docs/DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} | 
 *DefaultApi* | [**get_admin_desk_reports**](docs/DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports | 
+*DefaultApi* | [**get_admin_desk_request**](docs/DefaultApi.md#get_admin_desk_request) | **GET** /api/v1/admin/desk_requests/{uuid} | 
 *DefaultApi* | [**get_admin_desk_requests**](docs/DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests | 
 *DefaultApi* | [**get_admin_desk_settings**](docs/DefaultApi.md#get_admin_desk_settings) | **GET** /api/v1/admin/desk_settings | 
 *DefaultApi* | [**get_administrator**](docs/DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
@@ -899,6 +900,7 @@ Class | Method | HTTP request | Description
  - [GameType](docs/GameType.md)
  - [GeoRegion](docs/GeoRegion.md)
  - [GetAccountUserActivation200Response](docs/GetAccountUserActivation200Response.md)
+ - [GetAdminDeskRequest200Response](docs/GetAdminDeskRequest200Response.md)
  - [GetCompensationComparisons400Response](docs/GetCompensationComparisons400Response.md)
  - [GetContractVerifications200Response](docs/GetContractVerifications200Response.md)
  - [GetFavorites200ResponseInner](docs/GetFavorites200ResponseInner.md)

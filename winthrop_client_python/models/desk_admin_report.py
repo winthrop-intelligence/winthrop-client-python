@@ -45,6 +45,10 @@ class DeskAdminReport(BaseModel):
     ReportAdmin (tmp/desk/TICKETS.md D-15) — the update screen and compose reopen payload
     """  # noqa: E501
 
+    work_start_retryable: Optional[StrictBool] = Field(
+        default=None,
+        description="An unsent work-start notification can be retried without changing progress. Reuse the mark-in-progress operation; settings and eligibility are rechecked.",
+    )
     composition: Optional[DeskComposition] = None
     uuid: StrictStr
     account: Optional[DeskAdminAccount] = Field(
@@ -91,6 +95,7 @@ class DeskAdminReport(BaseModel):
         description='Ask-to-publish clock ("5h 34m"), pauses excluded'
     )
     __properties: ClassVar[List[str]] = [
+        "work_start_retryable",
         "composition",
         "uuid",
         "account",
@@ -352,6 +357,7 @@ class DeskAdminReport(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "work_start_retryable": obj.get("work_start_retryable"),
                 "composition": (
                     DeskComposition.from_dict(obj["composition"])
                     if obj.get("composition") is not None

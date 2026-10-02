@@ -51,6 +51,10 @@ class Position(BaseModel):
     title: Optional[StrictStr] = None
     name_display: Optional[StrictStr] = None
     departing: Optional[StrictBool] = None
+    terminated: Optional[StrictBool] = Field(
+        default=None,
+        description="Stored terminated flag of the position. Read-only in this API. null means unknown.",
+    )
     departing_set_at: Optional[datetime] = None
     suppress_departing_set_at: Optional[StrictBool] = Field(
         default=None,
@@ -80,6 +84,7 @@ class Position(BaseModel):
         "title",
         "name_display",
         "departing",
+        "terminated",
         "departing_set_at",
         "suppress_departing_set_at",
         "creation_reason",
@@ -137,8 +142,13 @@ class Position(BaseModel):
         * `None` is only added to the output dict for nullable fields that
           were set at model initialization. Other fields with value `None`
           are ignored.
+        * OpenAPI `readOnly` fields are excluded.
         """
-        excluded_fields: Set[str] = set([])
+        excluded_fields: Set[str] = set(
+            [
+                "terminated",
+            ]
+        )
 
         _dict = self.model_dump(
             by_alias=True,
@@ -161,6 +171,11 @@ class Position(BaseModel):
                 if _item_position_types:
                     _items.append(_item_position_types.to_dict())
             _dict["position_types"] = _items
+        # set to None if terminated (nullable) is None
+        # and model_fields_set contains the field
+        if self.terminated is None and "terminated" in self.model_fields_set:
+            _dict["terminated"] = None
+
         # set to None if creation_reason (nullable) is None
         # and model_fields_set contains the field
         if self.creation_reason is None and "creation_reason" in self.model_fields_set:
@@ -190,6 +205,7 @@ class Position(BaseModel):
                 "title": obj.get("title"),
                 "name_display": obj.get("name_display"),
                 "departing": obj.get("departing"),
+                "terminated": obj.get("terminated"),
                 "departing_set_at": obj.get("departing_set_at"),
                 "suppress_departing_set_at": obj.get("suppress_departing_set_at"),
                 "creation_reason": obj.get("creation_reason"),

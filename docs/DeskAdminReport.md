@@ -6,6 +6,7 @@ ReportAdmin (tmp/desk/TICKETS.md D-15) — the update screen and compose reopen 
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**work_start_retryable** | **bool** | An unsent work-start notification can be retried without changing progress. Reuse the mark-in-progress operation; settings and eligibility are rechecked. | [optional] 
 **composition** | [**DeskComposition**](DeskComposition.md) |  | [optional] 
 **uuid** | **str** |  | 
 **account** | [**DeskAdminAccount**](DeskAdminAccount.md) | The report&#39;s school; null marks a legacy admin-only report awaiting assignment. | 

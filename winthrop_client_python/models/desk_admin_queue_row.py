@@ -37,6 +37,10 @@ class DeskAdminQueueRow(BaseModel):
     One 06.1 queue row (frontend DeskAdminQueueRow, structured facts only). A report row's `account` is null only for a legacy admin-only report awaiting school assignment; an ask row always names one.
     """  # noqa: E501
 
+    work_start_retryable: Optional[StrictBool] = Field(
+        default=None,
+        description="An unsent work-start notification can be retried without changing progress. Reuse the mark-in-progress operation; settings and eligibility are rechecked.",
+    )
     uuid: StrictStr = Field(
         description="The report's uuid (kind=report) or the request's (kind=ask)"
     )
@@ -71,6 +75,7 @@ class DeskAdminQueueRow(BaseModel):
     open_count: StrictInt = Field(description="Every reader's opens, summed")
     activity_at: datetime = Field(description="The row's sort key (newest first)")
     __properties: ClassVar[List[str]] = [
+        "work_start_retryable",
         "uuid",
         "kind",
         "status",
@@ -301,6 +306,7 @@ class DeskAdminQueueRow(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "work_start_retryable": obj.get("work_start_retryable"),
                 "uuid": obj.get("uuid"),
                 "kind": obj.get("kind"),
                 "status": obj.get("status"),

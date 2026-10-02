@@ -16,34 +16,20 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from typing_extensions import Annotated
+from pydantic import BaseModel, ConfigDict
+from typing import Any, ClassVar, Dict, List
+from winthrop_client_python.models.desk_admin_queue_row import DeskAdminQueueRow
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class DeskSettings(BaseModel):
+class GetAdminDeskRequest200Response(BaseModel):
     """
-    DeskSettings
+    GetAdminDeskRequest200Response
     """  # noqa: E501
 
-    lock_version: Annotated[int, Field(strict=True, ge=0)] = Field(
-        description="Version returned by GET; submit unchanged when saving."
-    )
-    notifications_enabled: StrictBool
-    needs_info_emails_enabled: StrictBool = Field(
-        description="Independently allows Needs info emails. Checked before pausing an ask and at mail execution."
-    )
-    copy_email: Optional[StrictStr] = Field(
-        description="Separate summary recipient. Required and valid when notifications are enabled."
-    )
-    __properties: ClassVar[List[str]] = [
-        "lock_version",
-        "notifications_enabled",
-        "needs_info_emails_enabled",
-        "copy_email",
-    ]
+    data: DeskAdminQueueRow
+    __properties: ClassVar[List[str]] = ["data"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -62,7 +48,7 @@ class DeskSettings(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of DeskSettings from a JSON string"""
+        """Create an instance of GetAdminDeskRequest200Response from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -82,16 +68,14 @@ class DeskSettings(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if copy_email (nullable) is None
-        # and model_fields_set contains the field
-        if self.copy_email is None and "copy_email" in self.model_fields_set:
-            _dict["copy_email"] = None
-
+        # override the default output from pydantic by calling `to_dict()` of data
+        if self.data:
+            _dict["data"] = self.data.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of DeskSettings from a dict"""
+        """Create an instance of GetAdminDeskRequest200Response from a dict"""
         if obj is None:
             return None
 
@@ -100,18 +84,11 @@ class DeskSettings(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "lock_version": obj.get("lock_version"),
-                "notifications_enabled": (
-                    obj.get("notifications_enabled")
-                    if obj.get("notifications_enabled") is not None
-                    else False
-                ),
-                "needs_info_emails_enabled": (
-                    obj.get("needs_info_emails_enabled")
-                    if obj.get("needs_info_emails_enabled") is not None
-                    else False
-                ),
-                "copy_email": obj.get("copy_email"),
+                "data": (
+                    DeskAdminQueueRow.from_dict(obj["data"])
+                    if obj.get("data") is not None
+                    else None
+                )
             }
         )
         return _obj

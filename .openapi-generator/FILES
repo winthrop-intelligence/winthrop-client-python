@@ -463,6 +463,7 @@ docs/GamePostSearchResultScheduleIntentsInner.md
 docs/GameType.md
 docs/GeoRegion.md
 docs/GetAccountUserActivation200Response.md
+docs/GetAdminDeskRequest200Response.md
 docs/GetCompensationComparisons400Response.md
 docs/GetContractVerifications200Response.md
 docs/GetFavorites200ResponseInner.md
@@ -763,9 +764,7 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_create_admin_desk_report503_response.py
-test/test_desk_settings.py
-test/test_update_admin_desk_settings422_response.py
+test/test_get_admin_desk_request200_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -1241,6 +1240,7 @@ winthrop_client_python/models/game_post_search_result_schedule_intents_inner.py
 winthrop_client_python/models/game_type.py
 winthrop_client_python/models/geo_region.py
 winthrop_client_python/models/get_account_user_activation200_response.py
+winthrop_client_python/models/get_admin_desk_request200_response.py
 winthrop_client_python/models/get_compensation_comparisons400_response.py
 winthrop_client_python/models/get_contract_verifications200_response.py
 winthrop_client_python/models/get_favorites200_response_inner.py

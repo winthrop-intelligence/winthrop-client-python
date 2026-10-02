@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lock_version** | **int** | Version returned by GET; submit unchanged when saving. | 
 **notifications_enabled** | **bool** |  | [default to False]
+**needs_info_emails_enabled** | **bool** | Independently allows Needs info emails. Checked before pausing an ask and at mail execution. | [default to False]
 **copy_email** | **str** | Separate summary recipient. Required and valid when notifications are enabled. | 
 
 ## Example
