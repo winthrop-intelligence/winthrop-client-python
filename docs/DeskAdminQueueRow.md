@@ -6,6 +6,7 @@ One 06.1 queue row (frontend DeskAdminQueueRow, structured facts only). A report
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**work_start_retryable** | **bool** | An unsent work-start notification can be retried without changing progress. Reuse the mark-in-progress operation; settings and eligibility are rechecked. | [optional] 
 **uuid** | **str** | The report&#39;s uuid (kind&#x3D;report) or the request&#39;s (kind&#x3D;ask) | 
 **kind** | **str** |  | 
 **status** | **str** |  | 
