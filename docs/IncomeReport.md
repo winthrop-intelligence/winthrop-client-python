@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **coach_id** | **int** |  | 
-**raw_contract_id** | **int** |  | [optional] 
+**raw_contract_id** | **int** | The attached document. Send null to detach it. | [optional] 
 **year** | **int** |  | 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
