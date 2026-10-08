@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**change_note** | **str** | Write-only, PATCH only. Why this change is being made, for the internal audit history (WINAD-10632). Send it beside the compensation fields; it is stored on the audit version this update creates and is never returned. Blank is the same as omitted; a non-string value is refused with 422 (errors.change_note). | [optional] 
 **id** | **int** |  | [optional] 
 **bonus_comp_cents** | **int** |  | [optional] 
 **deferred_comp_cents** | **int** |  | [optional] 

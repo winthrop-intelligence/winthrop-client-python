@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **car_provided** | **bool** |  | [optional] 
 **comment** | **str** | Required for hourly | [optional] 
 **buyout_amount** | **str** | Buyout terms, as text | [optional] 
+**change_note** | **str** | Optional. Why this row&#39;s values are what they are, for the internal audit history (WINAD-10632). Stored on the audit versions of this row&#39;s compensation write; never returned by the API. Blank is the same as omitted. | [optional] 
 
 ## Example
 

@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**get_foia_request_followup_history**](ReportingApi.md#get_foia_request_followup_history) | **GET** /api/v1/reports/foia_request_followup_history | 
 [**get_foia_requested_item_status_breakdown**](ReportingApi.md#get_foia_requested_item_status_breakdown) | **GET** /api/v1/reports/foia_requested_item_status_breakdown | 
 [**get_foia_requested_item_status_transitions**](ReportingApi.md#get_foia_requested_item_status_transitions) | **GET** /api/v1/reports/foia_requested_item_status_transitions | 
+[**get_foia_status_summary**](ReportingApi.md#get_foia_status_summary) | **GET** /api/v1/reports/foia_status_summary | 
 [**get_games**](ReportingApi.md#get_games) | **GET** /api/v1/reports/games | 
 [**get_invoices**](ReportingApi.md#get_invoices) | **GET** /api/v1/reports/invoices | 
 [**get_school_contract_requests**](ReportingApi.md#get_school_contract_requests) | **GET** /api/v1/reports/school_contract_requests | 
@@ -720,6 +721,93 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Requested-item status transitions were found |  -  |
 **400** | Invalid report parameters |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_foia_status_summary**
+> FoiaStatusSummaryResponse get_foia_status_summary(page=page, per_page=per_page, foia_label_id=foia_label_id)
+
+Retrieve a read-only, traceable FOIA status snapshot grouped by unarchived label. Rows are ordered by foia_label_id then id. Totals and label summaries describe the entire filtered population of active and closed requests in unarchived labels regardless of page. The three attention lists overlap and must not be summed as distinct requests. Summaries and request ID lists are repeated on every page. A page beyond the last returns 200 with empty data. An archived label filter returns 400 and an unknown label returns 404, each with body {errors: [message]}. Under the latest-note-overall hold rule, a request is held only when its single most recent note is exactly 'FOIA hold: <reason>' from the closed vocabulary; any later note ends the hold.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.foia_status_summary_response import FoiaStatusSummaryResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.ReportingApi(api_client)
+    page = 1 # int | Detailed request-row page to retrieve. Summary counts always cover the full filtered population. (optional) (default to 1)
+    per_page = 100 # int | Maximum 200. Larger values are accepted and capped to 200; meta.per_page reports the effective size. (optional) (default to 100)
+    foia_label_id = 56 # int | Limit the snapshot to one active FOIA label. (optional)
+
+    try:
+        api_response = api_instance.get_foia_status_summary(page=page, per_page=per_page, foia_label_id=foia_label_id)
+        print("The response of ReportingApi->get_foia_status_summary:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ReportingApi->get_foia_status_summary: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| Detailed request-row page to retrieve. Summary counts always cover the full filtered population. | [optional] [default to 1]
+ **per_page** | **int**| Maximum 200. Larger values are accepted and capped to 200; meta.per_page reports the effective size. | [optional] [default to 100]
+ **foia_label_id** | **int**| Limit the snapshot to one active FOIA label. | [optional] 
+
+### Return type
+
+[**FoiaStatusSummaryResponse**](FoiaStatusSummaryResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | FOIA status summary was found |  -  |
+**400** | Invalid report parameters |  -  |
+**404** | The selected FOIA label was not found |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 
