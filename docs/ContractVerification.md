@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **method** | **str** |  | 
 **agent_run_id** | **str** | Required for agent events. A new check must use a new run id. | [optional] 
 **evidence_url** | **str** | HTTP(S) evidence link; required for passed and mismatch results. | [optional] 
+**reason** | **str** | Only set on revoked events. | [optional] 
+**approval_quote** | **str** | Only set on revoked events. | [optional] 
 **id** | **int** |  | 
 **contract_id** | **int** |  | 
 **raw_contract_id** | **int** | Checked PDF; becomes null when that RawContract is deleted. | 
