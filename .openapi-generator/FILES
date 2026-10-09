@@ -791,17 +791,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_contract_terms.py
-test/test_contract_terms_source.py
-test/test_contract_verification_revocation_input.py
-test/test_get_contract_verifications200_response_meta.py
-test/test_position_departure_request.py
-test/test_position_departure_result.py
-test/test_publish_pending_contract_request_contract_terms.py
-test/test_raw_contract_terms.py
-test/test_raw_contracts_api.py
-test/test_update_contract_request.py
-test/test_update_raw_contract_contract_terms422_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
