@@ -18,8 +18,7 @@ Name | Type | Description | Notes
 **cta_key** | **str** | The reader CTA the ask started from (report-markup.md §8); null for a guided ask | 
 **source_report_title** | **str** | The title of the report that CTA was read on; null with cta_key | 
 **ask_received_at** | **datetime** |  | 
-**due_at** | **datetime** | The under-a-day promise&#39;s edge, pauses added; new asks only | 
-**clock_paused** | **bool** |  | 
+**due_at** | **datetime** | The under-a-day promise&#39;s edge from when the ask landed; New and In progress bare asks only.  | 
 **has_html** | **bool** |  | 
 **artifact_kinds** | **List[str]** |  | 
 **published_at** | **datetime** |  | 
