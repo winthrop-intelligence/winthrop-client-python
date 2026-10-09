@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**kind** | **str** |  | 
 **meta** | [**DeskReportDownloadActivityMeta**](DeskReportDownloadActivityMeta.md) |  | 
 **data** | [**List[DeskActivityDownload]**](DeskActivityDownload.md) |  | 
 **summary** | [**DeskActivityDownloadSummary**](DeskActivityDownloadSummary.md) |  | 

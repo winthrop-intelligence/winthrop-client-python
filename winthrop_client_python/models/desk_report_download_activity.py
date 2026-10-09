@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from winthrop_client_python.models.desk_activity_download import DeskActivityDownload
@@ -38,18 +38,27 @@ class DeskReportDownloadActivity(BaseModel):
     DeskReportDownloadActivity
     """  # noqa: E501
 
+    kind: StrictStr
     meta: DeskReportDownloadActivityMeta
     data: Annotated[List[DeskActivityDownload], Field(max_length=100)]
     summary: Optional[DeskActivityDownloadSummary]
     period_totals: Optional[DeskActivityDownloadSummary]
     error: Optional[DeskReportActivityError]
     __properties: ClassVar[List[str]] = [
+        "kind",
         "meta",
         "data",
         "summary",
         "period_totals",
         "error",
     ]
+
+    @field_validator("kind")
+    def kind_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(["downloads", "download_all"]):
+            raise ValueError("must be one of enum values ('downloads', 'download_all')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -135,6 +144,7 @@ class DeskReportDownloadActivity(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "kind": obj.get("kind"),
                 "meta": (
                     DeskReportDownloadActivityMeta.from_dict(obj["meta"])
                     if obj.get("meta") is not None

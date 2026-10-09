@@ -6797,6 +6797,8 @@ environment host are enforced on the server; callers cannot select a project.
 
 Views summary contains unique_viewers/total_opens; download summaries contain
 unique_downloaders/total_downloads/file_groups (Download All groups are users).
+The required top-level kind selects the response schema and always matches meta.kind,
+including unpublished and unavailable responses.
 Summary contains the period's matching counts after optional user_id filtering;
 period_totals contains all customer counts for the selected kind before that filter.
 Pagination does not change either total. Rows are ordered by last activity descending,

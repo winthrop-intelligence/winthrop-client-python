@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from winthrop_client_python.models.desk_activity_summary import DeskActivitySummary
@@ -36,18 +36,27 @@ class DeskReportActivity(BaseModel):
     DeskReportActivity
     """  # noqa: E501
 
+    kind: StrictStr
     meta: DeskReportActivityMeta
     data: Annotated[List[DeskActivityViewer], Field(max_length=100)]
     summary: Optional[DeskActivitySummary]
     period_totals: Optional[DeskActivitySummary]
     error: Optional[DeskReportActivityError]
     __properties: ClassVar[List[str]] = [
+        "kind",
         "meta",
         "data",
         "summary",
         "period_totals",
         "error",
     ]
+
+    @field_validator("kind")
+    def kind_validate_enum(cls, value):
+        """Validates the enum"""
+        if value not in set(["views"]):
+            raise ValueError("must be one of enum values ('views')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -133,6 +142,7 @@ class DeskReportActivity(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "kind": obj.get("kind"),
                 "meta": (
                     DeskReportActivityMeta.from_dict(obj["meta"])
                     if obj.get("meta") is not None
