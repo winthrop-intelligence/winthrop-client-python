@@ -182,7 +182,7 @@ Method | HTTP request | Description
 [**get_income_report**](DefaultApi.md#get_income_report) | **GET** /api/v1/income_reports/{incomeReportId} | 
 [**get_income_reports**](DefaultApi.md#get_income_reports) | **GET** /api/v1/income_reports | 
 [**get_job_post**](DefaultApi.md#get_job_post) | **GET** /central_jobs/job_posts/{jobPostId} | Get a job post
-[**get_job_post_disagreements**](DefaultApi.md#get_job_post_disagreements) | **GET** /central_jobs/job_posts/disagreements | List unresolved LLM/ML athletics classification disagreements
+[**get_job_post_disagreements**](DefaultApi.md#get_job_post_disagreements) | **GET** /central_jobs/job_posts/disagreements | List unresolved Jev/ML athletics classification disagreements
 [**get_job_posts**](DefaultApi.md#get_job_posts) | **GET** /central_jobs/job_posts | List all job posts
 [**get_lad_filter_options**](DefaultApi.md#get_lad_filter_options) | **GET** /api/v1/lad_filter_options | 
 [**get_ncaa_financial_report_status**](DefaultApi.md#get_ncaa_financial_report_status) | **GET** /api/v1/ncaa_financial_report_statuses/{ncaaFinancialReportStatusId} | 
@@ -275,6 +275,7 @@ Method | HTTP request | Description
 [**resolve_frs_export**](DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve | 
 [**restore_admin_desk_report**](DefaultApi.md#restore_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/restore | 
 [**retry_frs_export**](DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry | 
+[**revoke_contract_verification**](DefaultApi.md#revoke_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications/revoke | Revoke verified seasons (append a revocation event)
 [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
 [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
 [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
@@ -302,6 +303,7 @@ Method | HTTP request | Description
 [**update_note**](DefaultApi.md#update_note) | **PATCH** /api/v1/notes/{id} | 
 [**update_password_reset**](DefaultApi.md#update_password_reset) | **PUT** /api/v1/password_reset | 
 [**update_position**](DefaultApi.md#update_position) | **PATCH** /api/v1/positions/{positionId} | 
+[**update_position_departure**](DefaultApi.md#update_position_departure) | **PATCH** /api/v1/positions/{positionId}/departure | 
 [**update_requested_item**](DefaultApi.md#update_requested_item) | **PATCH** /api/v1/requested_items/{requestedItemId} | 
 [**update_schedule_intent**](DefaultApi.md#update_schedule_intent) | **PATCH** /api/v1/schedule_intents/{scheduleIntentId} | 
 [**update_school_group**](DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} | 
@@ -1849,7 +1851,7 @@ Name | Type | Description  | Notes
 
 Append a contract verification event
 
-Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
+Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
 
 ### Example
 
@@ -14984,7 +14986,7 @@ Name | Type | Description  | Notes
 # **get_job_post_disagreements**
 > JobPostDisagreementCollection get_job_post_disagreements(since=since, school_id=school_id, limit=limit, new_page=new_page, still_pending_page=still_pending_page)
 
-List unresolved LLM/ML athletics classification disagreements
+List unresolved Jev/ML athletics classification disagreements
 
 Unresolved, non-expired JobPost rows where llm_is_athletics and ml_is_athletics disagree, split into posts created within the since window ("new") and everything else still unresolved ("still_pending").
 
@@ -15030,7 +15032,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     still_pending_page = 1 # int | Page number for the \"still_pending\" section (1-indexed, Kaminari-paginated independently of new_page). (optional) (default to 1)
 
     try:
-        # List unresolved LLM/ML athletics classification disagreements
+        # List unresolved Jev/ML athletics classification disagreements
         api_response = api_instance.get_job_post_disagreements(since=since, school_id=school_id, limit=limit, new_page=new_page, still_pending_page=still_pending_page)
         print("The response of DefaultApi->get_job_post_disagreements:\n")
         pprint(api_response)
@@ -22722,6 +22724,96 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **revoke_contract_verification**
+> ContractVerification revoke_contract_verification(raw_contract_id, contract_verification_revocation_input)
+
+Revoke verified seasons (append a revocation event)
+
+Same gates as create: winad_verify token scope, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required. Appends a result 'revoked' event; nothing is deleted. The latest event per contract+season (verified_at DESC, id DESC) is authoritative. Only currently verified seasons can be revoked. No verified_at or identity fields are accepted. The body is a flat JSON object. The write also creates a PaperTrail version recording the token user and the optional top-level change_note.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.contract_verification import ContractVerification
+from winthrop_client_python.models.contract_verification_revocation_input import ContractVerificationRevocationInput
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    raw_contract_id = 56 # int | 
+    contract_verification_revocation_input = winthrop_client_python.ContractVerificationRevocationInput() # ContractVerificationRevocationInput | 
+
+    try:
+        # Revoke verified seasons (append a revocation event)
+        api_response = api_instance.revoke_contract_verification(raw_contract_id, contract_verification_revocation_input)
+        print("The response of DefaultApi->revoke_contract_verification:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->revoke_contract_verification: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **raw_contract_id** | **int**|  | 
+ **contract_verification_revocation_input** | [**ContractVerificationRevocationInput**](ContractVerificationRevocationInput.md)|  | 
+
+### Return type
+
+[**ContractVerification**](ContractVerification.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Revocation event created |  -  |
+**400** | Malformed request |  -  |
+**401** | Unauthorized |  -  |
+**403** | Missing winad_verify token/application scope, persisted resource owner, or parent read permission |  -  |
+**404** | RawContract not found |  -  |
+**422** | Unknown field, invalid body, change_note that is not a string (errors.change_note), season not currently verified, or document without a Contract. Nothing was written. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **search_coaches**
 > CoachCollection search_coaches(filters=filters)
 
@@ -25018,7 +25110,93 @@ Name | Type | Description  | Notes
 **200** | Position was updated |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
-**422** | Unable to update position |  -  |
+**422** | Unable to update position. Also returned (errors.departing) when the request would change departing on a position that has recorded departure details, because that would erase them with no user or position change log; use PATCH /positions/{positionId}/departure for that change. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_position_departure**
+> PositionDepartureResult update_position_departure(position_id, position_departure_request)
+
+Fully replace a position's departure details. Setting departing to true requires a date, reason, and public source URL. Setting false clears the date; omitted details become null. Records the user and the optional top-level change_note on the PaperTrail version, and writes the position change log. Identical requests are no-ops: no version is created, so no note is stored.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.position_departure_request import PositionDepartureRequest
+from winthrop_client_python.models.position_departure_result import PositionDepartureResult
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    position_id = 56 # int | ID of the position to update
+    position_departure_request = winthrop_client_python.PositionDepartureRequest() # PositionDepartureRequest | 
+
+    try:
+        api_response = api_instance.update_position_departure(position_id, position_departure_request)
+        print("The response of DefaultApi->update_position_departure:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_position_departure: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **position_id** | **int**| ID of the position to update | 
+ **position_departure_request** | [**PositionDepartureRequest**](PositionDepartureRequest.md)|  | 
+
+### Return type
+
+[**PositionDepartureResult**](PositionDepartureResult.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated departure read back from the database |  -  |
+**401** | Unauthorized |  -  |
+**403** | A persisted user-backed OAuth token, winad_write scope, and permission to update positions are required. Client-credentials tokens are rejected without saving changes. |  -  |
+**404** | Position not found |  -  |
+**422** | Invalid fields or values, or a change_note that is not a string (errors.change_note); no changes were saved. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

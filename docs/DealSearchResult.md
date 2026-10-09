@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **vendors** | [**List[DealDetailVendor]**](DealDetailVendor.md) |  | [optional] 
 **deal_detail** | [**DealDetail**](DealDetail.md) |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
+**raw_contract** | [**RawContractTerms**](RawContractTerms.md) | The linked RawContract&#39;s structured terms; null when raw_contract_id is null, or when the user cannot read that document (for example a pending contract&#39;s PDF). | [optional] 
 
 ## Example
 

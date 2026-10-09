@@ -162,8 +162,11 @@ docs/Contract.md
 docs/ContractCollection.md
 docs/ContractErrorsResponse.md
 docs/ContractTermOption.md
+docs/ContractTerms.md
+docs/ContractTermsSource.md
 docs/ContractVerification.md
 docs/ContractVerificationInput.md
+docs/ContractVerificationRevocationInput.md
 docs/ContractsApi.md
 docs/CoworkerEntry.md
 docs/CoworkerTenure.md
@@ -477,6 +480,7 @@ docs/GetAccountUserActivation200Response.md
 docs/GetAdminDeskRequest200Response.md
 docs/GetCompensationComparisons400Response.md
 docs/GetContractVerifications200Response.md
+docs/GetContractVerifications200ResponseMeta.md
 docs/GetFavorites200ResponseInner.md
 docs/GetFavoritesCategories200ResponseInner.md
 docs/GetFilterOptions200Response.md
@@ -569,6 +573,8 @@ docs/PerformanceChartData.md
 docs/PerformanceChartRecord.md
 docs/Position.md
 docs/PositionCollection.md
+docs/PositionDepartureRequest.md
+docs/PositionDepartureResult.md
 docs/PositionEntry.md
 docs/PositionSportStat.md
 docs/PositionType.md
@@ -582,6 +588,7 @@ docs/PublishPendingContractCompensation.md
 docs/PublishPendingContractCompensationBaseSalary.md
 docs/PublishPendingContractCompensationOneTimeBonus.md
 docs/PublishPendingContractRequest.md
+docs/PublishPendingContractRequestContractTerms.md
 docs/PublishedContract.md
 docs/PublishedContractAllOfCompensations.md
 docs/QuadrantUnplottedSchool.md
@@ -589,6 +596,8 @@ docs/RawContract.md
 docs/RawContractBackTo.md
 docs/RawContractCollection.md
 docs/RawContractDealInfo.md
+docs/RawContractTerms.md
+docs/RawContractsApi.md
 docs/ReconciliationCoach.md
 docs/ReconciliationIncluded.md
 docs/ReconciliationPagination.md
@@ -729,6 +738,7 @@ docs/UpdateAdminDeskRequest200Response.md
 docs/UpdateAdminDeskRequest200ResponseData.md
 docs/UpdateAdminDeskRequestRequest.md
 docs/UpdateAdminDeskSettings422Response.md
+docs/UpdateContractRequest.md
 docs/UpdateDeal403Response.md
 docs/UpdateDeal422Response.md
 docs/UpdateDealRequest.md
@@ -743,6 +753,7 @@ docs/UpdateNoteRequest.md
 docs/UpdatePasswordReset200Response.md
 docs/UpdatePasswordResetRequest.md
 docs/UpdatePasswordResetRequestUser.md
+docs/UpdateRawContractContractTerms422Response.md
 docs/UpdateScheduleIntentRequest.md
 docs/UpdateScheduleIntentRequestScheduleIntent.md
 docs/UpdateSchoolGroupRequest.md
@@ -780,16 +791,17 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_foia_status_summary_filters.py
-test/test_foia_status_summary_flags.py
-test/test_foia_status_summary_label.py
-test/test_foia_status_summary_meta.py
-test/test_foia_status_summary_request.py
-test/test_foia_status_summary_requested_item.py
-test/test_foia_status_summary_response.py
-test/test_foia_status_summary_totals.py
-test/test_income_report_create.py
-test/test_income_report_input.py
+test/test_contract_terms.py
+test/test_contract_terms_source.py
+test/test_contract_verification_revocation_input.py
+test/test_get_contract_verifications200_response_meta.py
+test/test_position_departure_request.py
+test/test_position_departure_result.py
+test/test_publish_pending_contract_request_contract_terms.py
+test/test_raw_contract_terms.py
+test/test_raw_contracts_api.py
+test/test_update_contract_request.py
+test/test_update_raw_contract_contract_terms422_response.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -800,6 +812,7 @@ winthrop_client_python/api/foia_inbox_api.py
 winthrop_client_python/api/game_contracts_api.py
 winthrop_client_python/api/intercollegiate_api.py
 winthrop_client_python/api/ml_athletic_api.py
+winthrop_client_python/api/raw_contracts_api.py
 winthrop_client_python/api/reporting_api.py
 winthrop_client_python/api/salary_sites_api.py
 winthrop_client_python/api/scraper_api.py
@@ -969,8 +982,11 @@ winthrop_client_python/models/contract.py
 winthrop_client_python/models/contract_collection.py
 winthrop_client_python/models/contract_errors_response.py
 winthrop_client_python/models/contract_term_option.py
+winthrop_client_python/models/contract_terms.py
+winthrop_client_python/models/contract_terms_source.py
 winthrop_client_python/models/contract_verification.py
 winthrop_client_python/models/contract_verification_input.py
+winthrop_client_python/models/contract_verification_revocation_input.py
 winthrop_client_python/models/coworker_entry.py
 winthrop_client_python/models/coworker_tenure.py
 winthrop_client_python/models/create_account_user422_response.py
@@ -1279,6 +1295,7 @@ winthrop_client_python/models/get_account_user_activation200_response.py
 winthrop_client_python/models/get_admin_desk_request200_response.py
 winthrop_client_python/models/get_compensation_comparisons400_response.py
 winthrop_client_python/models/get_contract_verifications200_response.py
+winthrop_client_python/models/get_contract_verifications200_response_meta.py
 winthrop_client_python/models/get_favorites200_response_inner.py
 winthrop_client_python/models/get_favorites_categories200_response_inner.py
 winthrop_client_python/models/get_filter_options200_response.py
@@ -1369,6 +1386,8 @@ winthrop_client_python/models/performance_chart_data.py
 winthrop_client_python/models/performance_chart_record.py
 winthrop_client_python/models/position.py
 winthrop_client_python/models/position_collection.py
+winthrop_client_python/models/position_departure_request.py
+winthrop_client_python/models/position_departure_result.py
 winthrop_client_python/models/position_entry.py
 winthrop_client_python/models/position_sport_stat.py
 winthrop_client_python/models/position_type.py
@@ -1382,6 +1401,7 @@ winthrop_client_python/models/publish_pending_contract_compensation.py
 winthrop_client_python/models/publish_pending_contract_compensation_base_salary.py
 winthrop_client_python/models/publish_pending_contract_compensation_one_time_bonus.py
 winthrop_client_python/models/publish_pending_contract_request.py
+winthrop_client_python/models/publish_pending_contract_request_contract_terms.py
 winthrop_client_python/models/published_contract.py
 winthrop_client_python/models/published_contract_all_of_compensations.py
 winthrop_client_python/models/quadrant_unplotted_school.py
@@ -1389,6 +1409,7 @@ winthrop_client_python/models/raw_contract.py
 winthrop_client_python/models/raw_contract_back_to.py
 winthrop_client_python/models/raw_contract_collection.py
 winthrop_client_python/models/raw_contract_deal_info.py
+winthrop_client_python/models/raw_contract_terms.py
 winthrop_client_python/models/reconciliation_coach.py
 winthrop_client_python/models/reconciliation_included.py
 winthrop_client_python/models/reconciliation_pagination.py
@@ -1526,6 +1547,7 @@ winthrop_client_python/models/update_admin_desk_request200_response.py
 winthrop_client_python/models/update_admin_desk_request200_response_data.py
 winthrop_client_python/models/update_admin_desk_request_request.py
 winthrop_client_python/models/update_admin_desk_settings422_response.py
+winthrop_client_python/models/update_contract_request.py
 winthrop_client_python/models/update_deal403_response.py
 winthrop_client_python/models/update_deal422_response.py
 winthrop_client_python/models/update_deal_request.py
@@ -1540,6 +1562,7 @@ winthrop_client_python/models/update_note_request.py
 winthrop_client_python/models/update_password_reset200_response.py
 winthrop_client_python/models/update_password_reset_request.py
 winthrop_client_python/models/update_password_reset_request_user.py
+winthrop_client_python/models/update_raw_contract_contract_terms422_response.py
 winthrop_client_python/models/update_schedule_intent_request.py
 winthrop_client_python/models/update_schedule_intent_request_schedule_intent.py
 winthrop_client_python/models/update_school_group_request.py

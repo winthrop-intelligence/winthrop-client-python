@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **deal_type_id** | **int** |  | [optional] 
 **archived** | **bool** |  | [optional] 
 **verified** | **bool** |  | [optional] 
+**raw_contract** | [**RawContractTerms**](RawContractTerms.md) | The linked RawContract&#39;s structured terms (deal show only); null when the deal has no RawContract or the user cannot read it. | [optional] 
 
 ## Example
 

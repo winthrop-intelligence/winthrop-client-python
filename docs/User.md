@@ -23,6 +23,8 @@ Name | Type | Description | Notes
 **roles** | **List[str]** |  | [optional] 
 **is_admin** | **bool** | Whether the user is a data admin or super admin | [optional] 
 **can_see_compensation** | **bool** | Whether the user can view coach compensation data | [optional] 
+**can_see_coach_compensation** | **bool** | Whether the user sees pay on the Coaches search (Coaches + Coach compensation permissions) | [optional] 
+**can_see_administrator_compensation** | **bool** | Whether the user sees pay on the Administrators search (Administrators + Administrator compensation permissions) | [optional] 
 **can_show_scouting** | **bool** | Whether the user can view scouting/team schedule links | [optional] 
 **can_show_game_contract** | **bool** | Whether the user can view game contract/guarantee data | [optional] 
 **can_see_coaches** | **bool** | Whether the user can access the Coaches section | [optional] 

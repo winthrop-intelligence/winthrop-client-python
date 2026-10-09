@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**meta** | [**Meta**](Meta.md) |  | 
+**meta** | [**GetContractVerifications200ResponseMeta**](GetContractVerifications200ResponseMeta.md) |  | 
 **data** | [**List[ContractVerification]**](ContractVerification.md) |  | 
 
 ## Example

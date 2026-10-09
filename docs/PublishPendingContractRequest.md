@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **at_will** | **bool** | Sent explicitly (the CSV infers it from a blank end date) | 
 **executed_on** | **date** | Optional date the contract was executed (YYYY-MM-DD) | [optional] 
 **compensations** | [**List[PublishPendingContractCompensation]**](PublishPendingContractCompensation.md) | One entry per school and year | 
+**contract_terms** | [**PublishPendingContractRequestContractTerms**](PublishPendingContractRequestContractTerms.md) |  | [optional] 
 
 ## Example
 
