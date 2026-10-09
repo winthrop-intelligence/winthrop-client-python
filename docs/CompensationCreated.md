@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **noncontingent_bonus_comp_cents** | **int** |  | [optional] 
 **compensation_type** | **str** | Pay type, writable on PATCH. Hourly rows require blank/zero amounts and a non-blank comment holding the hourly rate (or &#39;Hourly rate not provided&#39;). Private-school compensations must be \&quot;990\&quot;. | [optional] 
 **media_link** | **str** |  | [optional] 
-**contract_status_id** | **int** |  | [optional] 
+**contract_status_id** | **int** | Writable on PATCH, any existing contract status id; see PATCH description. | [optional] 
 **year** | **int** | Required on creation. Updates may omit this field or send its unchanged value. To change an existing compensation&#39;s identity, move the linked position. | [optional] 
 **school_id** | **int** | Required on creation. Updates may omit this field or send its unchanged value. To change an existing compensation&#39;s identity, move the linked position. | [optional] 
 **contract** | [**Contract**](Contract.md) |  | [optional] 
