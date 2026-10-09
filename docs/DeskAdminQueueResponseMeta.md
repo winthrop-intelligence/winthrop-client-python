@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **total_entries** | **int** |  | 
 **counts** | **Dict[str, int]** |  | 
 **accounts** | [**List[DeskAdminAccount]**](DeskAdminAccount.md) |  | 
+**notifications_enabled** | **bool** | Whether ask acknowledgements, report-ready and work-started emails are on (the DESK_NOTIFICATIONS_ENABLED runtime ENV value). Read-only. | 
 
 ## Example
 

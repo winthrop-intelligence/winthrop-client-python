@@ -34,7 +34,7 @@ Name | Type | Description | Notes
 **artifacts** | [**List[DeskAdminArtifact]**](DeskAdminArtifact.md) |  | 
 **versions** | [**List[DeskAdminVersion]**](DeskAdminVersion.md) | Newest first | [optional] 
 **request** | [**DeskAdminReportRequest**](DeskAdminReportRequest.md) |  | 
-**turnaround_label** | **str** | Ask-to-publish clock (\&quot;5h 34m\&quot;), pauses excluded | 
+**turnaround_label** | **str** | Wall clock from ask to publish (\&quot;5h 34m\&quot;) | 
 
 ## Example
 
