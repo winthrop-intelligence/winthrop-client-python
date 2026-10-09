@@ -83,10 +83,10 @@ Method | HTTP request | Description
 [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
 [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 [**get_admin_desk_report**](DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} | 
+[**get_admin_desk_report_activity**](DefaultApi.md#get_admin_desk_report_activity) | **GET** /api/v1/admin/desk_reports/{uuid}/activity | 
+[**get_admin_desk_report_activity_summaries**](DefaultApi.md#get_admin_desk_report_activity_summaries) | **GET** /api/v1/admin/desk_reports/activity_summaries | 
 [**get_admin_desk_reports**](DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports | 
-[**get_admin_desk_request**](DefaultApi.md#get_admin_desk_request) | **GET** /api/v1/admin/desk_requests/{uuid} | 
 [**get_admin_desk_requests**](DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests | 
-[**get_admin_desk_settings**](DefaultApi.md#get_admin_desk_settings) | **GET** /api/v1/admin/desk_settings | 
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
@@ -269,7 +269,6 @@ Method | HTTP request | Description
 [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
 [**hide_admin_desk_report**](DefaultApi.md#hide_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/hide | 
 [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list | 
-[**needs_info_admin_desk_request**](DefaultApi.md#needs_info_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid}/needs_info | 
 [**publish_admin_desk_report**](DefaultApi.md#publish_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/publish | 
 [**regenerate_raw_contract_pdf**](DefaultApi.md#regenerate_raw_contract_pdf) | **POST** /api/v1/raw_contracts/{raw_contractId}/regenerate_pdf | 
 [**resolve_frs_export**](DefaultApi.md#resolve_frs_export) | **POST** /api/v1/frs_exports/resolve | 
@@ -283,7 +282,6 @@ Method | HTTP request | Description
 [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation | 
 [**update_admin_desk_report**](DefaultApi.md#update_admin_desk_report) | **PATCH** /api/v1/admin/desk_reports/{uuid} | 
 [**update_admin_desk_request**](DefaultApi.md#update_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid} | 
-[**update_admin_desk_settings**](DefaultApi.md#update_admin_desk_settings) | **PATCH** /api/v1/admin/desk_settings | 
 [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} | 
 [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
 [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
@@ -6785,6 +6783,231 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_admin_desk_report_activity**
+> GetAdminDeskReportActivity200Response get_admin_desk_report_activity(uuid, kind=kind, period=period, var_from=var_from, to=to, page=page, per_page=per_page, user_id=user_id, user_search=user_search)
+
+Super Admin with a user-owned winad_read token only. Read-only PostHog activity.
+kind defaults to views, grouped by stable user ID across report versions.
+downloads groups by user, artifact/version identity when available, displayed
+report version and file type. Older filename-only groups are explicitly labelled.
+download_all groups ZIP handoffs by user across versions; each handoff counts once.
+Never reads or writes
+ReportRead counts. Customer context, report UUID, event-time account and configured
+environment host are enforced on the server; callers cannot select a project.
+
+Views summary contains unique_viewers/total_opens; download summaries contain
+unique_downloaders/total_downloads/file_groups (Download All groups are users).
+The required top-level kind selects the response schema and always matches meta.kind,
+including unpublished and unavailable responses.
+Summary contains the period's matching counts after optional user_id filtering;
+period_totals contains all customer counts for the selected kind before that filter.
+Pagination does not change either total. Rows are ordered by last activity descending,
+then stable user ID and, for individual downloads, the full file group key.
+All dates and the declared display timezone are UTC, with [from,to) boundaries.
+Rolling ranges use a 30-second boundary to share the short server cache.
+
+Since-publication starts at publication and is capped by declared schema coverage,
+source retention and the 365-day query bound; gaps are explicit. An unpublished report
+returns not_published and zero. Tracking failure or absent current schema returns
+unavailable with null summaries, never zero. Recent ranges are provisional because
+ingestion can be delayed. Verified views in the requested interval establish schema
+presence even when the separate recent health window has no events, including on
+an empty later page or when an optional viewer filter matches nobody.
+Removed people stay separate anonymous groups; current
+identity/status/access are resolved in WinAD, never resurrected from PostHog.
+
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.get_admin_desk_report_activity200_response import GetAdminDeskReportActivity200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    uuid = 'uuid_example' # str | Public uuid of the Desk report
+    kind = views # str |  (optional) (default to views)
+    period = last_30_days # str |  (optional) (default to last_30_days)
+    var_from = '2013-10-20T19:20:30+01:00' # datetime | Required with custom; ISO 8601 including Z or an explicit offset. (optional)
+    to = '2013-10-20T19:20:30+01:00' # datetime | Exclusive custom end; cannot be in the future. Custom maximum is 365 days. (optional)
+    page = 1 # int |  (optional) (default to 1)
+    per_page = 25 # int |  (optional) (default to 25)
+    user_id = 56 # int | Optional stable WinAD user ID; summary follows this filter, period_totals does not. (optional)
+    user_search = 'user_search_example' # str | Case-insensitive literal substring of a current WinAD name or email, or an exact positive user ID. Deleted personal details are never searched. At most 100 characters and 1000 matching current identities; a broader search returns 422 and must be narrowed. Applies before pagination to summary and row totals; period_totals remains unfiltered. Only matching stable IDs are sent to PostHog. Can be combined with user_id.  (optional)
+
+    try:
+        api_response = api_instance.get_admin_desk_report_activity(uuid, kind=kind, period=period, var_from=var_from, to=to, page=page, per_page=per_page, user_id=user_id, user_search=user_search)
+        print("The response of DefaultApi->get_admin_desk_report_activity:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_desk_report_activity: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uuid** | **str**| Public uuid of the Desk report | 
+ **kind** | **str**|  | [optional] [default to views]
+ **period** | **str**|  | [optional] [default to last_30_days]
+ **var_from** | **datetime**| Required with custom; ISO 8601 including Z or an explicit offset. | [optional] 
+ **to** | **datetime**| Exclusive custom end; cannot be in the future. Custom maximum is 365 days. | [optional] 
+ **page** | **int**|  | [optional] [default to 1]
+ **per_page** | **int**|  | [optional] [default to 25]
+ **user_id** | **int**| Optional stable WinAD user ID; summary follows this filter, period_totals does not. | [optional] 
+ **user_search** | **str**| Case-insensitive literal substring of a current WinAD name or email, or an exact positive user ID. Deleted personal details are never searched. At most 100 characters and 1000 matching current identities; a broader search returns 422 and must be narrowed. Applies before pagination to summary and row totals; period_totals remains unfiltered. Only matching stable IDs are sent to PostHog. Can be combined with user_id.  | [optional] 
+
+### Return type
+
+[**GetAdminDeskReportActivity200Response**](GetAdminDeskReportActivity200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Observed activity, partial coverage, or an unpublished report. |  -  |
+**400** | Invalid page or per_page format (shared API pagination guard). |  -  |
+**401** | Authentication required. |  -  |
+**403** | Requires a persisted Super Admin and winad_read scope. |  -  |
+**404** | Unknown report UUID. |  -  |
+**422** | Invalid period, timestamp, bound, type or unknown filter. |  -  |
+**503** | Analytics unavailable; safe error code, no credential or query details. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_desk_report_activity_summaries**
+> DeskQueueEngagementBatch get_admin_desk_report_activity_summaries(report_uuids, period=period)
+
+Super-admin, read-only batch customer Views for the queue (WINAD-10643).
+Fixed last_30_days, UTC [from,to), all report versions. Accepts 1–50 UUIDs
+before deduplication. Unknown parameters and malformed inputs return 422.
+Every requested UUID has an explicit result, independent of response order.
+Counts are null for unpublished, missing, accountless and unavailable reports;
+zero means verified coverage or a known empty interval before publication.
+Report/account pairs, first publication, environment hostname, source coverage,
+retention and canonical customer predicates constrain one grouped cold-batch query.
+Names/emails and per-user tables are not queried. Successful source data is
+cached for 30 seconds per admin, configuration, report identity and interval.
+Responses always use JSON and private/no-store browser caching.
+
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.desk_queue_engagement_batch import DeskQueueEngagementBatch
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    report_uuids = None # List[UUID] | 
+    period = last_30_days # str |  (optional) (default to last_30_days)
+
+    try:
+        api_response = api_instance.get_admin_desk_report_activity_summaries(report_uuids, period=period)
+        print("The response of DefaultApi->get_admin_desk_report_activity_summaries:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_desk_report_activity_summaries: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **report_uuids** | [**List[UUID]**](UUID.md)|  | 
+ **period** | **str**|  | [optional] [default to last_30_days]
+
+### Return type
+
+[**DeskQueueEngagementBatch**](DeskQueueEngagementBatch.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Independent per-report results; source failures do not block the queue list. |  * Cache-Control - private, no-store <br>  |
+**401** | Authentication required |  -  |
+**403** | Persisted super-admin and OAuth read scope required; no source query |  -  |
+**422** | Invalid UUID array |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_admin_desk_reports**
 > DeskAdminReportsResponse get_admin_desk_reports(status=status, limit=limit, offset=offset)
 
@@ -6878,95 +7101,15 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **get_admin_desk_request**
-> GetAdminDeskRequest200Response get_admin_desk_request(uuid)
-
-Read an ask directly, including asks linked to saved reports. Super-admin only.
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.get_admin_desk_request200_response import GetAdminDeskRequest200Response
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    uuid = 'uuid_example' # str | 
-
-    try:
-        api_response = api_instance.get_admin_desk_request(uuid)
-        print("The response of DefaultApi->get_admin_desk_request:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_admin_desk_request: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uuid** | **str**|  | 
-
-### Return type
-
-[**GetAdminDeskRequest200Response**](GetAdminDeskRequest200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Ask retrieved with its own lifecycle status, independent of queue membership |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden |  -  |
-**404** | Ask not found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **get_admin_desk_requests**
 > DeskAdminQueueResponse get_admin_desk_requests(status=status, client=client)
 
-Tyler's queue (06.1): every report on every account plus every open ask no report has
-been started for, one list, newest activity first (the API owns the order). Rows carry
+Tyler's queue (06.1): every report on every account plus every ask with no report
+started for it, one list, newest activity first (the API owns the order). Rows carry
 structured facts; the sub-line copy derives client-side. meta.counts are per admin status
 over the unfiltered queue; meta.accounts is the account index for the compose client select.
+meta.notifications_enabled says whether Desk notifications are on: it is the
+`DESK_NOTIFICATIONS_ENABLED` runtime ENV value (WINAD-10635), which no endpoint can change.
 
 
 ### Example
@@ -7044,83 +7187,6 @@ Name | Type | Description  | Notes
 **200** | Queue retrieved |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_admin_desk_settings**
-> DeskSettings get_admin_desk_settings()
-
-Read database-backed Desk notification settings. Requires a persisted super admin.
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.desk_settings import DeskSettings
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-
-    try:
-        api_response = api_instance.get_admin_desk_settings()
-        print("The response of DefaultApi->get_admin_desk_settings:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_admin_desk_settings: %s\n" % e)
-```
-
-
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**DeskSettings**](DeskSettings.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Saved settings; defaults to disabled with no copy address |  -  |
-**401** | Authentication required |  -  |
-**403** | Persisted super admin and read scope required |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -22197,108 +22263,6 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **needs_info_admin_desk_request**
-> NeedsInfoAdminDeskRequest200Response needs_info_admin_desk_request(uuid, needs_info_admin_desk_request_request)
-
-07.3 — send the ask back to the client for more information. Stops the turnaround clock
-(it starts again on the manual flip back to `building`) and stores the subject and body
-Tyler edited on screen, verbatim: the email renders exactly them, and the same body
-becomes the note on the customer's pending card unless an explicit client_note is given.
-
-Requires Desk settings `needs_info_emails_enabled`. When disabled, returns 403
-without changing the ask or pausing its clock. Accepted follow-ups remain queued
-and still send if the setting is disabled before the mailer runs.
-
-Sendable from `new`, `building` AND `awaiting_client`: a follow-up can resolve to nobody
-(a churned account) or simply go unread, and refusing the second send left publishing a
-report as the only way out of the ask. A re-send never restarts the pause.
-
-`sent_to` reports who the follow-up was QUEUED for — the response used to say
-"sent" for a mail that was never addressed, and enqueueing can itself fail after
-the pause has committed. Empty means nothing was sent, whatever the pause says.
-
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.needs_info_admin_desk_request200_response import NeedsInfoAdminDeskRequest200Response
-from winthrop_client_python.models.needs_info_admin_desk_request_request import NeedsInfoAdminDeskRequestRequest
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    uuid = 'uuid_example' # str | 
-    needs_info_admin_desk_request_request = winthrop_client_python.NeedsInfoAdminDeskRequestRequest() # NeedsInfoAdminDeskRequestRequest | 
-
-    try:
-        api_response = api_instance.needs_info_admin_desk_request(uuid, needs_info_admin_desk_request_request)
-        print("The response of DefaultApi->needs_info_admin_desk_request:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->needs_info_admin_desk_request: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uuid** | **str**|  | 
- **needs_info_admin_desk_request_request** | [**NeedsInfoAdminDeskRequestRequest**](NeedsInfoAdminDeskRequestRequest.md)|  | 
-
-### Return type
-
-[**NeedsInfoAdminDeskRequest200Response**](NeedsInfoAdminDeskRequest200Response.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Sent back |  -  |
-**401** | Unauthorized |  -  |
-**403** | Not authorized, or Needs info emails disabled in Desk settings |  -  |
-**404** | Not Found |  -  |
-**422** | Missing follow-up copy, or an ask that cannot be sent back |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **publish_admin_desk_report**
 > DeskAdminPublishResponse publish_admin_desk_report(uuid, publish_admin_desk_report_request)
 
@@ -22311,7 +22275,7 @@ must pass the report format check. A reader change_note, expected_version_number
 meaningful change are required. The expected version is the version_number the editor
 loaded; a mismatch returns 409 before any changes or uploads are applied.
 Hidden reports must be restored first. Ask-linked reports cannot change account. Reports
-without a school cannot be published. Publish email is controlled by the database-backed notification switch in Admin Desk Settings in every environment. When enabled, it goes to the eligible selected audience, each once. Everyone means all active eligible readers on the account; named selections narrow that audience. A first edition emails the resolved recipients; an
+without a school cannot be published. Publish email is controlled by the `DESK_NOTIFICATIONS_ENABLED` runtime ENV value in every environment (WINAD-10635); nothing is saved. When enabled, it goes to the eligible selected audience, each once. Everyone means all active eligible readers on the account; named selections narrow that audience. A first edition emails the resolved recipients; an
 update emails only eligible recipients never notified for this report. Legacy renotify is ignored. Notification fields report enqueue results, not completed delivery.
 
 
@@ -23317,17 +23281,16 @@ Name | Type | Description  | Notes
 # **update_admin_desk_request**
 > UpdateAdminDeskRequest200Response update_admin_desk_request(uuid, update_admin_desk_request_request)
 
-Manual ask flip — building, delivered, or closed. needs_info
-(awaiting_client) is D-16's endpoint. `closed` is the junk/duplicate
-exit: the ask leaves the customer's rack and Tyler's open tabs without
-a report and without mail. `building` is "Mark in progress"
-(WINAD-10567, shown as In progress): the first time an ask goes in
-progress, the asker is emailed "We've begun work on <name>" and the
+Manual ask flip — building, delivered, or closed. `closed` is the
+junk/duplicate exit: the ask leaves the customer's rack and Tyler's
+open tabs without a report and without mail. `building` is "Mark in progress"
+(WINAD-10567, shown as In progress): the first time an ask is recorded
+as started, the asker is emailed "We've begun work on <name>" and the
 desk gets one copy, when Desk email is on. Later flips send nothing.
 If that email cannot be queued, the ask is put back and the answer is 503.
 A persisted super-admin may use desk_draft_write for building or delivered only.
 All other statuses require winad_write; the draft scope never grants publishing
-or needs_info access.
+or ask-closing access.
 
 
 ### Example
@@ -23407,91 +23370,8 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
-**422** | Status outside building/delivered/closed, a closed ask being resumed or delivered, or a delivered ask being reopened |  -  |
+**422** | Status outside building/delivered/closed, a closed ask being marked in progress or delivered, a delivered ask being reopened, or an In progress ask whose unsent start email has nobody to go to |  -  |
 **503** | The \&quot;We&#39;ve begun work\&quot; email could not be queued; the ask was put back |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **update_admin_desk_settings**
-> DeskSettings update_admin_desk_settings(desk_settings)
-
-Save settings atomically using the lock_version returned by GET. Reject stale saves with 409. Audit the actor and old/new values. No ENV fallback.
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.desk_settings import DeskSettings
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    desk_settings = winthrop_client_python.DeskSettings() # DeskSettings | 
-
-    try:
-        api_response = api_instance.update_admin_desk_settings(desk_settings)
-        print("The response of DefaultApi->update_admin_desk_settings:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->update_admin_desk_settings: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **desk_settings** | [**DeskSettings**](DeskSettings.md)|  | 
-
-### Return type
-
-[**DeskSettings**](DeskSettings.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Settings saved |  -  |
-**401** | Authentication required |  -  |
-**403** | Persisted super admin and write scope required |  -  |
-**409** | Settings changed since this form loaded. Refresh before retrying. |  -  |
-**422** | Invalid settings; errors keyed by field. Copy email is required when enabled. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
