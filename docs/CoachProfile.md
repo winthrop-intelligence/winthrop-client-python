@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **instagram_verified** | **bool** |  | 
 **bio** | **str** |  | [optional] 
 **coach_friendly_id** | **str** |  | [optional] 
-**departing** | **bool** |  | [optional] 
+**departing** | **bool** | Whether the header&#39;s position is departing — the first header_assignments entry when present | [optional] 
 **current_school_name** | **str** |  | [optional] 
 **current_school_id** | **int** |  | [optional] 
 **current_sport_name** | **str** |  | [optional] 
@@ -32,6 +32,7 @@ Name | Type | Description | Notes
 **current_position_types** | **List[str]** |  | 
 **header_position_season_year_str** | **str** |  | 
 **header_position_historical** | **bool** |  | 
+**header_assignments** | [**List[PersonAssignment]**](PersonAssignment.md) | Every position in the coach&#39;s latest season year, ranked primary first (WINAD-10522). Sport-specific subscriptions only list their sports. Empty when none are visible. | [optional] 
 **avatar_url** | **str** |  | [optional] 
 **can_see_compensation** | **bool** |  | 
 **can_see_videos** | **bool** |  | 

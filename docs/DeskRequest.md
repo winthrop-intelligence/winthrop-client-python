@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 **delivers_label** | **str** |  | 
 **source_report_uuid** | **str** |  | 
 **cta_key** | **str** |  | 
-**client_note** | **str** | The needs-more-info note shown on the customer&#39;s pending card. Was &#x60;admin_note&#x60;, which read as internal-only while being rendered to the customer — a naming trap on a live field.  | 
 
 ## Example
 

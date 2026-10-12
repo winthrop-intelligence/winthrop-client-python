@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **year_str** | **str** |  | 
 **school_name** | **str** |  | 
 **school_id** | **int** |  | 
+**assignments** | [**List[PersonAssignment]**](PersonAssignment.md) | Authorized positions attached to this compensation record, ranked primary first; does not change its salary or season. | [optional] 
 **position_sport** | **str** |  | 
 **total_cents** | **int** |  | [optional] 
 **base_salary_cents** | **int** |  | [optional] 

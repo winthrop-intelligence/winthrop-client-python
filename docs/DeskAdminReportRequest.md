@@ -13,7 +13,6 @@ Name | Type | Description | Notes
 **cta_key** | **str** | The reader CTA the ask started from; null for a guided ask | 
 **source_report_title** | **str** | The title of the report that CTA was read on; null with cta_key | 
 **received_at** | **datetime** |  | 
-**clock_paused** | **bool** |  | 
 
 ## Example
 
