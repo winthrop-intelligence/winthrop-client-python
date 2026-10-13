@@ -392,6 +392,20 @@ from winthrop_client_python.models.contract_collection import ContractCollection
 from winthrop_client_python.models.contract_errors_response import (
     ContractErrorsResponse,
 )
+from winthrop_client_python.models.contract_file_replaced import ContractFileReplaced
+from winthrop_client_python.models.contract_history_collection import (
+    ContractHistoryCollection,
+)
+from winthrop_client_python.models.contract_history_entry import ContractHistoryEntry
+from winthrop_client_python.models.contract_history_entry_changes_value import (
+    ContractHistoryEntryChangesValue,
+)
+from winthrop_client_python.models.contract_history_entry_oauth_application import (
+    ContractHistoryEntryOauthApplication,
+)
+from winthrop_client_python.models.contract_history_entry_user import (
+    ContractHistoryEntryUser,
+)
 from winthrop_client_python.models.contract_term_option import ContractTermOption
 from winthrop_client_python.models.contract_terms import ContractTerms
 from winthrop_client_python.models.contract_terms_source import ContractTermsSource
@@ -894,6 +908,15 @@ from winthrop_client_python.models.desk_requests_response import DeskRequestsRes
 from winthrop_client_python.models.directors_cup_school import DirectorsCupSchool
 from winthrop_client_python.models.division import Division
 from winthrop_client_python.models.division_collection import DivisionCollection
+from winthrop_client_python.models.earned_incentive import EarnedIncentive
+from winthrop_client_python.models.earned_incentive_collection import (
+    EarnedIncentiveCollection,
+)
+from winthrop_client_python.models.earned_incentive_fields import EarnedIncentiveFields
+from winthrop_client_python.models.earned_incentive_fields_term_change import (
+    EarnedIncentiveFieldsTermChange,
+)
+from winthrop_client_python.models.earned_incentive_input import EarnedIncentiveInput
 from winthrop_client_python.models.edit_account_user import EditAccountUser
 from winthrop_client_python.models.edit_account_user_response import (
     EditAccountUserResponse,
@@ -1358,11 +1381,6 @@ from winthrop_client_python.models.note import Note
 from winthrop_client_python.models.page_view import PageView
 from winthrop_client_python.models.pending_contract_created import (
     PendingContractCreated,
-)
-from winthrop_client_python.models.performance_chart_coach import PerformanceChartCoach
-from winthrop_client_python.models.performance_chart_data import PerformanceChartData
-from winthrop_client_python.models.performance_chart_record import (
-    PerformanceChartRecord,
 )
 from winthrop_client_python.models.person_assignment import PersonAssignment
 from winthrop_client_python.models.position import Position

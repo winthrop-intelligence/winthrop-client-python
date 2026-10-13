@@ -16,25 +16,31 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
-from winthrop_client_python.models.performance_chart_coach import PerformanceChartCoach
-from winthrop_client_python.models.performance_chart_record import (
-    PerformanceChartRecord,
-)
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
+from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class PerformanceChartData(BaseModel):
+class ContractFileReplaced(BaseModel):
     """
-    PerformanceChartData
+    ContractFileReplaced
     """  # noqa: E501
 
-    seasons: List[StrictStr]
-    records: List[Optional[PerformanceChartRecord]]
-    coaches: List[Optional[PerformanceChartCoach]]
-    __properties: ClassVar[List[str]] = ["seasons", "records", "coaches"]
+    id: StrictInt = Field(description="The contract's id")
+    raw_contract_id: StrictInt = Field(
+        description="The id of the RawContract that now holds the new PDF"
+    )
+    filename: StrictStr = Field(description="The uploaded PDF's filename")
+    coach_id: StrictInt
+    pending: StrictBool
+    __properties: ClassVar[List[str]] = [
+        "id",
+        "raw_contract_id",
+        "filename",
+        "coach_id",
+        "pending",
+    ]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -53,7 +59,7 @@ class PerformanceChartData(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PerformanceChartData from a JSON string"""
+        """Create an instance of ContractFileReplaced from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -73,25 +79,11 @@ class PerformanceChartData(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of each item in records (list)
-        _items = []
-        if self.records:
-            for _item_records in self.records:
-                if _item_records:
-                    _items.append(_item_records.to_dict())
-            _dict["records"] = _items
-        # override the default output from pydantic by calling `to_dict()` of each item in coaches (list)
-        _items = []
-        if self.coaches:
-            for _item_coaches in self.coaches:
-                if _item_coaches:
-                    _items.append(_item_coaches.to_dict())
-            _dict["coaches"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PerformanceChartData from a dict"""
+        """Create an instance of ContractFileReplaced from a dict"""
         if obj is None:
             return None
 
@@ -100,20 +92,11 @@ class PerformanceChartData(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "seasons": obj.get("seasons"),
-                "records": (
-                    [
-                        PerformanceChartRecord.from_dict(_item)
-                        for _item in obj["records"]
-                    ]
-                    if obj.get("records") is not None
-                    else None
-                ),
-                "coaches": (
-                    [PerformanceChartCoach.from_dict(_item) for _item in obj["coaches"]]
-                    if obj.get("coaches") is not None
-                    else None
-                ),
+                "id": obj.get("id"),
+                "raw_contract_id": obj.get("raw_contract_id"),
+                "filename": obj.get("filename"),
+                "coach_id": obj.get("coach_id"),
+                "pending": obj.get("pending"),
             }
         )
         return _obj

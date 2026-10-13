@@ -26,6 +26,7 @@ from pydantic import (
     field_validator,
 )
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from winthrop_client_python.models.publish_pending_contract_compensation_base_salary import (
     PublishPendingContractCompensationBaseSalary,
 )
@@ -62,9 +63,9 @@ class PublishPendingContractCompensation(BaseModel):
     buyout_amount: Optional[StrictStr] = Field(
         default=None, description="Buyout terms, as text"
     )
-    change_note: Optional[StrictStr] = Field(
+    change_note: Optional[Annotated[str, Field(strict=True, max_length=500)]] = Field(
         default=None,
-        description="Optional. Why this row's values are what they are, for the internal audit history (WINAD-10632). Stored on the audit versions of this row's compensation write; never returned by the API. Blank is the same as omitted.",
+        description="Optional. Why this row's values are what they are, for the internal audit history (WINAD-10632). Stored on every audit version this row's write creates (its positions, its compensation and the contract's publication) and replaces the request's top-level change_note for them; a row without one gets the top-level note. At most 500 characters after trimming; blank is the same as omitted. Never returned.",
     )
     __properties: ClassVar[List[str]] = [
         "school_id",

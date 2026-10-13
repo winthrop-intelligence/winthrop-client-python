@@ -52,10 +52,12 @@ Method | HTTP request | Description
 [**delete_account_user**](DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
 [**delete_admin_desk_report_artifact**](DefaultApi.md#delete_admin_desk_report_artifact) | **DELETE** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts/{id} | 
 [**delete_cashflow**](DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
+[**delete_compensation**](DefaultApi.md#delete_compensation) | **DELETE** /api/v1/compensations/{compensationId} | 
 [**delete_conference**](DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 [**delete_conferenceship**](DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
 [**delete_contact_search**](DefaultApi.md#delete_contact_search) | **DELETE** /api/v1/contact_searches/{id} | 
 [**delete_desk_report_archive**](DefaultApi.md#delete_desk_report_archive) | **DELETE** /api/v1/desk_reports/{uuid}/archive | 
+[**delete_earned_incentive**](DefaultApi.md#delete_earned_incentive) | **DELETE** /api/v1/earned_incentives/{earnedIncentiveId} | 
 [**delete_favorite**](DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
 [**delete_favorites_category**](DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 [**delete_foia_label**](DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
@@ -143,6 +145,7 @@ Method | HTTP request | Description
 [**get_desk_requests**](DefaultApi.md#get_desk_requests) | **GET** /api/v1/desk_requests | 
 [**get_division**](DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 [**get_divisions**](DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
+[**get_earned_incentives**](DefaultApi.md#get_earned_incentives) | **GET** /api/v1/earned_incentives | 
 [**get_edit_account_user**](DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit | 
 [**get_favorites**](DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
 [**get_favorites_categories**](DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
@@ -311,6 +314,7 @@ Method | HTTP request | Description
 [**update_subscription_acceptance**](DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} | 
 [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
 [**update_user**](DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
+[**upsert_earned_incentive**](DefaultApi.md#upsert_earned_incentive) | **PUT** /api/v1/earned_incentives | 
 [**upsert_team_schedule_note**](DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 [**upsert_team_season_result**](DefaultApi.md#upsert_team_season_result) | **PUT** /api/v1/team_season_results | 
 [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
@@ -1933,9 +1937,9 @@ Name | Type | Description  | Notes
 **400** | Missing or malformed request envelope |  -  |
 **401** | Unauthorized |  -  |
 **403** | Missing winad_verify token/application scope, persisted resource owner, or parent read permission |  -  |
-**404** | RawContract not found |  -  |
-**409** | Agent run was already recorded with a different payload |  -  |
-**422** | Invalid event or document without a Contract; errors are keyed by field |  -  |
+**404** | RawContract not found, or its contract was deleted while the request ran |  -  |
+**409** | Agent run was already recorded with a different payload (errors.agent_run_id), or the contract kept moving to other coaches while the request waited for its locks (errors.contract) and nothing was written |  -  |
+**422** | Invalid event or document without a Contract, or change_note that is not text or is longer than 500 characters (errors.change_note); errors are keyed by field |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4322,6 +4326,88 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_compensation**
+> delete_compensation(compensation_id, change_note=change_note)
+
+Delete a compensation. Requires the winad_write OAuth scope and permission to destroy the compensation. Hidden-coach compensations are 404 for customers, who may not delete anyway (403). The positions that pointed at the compensation are kept and unlinked (compensation_id becomes null; no position version is written), the linked contract is kept, and the compensation's FOIA requested items (and their notes) are deleted with it. The coach's latest salary is refreshed. Like PATCH, the delete is recorded in the audit history (PaperTrail) attributed to the token's user, or for a client-credentials token to the configured system user. The optional change_note query parameter is the reason, stored (stripped, blank is absent) on every version the delete creates and never returned. The destroy version keeps the deleted row, so a client can read it back there. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    compensation_id = 56 # int | ID of compensation to delete
+    change_note = 'change_note_example' # str | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. (optional)
+
+    try:
+        api_instance.delete_compensation(compensation_id, change_note=change_note)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_compensation: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **compensation_id** | **int**| ID of compensation to delete | 
+ **change_note** | **str**| Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Compensation was deleted |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden. The token lacks the winad_write OAuth scope, the token&#39;s user may not destroy compensations, or the token has no user (client credentials) and no system user is configured to record as the actor. Nothing was deleted. |  -  |
+**404** | Not Found, or the compensation belongs to a hidden coach and the caller is a customer |  -  |
+**422** | change_note is not a string or contains a NUL character (errors.change_note), or the compensation could not be destroyed. Nothing was deleted. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **delete_conference**
 > delete_conference(conference_id)
 
@@ -4641,6 +4727,91 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_earned_incentive**
+> EarnedIncentive delete_earned_incentive(earned_incentive_id, change_note=change_note)
+
+Delete one earned incentive and return it as it was. Requires the winad_write OAuth scope and a super admin user; other users get 403. The deletion is recorded in the row's audit history (PaperTrail) with the optional change_note query parameter as the reason.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.earned_incentive import EarnedIncentive
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    earned_incentive_id = 56 # int | ID of the earned incentive to delete
+    change_note = 'change_note_example' # str | Why the row is being deleted, stored in its audit history and never returned. (optional)
+
+    try:
+        api_response = api_instance.delete_earned_incentive(earned_incentive_id, change_note=change_note)
+        print("The response of DefaultApi->delete_earned_incentive:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_earned_incentive: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **earned_incentive_id** | **int**| ID of the earned incentive to delete | 
+ **change_note** | **str**| Why the row is being deleted, stored in its audit history and never returned. | [optional] 
+
+### Return type
+
+[**EarnedIncentive**](EarnedIncentive.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The deleted earned incentive |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden. The token lacks the winad_write OAuth scope, or its user is not a super admin (a token with no user counts as an admin). |  -  |
+**404** | Not Found |  -  |
+**422** | change_note is not a string (errors.change_note) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -5316,7 +5487,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     income_report_id = 56 # int | ID of income report to delete
-    change_note = 'change_note_example' # str | Why the report is being deleted, stored in its audit history and never returned. (optional)
+    change_note = 'change_note_example' # str | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. (optional)
 
     try:
         api_instance.delete_income_report(income_report_id, change_note=change_note)
@@ -5332,7 +5503,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **income_report_id** | **int**| ID of income report to delete | 
- **change_note** | **str**| Why the report is being deleted, stored in its audit history and never returned. | [optional] 
+ **change_note** | **str**| Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] 
 
 ### Return type
 
@@ -5520,7 +5691,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **delete_position**
-> delete_position(position_id)
+> delete_position(position_id, change_note=change_note)
 
 Delete a single position
 
@@ -5558,9 +5729,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     position_id = 56 # int | ID of position to delete
+    change_note = 'change_note_example' # str | Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. (optional)
 
     try:
-        api_instance.delete_position(position_id)
+        api_instance.delete_position(position_id, change_note=change_note)
     except Exception as e:
         print("Exception when calling DefaultApi->delete_position: %s\n" % e)
 ```
@@ -5573,6 +5745,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **position_id** | **int**| ID of position to delete | 
+ **change_note** | **str**| Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned. | [optional] 
 
 ### Return type
 
@@ -5585,7 +5758,7 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/json
 
 ### HTTP response details
 
@@ -5594,6 +5767,7 @@ void (empty response body)
 **204** | Position was deleted |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+**422** | change_note is not text or is longer than 500 characters (errors.change_note). Nothing was deleted. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11872,6 +12046,102 @@ Name | Type | Description  | Notes
 **200** | Divisions were found |  -  |
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_earned_incentives**
+> EarnedIncentiveCollection get_earned_incentives(coach_id=coach_id, raw_contract_id=raw_contract_id, school_id=school_id, season_year=season_year, season=season, season_id=season_id, page=page, per_page=per_page)
+
+List earned incentives (WINAD-10637) — per contract incentive item and season, whether the coach earned it under the contract and how much. Values are earned under the contract, not proof of payment. Filters combine; with none, every row is listed. Requires the winad_read OAuth scope and a super admin user; other users get 403.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.earned_incentive_collection import EarnedIncentiveCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    coach_id = 56 # int |  (optional)
+    raw_contract_id = 56 # int | The contract the items come from (optional)
+    school_id = 56 # int | Every item whose season belongs to one of this school's teams (optional)
+    season_year = 56 # int | The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter. (optional)
+    season = 56 # int | Same as season_year (optional)
+    season_id = 56 # int | One team's season row (optional)
+    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. (optional) (default to 20)
+
+    try:
+        api_response = api_instance.get_earned_incentives(coach_id=coach_id, raw_contract_id=raw_contract_id, school_id=school_id, season_year=season_year, season=season, season_id=season_id, page=page, per_page=per_page)
+        print("The response of DefaultApi->get_earned_incentives:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_earned_incentives: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coach_id** | **int**|  | [optional] 
+ **raw_contract_id** | **int**| The contract the items come from | [optional] 
+ **school_id** | **int**| Every item whose season belongs to one of this school&#39;s teams | [optional] 
+ **season_year** | **int**| The season&#39;s END year (2026 is the 2025-26 season). &#x60;season&#x60; is accepted as the same filter. | [optional] 
+ **season** | **int**| Same as season_year | [optional] 
+ **season_id** | **int**| One team&#39;s season row | [optional] 
+ **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. | [optional] [default to 20]
+
+### Return type
+
+[**EarnedIncentiveCollection**](EarnedIncentiveCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Earned incentives, ordered by coach, season, contract and item_id. Ransack (q) search and sorting are not supported. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden. The token lacks the winad_read OAuth scope, or its user is not a super admin (a token with no user counts as an admin). |  -  |
+**422** | A filter is not a positive whole number (errors keyed by filter name) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -22959,6 +23229,7 @@ Name | Type | Description  | Notes
 **403** | Missing winad_verify token/application scope, persisted resource owner, or parent read permission |  -  |
 **404** | RawContract not found |  -  |
 **422** | Unknown field, invalid body, change_note that is not a string (errors.change_note), season not currently verified, or document without a Contract. Nothing was written. |  -  |
+**409** | The contract kept moving to other coaches while the request waited for its locks (errors.contract). Nothing was written; reload and retry. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -23729,7 +24000,7 @@ Name | Type | Description  | Notes
 # **update_compensation**
 > Compensation update_compensation(compensation_id, compensation)
 
-Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to "yearly", "hourly", or "990" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be "990". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A non-string change_note is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to "yearly", "hourly", or "990" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be "990". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Example
 
@@ -23808,6 +24079,7 @@ Name | Type | Description  | Notes
 **403** | Forbidden. The token lacks the winad_write OAuth scope, the token&#39;s user may not update compensations, or the token has no user (client credentials) and no system user is configured to record as the actor. A client-credentials write is recorded under that system user. |  -  |
 **404** | Not Found |  -  |
 **422** | Unable to update compensation. Returned when coach_id, school_id, or year is included with a value that differs from the compensation&#39;s current identity. These fields are derived from the linked position and cannot be changed directly; move the position instead. Also returned for unknown, blank, or non-string compensation_type; hourly rows with nonzero amounts or a blank comment; or non-990 types on private-school compensations. Errors are keyed by attribute, including errors.base for hourly amounts, errors.comment for a blank hourly comment, and errors.compensation_type for invalid pay types. Also returned when contract_status_id is null, blank, not a whole number, or does not exist (errors.contract_status_id); contract_id is a pending contract (errors.contract). |  -  |
+**409** | A contract_id link is written under the locks a move of that contract takes (the coaches, then the contract). The contract kept moving to other coaches while the request waited for them (errors.contract). Nothing was written; retry. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -25841,6 +26113,91 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden - can only update own profile |  -  |
 **422** | Validation errors |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upsert_earned_incentive**
+> EarnedIncentive upsert_earned_incentive(earned_incentive_input)
+
+Create or replace the earned incentive with the same (coach_id, raw_contract_id, season_id, item_id). The stored row is exactly the payload a person approved (approved_by_id, approved_at); a field left out is cleared. Fields must be sent with their JSON types — ids and cents as integers, dates as "YYYY-MM-DD" strings — and are refused rather than converted. Dates and approved_at must fall in the years 1900-2100. WinAD does no calculation. Requires the winad_write OAuth scope and a super admin user; other users get 403. The write is recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.earned_incentive import EarnedIncentive
+from winthrop_client_python.models.earned_incentive_input import EarnedIncentiveInput
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    earned_incentive_input = winthrop_client_python.EarnedIncentiveInput() # EarnedIncentiveInput | The item's fields at the top level of the JSON body, with an optional change_note beside them
+
+    try:
+        api_response = api_instance.upsert_earned_incentive(earned_incentive_input)
+        print("The response of DefaultApi->upsert_earned_incentive:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->upsert_earned_incentive: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **earned_incentive_input** | [**EarnedIncentiveInput**](EarnedIncentiveInput.md)| The item&#39;s fields at the top level of the JSON body, with an optional change_note beside them | 
+
+### Return type
+
+[**EarnedIncentive**](EarnedIncentive.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The existing row with this key was replaced |  -  |
+**201** | A new row was created |  -  |
+**400** | The body is not a JSON object |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden. The token lacks the winad_write OAuth scope, or its user is not a super admin (a token with no user counts as an admin). |  -  |
+**422** | Nothing is saved. Returned for an unknown field (errors.base); a field sent with the wrong JSON type; a coach, contract, season or approver that does not exist; a missing required field; invalid UTF-8, a NUL character or an infinite/NaN number (e.g. 1e999) in any value; an item_id over 255 characters; a coach, contract, season or approver deleted while the request was being saved (\&quot;must exist\&quot;); a kind, status, verification_method or coverage outside its values; an amount on an unresolved, superseded or non_cash item, no amount on an earned bonus or raise, or an amount other than 0 on a not_earned one; an unresolved item without missing_fact; effective_through before effective_from; ended_by_contract_id on anything but an earned raise, or without effective_through; term_change on anything but a non_cash item, or not shaped {years_added, optional new_end_date}; result_ids naming a team_season_result that does not exist (the missing ids are listed); coverage without missing_documents (or missing_documents without coverage); approved_at in the future; or a change_note that is not a string. Errors are keyed by attribute. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

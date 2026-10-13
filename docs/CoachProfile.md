@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **instagram_handle** | **str** |  | [optional] 
 **instagram_verified** | **bool** |  | 
 **bio** | **str** |  | [optional] 
+**bio_text** | **str** |  | [optional] 
 **coach_friendly_id** | **str** |  | [optional] 
 **departing** | **bool** | Whether the header&#39;s position is departing — the first header_assignments entry when present | [optional] 
 **current_school_name** | **str** |  | [optional] 

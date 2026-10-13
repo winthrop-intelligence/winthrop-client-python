@@ -17,11 +17,10 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictBool
-from typing import Any, ClassVar, Dict, List, Optional
+from typing import Any, ClassVar, Dict, List
 from winthrop_client_python.models.conference_position_entry import (
     ConferencePositionEntry,
 )
-from winthrop_client_python.models.performance_chart_data import PerformanceChartData
 from winthrop_client_python.models.record_position_entry import RecordPositionEntry
 from typing import Optional, Set
 from typing_extensions import Self
@@ -36,13 +35,11 @@ class CoachRecordTab(BaseModel):
     show_coach_apr: StrictBool
     positions: List[RecordPositionEntry]
     conference_positions: List[ConferencePositionEntry]
-    performance_chart: Optional[PerformanceChartData] = None
     __properties: ClassVar[List[str]] = [
         "leader_ad",
         "show_coach_apr",
         "positions",
         "conference_positions",
-        "performance_chart",
     ]
 
     model_config = ConfigDict(
@@ -96,9 +93,6 @@ class CoachRecordTab(BaseModel):
                 if _item_conference_positions:
                     _items.append(_item_conference_positions.to_dict())
             _dict["conference_positions"] = _items
-        # override the default output from pydantic by calling `to_dict()` of performance_chart
-        if self.performance_chart:
-            _dict["performance_chart"] = self.performance_chart.to_dict()
         return _dict
 
     @classmethod
@@ -125,11 +119,6 @@ class CoachRecordTab(BaseModel):
                         for _item in obj["conference_positions"]
                     ]
                     if obj.get("conference_positions") is not None
-                    else None
-                ),
-                "performance_chart": (
-                    PerformanceChartData.from_dict(obj["performance_chart"])
-                    if obj.get("performance_chart") is not None
                     else None
                 ),
             }

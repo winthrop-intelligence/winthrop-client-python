@@ -16,27 +16,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict
+from typing import Any, ClassVar, Dict, List
+from winthrop_client_python.models.contract_history_entry import ContractHistoryEntry
+from winthrop_client_python.models.meta import Meta
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class PerformanceChartCoach(BaseModel):
+class ContractHistoryCollection(BaseModel):
     """
-    PerformanceChartCoach
+    ContractHistoryCollection
     """  # noqa: E501
 
-    name: StrictStr
-    position: Optional[StrictStr] = None
-    avatar_url: Optional[StrictStr] = None
-    coach_friendly_id: StrictStr
-    __properties: ClassVar[List[str]] = [
-        "name",
-        "position",
-        "avatar_url",
-        "coach_friendly_id",
-    ]
+    meta: Meta
+    data: List[ContractHistoryEntry]
+    __properties: ClassVar[List[str]] = ["meta", "data"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -55,7 +50,7 @@ class PerformanceChartCoach(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PerformanceChartCoach from a JSON string"""
+        """Create an instance of ContractHistoryCollection from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -75,21 +70,21 @@ class PerformanceChartCoach(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if position (nullable) is None
-        # and model_fields_set contains the field
-        if self.position is None and "position" in self.model_fields_set:
-            _dict["position"] = None
-
-        # set to None if avatar_url (nullable) is None
-        # and model_fields_set contains the field
-        if self.avatar_url is None and "avatar_url" in self.model_fields_set:
-            _dict["avatar_url"] = None
-
+        # override the default output from pydantic by calling `to_dict()` of meta
+        if self.meta:
+            _dict["meta"] = self.meta.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in data (list)
+        _items = []
+        if self.data:
+            for _item_data in self.data:
+                if _item_data:
+                    _items.append(_item_data.to_dict())
+            _dict["data"] = _items
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PerformanceChartCoach from a dict"""
+        """Create an instance of ContractHistoryCollection from a dict"""
         if obj is None:
             return None
 
@@ -98,10 +93,14 @@ class PerformanceChartCoach(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "name": obj.get("name"),
-                "position": obj.get("position"),
-                "avatar_url": obj.get("avatar_url"),
-                "coach_friendly_id": obj.get("coach_friendly_id"),
+                "meta": (
+                    Meta.from_dict(obj["meta"]) if obj.get("meta") is not None else None
+                ),
+                "data": (
+                    [ContractHistoryEntry.from_dict(_item) for _item in obj["data"]]
+                    if obj.get("data") is not None
+                    else None
+                ),
             }
         )
         return _obj

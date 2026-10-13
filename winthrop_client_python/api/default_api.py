@@ -240,6 +240,11 @@ from winthrop_client_python.models.desk_reports_response import DeskReportsRespo
 from winthrop_client_python.models.desk_requests_response import DeskRequestsResponse
 from winthrop_client_python.models.division import Division
 from winthrop_client_python.models.division_collection import DivisionCollection
+from winthrop_client_python.models.earned_incentive import EarnedIncentive
+from winthrop_client_python.models.earned_incentive_collection import (
+    EarnedIncentiveCollection,
+)
+from winthrop_client_python.models.earned_incentive_input import EarnedIncentiveInput
 from winthrop_client_python.models.edit_account_user_response import (
     EditAccountUserResponse,
 )
@@ -13431,6 +13436,298 @@ class DefaultApi:
         )
 
     @validate_call
+    def delete_compensation(
+        self,
+        compensation_id: Annotated[
+            StrictInt, Field(description="ID of compensation to delete")
+        ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """delete_compensation
+
+        Delete a compensation. Requires the winad_write OAuth scope and permission to destroy the compensation. Hidden-coach compensations are 404 for customers, who may not delete anyway (403). The positions that pointed at the compensation are kept and unlinked (compensation_id becomes null; no position version is written), the linked contract is kept, and the compensation's FOIA requested items (and their notes) are deleted with it. The coach's latest salary is refreshed. Like PATCH, the delete is recorded in the audit history (PaperTrail) attributed to the token's user, or for a client-credentials token to the configured system user. The optional change_note query parameter is the reason, stored (stripped, blank is absent) on every version the delete creates and never returned. The destroy version keeps the deleted row, so a client can read it back there. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+        :param compensation_id: ID of compensation to delete (required)
+        :type compensation_id: int
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_compensation_serialize(
+            compensation_id=compensation_id,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def delete_compensation_with_http_info(
+        self,
+        compensation_id: Annotated[
+            StrictInt, Field(description="ID of compensation to delete")
+        ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """delete_compensation
+
+        Delete a compensation. Requires the winad_write OAuth scope and permission to destroy the compensation. Hidden-coach compensations are 404 for customers, who may not delete anyway (403). The positions that pointed at the compensation are kept and unlinked (compensation_id becomes null; no position version is written), the linked contract is kept, and the compensation's FOIA requested items (and their notes) are deleted with it. The coach's latest salary is refreshed. Like PATCH, the delete is recorded in the audit history (PaperTrail) attributed to the token's user, or for a client-credentials token to the configured system user. The optional change_note query parameter is the reason, stored (stripped, blank is absent) on every version the delete creates and never returned. The destroy version keeps the deleted row, so a client can read it back there. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+        :param compensation_id: ID of compensation to delete (required)
+        :type compensation_id: int
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_compensation_serialize(
+            compensation_id=compensation_id,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def delete_compensation_without_preload_content(
+        self,
+        compensation_id: Annotated[
+            StrictInt, Field(description="ID of compensation to delete")
+        ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """delete_compensation
+
+        Delete a compensation. Requires the winad_write OAuth scope and permission to destroy the compensation. Hidden-coach compensations are 404 for customers, who may not delete anyway (403). The positions that pointed at the compensation are kept and unlinked (compensation_id becomes null; no position version is written), the linked contract is kept, and the compensation's FOIA requested items (and their notes) are deleted with it. The coach's latest salary is refreshed. Like PATCH, the delete is recorded in the audit history (PaperTrail) attributed to the token's user, or for a client-credentials token to the configured system user. The optional change_note query parameter is the reason, stored (stripped, blank is absent) on every version the delete creates and never returned. The destroy version keeps the deleted row, so a client can read it back there. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+        :param compensation_id: ID of compensation to delete (required)
+        :type compensation_id: int
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_compensation_serialize(
+            compensation_id=compensation_id,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _delete_compensation_serialize(
+        self,
+        compensation_id,
+        change_note,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if compensation_id is not None:
+            _path_params["compensationId"] = compensation_id
+        # process the query parameters
+        if change_note is not None:
+
+            _query_params.append(("change_note", change_note))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="DELETE",
+            resource_path="/api/v1/compensations/{compensationId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def delete_conference(
         self,
         conference_id: Annotated[StrictInt, Field(description="ID of the Conference")],
@@ -14410,6 +14707,298 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="DELETE",
             resource_path="/api/v1/desk_reports/{uuid}/archive",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def delete_earned_incentive(
+        self,
+        earned_incentive_id: Annotated[
+            StrictInt, Field(description="ID of the earned incentive to delete")
+        ],
+        change_note: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Why the row is being deleted, stored in its audit history and never returned."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EarnedIncentive:
+        """delete_earned_incentive
+
+        Delete one earned incentive and return it as it was. Requires the winad_write OAuth scope and a super admin user; other users get 403. The deletion is recorded in the row's audit history (PaperTrail) with the optional change_note query parameter as the reason.
+
+        :param earned_incentive_id: ID of the earned incentive to delete (required)
+        :type earned_incentive_id: int
+        :param change_note: Why the row is being deleted, stored in its audit history and never returned.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_earned_incentive_serialize(
+            earned_incentive_id=earned_incentive_id,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "EarnedIncentive",
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def delete_earned_incentive_with_http_info(
+        self,
+        earned_incentive_id: Annotated[
+            StrictInt, Field(description="ID of the earned incentive to delete")
+        ],
+        change_note: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Why the row is being deleted, stored in its audit history and never returned."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EarnedIncentive]:
+        """delete_earned_incentive
+
+        Delete one earned incentive and return it as it was. Requires the winad_write OAuth scope and a super admin user; other users get 403. The deletion is recorded in the row's audit history (PaperTrail) with the optional change_note query parameter as the reason.
+
+        :param earned_incentive_id: ID of the earned incentive to delete (required)
+        :type earned_incentive_id: int
+        :param change_note: Why the row is being deleted, stored in its audit history and never returned.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_earned_incentive_serialize(
+            earned_incentive_id=earned_incentive_id,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "EarnedIncentive",
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def delete_earned_incentive_without_preload_content(
+        self,
+        earned_incentive_id: Annotated[
+            StrictInt, Field(description="ID of the earned incentive to delete")
+        ],
+        change_note: Annotated[
+            Optional[StrictStr],
+            Field(
+                description="Why the row is being deleted, stored in its audit history and never returned."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """delete_earned_incentive
+
+        Delete one earned incentive and return it as it was. Requires the winad_write OAuth scope and a super admin user; other users get 403. The deletion is recorded in the row's audit history (PaperTrail) with the optional change_note query parameter as the reason.
+
+        :param earned_incentive_id: ID of the earned incentive to delete (required)
+        :type earned_incentive_id: int
+        :param change_note: Why the row is being deleted, stored in its audit history and never returned.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_earned_incentive_serialize(
+            earned_incentive_id=earned_incentive_id,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "EarnedIncentive",
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _delete_earned_incentive_serialize(
+        self,
+        earned_incentive_id,
+        change_note,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if earned_incentive_id is not None:
+            _path_params["earnedIncentiveId"] = earned_incentive_id
+        # process the query parameters
+        if change_note is not None:
+
+            _query_params.append(("change_note", change_note))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="DELETE",
+            resource_path="/api/v1/earned_incentives/{earnedIncentiveId}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -16401,9 +16990,9 @@ class DefaultApi:
             StrictInt, Field(description="ID of income report to delete")
         ],
         change_note: Annotated[
-            Optional[StrictStr],
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
             Field(
-                description="Why the report is being deleted, stored in its audit history and never returned."
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
             ),
         ] = None,
         _request_timeout: Union[
@@ -16424,7 +17013,7 @@ class DefaultApi:
 
         :param income_report_id: ID of income report to delete (required)
         :type income_report_id: int
-        :param change_note: Why the report is being deleted, stored in its audit history and never returned.
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
         :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -16480,9 +17069,9 @@ class DefaultApi:
             StrictInt, Field(description="ID of income report to delete")
         ],
         change_note: Annotated[
-            Optional[StrictStr],
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
             Field(
-                description="Why the report is being deleted, stored in its audit history and never returned."
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
             ),
         ] = None,
         _request_timeout: Union[
@@ -16503,7 +17092,7 @@ class DefaultApi:
 
         :param income_report_id: ID of income report to delete (required)
         :type income_report_id: int
-        :param change_note: Why the report is being deleted, stored in its audit history and never returned.
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
         :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -16559,9 +17148,9 @@ class DefaultApi:
             StrictInt, Field(description="ID of income report to delete")
         ],
         change_note: Annotated[
-            Optional[StrictStr],
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
             Field(
-                description="Why the report is being deleted, stored in its audit history and never returned."
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
             ),
         ] = None,
         _request_timeout: Union[
@@ -16582,7 +17171,7 @@ class DefaultApi:
 
         :param income_report_id: ID of income report to delete (required)
         :type income_report_id: int
-        :param change_note: Why the report is being deleted, stored in its audit history and never returned.
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
         :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -17182,6 +17771,12 @@ class DefaultApi:
         position_id: Annotated[
             StrictInt, Field(description="ID of position to delete")
         ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17200,6 +17795,8 @@ class DefaultApi:
 
         :param position_id: ID of position to delete (required)
         :type position_id: int
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+        :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17224,6 +17821,7 @@ class DefaultApi:
 
         _param = self._delete_position_serialize(
             position_id=position_id,
+            change_note=change_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17234,6 +17832,7 @@ class DefaultApi:
             "204": None,
             "401": None,
             "404": None,
+            "422": "UnprocessableEntity",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -17250,6 +17849,12 @@ class DefaultApi:
         position_id: Annotated[
             StrictInt, Field(description="ID of position to delete")
         ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17268,6 +17873,8 @@ class DefaultApi:
 
         :param position_id: ID of position to delete (required)
         :type position_id: int
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+        :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17292,6 +17899,7 @@ class DefaultApi:
 
         _param = self._delete_position_serialize(
             position_id=position_id,
+            change_note=change_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17302,6 +17910,7 @@ class DefaultApi:
             "204": None,
             "401": None,
             "404": None,
+            "422": "UnprocessableEntity",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -17318,6 +17927,12 @@ class DefaultApi:
         position_id: Annotated[
             StrictInt, Field(description="ID of position to delete")
         ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -17336,6 +17951,8 @@ class DefaultApi:
 
         :param position_id: ID of position to delete (required)
         :type position_id: int
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+        :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -17360,6 +17977,7 @@ class DefaultApi:
 
         _param = self._delete_position_serialize(
             position_id=position_id,
+            change_note=change_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -17370,6 +17988,7 @@ class DefaultApi:
             "204": None,
             "401": None,
             "404": None,
+            "422": "UnprocessableEntity",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -17379,6 +17998,7 @@ class DefaultApi:
     def _delete_position_serialize(
         self,
         position_id,
+        change_note,
         _request_auth,
         _content_type,
         _headers,
@@ -17402,9 +18022,19 @@ class DefaultApi:
         if position_id is not None:
             _path_params["positionId"] = position_id
         # process the query parameters
+        if change_note is not None:
+
+            _query_params.append(("change_note", change_note))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
 
         # authentication setting
         _auth_settings: List[str] = ["ApiKey", "Oauth2"]
@@ -38476,6 +39106,438 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="GET",
             resource_path="/api/v1/divisions",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_earned_incentives(
+        self,
+        coach_id: Optional[StrictInt] = None,
+        raw_contract_id: Annotated[
+            Optional[StrictInt], Field(description="The contract the items come from")
+        ] = None,
+        school_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Every item whose season belongs to one of this school's teams"
+            ),
+        ] = None,
+        season_year: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter."
+            ),
+        ] = None,
+        season: Annotated[
+            Optional[StrictInt], Field(description="Same as season_year")
+        ] = None,
+        season_id: Annotated[
+            Optional[StrictInt], Field(description="One team's season row")
+        ] = None,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
+        per_page: Annotated[
+            Optional[StrictInt], Field(description="number of results per page.")
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EarnedIncentiveCollection:
+        """get_earned_incentives
+
+        List earned incentives (WINAD-10637) — per contract incentive item and season, whether the coach earned it under the contract and how much. Values are earned under the contract, not proof of payment. Filters combine; with none, every row is listed. Requires the winad_read OAuth scope and a super admin user; other users get 403.
+
+        :param coach_id:
+        :type coach_id: int
+        :param raw_contract_id: The contract the items come from
+        :type raw_contract_id: int
+        :param school_id: Every item whose season belongs to one of this school's teams
+        :type school_id: int
+        :param season_year: The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter.
+        :type season_year: int
+        :param season: Same as season_year
+        :type season: int
+        :param season_id: One team's season row
+        :type season_id: int
+        :param page: results page to retrieve.
+        :type page: int
+        :param per_page: number of results per page.
+        :type per_page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_earned_incentives_serialize(
+            coach_id=coach_id,
+            raw_contract_id=raw_contract_id,
+            school_id=school_id,
+            season_year=season_year,
+            season=season,
+            season_id=season_id,
+            page=page,
+            per_page=per_page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "EarnedIncentiveCollection",
+            "401": None,
+            "403": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_earned_incentives_with_http_info(
+        self,
+        coach_id: Optional[StrictInt] = None,
+        raw_contract_id: Annotated[
+            Optional[StrictInt], Field(description="The contract the items come from")
+        ] = None,
+        school_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Every item whose season belongs to one of this school's teams"
+            ),
+        ] = None,
+        season_year: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter."
+            ),
+        ] = None,
+        season: Annotated[
+            Optional[StrictInt], Field(description="Same as season_year")
+        ] = None,
+        season_id: Annotated[
+            Optional[StrictInt], Field(description="One team's season row")
+        ] = None,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
+        per_page: Annotated[
+            Optional[StrictInt], Field(description="number of results per page.")
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EarnedIncentiveCollection]:
+        """get_earned_incentives
+
+        List earned incentives (WINAD-10637) — per contract incentive item and season, whether the coach earned it under the contract and how much. Values are earned under the contract, not proof of payment. Filters combine; with none, every row is listed. Requires the winad_read OAuth scope and a super admin user; other users get 403.
+
+        :param coach_id:
+        :type coach_id: int
+        :param raw_contract_id: The contract the items come from
+        :type raw_contract_id: int
+        :param school_id: Every item whose season belongs to one of this school's teams
+        :type school_id: int
+        :param season_year: The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter.
+        :type season_year: int
+        :param season: Same as season_year
+        :type season: int
+        :param season_id: One team's season row
+        :type season_id: int
+        :param page: results page to retrieve.
+        :type page: int
+        :param per_page: number of results per page.
+        :type per_page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_earned_incentives_serialize(
+            coach_id=coach_id,
+            raw_contract_id=raw_contract_id,
+            school_id=school_id,
+            season_year=season_year,
+            season=season,
+            season_id=season_id,
+            page=page,
+            per_page=per_page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "EarnedIncentiveCollection",
+            "401": None,
+            "403": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_earned_incentives_without_preload_content(
+        self,
+        coach_id: Optional[StrictInt] = None,
+        raw_contract_id: Annotated[
+            Optional[StrictInt], Field(description="The contract the items come from")
+        ] = None,
+        school_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Every item whose season belongs to one of this school's teams"
+            ),
+        ] = None,
+        season_year: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter."
+            ),
+        ] = None,
+        season: Annotated[
+            Optional[StrictInt], Field(description="Same as season_year")
+        ] = None,
+        season_id: Annotated[
+            Optional[StrictInt], Field(description="One team's season row")
+        ] = None,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
+        per_page: Annotated[
+            Optional[StrictInt], Field(description="number of results per page.")
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_earned_incentives
+
+        List earned incentives (WINAD-10637) — per contract incentive item and season, whether the coach earned it under the contract and how much. Values are earned under the contract, not proof of payment. Filters combine; with none, every row is listed. Requires the winad_read OAuth scope and a super admin user; other users get 403.
+
+        :param coach_id:
+        :type coach_id: int
+        :param raw_contract_id: The contract the items come from
+        :type raw_contract_id: int
+        :param school_id: Every item whose season belongs to one of this school's teams
+        :type school_id: int
+        :param season_year: The season's END year (2026 is the 2025-26 season). `season` is accepted as the same filter.
+        :type season_year: int
+        :param season: Same as season_year
+        :type season: int
+        :param season_id: One team's season row
+        :type season_id: int
+        :param page: results page to retrieve.
+        :type page: int
+        :param per_page: number of results per page.
+        :type per_page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_earned_incentives_serialize(
+            coach_id=coach_id,
+            raw_contract_id=raw_contract_id,
+            school_id=school_id,
+            season_year=season_year,
+            season=season,
+            season_id=season_id,
+            page=page,
+            per_page=per_page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "EarnedIncentiveCollection",
+            "401": None,
+            "403": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_earned_incentives_serialize(
+        self,
+        coach_id,
+        raw_contract_id,
+        school_id,
+        season_year,
+        season,
+        season_id,
+        page,
+        per_page,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if coach_id is not None:
+
+            _query_params.append(("coach_id", coach_id))
+
+        if raw_contract_id is not None:
+
+            _query_params.append(("raw_contract_id", raw_contract_id))
+
+        if school_id is not None:
+
+            _query_params.append(("school_id", school_id))
+
+        if season_year is not None:
+
+            _query_params.append(("season_year", season_year))
+
+        if season is not None:
+
+            _query_params.append(("season", season))
+
+        if season_id is not None:
+
+            _query_params.append(("season_id", season_id))
+
+        if page is not None:
+
+            _query_params.append(("page", page))
+
+        if per_page is not None:
+
+            _query_params.append(("per_page", per_page))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/earned_incentives",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -75759,6 +76821,7 @@ class DefaultApi:
             "403": None,
             "404": None,
             "422": None,
+            "409": None,
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -75832,6 +76895,7 @@ class DefaultApi:
             "403": None,
             "404": None,
             "422": None,
+            "409": None,
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -75905,6 +76969,7 @@ class DefaultApi:
             "403": None,
             "404": None,
             "422": None,
+            "409": None,
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -78451,7 +79516,7 @@ class DefaultApi:
     ) -> Compensation:
         """update_compensation
 
-        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A non-string change_note is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
         :param compensation_id: ID of compensation to update (required)
         :type compensation_id: int
@@ -78494,6 +79559,7 @@ class DefaultApi:
             "403": None,
             "404": None,
             "422": "UnprocessableEntity",
+            "409": "ContractErrorsResponse",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -78527,7 +79593,7 @@ class DefaultApi:
     ) -> ApiResponse[Compensation]:
         """update_compensation
 
-        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A non-string change_note is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
         :param compensation_id: ID of compensation to update (required)
         :type compensation_id: int
@@ -78570,6 +79636,7 @@ class DefaultApi:
             "403": None,
             "404": None,
             "422": "UnprocessableEntity",
+            "409": "ContractErrorsResponse",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -78603,7 +79670,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """update_compensation
 
-        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A non-string change_note is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
         :param compensation_id: ID of compensation to update (required)
         :type compensation_id: int
@@ -78646,6 +79713,7 @@ class DefaultApi:
             "403": None,
             "404": None,
             "422": "UnprocessableEntity",
+            "409": "ContractErrorsResponse",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -85660,6 +86728,288 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="PATCH",
             resource_path="/api/v1/users/{userId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def upsert_earned_incentive(
+        self,
+        earned_incentive_input: Annotated[
+            EarnedIncentiveInput,
+            Field(
+                description="The item's fields at the top level of the JSON body, with an optional change_note beside them"
+            ),
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> EarnedIncentive:
+        """upsert_earned_incentive
+
+        Create or replace the earned incentive with the same (coach_id, raw_contract_id, season_id, item_id). The stored row is exactly the payload a person approved (approved_by_id, approved_at); a field left out is cleared. Fields must be sent with their JSON types — ids and cents as integers, dates as \"YYYY-MM-DD\" strings — and are refused rather than converted. Dates and approved_at must fall in the years 1900-2100. WinAD does no calculation. Requires the winad_write OAuth scope and a super admin user; other users get 403. The write is recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason.
+
+        :param earned_incentive_input: The item's fields at the top level of the JSON body, with an optional change_note beside them (required)
+        :type earned_incentive_input: EarnedIncentiveInput
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._upsert_earned_incentive_serialize(
+            earned_incentive_input=earned_incentive_input,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "EarnedIncentive",
+            "201": "EarnedIncentive",
+            "400": None,
+            "401": None,
+            "403": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def upsert_earned_incentive_with_http_info(
+        self,
+        earned_incentive_input: Annotated[
+            EarnedIncentiveInput,
+            Field(
+                description="The item's fields at the top level of the JSON body, with an optional change_note beside them"
+            ),
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[EarnedIncentive]:
+        """upsert_earned_incentive
+
+        Create or replace the earned incentive with the same (coach_id, raw_contract_id, season_id, item_id). The stored row is exactly the payload a person approved (approved_by_id, approved_at); a field left out is cleared. Fields must be sent with their JSON types — ids and cents as integers, dates as \"YYYY-MM-DD\" strings — and are refused rather than converted. Dates and approved_at must fall in the years 1900-2100. WinAD does no calculation. Requires the winad_write OAuth scope and a super admin user; other users get 403. The write is recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason.
+
+        :param earned_incentive_input: The item's fields at the top level of the JSON body, with an optional change_note beside them (required)
+        :type earned_incentive_input: EarnedIncentiveInput
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._upsert_earned_incentive_serialize(
+            earned_incentive_input=earned_incentive_input,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "EarnedIncentive",
+            "201": "EarnedIncentive",
+            "400": None,
+            "401": None,
+            "403": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def upsert_earned_incentive_without_preload_content(
+        self,
+        earned_incentive_input: Annotated[
+            EarnedIncentiveInput,
+            Field(
+                description="The item's fields at the top level of the JSON body, with an optional change_note beside them"
+            ),
+        ],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """upsert_earned_incentive
+
+        Create or replace the earned incentive with the same (coach_id, raw_contract_id, season_id, item_id). The stored row is exactly the payload a person approved (approved_by_id, approved_at); a field left out is cleared. Fields must be sent with their JSON types — ids and cents as integers, dates as \"YYYY-MM-DD\" strings — and are refused rather than converted. Dates and approved_at must fall in the years 1900-2100. WinAD does no calculation. Requires the winad_write OAuth scope and a super admin user; other users get 403. The write is recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason.
+
+        :param earned_incentive_input: The item's fields at the top level of the JSON body, with an optional change_note beside them (required)
+        :type earned_incentive_input: EarnedIncentiveInput
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._upsert_earned_incentive_serialize(
+            earned_incentive_input=earned_incentive_input,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "EarnedIncentive",
+            "201": "EarnedIncentive",
+            "400": None,
+            "401": None,
+            "403": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _upsert_earned_incentive_serialize(
+        self,
+        earned_incentive_input,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if earned_incentive_input is not None:
+            _body_params = earned_incentive_input
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params["Content-Type"] = _content_type
+        else:
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
+            )
+            if _default_content_type is not None:
+                _header_params["Content-Type"] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="PUT",
+            resource_path="/api/v1/earned_incentives",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

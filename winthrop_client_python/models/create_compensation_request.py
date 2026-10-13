@@ -16,8 +16,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
+from typing_extensions import Annotated
 from winthrop_client_python.models.compensation_create_request import (
     CompensationCreateRequest,
 )
@@ -31,9 +32,9 @@ class CreateCompensationRequest(BaseModel):
     """  # noqa: E501
 
     compensation: CompensationCreateRequest
-    change_note: Optional[StrictStr] = Field(
+    change_note: Optional[Annotated[str, Field(strict=True, max_length=500)]] = Field(
         default=None,
-        description="Optional. Why this change is being made, for the internal audit history (WINAD-10632). Stored on the audit versions this write creates; never returned by the API. Blank is the same as omitted.",
+        description="Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.",
     )
     __properties: ClassVar[List[str]] = ["compensation", "change_note"]
 

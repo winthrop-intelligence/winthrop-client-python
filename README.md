@@ -99,7 +99,9 @@ Class | Method | HTTP request | Description
 *MlAthleticApi* | [**predict**](docs/MlAthleticApi.md#predict) | **POST** /ml-athletic/predict | 
 *ContractsApi* | [**create_pending_contract**](docs/ContractsApi.md#create_pending_contract) | **POST** /api/v1/contracts | 
 *ContractsApi* | [**delete_pending_contract**](docs/ContractsApi.md#delete_pending_contract) | **DELETE** /api/v1/contracts/{contractId} | 
+*ContractsApi* | [**get_contract_history**](docs/ContractsApi.md#get_contract_history) | **GET** /api/v1/contract_history | 
 *ContractsApi* | [**publish_pending_contract**](docs/ContractsApi.md#publish_pending_contract) | **POST** /api/v1/contracts/{contractId}/publish | 
+*ContractsApi* | [**replace_contract_file**](docs/ContractsApi.md#replace_contract_file) | **PUT** /api/v1/contracts/{contractId}/file | 
 *ContractsApi* | [**update_contract**](docs/ContractsApi.md#update_contract) | **PATCH** /api/v1/contracts/{contractId} | 
 *CtbApi* | [**apply_ctb_compensation**](docs/CtbApi.md#apply_ctb_compensation) | **POST** /api/v1/ctb_compensation_apply | 
 *DefaultApi* | [**average_conference_comp**](docs/DefaultApi.md#average_conference_comp) | **GET** /api/v1/compensations/average_conference_comp | 
@@ -150,10 +152,12 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_account_user**](docs/DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
 *DefaultApi* | [**delete_admin_desk_report_artifact**](docs/DefaultApi.md#delete_admin_desk_report_artifact) | **DELETE** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts/{id} | 
 *DefaultApi* | [**delete_cashflow**](docs/DefaultApi.md#delete_cashflow) | **DELETE** /api/v1/cashflows/{cashflowId} | 
+*DefaultApi* | [**delete_compensation**](docs/DefaultApi.md#delete_compensation) | **DELETE** /api/v1/compensations/{compensationId} | 
 *DefaultApi* | [**delete_conference**](docs/DefaultApi.md#delete_conference) | **DELETE** /api/v1/conferences/{conferenceId} | 
 *DefaultApi* | [**delete_conferenceship**](docs/DefaultApi.md#delete_conferenceship) | **DELETE** /api/v1/conferenceships/{conferenceshipId} | 
 *DefaultApi* | [**delete_contact_search**](docs/DefaultApi.md#delete_contact_search) | **DELETE** /api/v1/contact_searches/{id} | 
 *DefaultApi* | [**delete_desk_report_archive**](docs/DefaultApi.md#delete_desk_report_archive) | **DELETE** /api/v1/desk_reports/{uuid}/archive | 
+*DefaultApi* | [**delete_earned_incentive**](docs/DefaultApi.md#delete_earned_incentive) | **DELETE** /api/v1/earned_incentives/{earnedIncentiveId} | 
 *DefaultApi* | [**delete_favorite**](docs/DefaultApi.md#delete_favorite) | **DELETE** /api/v1/favorites/{id} | 
 *DefaultApi* | [**delete_favorites_category**](docs/DefaultApi.md#delete_favorites_category) | **DELETE** /api/v1/favorites_categories/{id} | 
 *DefaultApi* | [**delete_foia_label**](docs/DefaultApi.md#delete_foia_label) | **DELETE** /api/v1/foia_labels/{foiaLabelId} | 
@@ -241,6 +245,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**get_desk_requests**](docs/DefaultApi.md#get_desk_requests) | **GET** /api/v1/desk_requests | 
 *DefaultApi* | [**get_division**](docs/DefaultApi.md#get_division) | **GET** /api/v1/divisions/{divisionId} | 
 *DefaultApi* | [**get_divisions**](docs/DefaultApi.md#get_divisions) | **GET** /api/v1/divisions | 
+*DefaultApi* | [**get_earned_incentives**](docs/DefaultApi.md#get_earned_incentives) | **GET** /api/v1/earned_incentives | 
 *DefaultApi* | [**get_edit_account_user**](docs/DefaultApi.md#get_edit_account_user) | **GET** /api/v1/account_users/{accountUserId}/edit | 
 *DefaultApi* | [**get_favorites**](docs/DefaultApi.md#get_favorites) | **GET** /api/v1/favorites | 
 *DefaultApi* | [**get_favorites_categories**](docs/DefaultApi.md#get_favorites_categories) | **GET** /api/v1/favorites_categories | 
@@ -409,6 +414,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**update_subscription_acceptance**](docs/DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} | 
 *DefaultApi* | [**update_team_schedule_favorite**](docs/DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
 *DefaultApi* | [**update_user**](docs/DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
+*DefaultApi* | [**upsert_earned_incentive**](docs/DefaultApi.md#upsert_earned_incentive) | **PUT** /api/v1/earned_incentives | 
 *DefaultApi* | [**upsert_team_schedule_note**](docs/DefaultApi.md#upsert_team_schedule_note) | **PUT** /api/v1/team_schedule_notes/{fil_team_id} | 
 *DefaultApi* | [**upsert_team_season_result**](docs/DefaultApi.md#upsert_team_season_result) | **PUT** /api/v1/team_season_results | 
 *DefaultApi* | [**user_me**](docs/DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
@@ -615,6 +621,12 @@ Class | Method | HTTP request | Description
  - [Contract](docs/Contract.md)
  - [ContractCollection](docs/ContractCollection.md)
  - [ContractErrorsResponse](docs/ContractErrorsResponse.md)
+ - [ContractFileReplaced](docs/ContractFileReplaced.md)
+ - [ContractHistoryCollection](docs/ContractHistoryCollection.md)
+ - [ContractHistoryEntry](docs/ContractHistoryEntry.md)
+ - [ContractHistoryEntryChangesValue](docs/ContractHistoryEntryChangesValue.md)
+ - [ContractHistoryEntryOauthApplication](docs/ContractHistoryEntryOauthApplication.md)
+ - [ContractHistoryEntryUser](docs/ContractHistoryEntryUser.md)
  - [ContractTermOption](docs/ContractTermOption.md)
  - [ContractTerms](docs/ContractTerms.md)
  - [ContractTermsSource](docs/ContractTermsSource.md)
@@ -821,6 +833,11 @@ Class | Method | HTTP request | Description
  - [DirectorsCupSchool](docs/DirectorsCupSchool.md)
  - [Division](docs/Division.md)
  - [DivisionCollection](docs/DivisionCollection.md)
+ - [EarnedIncentive](docs/EarnedIncentive.md)
+ - [EarnedIncentiveCollection](docs/EarnedIncentiveCollection.md)
+ - [EarnedIncentiveFields](docs/EarnedIncentiveFields.md)
+ - [EarnedIncentiveFieldsTermChange](docs/EarnedIncentiveFieldsTermChange.md)
+ - [EarnedIncentiveInput](docs/EarnedIncentiveInput.md)
  - [EditAccountUser](docs/EditAccountUser.md)
  - [EditAccountUserResponse](docs/EditAccountUserResponse.md)
  - [EnrichGamePostSearchesRequest](docs/EnrichGamePostSearchesRequest.md)
@@ -1030,9 +1047,6 @@ Class | Method | HTTP request | Description
  - [Note](docs/Note.md)
  - [PageView](docs/PageView.md)
  - [PendingContractCreated](docs/PendingContractCreated.md)
- - [PerformanceChartCoach](docs/PerformanceChartCoach.md)
- - [PerformanceChartData](docs/PerformanceChartData.md)
- - [PerformanceChartRecord](docs/PerformanceChartRecord.md)
  - [PersonAssignment](docs/PersonAssignment.md)
  - [Position](docs/Position.md)
  - [PositionCollection](docs/PositionCollection.md)

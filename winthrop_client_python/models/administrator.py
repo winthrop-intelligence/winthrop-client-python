@@ -40,6 +40,34 @@ class Administrator(BaseModel):
     Administrator search result. In /administrator_searches responses, compensation fields are only included when the user has administrator_compensation permission, and contract fields are only included when the user can view the related contract or raw contract.
     """  # noqa: E501
 
+    latest_known_fallback: Optional[StrictBool] = Field(
+        default=None,
+        description="True when the row's position has no usable annual total but an earlier season of the same unbroken job (same coach, school, sport and position types in every season between) does, and no season since that record carries an hourly record or conflicting positions, so the latest_known_* fields carry that older record as display-only context. It never changes compensation_cents, the comp filters, the compensation sort or comp_stats, and the latest_compensation_* columns behind it are not accepted as filter or sort inputs. The whole latest_known_* group is absent without compensation access.",
+    )
+    latest_known_compensation_cents: Optional[StrictInt] = Field(
+        default=None,
+        description="Total of that older record in cents; null unless latest_known_fallback.",
+    )
+    latest_known_base_salary_cents: Optional[StrictInt] = Field(
+        default=None,
+        description="Base salary of that older record in cents; null unless latest_known_fallback.",
+    )
+    latest_known_compensation_type: Optional[StrictStr] = Field(
+        default=None,
+        description="Compensation type as stored on that older record; null unless latest_known_fallback, and null when the record stores no type (the same raw reading as compensation_type).",
+    )
+    latest_known_source_year: Optional[StrictInt] = Field(
+        default=None,
+        description="End year of the season the older record's position belongs to (2024 means 2023–24); null unless latest_known_fallback. Always earlier than the target assignment's season.",
+    )
+    latest_known_source_compensation_id: Optional[StrictInt] = Field(
+        default=None,
+        description="The older compensation record's id; null unless latest_known_fallback.",
+    )
+    latest_known_source_raw_contract_id: Optional[StrictInt] = Field(
+        default=None,
+        description="The document behind the older record, present only when one is on file and the viewer may open it. Distinct from raw_contract_id, which stays the current position's contract document.",
+    )
     id: Optional[StrictInt] = None
     coach_id: Optional[StrictInt] = None
     coach_first_name: Optional[StrictStr] = None
@@ -157,6 +185,13 @@ class Administrator(BaseModel):
     coach: Optional[Coach] = None
     departments: Optional[List[PositionType]] = None
     __properties: ClassVar[List[str]] = [
+        "latest_known_fallback",
+        "latest_known_compensation_cents",
+        "latest_known_base_salary_cents",
+        "latest_known_compensation_type",
+        "latest_known_source_year",
+        "latest_known_source_compensation_id",
+        "latest_known_source_raw_contract_id",
         "id",
         "coach_id",
         "coach_first_name",
@@ -284,6 +319,54 @@ class Administrator(BaseModel):
                 if _item_departments:
                     _items.append(_item_departments.to_dict())
             _dict["departments"] = _items
+        # set to None if latest_known_compensation_cents (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.latest_known_compensation_cents is None
+            and "latest_known_compensation_cents" in self.model_fields_set
+        ):
+            _dict["latest_known_compensation_cents"] = None
+
+        # set to None if latest_known_base_salary_cents (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.latest_known_base_salary_cents is None
+            and "latest_known_base_salary_cents" in self.model_fields_set
+        ):
+            _dict["latest_known_base_salary_cents"] = None
+
+        # set to None if latest_known_compensation_type (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.latest_known_compensation_type is None
+            and "latest_known_compensation_type" in self.model_fields_set
+        ):
+            _dict["latest_known_compensation_type"] = None
+
+        # set to None if latest_known_source_year (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.latest_known_source_year is None
+            and "latest_known_source_year" in self.model_fields_set
+        ):
+            _dict["latest_known_source_year"] = None
+
+        # set to None if latest_known_source_compensation_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.latest_known_source_compensation_id is None
+            and "latest_known_source_compensation_id" in self.model_fields_set
+        ):
+            _dict["latest_known_source_compensation_id"] = None
+
+        # set to None if latest_known_source_raw_contract_id (nullable) is None
+        # and model_fields_set contains the field
+        if (
+            self.latest_known_source_raw_contract_id is None
+            and "latest_known_source_raw_contract_id" in self.model_fields_set
+        ):
+            _dict["latest_known_source_raw_contract_id"] = None
+
         # set to None if newer_season (nullable) is None
         # and model_fields_set contains the field
         if self.newer_season is None and "newer_season" in self.model_fields_set:
@@ -302,6 +385,23 @@ class Administrator(BaseModel):
 
         _obj = cls.model_validate(
             {
+                "latest_known_fallback": obj.get("latest_known_fallback"),
+                "latest_known_compensation_cents": obj.get(
+                    "latest_known_compensation_cents"
+                ),
+                "latest_known_base_salary_cents": obj.get(
+                    "latest_known_base_salary_cents"
+                ),
+                "latest_known_compensation_type": obj.get(
+                    "latest_known_compensation_type"
+                ),
+                "latest_known_source_year": obj.get("latest_known_source_year"),
+                "latest_known_source_compensation_id": obj.get(
+                    "latest_known_source_compensation_id"
+                ),
+                "latest_known_source_raw_contract_id": obj.get(
+                    "latest_known_source_raw_contract_id"
+                ),
                 "id": obj.get("id"),
                 "coach_id": obj.get("coach_id"),
                 "coach_first_name": obj.get("coach_first_name"),

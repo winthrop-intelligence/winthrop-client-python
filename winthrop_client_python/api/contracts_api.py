@@ -20,6 +20,10 @@ from pydantic import Field, StrictBytes, StrictInt, StrictStr
 from typing import Optional, Tuple, Union
 from typing_extensions import Annotated
 from winthrop_client_python.models.contract import Contract
+from winthrop_client_python.models.contract_file_replaced import ContractFileReplaced
+from winthrop_client_python.models.contract_history_collection import (
+    ContractHistoryCollection,
+)
 from winthrop_client_python.models.pending_contract_created import (
     PendingContractCreated,
 )
@@ -72,6 +76,12 @@ class ContractsApi:
                 description="Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person."
             ),
         ] = None,
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -98,6 +108,8 @@ class ContractsApi:
         :type text: str
         :param contract_terms: Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person.
         :type contract_terms: str
+        :param change_note: Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+        :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -126,6 +138,7 @@ class ContractsApi:
             drive_id=drive_id,
             text=text,
             contract_terms=contract_terms,
+            change_note=change_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -173,6 +186,12 @@ class ContractsApi:
                 description="Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person."
             ),
         ] = None,
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -199,6 +218,8 @@ class ContractsApi:
         :type text: str
         :param contract_terms: Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person.
         :type contract_terms: str
+        :param change_note: Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+        :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -227,6 +248,7 @@ class ContractsApi:
             drive_id=drive_id,
             text=text,
             contract_terms=contract_terms,
+            change_note=change_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -274,6 +296,12 @@ class ContractsApi:
                 description="Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person."
             ),
         ] = None,
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -300,6 +328,8 @@ class ContractsApi:
         :type text: str
         :param contract_terms: Optional structured terms read from the contract, as a JSON-encoded ContractTerms object (see PATCH /raw_contracts/{id}/contract_terms). Stored on the RawContract in the same transaction; an invalid document refuses the upload with errors keyed contract_terms, contract_terms.schema, contract_terms.source.run_id, and so on. Accepted from service (client-credentials) tokens like the rest of the upload; the audit version then records no person.
         :type contract_terms: str
+        :param change_note: Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+        :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -328,6 +358,7 @@ class ContractsApi:
             drive_id=drive_id,
             text=text,
             contract_terms=contract_terms,
+            change_note=change_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -352,6 +383,7 @@ class ContractsApi:
         drive_id,
         text,
         contract_terms,
+        change_note,
         _request_auth,
         _content_type,
         _headers,
@@ -385,6 +417,8 @@ class ContractsApi:
             _form_params.append(("text", text))
         if contract_terms is not None:
             _form_params.append(("contract_terms", contract_terms))
+        if change_note is not None:
+            _form_params.append(("change_note", change_note))
         # process the body parameter
 
         # set the HTTP header `Accept`
@@ -427,6 +461,12 @@ class ContractsApi:
         contract_id: Annotated[
             StrictInt, Field(description="ID of the pending contract to delete")
         ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -445,6 +485,8 @@ class ContractsApi:
 
         :param contract_id: ID of the pending contract to delete (required)
         :type contract_id: int
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+        :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -469,6 +511,7 @@ class ContractsApi:
 
         _param = self._delete_pending_contract_serialize(
             contract_id=contract_id,
+            change_note=change_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -497,6 +540,12 @@ class ContractsApi:
         contract_id: Annotated[
             StrictInt, Field(description="ID of the pending contract to delete")
         ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -515,6 +564,8 @@ class ContractsApi:
 
         :param contract_id: ID of the pending contract to delete (required)
         :type contract_id: int
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+        :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -539,6 +590,7 @@ class ContractsApi:
 
         _param = self._delete_pending_contract_serialize(
             contract_id=contract_id,
+            change_note=change_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -567,6 +619,12 @@ class ContractsApi:
         contract_id: Annotated[
             StrictInt, Field(description="ID of the pending contract to delete")
         ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned."
+            ),
+        ] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -585,6 +643,8 @@ class ContractsApi:
 
         :param contract_id: ID of the pending contract to delete (required)
         :type contract_id: int
+        :param change_note: Optional. Why the record is being deleted, for the internal audit history; stored on every audit version the delete creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is deleted. Never returned.
+        :type change_note: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -609,6 +669,7 @@ class ContractsApi:
 
         _param = self._delete_pending_contract_serialize(
             contract_id=contract_id,
+            change_note=change_note,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -630,6 +691,7 @@ class ContractsApi:
     def _delete_pending_contract_serialize(
         self,
         contract_id,
+        change_note,
         _request_auth,
         _content_type,
         _headers,
@@ -653,6 +715,10 @@ class ContractsApi:
         if contract_id is not None:
             _path_params["contractId"] = contract_id
         # process the query parameters
+        if change_note is not None:
+
+            _query_params.append(("change_note", change_note))
+
         # process the header parameters
         # process the form parameters
         # process the body parameter
@@ -669,6 +735,390 @@ class ContractsApi:
         return self.api_client.param_serialize(
             method="DELETE",
             resource_path="/api/v1/contracts/{contractId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def get_contract_history(
+        self,
+        contract_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="The contract, which may have been deleted since if its versions were kept. Exactly one of contract_id and raw_contract_id is required."
+            ),
+        ] = None,
+        raw_contract_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="The document. Returns the combined history of every contract that uses it (live contracts only). Exactly one of contract_id and raw_contract_id is required."
+            ),
+        ] = None,
+        coach_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Keep only the versions recorded for this coach. A version carries the coach its record has after the change, so moving a contract to another coach (WINAD-10639) shows the move under the new coach, while the old coach keeps what was recorded before it."
+            ),
+        ] = None,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
+        per_page: Annotated[
+            Optional[Annotated[int, Field(le=100, strict=True, ge=1)]],
+            Field(description="Page size, capped at 100; defaults to 35."),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ContractHistoryCollection:
+        """get_contract_history
+
+        The change history of a contract and everything under it (WINAD-10638): the contract, its compensations, the positions linked to them, its verification events and the replacements of its PDF (WINAD-10639, item_type RawContract, one `file` change with the old and new file), newest first (created_at, then id, descending). Read it before changing a record: it includes edits staff made in the admin UI since your last run, which have no change_note and no oauth_application.  Give exactly one of contract_id or raw_contract_id (otherwise 400); coach_id optionally keeps only the versions recorded for that coach. Each entry names the record (item_type and item_id), the event (create, update or destroy), every changed field with its old and new value (a create has no old values; a destroy's old values are the row as it was deleted, so a deleted compensation can be read back), who made the change, the OAuth app for an API write, when, and the change_note the API write gave.  It exposes editors and internal notes, so it needs the winad_read scope and permission to update the contract (staff); other users get 403. A contract the caller may not see (a hidden coach's, or a pending one for a non-manager) is 404.  The history outlives the contract. After a contract is deleted (a pending contract through DELETE /contracts/{id}, say) contract_id still returns its kept versions, the destroy and its change_note included. Who may read a deleted contract's history is decided from the row as it was deleted (its destroy version): a caller who cannot manage coaches gets 404 when the contract was pending, when its coach was hidden or no longer exists, or when that destroy version was not kept and so the owner is unknown. raw_contract_id does not find deleted contracts or documents; look those up by contract_id.  A raw_contract_id returns the combined history of every contract that uses the document (a PDF can be shared by several), merged and ordered newest first. Contracts the caller may not see are left out without a word, and it is 404 when none is left. coach_id applies across all of them before paging.
+
+        :param contract_id: The contract, which may have been deleted since if its versions were kept. Exactly one of contract_id and raw_contract_id is required.
+        :type contract_id: int
+        :param raw_contract_id: The document. Returns the combined history of every contract that uses it (live contracts only). Exactly one of contract_id and raw_contract_id is required.
+        :type raw_contract_id: int
+        :param coach_id: Keep only the versions recorded for this coach. A version carries the coach its record has after the change, so moving a contract to another coach (WINAD-10639) shows the move under the new coach, while the old coach keeps what was recorded before it.
+        :type coach_id: int
+        :param page: results page to retrieve.
+        :type page: int
+        :param per_page: Page size, capped at 100; defaults to 35.
+        :type per_page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_contract_history_serialize(
+            contract_id=contract_id,
+            raw_contract_id=raw_contract_id,
+            coach_id=coach_id,
+            page=page,
+            per_page=per_page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ContractHistoryCollection",
+            "400": "ContractErrorsResponse",
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def get_contract_history_with_http_info(
+        self,
+        contract_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="The contract, which may have been deleted since if its versions were kept. Exactly one of contract_id and raw_contract_id is required."
+            ),
+        ] = None,
+        raw_contract_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="The document. Returns the combined history of every contract that uses it (live contracts only). Exactly one of contract_id and raw_contract_id is required."
+            ),
+        ] = None,
+        coach_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Keep only the versions recorded for this coach. A version carries the coach its record has after the change, so moving a contract to another coach (WINAD-10639) shows the move under the new coach, while the old coach keeps what was recorded before it."
+            ),
+        ] = None,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
+        per_page: Annotated[
+            Optional[Annotated[int, Field(le=100, strict=True, ge=1)]],
+            Field(description="Page size, capped at 100; defaults to 35."),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ContractHistoryCollection]:
+        """get_contract_history
+
+        The change history of a contract and everything under it (WINAD-10638): the contract, its compensations, the positions linked to them, its verification events and the replacements of its PDF (WINAD-10639, item_type RawContract, one `file` change with the old and new file), newest first (created_at, then id, descending). Read it before changing a record: it includes edits staff made in the admin UI since your last run, which have no change_note and no oauth_application.  Give exactly one of contract_id or raw_contract_id (otherwise 400); coach_id optionally keeps only the versions recorded for that coach. Each entry names the record (item_type and item_id), the event (create, update or destroy), every changed field with its old and new value (a create has no old values; a destroy's old values are the row as it was deleted, so a deleted compensation can be read back), who made the change, the OAuth app for an API write, when, and the change_note the API write gave.  It exposes editors and internal notes, so it needs the winad_read scope and permission to update the contract (staff); other users get 403. A contract the caller may not see (a hidden coach's, or a pending one for a non-manager) is 404.  The history outlives the contract. After a contract is deleted (a pending contract through DELETE /contracts/{id}, say) contract_id still returns its kept versions, the destroy and its change_note included. Who may read a deleted contract's history is decided from the row as it was deleted (its destroy version): a caller who cannot manage coaches gets 404 when the contract was pending, when its coach was hidden or no longer exists, or when that destroy version was not kept and so the owner is unknown. raw_contract_id does not find deleted contracts or documents; look those up by contract_id.  A raw_contract_id returns the combined history of every contract that uses the document (a PDF can be shared by several), merged and ordered newest first. Contracts the caller may not see are left out without a word, and it is 404 when none is left. coach_id applies across all of them before paging.
+
+        :param contract_id: The contract, which may have been deleted since if its versions were kept. Exactly one of contract_id and raw_contract_id is required.
+        :type contract_id: int
+        :param raw_contract_id: The document. Returns the combined history of every contract that uses it (live contracts only). Exactly one of contract_id and raw_contract_id is required.
+        :type raw_contract_id: int
+        :param coach_id: Keep only the versions recorded for this coach. A version carries the coach its record has after the change, so moving a contract to another coach (WINAD-10639) shows the move under the new coach, while the old coach keeps what was recorded before it.
+        :type coach_id: int
+        :param page: results page to retrieve.
+        :type page: int
+        :param per_page: Page size, capped at 100; defaults to 35.
+        :type per_page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_contract_history_serialize(
+            contract_id=contract_id,
+            raw_contract_id=raw_contract_id,
+            coach_id=coach_id,
+            page=page,
+            per_page=per_page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ContractHistoryCollection",
+            "400": "ContractErrorsResponse",
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def get_contract_history_without_preload_content(
+        self,
+        contract_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="The contract, which may have been deleted since if its versions were kept. Exactly one of contract_id and raw_contract_id is required."
+            ),
+        ] = None,
+        raw_contract_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="The document. Returns the combined history of every contract that uses it (live contracts only). Exactly one of contract_id and raw_contract_id is required."
+            ),
+        ] = None,
+        coach_id: Annotated[
+            Optional[StrictInt],
+            Field(
+                description="Keep only the versions recorded for this coach. A version carries the coach its record has after the change, so moving a contract to another coach (WINAD-10639) shows the move under the new coach, while the old coach keeps what was recorded before it."
+            ),
+        ] = None,
+        page: Annotated[
+            Optional[StrictInt], Field(description="results page to retrieve.")
+        ] = None,
+        per_page: Annotated[
+            Optional[Annotated[int, Field(le=100, strict=True, ge=1)]],
+            Field(description="Page size, capped at 100; defaults to 35."),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """get_contract_history
+
+        The change history of a contract and everything under it (WINAD-10638): the contract, its compensations, the positions linked to them, its verification events and the replacements of its PDF (WINAD-10639, item_type RawContract, one `file` change with the old and new file), newest first (created_at, then id, descending). Read it before changing a record: it includes edits staff made in the admin UI since your last run, which have no change_note and no oauth_application.  Give exactly one of contract_id or raw_contract_id (otherwise 400); coach_id optionally keeps only the versions recorded for that coach. Each entry names the record (item_type and item_id), the event (create, update or destroy), every changed field with its old and new value (a create has no old values; a destroy's old values are the row as it was deleted, so a deleted compensation can be read back), who made the change, the OAuth app for an API write, when, and the change_note the API write gave.  It exposes editors and internal notes, so it needs the winad_read scope and permission to update the contract (staff); other users get 403. A contract the caller may not see (a hidden coach's, or a pending one for a non-manager) is 404.  The history outlives the contract. After a contract is deleted (a pending contract through DELETE /contracts/{id}, say) contract_id still returns its kept versions, the destroy and its change_note included. Who may read a deleted contract's history is decided from the row as it was deleted (its destroy version): a caller who cannot manage coaches gets 404 when the contract was pending, when its coach was hidden or no longer exists, or when that destroy version was not kept and so the owner is unknown. raw_contract_id does not find deleted contracts or documents; look those up by contract_id.  A raw_contract_id returns the combined history of every contract that uses the document (a PDF can be shared by several), merged and ordered newest first. Contracts the caller may not see are left out without a word, and it is 404 when none is left. coach_id applies across all of them before paging.
+
+        :param contract_id: The contract, which may have been deleted since if its versions were kept. Exactly one of contract_id and raw_contract_id is required.
+        :type contract_id: int
+        :param raw_contract_id: The document. Returns the combined history of every contract that uses it (live contracts only). Exactly one of contract_id and raw_contract_id is required.
+        :type raw_contract_id: int
+        :param coach_id: Keep only the versions recorded for this coach. A version carries the coach its record has after the change, so moving a contract to another coach (WINAD-10639) shows the move under the new coach, while the old coach keeps what was recorded before it.
+        :type coach_id: int
+        :param page: results page to retrieve.
+        :type page: int
+        :param per_page: Page size, capped at 100; defaults to 35.
+        :type per_page: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._get_contract_history_serialize(
+            contract_id=contract_id,
+            raw_contract_id=raw_contract_id,
+            coach_id=coach_id,
+            page=page,
+            per_page=per_page,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ContractHistoryCollection",
+            "400": "ContractErrorsResponse",
+            "401": None,
+            "403": None,
+            "404": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _get_contract_history_serialize(
+        self,
+        contract_id,
+        raw_contract_id,
+        coach_id,
+        page,
+        per_page,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if contract_id is not None:
+
+            _query_params.append(("contract_id", contract_id))
+
+        if raw_contract_id is not None:
+
+            _query_params.append(("raw_contract_id", raw_contract_id))
+
+        if coach_id is not None:
+
+            _query_params.append(("coach_id", coach_id))
+
+        if page is not None:
+
+            _query_params.append(("page", page))
+
+        if per_page is not None:
+
+            _query_params.append(("per_page", per_page))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="GET",
+            resource_path="/api/v1/contract_history",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -702,7 +1152,7 @@ class ContractsApi:
     ) -> PublishedContract:
         """publish_pending_contract
 
-        Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract's dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader's: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school's compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \"$1,234.50\" with either no thousands separators or correctly placed ones; \"500,00\" is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, compensations) and as compensations[n] (n = the row's position in the request, from 0) for a row; row messages name fields by their CSV column, for example \"Base Salary\". Requires the winad_write scope and a manage-level user.
+        Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract's dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader's: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school's compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \"$1,234.50\" with either no thousands separators or correctly placed ones; \"500,00\" is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, expires_on, contingent_change, compensations) and as compensations[n] (n = the row's position in the request, from 0) for a row; row messages name fields by their CSV column, for example \"Base Salary\". Requires the winad_write scope and a manage-level user.
 
         :param contract_id: ID of the pending contract to publish (required)
         :type contract_id: int
@@ -776,7 +1226,7 @@ class ContractsApi:
     ) -> ApiResponse[PublishedContract]:
         """publish_pending_contract
 
-        Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract's dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader's: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school's compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \"$1,234.50\" with either no thousands separators or correctly placed ones; \"500,00\" is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, compensations) and as compensations[n] (n = the row's position in the request, from 0) for a row; row messages name fields by their CSV column, for example \"Base Salary\". Requires the winad_write scope and a manage-level user.
+        Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract's dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader's: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school's compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \"$1,234.50\" with either no thousands separators or correctly placed ones; \"500,00\" is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, expires_on, contingent_change, compensations) and as compensations[n] (n = the row's position in the request, from 0) for a row; row messages name fields by their CSV column, for example \"Base Salary\". Requires the winad_write scope and a manage-level user.
 
         :param contract_id: ID of the pending contract to publish (required)
         :type contract_id: int
@@ -850,7 +1300,7 @@ class ContractsApi:
     ) -> RESTResponseType:
         """publish_pending_contract
 
-        Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract's dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader's: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school's compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \"$1,234.50\" with either no thousands separators or correctly placed ones; \"500,00\" is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, compensations) and as compensations[n] (n = the row's position in the request, from 0) for a row; row messages name fields by their CSV column, for example \"Base Salary\". Requires the winad_write scope and a manage-level user.
+        Publish a pending contract (WINAD-10559). In one transaction, under the coach lock, this sets the contract's dates, writes one compensation per year (creating the later-year positions the coach needs) and sets pending to false. If anything fails nothing is written and the contract stays pending, so the request can be corrected and retried.  The rules are the CSV compensation uploader's: the coach must have a position at each school in the first year listed for it, later years get positions created from it, a school can appear once per coach and year, a yearly or 990 compensation needs a base_salary and an hourly one needs a comment, and a private school's compensation must be 990. A compensation that already exists for the coach, school and year is updated and linked to this contract.  Money is in dollars (a number, or a string such as \"$1,234.50\" with either no thousands separators or correctly placed ones; \"500,00\" is refused), converted to cents like the CSV. Flags are JSON booleans. Unknown fields, at the top level or in a row, are refused with 422 rather than ignored. Errors are keyed by attribute for the contract fields (start_on, end_on, at_will, executed_on, expires_on, contingent_change, compensations) and as compensations[n] (n = the row's position in the request, from 0) for a row; row messages name fields by their CSV column, for example \"Base Salary\". Requires the winad_write scope and a manage-level user.
 
         :param contract_id: ID of the pending contract to publish (required)
         :type contract_id: int
@@ -967,6 +1417,333 @@ class ContractsApi:
         )
 
     @validate_call
+    def replace_contract_file(
+        self,
+        contract_id: Annotated[
+            StrictInt, Field(description="ID of the contract whose PDF is replaced")
+        ],
+        file: Annotated[
+            Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+            Field(description="The new contract PDF"),
+        ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ContractFileReplaced:
+        """replace_contract_file
+
+        Replace the PDF of an existing contract, pending or published (WINAD-10639). Send multipart/form-data with the new PDF as `file` and an optional `change_note`. The old file (and its OCR copy) is replaced, not kept as an attachment, the stored text is cleared and OCR runs again, as for an upload in the admin UI. The contract's structured terms are not touched (they read as stale against the new text).  The file must really be a PDF (its bytes are checked, not its name). The replacement is recorded in the change history (GET /contract_history) as a RawContract entry with a `file` change, the acting user, the API client and the change_note. A PDF that another record also uses is refused. The swap takes the locks of a coach move (the contract's coach, then the contract, then its RawContract), so it never deadlocks with a move or a verification, and the change history entry names the coach the contract has when the file is swapped. Requires winad_write, a manage-level user with a user-backed OAuth token.
+
+        :param contract_id: ID of the contract whose PDF is replaced (required)
+        :type contract_id: int
+        :param file: The new contract PDF (required)
+        :type file: bytearray
+        :param change_note: Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._replace_contract_file_serialize(
+            contract_id=contract_id,
+            file=file,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ContractFileReplaced",
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": "ContractErrorsResponse",
+            "409": "ContractErrorsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def replace_contract_file_with_http_info(
+        self,
+        contract_id: Annotated[
+            StrictInt, Field(description="ID of the contract whose PDF is replaced")
+        ],
+        file: Annotated[
+            Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+            Field(description="The new contract PDF"),
+        ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[ContractFileReplaced]:
+        """replace_contract_file
+
+        Replace the PDF of an existing contract, pending or published (WINAD-10639). Send multipart/form-data with the new PDF as `file` and an optional `change_note`. The old file (and its OCR copy) is replaced, not kept as an attachment, the stored text is cleared and OCR runs again, as for an upload in the admin UI. The contract's structured terms are not touched (they read as stale against the new text).  The file must really be a PDF (its bytes are checked, not its name). The replacement is recorded in the change history (GET /contract_history) as a RawContract entry with a `file` change, the acting user, the API client and the change_note. A PDF that another record also uses is refused. The swap takes the locks of a coach move (the contract's coach, then the contract, then its RawContract), so it never deadlocks with a move or a verification, and the change history entry names the coach the contract has when the file is swapped. Requires winad_write, a manage-level user with a user-backed OAuth token.
+
+        :param contract_id: ID of the contract whose PDF is replaced (required)
+        :type contract_id: int
+        :param file: The new contract PDF (required)
+        :type file: bytearray
+        :param change_note: Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._replace_contract_file_serialize(
+            contract_id=contract_id,
+            file=file,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ContractFileReplaced",
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": "ContractErrorsResponse",
+            "409": "ContractErrorsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def replace_contract_file_without_preload_content(
+        self,
+        contract_id: Annotated[
+            StrictInt, Field(description="ID of the contract whose PDF is replaced")
+        ],
+        file: Annotated[
+            Union[StrictBytes, StrictStr, Tuple[StrictStr, StrictBytes]],
+            Field(description="The new contract PDF"),
+        ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """replace_contract_file
+
+        Replace the PDF of an existing contract, pending or published (WINAD-10639). Send multipart/form-data with the new PDF as `file` and an optional `change_note`. The old file (and its OCR copy) is replaced, not kept as an attachment, the stored text is cleared and OCR runs again, as for an upload in the admin UI. The contract's structured terms are not touched (they read as stale against the new text).  The file must really be a PDF (its bytes are checked, not its name). The replacement is recorded in the change history (GET /contract_history) as a RawContract entry with a `file` change, the acting user, the API client and the change_note. A PDF that another record also uses is refused. The swap takes the locks of a coach move (the contract's coach, then the contract, then its RawContract), so it never deadlocks with a move or a verification, and the change history entry names the coach the contract has when the file is swapped. Requires winad_write, a manage-level user with a user-backed OAuth token.
+
+        :param contract_id: ID of the contract whose PDF is replaced (required)
+        :type contract_id: int
+        :param file: The new contract PDF (required)
+        :type file: bytearray
+        :param change_note: Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._replace_contract_file_serialize(
+            contract_id=contract_id,
+            file=file,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "ContractFileReplaced",
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": "ContractErrorsResponse",
+            "409": "ContractErrorsResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _replace_contract_file_serialize(
+        self,
+        contract_id,
+        file,
+        change_note,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if contract_id is not None:
+            _path_params["contractId"] = contract_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        if file is not None:
+            _files["file"] = file
+        if change_note is not None:
+            _form_params.append(("change_note", change_note))
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params["Content-Type"] = _content_type
+        else:
+            _default_content_type = self.api_client.select_header_content_type(
+                ["multipart/form-data"]
+            )
+            if _default_content_type is not None:
+                _header_params["Content-Type"] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="PUT",
+            resource_path="/api/v1/contracts/{contractId}/file",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def update_contract(
         self,
         contract_id: Annotated[
@@ -987,7 +1764,7 @@ class ContractsApi:
     ) -> Contract:
         """update_contract
 
-        Edit a published contract's start_on, end_on and at_will (WINAD-10631). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD. Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note. Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token.
+        Edit a published contract's start_on, end_on, executed_on, expires_on, at_will, contingent_change and coach_id (WINAD-10631, WINAD-10639). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD and flags JSON true or false (the same rules as publish). Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. end_on, executed_on and expires_on can be cleared with null. coach_id moves the contract to another coach, in the same transaction as the other fields. A move is refused with 422 (errors.coach_id) when the coach does not exist or is not visible to the caller, or while any compensation, any position of those compensations or any verification event still links to the contract: the body then also lists linked_compensation_ids, linked_position_ids and linked_verification_ids, and nothing is written. Never move those rows from the API; a person unlinks or moves them first. Sending the coach it already has is a no-op. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note (at most 500 characters). Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token. Every edit takes the locks of a coach move (the contract's coach, the coach it moves to, then the contract), so it never overlaps a move or a verification being recorded for the contract. A request that waits for them sees the contract as the other write left it. Only a contract that keeps moving while the locks are taken is refused with 409.
 
         :param contract_id: ID of the published contract to update (required)
         :type contract_id: int
@@ -1030,6 +1807,7 @@ class ContractsApi:
             "403": None,
             "404": None,
             "422": "ContractErrorsResponse",
+            "409": "ContractErrorsResponse",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1061,7 +1839,7 @@ class ContractsApi:
     ) -> ApiResponse[Contract]:
         """update_contract
 
-        Edit a published contract's start_on, end_on and at_will (WINAD-10631). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD. Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note. Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token.
+        Edit a published contract's start_on, end_on, executed_on, expires_on, at_will, contingent_change and coach_id (WINAD-10631, WINAD-10639). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD and flags JSON true or false (the same rules as publish). Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. end_on, executed_on and expires_on can be cleared with null. coach_id moves the contract to another coach, in the same transaction as the other fields. A move is refused with 422 (errors.coach_id) when the coach does not exist or is not visible to the caller, or while any compensation, any position of those compensations or any verification event still links to the contract: the body then also lists linked_compensation_ids, linked_position_ids and linked_verification_ids, and nothing is written. Never move those rows from the API; a person unlinks or moves them first. Sending the coach it already has is a no-op. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note (at most 500 characters). Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token. Every edit takes the locks of a coach move (the contract's coach, the coach it moves to, then the contract), so it never overlaps a move or a verification being recorded for the contract. A request that waits for them sees the contract as the other write left it. Only a contract that keeps moving while the locks are taken is refused with 409.
 
         :param contract_id: ID of the published contract to update (required)
         :type contract_id: int
@@ -1104,6 +1882,7 @@ class ContractsApi:
             "403": None,
             "404": None,
             "422": "ContractErrorsResponse",
+            "409": "ContractErrorsResponse",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout
@@ -1135,7 +1914,7 @@ class ContractsApi:
     ) -> RESTResponseType:
         """update_contract
 
-        Edit a published contract's start_on, end_on and at_will (WINAD-10631). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD. Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note. Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token.
+        Edit a published contract's start_on, end_on, executed_on, expires_on, at_will, contingent_change and coach_id (WINAD-10631, WINAD-10639). Only supplied fields change; linked compensations are unchanged. Pending contracts are published, not edited (use POST /contracts/{contractId}/publish). Dates must be YYYY-MM-DD and flags JSON true or false (the same rules as publish). Setting at_will true requires end_on null; send both fields to clear a stored end date. The at-will/end-date rule is checked only when either field is supplied, allowing start-only corrections on legacy rows. end_on, executed_on and expires_on can be cleared with null. coach_id moves the contract to another coach, in the same transaction as the other fields. A move is refused with 422 (errors.coach_id) when the coach does not exist or is not visible to the caller, or while any compensation, any position of those compensations or any verification event still links to the contract: the body then also lists linked_compensation_ids, linked_position_ids and linked_verification_ids, and nothing is written. Never move those rows from the API; a person unlinks or moves them first. Sending the coach it already has is a no-op. Each change creates a PaperTrail version with the authenticated user (whodunnit) and the optional top-level change_note (at most 500 characters). Identical values are a no-op and create no version, so no note is stored. Requires winad_write and a manage-level user with a user-backed OAuth token. Every edit takes the locks of a coach move (the contract's coach, the coach it moves to, then the contract), so it never overlaps a move or a verification being recorded for the contract. A request that waits for them sees the contract as the other write left it. Only a contract that keeps moving while the locks are taken is refused with 409.
 
         :param contract_id: ID of the published contract to update (required)
         :type contract_id: int
@@ -1178,6 +1957,7 @@ class ContractsApi:
             "403": None,
             "404": None,
             "422": "ContractErrorsResponse",
+            "409": "ContractErrorsResponse",
         }
         response_data = self.api_client.call_api(
             *_param, _request_timeout=_request_timeout

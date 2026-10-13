@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -39,6 +39,14 @@ class RecordPositionEntry(BaseModel):
     apr_asr: Optional[StrictStr] = None
     coach_apr: Optional[float] = None
     departing: Optional[StrictBool] = None
+    head_coach: Optional[StrictBool] = Field(
+        default=None,
+        description="True when the position includes the Head Coach position type (interim head coach is not included).",
+    )
+    assistant_coach: Optional[StrictBool] = Field(
+        default=None,
+        description="True when the position includes a coaching type in the Assistant Coaches group, excluding Offensive, Defensive and Special Teams Analysts. A season can be neither head coach nor assistant, e.g. an interim head coach, analyst or operations role.",
+    )
     us_news: Optional[StrictStr] = None
     directors_cup: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = [
@@ -54,6 +62,8 @@ class RecordPositionEntry(BaseModel):
         "apr_asr",
         "coach_apr",
         "departing",
+        "head_coach",
+        "assistant_coach",
         "us_news",
         "directors_cup",
     ]
@@ -165,6 +175,8 @@ class RecordPositionEntry(BaseModel):
                 "apr_asr": obj.get("apr_asr"),
                 "coach_apr": obj.get("coach_apr"),
                 "departing": obj.get("departing"),
+                "head_coach": obj.get("head_coach"),
+                "assistant_coach": obj.get("assistant_coach"),
                 "us_news": obj.get("us_news"),
                 "directors_cup": obj.get("directors_cup"),
             }

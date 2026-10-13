@@ -49,6 +49,7 @@ class CoachProfile(BaseModel):
     instagram_handle: Optional[StrictStr] = None
     instagram_verified: StrictBool
     bio: Optional[StrictStr] = None
+    bio_text: Optional[StrictStr] = None
     coach_friendly_id: Optional[StrictStr] = None
     departing: Optional[StrictBool] = Field(
         default=None,
@@ -90,6 +91,7 @@ class CoachProfile(BaseModel):
         "instagram_handle",
         "instagram_verified",
         "bio",
+        "bio_text",
         "coach_friendly_id",
         "departing",
         "current_school_name",
@@ -205,6 +207,11 @@ class CoachProfile(BaseModel):
         if self.bio is None and "bio" in self.model_fields_set:
             _dict["bio"] = None
 
+        # set to None if bio_text (nullable) is None
+        # and model_fields_set contains the field
+        if self.bio_text is None and "bio_text" in self.model_fields_set:
+            _dict["bio_text"] = None
+
         # set to None if coach_friendly_id (nullable) is None
         # and model_fields_set contains the field
         if (
@@ -294,6 +301,7 @@ class CoachProfile(BaseModel):
                 "instagram_handle": obj.get("instagram_handle"),
                 "instagram_verified": obj.get("instagram_verified"),
                 "bio": obj.get("bio"),
+                "bio_text": obj.get("bio_text"),
                 "coach_friendly_id": obj.get("coach_friendly_id"),
                 "departing": obj.get("departing"),
                 "current_school_name": obj.get("current_school_name"),

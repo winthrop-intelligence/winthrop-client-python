@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **car_provided** | **bool** |  | [optional] 
 **comment** | **str** | Required for hourly | [optional] 
 **buyout_amount** | **str** | Buyout terms, as text | [optional] 
-**change_note** | **str** | Optional. Why this row&#39;s values are what they are, for the internal audit history (WINAD-10632). Stored on the audit versions of this row&#39;s compensation write; never returned by the API. Blank is the same as omitted. | [optional] 
+**change_note** | **str** | Optional. Why this row&#39;s values are what they are, for the internal audit history (WINAD-10632). Stored on every audit version this row&#39;s write creates (its positions, its compensation and the contract&#39;s publication) and replaces the request&#39;s top-level change_note for them; a row without one gets the top-level note. At most 500 characters after trimming; blank is the same as omitted. Never returned. | [optional] 
 
 ## Example
 

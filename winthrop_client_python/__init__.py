@@ -198,6 +198,12 @@ __all__ = [
     "Contract",
     "ContractCollection",
     "ContractErrorsResponse",
+    "ContractFileReplaced",
+    "ContractHistoryCollection",
+    "ContractHistoryEntry",
+    "ContractHistoryEntryChangesValue",
+    "ContractHistoryEntryOauthApplication",
+    "ContractHistoryEntryUser",
     "ContractTermOption",
     "ContractTerms",
     "ContractTermsSource",
@@ -404,6 +410,11 @@ __all__ = [
     "DirectorsCupSchool",
     "Division",
     "DivisionCollection",
+    "EarnedIncentive",
+    "EarnedIncentiveCollection",
+    "EarnedIncentiveFields",
+    "EarnedIncentiveFieldsTermChange",
+    "EarnedIncentiveInput",
     "EditAccountUser",
     "EditAccountUserResponse",
     "EnrichGamePostSearchesRequest",
@@ -613,9 +624,6 @@ __all__ = [
     "Note",
     "PageView",
     "PendingContractCreated",
-    "PerformanceChartCoach",
-    "PerformanceChartData",
-    "PerformanceChartRecord",
     "PersonAssignment",
     "Position",
     "PositionCollection",
@@ -1309,6 +1317,24 @@ from winthrop_client_python.models.contract_collection import (
 from winthrop_client_python.models.contract_errors_response import (
     ContractErrorsResponse as ContractErrorsResponse,
 )
+from winthrop_client_python.models.contract_file_replaced import (
+    ContractFileReplaced as ContractFileReplaced,
+)
+from winthrop_client_python.models.contract_history_collection import (
+    ContractHistoryCollection as ContractHistoryCollection,
+)
+from winthrop_client_python.models.contract_history_entry import (
+    ContractHistoryEntry as ContractHistoryEntry,
+)
+from winthrop_client_python.models.contract_history_entry_changes_value import (
+    ContractHistoryEntryChangesValue as ContractHistoryEntryChangesValue,
+)
+from winthrop_client_python.models.contract_history_entry_oauth_application import (
+    ContractHistoryEntryOauthApplication as ContractHistoryEntryOauthApplication,
+)
+from winthrop_client_python.models.contract_history_entry_user import (
+    ContractHistoryEntryUser as ContractHistoryEntryUser,
+)
 from winthrop_client_python.models.contract_term_option import (
     ContractTermOption as ContractTermOption,
 )
@@ -1909,6 +1935,21 @@ from winthrop_client_python.models.division import Division as Division
 from winthrop_client_python.models.division_collection import (
     DivisionCollection as DivisionCollection,
 )
+from winthrop_client_python.models.earned_incentive import (
+    EarnedIncentive as EarnedIncentive,
+)
+from winthrop_client_python.models.earned_incentive_collection import (
+    EarnedIncentiveCollection as EarnedIncentiveCollection,
+)
+from winthrop_client_python.models.earned_incentive_fields import (
+    EarnedIncentiveFields as EarnedIncentiveFields,
+)
+from winthrop_client_python.models.earned_incentive_fields_term_change import (
+    EarnedIncentiveFieldsTermChange as EarnedIncentiveFieldsTermChange,
+)
+from winthrop_client_python.models.earned_incentive_input import (
+    EarnedIncentiveInput as EarnedIncentiveInput,
+)
 from winthrop_client_python.models.edit_account_user import (
     EditAccountUser as EditAccountUser,
 )
@@ -2479,15 +2520,6 @@ from winthrop_client_python.models.note import Note as Note
 from winthrop_client_python.models.page_view import PageView as PageView
 from winthrop_client_python.models.pending_contract_created import (
     PendingContractCreated as PendingContractCreated,
-)
-from winthrop_client_python.models.performance_chart_coach import (
-    PerformanceChartCoach as PerformanceChartCoach,
-)
-from winthrop_client_python.models.performance_chart_data import (
-    PerformanceChartData as PerformanceChartData,
-)
-from winthrop_client_python.models.performance_chart_record import (
-    PerformanceChartRecord as PerformanceChartRecord,
 )
 from winthrop_client_python.models.person_assignment import (
     PersonAssignment as PersonAssignment,

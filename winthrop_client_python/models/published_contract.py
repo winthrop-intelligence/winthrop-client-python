@@ -42,6 +42,7 @@ class PublishedContract(BaseModel):
     id: Optional[StrictInt] = None
     executed_on: Optional[date] = None
     expires_on: Optional[date] = None
+    contingent_change: Optional[StrictBool] = None
     start_on: Optional[date] = None
     end_on: Optional[date] = None
     at_will: Optional[StrictBool] = None
@@ -64,6 +65,7 @@ class PublishedContract(BaseModel):
         "id",
         "executed_on",
         "expires_on",
+        "contingent_change",
         "start_on",
         "end_on",
         "at_will",
@@ -148,6 +150,7 @@ class PublishedContract(BaseModel):
                 "id": obj.get("id"),
                 "executed_on": obj.get("executed_on"),
                 "expires_on": obj.get("expires_on"),
+                "contingent_change": obj.get("contingent_change"),
                 "start_on": obj.get("start_on"),
                 "end_on": obj.get("end_on"),
                 "at_will": obj.get("at_will"),

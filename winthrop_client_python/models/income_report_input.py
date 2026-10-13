@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -41,9 +41,9 @@ class IncomeReportInput(BaseModel):
         default=None,
         description="Defaults to 1 on create. Attaching a document sets it to the complete status.",
     )
-    change_note: Optional[StrictStr] = Field(
+    change_note: Optional[Annotated[str, Field(strict=True, max_length=500)]] = Field(
         default=None,
-        description="Why this change is being made, for the internal audit history (WINAD-10625). It is stored on the audit version this write creates and is never returned. Blank is the same as omitted; a non-string value is refused with 422 (errors.change_note).",
+        description="Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.",
     )
     __properties: ClassVar[List[str]] = [
         "coach_id",

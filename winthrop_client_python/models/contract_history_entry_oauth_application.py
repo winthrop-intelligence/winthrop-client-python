@@ -16,21 +16,21 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 
 
-class PerformanceChartRecord(BaseModel):
+class ContractHistoryEntryOauthApplication(BaseModel):
     """
-    PerformanceChartRecord
+    The API client of a write made through the API; null for admin-UI, job and console edits.
     """  # noqa: E501
 
-    wins: Optional[StrictInt] = None
-    losses: Optional[StrictInt] = None
-    ties: Optional[StrictInt] = None
-    __properties: ClassVar[List[str]] = ["wins", "losses", "ties"]
+    id: StrictInt
+    name: Optional[StrictStr]
+    consumer_key: Optional[StrictStr]
+    __properties: ClassVar[List[str]] = ["id", "name", "consumer_key"]
 
     model_config = ConfigDict(
         populate_by_name=True,
@@ -49,7 +49,7 @@ class PerformanceChartRecord(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of PerformanceChartRecord from a JSON string"""
+        """Create an instance of ContractHistoryEntryOauthApplication from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -69,26 +69,21 @@ class PerformanceChartRecord(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # set to None if wins (nullable) is None
+        # set to None if name (nullable) is None
         # and model_fields_set contains the field
-        if self.wins is None and "wins" in self.model_fields_set:
-            _dict["wins"] = None
+        if self.name is None and "name" in self.model_fields_set:
+            _dict["name"] = None
 
-        # set to None if losses (nullable) is None
+        # set to None if consumer_key (nullable) is None
         # and model_fields_set contains the field
-        if self.losses is None and "losses" in self.model_fields_set:
-            _dict["losses"] = None
-
-        # set to None if ties (nullable) is None
-        # and model_fields_set contains the field
-        if self.ties is None and "ties" in self.model_fields_set:
-            _dict["ties"] = None
+        if self.consumer_key is None and "consumer_key" in self.model_fields_set:
+            _dict["consumer_key"] = None
 
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of PerformanceChartRecord from a dict"""
+        """Create an instance of ContractHistoryEntryOauthApplication from a dict"""
         if obj is None:
             return None
 
@@ -97,9 +92,9 @@ class PerformanceChartRecord(BaseModel):
 
         _obj = cls.model_validate(
             {
-                "wins": obj.get("wins"),
-                "losses": obj.get("losses"),
-                "ties": obj.get("ties"),
+                "id": obj.get("id"),
+                "name": obj.get("name"),
+                "consumer_key": obj.get("consumer_key"),
             }
         )
         return _obj
