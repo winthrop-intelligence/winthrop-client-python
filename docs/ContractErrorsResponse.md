@@ -5,6 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**linked_compensation_ids** | **List[int]** | Only on a refused coach move (PATCH /contracts/{contractId}). The compensations that still link to the contract. | [optional] 
+**linked_position_ids** | **List[int]** | Only on a refused coach move. The positions of those compensations. | [optional] 
+**linked_verification_ids** | **List[int]** | Only on a refused coach move. The verification events recorded for the contract. | [optional] 
 **errors** | **Dict[str, List[str]]** | Error messages keyed by attribute (base for whole-request errors) | 
 
 ## Example

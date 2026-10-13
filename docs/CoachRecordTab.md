@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **show_coach_apr** | **bool** |  | 
 **positions** | [**List[RecordPositionEntry]**](RecordPositionEntry.md) |  | 
 **conference_positions** | [**List[ConferencePositionEntry]**](ConferencePositionEntry.md) |  | 
-**performance_chart** | [**PerformanceChartData**](PerformanceChartData.md) |  | [optional] 
 
 ## Example
 

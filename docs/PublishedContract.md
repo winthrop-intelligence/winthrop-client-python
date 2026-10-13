@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **executed_on** | **date** |  | [optional] 
 **expires_on** | **date** |  | [optional] 
+**contingent_change** | **bool** |  | [optional] 
 **start_on** | **date** |  | [optional] 
 **end_on** | **date** |  | [optional] 
 **at_will** | **bool** |  | [optional] 
