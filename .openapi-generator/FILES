@@ -818,17 +818,6 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_contract_file_replaced.py
-test/test_contract_history_collection.py
-test/test_contract_history_entry.py
-test/test_contract_history_entry_changes_value.py
-test/test_contract_history_entry_oauth_application.py
-test/test_contract_history_entry_user.py
-test/test_earned_incentive.py
-test/test_earned_incentive_collection.py
-test/test_earned_incentive_fields.py
-test/test_earned_incentive_fields_term_change.py
-test/test_earned_incentive_input.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py

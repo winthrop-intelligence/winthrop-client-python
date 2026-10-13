@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **sport** | **str** |  | 
 **year_str** | **str** |  | 
 **school_name** | **str** |  | 
+**school_full_name** | **str** | Full school name for performance charts and accessible summaries. | 
 **school_id** | **int** |  | 
 **position_sport** | **str** |  | 
 **record** | **str** |  | [optional] 

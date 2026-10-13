@@ -30,6 +30,9 @@ class RecordPositionEntry(BaseModel):
     sport: StrictStr
     year_str: StrictStr
     school_name: StrictStr
+    school_full_name: StrictStr = Field(
+        description="Full school name for performance charts and accessible summaries."
+    )
     school_id: StrictInt
     position_sport: StrictStr
     record: Optional[StrictStr] = None
@@ -53,6 +56,7 @@ class RecordPositionEntry(BaseModel):
         "sport",
         "year_str",
         "school_name",
+        "school_full_name",
         "school_id",
         "position_sport",
         "record",
@@ -166,6 +170,7 @@ class RecordPositionEntry(BaseModel):
                 "sport": obj.get("sport"),
                 "year_str": obj.get("year_str"),
                 "school_name": obj.get("school_name"),
+                "school_full_name": obj.get("school_full_name"),
                 "school_id": obj.get("school_id"),
                 "position_sport": obj.get("position_sport"),
                 "record": obj.get("record"),
