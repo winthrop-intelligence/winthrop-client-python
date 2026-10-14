@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **linked_compensation_ids** | **List[int]** | Only on a refused coach move (PATCH /contracts/{contractId}). The compensations that still link to the contract. | [optional] 
 **linked_position_ids** | **List[int]** | Only on a refused coach move. The positions of those compensations. | [optional] 
 **linked_verification_ids** | **List[int]** | Only on a refused coach move. The verification events recorded for the contract. | [optional] 
+**linked_earned_incentive_ids** | **List[int]** | Only on a refused coach move. The earned incentives whose raw_contract_id or ended_by_contract_id is the contract&#39;s RawContract, in id order, each once. | [optional] 
 **errors** | **Dict[str, List[str]]** | Error messages keyed by attribute (base for whole-request errors) | 
 
 ## Example

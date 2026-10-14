@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **item_type** | **str** |  | 
 **item_id** | **int** |  | 
 **event** | **str** |  | 
-**changes** | [**Dict[str, ContractHistoryEntryChangesValue]**](ContractHistoryEntryChangesValue.md) | Every changed field with its old and new value. A create has no old values (old is null); for a destroy the old values are the row as it was deleted and new is null. Empty when the stored version cannot be read. | 
+**changes** | [**Dict[str, ContractHistoryEntryChangesValue]**](ContractHistoryEntryChangesValue.md) | Every changed field with its old and new value. A create has no old values (old is null); for a destroy the old values are the row as it was deleted and new is null. Empty when the stored version cannot be read (then &#x60;changes_unreadable&#x60; is true) and also for a version that recorded no field change. | 
+**changes_unreadable** | **bool** | True only when the stored version data could not be read, so &#x60;changes&#x60; is empty because of that and not because nothing changed. False for every readable version, including one that recorded no field change. | 
 **user** | [**ContractHistoryEntryUser**](ContractHistoryEntryUser.md) |  | 
 **oauth_application** | [**ContractHistoryEntryOauthApplication**](ContractHistoryEntryOauthApplication.md) |  | 
 **created_at** | **datetime** |  | 

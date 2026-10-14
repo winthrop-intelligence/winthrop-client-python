@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**leader_ad** | **bool** |  | 
+**leader_ad** | **bool** | Same as CoachProfile.leader (the profile reads as an administrator&#39;s). | 
 **positions** | [**List[RecruitingPositionEntry]**](RecruitingPositionEntry.md) |  | 
 **conference_comparison** | [**CoachRecruitingTabConferenceComparison**](CoachRecruitingTabConferenceComparison.md) |  | [optional] 
 **can_see_financials** | **bool** |  | 
