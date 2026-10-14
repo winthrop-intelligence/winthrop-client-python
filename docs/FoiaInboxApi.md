@@ -132,7 +132,7 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.FoiaInboxApi(api_client)
-    page = 1 # int | results page to retrieve. (optional) (default to 1)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
     per_page = 100 # int |  (optional) (default to 100)
     school_id = 56 # int |  (optional)
     foia_request_id = 56 # int |  (optional)
@@ -153,7 +153,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| results page to retrieve. | [optional] [default to 1]
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
  **per_page** | **int**|  | [optional] [default to 100]
  **school_id** | **int**|  | [optional] 
  **foia_request_id** | **int**|  | [optional] 

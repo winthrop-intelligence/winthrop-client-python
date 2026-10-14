@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**leader_ad** | **bool** |  | 
+**leader_ad** | **bool** | Same as CoachProfile.leader (the profile reads as an administrator&#39;s). | 
 **show_coach_apr** | **bool** |  | 
 **positions** | [**List[RecordPositionEntry]**](RecordPositionEntry.md) |  | 
 **conference_positions** | [**List[ConferencePositionEntry]**](ConferencePositionEntry.md) |  | 
