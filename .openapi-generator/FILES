@@ -142,6 +142,7 @@ docs/CoachCompensationTabQuartiles.md
 docs/CoachCompensationTabQuartilesRowsInner.md
 docs/CoachCompensationTabSidebar.md
 docs/CoachCompensationTabSidebarCoachingStaffInner.md
+docs/CoachCompensationTabSidebarCoachingStaffInnerSalarySource.md
 docs/CoachCompensationTabSidebarContractsInner.md
 docs/CoachCompensationTabSidebarIncomeReportsInner.md
 docs/CoachCoworkerHistoryTab.md
@@ -640,9 +641,7 @@ docs/NewsFeedCollection.md
 docs/Note.md
 docs/PageView.md
 docs/PendingContractCreated.md
-docs/PerformanceChartCoach.md
-docs/PerformanceChartData.md
-docs/PerformanceChartRecord.md
+docs/PersonAssignment.md
 docs/Position.md
 docs/PositionCollection.md
 docs/PositionDepartureRequest.md
@@ -866,6 +865,8 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_coach_compensation_tab_sidebar_coaching_staff_inner_salary_source.py
+test/test_person_assignment.py
 tox.ini
 winthrop_client_python/__init__.py
 winthrop_client_python/api/__init__.py
@@ -1025,6 +1026,7 @@ winthrop_client_python/models/coach_compensation_tab_quartiles.py
 winthrop_client_python/models/coach_compensation_tab_quartiles_rows_inner.py
 winthrop_client_python/models/coach_compensation_tab_sidebar.py
 winthrop_client_python/models/coach_compensation_tab_sidebar_coaching_staff_inner.py
+winthrop_client_python/models/coach_compensation_tab_sidebar_coaching_staff_inner_salary_source.py
 winthrop_client_python/models/coach_compensation_tab_sidebar_contracts_inner.py
 winthrop_client_python/models/coach_compensation_tab_sidebar_income_reports_inner.py
 winthrop_client_python/models/coach_coworker_history_tab.py
@@ -1517,9 +1519,7 @@ winthrop_client_python/models/news_feed_collection.py
 winthrop_client_python/models/note.py
 winthrop_client_python/models/page_view.py
 winthrop_client_python/models/pending_contract_created.py
-winthrop_client_python/models/performance_chart_coach.py
-winthrop_client_python/models/performance_chart_data.py
-winthrop_client_python/models/performance_chart_record.py
+winthrop_client_python/models/person_assignment.py
 winthrop_client_python/models/position.py
 winthrop_client_python/models/position_collection.py
 winthrop_client_python/models/position_departure_request.py
