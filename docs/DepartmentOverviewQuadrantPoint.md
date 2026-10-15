@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**basis** | **str** |  | 
 **school_id** | **int** |  | 
 **name** | **str** |  | 
 **is_subject** | **bool** |  | 
