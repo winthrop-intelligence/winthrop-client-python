@@ -14,6 +14,9 @@ Name | Type | Description | Notes
 **end_year** | **int** |  | 
 **current_position_title** | **str** |  | [optional] 
 **current_school_name** | **str** |  | [optional] 
+**current_school_id** | **int** | School ID of the authorized current position supplying the salary, not the ranked display primary. | [optional] 
+**current_school_full_name** | **str** | Full name of that school, used to disambiguate shared short names. | [optional] 
+**current_assignments** | [**List[PersonAssignment]**](PersonAssignment.md) | Positions in the year the current subtitle describes (current or next season), ranked primary first (WINAD-10522). Sport-specific subscriptions only list their sports. | [optional] 
 **salary_cents** | **int** |  | [optional] 
 **coach_friendly_id** | **str** |  | 
 

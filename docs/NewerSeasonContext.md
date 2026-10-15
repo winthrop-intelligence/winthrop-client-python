@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **conference_name** | **str** |  | 
 **position_title** | **str** |  | 
 **compensation_cents** | **int** | Positive total compensation for this position season only; null when missing or unauthorized | 
+**assignments** | [**List[PersonAssignment]**](PersonAssignment.md) | Every newer assignment behind this context, ranked primary first; each carries its own season | [optional] 
 
 ## Example
 
