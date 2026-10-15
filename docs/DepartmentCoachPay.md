@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **rank** | **int** |  | 
 **cohort_size** | **int** |  | 
 **partial_cohort** | **bool** |  | 
-**rank_withheld_reason** | **str** |  | 
+**rank_withheld_reason** | **str** | Why the seat&#39;s pay rank was deliberately withheld — a private school&#39;s comp has no public basis to rank against, and a filed zero is not a reported amount (the pay cohort excludes zeros, so ranking one exceeded its own cohort). Null when no rank was computed for want of an amount, which carries no reason. | 
 
 ## Example
 

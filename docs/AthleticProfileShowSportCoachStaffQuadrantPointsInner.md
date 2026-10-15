@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **coach_name** | **str** |  | [optional] 
 **coach_last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **comp_cents** | **int** |  | [optional] 
+**comp_basis** | **str** | Which filing this dot&#39;s pay came from. A private peer files no coach contract, so it plots from its seat&#39;s IRS 990 line rather than going unplotted (WINAD-10406). The two filings measure different quantities — a 990 reports total compensation paid, a contract its guaranteed comp — so a 990 dot is plotted and labelled but stays out of every rank, median and verdict on the card. | [optional] 
+**comp_fiscal_year** | **int** | The 990&#39;s own filing year; null for contract-basis dots. | [optional] 
 **net_rank** | **int** |  | [optional] 
 **rpi** | **int** |  | [optional] 
 **conference_wins** | **int** |  | [optional] 

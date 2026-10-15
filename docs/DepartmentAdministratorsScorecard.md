@@ -1,14 +1,15 @@
 # DepartmentAdministratorsScorecard
 
-The administrators' scorecard. The x-axis is the FRS support-staff payroll for the filing year; the y-axis is the Directors' Cup season the cohort actually has on file, which may be labelled by the following year, so both are reported
+The administrators' scorecard uses FRS support-staff payroll for public subjects and EADA expense not allocated by team for private subjects. Money reads the fiscal year before the selected season; only the current season may fall back one year. Cup standings read only the selected season. Missing standings produce a gap, including for the current season; the financial-year fallback never applies to results.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**spend_basis** | **str** |  | 
 **spend_fiscal_year** | **int** |  | 
 **results_year** | **int** |  | 
-**spend_line** | **str** | Which FRS line backs the money axis | 
+**spend_line** | **str** | The money line; EADA unallocated expense includes overhead and facilities, broader than payroll | 
 **metric** | **str** |  | 
 **cohort_size** | **int** |  | 
 **points** | [**List[DepartmentAdministratorsScorecardPoint]**](DepartmentAdministratorsScorecardPoint.md) |  | 

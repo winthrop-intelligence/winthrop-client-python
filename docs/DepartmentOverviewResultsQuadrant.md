@@ -1,11 +1,13 @@
 # DepartmentOverviewResultsQuadrant
 
-Spend against results. The x-axis is the selected filing year; the y-axis is the Directors' Cup season the cohort actually has on file, which may be labelled by the following year, so both are reported
+One fiscal year of spending against the selected Directors' Cup season. Fiscal year is season ending year minus one; only the current season may fall back one year. Private subjects use EADA for all peers; public subjects prefer FRS per dot.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**eada_fallback_count** | **int** | Number of plotted dots using EADA instead of FRS in public mode; zero in private mode | 
+**basis** | **str** |  | 
 **spend_year** | **int** |  | 
 **results_year** | **int** |  | 
 **metric** | **str** |  | 
