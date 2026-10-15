@@ -16,7 +16,7 @@ from pydantic import validate_call, Field, StrictFloat, StrictStr, StrictInt
 from typing import Any, Dict, List, Optional, Tuple, Union
 from typing_extensions import Annotated
 
-from pydantic import Field, StrictInt
+from pydantic import Field
 from typing import List, Optional
 from typing_extensions import Annotated
 from winthrop_client_python.models.salary_site_associations_response import (
@@ -52,7 +52,10 @@ class SalarySitesApi:
             ),
         ],
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         per_page: Optional[Annotated[int, Field(le=200, strict=True, ge=1)]] = None,
         _request_timeout: Union[
@@ -73,7 +76,7 @@ class SalarySitesApi:
 
         :param school_ids: 1 to 100 unique positive school IDs (required)
         :type school_ids: List[int]
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param per_page:
         :type per_page: int
@@ -136,7 +139,10 @@ class SalarySitesApi:
             ),
         ],
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         per_page: Optional[Annotated[int, Field(le=200, strict=True, ge=1)]] = None,
         _request_timeout: Union[
@@ -157,7 +163,7 @@ class SalarySitesApi:
 
         :param school_ids: 1 to 100 unique positive school IDs (required)
         :type school_ids: List[int]
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param per_page:
         :type per_page: int
@@ -220,7 +226,10 @@ class SalarySitesApi:
             ),
         ],
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         per_page: Optional[Annotated[int, Field(le=200, strict=True, ge=1)]] = None,
         _request_timeout: Union[
@@ -241,7 +250,7 @@ class SalarySitesApi:
 
         :param school_ids: 1 to 100 unique positive school IDs (required)
         :type school_ids: List[int]
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param per_page:
         :type per_page: int

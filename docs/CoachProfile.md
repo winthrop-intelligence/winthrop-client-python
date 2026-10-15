@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **last_name** | **str** |  | 
 **email** | **str** |  | [optional] 
 **phone** | **str** |  | [optional] 
-**leader** | **bool** |  | 
+**leader** | **bool** | True when the profile reads as an administrator&#39;s: every position the person holds in their header season (the latest season up to the current one) is in the ADMIN sport. | 
 **visible** | **bool** | Whether the coach appears on customer-facing surfaces | [optional] 
 **hometown_city** | **str** |  | [optional] 
 **hometown_state** | **str** |  | [optional] 

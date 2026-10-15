@@ -17,7 +17,15 @@ import re  # noqa: F401
 import json
 
 from datetime import datetime
-from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr, field_validator
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StrictBool,
+    StrictInt,
+    StrictStr,
+    field_validator,
+)
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.contract_history_entry_changes_value import (
     ContractHistoryEntryChangesValue,
@@ -41,7 +49,10 @@ class ContractHistoryEntry(BaseModel):
     item_id: StrictInt
     event: StrictStr
     changes: Dict[str, ContractHistoryEntryChangesValue] = Field(
-        description="Every changed field with its old and new value. A create has no old values (old is null); for a destroy the old values are the row as it was deleted and new is null. Empty when the stored version cannot be read."
+        description="Every changed field with its old and new value. A create has no old values (old is null); for a destroy the old values are the row as it was deleted and new is null. Empty when the stored version cannot be read (then `changes_unreadable` is true) and also for a version that recorded no field change."
+    )
+    changes_unreadable: StrictBool = Field(
+        description="True only when the stored version data could not be read, so `changes` is empty because of that and not because nothing changed. False for every readable version, including one that recorded no field change."
     )
     user: Optional[ContractHistoryEntryUser]
     oauth_application: Optional[ContractHistoryEntryOauthApplication]
@@ -54,6 +65,7 @@ class ContractHistoryEntry(BaseModel):
         "item_id",
         "event",
         "changes",
+        "changes_unreadable",
         "user",
         "oauth_application",
         "created_at",
@@ -178,6 +190,7 @@ class ContractHistoryEntry(BaseModel):
                     if obj.get("changes") is not None
                     else None
                 ),
+                "changes_unreadable": obj.get("changes_unreadable"),
                 "user": (
                     ContractHistoryEntryUser.from_dict(obj["user"])
                     if obj.get("user") is not None

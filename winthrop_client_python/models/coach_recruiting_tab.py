@@ -16,7 +16,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictBool
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from winthrop_client_python.models.coach_recruiting_tab_conference_comparison import (
     CoachRecruitingTabConferenceComparison,
@@ -40,7 +40,9 @@ class CoachRecruitingTab(BaseModel):
     CoachRecruitingTab
     """  # noqa: E501
 
-    leader_ad: StrictBool
+    leader_ad: StrictBool = Field(
+        description="Same as CoachProfile.leader (the profile reads as an administrator's)."
+    )
     positions: List[RecruitingPositionEntry]
     conference_comparison: Optional[CoachRecruitingTabConferenceComparison] = None
     can_see_financials: StrictBool

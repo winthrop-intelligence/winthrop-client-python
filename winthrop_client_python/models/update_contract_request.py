@@ -55,7 +55,7 @@ class UpdateContractRequest(BaseModel):
     )
     coach_id: Optional[StrictInt] = Field(
         default=None,
-        description="Moves the contract to this coach. Refused (422 errors.coach_id plus linked_compensation_ids, linked_position_ids and linked_verification_ids) while any of those rows still link to the contract; the agent never relinks them itself.",
+        description="Moves the contract to this coach. Refused (422 errors.coach_id plus linked_compensation_ids, linked_position_ids, linked_verification_ids and linked_earned_incentive_ids) while any of those rows still link to the contract; the agent never relinks them itself.",
     )
     change_note: Optional[Annotated[str, Field(strict=True, max_length=500)]] = Field(
         default=None,

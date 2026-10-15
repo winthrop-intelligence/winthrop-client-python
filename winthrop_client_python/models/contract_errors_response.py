@@ -39,6 +39,10 @@ class ContractErrorsResponse(BaseModel):
         default=None,
         description="Only on a refused coach move. The verification events recorded for the contract.",
     )
+    linked_earned_incentive_ids: Optional[List[StrictInt]] = Field(
+        default=None,
+        description="Only on a refused coach move. The earned incentives whose raw_contract_id or ended_by_contract_id is the contract's RawContract, in id order, each once.",
+    )
     errors: Dict[str, List[StrictStr]] = Field(
         description="Error messages keyed by attribute (base for whole-request errors)"
     )
@@ -46,6 +50,7 @@ class ContractErrorsResponse(BaseModel):
         "linked_compensation_ids",
         "linked_position_ids",
         "linked_verification_ids",
+        "linked_earned_incentive_ids",
         "errors",
     ]
 
@@ -102,6 +107,7 @@ class ContractErrorsResponse(BaseModel):
                 "linked_compensation_ids": obj.get("linked_compensation_ids"),
                 "linked_position_ids": obj.get("linked_position_ids"),
                 "linked_verification_ids": obj.get("linked_verification_ids"),
+                "linked_earned_incentive_ids": obj.get("linked_earned_incentive_ids"),
                 "errors": obj.get("errors"),
             }
         )

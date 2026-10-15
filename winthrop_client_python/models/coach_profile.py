@@ -33,7 +33,9 @@ class CoachProfile(BaseModel):
     last_name: StrictStr
     email: Optional[StrictStr] = None
     phone: Optional[StrictStr] = None
-    leader: StrictBool
+    leader: StrictBool = Field(
+        description="True when the profile reads as an administrator's: every position the person holds in their header season (the latest season up to the current one) is in the ADMIN sport."
+    )
     visible: Optional[StrictBool] = Field(
         default=None,
         description="Whether the coach appears on customer-facing surfaces",

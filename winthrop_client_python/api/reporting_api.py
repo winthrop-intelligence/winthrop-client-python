@@ -59,7 +59,10 @@ class ReportingApi:
     def get_coach_contract_requests(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -83,7 +86,7 @@ class ReportingApi:
 
         Retrieve some or all coach contract requests
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -134,7 +137,10 @@ class ReportingApi:
     def get_coach_contract_requests_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -158,7 +164,7 @@ class ReportingApi:
 
         Retrieve some or all coach contract requests
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -209,7 +215,10 @@ class ReportingApi:
     def get_coach_contract_requests_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -233,7 +242,7 @@ class ReportingApi:
 
         Retrieve some or all coach contract requests
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -341,7 +350,10 @@ class ReportingApi:
     def get_coach_history(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -365,7 +377,7 @@ class ReportingApi:
 
         Retrieve some or all coach history
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -416,7 +428,10 @@ class ReportingApi:
     def get_coach_history_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -440,7 +455,7 @@ class ReportingApi:
 
         Retrieve some or all coach history
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -491,7 +506,10 @@ class ReportingApi:
     def get_coach_history_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -515,7 +533,7 @@ class ReportingApi:
 
         Retrieve some or all coach history
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -623,7 +641,10 @@ class ReportingApi:
     def get_conferenceships(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -647,7 +668,7 @@ class ReportingApi:
 
         Retrieve some or all conferenceships
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -698,7 +719,10 @@ class ReportingApi:
     def get_conferenceships_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -722,7 +746,7 @@ class ReportingApi:
 
         Retrieve some or all conferenceships
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -773,7 +797,10 @@ class ReportingApi:
     def get_conferenceships_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -797,7 +824,7 @@ class ReportingApi:
 
         Retrieve some or all conferenceships
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -905,7 +932,10 @@ class ReportingApi:
     def get_foia_details(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -929,7 +959,7 @@ class ReportingApi:
 
         Retrieve some or all foia details
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -980,7 +1010,10 @@ class ReportingApi:
     def get_foia_details_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -1004,7 +1037,7 @@ class ReportingApi:
 
         Retrieve some or all foia details
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -1055,7 +1088,10 @@ class ReportingApi:
     def get_foia_details_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -1079,7 +1115,7 @@ class ReportingApi:
 
         Retrieve some or all foia details
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -3225,7 +3261,10 @@ class ReportingApi:
     def get_games(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -3249,7 +3288,7 @@ class ReportingApi:
 
         Retrieve some or all games
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -3300,7 +3339,10 @@ class ReportingApi:
     def get_games_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -3324,7 +3366,7 @@ class ReportingApi:
 
         Retrieve some or all games
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -3375,7 +3417,10 @@ class ReportingApi:
     def get_games_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -3399,7 +3444,7 @@ class ReportingApi:
 
         Retrieve some or all games
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -3507,7 +3552,10 @@ class ReportingApi:
     def get_invoices(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -3531,7 +3579,7 @@ class ReportingApi:
 
         Retrieve some or all client invoices
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -3582,7 +3630,10 @@ class ReportingApi:
     def get_invoices_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -3606,7 +3657,7 @@ class ReportingApi:
 
         Retrieve some or all client invoices
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -3657,7 +3708,10 @@ class ReportingApi:
     def get_invoices_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -3681,7 +3735,7 @@ class ReportingApi:
 
         Retrieve some or all client invoices
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -3789,7 +3843,10 @@ class ReportingApi:
     def get_school_contract_requests(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -3813,7 +3870,7 @@ class ReportingApi:
 
         Retrieve some or all school contract requests
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -3864,7 +3921,10 @@ class ReportingApi:
     def get_school_contract_requests_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -3888,7 +3948,7 @@ class ReportingApi:
 
         Retrieve some or all school contract requests
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -3939,7 +3999,10 @@ class ReportingApi:
     def get_school_contract_requests_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -3963,7 +4026,7 @@ class ReportingApi:
 
         Retrieve some or all school contract requests
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -4071,7 +4134,10 @@ class ReportingApi:
     def get_schools_financials_qc(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -4095,7 +4161,7 @@ class ReportingApi:
 
         Retrieve schools with thier financials qc
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -4146,7 +4212,10 @@ class ReportingApi:
     def get_schools_financials_qc_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -4170,7 +4239,7 @@ class ReportingApi:
 
         Retrieve schools with thier financials qc
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -4221,7 +4290,10 @@ class ReportingApi:
     def get_schools_financials_qc_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -4245,7 +4317,7 @@ class ReportingApi:
 
         Retrieve schools with thier financials qc
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -4353,7 +4425,10 @@ class ReportingApi:
     def get_subscriptions(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -4377,7 +4452,7 @@ class ReportingApi:
 
         Retrieve subscriptions
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -4428,7 +4503,10 @@ class ReportingApi:
     def get_subscriptions_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -4452,7 +4530,7 @@ class ReportingApi:
 
         Retrieve subscriptions
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -4503,7 +4581,10 @@ class ReportingApi:
     def get_subscriptions_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -4527,7 +4608,7 @@ class ReportingApi:
 
         Retrieve subscriptions
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object

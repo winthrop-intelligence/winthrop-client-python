@@ -296,8 +296,8 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     var_date = 'Mon Jun 22 00:00:00 UTC 2026' # date | Restrict to interests submitted on this calendar day (application time zone). Format YYYY-MM-DD. May be combined with the submitted_after/submitted_before bounds. (optional)
     submitted_after = '2026-06-22T00:00Z' # datetime | Only include interests submitted at or after this timestamp (ISO 8601). (optional)
     submitted_before = '2026-06-22T23:59:59.999Z' # datetime | Only include interests submitted at or before this timestamp (ISO 8601). (optional)
-    page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
 
     try:
         api_response = api_instance.get_job_post_interest_leads(var_date=var_date, submitted_after=submitted_after, submitted_before=submitted_before, page=page, per_page=per_page)
@@ -317,8 +317,8 @@ Name | Type | Description  | Notes
  **var_date** | **date**| Restrict to interests submitted on this calendar day (application time zone). Format YYYY-MM-DD. May be combined with the submitted_after/submitted_before bounds. | [optional] 
  **submitted_after** | **datetime**| Only include interests submitted at or after this timestamp (ISO 8601). | [optional] 
  **submitted_before** | **datetime**| Only include interests submitted at or before this timestamp (ISO 8601). | [optional] 
- **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
 
 ### Return type
 
@@ -485,8 +485,8 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.IntercollegiateApi(api_client)
-    page = 1 # int | results page to retrieve. (optional) (default to 1)
-    per_page = 20 # int | number of results per page. (optional) (default to 20)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
     q = None # object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. (optional)
 
     try:
@@ -504,8 +504,8 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| results page to retrieve. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. | [optional] [default to 20]
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] 
 
 ### Return type

@@ -860,10 +860,16 @@ class IntercollegiateApi:
             ),
         ] = None,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         per_page: Annotated[
-            Optional[StrictInt], Field(description="number of results per page.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100."
+            ),
         ] = None,
         _request_timeout: Union[
             None,
@@ -887,9 +893,9 @@ class IntercollegiateApi:
         :type submitted_after: datetime
         :param submitted_before: Only include interests submitted at or before this timestamp (ISO 8601).
         :type submitted_before: datetime
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
-        :param per_page: number of results per page.
+        :param per_page: number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
         :type per_page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -962,10 +968,16 @@ class IntercollegiateApi:
             ),
         ] = None,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         per_page: Annotated[
-            Optional[StrictInt], Field(description="number of results per page.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100."
+            ),
         ] = None,
         _request_timeout: Union[
             None,
@@ -989,9 +1001,9 @@ class IntercollegiateApi:
         :type submitted_after: datetime
         :param submitted_before: Only include interests submitted at or before this timestamp (ISO 8601).
         :type submitted_before: datetime
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
-        :param per_page: number of results per page.
+        :param per_page: number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
         :type per_page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1064,10 +1076,16 @@ class IntercollegiateApi:
             ),
         ] = None,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         per_page: Annotated[
-            Optional[StrictInt], Field(description="number of results per page.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100."
+            ),
         ] = None,
         _request_timeout: Union[
             None,
@@ -1091,9 +1109,9 @@ class IntercollegiateApi:
         :type submitted_after: datetime
         :param submitted_before: Only include interests submitted at or before this timestamp (ISO 8601).
         :type submitted_before: datetime
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
-        :param per_page: number of results per page.
+        :param per_page: number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
         :type per_page: int
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
@@ -1820,10 +1838,16 @@ class IntercollegiateApi:
     def get_job_posts(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         per_page: Annotated[
-            Optional[StrictInt], Field(description="number of results per page.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -1847,9 +1871,9 @@ class IntercollegiateApi:
 
         Retrieve some or all active jobs
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
-        :param per_page: number of results per page.
+        :param per_page: number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
         :type per_page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -1902,10 +1926,16 @@ class IntercollegiateApi:
     def get_job_posts_with_http_info(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         per_page: Annotated[
-            Optional[StrictInt], Field(description="number of results per page.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -1929,9 +1959,9 @@ class IntercollegiateApi:
 
         Retrieve some or all active jobs
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
-        :param per_page: number of results per page.
+        :param per_page: number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
         :type per_page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
@@ -1984,10 +2014,16 @@ class IntercollegiateApi:
     def get_job_posts_without_preload_content(
         self,
         page: Annotated[
-            Optional[StrictInt], Field(description="results page to retrieve.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`."
+            ),
         ] = None,
         per_page: Annotated[
-            Optional[StrictInt], Field(description="number of results per page.")
+            Optional[Annotated[int, Field(le=2147483647, strict=True, ge=1)]],
+            Field(
+                description="number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100."
+            ),
         ] = None,
         q: Annotated[
             Optional[Dict[str, Any]],
@@ -2011,9 +2047,9 @@ class IntercollegiateApi:
 
         Retrieve some or all active jobs
 
-        :param page: results page to retrieve.
+        :param page: results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`.
         :type page: int
-        :param per_page: number of results per page.
+        :param per_page: number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100.
         :type per_page: int
         :param q: Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing.
         :type q: object
