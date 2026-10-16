@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **exp_total_cents** | **int** |  | 
 **rev_total_cents** | **int** |  | 
 **provisional** | **bool** |  | 
+**basis** | **str** | Which report this year&#39;s figures were read from — the quadrant points&#39; vocabulary — so the chart labels every year by its own filing (WINAD-10400). Null on a year the school did not file. | 
 
 ## Example
 

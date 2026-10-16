@@ -1,5 +1,6 @@
 # AthleticProfileShowSportFinancialsCostBuildAssistantPool
 
+Public schools only — the complete contract assistant pool, used for the bench cost (department line, cost per win). Not a program cost line; the program cost reads report_lines.
 
 ## Properties
 
