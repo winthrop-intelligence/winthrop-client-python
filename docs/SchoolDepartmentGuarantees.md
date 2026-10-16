@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **sports** | [**List[DepartmentGuaranteesSportLedger]**](DepartmentGuaranteesSportLedger.md) |  | 
 **market** | [**DepartmentGuaranteesMarket**](DepartmentGuaranteesMarket.md) |  | 
 **trend** | [**List[DepartmentGuaranteesTrendEntry]**](DepartmentGuaranteesTrendEntry.md) |  | 
+**slate_coverage** | [**DepartmentGuaranteesSlateCoverage**](DepartmentGuaranteesSlateCoverage.md) |  | 
 
 ## Example
 
