@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**eada_year** | **int** |  | 
+**eada_year** | **int** | Eligible EADA filing year for the selected season, including a filing with no usable expense lines. Null when no eligible filing exists. | 
 **comp_fiscal_year** | **int** |  | 
 **results_year** | **int** |  | 
 

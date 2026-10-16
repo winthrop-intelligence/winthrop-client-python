@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **bench_cents** | **int** |  | [optional] 
 **wins** | **int** |  | [optional] 
 **per_win_cents** | **int** |  | [optional] 
+**comp_basis** | **str** | The compensation filing basis; cohort median and cheapest are withheld and cohort_size is 0 on the 990 basis. | [optional] 
 **cohort_median_per_win_cents** | **int** |  | [optional] 
 **cohort_size** | **int** |  | [optional] 
 **cheapest** | [**AthleticProfileShowSportFinancialsCostPerWinCheapest**](AthleticProfileShowSportFinancialsCostPerWinCheapest.md) |  | [optional] 

@@ -5,6 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**eada_fallback_count** | **int** | Number of plotted dots using EADA instead of FRS in public mode; zero in private mode | 
+**spend_basis** | **str** |  | 
 **spend_fiscal_year** | **int** |  | 
 **spend_cohort** | **str** |  | 
 **plotted_count** | **int** |  | 

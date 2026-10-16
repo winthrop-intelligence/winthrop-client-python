@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**spend_basis** | **str** |  | 
 **spend_percentile** | **int** |  | 
 **result_percentile** | **int** |  | 
 **result_label** | **str** |  | 
