@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
+**billing_addresses** | [**List[AccountBillingAddress]**](AccountBillingAddress.md) | This invoice&#39;s recipients, which may differ from the account&#39;s billing defaults. | [optional] 
 **invoice_date** | **date** |  | [optional] 
 **description** | **str** |  | [optional] 
 **amount_cents** | **int** |  | [optional] 
