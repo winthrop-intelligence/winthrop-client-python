@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contract_term** | **int** |  | 
+**contract_term** | **int** | Months. One of the lengths the order form offers: 12 or 36 for a standard agreement, otherwise the agreement&#39;s own length. | 
 **contract_accepted** | **bool** |  | 
 
 ## Example

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**batch_guarantee_economics**](DefaultApi.md#batch_guarantee_economics) | **POST** /api/v1/guarantee_economics/batch | 
 [**bulk_create_game_post_searches**](DefaultApi.md#bulk_create_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_create | 
 [**bulk_create_games**](DefaultApi.md#bulk_create_games) | **POST** /api/v1/games/bulk | 
+[**bulk_update_admin_contract_request_searches**](DefaultApi.md#bulk_update_admin_contract_request_searches) | **POST** /api/v1/admin/contract_request_searches/bulk_update | 
 [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update | 
 [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
 [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
@@ -22,9 +23,15 @@ Method | HTTP request | Description
 [**create_admin_coach_merge_log**](DefaultApi.md#create_admin_coach_merge_log) | **POST** /api/v1/admin/coach_merge_logs | 
 [**create_admin_coach_profile_match**](DefaultApi.md#create_admin_coach_profile_match) | **POST** /api/v1/admin/coaches/profile_match | 
 [**create_admin_coach_upload**](DefaultApi.md#create_admin_coach_upload) | **POST** /api/v1/admin/coaches/upload | 
+[**create_admin_contact**](DefaultApi.md#create_admin_contact) | **POST** /api/v1/admin/contacts | 
 [**create_admin_contract**](DefaultApi.md#create_admin_contract) | **POST** /api/v1/admin/contracts | 
 [**create_admin_desk_report**](DefaultApi.md#create_admin_desk_report) | **POST** /api/v1/admin/desk_reports | 
 [**create_admin_desk_report_artifact**](DefaultApi.md#create_admin_desk_report_artifact) | **POST** /api/v1/admin/desk_reports/{desk_report_uuid}/artifacts | 
+[**create_admin_income_report**](DefaultApi.md#create_admin_income_report) | **POST** /api/v1/admin/income_reports | 
+[**create_admin_invoice**](DefaultApi.md#create_admin_invoice) | **POST** /api/v1/admin/invoices | 
+[**create_admin_requested_item_ri_note**](DefaultApi.md#create_admin_requested_item_ri_note) | **POST** /api/v1/admin/requested_items/{requested_item_id}/ri_note | 
+[**create_admin_termination_agreement**](DefaultApi.md#create_admin_termination_agreement) | **POST** /api/v1/admin/termination_agreements | 
+[**create_admin_youtube_video**](DefaultApi.md#create_admin_youtube_video) | **POST** /api/v1/admin/youtube_videos | 
 [**create_cashflow**](DefaultApi.md#create_cashflow) | **POST** /api/v1/cashflows | 
 [**create_coach**](DefaultApi.md#create_coach) | **POST** /api/v1/coaches | 
 [**create_compensation**](DefaultApi.md#create_compensation) | **POST** /api/v1/compensations | 
@@ -54,8 +61,10 @@ Method | HTTP request | Description
 [**create_requested_item_ri_note**](DefaultApi.md#create_requested_item_ri_note) | **POST** /api/v1/requested_items/{requestedItemId}/ri_note | 
 [**create_schedule_intent**](DefaultApi.md#create_schedule_intent) | **POST** /api/v1/schedule_intents | 
 [**create_schedule_tournament**](DefaultApi.md#create_schedule_tournament) | **POST** /api/v1/schedule_tournaments | 
+[**create_scheduling_message**](DefaultApi.md#create_scheduling_message) | **POST** /api/v1/scheduling_messages | 
 [**create_school_group**](DefaultApi.md#create_school_group) | **POST** /api/v1/school_groups | 
 [**create_season**](DefaultApi.md#create_season) | **POST** /api/v1/seasons | 
+[**create_subscription**](DefaultApi.md#create_subscription) | **POST** /api/v1/subscriptions | 
 [**create_team_schedule_favorite**](DefaultApi.md#create_team_schedule_favorite) | **POST** /api/v1/team_schedule_favorites | 
 [**create_upload**](DefaultApi.md#create_upload) | **POST** /api/v1/uploads | 
 [**delete_account_user**](DefaultApi.md#delete_account_user) | **DELETE** /api/v1/account_users/{accountUserId} | 
@@ -90,23 +99,39 @@ Method | HTTP request | Description
 [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} | 
 [**destroy_admin_coach**](DefaultApi.md#destroy_admin_coach) | **DELETE** /api/v1/admin/coaches/{id} | 
 [**destroy_admin_compensation**](DefaultApi.md#destroy_admin_compensation) | **DELETE** /api/v1/admin/compensations/{id} | 
+[**destroy_admin_contact**](DefaultApi.md#destroy_admin_contact) | **DELETE** /api/v1/admin/contacts/{id} | 
 [**destroy_admin_contract**](DefaultApi.md#destroy_admin_contract) | **DELETE** /api/v1/admin/contracts/{id} | 
+[**destroy_admin_income_report**](DefaultApi.md#destroy_admin_income_report) | **DELETE** /api/v1/admin/income_reports/{id} | 
+[**destroy_admin_raw_contract**](DefaultApi.md#destroy_admin_raw_contract) | **DELETE** /api/v1/admin/raw_contracts/{id} | 
+[**destroy_admin_requested_item**](DefaultApi.md#destroy_admin_requested_item) | **DELETE** /api/v1/admin/requested_items/{id} | 
+[**destroy_admin_requested_item_ri_note**](DefaultApi.md#destroy_admin_requested_item_ri_note) | **DELETE** /api/v1/admin/requested_items/{requested_item_id}/ri_note | 
+[**destroy_admin_termination_agreement**](DefaultApi.md#destroy_admin_termination_agreement) | **DELETE** /api/v1/admin/termination_agreements/{id} | 
+[**destroy_admin_youtube_video**](DefaultApi.md#destroy_admin_youtube_video) | **DELETE** /api/v1/admin/youtube_videos/{id} | 
 [**download_admin_coach_contracts_csv_template**](DefaultApi.md#download_admin_coach_contracts_csv_template) | **GET** /api/v1/admin/coach_contracts/download_csv_template | 
 [**download_admin_coach_contracts_outside_income_csv_template**](DefaultApi.md#download_admin_coach_contracts_outside_income_csv_template) | **GET** /api/v1/admin/coach_contracts/outside_income_csv_template | 
 [**download_raw_contract_file**](DefaultApi.md#download_raw_contract_file) | **GET** /api/v1/raw_contracts/{raw_contractId}/download | 
 [**enrich_game_post_searches**](DefaultApi.md#enrich_game_post_searches) | **POST** /api/v1/game_post_searches/enrichment | 
+[**export_admin_contract_request_searches_coaches**](DefaultApi.md#export_admin_contract_request_searches_coaches) | **POST** /api/v1/admin/contract_request_searches/export_coaches | 
 [**export_revenue_searches**](DefaultApi.md#export_revenue_searches) | **GET** /api/v1/revenue_searches/export | 
 [**get_account**](DefaultApi.md#get_account) | **GET** /api/v1/accounts/{id} | 
 [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
 [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
+[**get_accounts**](DefaultApi.md#get_accounts) | **GET** /api/v1/accounts | 
 [**get_admin_coach**](DefaultApi.md#get_admin_coach) | **GET** /api/v1/admin/coaches/{id} | 
 [**get_admin_coach_merge_log**](DefaultApi.md#get_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/{id} | 
 [**get_admin_contract**](DefaultApi.md#get_admin_contract) | **GET** /api/v1/admin/contracts/{id} | 
+[**get_admin_contract_request_searches_options**](DefaultApi.md#get_admin_contract_request_searches_options) | **GET** /api/v1/admin/contract_request_searches/options | 
 [**get_admin_desk_report**](DefaultApi.md#get_admin_desk_report) | **GET** /api/v1/admin/desk_reports/{uuid} | 
 [**get_admin_desk_report_activity**](DefaultApi.md#get_admin_desk_report_activity) | **GET** /api/v1/admin/desk_reports/{uuid}/activity | 
 [**get_admin_desk_report_activity_summaries**](DefaultApi.md#get_admin_desk_report_activity_summaries) | **GET** /api/v1/admin/desk_reports/activity_summaries | 
 [**get_admin_desk_reports**](DefaultApi.md#get_admin_desk_reports) | **GET** /api/v1/admin/desk_reports | 
 [**get_admin_desk_requests**](DefaultApi.md#get_admin_desk_requests) | **GET** /api/v1/admin/desk_requests | 
+[**get_admin_income_report**](DefaultApi.md#get_admin_income_report) | **GET** /api/v1/admin/income_reports/{id} | 
+[**get_admin_invoice**](DefaultApi.md#get_admin_invoice) | **GET** /api/v1/admin/invoices/{invoiceId} | 
+[**get_admin_invoices**](DefaultApi.md#get_admin_invoices) | **GET** /api/v1/admin/invoices | 
+[**get_admin_raw_contract_text**](DefaultApi.md#get_admin_raw_contract_text) | **GET** /api/v1/admin/raw_contracts/{id}/text | 
+[**get_admin_requested_item_ri_note**](DefaultApi.md#get_admin_requested_item_ri_note) | **GET** /api/v1/admin/requested_items/{requested_item_id}/ri_note | 
+[**get_admin_termination_agreement**](DefaultApi.md#get_admin_termination_agreement) | **GET** /api/v1/admin/termination_agreements/{id} | 
 [**get_administrator**](DefaultApi.md#get_administrator) | **GET** /api/v1/administrators/{administratorId} | 
 [**get_administrator_searches**](DefaultApi.md#get_administrator_searches) | **GET** /api/v1/administrator_searches | 
 [**get_administrators**](DefaultApi.md#get_administrators) | **GET** /api/v1/administrators | 
@@ -264,6 +289,8 @@ Method | HTTP request | Description
 [**get_subdivisions**](DefaultApi.md#get_subdivisions) | **GET** /api/v1/subdivisions | 
 [**get_subscription**](DefaultApi.md#get_subscription) | **GET** /api/v1/subscriptions/{subscriptionId} | 
 [**get_subscription_acceptance**](DefaultApi.md#get_subscription_acceptance) | **GET** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} | 
+[**get_subscription_change_history**](DefaultApi.md#get_subscription_change_history) | **GET** /api/v1/subscriptions/{subscriptionId}/change_history | 
+[**get_subscription_types**](DefaultApi.md#get_subscription_types) | **GET** /api/v1/subscription_types | 
 [**get_subscriptions**](DefaultApi.md#get_subscriptions) | **GET** /api/v1/subscriptions | 
 [**get_system_settings**](DefaultApi.md#get_system_settings) | **GET** /api/v1/system_setting | 
 [**get_team_schedule_detail**](DefaultApi.md#get_team_schedule_detail) | **GET** /api/v1/team_schedule_details/{sport_name}/{school_id} | 
@@ -299,9 +326,20 @@ Method | HTTP request | Description
 [**list_admin_coach_upload_jobs**](DefaultApi.md#list_admin_coach_upload_jobs) | **GET** /api/v1/admin/coaches/upload | 
 [**list_admin_coaches**](DefaultApi.md#list_admin_coaches) | **GET** /api/v1/admin/coaches | 
 [**list_admin_compensations**](DefaultApi.md#list_admin_compensations) | **GET** /api/v1/admin/compensations | 
+[**list_admin_contact_eligible_coaches**](DefaultApi.md#list_admin_contact_eligible_coaches) | **GET** /api/v1/admin/contacts/eligible_coaches | 
+[**list_admin_contacts**](DefaultApi.md#list_admin_contacts) | **GET** /api/v1/admin/contacts | 
+[**list_admin_contract_request_searches**](DefaultApi.md#list_admin_contract_request_searches) | **GET** /api/v1/admin/contract_request_searches | 
 [**list_admin_contracts**](DefaultApi.md#list_admin_contracts) | **GET** /api/v1/admin/contracts | 
+[**list_admin_income_reports**](DefaultApi.md#list_admin_income_reports) | **GET** /api/v1/admin/income_reports | 
+[**list_admin_raw_contracts_between_schools**](DefaultApi.md#list_admin_raw_contracts_between_schools) | **GET** /api/v1/admin/raw_contracts/game_contracts_between_schools | 
+[**list_admin_requested_items**](DefaultApi.md#list_admin_requested_items) | **GET** /api/v1/admin/requested_items | 
+[**list_admin_termination_agreements**](DefaultApi.md#list_admin_termination_agreements) | **GET** /api/v1/admin/termination_agreements | 
+[**list_admin_youtube_videos**](DefaultApi.md#list_admin_youtube_videos) | **GET** /api/v1/admin/youtube_videos | 
 [**list_notes**](DefaultApi.md#list_notes) | **GET** /api/v1/notes/list | 
+[**mark_paid_admin_invoice**](DefaultApi.md#mark_paid_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/mark_paid | 
 [**mass_update_admin_compensations**](DefaultApi.md#mass_update_admin_compensations) | **POST** /api/v1/admin/compensations/mass_update | 
+[**mass_update_admin_requested_items**](DefaultApi.md#mass_update_admin_requested_items) | **PATCH** /api/v1/admin/requested_items/mass_update | 
+[**prefill_admin_invoice**](DefaultApi.md#prefill_admin_invoice) | **GET** /api/v1/admin/invoices/prefill | 
 [**preview_admin_coach_contracts**](DefaultApi.md#preview_admin_coach_contracts) | **POST** /api/v1/admin/coach_contracts/preview | 
 [**preview_admin_coach_merge_log**](DefaultApi.md#preview_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/preview | 
 [**publish_admin_desk_report**](DefaultApi.md#publish_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/publish | 
@@ -311,14 +349,22 @@ Method | HTTP request | Description
 [**retry_frs_export**](DefaultApi.md#retry_frs_export) | **POST** /api/v1/frs_exports/{frsExportId}/retry | 
 [**revoke_contract_verification**](DefaultApi.md#revoke_contract_verification) | **POST** /api/v1/raw_contracts/{raw_contractId}/verifications/revoke | Revoke verified seasons (append a revocation event)
 [**search_coaches**](DefaultApi.md#search_coaches) | **POST** /api/v1/coaches/search | 
+[**send_admin_invoice**](DefaultApi.md#send_admin_invoice) | **POST** /api/v1/admin/invoices/{invoiceId}/send | 
 [**send_otp_code**](DefaultApi.md#send_otp_code) | **POST** /api/v1/otp/send_code | 
 [**unstract_raw_contract_pdf_text**](DefaultApi.md#unstract_raw_contract_pdf_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/unstract_pdf_text | 
 [**update_account_user**](DefaultApi.md#update_account_user) | **PATCH** /api/v1/account_users/{accountUserId} | 
 [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation | 
 [**update_admin_coach**](DefaultApi.md#update_admin_coach) | **PATCH** /api/v1/admin/coaches/{id} | 
+[**update_admin_contact**](DefaultApi.md#update_admin_contact) | **PATCH** /api/v1/admin/contacts/{id} | 
 [**update_admin_contract**](DefaultApi.md#update_admin_contract) | **PATCH** /api/v1/admin/contracts/{id} | 
 [**update_admin_desk_report**](DefaultApi.md#update_admin_desk_report) | **PATCH** /api/v1/admin/desk_reports/{uuid} | 
 [**update_admin_desk_request**](DefaultApi.md#update_admin_desk_request) | **PATCH** /api/v1/admin/desk_requests/{uuid} | 
+[**update_admin_income_report**](DefaultApi.md#update_admin_income_report) | **PATCH** /api/v1/admin/income_reports/{id} | 
+[**update_admin_invoice**](DefaultApi.md#update_admin_invoice) | **PATCH** /api/v1/admin/invoices/{invoiceId} | 
+[**update_admin_requested_item**](DefaultApi.md#update_admin_requested_item) | **PATCH** /api/v1/admin/requested_items/{id} | 
+[**update_admin_requested_item_ri_note**](DefaultApi.md#update_admin_requested_item_ri_note) | **PATCH** /api/v1/admin/requested_items/{requested_item_id}/ri_note | 
+[**update_admin_termination_agreement**](DefaultApi.md#update_admin_termination_agreement) | **PATCH** /api/v1/admin/termination_agreements/{id} | 
+[**update_admin_youtube_video**](DefaultApi.md#update_admin_youtube_video) | **PATCH** /api/v1/admin/youtube_videos/{id} | 
 [**update_cashflow**](DefaultApi.md#update_cashflow) | **PUT** /api/v1/cashflows/{cashflowId} | 
 [**update_coach**](DefaultApi.md#update_coach) | **PATCH** /api/v1/coaches/{coachId} | 
 [**update_compensation**](DefaultApi.md#update_compensation) | **PATCH** /api/v1/compensations/{compensationId} | 
@@ -343,6 +389,7 @@ Method | HTTP request | Description
 [**update_schedule_intent**](DefaultApi.md#update_schedule_intent) | **PATCH** /api/v1/schedule_intents/{scheduleIntentId} | 
 [**update_school_group**](DefaultApi.md#update_school_group) | **PATCH** /api/v1/school_groups/{schoolGroupId} | 
 [**update_season**](DefaultApi.md#update_season) | **PUT** /api/v1/seasons/{seasonId} | 
+[**update_subscription**](DefaultApi.md#update_subscription) | **PATCH** /api/v1/subscriptions/{subscriptionId} | 
 [**update_subscription_acceptance**](DefaultApi.md#update_subscription_acceptance) | **PATCH** /api/v1/subscription_acceptances/{subscriptionAcceptanceId} | 
 [**update_team_schedule_favorite**](DefaultApi.md#update_team_schedule_favorite) | **PATCH** /api/v1/team_schedule_favorites/{id} | 
 [**update_user**](DefaultApi.md#update_user) | **PATCH** /api/v1/users/{userId} | 
@@ -955,6 +1002,92 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
 **422** | Validation error — the whole batch was rolled back |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **bulk_update_admin_contract_request_searches**
+> DeleteAccountUser200Response bulk_update_admin_contract_request_searches(bulk_update_admin_contract_request_searches_request)
+
+Bulk-set the Compensation (positive contract_status_id) or IncomeReport/OI (negative contract_status_id) contract status for the given position_ids
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.bulk_update_admin_contract_request_searches_request import BulkUpdateAdminContractRequestSearchesRequest
+from winthrop_client_python.models.delete_account_user200_response import DeleteAccountUser200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    bulk_update_admin_contract_request_searches_request = winthrop_client_python.BulkUpdateAdminContractRequestSearchesRequest() # BulkUpdateAdminContractRequestSearchesRequest | 
+
+    try:
+        api_response = api_instance.bulk_update_admin_contract_request_searches(bulk_update_admin_contract_request_searches_request)
+        print("The response of DefaultApi->bulk_update_admin_contract_request_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->bulk_update_admin_contract_request_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulk_update_admin_contract_request_searches_request** | [**BulkUpdateAdminContractRequestSearchesRequest**](BulkUpdateAdminContractRequestSearchesRequest.md)|  | 
+
+### Return type
+
+[**DeleteAccountUser200Response**](DeleteAccountUser200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Bulk update applied |  -  |
+**400** | Bad Request - contract_status_id missing |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | A selected position was deleted while waiting for its lock |  -  |
+**409** | A selected position kept changing coaches while acquiring its lock; reload and retry |  -  |
+**422** | Invalid or nonexistent contract_status_id (no writes), invalid change_note, or bulk update failed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -1866,6 +1999,89 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_admin_contact**
+> AdminContact create_admin_contact(create_contact_request)
+
+Create a new scheduling contact (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_contact import AdminContact
+from winthrop_client_python.models.create_contact_request import CreateContactRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_contact_request = winthrop_client_python.CreateContactRequest() # CreateContactRequest | 
+
+    try:
+        api_response = api_instance.create_admin_contact(create_contact_request)
+        print("The response of DefaultApi->create_admin_contact:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_admin_contact: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_contact_request** | [**CreateContactRequest**](CreateContactRequest.md)|  | 
+
+### Return type
+
+[**AdminContact**](AdminContact.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Contact created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**422** | Validation errors |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_admin_contract**
 > AdminContract create_admin_contract(coach_id, contract=contract, raw_contract=raw_contract)
 
@@ -2135,6 +2351,432 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unknown kind or missing file |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_admin_income_report**
+> AdminIncomeReport create_admin_income_report(change_note=change_note, income_report=income_report, raw_contract=raw_contract)
+
+Create an outside income report for a coach, optionally attaching a raw contract PDF (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_income_report import AdminIncomeReport
+from winthrop_client_python.models.create_admin_contract_request_raw_contract import CreateAdminContractRequestRawContract
+from winthrop_client_python.models.create_admin_income_report_request_income_report import CreateAdminIncomeReportRequestIncomeReport
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    change_note = 'change_note_example' # str |  (optional)
+    income_report = winthrop_client_python.CreateAdminIncomeReportRequestIncomeReport() # CreateAdminIncomeReportRequestIncomeReport |  (optional)
+    raw_contract = winthrop_client_python.CreateAdminContractRequestRawContract() # CreateAdminContractRequestRawContract |  (optional)
+
+    try:
+        api_response = api_instance.create_admin_income_report(change_note=change_note, income_report=income_report, raw_contract=raw_contract)
+        print("The response of DefaultApi->create_admin_income_report:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_admin_income_report: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **change_note** | **str**|  | [optional] 
+ **income_report** | [**CreateAdminIncomeReportRequestIncomeReport**](CreateAdminIncomeReportRequestIncomeReport.md)|  | [optional] 
+ **raw_contract** | [**CreateAdminContractRequestRawContract**](CreateAdminContractRequestRawContract.md)|  | [optional] 
+
+### Return type
+
+[**AdminIncomeReport**](AdminIncomeReport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Income report created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**422** | Unable to create the income report |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_admin_invoice**
+> AdminInvoiceForm create_admin_invoice(admin_invoice_create)
+
+"Save draft" for a brand-new invoice — the fields the operator actually typed into the form prefilled by GET .../prefill, not server-generated defaults. Never emails anyone; use POST .../{id}/send for that. The invoice is saved as a draft and gets no reminder emails until it has been sent.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_invoice_create import AdminInvoiceCreate
+from winthrop_client_python.models.admin_invoice_form import AdminInvoiceForm
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    admin_invoice_create = winthrop_client_python.AdminInvoiceCreate() # AdminInvoiceCreate | 
+
+    try:
+        api_response = api_instance.create_admin_invoice(admin_invoice_create)
+        print("The response of DefaultApi->create_admin_invoice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_admin_invoice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **admin_invoice_create** | [**AdminInvoiceCreate**](AdminInvoiceCreate.md)|  | 
+
+### Return type
+
+[**AdminInvoiceForm**](AdminInvoiceForm.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Draft invoice created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Unknown subscription_year_id |  -  |
+**422** | Validation failed (e.g. amount_cents &lt;&#x3D; 0, blank description or due_date), or the annual schedule needs splitting. Split refusals include an errors array and the numeric subscription_id to open for correction. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_admin_requested_item_ri_note**
+> AdminRiNote create_admin_requested_item_ri_note(requested_item_id, admin_ri_note_input)
+
+Create a note on a requested item (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_ri_note import AdminRiNote
+from winthrop_client_python.models.admin_ri_note_input import AdminRiNoteInput
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | 
+    admin_ri_note_input = winthrop_client_python.AdminRiNoteInput() # AdminRiNoteInput | 
+
+    try:
+        api_response = api_instance.create_admin_requested_item_ri_note(requested_item_id, admin_ri_note_input)
+        print("The response of DefaultApi->create_admin_requested_item_ri_note:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_admin_requested_item_ri_note: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**|  | 
+ **admin_ri_note_input** | [**AdminRiNoteInput**](AdminRiNoteInput.md)|  | 
+
+### Return type
+
+[**AdminRiNote**](AdminRiNote.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Note created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**422** | Validation errors |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_admin_termination_agreement**
+> AdminTerminationAgreement create_admin_termination_agreement(termination_agreement, raw_contract=raw_contract)
+
+Create a termination agreement for a coach, optionally attaching a raw contract PDF (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_termination_agreement import AdminTerminationAgreement
+from winthrop_client_python.models.create_admin_contract_request_raw_contract import CreateAdminContractRequestRawContract
+from winthrop_client_python.models.create_termination_agreement_request_termination_agreement import CreateTerminationAgreementRequestTerminationAgreement
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    termination_agreement = winthrop_client_python.CreateTerminationAgreementRequestTerminationAgreement() # CreateTerminationAgreementRequestTerminationAgreement | 
+    raw_contract = winthrop_client_python.CreateAdminContractRequestRawContract() # CreateAdminContractRequestRawContract |  (optional)
+
+    try:
+        api_response = api_instance.create_admin_termination_agreement(termination_agreement, raw_contract=raw_contract)
+        print("The response of DefaultApi->create_admin_termination_agreement:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_admin_termination_agreement: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **termination_agreement** | [**CreateTerminationAgreementRequestTerminationAgreement**](CreateTerminationAgreementRequestTerminationAgreement.md)|  | 
+ **raw_contract** | [**CreateAdminContractRequestRawContract**](CreateAdminContractRequestRawContract.md)|  | [optional] 
+
+### Return type
+
+[**AdminTerminationAgreement**](AdminTerminationAgreement.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Termination agreement created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**422** | Unprocessable Content |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_admin_youtube_video**
+> AdminYoutubeVideo create_admin_youtube_video(create_youtube_video_request)
+
+Create a YouTube video record - looks up youtube_id via the real YouTube Data API to fill in title/description/username/published_at
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_youtube_video import AdminYoutubeVideo
+from winthrop_client_python.models.create_youtube_video_request import CreateYoutubeVideoRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    create_youtube_video_request = winthrop_client_python.CreateYoutubeVideoRequest() # CreateYoutubeVideoRequest | 
+
+    try:
+        api_response = api_instance.create_admin_youtube_video(create_youtube_video_request)
+        print("The response of DefaultApi->create_admin_youtube_video:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_admin_youtube_video: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **create_youtube_video_request** | [**CreateYoutubeVideoRequest**](CreateYoutubeVideoRequest.md)|  | 
+
+### Return type
+
+[**AdminYoutubeVideo**](AdminYoutubeVideo.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | YouTube video created |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**422** | Unable to create the video (invalid youtube_id or YouTube API error) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -4536,6 +5178,90 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **create_scheduling_message**
+> SchedulingMessage create_scheduling_message(scheduling_message_create)
+
+Relay a scheduling message by email and return its persisted delivery record.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.scheduling_message import SchedulingMessage
+from winthrop_client_python.models.scheduling_message_create import SchedulingMessageCreate
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    scheduling_message_create = winthrop_client_python.SchedulingMessageCreate() # SchedulingMessageCreate | 
+
+    try:
+        api_response = api_instance.create_scheduling_message(scheduling_message_create)
+        print("The response of DefaultApi->create_scheduling_message:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_scheduling_message: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scheduling_message_create** | [**SchedulingMessageCreate**](SchedulingMessageCreate.md)|  | 
+
+### Return type
+
+[**SchedulingMessage**](SchedulingMessage.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Scheduling message persisted and queued |  -  |
+**400** | Required scheduling_message object missing or malformed |  -  |
+**401** | Unauthorized |  -  |
+**403** | User cannot create scheduling messages |  -  |
+**422** | Invalid message, missing recipient or school, or daily limit reached |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_school_group**
 > SchoolGroupShow create_school_group(create_school_group_request)
 
@@ -4696,6 +5422,92 @@ Name | Type | Description  | Notes
 **201** | Season was created |  -  |
 **401** | Unauthorized |  -  |
 **422** | Unable to create the Season |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_subscription**
+> Subscription create_subscription(subscription=subscription, raw_contract_file=raw_contract_file)
+
+Create a Subscription with its per-year payment schedule (subscription_years). Accepts multipart/form-data with a raw_contract_file part for the signed agreement PDF. The subscription is either one application/json part holding the object below, or the same fields as bracketed form fields (subscription[account_id], ...). The schedule must run back to back from start_at to end_at, numbered from 1, with every year between a month and a year long. Uploaded signed agreements are recorded as accepted. Set active to false to record an upcoming renewal while the account's current subscription is active.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.create_subscription_request_subscription import CreateSubscriptionRequestSubscription
+from winthrop_client_python.models.subscription import Subscription
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subscription = winthrop_client_python.CreateSubscriptionRequestSubscription() # CreateSubscriptionRequestSubscription |  (optional)
+    raw_contract_file = None # bytearray |  (optional)
+
+    try:
+        api_response = api_instance.create_subscription(subscription=subscription, raw_contract_file=raw_contract_file)
+        print("The response of DefaultApi->create_subscription:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_subscription: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription** | [**CreateSubscriptionRequestSubscription**](CreateSubscriptionRequestSubscription.md)|  | [optional] 
+ **raw_contract_file** | **bytearray**|  | [optional] 
+
+### Return type
+
+[**Subscription**](Subscription.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Subscription was created |  -  |
+**400** | The subscription part is not a JSON object |  -  |
+**401** | Unauthorized |  -  |
+**403** | The token has no signed-in user, or the user may not create subscriptions |  -  |
+**422** | Validation failed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -7427,6 +8239,85 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **destroy_admin_contact**
+> destroy_admin_contact(id)
+
+Delete a scheduling contact (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_instance.destroy_admin_contact(id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->destroy_admin_contact: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Contact deleted |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **destroy_admin_contract**
 > destroy_admin_contract(id)
 
@@ -7500,6 +8391,484 @@ void (empty response body)
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **204** | Contract deleted |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **destroy_admin_income_report**
+> destroy_admin_income_report(id, change_note=change_note)
+
+Delete an income report (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | ID of the income report
+    change_note = 'change_note_example' # str |  (optional)
+
+    try:
+        api_instance.destroy_admin_income_report(id, change_note=change_note)
+    except Exception as e:
+        print("Exception when calling DefaultApi->destroy_admin_income_report: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| ID of the income report | 
+ **change_note** | **str**|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Income report deleted |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **destroy_admin_raw_contract**
+> destroy_admin_raw_contract(id, change_note=change_note)
+
+Delete a raw contract (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+    change_note = 'change_note_example' # str |  (optional)
+
+    try:
+        api_instance.destroy_admin_raw_contract(id, change_note=change_note)
+    except Exception as e:
+        print("Exception when calling DefaultApi->destroy_admin_raw_contract: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **change_note** | **str**|  | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**422** | Document deletion is restricted or the subscription update failed; nothing is changed |  -  |
+**204** | Raw contract deleted |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **destroy_admin_requested_item**
+> destroy_admin_requested_item(id)
+
+Delete a requested item (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_instance.destroy_admin_requested_item(id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->destroy_admin_requested_item: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Requested item deleted |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **destroy_admin_requested_item_ri_note**
+> destroy_admin_requested_item_ri_note(requested_item_id)
+
+Delete a requested item's note (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | 
+
+    try:
+        api_instance.destroy_admin_requested_item_ri_note(requested_item_id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->destroy_admin_requested_item_ri_note: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | Note deleted |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **destroy_admin_termination_agreement**
+> destroy_admin_termination_agreement(id)
+
+Delete a termination agreement (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_instance.destroy_admin_termination_agreement(id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->destroy_admin_termination_agreement: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **destroy_admin_youtube_video**
+> destroy_admin_youtube_video(id)
+
+Delete a YouTube video
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_instance.destroy_admin_youtube_video(id)
+    except Exception as e:
+        print("Exception when calling DefaultApi->destroy_admin_youtube_video: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | YouTube video deleted |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden - user is not a super admin |  -  |
 **404** | Not Found |  -  |
@@ -7834,6 +9203,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **export_admin_contract_request_searches_coaches**
+> RegenerateRawContractPdf200Response export_admin_contract_request_searches_coaches(q=q)
+
+Queue a background CSV email export of the current coach contract request search. An omitted season defaults to current; q[all_seasons]=true explicitly exports every season and is removed before querying. Restricts to D1/D2 unless a division filter is set.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.regenerate_raw_contract_pdf200_response import RegenerateRawContractPdf200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    q = None # object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. (optional)
+
+    try:
+        api_response = api_instance.export_admin_contract_request_searches_coaches(q=q)
+        print("The response of DefaultApi->export_admin_contract_request_searches_coaches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->export_admin_contract_request_searches_coaches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q** | [**object**](.md)| Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] 
+
+### Return type
+
+[**RegenerateRawContractPdf200Response**](RegenerateRawContractPdf200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Export queued |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **export_revenue_searches**
 > bytearray export_revenue_searches(school_id, year=year)
 
@@ -8145,6 +9595,91 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_accounts**
+> AccountSummaryCollection get_accounts(page=page, per_page=per_page, q=q)
+
+Super_admin-only name-search lookup for accounts (e.g. the subscription account picker). Unlike GET /accounts/{id}, this is not available to account-scoped users.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.account_summary_collection import AccountSummaryCollection
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
+    q = None # object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. (optional)
+
+    try:
+        api_response = api_instance.get_accounts(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->get_accounts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_accounts: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] 
+
+### Return type
+
+[**AccountSummaryCollection**](AccountSummaryCollection.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Accounts matching the search |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super_admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_admin_coach**
 > AdminCoach get_admin_coach(id)
 
@@ -8388,6 +9923,83 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden - user is not a super admin |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_contract_request_searches_options**
+> AdminContractRequestSearchesOptions get_admin_contract_request_searches_options()
+
+Reference data for the filter bar and bulk-action dropdown (ContractStatus rows)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_contract_request_searches_options import AdminContractRequestSearchesOptions
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+
+    try:
+        api_response = api_instance.get_admin_contract_request_searches_options()
+        print("The response of DefaultApi->get_admin_contract_request_searches_options:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_contract_request_searches_options: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AdminContractRequestSearchesOptions**](AdminContractRequestSearchesOptions.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Options retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -8877,6 +10489,551 @@ Name | Type | Description  | Notes
 **200** | Queue retrieved |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_income_report**
+> AdminIncomeReport get_admin_income_report(id)
+
+Retrieve a single income report (admin-only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_income_report import AdminIncomeReport
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | ID of the income report
+
+    try:
+        api_response = api_instance.get_admin_income_report(id)
+        print("The response of DefaultApi->get_admin_income_report:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_income_report: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| ID of the income report | 
+
+### Return type
+
+[**AdminIncomeReport**](AdminIncomeReport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Income report found |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_invoice**
+> AdminInvoiceForm get_admin_invoice(invoice_id)
+
+An existing invoice's form/detail — draft, sent, or paid all render the same shape.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_invoice_form import AdminInvoiceForm
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    invoice_id = 56 # int | ID of the Invoice
+
+    try:
+        api_response = api_instance.get_admin_invoice(invoice_id)
+        print("The response of DefaultApi->get_admin_invoice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_invoice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **invoice_id** | **int**| ID of the Invoice | 
+
+### Return type
+
+[**AdminInvoiceForm**](AdminInvoiceForm.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Invoice form data |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_invoices**
+> AdminInvoicesResponse get_admin_invoices(status=status, account_name=account_name, due_from=due_from, due_to=due_to, due_before=due_before, sort=sort, page=page, per_page=per_page)
+
+The Invoices admin list, super-admin only. status=not_sent (the default)
+is synthesized from subscription_years due within 90 days or past due, on a billing-eligible
+agreement (paid, Send invoices on), with no non-draft or paid invoice against them.
+Billing eligibility is not access activation. An active agreement is eligible. An
+inactive one is eligible while it is awaiting activation, which is how the subscription
+form records a renewal while another agreement gives the account access. Awaiting
+activation means the agreement has a start and an end date, its end date is today or
+later, and either it starts after today or no other agreement of the same account (active
+or not) started after its start on or before today. Ended agreements, agreements
+superseded by a newer started one, and inactive agreements missing a date are not
+eligible. The same rule drives meta.not_sent_count (returned on every tab), the Not sent
+total and the CSV export. A queued delivery
+reserves its year immediately even while sent_at is null, and the queued invoice is listed in
+its place under Not sent (and Not paid, and All), once, by its own due date, until the send is
+confirmed (then Sent) or fails to queue (then a draft again); never once paid. Legacy non-draft invoices
+also reserve their year when their send date is unknown. status=sent lists confirmed
+sent invoices not yet paid, and status=paid lists paid invoices. status=all combines
+these with remaining drafts, pending deliveries and legacy invoices. Every row's `action` names what the one action button does and the
+ids it needs — the frontend follows it to the invoice form or the
+subscription schedule page, all in-app.
+
+status=not_paid (WINAD-10657) is Not sent plus Sent, every row still owed whether or not the
+invoice went out (never Paid). A year with no invoice counts as not paid. It is the base of
+the Past due and Next 90 days collections and answers meta.totals. Past due is
+status=not_paid with due_before set to today, Next 90 days is status=not_paid with due_from
+set to today and due_to set to today plus 90 days. The client sends those dates, the server
+never reads its clock for them, so a preset is a bookmarkable URL. due_from and due_to are
+inclusive and due_before is exclusive (all YYYY-MM-DD, combinable, applied with every status
+to the row's own due date: an invoice's, or the schedule year's for a year with no invoice).
+status=not_paid and any due filter list the rows oldest due first unless sort says
+otherwise, other lists keep their order. With a due filter, status=not_sent and status=all pick
+their schedule years the way not_paid does (a later due_to or due_before reaches past the
+90-day window, and a saved draft is listed by its own due date even when its year is scheduled
+beyond it), so switching tabs never hides a row the range matches. Without a filter, Not sent
+keeps the 90-day window. meta.not_sent_count is the unfiltered Not sent total, queued first
+sends included.
+
+Pass format=csv (e.g. `/admin/invoices.csv`) for a CSV export reflecting the same
+status/account_name/due-date/sort filters.
+
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_invoices_response import AdminInvoicesResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    status = 'status_example' # str | not_sent (default) | sent | paid | all | not_paid (Not sent plus Sent) (optional)
+    account_name = 'account_name_example' # str | Case-insensitive contains match on the account name. (optional)
+    due_from = '2013-10-20' # date | Rows due on or after this date (inclusive, YYYY-MM-DD). (optional)
+    due_to = '2013-10-20' # date | Rows due on or before this date (inclusive, YYYY-MM-DD). Not before due_from. (optional)
+    due_before = '2013-10-20' # date | Rows due strictly before this date (exclusive, YYYY-MM-DD). (optional)
+    sort = 'sort_example' # str | due_asc (oldest due first) or due_desc. Omitted, not_paid and the Not sent tab with a due filter list oldest first and the other tabs keep their own order. (optional)
+    page = 56 # int |  (optional)
+    per_page = 56 # int |  (optional)
+
+    try:
+        api_response = api_instance.get_admin_invoices(status=status, account_name=account_name, due_from=due_from, due_to=due_to, due_before=due_before, sort=sort, page=page, per_page=per_page)
+        print("The response of DefaultApi->get_admin_invoices:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_invoices: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **str**| not_sent (default) | sent | paid | all | not_paid (Not sent plus Sent) | [optional] 
+ **account_name** | **str**| Case-insensitive contains match on the account name. | [optional] 
+ **due_from** | **date**| Rows due on or after this date (inclusive, YYYY-MM-DD). | [optional] 
+ **due_to** | **date**| Rows due on or before this date (inclusive, YYYY-MM-DD). Not before due_from. | [optional] 
+ **due_before** | **date**| Rows due strictly before this date (exclusive, YYYY-MM-DD). | [optional] 
+ **sort** | **str**| due_asc (oldest due first) or due_desc. Omitted, not_paid and the Not sent tab with a due filter list oldest first and the other tabs keep their own order. | [optional] 
+ **page** | **int**|  | [optional] 
+ **per_page** | **int**|  | [optional] 
+
+### Return type
+
+[**AdminInvoicesResponse**](AdminInvoicesResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Invoice list rows |  -  |
+**401** | Unauthorized |  -  |
+**422** | A due_from, due_to or due_before that is not a real YYYY-MM-DD date, a due_to before due_from, or an unknown sort. The body is errors keyed by the parameter name. |  -  |
+**403** | Forbidden (not a super admin) |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_raw_contract_text**
+> AdminRawContractText get_admin_raw_contract_text(id)
+
+Retrieve OCR/unstract text extraction status and content for a raw contract (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_raw_contract_text import AdminRawContractText
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.get_admin_raw_contract_text(id)
+        print("The response of DefaultApi->get_admin_raw_contract_text:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_raw_contract_text: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**AdminRawContractText**](AdminRawContractText.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Raw contract text retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_requested_item_ri_note**
+> AdminRiNote get_admin_requested_item_ri_note(requested_item_id)
+
+Retrieve a requested item's note (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_ri_note import AdminRiNote
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | 
+
+    try:
+        api_response = api_instance.get_admin_requested_item_ri_note(requested_item_id)
+        print("The response of DefaultApi->get_admin_requested_item_ri_note:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_requested_item_ri_note: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**|  | 
+
+### Return type
+
+[**AdminRiNote**](AdminRiNote.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Note found |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_admin_termination_agreement**
+> AdminTerminationAgreement get_admin_termination_agreement(id)
+
+Retrieve a termination agreement (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_termination_agreement import AdminTerminationAgreement
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.get_admin_termination_agreement(id)
+        print("The response of DefaultApi->get_admin_termination_agreement:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_admin_termination_agreement: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**AdminTerminationAgreement**](AdminTerminationAgreement.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Termination agreement found |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -21905,8 +24062,172 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_subscription_change_history**
+> SubscriptionChangeHistoryPage get_subscription_change_history(subscription_id, page=page, per_page=per_page)
+
+The combined change history of one subscription (WINAD-10622), newest first, and paged. It merges the audit versions of the subscription, each of its years and every invoice, including years and invoices since deleted. Each entry says when, who (a name and email, or System when no user made the change), which record (Subscription, Year 2, Invoice INV-4468) and the field-level changes already worded in plain English, with money and dates formatted. Whether a version belongs to a given subscription is read from versions.subscription_id. Served with an ETag taken from the latest version, so an unchanged history answers 304. Staff only, the same as reading the subscription itself.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.subscription_change_history_page import SubscriptionChangeHistoryPage
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subscription_id = 56 # int | ID of the Subscription
+    page = 56 # int |  (optional)
+    per_page = 56 # int | Page size, capped at 100; defaults to 100. (optional)
+
+    try:
+        api_response = api_instance.get_subscription_change_history(subscription_id, page=page, per_page=per_page)
+        print("The response of DefaultApi->get_subscription_change_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_subscription_change_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_id** | **int**| ID of the Subscription | 
+ **page** | **int**|  | [optional] 
+ **per_page** | **int**| Page size, capped at 100; defaults to 100. | [optional] 
+
+### Return type
+
+[**SubscriptionChangeHistoryPage**](SubscriptionChangeHistoryPage.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The history page |  -  |
+**304** | The history has not changed since the ETag in If-None-Match |  -  |
+**400** | Invalid pagination parameter |  -  |
+**401** | Unauthorized |  -  |
+**403** | The user may not read subscriptions, or the token lacks the winad_read scope |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_subscription_types**
+> List[SubscriptionTypeSummary] get_subscription_types()
+
+List subscription types (id + display name) for pickers.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.subscription_type_summary import SubscriptionTypeSummary
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+
+    try:
+        api_response = api_instance.get_subscription_types()
+        print("The response of DefaultApi->get_subscription_types:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_subscription_types: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List[SubscriptionTypeSummary]**](SubscriptionTypeSummary.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Subscription types |  -  |
+**401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_subscriptions**
-> SubscriptionCollection get_subscriptions(page=page, per_page=per_page, q=q)
+> SubscriptionCollection get_subscriptions(page=page, per_page=per_page, q=q, estimated_invoice_date_gteq=estimated_invoice_date_gteq, estimated_invoice_date_lteq=estimated_invoice_date_lteq)
 
 Retrieve the all subscriptions
 
@@ -21947,9 +24268,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
     per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
     q = None # object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. (optional)
+    estimated_invoice_date_gteq = 'estimated_invoice_date_gteq_example' # str | Legacy estimated invoice date lower bound, normalized to day of year. (optional)
+    estimated_invoice_date_lteq = 'estimated_invoice_date_lteq_example' # str | Legacy estimated invoice date upper bound; preserves existing single-bound behavior. (optional)
 
     try:
-        api_response = api_instance.get_subscriptions(page=page, per_page=per_page, q=q)
+        api_response = api_instance.get_subscriptions(page=page, per_page=per_page, q=q, estimated_invoice_date_gteq=estimated_invoice_date_gteq, estimated_invoice_date_lteq=estimated_invoice_date_lteq)
         print("The response of DefaultApi->get_subscriptions:\n")
         pprint(api_response)
     except Exception as e:
@@ -21966,6 +24289,8 @@ Name | Type | Description  | Notes
  **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
  **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
  **q** | [**object**](.md)| Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] 
+ **estimated_invoice_date_gteq** | **str**| Legacy estimated invoice date lower bound, normalized to day of year. | [optional] 
+ **estimated_invoice_date_lteq** | **str**| Legacy estimated invoice date upper bound; preserves existing single-bound behavior. | [optional] 
 
 ### Return type
 
@@ -23072,9 +25397,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **get_upload_file**
-> get_upload_file(upload_id)
+> bytearray get_upload_file(upload_id)
 
-Redirect to the uploaded file for viewing/downloading
+Redirect to the uploaded PDF; clients following the redirect receive PDF bytes.
 
 ### Example
 
@@ -23112,7 +25437,9 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     upload_id = 56 # int | ID of the upload
 
     try:
-        api_instance.get_upload_file(upload_id)
+        api_response = api_instance.get_upload_file(upload_id)
+        print("The response of DefaultApi->get_upload_file:\n")
+        pprint(api_response)
     except Exception as e:
         print("Exception when calling DefaultApi->get_upload_file: %s\n" % e)
 ```
@@ -23128,7 +25455,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+**bytearray**
 
 ### Authorization
 
@@ -23137,12 +25464,13 @@ void (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: Not defined
+ - **Accept**: application/pdf
 
 ### HTTP response details
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
+**200** | PDF bytes after following the storage redirect |  -  |
 **302** | Redirect to file URL |  -  |
 **404** | File not found |  -  |
 
@@ -24785,6 +27113,261 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_admin_contact_eligible_coaches**
+> List[AdminEligibleCoachOption] list_admin_contact_eligible_coaches(school_id, sport_id)
+
+Retrieve coaches eligible to be assigned as a scheduling contact for a school/sport (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_eligible_coach_option import AdminEligibleCoachOption
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    school_id = 56 # int | 
+    sport_id = 56 # int | 
+
+    try:
+        api_response = api_instance.list_admin_contact_eligible_coaches(school_id, sport_id)
+        print("The response of DefaultApi->list_admin_contact_eligible_coaches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->list_admin_contact_eligible_coaches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **school_id** | **int**|  | 
+ **sport_id** | **int**|  | 
+
+### Return type
+
+[**List[AdminEligibleCoachOption]**](AdminEligibleCoachOption.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Eligible coaches retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_admin_contacts**
+> AdminContactList list_admin_contacts(page=page, q_school_id_eq=q_school_id_eq, q_sport_id_eq=q_sport_id_eq, only_mismatched_school_contacts=only_mismatched_school_contacts)
+
+Retrieve a paginated list of scheduling contacts, filterable by school/sport and mismatched-school status (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_contact_list import AdminContactList
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    q_school_id_eq = 56 # int |  (optional)
+    q_sport_id_eq = 56 # int |  (optional)
+    only_mismatched_school_contacts = True # bool |  (optional)
+
+    try:
+        api_response = api_instance.list_admin_contacts(page=page, q_school_id_eq=q_school_id_eq, q_sport_id_eq=q_sport_id_eq, only_mismatched_school_contacts=only_mismatched_school_contacts)
+        print("The response of DefaultApi->list_admin_contacts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->list_admin_contacts: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **q_school_id_eq** | **int**|  | [optional] 
+ **q_sport_id_eq** | **int**|  | [optional] 
+ **only_mismatched_school_contacts** | **bool**|  | [optional] 
+
+### Return type
+
+[**AdminContactList**](AdminContactList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Contacts retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_admin_contract_request_searches**
+> AdminContractRequestSearchesList list_admin_contract_request_searches(page=page, per_page=per_page, q=q)
+
+Retrieve a paginated, filterable search of coach contract/outside-income request statuses (positions joined with Compensation/IncomeReport contract status) - Coach Contract Request Status admin
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_contract_request_searches_list import AdminContractRequestSearchesList
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
+    q = None # object | Ransack query. A value whose key ends in `_in` is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. `q[primary_conference_division_name_in]=DI,DII`. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. (optional)
+
+    try:
+        api_response = api_instance.list_admin_contract_request_searches(page=page, per_page=per_page, q=q)
+        print("The response of DefaultApi->list_admin_contract_request_searches:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->list_admin_contract_request_searches: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
+ **q** | [**object**](.md)| Ransack query. A value whose key ends in &#x60;_in&#x60; is split on commas into a list, so a multi-value predicate travels as one parameter — e.g. &#x60;q[primary_conference_division_name_in]&#x3D;DI,DII&#x60;. A blank value yields an empty list, which Ransack drops: the predicate then does not filter at all, rather than matching nothing. | [optional] 
+
+### Return type
+
+[**AdminContractRequestSearchesList**](AdminContractRequestSearchesList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Contract request search results retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_admin_contracts**
 > AdminContractList list_admin_contracts(coach_id, page=page, per_page=per_page)
 
@@ -24871,6 +27454,460 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **list_admin_income_reports**
+> AdminIncomeReportList list_admin_income_reports(coach_id=coach_id, contract_status_id=contract_status_id, year=year, page=page, per_page=per_page)
+
+List a coach's outside income reports (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_income_report_list import AdminIncomeReportList
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    coach_id = 56 # int |  (optional)
+    contract_status_id = 56 # int |  (optional)
+    year = 56 # int |  (optional)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
+
+    try:
+        api_response = api_instance.list_admin_income_reports(coach_id=coach_id, contract_status_id=contract_status_id, year=year, page=page, per_page=per_page)
+        print("The response of DefaultApi->list_admin_income_reports:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->list_admin_income_reports: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coach_id** | **int**|  | [optional] 
+ **contract_status_id** | **int**|  | [optional] 
+ **year** | **int**|  | [optional] 
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
+
+### Return type
+
+[**AdminIncomeReportList**](AdminIncomeReportList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Income reports found |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_admin_raw_contracts_between_schools**
+> ListAdminRawContractsBetweenSchools200Response list_admin_raw_contracts_between_schools(home_school_id, away_school_id, sport_id)
+
+Retrieve raw contracts matched to game contracts between two schools for a sport, for the admin game-contract attach picker (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.list_admin_raw_contracts_between_schools200_response import ListAdminRawContractsBetweenSchools200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    home_school_id = 56 # int | 
+    away_school_id = 56 # int | 
+    sport_id = 56 # int | 
+
+    try:
+        api_response = api_instance.list_admin_raw_contracts_between_schools(home_school_id, away_school_id, sport_id)
+        print("The response of DefaultApi->list_admin_raw_contracts_between_schools:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->list_admin_raw_contracts_between_schools: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **home_school_id** | **int**|  | 
+ **away_school_id** | **int**|  | 
+ **sport_id** | **int**|  | 
+
+### Return type
+
+[**ListAdminRawContractsBetweenSchools200Response**](ListAdminRawContractsBetweenSchools200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Matching raw contracts retrieved |  -  |
+**400** | Bad Request - missing required param |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_admin_requested_items**
+> AdminRequestedItemList list_admin_requested_items(page=page, per_page=per_page, foia_request_id=foia_request_id, coach_id=coach_id, q_status_eq=q_status_eq, q_requestable_type_eq=q_requestable_type_eq, q_foia_request_foia_label_id_eq=q_foia_request_foia_label_id_eq, q_foia_request_state_eq=q_foia_request_state_eq, q_foia_request_school_id_eq=q_foia_request_school_id_eq, sort=sort, direction=direction)
+
+Retrieve a paginated list of requested FOIA items, sortable by last update (admin, super-admin only). Scope with exactly one of foia_request_id (items for one FOIA request) or coach_id (every requested item across all of that coach's FOIA requests).
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_requested_item_list import AdminRequestedItemList
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
+    foia_request_id = 56 # int |  (optional)
+    coach_id = 56 # int |  (optional)
+    q_status_eq = 'q_status_eq_example' # str | Filter by requested item status. (optional)
+    q_requestable_type_eq = 'q_requestable_type_eq_example' # str | Filter by the requestable's polymorphic type (e.g. Compensation, IncomeReport, Game). (optional)
+    q_foia_request_foia_label_id_eq = 56 # int |  (optional)
+    q_foia_request_state_eq = 'q_foia_request_state_eq_example' # str |  (optional)
+    q_foia_request_school_id_eq = 56 # int |  (optional)
+    sort = 'sort_example' # str |  (optional)
+    direction = 'direction_example' # str |  (optional)
+
+    try:
+        api_response = api_instance.list_admin_requested_items(page=page, per_page=per_page, foia_request_id=foia_request_id, coach_id=coach_id, q_status_eq=q_status_eq, q_requestable_type_eq=q_requestable_type_eq, q_foia_request_foia_label_id_eq=q_foia_request_foia_label_id_eq, q_foia_request_state_eq=q_foia_request_state_eq, q_foia_request_school_id_eq=q_foia_request_school_id_eq, sort=sort, direction=direction)
+        print("The response of DefaultApi->list_admin_requested_items:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->list_admin_requested_items: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
+ **foia_request_id** | **int**|  | [optional] 
+ **coach_id** | **int**|  | [optional] 
+ **q_status_eq** | **str**| Filter by requested item status. | [optional] 
+ **q_requestable_type_eq** | **str**| Filter by the requestable&#39;s polymorphic type (e.g. Compensation, IncomeReport, Game). | [optional] 
+ **q_foia_request_foia_label_id_eq** | **int**|  | [optional] 
+ **q_foia_request_state_eq** | **str**|  | [optional] 
+ **q_foia_request_school_id_eq** | **int**|  | [optional] 
+ **sort** | **str**|  | [optional] 
+ **direction** | **str**|  | [optional] 
+
+### Return type
+
+[**AdminRequestedItemList**](AdminRequestedItemList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Requested items retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_admin_termination_agreements**
+> AdminTerminationAgreementList list_admin_termination_agreements(q_coach_id_eq=q_coach_id_eq, page=page, per_page=per_page)
+
+List termination agreements (optionally filtered by coach) (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_termination_agreement_list import AdminTerminationAgreementList
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    q_coach_id_eq = 56 # int |  (optional)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
+
+    try:
+        api_response = api_instance.list_admin_termination_agreements(q_coach_id_eq=q_coach_id_eq, page=page, per_page=per_page)
+        print("The response of DefaultApi->list_admin_termination_agreements:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->list_admin_termination_agreements: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q_coach_id_eq** | **int**|  | [optional] 
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
+
+### Return type
+
+[**AdminTerminationAgreementList**](AdminTerminationAgreementList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Termination agreements retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_admin_youtube_videos**
+> AdminYoutubeVideoList list_admin_youtube_videos(q_s=q_s, page=page, per_page=per_page, q_state_eq=q_state_eq, q_sport_id_eq=q_sport_id_eq, q_school_primary_conference_id_eq=q_school_primary_conference_id_eq, q_coach_id_eq=q_coach_id_eq)
+
+Retrieve a paginated, ransack-filterable list of coach YouTube videos in the moderation queue (admin-only), filterable by state/sport/conference/coach
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_youtube_video_list import AdminYoutubeVideoList
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    q_s = 'q_s_example' # str | Ransack sort field and direction, such as title asc or published_at desc. (optional)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
+    q_state_eq = 'q_state_eq_example' # str |  (optional)
+    q_sport_id_eq = 56 # int |  (optional)
+    q_school_primary_conference_id_eq = 56 # int |  (optional)
+    q_coach_id_eq = 56 # int |  (optional)
+
+    try:
+        api_response = api_instance.list_admin_youtube_videos(q_s=q_s, page=page, per_page=per_page, q_state_eq=q_state_eq, q_sport_id_eq=q_sport_id_eq, q_school_primary_conference_id_eq=q_school_primary_conference_id_eq, q_coach_id_eq=q_coach_id_eq)
+        print("The response of DefaultApi->list_admin_youtube_videos:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->list_admin_youtube_videos: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **q_s** | **str**| Ransack sort field and direction, such as title asc or published_at desc. | [optional] 
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
+ **q_state_eq** | **str**|  | [optional] 
+ **q_sport_id_eq** | **int**|  | [optional] 
+ **q_school_primary_conference_id_eq** | **int**|  | [optional] 
+ **q_coach_id_eq** | **int**|  | [optional] 
+
+### Return type
+
+[**AdminYoutubeVideoList**](AdminYoutubeVideoList.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | YouTube videos retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_notes**
 > List[ListNotes200ResponseInner] list_notes()
 
@@ -24944,6 +27981,89 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | List of all user notes |  -  |
 **401** | Unauthorized |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **mark_paid_admin_invoice**
+> AdminInvoiceForm mark_paid_admin_invoice(invoice_id)
+
+Mark a sent invoice paid and stop reminders. The first call sets payment_received; repeated calls preserve the original payment timestamp. An unsent draft or an initial delivery still pending is refused with 422.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_invoice_form import AdminInvoiceForm
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    invoice_id = 56 # int | ID of the Invoice
+
+    try:
+        api_response = api_instance.mark_paid_admin_invoice(invoice_id)
+        print("The response of DefaultApi->mark_paid_admin_invoice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->mark_paid_admin_invoice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **invoice_id** | **int**| ID of the Invoice | 
+
+### Return type
+
+[**AdminInvoiceForm**](AdminInvoiceForm.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Marked paid |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Send the invoice successfully before marking it paid |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -25028,6 +28148,172 @@ Name | Type | Description  | Notes
 **403** | Forbidden - user is not a super admin |  -  |
 **404** | Coach, compensation, or coach-owned contract not found |  -  |
 **422** | Validation errors |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **mass_update_admin_requested_items**
+> mass_update_admin_requested_items(mass_update_admin_requested_items_request)
+
+Bulk-update the status of multiple requested items at once (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.mass_update_admin_requested_items_request import MassUpdateAdminRequestedItemsRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    mass_update_admin_requested_items_request = winthrop_client_python.MassUpdateAdminRequestedItemsRequest() # MassUpdateAdminRequestedItemsRequest | 
+
+    try:
+        api_instance.mass_update_admin_requested_items(mass_update_admin_requested_items_request)
+    except Exception as e:
+        print("Exception when calling DefaultApi->mass_update_admin_requested_items: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **mass_update_admin_requested_items_request** | [**MassUpdateAdminRequestedItemsRequest**](MassUpdateAdminRequestedItemsRequest.md)|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Requested items updated |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**422** | Validation errors |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **prefill_admin_invoice**
+> AdminInvoiceForm prefill_admin_invoice(subscription_year_id)
+
+A new-invoice form prefilled from a subscription year; nothing is persisted.
+Choosing another Service period re-calls this with a different
+subscription_year_id from the same subscription (see the response's own `service_periods`).
+
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_invoice_form import AdminInvoiceForm
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subscription_year_id = 56 # int | 
+
+    try:
+        api_response = api_instance.prefill_admin_invoice(subscription_year_id)
+        print("The response of DefaultApi->prefill_admin_invoice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->prefill_admin_invoice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_year_id** | **int**|  | 
+
+### Return type
+
+[**AdminInvoiceForm**](AdminInvoiceForm.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Unsaved form data (id is null) |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Unknown subscription_year_id |  -  |
+**422** | Split and save the annual schedule before invoicing. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -25797,6 +29083,100 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **send_admin_invoice**
+> AdminInvoiceForm send_admin_invoice(invoice_id, send_admin_invoice_request=send_admin_invoice_request)
+
+Reserve an immutable delivery attempt and enqueue SendInvoicesJob. The reservation
+immediately protects the schedule year and sets delivery_pending, but sent_at changes
+only after the job confirms successful email handoff. A second request while delivery
+is pending is refused with 422. Missing recipients, an unsplit explicit schedule, an
+implicit repeat send or a resend inside the cooldown are also refused with 422.
+Queue failure cancels the reservation and returns 503; a failed first send restores
+the draft. An older worker cannot cancel a later successful delivery.
+
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_invoice_form import AdminInvoiceForm
+from winthrop_client_python.models.send_admin_invoice_request import SendAdminInvoiceRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    invoice_id = 56 # int | ID of the Invoice
+    send_admin_invoice_request = winthrop_client_python.SendAdminInvoiceRequest() # SendAdminInvoiceRequest |  (optional)
+
+    try:
+        api_response = api_instance.send_admin_invoice(invoice_id, send_admin_invoice_request=send_admin_invoice_request)
+        print("The response of DefaultApi->send_admin_invoice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->send_admin_invoice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **invoice_id** | **int**| ID of the Invoice | 
+ **send_admin_invoice_request** | [**SendAdminInvoiceRequest**](SendAdminInvoiceRequest.md)|  | [optional] 
+
+### Return type
+
+[**AdminInvoiceForm**](AdminInvoiceForm.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Delivery queued; inspect delivery_pending and sent_at for its current state |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Delivery pending, already sent without resend, cooldown, missing recipients, or schedule invalid |  -  |
+**503** | Delivery could not be queued; reservation canceled and retry permitted |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **send_otp_code**
 > CreatePasswordReset200Response send_otp_code()
 
@@ -26197,6 +29577,92 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **update_admin_contact**
+> AdminContact update_admin_contact(id, update_contact_verification_request)
+
+Update a scheduling contact's verification status (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_contact import AdminContact
+from winthrop_client_python.models.update_contact_verification_request import UpdateContactVerificationRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+    update_contact_verification_request = winthrop_client_python.UpdateContactVerificationRequest() # UpdateContactVerificationRequest | 
+
+    try:
+        api_response = api_instance.update_admin_contact(id, update_contact_verification_request)
+        print("The response of DefaultApi->update_admin_contact:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_admin_contact: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **update_contact_verification_request** | [**UpdateContactVerificationRequest**](UpdateContactVerificationRequest.md)|  | 
+
+### Return type
+
+[**AdminContact**](AdminContact.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Contact updated |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+**422** | Validation errors |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_admin_contract**
 > AdminContract update_admin_contract(id, contract=contract, raw_contract=raw_contract)
 
@@ -26484,6 +29950,526 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Status outside building/delivered/closed, a closed ask being marked in progress or delivered, a delivered ask being reopened, or an In progress ask whose unsent start email has nobody to go to |  -  |
 **503** | The \&quot;We&#39;ve begun work\&quot; email could not be queued; the ask was put back |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_admin_income_report**
+> AdminIncomeReport update_admin_income_report(id, change_note=change_note, income_report=income_report, raw_contract=raw_contract)
+
+Update an income report, optionally replacing its attached raw contract PDF (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_income_report import AdminIncomeReport
+from winthrop_client_python.models.create_admin_contract_request_raw_contract import CreateAdminContractRequestRawContract
+from winthrop_client_python.models.create_admin_income_report_request_income_report import CreateAdminIncomeReportRequestIncomeReport
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | ID of the income report
+    change_note = 'change_note_example' # str |  (optional)
+    income_report = winthrop_client_python.CreateAdminIncomeReportRequestIncomeReport() # CreateAdminIncomeReportRequestIncomeReport |  (optional)
+    raw_contract = winthrop_client_python.CreateAdminContractRequestRawContract() # CreateAdminContractRequestRawContract |  (optional)
+
+    try:
+        api_response = api_instance.update_admin_income_report(id, change_note=change_note, income_report=income_report, raw_contract=raw_contract)
+        print("The response of DefaultApi->update_admin_income_report:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_admin_income_report: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| ID of the income report | 
+ **change_note** | **str**|  | [optional] 
+ **income_report** | [**CreateAdminIncomeReportRequestIncomeReport**](CreateAdminIncomeReportRequestIncomeReport.md)|  | [optional] 
+ **raw_contract** | [**CreateAdminContractRequestRawContract**](CreateAdminContractRequestRawContract.md)|  | [optional] 
+
+### Return type
+
+[**AdminIncomeReport**](AdminIncomeReport.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Income report updated |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+**422** | Unable to update the income report |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_admin_invoice**
+> AdminInvoiceForm update_admin_invoice(invoice_id, admin_invoice_write)
+
+"Save draft" for an existing invoice — same rule as create: never emails. Editing a sent invoice changes the record; nothing goes out again until POST .../send.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_invoice_form import AdminInvoiceForm
+from winthrop_client_python.models.admin_invoice_write import AdminInvoiceWrite
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    invoice_id = 56 # int | ID of the Invoice
+    admin_invoice_write = winthrop_client_python.AdminInvoiceWrite() # AdminInvoiceWrite | 
+
+    try:
+        api_response = api_instance.update_admin_invoice(invoice_id, admin_invoice_write)
+        print("The response of DefaultApi->update_admin_invoice:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_admin_invoice: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **invoice_id** | **int**| ID of the Invoice | 
+ **admin_invoice_write** | [**AdminInvoiceWrite**](AdminInvoiceWrite.md)|  | 
+
+### Return type
+
+[**AdminInvoiceForm**](AdminInvoiceForm.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Updated |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Validation failed |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_admin_requested_item**
+> AdminRequestedItem update_admin_requested_item(id, update_admin_requested_item_request)
+
+Update a single requested item's status (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_requested_item import AdminRequestedItem
+from winthrop_client_python.models.update_admin_requested_item_request import UpdateAdminRequestedItemRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+    update_admin_requested_item_request = winthrop_client_python.UpdateAdminRequestedItemRequest() # UpdateAdminRequestedItemRequest | 
+
+    try:
+        api_response = api_instance.update_admin_requested_item(id, update_admin_requested_item_request)
+        print("The response of DefaultApi->update_admin_requested_item:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_admin_requested_item: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **update_admin_requested_item_request** | [**UpdateAdminRequestedItemRequest**](UpdateAdminRequestedItemRequest.md)|  | 
+
+### Return type
+
+[**AdminRequestedItem**](AdminRequestedItem.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Requested item updated |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+**422** | Validation errors |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_admin_requested_item_ri_note**
+> AdminRiNote update_admin_requested_item_ri_note(requested_item_id, admin_ri_note_input)
+
+Update a requested item's note (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_ri_note import AdminRiNote
+from winthrop_client_python.models.admin_ri_note_input import AdminRiNoteInput
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | 
+    admin_ri_note_input = winthrop_client_python.AdminRiNoteInput() # AdminRiNoteInput | 
+
+    try:
+        api_response = api_instance.update_admin_requested_item_ri_note(requested_item_id, admin_ri_note_input)
+        print("The response of DefaultApi->update_admin_requested_item_ri_note:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_admin_requested_item_ri_note: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**|  | 
+ **admin_ri_note_input** | [**AdminRiNoteInput**](AdminRiNoteInput.md)|  | 
+
+### Return type
+
+[**AdminRiNote**](AdminRiNote.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Note updated |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+**422** | Validation errors |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_admin_termination_agreement**
+> AdminTerminationAgreement update_admin_termination_agreement(id, raw_contract=raw_contract)
+
+Replace the attached PDF on a termination agreement (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_termination_agreement import AdminTerminationAgreement
+from winthrop_client_python.models.create_admin_contract_request_raw_contract import CreateAdminContractRequestRawContract
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+    raw_contract = winthrop_client_python.CreateAdminContractRequestRawContract() # CreateAdminContractRequestRawContract |  (optional)
+
+    try:
+        api_response = api_instance.update_admin_termination_agreement(id, raw_contract=raw_contract)
+        print("The response of DefaultApi->update_admin_termination_agreement:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_admin_termination_agreement: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **raw_contract** | [**CreateAdminContractRequestRawContract**](CreateAdminContractRequestRawContract.md)|  | [optional] 
+
+### Return type
+
+[**AdminTerminationAgreement**](AdminTerminationAgreement.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Termination agreement updated |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**422** | Unprocessable Content |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_admin_youtube_video**
+> AdminYoutubeVideo update_admin_youtube_video(id, create_youtube_video_request)
+
+Update a YouTube video's fields, including moving it between NEW/APPROVED/BLOCKED state (no separate approve/block action)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_youtube_video import AdminYoutubeVideo
+from winthrop_client_python.models.create_youtube_video_request import CreateYoutubeVideoRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+    create_youtube_video_request = winthrop_client_python.CreateYoutubeVideoRequest() # CreateYoutubeVideoRequest | 
+
+    try:
+        api_response = api_instance.update_admin_youtube_video(id, create_youtube_video_request)
+        print("The response of DefaultApi->update_admin_youtube_video:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_admin_youtube_video: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **create_youtube_video_request** | [**CreateYoutubeVideoRequest**](CreateYoutubeVideoRequest.md)|  | 
+
+### Return type
+
+[**AdminYoutubeVideo**](AdminYoutubeVideo.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | YouTube video updated |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+**422** | Unable to update the video |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -28529,6 +32515,92 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **422** | Unable to update the Season |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **update_subscription**
+> Subscription update_subscription(subscription_id, update_subscription_request=update_subscription_request)
+
+Update a Subscription's agreement details and per-year payment schedule. Editing a year that already has a sent invoice updates the schedule only — it never changes the sent invoice. The agreement dates are set on create only: start_at and end_at are ignored here. Moving the subscription to another account is refused once it has a paid invoice.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.subscription import Subscription
+from winthrop_client_python.models.update_subscription_request import UpdateSubscriptionRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    subscription_id = 56 # int | ID of the Subscription
+    update_subscription_request = winthrop_client_python.UpdateSubscriptionRequest() # UpdateSubscriptionRequest |  (optional)
+
+    try:
+        api_response = api_instance.update_subscription(subscription_id, update_subscription_request=update_subscription_request)
+        print("The response of DefaultApi->update_subscription:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->update_subscription: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subscription_id** | **int**| ID of the Subscription | 
+ **update_subscription_request** | [**UpdateSubscriptionRequest**](UpdateSubscriptionRequest.md)|  | [optional] 
+
+### Return type
+
+[**Subscription**](Subscription.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Subscription was updated |  -  |
+**401** | Unauthorized |  -  |
+**403** | The token has no signed-in user, or the user may not update subscriptions |  -  |
+**404** | Not Found |  -  |
+**422** | Validation failed |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **coaching_staff** | [**List[CoachCompensationTabSidebarCoachingStaffInner]**](CoachCompensationTabSidebarCoachingStaffInner.md) |  | [optional] 
 **staff_title** | **str** |  | [optional] 
 **asst_pool_spend_cents** | **int** |  | [optional] 
+**asst_coach_count** | **int** | Number of staff in the assistant pool, excluding current head coaches using the same group as pool spend. | [optional] 
 **coli** | [**ColiData**](ColiData.md) |  | [optional] 
 
 ## Example

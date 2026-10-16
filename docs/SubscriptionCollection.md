@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | [**List[Subscription]**](Subscription.md) |  | [optional] 
+**subscription_types** | [**List[SubscriptionTypeSummary]**](SubscriptionTypeSummary.md) |  | [optional] 
 **meta** | [**Meta**](Meta.md) |  | [optional] 
 
 ## Example
