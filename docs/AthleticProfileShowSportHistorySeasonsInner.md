@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **conference_wins** | **int** |  | [optional] 
 **postseason** | **str** |  | [optional] 
 **spend_cents** | **int** |  | [optional] 
+**spend_basis** | **str** | Which report this season&#39;s spend was read from. A private school files no NCAA FRS sport split, so its trail reads that season&#39;s own federal EADA sport filing instead of being withheld (WINAD-10408). Never walked back to a neighbouring year&#39;s filing — a season plotted from another season&#39;s money would be a fabricated point — so this is null wherever that season filed nothing. | [optional] 
 
 ## Example
 

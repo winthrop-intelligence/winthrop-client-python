@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **filed_990_count** | **int** |  | 
 **hourly_excluded_count** | **int** | Hourly rows stay on the roster but out of every dollar aggregate | 
 **comp_visible** | **bool** |  | 
-**comp_fiscal_year** | **int** | Private mode only — the newest 990 filing year on the officer lines | 
+**comp_fiscal_year** | **int** | Private mode only — the eligible 990 filing year before the selected season. Only the current season may fall back one additional year; later filings are never substituted. | 
 
 ## Example
 
