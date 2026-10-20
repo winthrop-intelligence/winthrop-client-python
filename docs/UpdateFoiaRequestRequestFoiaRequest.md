@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **updated_by_school** | **date** |  | [optional] 
 **deal_status_ids** | **List[int]** |  | [optional] 
 **foia_notes_attributes** | [**List[UpdateFoiaRequestRequestFoiaRequestFoiaNotesAttributesInner]**](UpdateFoiaRequestRequestFoiaRequestFoiaNotesAttributesInner.md) | Request-level note edits. Omit id to add; pass id to edit or delete. Author is set by the server. | [optional] 
+**vendor_deal_type_ids** | **List[int]** | Add these FOIA-requestable types without replacing existing requested items. Idempotent. | [optional] 
+**school_foia_notes_attributes** | [**List[UpdateFoiaRequestRequestFoiaRequestSchoolFoiaNotesAttributesInner]**](UpdateFoiaRequestRequestFoiaRequestSchoolFoiaNotesAttributesInner.md) | Notes scoped to this request&#39;s school. Author is set by the server; foreign note IDs are refused. | [optional] 
 
 ## Example
 

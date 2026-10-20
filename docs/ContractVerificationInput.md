@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **method** | **str** |  | 
 **agent_run_id** | **str** | Required for agent events. A new check must use a new run id. | [optional] 
 **evidence_url** | **str** | HTTP(S) evidence link; required for passed and mismatch results. | [optional] 
+**batch_id** | **str** | Optional label of the posting batch that made this event, so one batch can be found later (GET /contract_verifications?q[batch_id_eq]&#x3D;...). Trimmed; blank is the same as omitted; at most 100 characters, no control characters. Not part of the retry payload: an agent retry that differs only in batch_id or code_version is answered with the original event. | [optional] 
+**code_version** | **str** | Optional commit SHA (7 to 40 hex digits) of the code that posted the event; stored in lower case. Blank is the same as omitted. | [optional] 
 
 ## Example
 
