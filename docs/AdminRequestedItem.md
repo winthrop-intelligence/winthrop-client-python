@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **foia_request_id** | **int** |  | [optional] 
 **requestable_id** | **int** |  | [optional] 
 **requestable_type** | **str** |  | [optional] 
+**coach** | **str** | Coach name formatted as last name, first name | [optional] 
 **coach_id** | **int** |  | [optional] 
 **status** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
