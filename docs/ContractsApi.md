@@ -6,7 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create_pending_contract**](ContractsApi.md#create_pending_contract) | **POST** /api/v1/contracts | 
 [**delete_pending_contract**](ContractsApi.md#delete_pending_contract) | **DELETE** /api/v1/contracts/{contractId} | 
+[**get_compensation_verification_status**](ContractsApi.md#get_compensation_verification_status) | **GET** /api/v1/compensation_verification_status | Verification status of every compensation row of some schools in one season
 [**get_contract_history**](ContractsApi.md#get_contract_history) | **GET** /api/v1/contract_history | 
+[**list_contract_verifications**](ContractsApi.md#list_contract_verifications) | **GET** /api/v1/contract_verifications | List verification events across contracts
 [**publish_pending_contract**](ContractsApi.md#publish_pending_contract) | **POST** /api/v1/contracts/{contractId}/publish | 
 [**replace_contract_file**](ContractsApi.md#replace_contract_file) | **PUT** /api/v1/contracts/{contractId}/file | 
 [**update_contract**](ContractsApi.md#update_contract) | **PATCH** /api/v1/contracts/{contractId} | 
@@ -116,7 +118,7 @@ Name | Type | Description  | Notes
 **201** | The pending contract was created |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden (missing winad_write scope or not permitted to create contracts) |  -  |
-**422** | The upload was refused (unknown coach, neither or both of file and source_drive_file_id, malformed source_drive_file_id or expected_sha256, non-PDF file, duplicate drive_id, invalid contract_terms, or a Drive file that is missing, too large, not a PDF or does not match expected_sha256). Drive-source refusals carry a &#x60;code&#x60;. Nothing was created. |  -  |
+**422** | The upload was refused (unknown coach, neither or both of file and source_drive_file_id, malformed source_drive_file_id or expected_sha256, non-PDF file, a file name with a NUL character or bytes that are not UTF-8, duplicate drive_id, invalid contract_terms, or a Drive file that is missing, too large, not a PDF or does not match expected_sha256). Drive-source refusals carry a &#x60;code&#x60;. Nothing was created. |  -  |
 **503** | The Drive source could not be read right now (code source_timeout or source_error). Retry the same request after the number of seconds in the Retry-After header. Nothing was created. |  * Retry-After - Seconds to wait before repeating the request <br>  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -200,6 +202,150 @@ void (empty response body)
 **403** | Forbidden (missing winad_write scope or not permitted to delete contracts) |  -  |
 **404** | Not Found |  -  |
 **422** | The contract is not pending, its PDF is used by another record, or change_note is not text or is longer than 500 characters (errors.change_note). Nothing was deleted. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_compensation_verification_status**
+> GetCompensationVerificationStatus200Response get_compensation_verification_status(season, school_ids=school_ids, conference_id=conference_id, status=status, q=q, page=page, per_page=per_page)
+
+Verification status of every compensation row of some schools in one season
+
+Computed on request (WINAD-10682), so there is no ETag. One row per compensation row whose school is in
+`school_ids` (or is a member of `conference_id`'s primary conference) and whose `year` is `season`, so a season
+is the season-ending year, as in `ContractVerification.seasons` (2025-26 is 2026). `status`, first match wins:
+
+* `unlinked`: the row has no contract (the contract and event fields are null).
+* `not_verified`: it has a contract but no verification event covers the season.
+* `mismatch`, `could_not_verify`, `revoked`: the latest event covering the season has that result.
+* `changed_since_verified`: the latest covering event is `passed`, but the row was edited after it
+  (`changed_since` says how).
+* `verified`: the latest covering event is `passed` and nothing changed since.
+
+The latest covering event is the newest (verified_at DESC, id DESC) event on the row's contract whose `seasons`
+include the season: the same rule as `meta.verified_seasons` of GET /raw_contracts/{id}/verifications, so a row
+is `verified` or `changed_since_verified` exactly when its season is in that list.
+
+`changed_since` lists, in time order, every change strictly after the event's `verified_at` to: the row's base
+salary, talent fee, one-time bonus or deferred amount (`base_salary_cents`, `talent_fee`, `one_time_bonus_cents`,
+`deferred_comp_cents`); its `year`, `coach_id`, `school_id`, `contract_id` or `contract_status_id`; the row being
+created (`row`); a position linked to the row (`position.season_id`, `position.coach_id`,
+`position.compensation_id`); the contract moving to another coach (`contract.coach_id`); the PDF being replaced
+(`raw_contract.file`) and the school filed on it (`raw_contract.school_id`). A version whose saved data cannot be
+read is reported as field `unreadable`. It is empty unless the status is `changed_since_verified`.
+
+The rows that make up the contract's season count too, so a row that was deleted, or unlinked or moved out of
+the season after the event, changes every row still in that contract and season, even though those rows were
+not touched. They are reconstructed from the history of every row that is or was in the contract: `row` with
+`old` `compensation <id>` and `new` null (a row deleted from the season), `row` with `old` null and `new`
+`created` (a row created in it, or the same entry for the row itself), `contract_id` with the old and new
+contract id (a row linked to or unlinked from the contract, null for none) and `year` with the old and new
+season (a row moved into or out of the season). A row that was deleted, unlinked or moved before the event does
+not count, nor does a row of another contract or another season of the contract. Not detectable: a position
+taken off the row. Each entry names the person who made the change (`user`; null for an edit with no recorded
+author), so the endpoint needs the ability to update contracts: a customer gets 403.
+
+`counts_by_status` in `meta` covers the whole scope, before `status[]` and `q`. `status[]` keeps only those
+statuses. `q` takes the Ransack filters of GET /contract_verifications (without its school and season scopes)
+and applies them to the event in force only, never to older events; a row with no event (`not_verified`,
+`unlinked`) is not removed by `q`, so `q[verified_at_lt]=2026-09-15` is "not verified, or verified before
+9-15" in one call; add `status[]=verified` to keep only the rows that have an event. A hidden coach's rows are
+left out for a caller who cannot manage coaches. Rows are ordered by school, coach, compensation id. The
+whole scope is computed on every page; a Big Ten season is a few pages of 500 to 1000.
+
+A 400 is `{ "errors": { "<parameter>": ["..."] } }`, keyed by the parameter that is missing or invalid: `season`,
+`school_ids` (also when both or neither of `school_ids` and `conference_id` are given, or more than 300 schools),
+`conference_id`, `status`, or `q` (the shared UnknownRansackCondition answer, WINAD-10681: a condition that is
+unknown, outside the allowlist or has no predicate). A malformed `page` or `per_page` is a 400 too.
+
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.compensation_verification_status_value import CompensationVerificationStatusValue
+from winthrop_client_python.models.get_compensation_verification_status200_response import GetCompensationVerificationStatus200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.ContractsApi(api_client)
+    season = 56 # int | Season-ending year, a positive whole number.
+    school_ids = [56] # List[int] | The schools to read, as school_ids[]=1&school_ids[]=2 or a comma separated list. At most 300. Give exactly one of school_ids and conference_id. (optional)
+    conference_id = 56 # int | The schools whose primary conference this is (not schools that play one sport in it). At most 300 schools; an unknown conference is 400. (optional)
+    status = [winthrop_client_python.CompensationVerificationStatusValue()] # List[CompensationVerificationStatusValue] | Keep only rows with these statuses (status[]=verified&status[]=not_verified). (optional)
+    q = None # object | Ransack filters on the verification event in force, for example q[verified_at_lt]=2026-09-15T00:00:00Z, q[method_eq]=agent, q[agent_run_id_start]=astra or q[batch_id_eq]=big-ten-2025-a. Same allowlist as GET /contract_verifications, without its bulk-only school scopes; a condition outside it, or one with no predicate, is a 400 naming it (`errors.q`, WINAD-10681). (optional)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 500 # int | Page size, capped at 1000; defaults to 500. (optional) (default to 500)
+
+    try:
+        # Verification status of every compensation row of some schools in one season
+        api_response = api_instance.get_compensation_verification_status(season, school_ids=school_ids, conference_id=conference_id, status=status, q=q, page=page, per_page=per_page)
+        print("The response of ContractsApi->get_compensation_verification_status:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContractsApi->get_compensation_verification_status: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **season** | **int**| Season-ending year, a positive whole number. | 
+ **school_ids** | [**List[int]**](int.md)| The schools to read, as school_ids[]&#x3D;1&amp;school_ids[]&#x3D;2 or a comma separated list. At most 300. Give exactly one of school_ids and conference_id. | [optional] 
+ **conference_id** | **int**| The schools whose primary conference this is (not schools that play one sport in it). At most 300 schools; an unknown conference is 400. | [optional] 
+ **status** | [**List[CompensationVerificationStatusValue]**](CompensationVerificationStatusValue.md)| Keep only rows with these statuses (status[]&#x3D;verified&amp;status[]&#x3D;not_verified). | [optional] 
+ **q** | [**object**](.md)| Ransack filters on the verification event in force, for example q[verified_at_lt]&#x3D;2026-09-15T00:00:00Z, q[method_eq]&#x3D;agent, q[agent_run_id_start]&#x3D;astra or q[batch_id_eq]&#x3D;big-ten-2025-a. Same allowlist as GET /contract_verifications, without its bulk-only school scopes; a condition outside it, or one with no predicate, is a 400 naming it (&#x60;errors.q&#x60;, WINAD-10681). | [optional] 
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| Page size, capped at 1000; defaults to 500. | [optional] [default to 500]
+
+### Return type
+
+[**GetCompensationVerificationStatus200Response**](GetCompensationVerificationStatus200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | One page of rows |  -  |
+**400** | A &#x60;q[...]&#x60; condition names an attribute, association path, predicate or scope the resource does not expose, or names an attribute without a predicate (&#x60;q[name]&#x3D;x&#x60; instead of &#x60;q[name_eq]&#x3D;x&#x60; or &#x60;q[name_cont]&#x3D;x&#x60;, and a &#x60;q[c]&#x60; list entry without &#x60;p&#x60;). The search is refused instead of silently ignoring the condition, which would return the unfiltered collection. &#x60;errors.q&#x60; has one entry per bad condition: &#x60;unknown condition: &lt;name&gt;&#x60;, or &#x60;condition has no predicate: &lt;name&gt; (use &lt;name&gt;_eq, &lt;name&gt;_cont, ...)&#x60;. Sorting (&#x60;q[s]&#x60;), the combinator (&#x60;q[m]&#x60;), groups (&#x60;q[g]&#x60;) and a condition whose value is blank are not refused. A 400 on these operations can also be an invalid pagination parameter, or a &#x60;q&#x60; of the wrong shape (&#x60;Unexpected format for q param: ...&#x60;: &#x60;q&#x60; must be a hash, a JSON object string, or absent, and &#x60;q[c]&#x60; and &#x60;q[g]&#x60; a hash or a list of hashes, so &#x60;q[]&#x3D;x&#x60; and &#x60;q[c]&#x3D;x&#x60; are refused instead of returning the unfiltered collection); for these &#x60;errors&#x60; is a list of messages. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Missing winad_read scope, or not permitted to update contracts (staff only) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -317,6 +463,123 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Missing winad_read scope, or not permitted to update contracts |  -  |
 **404** | No such contract (neither a live one nor one with kept versions), no contract uses the document, or none is visible to the caller |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_contract_verifications**
+> ListContractVerifications200Response list_contract_verifications(page=page, per_page=per_page, q=q)
+
+List verification events across contracts
+
+The verification history of many contracts in one request (WINAD-10680), instead of one
+GET /raw_contracts/{id}/verifications per document. Read-only. Each row is exactly what the per-contract read
+returns for the same event (the ContractVerification schema); that endpoint is unchanged. There is no
+`verified_seasons` in the meta, since that is a per-contract summary; derive it from the events, newest first
+(a season counts as verified when its latest event is `passed`).
+
+Ordering is always verified_at DESC, id DESC, so pages never overlap or skip. Ransack filters, with the same
+allowlist as the per-contract read (id, contract_id, raw_contract_id, coach_id, verified_by_id, verified_at,
+result, method, agent_run_id, evidence_url, created_at, batch_id, code_version; association traversal and
+predicates on `seasons` are not available; a filter outside the allowlist, or an attribute without a predicate,
+is a 400 naming it, WINAD-10681). Examples: everything verified on 2026-10-10 is
+`q[verified_at_gteq]=2026-10-10&q[verified_at_lt]=2026-10-11`, one posting batch is `q[batch_id_eq]=...`, runs
+of one bot are `q[agent_run_id_start]=...`. Three filters exist only here:
+`q[contract_school_id_eq]` and `q[contract_school_id_in][]` keep the events of contracts whose coach has (or
+had) a position at that school, as the contracts index's `contract_school_id_eq` does, and
+`q[seasons_contains]=2025` keeps the events whose `seasons` include that year (one whole number, within the
+32-bit range; anything else is 400 `errors.q.seasons_contains`). A list filter takes at
+most 1000 values (more is 422 `errors.q.<filter>`; a comma separated string counts the same). Ids go in the
+query string, so for a larger set page through `contract_school_id_in` or a smaller `contract_id_in` slice.
+For a season-by-season status per compensation row use GET /compensation_verification_status.
+
+Visibility is the per-contract read's, applied to every contract in one query: only events of contracts whose
+RawContract the caller may read, and that the contracts API serves them, are returned (a hidden coach's contracts
+and pending contracts are left out for anyone who cannot manage coaches, with the counts to match). A
+contract with no document is not listed. A caller who may not read documents at all gets 403.
+
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.list_contract_verifications200_response import ListContractVerifications200Response
+from winthrop_client_python.models.list_contract_verifications_q_parameter import ListContractVerificationsQParameter
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.ContractsApi(api_client)
+    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
+    per_page = 100 # int | Page size, capped at 500; defaults to 100. (optional) (default to 100)
+    q = winthrop_client_python.ListContractVerificationsQParameter() # ListContractVerificationsQParameter | Ransack filters, for example q[contract_id_in][]=1&q[contract_id_in][]=2, q[contract_school_id_eq]=7, q[result_eq]=passed, q[seasons_contains]=2025, q[batch_id_eq]=big-ten-2025-a, q[code_version_start]=0c2950e or q[s]=verified_at asc. At most 1000 values in any list. (optional)
+
+    try:
+        # List verification events across contracts
+        api_response = api_instance.list_contract_verifications(page=page, per_page=per_page, q=q)
+        print("The response of ContractsApi->list_contract_verifications:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContractsApi->list_contract_verifications: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| Page size, capped at 500; defaults to 100. | [optional] [default to 100]
+ **q** | [**ListContractVerificationsQParameter**](.md)| Ransack filters, for example q[contract_id_in][]&#x3D;1&amp;q[contract_id_in][]&#x3D;2, q[contract_school_id_eq]&#x3D;7, q[result_eq]&#x3D;passed, q[seasons_contains]&#x3D;2025, q[batch_id_eq]&#x3D;big-ten-2025-a, q[code_version_start]&#x3D;0c2950e or q[s]&#x3D;verified_at asc. At most 1000 values in any list. | [optional] 
+
+### Return type
+
+[**ListContractVerifications200Response**](ListContractVerifications200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | One page of events |  -  |
+**304** | Nothing in the page has changed (ETag) |  -  |
+**400** | A &#x60;q[...]&#x60; condition names an attribute, association path, predicate or scope the resource does not expose, or names an attribute without a predicate (&#x60;q[name]&#x3D;x&#x60; instead of &#x60;q[name_eq]&#x3D;x&#x60; or &#x60;q[name_cont]&#x3D;x&#x60;, and a &#x60;q[c]&#x60; list entry without &#x60;p&#x60;). The search is refused instead of silently ignoring the condition, which would return the unfiltered collection. &#x60;errors.q&#x60; has one entry per bad condition: &#x60;unknown condition: &lt;name&gt;&#x60;, or &#x60;condition has no predicate: &lt;name&gt; (use &lt;name&gt;_eq, &lt;name&gt;_cont, ...)&#x60;. Sorting (&#x60;q[s]&#x60;), the combinator (&#x60;q[m]&#x60;), groups (&#x60;q[g]&#x60;) and a condition whose value is blank are not refused. A 400 on these operations can also be an invalid pagination parameter, or a &#x60;q&#x60; of the wrong shape (&#x60;Unexpected format for q param: ...&#x60;: &#x60;q&#x60; must be a hash, a JSON object string, or absent, and &#x60;q[c]&#x60; and &#x60;q[g]&#x60; a hash or a list of hashes, so &#x60;q[]&#x3D;x&#x60; and &#x60;q[c]&#x3D;x&#x60; are refused instead of returning the unfiltered collection); for these &#x60;errors&#x60; is a list of messages. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Missing winad_read scope, or not permitted to read documents |  -  |
+**422** | A list filter has more than 1000 values (errors.q.&lt;filter&gt;) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -497,7 +760,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden (missing winad_write scope, not a manage-level user, or a client-credentials token with no user) |  -  |
 **404** | Not Found (no such contract, a hidden coach&#39;s, or a pending one for a non-manager), or the contract was deleted while the request ran |  -  |
-**422** | Missing or non-PDF file, a contract with no PDF record, a PDF another record uses, or an invalid change_note (errors.change_note). The old file is untouched. |  -  |
+**422** | Missing or non-PDF file, a file name with a NUL character or bytes that are not UTF-8 (errors.file), a contract with no PDF record, a PDF another record uses, or an invalid change_note (errors.change_note). The old file is untouched. |  -  |
 **409** | The contract was moved to another coach again and again while the request waited for its locks (errors.contract). Nothing was written; reload the contract and retry. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

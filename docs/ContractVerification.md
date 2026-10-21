@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **evidence_url** | **str** | HTTP(S) evidence link; required for passed and mismatch results. | [optional] 
 **reason** | **str** | Only set on revoked events. | [optional] 
 **approval_quote** | **str** | Only set on revoked events. | [optional] 
+**batch_id** | **str** | Posting batch label the caller gave at creation; null for events posted without one. | [optional] 
+**code_version** | **str** | Commit SHA of the posting code the caller gave at creation (lower case); null when not given. | [optional] 
 **id** | **int** |  | 
 **contract_id** | **int** |  | 
 **raw_contract_id** | **int** | Checked PDF; becomes null when that RawContract is deleted. | 

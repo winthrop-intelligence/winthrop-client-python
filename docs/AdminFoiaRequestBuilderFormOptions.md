@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schools** | [**List[IdName]**](IdName.md) |  | [optional] 
 **sports** | [**List[IdName]**](IdName.md) |  | [optional] 
+**report_filters** | [**AdminFoiaRequestBuilderFormOptionsReportFilters**](AdminFoiaRequestBuilderFormOptionsReportFilters.md) |  | [optional] 
 
 ## Example
 

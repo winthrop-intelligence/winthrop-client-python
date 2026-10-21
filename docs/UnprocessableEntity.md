@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **errors** | **object** |  | [optional] 
+**error_messages** | **List[str]** | Full, human-readable validation messages (sent by some endpoints) | [optional] 
 
 ## Example
 

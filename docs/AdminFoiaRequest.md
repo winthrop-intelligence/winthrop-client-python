@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **status_percentage** | **float** |  | [optional] 
 **deal_status_ids** | **List[int]** |  | [optional] 
 **foia_notes** | [**List[AdminFoiaRequestNote]**](AdminFoiaRequestNote.md) | Request-level notes, newest first; included on detail and write responses. | [optional] 
+**vendor_options** | [**List[AdminFoiaVendorOption]**](AdminFoiaVendorOption.md) | FOIA-requestable vendor types for this school; reading does not create statuses. | [optional] 
 
 ## Example
 
