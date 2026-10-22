@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **downloads_pdf** | **bytearray** | PDF replacement or addition; multipart updates only. | [optional] 
 **downloads_xlsx** | **bytearray** | XLSX replacement or addition; multipart updates only. | [optional] 
 **downloads_pptx** | **bytearray** | PPTX replacement or addition; multipart updates only. | [optional] 
+**cover_images_card** | **bytearray** | Library card cover image (WebP, PNG or JPEG, up to 2 MB) replacement or addition; multipart updates only. | [optional] 
+**cover_images_banner** | **bytearray** | Art-only reader header image (WebP, PNG or JPEG, up to 2 MB) replacement or addition; multipart updates only. | [optional] 
 
 ## Example
 
