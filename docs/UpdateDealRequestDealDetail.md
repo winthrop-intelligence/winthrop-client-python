@@ -1,6 +1,6 @@
 # UpdateDealRequestDealDetail
 
-Fields must belong to the existing deal type.
+Fields must belong to the existing deal type (see the schema of that type). Money fields take at most two decimals up to 999,999,999.99; percent fields 0 through 100.
 
 ## Properties
 
@@ -16,6 +16,34 @@ Name | Type | Description | Notes
 **bha** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
 **additional_rev** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
 **rev_share_percent** | [**MultimediaDealUpdateRevSharePercent**](MultimediaDealUpdateRevSharePercent.md) |  | [optional] 
+**total_guar** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**annual_guar** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**partner** | [**DealUpdatePartner**](DealUpdatePartner.md) |  | [optional] 
+**srf** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**avg_annual_prod** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**sla** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**license** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**maintenance** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**acct_mgr** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**total_rev_percent** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] 
+**new_rev_percent** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] 
+**renewal_rev_percent** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] 
+**annual_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**threshold_1** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**alloc_percent_1** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] 
+**threshold_2** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**alloc_percent_2** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] 
+**threshold_3** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**alloc_percent_3** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] 
+**threshold_4** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**alloc_percent_4** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] 
+**threshold_5** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**alloc_percent_5** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] 
+**threshold_6** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**alloc_percent_6** | [**DealUpdatePercent**](DealUpdatePercent.md) |  | [optional] 
+**guaranteed_amt_year_one** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**capital_improvement** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
+**annual_host_fee** | [**DealUpdateAmount**](DealUpdateAmount.md) |  | [optional] 
 
 ## Example
 
