@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **vendor_id** | **int** |  | [optional] 
 **start_at** | **datetime** |  | [optional] 
 **end_at** | **datetime** |  | [optional] 
+**start_on** | **date** | The deal&#39;s start date as a plain calendar date (YYYY-MM-DD): the UTC calendar date of the stored start_at/end_at instant, the same in every reader&#39;s time zone. Additive; the timestamp field next to it is unchanged. | [optional] 
+**end_on** | **date** | The deal&#39;s end date as a plain calendar date (YYYY-MM-DD): the UTC calendar date of the stored start_at/end_at instant, the same in every reader&#39;s time zone. Additive; the timestamp field next to it is unchanged. | [optional] 
 **signed** | **datetime** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
@@ -18,6 +20,8 @@ Name | Type | Description | Notes
 **deal_type_id** | **int** |  | [optional] 
 **archived** | **bool** |  | [optional] 
 **verified** | **bool** |  | [optional] 
+**pending** | **bool** | True for a vendor deal filed as a PDF through POST /deals and not yet published (WINAD-10698). Pending deals are internal-only; a customer never receives one. Independent of archived. | [optional] 
+**raw_contract_id** | **int** | The id of the deal&#39;s RawContract (the vendor PDF), if any; null for a caller who cannot show raw contracts. | [optional] 
 **raw_contract** | [**RawContractTerms**](RawContractTerms.md) | The linked RawContract&#39;s structured terms (deal show only); null when the deal has no RawContract or the user cannot read it. | [optional] 
 
 ## Example
