@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **treatment** | **str** |  | 
 **kicker** | **str** |  | 
 **numeral** | **str** |  | 
+**images** | [**DeskAdminCoverImages**](DeskAdminCoverImages.md) |  | 
 
 ## Example
 
