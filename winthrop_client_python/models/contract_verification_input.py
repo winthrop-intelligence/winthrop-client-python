@@ -77,8 +77,10 @@ class ContractVerificationInput(BaseModel):
     @field_validator("method")
     def method_validate_enum(cls, value):
         """Validates the enum"""
-        if value not in set(["agent", "manual"]):
-            raise ValueError("must be one of enum values ('agent', 'manual')")
+        if value not in set(["agent", "manual", "agent_concur"]):
+            raise ValueError(
+                "must be one of enum values ('agent', 'manual', 'agent_concur')"
+            )
         return value
 
     @field_validator("code_version")

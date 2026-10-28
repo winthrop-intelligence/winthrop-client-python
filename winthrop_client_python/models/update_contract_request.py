@@ -17,7 +17,15 @@ import re  # noqa: F401
 import json
 
 from datetime import date
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
+from pydantic import (
+    BaseModel,
+    ConfigDict,
+    Field,
+    StrictBool,
+    StrictInt,
+    StrictStr,
+    field_validator,
+)
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -29,6 +37,10 @@ class UpdateContractRequest(BaseModel):
     Partial update of a published contract. At least one of the contract fields is required; change_note alone is insufficient. Pending contracts are published, not edited. Setting at_will true requires end_on null. Changes are audited with the authenticated user and the optional change_note.
     """  # noqa: E501
 
+    raw_contract_id: Optional[StrictInt] = Field(
+        default=None,
+        description="Id of the RawContract (a coach contract document nobody else holds) the contract should hold from now on. See the PATCH description.",
+    )
     start_on: Optional[date] = Field(
         default=None,
         description="Contract start date (strict YYYY-MM-DD); cannot be null.",
@@ -57,11 +69,29 @@ class UpdateContractRequest(BaseModel):
         default=None,
         description="Moves the contract to this coach. Refused (422 errors.coach_id plus linked_compensation_ids, linked_position_ids, linked_verification_ids and linked_earned_incentive_ids) while any of those rows still link to the contract; the agent never relinks them itself.",
     )
+    contractable_id: Optional[StrictInt] = Field(
+        default=None,
+        description="Same as coach_id (WINAD-10739). Giving both with different values is a 422.",
+    )
+    contractable_type: Optional[StrictStr] = Field(
+        default=None,
+        description="Sets the owner type (WINAD-10739), for example to repair a contract saved with a contractable_id and no type. Only Coach is accepted. A contract with no owner id needs coach_id / contractable_id in the same request, because the type alone is a 422 (errors.contractable_id). Together with coach_id / contractable_id these are the only fields a pending contract accepts.",
+    )
     change_note: Optional[Annotated[str, Field(strict=True, max_length=500)]] = Field(
         default=None,
         description="Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates, the records it saves as side effects included, and read back through GET /contract_history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text (a NUL character included) or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write.",
     )
     __properties: ClassVar[List[str]] = []
+
+    @field_validator("contractable_type")
+    def contractable_type_validate_enum(cls, value):
+        """Validates the enum"""
+        if value is None:
+            return value
+
+        if value not in set(["Coach"]):
+            raise ValueError("must be one of enum values ('Coach')")
+        return value
 
     model_config = ConfigDict(
         populate_by_name=True,

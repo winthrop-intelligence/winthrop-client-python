@@ -117,6 +117,7 @@ Method | HTTP request | Description
 [**delete_job_post**](DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 [**delete_note**](DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} | 
 [**delete_position**](DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
+[**delete_raw_contract**](DefaultApi.md#delete_raw_contract) | **DELETE** /api/v1/raw_contracts/{raw_contractId} | 
 [**delete_requested_item**](DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 [**delete_schedule_intent**](DefaultApi.md#delete_schedule_intent) | **DELETE** /api/v1/schedule_intents/{scheduleIntentId} | 
 [**delete_schedule_tournament**](DefaultApi.md#delete_schedule_tournament) | **DELETE** /api/v1/schedule_tournaments/{scheduleTournamentId} | 
@@ -475,6 +476,7 @@ Method | HTTP request | Description
 [**mass_update_admin_compensations**](DefaultApi.md#mass_update_admin_compensations) | **POST** /api/v1/admin/compensations/mass_update | 
 [**mass_update_admin_positions**](DefaultApi.md#mass_update_admin_positions) | **POST** /api/v1/admin/positions/mass_update | 
 [**mass_update_admin_requested_items**](DefaultApi.md#mass_update_admin_requested_items) | **PATCH** /api/v1/admin/requested_items/mass_update | 
+[**merge_coach**](DefaultApi.md#merge_coach) | **POST** /api/v1/coaches/{coachId}/merge | 
 [**new_admin_position_type**](DefaultApi.md#new_admin_position_type) | **GET** /api/v1/admin/position_types/new | 
 [**new_admin_sport**](DefaultApi.md#new_admin_sport) | **GET** /api/v1/admin/sports/new | 
 [**position_types_for_groups_admin_sports**](DefaultApi.md#position_types_for_groups_admin_sports) | **POST** /api/v1/admin/sports/position_types_for_groups | 
@@ -5791,7 +5793,7 @@ Name | Type | Description  | Notes
 
 Append a contract verification event
 
-Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
+Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Retries of an agent or agent_concur run are keyed by (contract_id, method, agent_run_id): equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
 
 ### Example
 
@@ -7861,9 +7863,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_season**
-> Season create_season(season=season)
+> Season create_season(create_season_request)
 
-Create a new Season
+Create the Season for a school, sport and year that has none. If a Season already exists for that triple it is returned unchanged with 200 and nothing is created. The optional top-level change_note is stored on the audit version of the create.
 
 ### Example
 
@@ -7872,6 +7874,7 @@ Create a new Season
 
 ```python
 import winthrop_client_python
+from winthrop_client_python.models.create_season_request import CreateSeasonRequest
 from winthrop_client_python.models.season import Season
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
@@ -7899,10 +7902,10 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
-    season = winthrop_client_python.Season() # Season |  (optional)
+    create_season_request = winthrop_client_python.CreateSeasonRequest() # CreateSeasonRequest | 
 
     try:
-        api_response = api_instance.create_season(season=season)
+        api_response = api_instance.create_season(create_season_request)
         print("The response of DefaultApi->create_season:\n")
         pprint(api_response)
     except Exception as e:
@@ -7916,7 +7919,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **season** | [**Season**](Season.md)|  | [optional] 
+ **create_season_request** | [**CreateSeasonRequest**](CreateSeasonRequest.md)|  | 
 
 ### Return type
 
@@ -7936,8 +7939,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Season was created |  -  |
+**200** | A Season already existed for this school, sport and year |  -  |
 **401** | Unauthorized |  -  |
-**422** | Unable to create the Season |  -  |
+**403** | The token lacks the winad_write scope or the user may not create seasons |  -  |
+**422** | Unable to create the Season (missing or unknown school_id/sport_id, or a year that is missing or outside 1900..2100, or a change_note that is not text or is too long) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9959,6 +9964,89 @@ void (empty response body)
 **404** | Not Found |  -  |
 **409** | The position kept being moved to other coaches by other requests while this one took its locks (errors.position). Nothing was deleted; reload the position and retry. A single move is not an error: the request starts over from the coach that now owns the position. |  -  |
 **422** | A compensation is attached to the position (errors.compensation_id, the message names the compensation id), or change_note is not text or is longer than 500 characters (errors.change_note). Nothing was deleted. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **delete_raw_contract**
+> delete_raw_contract(raw_contract_id, change_note=change_note)
+
+Retire a duplicate RawContract and its stored files. Requires the winad_write OAuth scope and permission to destroy the RawContract. Links are moved first (re-point the income report, pay rows and verification events to the document that stays), then it is retired. While a pay row (compensation of its Contract), an income report, an earned incentive (as its document or as the amendment that ends it) or a verification event still links to it, or its Contract has pay rows or verification events of its own, nothing is deleted and the answer is 409 with errors.blockers, an object of id lists under pay_rows, contracts, income_reports, earned_incentives and verification_events (only the non-empty ones). A Contract with no links of its own is deleted with the RawContract. The delete is an audit version (PaperTrail) with the optional change_note. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    raw_contract_id = 56 # int | ID of the RawContract
+    change_note = 'change_note_example' # str | Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned. (optional)
+
+    try:
+        api_instance.delete_raw_contract(raw_contract_id, change_note=change_note)
+    except Exception as e:
+        print("Exception when calling DefaultApi->delete_raw_contract: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **raw_contract_id** | **int**| ID of the RawContract | 
+ **change_note** | **str**| Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned. | [optional] 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | RawContract was retired |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden. The token lacks the winad_write OAuth scope or the token&#39;s user may not destroy RawContracts. Nothing was deleted. |  -  |
+**404** | Not Found |  -  |
+**409** | A pay row, Contract, income report or verification event still links to the RawContract. errors.blockers names them. Nothing was deleted. |  -  |
+**422** | change_note is not a string or contains a NUL character (errors.change_note), or the RawContract could not be destroyed. Nothing was deleted. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -39718,6 +39806,92 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **merge_coach**
+> MergeCoach200Response merge_coach(coach_id, merge_coach_request)
+
+Merge the coach in from_coach_id into this coach (super admin only). Moves its contracts, copies positions, pay and income reports the coach does not have, fills blank profile fields, and writes a coach merge log.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.merge_coach200_response import MergeCoach200Response
+from winthrop_client_python.models.merge_coach_request import MergeCoachRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    coach_id = 56 # int | ID of the coach that keeps the merged data
+    merge_coach_request = winthrop_client_python.MergeCoachRequest() # MergeCoachRequest | 
+
+    try:
+        api_response = api_instance.merge_coach(coach_id, merge_coach_request)
+        print("The response of DefaultApi->merge_coach:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->merge_coach: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coach_id** | **int**| ID of the coach that keeps the merged data | 
+ **merge_coach_request** | [**MergeCoachRequest**](MergeCoachRequest.md)|  | 
+
+### Return type
+
+[**MergeCoach200Response**](MergeCoach200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Merge succeeded; returns the coach merge log |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | from_coach_id missing, not a single positive integer, or the same coach as the path coach; or the merge failed (rolled back and logged as failed) |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **new_admin_position_type**
 > NewAdminPositionType new_admin_position_type()
 
@@ -45731,7 +45905,7 @@ Name | Type | Description  | Notes
 # **update_compensation**
 > Compensation update_compensation(compensation_id, compensation)
 
-Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to "yearly", "hourly", or "990" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be "990". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to "yearly", "hourly", or "990" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be "990". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). A body with only a non-blank change_note (no compensation, or an empty one) records the note on a new version without changing any value (WINAD-10718). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
 ### Example
 
@@ -45987,8 +46161,8 @@ Name | Type | Description  | Notes
 
 Atomically update deal fields and the deal's own detail values. Detail updates
 are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing,
-Outsourced Ticketing, Trademark, Bookstore, NIL and Video Mgmt deals (WINAD-10685);
-Travel, Athletics Software and Executive Search deals have no detail fields.
+Outsourced Ticketing, Trademark, Bookstore, NIL, Video Mgmt, Athletics Software and Travel deals (WINAD-10685);
+Executive Search deals have no detail fields.
 At least one field is required. Unknown fields and fields belonging to another
 deal type return 422 (naming the fields the type allows) without changes. Changes
 are audited with the authenticated user.
@@ -47182,7 +47356,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **404** | Not Found |  -  |
 **409** | The position kept being moved to other coaches by other requests while this one took its locks (errors.position). Nothing was saved; reload the position and retry. A single move is not an error: the update is applied to the position under the coach that now owns it. |  -  |
-**422** | Unable to update position. Also returned (errors.departing) when the request would change departing on a position that has recorded departure details, because that would erase them with no user or position change log; use PATCH /positions/{positionId}/departure for that change. |  -  |
+**422** | Unable to update position. Also returned (errors.departing) when the request would change departing on a position that has recorded departure details, because that would erase them with no user or position change log; use PATCH /positions/{positionId}/departure for that change. When the server has POSITIONS_REFUSE_PLAIN_DEPARTING on, any change to departing is refused the same way (so every departure carries its date, reason and source); callers should use PATCH /positions/{positionId}/departure for departures and for undoing one (departing false). |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -97,6 +97,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MlAthleticApi* | [**health_check**](docs/MlAthleticApi.md#health_check) | **GET** /ml-athletic/health_check | 
 *MlAthleticApi* | [**predict**](docs/MlAthleticApi.md#predict) | **POST** /ml-athletic/predict | 
+*ContractsApi* | [**create_contract_direct_upload**](docs/ContractsApi.md#create_contract_direct_upload) | **POST** /api/v1/contracts/direct_uploads | 
 *ContractsApi* | [**create_pending_contract**](docs/ContractsApi.md#create_pending_contract) | **POST** /api/v1/contracts | 
 *ContractsApi* | [**delete_pending_contract**](docs/ContractsApi.md#delete_pending_contract) | **DELETE** /api/v1/contracts/{contractId} | 
 *ContractsApi* | [**get_compensation_verification_status**](docs/ContractsApi.md#get_compensation_verification_status) | **GET** /api/v1/compensation_verification_status | Verification status of every compensation row of some schools in one season
@@ -104,6 +105,7 @@ Class | Method | HTTP request | Description
 *ContractsApi* | [**list_contract_verifications**](docs/ContractsApi.md#list_contract_verifications) | **GET** /api/v1/contract_verifications | List verification events across contracts
 *ContractsApi* | [**publish_pending_contract**](docs/ContractsApi.md#publish_pending_contract) | **POST** /api/v1/contracts/{contractId}/publish | 
 *ContractsApi* | [**replace_contract_file**](docs/ContractsApi.md#replace_contract_file) | **PUT** /api/v1/contracts/{contractId}/file | 
+*ContractsApi* | [**swap_contract_raw_contracts**](docs/ContractsApi.md#swap_contract_raw_contracts) | **POST** /api/v1/contracts/swap_raw_contracts | 
 *ContractsApi* | [**update_contract**](docs/ContractsApi.md#update_contract) | **PATCH** /api/v1/contracts/{contractId} | 
 *CtbApi* | [**apply_ctb_compensation**](docs/CtbApi.md#apply_ctb_compensation) | **POST** /api/v1/ctb_compensation_apply | 
 *DealsApi* | [**create_pending_deal**](docs/DealsApi.md#create_pending_deal) | **POST** /api/v1/deals | 
@@ -222,6 +224,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**delete_job_post**](docs/DefaultApi.md#delete_job_post) | **DELETE** /central_jobs/job_posts/{jobPostId} | Delete a job post
 *DefaultApi* | [**delete_note**](docs/DefaultApi.md#delete_note) | **DELETE** /api/v1/notes/{id} | 
 *DefaultApi* | [**delete_position**](docs/DefaultApi.md#delete_position) | **DELETE** /api/v1/positions/{positionId} | 
+*DefaultApi* | [**delete_raw_contract**](docs/DefaultApi.md#delete_raw_contract) | **DELETE** /api/v1/raw_contracts/{raw_contractId} | 
 *DefaultApi* | [**delete_requested_item**](docs/DefaultApi.md#delete_requested_item) | **DELETE** /api/v1/requested_items/{requestedItemId} | 
 *DefaultApi* | [**delete_schedule_intent**](docs/DefaultApi.md#delete_schedule_intent) | **DELETE** /api/v1/schedule_intents/{scheduleIntentId} | 
 *DefaultApi* | [**delete_schedule_tournament**](docs/DefaultApi.md#delete_schedule_tournament) | **DELETE** /api/v1/schedule_tournaments/{scheduleTournamentId} | 
@@ -580,6 +583,7 @@ Class | Method | HTTP request | Description
 *DefaultApi* | [**mass_update_admin_compensations**](docs/DefaultApi.md#mass_update_admin_compensations) | **POST** /api/v1/admin/compensations/mass_update | 
 *DefaultApi* | [**mass_update_admin_positions**](docs/DefaultApi.md#mass_update_admin_positions) | **POST** /api/v1/admin/positions/mass_update | 
 *DefaultApi* | [**mass_update_admin_requested_items**](docs/DefaultApi.md#mass_update_admin_requested_items) | **PATCH** /api/v1/admin/requested_items/mass_update | 
+*DefaultApi* | [**merge_coach**](docs/DefaultApi.md#merge_coach) | **POST** /api/v1/coaches/{coachId}/merge | 
 *DefaultApi* | [**new_admin_position_type**](docs/DefaultApi.md#new_admin_position_type) | **GET** /api/v1/admin/position_types/new | 
 *DefaultApi* | [**new_admin_sport**](docs/DefaultApi.md#new_admin_sport) | **GET** /api/v1/admin/sports/new | 
 *DefaultApi* | [**position_types_for_groups_admin_sports**](docs/DefaultApi.md#position_types_for_groups_admin_sports) | **POST** /api/v1/admin/sports/position_types_for_groups | 
@@ -699,6 +703,7 @@ Class | Method | HTTP request | Description
 *IntercollegiateApi* | [**get_job_posts**](docs/IntercollegiateApi.md#get_job_posts) | **GET** /wi_jobs/job_posts | 
 *IntercollegiateApi* | [**get_news_feeds**](docs/IntercollegiateApi.md#get_news_feeds) | **GET** /wi_jobs/news_feeds | 
 *IntercollegiateApi* | [**sync_job_post**](docs/IntercollegiateApi.md#sync_job_post) | **PUT** /wi_jobs/job_posts/{jobPostId}/sync | 
+*RawContractsApi* | [**create_raw_contract**](docs/RawContractsApi.md#create_raw_contract) | **POST** /api/v1/raw_contracts | 
 *RawContractsApi* | [**get_raw_contract_contract_terms**](docs/RawContractsApi.md#get_raw_contract_contract_terms) | **GET** /api/v1/raw_contracts/{raw_contractId}/contract_terms | 
 *RawContractsApi* | [**regenerate_raw_contract_ocr_text**](docs/RawContractsApi.md#regenerate_raw_contract_ocr_text) | **POST** /api/v1/raw_contracts/{raw_contractId}/ocr_text/regenerate | 
 *RawContractsApi* | [**replace_raw_contract_file**](docs/RawContractsApi.md#replace_raw_contract_file) | **PUT** /api/v1/raw_contracts/{raw_contractId}/file | 
@@ -1025,6 +1030,7 @@ Class | Method | HTTP request | Description
  - [AthleticProfileShowSportOverviewSeasonsInner](docs/AthleticProfileShowSportOverviewSeasonsInner.md)
  - [AthleticProfileShowSportsOverviewInner](docs/AthleticProfileShowSportsOverviewInner.md)
  - [AthleticProfileShowTabSportsInner](docs/AthleticProfileShowTabSportsInner.md)
+ - [AthleticsSoftwareDealUpdate](docs/AthleticsSoftwareDealUpdate.md)
  - [AuditedFinancialReportStatus](docs/AuditedFinancialReportStatus.md)
  - [AuditedFinancialReportStatusCollection](docs/AuditedFinancialReportStatusCollection.md)
  - [AvailableGameContract](docs/AvailableGameContract.md)
@@ -1198,6 +1204,10 @@ Class | Method | HTTP request | Description
  - [CreateContactRequestContact](docs/CreateContactRequestContact.md)
  - [CreateContactSearchRequest](docs/CreateContactSearchRequest.md)
  - [CreateContactSearchRequestContact](docs/CreateContactSearchRequestContact.md)
+ - [CreateContractDirectUpload200Response](docs/CreateContractDirectUpload200Response.md)
+ - [CreateContractDirectUpload200ResponseDirectUpload](docs/CreateContractDirectUpload200ResponseDirectUpload.md)
+ - [CreateContractDirectUploadRequest](docs/CreateContractDirectUploadRequest.md)
+ - [CreateContractDirectUploadRequestBlob](docs/CreateContractDirectUploadRequestBlob.md)
  - [CreateContractVerificationRequest](docs/CreateContractVerificationRequest.md)
  - [CreateDeskRequest201Response](docs/CreateDeskRequest201Response.md)
  - [CreateDeskRequestRequest](docs/CreateDeskRequestRequest.md)
@@ -1230,6 +1240,7 @@ Class | Method | HTTP request | Description
  - [CreateSchedulingMessage422Response](docs/CreateSchedulingMessage422Response.md)
  - [CreateSchoolGroupRequest](docs/CreateSchoolGroupRequest.md)
  - [CreateSchoolGroupRequestSchoolGroup](docs/CreateSchoolGroupRequestSchoolGroup.md)
+ - [CreateSeasonRequest](docs/CreateSeasonRequest.md)
  - [CreateSportRequest](docs/CreateSportRequest.md)
  - [CreateSportRequestSport](docs/CreateSportRequestSport.md)
  - [CreateSubscriptionRequestSubscription](docs/CreateSubscriptionRequestSubscription.md)
@@ -1260,7 +1271,9 @@ Class | Method | HTTP request | Description
  - [DealStatus](docs/DealStatus.md)
  - [DealStatusCollection](docs/DealStatusCollection.md)
  - [DealUpdateAmount](docs/DealUpdateAmount.md)
+ - [DealUpdateCount](docs/DealUpdateCount.md)
  - [DealUpdateDetail](docs/DealUpdateDetail.md)
+ - [DealUpdateOnsiteAgents](docs/DealUpdateOnsiteAgents.md)
  - [DealUpdatePartner](docs/DealUpdatePartner.md)
  - [DealUpdatePercent](docs/DealUpdatePercent.md)
  - [DealUpdateResult](docs/DealUpdateResult.md)
@@ -1637,6 +1650,8 @@ Class | Method | HTTP request | Description
  - [MassUpdatePositionsRequest](docs/MassUpdatePositionsRequest.md)
  - [MassUpdatePositionsResponse](docs/MassUpdatePositionsResponse.md)
  - [McpEvent](docs/McpEvent.md)
+ - [MergeCoach200Response](docs/MergeCoach200Response.md)
+ - [MergeCoachRequest](docs/MergeCoachRequest.md)
  - [Meta](docs/Meta.md)
  - [MultimediaDealUpdate](docs/MultimediaDealUpdate.md)
  - [MultimediaDealUpdateRevSharePercent](docs/MultimediaDealUpdateRevSharePercent.md)
@@ -1695,6 +1710,7 @@ Class | Method | HTTP request | Description
  - [RawContractCollection](docs/RawContractCollection.md)
  - [RawContractDealInfo](docs/RawContractDealInfo.md)
  - [RawContractTerms](docs/RawContractTerms.md)
+ - [RawContractUploaded](docs/RawContractUploaded.md)
  - [RecalculateAdminSystemSettingLatestSalaries202Response](docs/RecalculateAdminSystemSettingLatestSalaries202Response.md)
  - [ReconciliationCoach](docs/ReconciliationCoach.md)
  - [ReconciliationIncluded](docs/ReconciliationIncluded.md)
@@ -1801,6 +1817,9 @@ Class | Method | HTTP request | Description
  - [SubscriptionTypeSummary](docs/SubscriptionTypeSummary.md)
  - [SubscriptionYear](docs/SubscriptionYear.md)
  - [SubscriptionYearInvoicesInner](docs/SubscriptionYearInvoicesInner.md)
+ - [SwapContractRawContracts200Response](docs/SwapContractRawContracts200Response.md)
+ - [SwapContractRawContracts200ResponseContractsInner](docs/SwapContractRawContracts200ResponseContractsInner.md)
+ - [SwapContractRawContractsRequest](docs/SwapContractRawContractsRequest.md)
  - [SystemSetting](docs/SystemSetting.md)
  - [Tag](docs/Tag.md)
  - [TeamScheduleCoaches](docs/TeamScheduleCoaches.md)
@@ -1840,6 +1859,7 @@ Class | Method | HTTP request | Description
  - [TimeOfYearOption](docs/TimeOfYearOption.md)
  - [TimeZoneOption](docs/TimeZoneOption.md)
  - [TrademarkDealUpdate](docs/TrademarkDealUpdate.md)
+ - [TravelDealUpdate](docs/TravelDealUpdate.md)
  - [UnauthorizedError](docs/UnauthorizedError.md)
  - [UnknownRansackConditionError](docs/UnknownRansackConditionError.md)
  - [UnknownRansackConditionErrorErrors](docs/UnknownRansackConditionErrorErrors.md)

@@ -16,7 +16,7 @@ File a vendor deal PDF as a PENDING deal (WINAD-10698), the vendor counterpart o
 
 A pending deal is internal-only: it is not returned to customers by any search, list, show, export or MCP tool, and its PDF cannot be read by them. Staff list the pending deals with GET /deals?q[pending_eq]=true (or GET /deal_searches?q[pending_eq]=true) and delete one with DELETE /deals/{dealId}. Publishing is a separate operation. A pending deal does not change the school's deal status.
 
-`deal_type` is one of Apparel, MMR (multimedia rights), Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark or Bookstore (case, spaces and underscores do not matter), or the exact DealType name such as ApparelDealType. `drive_id` is the original Google Drive id of the source document, stored on the RawContract; a second request with the same drive_id for a deal of the same school is refused with 422 errors.drive_id. Requires the winad_write scope and a manage-level user (client-credentials service tokens included).
+`deal_type` is one of Apparel, MMR (multimedia rights), Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark, Bookstore, Athletics Software (also `software`) or Travel (case, spaces and underscores do not matter), or the exact DealType name such as ApparelDealType. `drive_id` is the original Google Drive id of the source document, stored on the RawContract; a second request with the same drive_id for a deal of the same school is refused with 422 errors.drive_id. Requires the winad_write scope and a manage-level user (client-credentials service tokens included).
 
 
 ### Example
@@ -54,7 +54,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DealsApi(api_client)
     school_id = 56 # int | The school the deal is filed under
-    deal_type = 'deal_type_example' # str | Apparel, MMR, Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark or Bookstore (or the DealType name).
+    deal_type = 'deal_type_example' # str | Apparel, MMR, Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark, Bookstore, Athletics Software or Travel (or the DealType name).
     file = None # bytearray | The contract PDF as a multipart upload.
     vendor_id = 56 # int | Optional. An existing vendor, attached to the deal. (optional)
     drive_id = 'drive_id_example' # str | Optional original Google Drive id of the source document; unique per school among deals. (optional)
@@ -76,7 +76,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **school_id** | **int**| The school the deal is filed under | 
- **deal_type** | **str**| Apparel, MMR, Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark or Bookstore (or the DealType name). | 
+ **deal_type** | **str**| Apparel, MMR, Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark, Bookstore, Athletics Software or Travel (or the DealType name). | 
  **file** | **bytearray**| The contract PDF as a multipart upload. | 
  **vendor_id** | **int**| Optional. An existing vendor, attached to the deal. | [optional] 
  **drive_id** | **str**| Optional original Google Drive id of the source document; unique per school among deals. | [optional] 
@@ -193,7 +193,7 @@ void (empty response body)
 
 Publish a pending vendor deal with the fields a person approved (WINAD-10699), the vendor counterpart of POST /contracts/{contractId}/publish. The deal is the one POST /deals filed from a vendor PDF (WINAD-10698); read the PDF text with GET /raw_contracts/{raw_contractId}/ocr_text, prepare the fields, have a person approve them, then send them here in ONE call. In one transaction, under the deal's row lock, this validates every field first and then writes the deal fields, the deal type's deal_detail and sets pending to false. If anything is refused nothing is written and the deal stays pending, so the request can be corrected and retried. Once published the deal appears in customer searches and its PDF becomes readable, like any deal entered in the admin, and the school's deal status is updated.
 
-The body is the body of PATCH /deals/{dealId} (`deal` and `deal_detail`), checked by the same code: the same detail fields for every deal type (Apparel, MMR, Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL, Video Mgmt), the same value rules, and an unknown field or one that belongs to another deal type is a 422 naming it (for example `deal_detail.srf`). Dates are plain calendar dates, strictly YYYY-MM-DD (WINAD-10687), stored as midnight UTC with no time-zone shift: send `start_on` / `end_on`, or `start_at` / `end_at` with the same plain date (a datetime is refused with 422; a `_at` and `_on` field of the same side together are refused). Also accepted in `deal`: `vendor_id`, the id of an existing vendor, which replaces the vendor the upload attached, and `autorenew`. `verified` and `archived` are not part of a publish and are refused.
+The body is the body of PATCH /deals/{dealId} (`deal` and `deal_detail`), checked by the same code: the same detail fields for every deal type (Apparel, MMR, Pouring, Concessions, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL, Video Mgmt, Travel, Athletics Software), the same value rules, and an unknown field or one that belongs to another deal type is a 422 naming it (for example `deal_detail.srf`). Dates are plain calendar dates, strictly YYYY-MM-DD (WINAD-10687), stored as midnight UTC with no time-zone shift: send `start_on` / `end_on`, or `start_at` / `end_at` with the same plain date (a datetime is refused with 422; a `_at` and `_on` field of the same side together are refused). Also accepted in `deal`: `vendor_id`, the id of an existing vendor, which replaces the vendor the upload attached, and `autorenew`. `verified` and `archived` are not part of a publish and are refused.
 
 A published deal minimally needs its school and deal type (set by the upload), an end date (`deal.end_on`) and at least one vendor (`deal.vendor_id`, unless the upload attached one). The start date, the detail values and the `change_note` are optional. A deal that is not pending (already published, entered in the admin, or published by an earlier call) is refused with 422 `errors.base`, so a second publish never changes anything. All problems are reported together, keyed by field path (`deal.end_on`, `deal.vendor_id`, `deal_detail.partner`, `base`). The change is audited with the acting user, the API client and the optional `change_note`, on the deal and on the detail it creates. The response is the published deal read back, in the shape of the PATCH response (`pending` is false). A pending deal is not found (404) for a caller who cannot read it. Requires the winad_write scope and a manage-level user (client-credentials service tokens included, as for POST /deals).
 

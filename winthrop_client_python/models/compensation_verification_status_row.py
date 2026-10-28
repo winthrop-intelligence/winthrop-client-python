@@ -95,8 +95,10 @@ class CompensationVerificationStatusRow(BaseModel):
         if value is None:
             return value
 
-        if value not in set(["agent", "manual"]):
-            raise ValueError("must be one of enum values ('agent', 'manual')")
+        if value not in set(["agent", "manual", "agent_concur"]):
+            raise ValueError(
+                "must be one of enum values ('agent', 'manual', 'agent_concur')"
+            )
         return value
 
     model_config = ConfigDict(

@@ -448,6 +448,7 @@ from winthrop_client_python.models.create_schedule_tournament_request import (
 from winthrop_client_python.models.create_school_group_request import (
     CreateSchoolGroupRequest,
 )
+from winthrop_client_python.models.create_season_request import CreateSeasonRequest
 from winthrop_client_python.models.create_sport_request import CreateSportRequest
 from winthrop_client_python.models.create_subscription_request_subscription import (
     CreateSubscriptionRequestSubscription,
@@ -693,6 +694,8 @@ from winthrop_client_python.models.mass_update_positions_response import (
     MassUpdatePositionsResponse,
 )
 from winthrop_client_python.models.mcp_event import McpEvent
+from winthrop_client_python.models.merge_coach200_response import MergeCoach200Response
+from winthrop_client_python.models.merge_coach_request import MergeCoachRequest
 from winthrop_client_python.models.ncaa_financial_report_status import (
     NcaaFinancialReportStatus,
 )
@@ -17787,7 +17790,7 @@ class DefaultApi:
     ) -> ContractVerification:
         """Append a contract verification event
 
-        Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
+        Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Retries of an agent or agent_concur run are keyed by (contract_id, method, agent_run_id): equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
 
         :param raw_contract_id: (required)
         :type raw_contract_id: int
@@ -17862,7 +17865,7 @@ class DefaultApi:
     ) -> ApiResponse[ContractVerification]:
         """Append a contract verification event
 
-        Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
+        Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Retries of an agent or agent_concur run are keyed by (contract_id, method, agent_run_id): equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
 
         :param raw_contract_id: (required)
         :type raw_contract_id: int
@@ -17937,7 +17940,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """Append a contract verification event
 
-        Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Agent retries use a unique (contract_id, agent_run_id) key: equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
+        Requires winad_verify, an application explicitly allowing winad_verify, a persisted token resource owner, and read access to the parent RawContract. winad_write is not required and does not grant this action. The document must belong to a Contract. Identity fields are server-derived. Retries of an agent or agent_concur run are keyed by (contract_id, method, agent_run_id): equivalent normalized payloads return the original event; changed payloads, documents, or verifiers conflict. An omitted verified_at on retry retains the original check time. The result 'revoked' is rejected here; use the revoke endpoint. Manual checks are never deduplicated. This API provides no endpoints to edit or delete events.
 
         :param raw_contract_id: (required)
         :type raw_contract_id: int
@@ -24351,7 +24354,7 @@ class DefaultApi:
     @validate_call
     def create_season(
         self,
-        season: Optional[Season] = None,
+        create_season_request: CreateSeasonRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -24366,10 +24369,10 @@ class DefaultApi:
     ) -> Season:
         """create_season
 
-        Create a new Season
+        Create the Season for a school, sport and year that has none. If a Season already exists for that triple it is returned unchanged with 200 and nothing is created. The optional top-level change_note is stored on the audit version of the create.
 
-        :param season:
-        :type season: Season
+        :param create_season_request: (required)
+        :type create_season_request: CreateSeasonRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -24393,7 +24396,7 @@ class DefaultApi:
         """  # noqa: E501
 
         _param = self._create_season_serialize(
-            season=season,
+            create_season_request=create_season_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -24402,7 +24405,9 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             "201": "Season",
+            "200": "Season",
             "401": None,
+            "403": None,
             "422": "UnprocessableEntity",
         }
         response_data = self.api_client.call_api(
@@ -24417,7 +24422,7 @@ class DefaultApi:
     @validate_call
     def create_season_with_http_info(
         self,
-        season: Optional[Season] = None,
+        create_season_request: CreateSeasonRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -24432,10 +24437,10 @@ class DefaultApi:
     ) -> ApiResponse[Season]:
         """create_season
 
-        Create a new Season
+        Create the Season for a school, sport and year that has none. If a Season already exists for that triple it is returned unchanged with 200 and nothing is created. The optional top-level change_note is stored on the audit version of the create.
 
-        :param season:
-        :type season: Season
+        :param create_season_request: (required)
+        :type create_season_request: CreateSeasonRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -24459,7 +24464,7 @@ class DefaultApi:
         """  # noqa: E501
 
         _param = self._create_season_serialize(
-            season=season,
+            create_season_request=create_season_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -24468,7 +24473,9 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             "201": "Season",
+            "200": "Season",
             "401": None,
+            "403": None,
             "422": "UnprocessableEntity",
         }
         response_data = self.api_client.call_api(
@@ -24483,7 +24490,7 @@ class DefaultApi:
     @validate_call
     def create_season_without_preload_content(
         self,
-        season: Optional[Season] = None,
+        create_season_request: CreateSeasonRequest,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -24498,10 +24505,10 @@ class DefaultApi:
     ) -> RESTResponseType:
         """create_season
 
-        Create a new Season
+        Create the Season for a school, sport and year that has none. If a Season already exists for that triple it is returned unchanged with 200 and nothing is created. The optional top-level change_note is stored on the audit version of the create.
 
-        :param season:
-        :type season: Season
+        :param create_season_request: (required)
+        :type create_season_request: CreateSeasonRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -24525,7 +24532,7 @@ class DefaultApi:
         """  # noqa: E501
 
         _param = self._create_season_serialize(
-            season=season,
+            create_season_request=create_season_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -24534,7 +24541,9 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             "201": "Season",
+            "200": "Season",
             "401": None,
+            "403": None,
             "422": "UnprocessableEntity",
         }
         response_data = self.api_client.call_api(
@@ -24544,7 +24553,7 @@ class DefaultApi:
 
     def _create_season_serialize(
         self,
-        season,
+        create_season_request,
         _request_auth,
         _content_type,
         _headers,
@@ -24569,8 +24578,8 @@ class DefaultApi:
         # process the header parameters
         # process the form parameters
         # process the body parameter
-        if season is not None:
-            _body_params = season
+        if create_season_request is not None:
+            _body_params = create_season_request
 
         # set the HTTP header `Accept`
         if "Accept" not in _header_params:
@@ -31062,6 +31071,301 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method="DELETE",
             resource_path="/api/v1/positions/{positionId}",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
+    def delete_raw_contract(
+        self,
+        raw_contract_id: Annotated[
+            StrictInt, Field(description="ID of the RawContract")
+        ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """delete_raw_contract
+
+        Retire a duplicate RawContract and its stored files. Requires the winad_write OAuth scope and permission to destroy the RawContract. Links are moved first (re-point the income report, pay rows and verification events to the document that stays), then it is retired. While a pay row (compensation of its Contract), an income report, an earned incentive (as its document or as the amendment that ends it) or a verification event still links to it, or its Contract has pay rows or verification events of its own, nothing is deleted and the answer is 409 with errors.blockers, an object of id lists under pay_rows, contracts, income_reports, earned_incentives and verification_events (only the non-empty ones). A Contract with no links of its own is deleted with the RawContract. The delete is an audit version (PaperTrail) with the optional change_note. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+        :param raw_contract_id: ID of the RawContract (required)
+        :type raw_contract_id: int
+        :param change_note: Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_raw_contract_serialize(
+            raw_contract_id=raw_contract_id,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "403": None,
+            "404": None,
+            "409": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def delete_raw_contract_with_http_info(
+        self,
+        raw_contract_id: Annotated[
+            StrictInt, Field(description="ID of the RawContract")
+        ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """delete_raw_contract
+
+        Retire a duplicate RawContract and its stored files. Requires the winad_write OAuth scope and permission to destroy the RawContract. Links are moved first (re-point the income report, pay rows and verification events to the document that stays), then it is retired. While a pay row (compensation of its Contract), an income report, an earned incentive (as its document or as the amendment that ends it) or a verification event still links to it, or its Contract has pay rows or verification events of its own, nothing is deleted and the answer is 409 with errors.blockers, an object of id lists under pay_rows, contracts, income_reports, earned_incentives and verification_events (only the non-empty ones). A Contract with no links of its own is deleted with the RawContract. The delete is an audit version (PaperTrail) with the optional change_note. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+        :param raw_contract_id: ID of the RawContract (required)
+        :type raw_contract_id: int
+        :param change_note: Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_raw_contract_serialize(
+            raw_contract_id=raw_contract_id,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "403": None,
+            "404": None,
+            "409": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def delete_raw_contract_without_preload_content(
+        self,
+        raw_contract_id: Annotated[
+            StrictInt, Field(description="ID of the RawContract")
+        ],
+        change_note: Annotated[
+            Optional[Annotated[str, Field(strict=True, max_length=500)]],
+            Field(
+                description="Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned."
+            ),
+        ] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """delete_raw_contract
+
+        Retire a duplicate RawContract and its stored files. Requires the winad_write OAuth scope and permission to destroy the RawContract. Links are moved first (re-point the income report, pay rows and verification events to the document that stays), then it is retired. While a pay row (compensation of its Contract), an income report, an earned incentive (as its document or as the amendment that ends it) or a verification event still links to it, or its Contract has pay rows or verification events of its own, nothing is deleted and the answer is 409 with errors.blockers, an object of id lists under pay_rows, contracts, income_reports, earned_incentives and verification_events (only the non-empty ones). A Contract with no links of its own is deleted with the RawContract. The delete is an audit version (PaperTrail) with the optional change_note. Returns 204 with no body. API clients in winthrop-clients must be regenerated to expose this change.
+
+        :param raw_contract_id: ID of the RawContract (required)
+        :type raw_contract_id: int
+        :param change_note: Optional. Why the record is retired, for the audit history. At most 500 characters after trimming; blank is the same as omitted; a value that is not text is refused with 422 (errors.change_note). Never returned.
+        :type change_note: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._delete_raw_contract_serialize(
+            raw_contract_id=raw_contract_id,
+            change_note=change_note,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "204": None,
+            "401": None,
+            "403": None,
+            "404": None,
+            "409": None,
+            "422": "UnprocessableEntity",
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _delete_raw_contract_serialize(
+        self,
+        raw_contract_id,
+        change_note,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if raw_contract_id is not None:
+            _path_params["raw_contractId"] = raw_contract_id
+        # process the query parameters
+        if change_note is not None:
+
+            _query_params.append(("change_note", change_note))
+
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="DELETE",
+            resource_path="/api/v1/raw_contracts/{raw_contractId}",
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -132724,6 +133028,291 @@ class DefaultApi:
         )
 
     @validate_call
+    def merge_coach(
+        self,
+        coach_id: Annotated[
+            StrictInt, Field(description="ID of the coach that keeps the merged data")
+        ],
+        merge_coach_request: MergeCoachRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> MergeCoach200Response:
+        """merge_coach
+
+        Merge the coach in from_coach_id into this coach (super admin only). Moves its contracts, copies positions, pay and income reports the coach does not have, fills blank profile fields, and writes a coach merge log.
+
+        :param coach_id: ID of the coach that keeps the merged data (required)
+        :type coach_id: int
+        :param merge_coach_request: (required)
+        :type merge_coach_request: MergeCoachRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._merge_coach_serialize(
+            coach_id=coach_id,
+            merge_coach_request=merge_coach_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "MergeCoach200Response",
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+    @validate_call
+    def merge_coach_with_http_info(
+        self,
+        coach_id: Annotated[
+            StrictInt, Field(description="ID of the coach that keeps the merged data")
+        ],
+        merge_coach_request: MergeCoachRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[MergeCoach200Response]:
+        """merge_coach
+
+        Merge the coach in from_coach_id into this coach (super admin only). Moves its contracts, copies positions, pay and income reports the coach does not have, fills blank profile fields, and writes a coach merge log.
+
+        :param coach_id: ID of the coach that keeps the merged data (required)
+        :type coach_id: int
+        :param merge_coach_request: (required)
+        :type merge_coach_request: MergeCoachRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._merge_coach_serialize(
+            coach_id=coach_id,
+            merge_coach_request=merge_coach_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "MergeCoach200Response",
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+    @validate_call
+    def merge_coach_without_preload_content(
+        self,
+        coach_id: Annotated[
+            StrictInt, Field(description="ID of the coach that keeps the merged data")
+        ],
+        merge_coach_request: MergeCoachRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)], Annotated[StrictFloat, Field(gt=0)]
+            ],
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """merge_coach
+
+        Merge the coach in from_coach_id into this coach (super admin only). Moves its contracts, copies positions, pay and income reports the coach does not have, fills blank profile fields, and writes a coach merge log.
+
+        :param coach_id: ID of the coach that keeps the merged data (required)
+        :type coach_id: int
+        :param merge_coach_request: (required)
+        :type merge_coach_request: MergeCoachRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """  # noqa: E501
+
+        _param = self._merge_coach_serialize(
+            coach_id=coach_id,
+            merge_coach_request=merge_coach_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index,
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            "200": "MergeCoach200Response",
+            "401": None,
+            "403": None,
+            "404": None,
+            "422": None,
+        }
+        response_data = self.api_client.call_api(
+            *_param, _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+    def _merge_coach_serialize(
+        self,
+        coach_id,
+        merge_coach_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {}
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if coach_id is not None:
+            _path_params["coachId"] = coach_id
+        # process the query parameters
+        # process the header parameters
+        # process the form parameters
+        # process the body parameter
+        if merge_coach_request is not None:
+            _body_params = merge_coach_request
+
+        # set the HTTP header `Accept`
+        if "Accept" not in _header_params:
+            _header_params["Accept"] = self.api_client.select_header_accept(
+                ["application/json"]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params["Content-Type"] = _content_type
+        else:
+            _default_content_type = self.api_client.select_header_content_type(
+                ["application/json"]
+            )
+            if _default_content_type is not None:
+                _header_params["Content-Type"] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = ["ApiKey", "Oauth2"]
+
+        return self.api_client.param_serialize(
+            method="POST",
+            resource_path="/api/v1/coaches/{coachId}/merge",
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth,
+        )
+
+    @validate_call
     def new_admin_position_type(
         self,
         _request_timeout: Union[
@@ -151905,7 +152494,7 @@ class DefaultApi:
     ) -> Compensation:
         """update_compensation
 
-        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). A body with only a non-blank change_note (no compensation, or an empty one) records the note on a new version without changing any value (WINAD-10718). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
         :param compensation_id: ID of compensation to update (required)
         :type compensation_id: int
@@ -151982,7 +152571,7 @@ class DefaultApi:
     ) -> ApiResponse[Compensation]:
         """update_compensation
 
-        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). A body with only a non-blank change_note (no compensation, or an empty one) records the note on a new version without changing any value (WINAD-10718). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
         :param compensation_id: ID of compensation to update (required)
         :type compensation_id: int
@@ -152059,7 +152648,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """update_compensation
 
-        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
+        Update a compensation. Requires the winad_write OAuth scope and permission to update the compensation. Only the request body is read, so compensation[...] in the query string is ignored and every value that is applied is the value that was validated (a request with no compensation in the body is a 400). compensation_type may be changed to \"yearly\", \"hourly\", or \"990\" and is validated exactly as in the admin form. Hourly rows require a non-blank comment holding the hourly rate (or 'Hourly rate not provided') and every amount field in Compensation::COMPENSATION_AMOUNT_FIELDS must be blank or zero. Send the type and zeroed/blank amounts together in one request; validation and saving are atomic. Private-school compensations must be \"990\". Changes are recorded in the row's audit history (PaperTrail), attributed to the token's user, with the optional top-level change_note as the reason. A change_note that is not a string, or contains a NUL character, is refused with 422 (errors.change_note). A body with only a non-blank change_note (no compensation, or an empty one) records the note on a new version without changing any value (WINAD-10718). contract_status_id may be set to any existing Contract Status (No Contract, Requested, Complete, Extended, Not Available) on its own without touching contract_id, or together with contract_id. When contract_id is set, the explicit status is kept; if none is sent, the row's current status is kept. The server no longer forces Complete/Extended on PATCH; the admin form and POST are unchanged. Null, blank, non-integer, and nonexistent status ids are refused. Status changes are recorded in audit history. API clients in winthrop-clients must be regenerated to expose this change.
 
         :param compensation_id: ID of compensation to update (required)
         :type compensation_id: int
@@ -152765,7 +153354,7 @@ class DefaultApi:
     ) -> DealUpdateResult:
         """update_deal
 
-        Atomically update deal fields and the deal's own detail values. Detail updates are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL and Video Mgmt deals (WINAD-10685); Travel, Athletics Software and Executive Search deals have no detail fields. At least one field is required. Unknown fields and fields belonging to another deal type return 422 (naming the fields the type allows) without changes. Changes are audited with the authenticated user.
+        Atomically update deal fields and the deal's own detail values. Detail updates are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL, Video Mgmt, Athletics Software and Travel deals (WINAD-10685); Executive Search deals have no detail fields. At least one field is required. Unknown fields and fields belonging to another deal type return 422 (naming the fields the type allows) without changes. Changes are audited with the authenticated user.
 
         :param deal_id: ID of the Deal (required)
         :type deal_id: int
@@ -152837,7 +153426,7 @@ class DefaultApi:
     ) -> ApiResponse[DealUpdateResult]:
         """update_deal
 
-        Atomically update deal fields and the deal's own detail values. Detail updates are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL and Video Mgmt deals (WINAD-10685); Travel, Athletics Software and Executive Search deals have no detail fields. At least one field is required. Unknown fields and fields belonging to another deal type return 422 (naming the fields the type allows) without changes. Changes are audited with the authenticated user.
+        Atomically update deal fields and the deal's own detail values. Detail updates are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL, Video Mgmt, Athletics Software and Travel deals (WINAD-10685); Executive Search deals have no detail fields. At least one field is required. Unknown fields and fields belonging to another deal type return 422 (naming the fields the type allows) without changes. Changes are audited with the authenticated user.
 
         :param deal_id: ID of the Deal (required)
         :type deal_id: int
@@ -152909,7 +153498,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """update_deal
 
-        Atomically update deal fields and the deal's own detail values. Detail updates are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL and Video Mgmt deals (WINAD-10685); Travel, Athletics Software and Executive Search deals have no detail fields. At least one field is required. Unknown fields and fields belonging to another deal type return 422 (naming the fields the type allows) without changes. Changes are audited with the authenticated user.
+        Atomically update deal fields and the deal's own detail values. Detail updates are accepted for Apparel, Multimedia, Concessions, Pouring Rights, Ticketing, Outsourced Ticketing, Trademark, Bookstore, NIL, Video Mgmt, Athletics Software and Travel deals (WINAD-10685); Executive Search deals have no detail fields. At least one field is required. Unknown fields and fields belonging to another deal type return 422 (naming the fields the type allows) without changes. Changes are audited with the authenticated user.
 
         :param deal_id: ID of the Deal (required)
         :type deal_id: int

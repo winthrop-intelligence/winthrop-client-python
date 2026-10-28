@@ -337,6 +337,7 @@ __all__ = [
     "AthleticProfileShowSportOverviewSeasonsInner",
     "AthleticProfileShowSportsOverviewInner",
     "AthleticProfileShowTabSportsInner",
+    "AthleticsSoftwareDealUpdate",
     "AuditedFinancialReportStatus",
     "AuditedFinancialReportStatusCollection",
     "AvailableGameContract",
@@ -510,6 +511,10 @@ __all__ = [
     "CreateContactRequestContact",
     "CreateContactSearchRequest",
     "CreateContactSearchRequestContact",
+    "CreateContractDirectUpload200Response",
+    "CreateContractDirectUpload200ResponseDirectUpload",
+    "CreateContractDirectUploadRequest",
+    "CreateContractDirectUploadRequestBlob",
     "CreateContractVerificationRequest",
     "CreateDeskRequest201Response",
     "CreateDeskRequestRequest",
@@ -542,6 +547,7 @@ __all__ = [
     "CreateSchedulingMessage422Response",
     "CreateSchoolGroupRequest",
     "CreateSchoolGroupRequestSchoolGroup",
+    "CreateSeasonRequest",
     "CreateSportRequest",
     "CreateSportRequestSport",
     "CreateSubscriptionRequestSubscription",
@@ -572,7 +578,9 @@ __all__ = [
     "DealStatus",
     "DealStatusCollection",
     "DealUpdateAmount",
+    "DealUpdateCount",
     "DealUpdateDetail",
+    "DealUpdateOnsiteAgents",
     "DealUpdatePartner",
     "DealUpdatePercent",
     "DealUpdateResult",
@@ -949,6 +957,8 @@ __all__ = [
     "MassUpdatePositionsRequest",
     "MassUpdatePositionsResponse",
     "McpEvent",
+    "MergeCoach200Response",
+    "MergeCoachRequest",
     "Meta",
     "MultimediaDealUpdate",
     "MultimediaDealUpdateRevSharePercent",
@@ -1007,6 +1017,7 @@ __all__ = [
     "RawContractCollection",
     "RawContractDealInfo",
     "RawContractTerms",
+    "RawContractUploaded",
     "RecalculateAdminSystemSettingLatestSalaries202Response",
     "ReconciliationCoach",
     "ReconciliationIncluded",
@@ -1113,6 +1124,9 @@ __all__ = [
     "SubscriptionTypeSummary",
     "SubscriptionYear",
     "SubscriptionYearInvoicesInner",
+    "SwapContractRawContracts200Response",
+    "SwapContractRawContracts200ResponseContractsInner",
+    "SwapContractRawContractsRequest",
     "SystemSetting",
     "Tag",
     "TeamScheduleCoaches",
@@ -1152,6 +1166,7 @@ __all__ = [
     "TimeOfYearOption",
     "TimeZoneOption",
     "TrademarkDealUpdate",
+    "TravelDealUpdate",
     "UnauthorizedError",
     "UnknownRansackConditionError",
     "UnknownRansackConditionErrorErrors",
@@ -2150,6 +2165,9 @@ from winthrop_client_python.models.athletic_profile_show_sports_overview_inner i
 from winthrop_client_python.models.athletic_profile_show_tab_sports_inner import (
     AthleticProfileShowTabSportsInner as AthleticProfileShowTabSportsInner,
 )
+from winthrop_client_python.models.athletics_software_deal_update import (
+    AthleticsSoftwareDealUpdate as AthleticsSoftwareDealUpdate,
+)
 from winthrop_client_python.models.audited_financial_report_status import (
     AuditedFinancialReportStatus as AuditedFinancialReportStatus,
 )
@@ -2637,6 +2655,18 @@ from winthrop_client_python.models.create_contact_search_request import (
 from winthrop_client_python.models.create_contact_search_request_contact import (
     CreateContactSearchRequestContact as CreateContactSearchRequestContact,
 )
+from winthrop_client_python.models.create_contract_direct_upload200_response import (
+    CreateContractDirectUpload200Response as CreateContractDirectUpload200Response,
+)
+from winthrop_client_python.models.create_contract_direct_upload200_response_direct_upload import (
+    CreateContractDirectUpload200ResponseDirectUpload as CreateContractDirectUpload200ResponseDirectUpload,
+)
+from winthrop_client_python.models.create_contract_direct_upload_request import (
+    CreateContractDirectUploadRequest as CreateContractDirectUploadRequest,
+)
+from winthrop_client_python.models.create_contract_direct_upload_request_blob import (
+    CreateContractDirectUploadRequestBlob as CreateContractDirectUploadRequestBlob,
+)
 from winthrop_client_python.models.create_contract_verification_request import (
     CreateContractVerificationRequest as CreateContractVerificationRequest,
 )
@@ -2733,6 +2763,9 @@ from winthrop_client_python.models.create_school_group_request import (
 from winthrop_client_python.models.create_school_group_request_school_group import (
     CreateSchoolGroupRequestSchoolGroup as CreateSchoolGroupRequestSchoolGroup,
 )
+from winthrop_client_python.models.create_season_request import (
+    CreateSeasonRequest as CreateSeasonRequest,
+)
 from winthrop_client_python.models.create_sport_request import (
     CreateSportRequest as CreateSportRequest,
 )
@@ -2817,8 +2850,14 @@ from winthrop_client_python.models.deal_status_collection import (
 from winthrop_client_python.models.deal_update_amount import (
     DealUpdateAmount as DealUpdateAmount,
 )
+from winthrop_client_python.models.deal_update_count import (
+    DealUpdateCount as DealUpdateCount,
+)
 from winthrop_client_python.models.deal_update_detail import (
     DealUpdateDetail as DealUpdateDetail,
+)
+from winthrop_client_python.models.deal_update_onsite_agents import (
+    DealUpdateOnsiteAgents as DealUpdateOnsiteAgents,
 )
 from winthrop_client_python.models.deal_update_partner import (
     DealUpdatePartner as DealUpdatePartner,
@@ -3892,6 +3931,12 @@ from winthrop_client_python.models.mass_update_positions_response import (
     MassUpdatePositionsResponse as MassUpdatePositionsResponse,
 )
 from winthrop_client_python.models.mcp_event import McpEvent as McpEvent
+from winthrop_client_python.models.merge_coach200_response import (
+    MergeCoach200Response as MergeCoach200Response,
+)
+from winthrop_client_python.models.merge_coach_request import (
+    MergeCoachRequest as MergeCoachRequest,
+)
 from winthrop_client_python.models.meta import Meta as Meta
 from winthrop_client_python.models.multimedia_deal_update import (
     MultimediaDealUpdate as MultimediaDealUpdate,
@@ -4045,6 +4090,9 @@ from winthrop_client_python.models.raw_contract_deal_info import (
 )
 from winthrop_client_python.models.raw_contract_terms import (
     RawContractTerms as RawContractTerms,
+)
+from winthrop_client_python.models.raw_contract_uploaded import (
+    RawContractUploaded as RawContractUploaded,
 )
 from winthrop_client_python.models.recalculate_admin_system_setting_latest_salaries202_response import (
     RecalculateAdminSystemSettingLatestSalaries202Response as RecalculateAdminSystemSettingLatestSalaries202Response,
@@ -4334,6 +4382,15 @@ from winthrop_client_python.models.subscription_year import (
 from winthrop_client_python.models.subscription_year_invoices_inner import (
     SubscriptionYearInvoicesInner as SubscriptionYearInvoicesInner,
 )
+from winthrop_client_python.models.swap_contract_raw_contracts200_response import (
+    SwapContractRawContracts200Response as SwapContractRawContracts200Response,
+)
+from winthrop_client_python.models.swap_contract_raw_contracts200_response_contracts_inner import (
+    SwapContractRawContracts200ResponseContractsInner as SwapContractRawContracts200ResponseContractsInner,
+)
+from winthrop_client_python.models.swap_contract_raw_contracts_request import (
+    SwapContractRawContractsRequest as SwapContractRawContractsRequest,
+)
 from winthrop_client_python.models.system_setting import SystemSetting as SystemSetting
 from winthrop_client_python.models.tag import Tag as Tag
 from winthrop_client_python.models.team_schedule_coaches import (
@@ -4446,6 +4503,9 @@ from winthrop_client_python.models.time_zone_option import (
 )
 from winthrop_client_python.models.trademark_deal_update import (
     TrademarkDealUpdate as TrademarkDealUpdate,
+)
+from winthrop_client_python.models.travel_deal_update import (
+    TravelDealUpdate as TravelDealUpdate,
 )
 from winthrop_client_python.models.unauthorized_error import (
     UnauthorizedError as UnauthorizedError,

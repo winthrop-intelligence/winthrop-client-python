@@ -26,6 +26,9 @@ from pydantic import (
 )
 from typing import Optional
 from winthrop_client_python.models.apparel_deal_update import ApparelDealUpdate
+from winthrop_client_python.models.athletics_software_deal_update import (
+    AthleticsSoftwareDealUpdate,
+)
 from winthrop_client_python.models.bookstore_deal_update import BookstoreDealUpdate
 from winthrop_client_python.models.concession_deal_update import ConcessionDealUpdate
 from winthrop_client_python.models.multimedia_deal_update import MultimediaDealUpdate
@@ -38,6 +41,7 @@ from winthrop_client_python.models.out_ticketing_deal_update import (
 from winthrop_client_python.models.pouring_deal_update import PouringDealUpdate
 from winthrop_client_python.models.ticketing_deal_update import TicketingDealUpdate
 from winthrop_client_python.models.trademark_deal_update import TrademarkDealUpdate
+from winthrop_client_python.models.travel_deal_update import TravelDealUpdate
 from winthrop_client_python.models.video_deal_update import VideoDealUpdate
 from typing import Union, Any, List, Set, TYPE_CHECKING, Optional, Dict
 from typing_extensions import Literal, Self
@@ -45,6 +49,7 @@ from pydantic import Field
 
 UPDATEDEALREQUESTDEALDETAIL_ANY_OF_SCHEMAS = [
     "ApparelDealUpdate",
+    "AthleticsSoftwareDealUpdate",
     "BookstoreDealUpdate",
     "ConcessionDealUpdate",
     "MultimediaDealUpdate",
@@ -53,6 +58,7 @@ UPDATEDEALREQUESTDEALDETAIL_ANY_OF_SCHEMAS = [
     "PouringDealUpdate",
     "TicketingDealUpdate",
     "TrademarkDealUpdate",
+    "TravelDealUpdate",
     "VideoDealUpdate",
 ]
 
@@ -82,10 +88,15 @@ class UpdateDealRequestDealDetail(BaseModel):
     anyof_schema_9_validator: Optional[NameImageLikenessDealUpdate] = None
     # data type: VideoDealUpdate
     anyof_schema_10_validator: Optional[VideoDealUpdate] = None
+    # data type: AthleticsSoftwareDealUpdate
+    anyof_schema_11_validator: Optional[AthleticsSoftwareDealUpdate] = None
+    # data type: TravelDealUpdate
+    anyof_schema_12_validator: Optional[TravelDealUpdate] = None
     if TYPE_CHECKING:
         actual_instance: Optional[
             Union[
                 ApparelDealUpdate,
+                AthleticsSoftwareDealUpdate,
                 BookstoreDealUpdate,
                 ConcessionDealUpdate,
                 MultimediaDealUpdate,
@@ -94,6 +105,7 @@ class UpdateDealRequestDealDetail(BaseModel):
                 PouringDealUpdate,
                 TicketingDealUpdate,
                 TrademarkDealUpdate,
+                TravelDealUpdate,
                 VideoDealUpdate,
             ]
         ] = None
@@ -101,6 +113,7 @@ class UpdateDealRequestDealDetail(BaseModel):
         actual_instance: Any = None
     any_of_schemas: Set[str] = {
         "ApparelDealUpdate",
+        "AthleticsSoftwareDealUpdate",
         "BookstoreDealUpdate",
         "ConcessionDealUpdate",
         "MultimediaDealUpdate",
@@ -109,6 +122,7 @@ class UpdateDealRequestDealDetail(BaseModel):
         "PouringDealUpdate",
         "TicketingDealUpdate",
         "TrademarkDealUpdate",
+        "TravelDealUpdate",
         "VideoDealUpdate",
     }
 
@@ -215,10 +229,26 @@ class UpdateDealRequestDealDetail(BaseModel):
         else:
             return v
 
+        # validate data type: AthleticsSoftwareDealUpdate
+        if not isinstance(v, AthleticsSoftwareDealUpdate):
+            error_messages.append(
+                f"Error! Input type `{type(v)}` is not `AthleticsSoftwareDealUpdate`"
+            )
+        else:
+            return v
+
+        # validate data type: TravelDealUpdate
+        if not isinstance(v, TravelDealUpdate):
+            error_messages.append(
+                f"Error! Input type `{type(v)}` is not `TravelDealUpdate`"
+            )
+        else:
+            return v
+
         if error_messages:
             # no match
             raise ValueError(
-                "No match found when setting the actual_instance in UpdateDealRequestDealDetail with anyOf schemas: ApparelDealUpdate, BookstoreDealUpdate, ConcessionDealUpdate, MultimediaDealUpdate, NameImageLikenessDealUpdate, OutTicketingDealUpdate, PouringDealUpdate, TicketingDealUpdate, TrademarkDealUpdate, VideoDealUpdate. Details: "
+                "No match found when setting the actual_instance in UpdateDealRequestDealDetail with anyOf schemas: ApparelDealUpdate, AthleticsSoftwareDealUpdate, BookstoreDealUpdate, ConcessionDealUpdate, MultimediaDealUpdate, NameImageLikenessDealUpdate, OutTicketingDealUpdate, PouringDealUpdate, TicketingDealUpdate, TrademarkDealUpdate, TravelDealUpdate, VideoDealUpdate. Details: "
                 + ", ".join(error_messages)
             )
         else:
@@ -293,11 +323,23 @@ class UpdateDealRequestDealDetail(BaseModel):
             return instance
         except (ValidationError, ValueError) as e:
             error_messages.append(str(e))
+        # anyof_schema_11_validator: Optional[AthleticsSoftwareDealUpdate] = None
+        try:
+            instance.actual_instance = AthleticsSoftwareDealUpdate.from_json(json_str)
+            return instance
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
+        # anyof_schema_12_validator: Optional[TravelDealUpdate] = None
+        try:
+            instance.actual_instance = TravelDealUpdate.from_json(json_str)
+            return instance
+        except (ValidationError, ValueError) as e:
+            error_messages.append(str(e))
 
         if error_messages:
             # no match
             raise ValueError(
-                "No match found when deserializing the JSON string into UpdateDealRequestDealDetail with anyOf schemas: ApparelDealUpdate, BookstoreDealUpdate, ConcessionDealUpdate, MultimediaDealUpdate, NameImageLikenessDealUpdate, OutTicketingDealUpdate, PouringDealUpdate, TicketingDealUpdate, TrademarkDealUpdate, VideoDealUpdate. Details: "
+                "No match found when deserializing the JSON string into UpdateDealRequestDealDetail with anyOf schemas: ApparelDealUpdate, AthleticsSoftwareDealUpdate, BookstoreDealUpdate, ConcessionDealUpdate, MultimediaDealUpdate, NameImageLikenessDealUpdate, OutTicketingDealUpdate, PouringDealUpdate, TicketingDealUpdate, TrademarkDealUpdate, TravelDealUpdate, VideoDealUpdate. Details: "
                 + ", ".join(error_messages)
             )
         else:
@@ -321,6 +363,7 @@ class UpdateDealRequestDealDetail(BaseModel):
         Union[
             Dict[str, Any],
             ApparelDealUpdate,
+            AthleticsSoftwareDealUpdate,
             BookstoreDealUpdate,
             ConcessionDealUpdate,
             MultimediaDealUpdate,
@@ -329,6 +372,7 @@ class UpdateDealRequestDealDetail(BaseModel):
             PouringDealUpdate,
             TicketingDealUpdate,
             TrademarkDealUpdate,
+            TravelDealUpdate,
             VideoDealUpdate,
         ]
     ]:
