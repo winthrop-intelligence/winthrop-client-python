@@ -42,6 +42,8 @@ Name | Type | Description | Notes
 **compensation_outside_income_cents** | **int** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] 
 **compensation_deferred_comp_cents** | **int** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] 
 **compensation_one_time_bonus_cents** | **int** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] 
+**compensation_relocation_cents** | **int** | The relocation amount, separate from the one-time bonus (WINAD-10700). Null when there is none. Counted in compensation_cents only when compensation_relocation_taxable is true. Included under the same administrator_compensation permission as the other compensation fields. | [optional] 
+**compensation_relocation_taxable** | **bool** | Whether the relocation is taxable income. Null exactly when compensation_relocation_cents is null. | [optional] 
 **compensation_contingent_bonus** | **bool** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] 
 **compensation_buyout_terms** | **str** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] 
 **compensation_is_car_provided** | **bool** | Only included in /administrator_searches responses when the user has administrator_compensation permission. | [optional] 

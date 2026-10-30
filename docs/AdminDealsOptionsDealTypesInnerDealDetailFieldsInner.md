@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **label** | **str** |  | [optional] 
 **kind** | **str** |  | [optional] 
 **options** | **List[str]** |  | [optional] 
+**applies_to** | **str** | Travel only (WINAD-10740). The travel_subtype this column belongs to; the form shows only the chosen subtype&#39;s columns. Absent for travel_subtype itself and every other deal type. | [optional] 
 **help** | **str** |  | [optional] 
 
 ## Example
