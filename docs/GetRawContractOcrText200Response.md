@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **int** |  | 
 **text** | **str** |  | 
 **source** | **str** |  | 
+**text_source** | **str** | What produced the stored text (WINAD-10723). text_layer is the PDF&#39;s own embedded text, mistral is OCR. null for text stored before this was recorded. | [optional] 
 
 ## Example
 

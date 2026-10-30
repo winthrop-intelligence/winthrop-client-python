@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **compensation_type** | **str** |  | [optional] 
 **base_salary_dollars** | **str** |  | [optional] 
 **one_time_bonus_dollars** | **str** |  | [optional] 
+**relocation_dollars** | **str** | The relocation amount as a decimal dollar string. Null when there is none (not \&quot;0.00\&quot;). | [optional] 
+**relocation_taxable** | **bool** | Whether the relocation is taxable income. Null exactly when relocation_dollars is null. | [optional] 
 **talent_fee_dollars** | **str** |  | [optional] 
 **outside_income_dollars** | **str** |  | [optional] 
 **deferred_comp_dollars** | **str** |  | [optional] 

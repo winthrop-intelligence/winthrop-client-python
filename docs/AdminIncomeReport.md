@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **contract_status_id** | **int** |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
 **notes** | **str** |  | [optional] 
+**outside_income_cents** | **int** | Total athletically related cash income the form reports, in cents. 0 when the form says no income; null when not read yet. | [optional] 
+**reported_period** | **str** | The period exactly as the form states it. Null when not read. | [optional] 
 **label** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
