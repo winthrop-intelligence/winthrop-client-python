@@ -39,6 +39,8 @@ Name | Type | Description | Notes
 **compensation_contingent_bonus** | **bool** |  | [optional] 
 **compensation_deferred_comp_cents** | **int** |  | [optional] 
 **compensation_one_time_bonus_cents** | **int** |  | [optional] 
+**compensation_relocation_cents** | **int** | The relocation amount, separate from the one-time bonus. Null when there is none. Counted in compensation_cents only when compensation_relocation_taxable is true. | [optional] 
+**compensation_relocation_taxable** | **bool** | Whether the relocation is taxable income. Null exactly when compensation_relocation_cents is null. | [optional] 
 **compensation_buyout_terms** | **str** |  | [optional] 
 **compensation_is_car_provided** | **bool** |  | [optional] 
 **compensation_outside_income_cents** | **int** |  | [optional] 

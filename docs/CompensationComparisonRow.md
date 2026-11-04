@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **base_salary_cents** | **int** |  | [optional] 
 **talent_fee_cents** | **int** |  | [optional] 
 **one_time_bonus_cents** | **int** |  | [optional] 
+**relocation_cents** | **int** | The relocation amount in cents, separate from one_time_bonus_cents. Null when there is no relocation. | [optional] 
+**relocation_taxable** | **bool** | true is paid relocation, counted in compensation_cents; false is reimbursed (\&quot;up to\&quot;), shown but not counted. Null when there is no relocation. | [optional] 
 **outside_income_cents** | **int** |  | [optional] 
 **deferred_comp_cents** | **int** |  | [optional] 
 **compensation_type** | **str** |  | [optional] 

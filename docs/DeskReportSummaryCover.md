@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **treatment** | **str** |  | 
 **kicker** | **str** |  | 
 **numeral** | **str** |  | 
+**image_url** | **str** | Optional cover art for the library card (WINAD-10725). An expiring Active Storage link served under the report&#39;s audience rules: fetch it with the reader&#39;s bearer token, the same way as a download.  | 
+**banner_image_url** | **str** | Optional art-only reader header image. When null, the reader header uses image_url. | 
 
 ## Example
 

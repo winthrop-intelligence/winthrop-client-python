@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **talent_fee_cents** | **int** |  | [optional] 
 **deferred_comp_cents** | **int** |  | [optional] 
 **total_cents** | **int** |  | [optional] 
+**relocation_cents** | **int** |  | [optional] 
+**relocation_taxable** | **bool** |  | [optional] 
 **year_str** | **str** |  | [optional] 
 
 ## Example
