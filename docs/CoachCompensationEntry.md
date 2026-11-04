@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **media_link** | **str** |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
 **one_time_bonus_cents** | **int** |  | [optional] 
+**relocation_cents** | **int** | The relocation amount, separate from one_time_bonus_cents. Null when there is none. Counted in total_cents only when relocation_taxable is true. | [optional] 
+**relocation_taxable** | **bool** | Whether the relocation is taxable income. Null exactly when relocation_cents is null. | [optional] 
 **outside_income_cents** | **int** |  | [optional] 
 **contingent_bonus** | **bool** |  | [optional] 
 **buyout_terms** | **str** |  | [optional] 

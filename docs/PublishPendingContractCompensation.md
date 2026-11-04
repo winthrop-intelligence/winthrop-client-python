@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **outside_income** | [**PublishPendingContractCompensationOneTimeBonus**](PublishPendingContractCompensationOneTimeBonus.md) |  | [optional] 
 **deferred_compensation** | [**PublishPendingContractCompensationOneTimeBonus**](PublishPendingContractCompensationOneTimeBonus.md) |  | [optional] 
 **personal_services** | [**PublishPendingContractCompensationOneTimeBonus**](PublishPendingContractCompensationOneTimeBonus.md) |  | [optional] 
+**relocation_cents** | **int** | Relocation money, paid or reimbursed, in cents (WINAD-10758). Not one_time_bonus. Needs relocation_taxable; omitted leaves a stored relocation unchanged, null clears it. | [optional] 
+**relocation_taxable** | **bool** | Required (true or false) when relocation_cents is set, and must be null or omitted when it is not. | [optional] 
 **contingent_bonus** | **bool** |  | [optional] 
 **country_club_membership** | **bool** |  | [optional] 
 **car_provided** | **bool** |  | [optional] 

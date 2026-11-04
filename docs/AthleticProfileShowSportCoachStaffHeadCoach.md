@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **last_name** | **str** | Structured last name — may be multi-word (\&quot;Hughley Jr\&quot;). | [optional] 
 **comp_cents** | **int** |  | [optional] 
 **base_salary_cents** | **int** |  | [optional] 
+**relocation_cents** | **int** | Relocation in cents (WINAD-10757). Null when there is none. | [optional] 
+**relocation_taxable** | **bool** | true is paid relocation, counted in comp_cents; false is a reimbursement cap, not counted. Null when there is no relocation. | [optional] 
 **comp_rank** | **int** |  | [optional] 
 **comp_cohort_size** | **int** |  | [optional] 
 **comp_median_cents** | **int** |  | [optional] 

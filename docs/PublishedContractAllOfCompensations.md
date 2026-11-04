@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **id** | **int** |  | [optional] 
 **school_id** | **int** |  | [optional] 
 **year** | **int** |  | [optional] 
+**relocation_cents** | **int** |  | [optional] 
+**relocation_taxable** | **bool** |  | [optional] 
 
 ## Example
 

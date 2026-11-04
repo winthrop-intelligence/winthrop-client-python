@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **coach_id** | **int** |  | [optional] 
 **year** | **int** |  | [optional] 
 **contract_status_id** | **int** |  | [optional] 
+**outside_income_cents** | **int** | Total athletically related cash income the form reports, in cents (0 &#x3D; the form says no income). An empty value stores null (not read). | [optional] 
+**reported_period** | **str** | The period exactly as the form states it. An empty value stores null. | [optional] 
 **income_report_text** | **str** |  | [optional] 
 
 ## Example

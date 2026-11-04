@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **updated_at** | **datetime** |  | [optional] 
 **notes** | **str** |  | [optional] 
 **contract_status_id** | **int** |  | [optional] 
+**outside_income_cents** | **int** | Total athletically related cash income the form reports, in cents. 0 when the form says no income; null when the form has not been read yet. | [optional] 
+**reported_period** | **str** | The period exactly as the form states it, for example July 1, 2022 - June 30, 2023 or calendar 2022. Null when not read. | [optional] 
 
 ## Example
 

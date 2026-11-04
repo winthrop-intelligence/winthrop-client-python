@@ -19,14 +19,18 @@ Name | Type | Description | Notes
 **end_year** | **int** |  | [optional] 
 **start_at** | **datetime** |  | [optional] 
 **end_at** | **datetime** |  | [optional] 
+**start_on** | **date** | The deal&#39;s start date as a plain calendar date (YYYY-MM-DD): the UTC calendar date of the stored start_at/end_at instant, the same in every reader&#39;s time zone. Additive; the timestamp field next to it is unchanged. | [optional] 
+**end_on** | **date** | The deal&#39;s end date as a plain calendar date (YYYY-MM-DD): the UTC calendar date of the stored start_at/end_at instant, the same in every reader&#39;s time zone. Additive; the timestamp field next to it is unchanged. | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **summary** | **str** |  | [optional] 
+**text** | **str** | The summary, under the name PATCH accepts (same value as summary). | [optional] 
 **autorenew** | **bool** |  | [optional] 
 **archived** | **bool** |  | [optional] 
 **vendors** | [**List[DealDetailVendor]**](DealDetailVendor.md) |  | [optional] 
 **deal_detail** | [**DealUpdateDetail**](DealUpdateDetail.md) |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
 **verified** | **bool** |  | [optional] 
+**pending** | **bool** | True for a vendor deal filed from a PDF and not yet published (WINAD-10698); false once published (WINAD-10699, POST /deals/{dealId}/publish). | [optional] 
 
 ## Example
 

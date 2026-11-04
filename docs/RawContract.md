@@ -6,9 +6,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
-**asset_file_size** | **int** |  | [optional] 
-**asset_content_type** | **str** |  | [optional] 
-**asset_file_name** | **str** |  | [optional] 
+**asset_file_size** | **int** | Byte size of the file currently held (the stored file&#39;s size when one is attached, the legacy column otherwise) | [optional] 
+**asset_content_type** | **str** | Content type of the file currently held (the stored file&#39;s when one is attached) | [optional] 
+**asset_file_name** | **str** | Name of the file currently held (the stored file&#39;s when one is attached); the name view_file and download use | [optional] 
 **created_at** | **datetime** |  | [optional] 
 **updated_at** | **datetime** |  | [optional] 
 **contract_type_id** | **int** |  | [optional] 
@@ -38,6 +38,12 @@ Name | Type | Description | Notes
 **deal_info** | [**RawContractDealInfo**](RawContractDealInfo.md) |  | [optional] 
 **contract_terms** | [**ContractTerms**](ContractTerms.md) | Structured terms read from this contract&#39;s OCR text (WINAD-10633); null when none have been stored. | [optional] 
 **contract_terms_stale** | **bool** | True when contract_terms is present and source.rendition_sha256 no longer matches the SHA-256 of the current OCR text. | [optional] 
+**buyout_inputs** | [**BuyoutInputs**](BuyoutInputs.md) | Checked buyout inputs (WINAD-10717); null when none have been stored. | [optional] 
+**buyout_inputs_updated_at** | **datetime** |  | [optional] 
+**buyout_inputs_stale** | **bool** | True when, after the newest revision, the OCR text was redone or contract_terms changed. | [optional] 
+**buyout_inputs_stale_reasons** | **List[str]** |  | [optional] 
+**as_of** | **date** | The stored buyout_inputs document&#39;s as_of (for GET /raw_contracts?q[buyout_inputs_present]&#x3D;true). | [optional] 
+**coach_id** | **int** | The coach of the linked contract, if any. | [optional] 
 
 ## Example
 

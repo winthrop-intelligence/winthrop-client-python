@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **school_id** | **int** |  | [optional] 
 **base_salary_dollars** | **str** |  | [optional] 
 **one_time_bonus_dollars** | **str** |  | [optional] 
+**relocation_dollars** | **str** | The relocation amount in dollars. Blank or null clears it (and the flag with it). | [optional] 
+**relocation_taxable** | **bool** | Whether the relocation is taxable income. Required when relocation_dollars is set; ignored (stored as null) when it is blank. | [optional] 
 **talent_fee_dollars** | **str** |  | [optional] 
 **outside_income_dollars** | **str** |  | [optional] 
 **deferred_comp_dollars** | **str** |  | [optional] 
