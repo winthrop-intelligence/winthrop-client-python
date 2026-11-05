@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **divisions** | [**List[IdName]**](IdName.md) |  | [optional] 
 **subdivisions** | [**List[IdName]**](IdName.md) |  | [optional] 
 **schools** | [**List[IdName]**](IdName.md) |  | [optional] 
-**years** | [**List[AdminFinancialsQcListMetaAllOfFilterOptionsYearsInner]**](AdminFinancialsQcListMetaAllOfFilterOptionsYearsInner.md) |  | [optional] 
+**years** | [**List[AdminPlayerStatFilterOptionsYearOptionsInner]**](AdminPlayerStatFilterOptionsYearOptionsInner.md) |  | [optional] 
 
 ## Example
 

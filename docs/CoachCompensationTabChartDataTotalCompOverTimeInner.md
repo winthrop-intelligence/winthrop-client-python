@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **base_salary_cents** | **int** |  | [optional] 
 **bonus_cents** | **int** |  | [optional] 
 **deferred_comp_cents** | **int** |  | [optional] 
+**relocation_cents** | **int** | The year&#39;s relocation amount (WINAD-10700). Null when there is none. | [optional] 
+**relocation_taxable** | **bool** | Whether the relocation is taxable income. A taxable one is already inside comp_cents (the chart stacks it as its own segment); a non-taxable one is not (the chart draws a ring). Null when there is no relocation or the flag is unknown.  | [optional] 
 
 ## Example
 
