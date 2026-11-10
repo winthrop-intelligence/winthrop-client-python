@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **total_entries** | **int** |  | [optional] 
 **contract_status_options** | [**List[AdminCompensationListMetaContractStatusOptionsInner]**](AdminCompensationListMetaContractStatusOptionsInner.md) |  | [optional] 
 **coach_contract_options** | [**List[AdminCompensationListMetaCoachContractOptionsInner]**](AdminCompensationListMetaCoachContractOptionsInner.md) |  | [optional] 
+**contracts** | [**List[AdminCompensationListMetaContractsInner]**](AdminCompensationListMetaContractsInner.md) | Every contract of the coach, newest first (WINAD-10759) | [optional] 
+**income_reports** | [**List[AdminCompensationListMetaIncomeReportsInner]**](AdminCompensationListMetaIncomeReportsInner.md) | The coach&#39;s outside income reports, newest year first (WINAD-10759) | [optional] 
 
 ## Example
 

@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 **has_raw_contract** | **bool** |  | [optional] 
 **formatted_buyout_terms** | **str** |  | [optional] 
 **raw_contract_id** | **int** |  | [optional] 
-**school** | [**AdminCoachCurrentSchool**](AdminCoachCurrentSchool.md) |  | [optional] 
+**school** | [**AdminCompensationSchool**](AdminCompensationSchool.md) |  | [optional] 
 **contract_status** | [**AdminCoachHometownState**](AdminCoachHometownState.md) |  | [optional] 
 
 ## Example

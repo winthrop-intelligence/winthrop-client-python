@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update | 
 [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
 [**confirm_email_admin_user**](DefaultApi.md#confirm_email_admin_user) | **POST** /api/v1/admin/users/{id}/confirm_email | 
+[**copy_admin_compensation_to_next_year**](DefaultApi.md#copy_admin_compensation_to_next_year) | **POST** /api/v1/admin/compensations/{id}/copy_to_next_year | 
 [**copy_for_year_admin_positions**](DefaultApi.md#copy_for_year_admin_positions) | **POST** /api/v1/admin/positions/copy_for_year | 
 [**copy_to_next_year_admin_position**](DefaultApi.md#copy_to_next_year_admin_position) | **POST** /api/v1/admin/positions/{id}/copy_to_next_year | 
 [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
@@ -447,6 +448,7 @@ Method | HTTP request | Description
 [**list_admin_coach_merge_logs**](DefaultApi.md#list_admin_coach_merge_logs) | **GET** /api/v1/admin/coach_merge_logs | 
 [**list_admin_coach_upload_jobs**](DefaultApi.md#list_admin_coach_upload_jobs) | **GET** /api/v1/admin/coaches/upload | 
 [**list_admin_coaches**](DefaultApi.md#list_admin_coaches) | **GET** /api/v1/admin/coaches | 
+[**list_admin_compensation_change_history**](DefaultApi.md#list_admin_compensation_change_history) | **GET** /api/v1/admin/compensations/change_history | 
 [**list_admin_compensations**](DefaultApi.md#list_admin_compensations) | **GET** /api/v1/admin/compensations | 
 [**list_admin_conference_schools_directory**](DefaultApi.md#list_admin_conference_schools_directory) | **GET** /api/v1/admin/conferences/schools | 
 [**list_admin_conferences**](DefaultApi.md#list_admin_conferences) | **GET** /api/v1/admin/conferences | 
@@ -639,6 +641,7 @@ Method | HTTP request | Description
 [**upsert_team_season_result**](DefaultApi.md#upsert_team_season_result) | **PUT** /api/v1/team_season_results | 
 [**user_me**](DefaultApi.md#user_me) | **GET** /api/v1/users/me | 
 [**validate_admin_desk_report**](DefaultApi.md#validate_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/validate | 
+[**verify_admin_contract**](DefaultApi.md#verify_admin_contract) | **PATCH** /api/v1/admin/contracts/{id}/verification | 
 [**verify_otp_code**](DefaultApi.md#verify_otp_code) | **POST** /api/v1/otp/verify | 
 [**verify_user_intercollegiate_access**](DefaultApi.md#verify_user_intercollegiate_access) | **GET** /api/v1/users/verify_user_intercollegiate_access | 
 [**view_invoice_file**](DefaultApi.md#view_invoice_file) | **GET** /api/v1/subscriptions/{subscriptionId}/invoices/{invoiceId}/view_file | 
@@ -1747,6 +1750,89 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden - user is not a super admin |  -  |
 **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **copy_admin_compensation_to_next_year**
+> AdminCompensation copy_admin_compensation_to_next_year(id)
+
+Copy a compensation to the next year; needs a position for that year (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_compensation import AdminCompensation
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.copy_admin_compensation_to_next_year(id)
+        print("The response of DefaultApi->copy_admin_compensation_to_next_year:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->copy_admin_compensation_to_next_year: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**AdminCompensation**](AdminCompensation.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Compensation copied |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Not Found |  -  |
+**422** | Cannot copy (for example no position next year) |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -29887,7 +29973,7 @@ Name | Type | Description  | Notes
 # **get_postseason_results**
 > PostseasonResultCollection get_postseason_results(page=page, per_page=per_page, season_id=season_id, school_id=school_id, sport_id=sport_id, season_year=season_year)
 
-Retrieve postseason results, the furthest stage each season reached (a bowl game or a tournament round, and whether it was won). Filter by season_id, or by school_id, sport_id and season_year.
+Retrieve postseason results, the furthest stage each season reached (a football bowl by name or a tournament round, and whether it was won). Filter by season_id, or by school_id, sport_id and season_year.
 
 ### Example
 
@@ -37290,6 +37376,88 @@ Name | Type | Description  | Notes
 **400** | A &#x60;q[...]&#x60; condition names an attribute, association path, predicate or scope the resource does not expose, or names an attribute without a predicate (&#x60;q[name]&#x3D;x&#x60; instead of &#x60;q[name_eq]&#x3D;x&#x60; or &#x60;q[name_cont]&#x3D;x&#x60;, and a &#x60;q[c]&#x60; list entry without &#x60;p&#x60;). The search is refused instead of silently ignoring the condition, which would return the unfiltered collection. &#x60;errors.q&#x60; has one entry per bad condition: &#x60;unknown condition: &lt;name&gt;&#x60;, or &#x60;condition has no predicate: &lt;name&gt; (use &lt;name&gt;_eq, &lt;name&gt;_cont, ...)&#x60;. Sorting (&#x60;q[s]&#x60;), the combinator (&#x60;q[m]&#x60;), groups (&#x60;q[g]&#x60;) and a condition whose value is blank are not refused. A 400 on these operations can also be an invalid pagination parameter, or a &#x60;q&#x60; of the wrong shape (&#x60;Unexpected format for q param: ...&#x60;: &#x60;q&#x60; must be a hash, a JSON object string, or absent, and &#x60;q[c]&#x60; and &#x60;q[g]&#x60; a hash or a list of hashes, so &#x60;q[]&#x3D;x&#x60; and &#x60;q[c]&#x3D;x&#x60; are refused instead of returning the unfiltered collection); for these &#x60;errors&#x60; is a list of messages. |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden - user is not a super admin |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_admin_compensation_change_history**
+> AdminCompensationChangeHistory list_admin_compensation_change_history(coach_id)
+
+The change history (PaperTrail versions) of a coach's compensations, newest first (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_compensation_change_history import AdminCompensationChangeHistory
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    coach_id = 56 # int | 
+
+    try:
+        api_response = api_instance.list_admin_compensation_change_history(coach_id)
+        print("The response of DefaultApi->list_admin_compensation_change_history:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->list_admin_compensation_change_history: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **coach_id** | **int**|  | 
+
+### Return type
+
+[**AdminCompensationChangeHistory**](AdminCompensationChangeHistory.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Change history retrieved |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Coach not found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -53646,6 +53814,90 @@ Name | Type | Description  | Notes
 **200** | Findings (empty when clean) |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **verify_admin_contract**
+> AdminContract verify_admin_contract(id, verified)
+
+Mark a contract verified or not verified (admin, super-admin only)
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_contract import AdminContract
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+    verified = True # bool | 
+
+    try:
+        api_response = api_instance.verify_admin_contract(id, verified)
+        print("The response of DefaultApi->verify_admin_contract:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->verify_admin_contract: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+ **verified** | **bool**|  | 
+
+### Return type
+
+[**AdminContract**](AdminContract.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Verification changed |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
 **404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
