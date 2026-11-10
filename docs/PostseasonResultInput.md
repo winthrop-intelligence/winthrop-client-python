@@ -1,13 +1,14 @@
 # PostseasonResultInput
 
-Give exactly one of bowl_game_id and tournament_round_id. The write replaces the season's row.
+Give exactly one of fb_bowl_name and tournament_round_id (bowl_game_id is the deprecated form of fb_bowl_name). The write replaces the season's row.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **season_id** | **int** |  | 
-**bowl_game_id** | **int** |  | [optional] 
+**fb_bowl_name** | **str** | The football bowl as text, no bowl_games row needed. Not blank. Name the game that season without a presenting sponsor (&#39;Pinstripe Bowl&#39;, not &#39;Bad Boy Mowers Pinstripe Bowl&#39;; &#39;Rate Bowl&#39; stays). | [optional] 
+**bowl_game_id** | **int** | Deprecated. Its current name is copied into fb_bowl_name. | [optional] 
 **tournament_round_id** | **int** | Its tournament must belong to the season&#39;s sport (422 otherwise) | [optional] 
 **won** | **bool** |  | 
 **change_note** | **str** |  | [optional] 

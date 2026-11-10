@@ -1,6 +1,6 @@
 # PostseasonResult
 
-The furthest postseason stage a season reached (one row per season). Either the bowl_game_* or the tournament_* fields are set.
+The furthest postseason stage a season reached (one row per season). Either fb_bowl_name or the tournament_* fields are set (bowl_game_id and bowl_game_name are the legacy catalog form, kept until it is removed).
 
 ## Properties
 
@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **school_id** | **int** |  | [optional] 
 **sport_id** | **int** |  | [optional] 
 **season_year** | **int** |  | [optional] 
+**fb_bowl_name** | **str** | The football bowl as text, named that season without a presenting sponsor (e.g. Pinstripe Bowl) | [optional] 
 **bowl_game_id** | **int** |  | [optional] 
 **bowl_game_name** | **str** |  | [optional] 
 **tournament_round_id** | **int** |  | [optional] 
