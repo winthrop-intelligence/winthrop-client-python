@@ -15,13 +15,15 @@ Method | HTTP request | Description
 [**bulk_update_admin_contract_request_searches**](DefaultApi.md#bulk_update_admin_contract_request_searches) | **POST** /api/v1/admin/contract_request_searches/bulk_update | 
 [**bulk_update_admin_season_stats_editor**](DefaultApi.md#bulk_update_admin_season_stats_editor) | **PATCH** /api/v1/admin/season_stats_editor/bulk_update | 
 [**bulk_update_game_post_searches**](DefaultApi.md#bulk_update_game_post_searches) | **POST** /api/v1/game_post_searches/bulk_update | 
+[**cancel_admin_archive_transfer_request**](DefaultApi.md#cancel_admin_archive_transfer_request) | **DELETE** /api/v1/admin/archive_transfer_requests/{id} | 
+[**close_compensation_requested_item**](DefaultApi.md#close_compensation_requested_item) | **POST** /api/v1/requested_items/{requestedItemId}/compensation_closure | 
 [**compare_coli**](DefaultApi.md#compare_coli) | **GET** /api/v1/schools/compare_coli | 
 [**confirm_email_admin_user**](DefaultApi.md#confirm_email_admin_user) | **POST** /api/v1/admin/users/{id}/confirm_email | 
 [**copy_admin_compensation_to_next_year**](DefaultApi.md#copy_admin_compensation_to_next_year) | **POST** /api/v1/admin/compensations/{id}/copy_to_next_year | 
 [**copy_for_year_admin_positions**](DefaultApi.md#copy_for_year_admin_positions) | **POST** /api/v1/admin/positions/copy_for_year | 
 [**copy_to_next_year_admin_position**](DefaultApi.md#copy_to_next_year_admin_position) | **POST** /api/v1/admin/positions/{id}/copy_to_next_year | 
 [**create_account_user**](DefaultApi.md#create_account_user) | **POST** /api/v1/account_users | 
-[**create_admin_bowl_games**](DefaultApi.md#create_admin_bowl_games) | **POST** /api/v1/admin/bowl_games | 
+[**create_admin_archive_transfer_request**](DefaultApi.md#create_admin_archive_transfer_request) | **POST** /api/v1/admin/archive_transfer_requests | 
 [**create_admin_coach**](DefaultApi.md#create_admin_coach) | **POST** /api/v1/admin/coaches | 
 [**create_admin_coach_apr_upload**](DefaultApi.md#create_admin_coach_apr_upload) | **POST** /api/v1/admin/coaches/coach_apr_upload | 
 [**create_admin_coach_contract**](DefaultApi.md#create_admin_coach_contract) | **POST** /api/v1/admin/coach_contracts | 
@@ -86,6 +88,7 @@ Method | HTTP request | Description
 [**create_favorites_category**](DefaultApi.md#create_favorites_category) | **POST** /api/v1/favorites_categories | 
 [**create_foia_label**](DefaultApi.md#create_foia_label) | **POST** /api/v1/foia_labels | 
 [**create_foia_request**](DefaultApi.md#create_foia_request) | **POST** /api/v1/foia_requests | 
+[**create_foia_request_followup_sent_event**](DefaultApi.md#create_foia_request_followup_sent_event) | **POST** /api/v1/admin/foia_requests/{foiaRequestId}/followup_sent_events | Record a sent FOIA follow-up
 [**create_frs_export**](DefaultApi.md#create_frs_export) | **POST** /api/v1/frs_exports | 
 [**create_game**](DefaultApi.md#create_game) | **POST** /api/v1/games | 
 [**create_game_post**](DefaultApi.md#create_game_post) | **POST** /api/v1/game_posts | 
@@ -140,7 +143,6 @@ Method | HTTP request | Description
 [**delete_team_season_result**](DefaultApi.md#delete_team_season_result) | **DELETE** /api/v1/team_season_results/{teamSeasonResultId} | 
 [**delete_upload**](DefaultApi.md#delete_upload) | **DELETE** /api/v1/uploads/{uploadId} | 
 [**destroy_admin_avatars**](DefaultApi.md#destroy_admin_avatars) | **DELETE** /api/v1/admin/avatars/{id} | 
-[**destroy_admin_bowl_games**](DefaultApi.md#destroy_admin_bowl_games) | **DELETE** /api/v1/admin/bowl_games/{id} | 
 [**destroy_admin_coach**](DefaultApi.md#destroy_admin_coach) | **DELETE** /api/v1/admin/coaches/{id} | 
 [**destroy_admin_compensation**](DefaultApi.md#destroy_admin_compensation) | **DELETE** /api/v1/admin/compensations/{id} | 
 [**destroy_admin_conferences**](DefaultApi.md#destroy_admin_conferences) | **DELETE** /api/v1/admin/conferences/{id} | 
@@ -198,7 +200,6 @@ Method | HTTP request | Description
 [**get_account_user_activation**](DefaultApi.md#get_account_user_activation) | **GET** /api/v1/account_user_activation | 
 [**get_account_users**](DefaultApi.md#get_account_users) | **GET** /api/v1/account_users | 
 [**get_accounts**](DefaultApi.md#get_accounts) | **GET** /api/v1/accounts | 
-[**get_admin_bowl_games**](DefaultApi.md#get_admin_bowl_games) | **GET** /api/v1/admin/bowl_games/{id} | 
 [**get_admin_coach**](DefaultApi.md#get_admin_coach) | **GET** /api/v1/admin/coaches/{id} | 
 [**get_admin_coach_merge_log**](DefaultApi.md#get_admin_coach_merge_log) | **GET** /api/v1/admin/coach_merge_logs/{id} | 
 [**get_admin_conferences**](DefaultApi.md#get_admin_conferences) | **GET** /api/v1/admin/conferences/{id} | 
@@ -257,7 +258,6 @@ Method | HTTP request | Description
 [**get_athletic_profile_search**](DefaultApi.md#get_athletic_profile_search) | **GET** /api/v1/athletic_profile_searches/{athleticProfileSearchId} | 
 [**get_audited_financial_report_status**](DefaultApi.md#get_audited_financial_report_status) | **GET** /api/v1/audited_financial_report_statuses/{auditedFinancialReportStatusId} | 
 [**get_audited_financial_report_statuses**](DefaultApi.md#get_audited_financial_report_statuses) | **GET** /api/v1/audited_financial_report_statuses | 
-[**get_bowl_games**](DefaultApi.md#get_bowl_games) | **GET** /api/v1/bowl_games | 
 [**get_cashflow**](DefaultApi.md#get_cashflow) | **GET** /api/v1/cashflows/{cashflowId} | 
 [**get_cashflow_groups**](DefaultApi.md#get_cashflow_groups) | **GET** /api/v1/cashflow_groups | 
 [**get_cashflows**](DefaultApi.md#get_cashflows) | **GET** /api/v1/cashflows | 
@@ -326,6 +326,7 @@ Method | HTTP request | Description
 [**get_foia_label**](DefaultApi.md#get_foia_label) | **GET** /api/v1/foia_labels/{foiaLabelId} | 
 [**get_foia_labels**](DefaultApi.md#get_foia_labels) | **GET** /api/v1/foia_labels | 
 [**get_foia_request**](DefaultApi.md#get_foia_request) | **GET** /api/v1/foia_requests/{foiaRequestId} | 
+[**get_foia_request_followup_sent_event_capabilities**](DefaultApi.md#get_foia_request_followup_sent_event_capabilities) | **GET** /api/v1/admin/foia_requests/followup_sent_events/capabilities | Read the sent follow-up event protocol version
 [**get_foia_requests**](DefaultApi.md#get_foia_requests) | **GET** /api/v1/foia_requests | 
 [**get_frs_export_school_search**](DefaultApi.md#get_frs_export_school_search) | **GET** /api/v1/frs_exports/school_search | 
 [**get_frs_exports**](DefaultApi.md#get_frs_exports) | **GET** /api/v1/frs_exports | 
@@ -439,7 +440,7 @@ Method | HTTP request | Description
 [**get_vendors**](DefaultApi.md#get_vendors) | **GET** /api/v1/vendors | 
 [**get_wire_changes**](DefaultApi.md#get_wire_changes) | **GET** /api/v1/wire_changes | 
 [**hide_admin_desk_report**](DefaultApi.md#hide_admin_desk_report) | **POST** /api/v1/admin/desk_reports/{uuid}/hide | 
-[**list_admin_bowl_games**](DefaultApi.md#list_admin_bowl_games) | **GET** /api/v1/admin/bowl_games | 
+[**list_admin_archive_transfer_requests**](DefaultApi.md#list_admin_archive_transfer_requests) | **GET** /api/v1/admin/archive_transfer_requests | 
 [**list_admin_coach_apr_upload_jobs**](DefaultApi.md#list_admin_coach_apr_upload_jobs) | **GET** /api/v1/admin/coaches/coach_apr_upload | 
 [**list_admin_coach_contracts**](DefaultApi.md#list_admin_coach_contracts) | **GET** /api/v1/admin/coach_contracts | 
 [**list_admin_coach_contracts_outside_income**](DefaultApi.md#list_admin_coach_contracts_outside_income) | **GET** /api/v1/admin/coach_contracts/outside_income | 
@@ -561,7 +562,6 @@ Method | HTTP request | Description
 [**update_account_user**](DefaultApi.md#update_account_user) | **PATCH** /api/v1/account_users/{accountUserId} | 
 [**update_account_user_activation**](DefaultApi.md#update_account_user_activation) | **PATCH** /api/v1/account_user_activation | 
 [**update_admin_avatars**](DefaultApi.md#update_admin_avatars) | **PATCH** /api/v1/admin/avatars/{id} | 
-[**update_admin_bowl_games**](DefaultApi.md#update_admin_bowl_games) | **PATCH** /api/v1/admin/bowl_games/{id} | 
 [**update_admin_coach**](DefaultApi.md#update_admin_coach) | **PATCH** /api/v1/admin/coaches/{id} | 
 [**update_admin_conferences**](DefaultApi.md#update_admin_conferences) | **PATCH** /api/v1/admin/conferences/{id} | 
 [**update_admin_conferenceships**](DefaultApi.md#update_admin_conferenceships) | **PATCH** /api/v1/admin/conferenceships/{id} | 
@@ -1585,6 +1585,176 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **cancel_admin_archive_transfer_request**
+> AdminArchiveTransferRequest cancel_admin_archive_transfer_request(id)
+
+Cancel a waiting copy request, or ask a running one to stop after the batch it is working on (super-admin only). The request is kept and returned.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.admin_archive_transfer_request import AdminArchiveTransferRequest
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    id = 56 # int | 
+
+    try:
+        api_response = api_instance.cancel_admin_archive_transfer_request(id)
+        print("The response of DefaultApi->cancel_admin_archive_transfer_request:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->cancel_admin_archive_transfer_request: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**|  | 
+
+### Return type
+
+[**AdminArchiveTransferRequest**](AdminArchiveTransferRequest.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Request cancelled, or asked to stop |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden - user is not a super admin |  -  |
+**404** | Unknown request |  -  |
+**422** | The request has already ended |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **close_compensation_requested_item**
+> CompensationClosureResponse close_compensation_requested_item(requested_item_id, compensation_closure_request)
+
+Close one pending or received Compensation requested item as not available, in one transaction. The requested item becomes not_available and gets the operator's note; its Compensation becomes NOT_AVAILABLE and gets the same note as a comment sentence. Volunteer and graduate_assistant also add their position type to every position of the Compensation. Requires a user-backed token; the change is recorded as that user. Any failed check leaves both records unchanged.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.compensation_closure_request import CompensationClosureRequest
+from winthrop_client_python.models.compensation_closure_response import CompensationClosureResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    requested_item_id = 56 # int | ID of the Compensation requested item to close
+    compensation_closure_request = winthrop_client_python.CompensationClosureRequest() # CompensationClosureRequest | 
+
+    try:
+        api_response = api_instance.close_compensation_requested_item(requested_item_id, compensation_closure_request)
+        print("The response of DefaultApi->close_compensation_requested_item:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->close_compensation_requested_item: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **requested_item_id** | **int**| ID of the Compensation requested item to close | 
+ **compensation_closure_request** | [**CompensationClosureRequest**](CompensationClosureRequest.md)|  | 
+
+### Return type
+
+[**CompensationClosureResponse**](CompensationClosureResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Both records after the change, read back from the database |  -  |
+**401** | Unauthorized |  -  |
+**403** | Forbidden, or the token has no user behind it |  -  |
+**404** | The requested item does not exist |  -  |
+**409** | The requested item status no longer matches expected_status, its FOIA request or label is no longer active, or another change to the same records was in progress (safe to retry) |  -  |
+**422** | Invalid payload, not a Compensation item, or the Compensation does not belong to the request school and person |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **compare_coli**
 > COLIAdjusted compare_coli(school_id, other_person_school_id, other_person_total_compensation)
 
@@ -2083,10 +2253,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **create_admin_bowl_games**
-> AdminBowlGameDetail create_admin_bowl_games(create_admin_bowl_games_request)
+# **create_admin_archive_transfer_request**
+> AdminArchiveTransferRequest create_admin_archive_transfer_request(create_admin_archive_transfer_request)
 
-Create a bowl game (admin, super-admin only)
+Request a copy of old history into the archive (super-admin only). The transfer CronJob runs it within a few minutes, copy-only. Refused while the copy job is not checking in, cannot copy, or a request for the same table (or for every table) is waiting or running.
 
 ### Example
 
@@ -2095,8 +2265,8 @@ Create a bowl game (admin, super-admin only)
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.admin_bowl_game_detail import AdminBowlGameDetail
-from winthrop_client_python.models.create_admin_bowl_games_request import CreateAdminBowlGamesRequest
+from winthrop_client_python.models.admin_archive_transfer_request import AdminArchiveTransferRequest
+from winthrop_client_python.models.create_admin_archive_transfer_request import CreateAdminArchiveTransferRequest
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -2123,14 +2293,14 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
-    create_admin_bowl_games_request = winthrop_client_python.CreateAdminBowlGamesRequest() # CreateAdminBowlGamesRequest | 
+    create_admin_archive_transfer_request = winthrop_client_python.CreateAdminArchiveTransferRequest() # CreateAdminArchiveTransferRequest | 
 
     try:
-        api_response = api_instance.create_admin_bowl_games(create_admin_bowl_games_request)
-        print("The response of DefaultApi->create_admin_bowl_games:\n")
+        api_response = api_instance.create_admin_archive_transfer_request(create_admin_archive_transfer_request)
+        print("The response of DefaultApi->create_admin_archive_transfer_request:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->create_admin_bowl_games: %s\n" % e)
+        print("Exception when calling DefaultApi->create_admin_archive_transfer_request: %s\n" % e)
 ```
 
 
@@ -2140,11 +2310,11 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **create_admin_bowl_games_request** | [**CreateAdminBowlGamesRequest**](CreateAdminBowlGamesRequest.md)|  | 
+ **create_admin_archive_transfer_request** | [**CreateAdminArchiveTransferRequest**](CreateAdminArchiveTransferRequest.md)|  | 
 
 ### Return type
 
-[**AdminBowlGameDetail**](AdminBowlGameDetail.md)
+[**AdminArchiveTransferRequest**](AdminArchiveTransferRequest.md)
 
 ### Authorization
 
@@ -2159,10 +2329,10 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Bowl game created |  -  |
+**201** | Request recorded |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden - user is not a super admin |  -  |
-**422** | Validation errors, or a text value is longer than its column (e.g. 255 characters) |  -  |
+**422** | Invalid request, a clashing open request, or a copy job that cannot run it |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -6112,7 +6282,7 @@ Name | Type | Description  | Notes
 # **create_admin_vendors**
 > AdminVendorDetail create_admin_vendors(create_admin_vendors_request)
 
-Create a vendor (admin, super-admin only)
+Create a vendor (admin, super-admin only). Name is stored as sent with leading/trailing whitespace stripped and no titleizing. A name equivalent to an existing vendor's (same letters and digits ignoring case, spaces and punctuation, e.g. "Team-Works" vs "Teamworks") or with no letter or digit is refused with 422.
 
 ### Example
 
@@ -7534,6 +7704,94 @@ Name | Type | Description  | Notes
 **201** | Foia request was created |  -  |
 **401** | Unauthorized |  -  |
 **422** | Unable to create foia request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **create_foia_request_followup_sent_event**
+> FoiaFollowupSentEventResponse create_foia_request_followup_sent_event(foia_request_id, foia_followup_sent_event_request)
+
+Record a sent FOIA follow-up
+
+Consumes the locked (follow_up_date, last_processed_followup) cycle exactly once across automatic and manual marks. Only active requests with active labels and incomplete items, in blank, acknowledged or followed_up status, are eligible. Echo cycle.updated_at exactly from the report, including microseconds. processed_on must be within the inclusive last 30 days through today, no earlier than updated_by_wi, and strictly after last_processed_followup. Explicit follow-up dates are preserved. Only successful responses are stored by idempotency_key; retries for the same request and processed_on replay the first body even if the row has changed. Conflicts (409) are not stored; malformed inputs or keys reused with another request/date are 422.
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.foia_followup_sent_event_request import FoiaFollowupSentEventRequest
+from winthrop_client_python.models.foia_followup_sent_event_response import FoiaFollowupSentEventResponse
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+    foia_request_id = 56 # int | 
+    foia_followup_sent_event_request = winthrop_client_python.FoiaFollowupSentEventRequest() # FoiaFollowupSentEventRequest | 
+
+    try:
+        # Record a sent FOIA follow-up
+        api_response = api_instance.create_foia_request_followup_sent_event(foia_request_id, foia_followup_sent_event_request)
+        print("The response of DefaultApi->create_foia_request_followup_sent_event:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->create_foia_request_followup_sent_event: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **foia_request_id** | **int**|  | 
+ **foia_followup_sent_event_request** | [**FoiaFollowupSentEventRequest**](FoiaFollowupSentEventRequest.md)|  | 
+
+### Return type
+
+[**FoiaFollowupSentEventResponse**](FoiaFollowupSentEventResponse.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Recorded or replayed |  * Idempotent-Replayed - true only when replaying the first successful response <br>  |
+**404** | Request not found |  -  |
+**409** | State conflict; nothing written or stored |  -  |
+**422** | Invalid input or reused key |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -11918,85 +12176,6 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **destroy_admin_bowl_games**
-> destroy_admin_bowl_games(id)
-
-Delete a bowl game (admin, super-admin only)
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    id = 56 # int | 
-
-    try:
-        api_instance.destroy_admin_bowl_games(id)
-    except Exception as e:
-        print("Exception when calling DefaultApi->destroy_admin_bowl_games: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: Not defined
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | Bowl game deleted |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden - user is not a super admin |  -  |
-**404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **destroy_admin_coach**
 > destroy_admin_coach(id)
 
@@ -14860,7 +15039,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy_admin_vendors**
-> destroy_admin_vendors(id)
+> destroy_admin_vendors(id, change_note=change_note)
 
 Delete a vendor (admin, super-admin only); fails if the vendor has deals
 
@@ -14898,9 +15077,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     id = 56 # int | 
+    change_note = 'change_note_example' # str | Optional reason, stored on every audit version; trimmed, blank means absent. (optional)
 
     try:
-        api_instance.destroy_admin_vendors(id)
+        api_instance.destroy_admin_vendors(id, change_note=change_note)
     except Exception as e:
         print("Exception when calling DefaultApi->destroy_admin_vendors: %s\n" % e)
 ```
@@ -14913,6 +15093,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
+ **change_note** | **str**| Optional reason, stored on every audit version; trimmed, blank means absent. | [optional] 
 
 ### Return type
 
@@ -16555,88 +16736,6 @@ Name | Type | Description  | Notes
 **400** | A &#x60;q[...]&#x60; condition names an attribute, association path, predicate or scope the resource does not expose, or names an attribute without a predicate (&#x60;q[name]&#x3D;x&#x60; instead of &#x60;q[name_eq]&#x3D;x&#x60; or &#x60;q[name_cont]&#x3D;x&#x60;, and a &#x60;q[c]&#x60; list entry without &#x60;p&#x60;). The search is refused instead of silently ignoring the condition, which would return the unfiltered collection. &#x60;errors.q&#x60; has one entry per bad condition: &#x60;unknown condition: &lt;name&gt;&#x60;, or &#x60;condition has no predicate: &lt;name&gt; (use &lt;name&gt;_eq, &lt;name&gt;_cont, ...)&#x60;. Sorting (&#x60;q[s]&#x60;), the combinator (&#x60;q[m]&#x60;), groups (&#x60;q[g]&#x60;) and a condition whose value is blank are not refused. A 400 on these operations can also be an invalid pagination parameter, or a &#x60;q&#x60; of the wrong shape (&#x60;Unexpected format for q param: ...&#x60;: &#x60;q&#x60; must be a hash, a JSON object string, or absent, and &#x60;q[c]&#x60; and &#x60;q[g]&#x60; a hash or a list of hashes, so &#x60;q[]&#x3D;x&#x60; and &#x60;q[c]&#x3D;x&#x60; are refused instead of returning the unfiltered collection); for these &#x60;errors&#x60; is a list of messages. |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden - user is not a super_admin |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_admin_bowl_games**
-> AdminBowlGameDetail get_admin_bowl_games(id)
-
-Retrieve a bowl game with its associated postseason results (admin, super-admin only)
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.admin_bowl_game_detail import AdminBowlGameDetail
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    id = 56 # int | 
-
-    try:
-        api_response = api_instance.get_admin_bowl_games(id)
-        print("The response of DefaultApi->get_admin_bowl_games:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_admin_bowl_games: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
-
-### Return type
-
-[**AdminBowlGameDetail**](AdminBowlGameDetail.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Bowl game found |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden - user is not a super admin |  -  |
-**404** | Not Found |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -21486,88 +21585,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Audited financial report statuses were found |  -  |
 **400** | A &#x60;q[...]&#x60; condition names an attribute, association path, predicate or scope the resource does not expose, or names an attribute without a predicate (&#x60;q[name]&#x3D;x&#x60; instead of &#x60;q[name_eq]&#x3D;x&#x60; or &#x60;q[name_cont]&#x3D;x&#x60;, and a &#x60;q[c]&#x60; list entry without &#x60;p&#x60;). The search is refused instead of silently ignoring the condition, which would return the unfiltered collection. &#x60;errors.q&#x60; has one entry per bad condition: &#x60;unknown condition: &lt;name&gt;&#x60;, or &#x60;condition has no predicate: &lt;name&gt; (use &lt;name&gt;_eq, &lt;name&gt;_cont, ...)&#x60;. Sorting (&#x60;q[s]&#x60;), the combinator (&#x60;q[m]&#x60;), groups (&#x60;q[g]&#x60;) and a condition whose value is blank are not refused. A 400 on these operations can also be an invalid pagination parameter, or a &#x60;q&#x60; of the wrong shape (&#x60;Unexpected format for q param: ...&#x60;: &#x60;q&#x60; must be a hash, a JSON object string, or absent, and &#x60;q[c]&#x60; and &#x60;q[g]&#x60; a hash or a list of hashes, so &#x60;q[]&#x3D;x&#x60; and &#x60;q[c]&#x3D;x&#x60; are refused instead of returning the unfiltered collection); for these &#x60;errors&#x60; is a list of messages. |  -  |
-**401** | Unauthorized |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **get_bowl_games**
-> BowlGameCollection get_bowl_games(page=page, per_page=per_page)
-
-Retrieve the bowl games, to find the bowl_game_id of a postseason result
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.bowl_game_collection import BowlGameCollection
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
-    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
-
-    try:
-        api_response = api_instance.get_bowl_games(page=page, per_page=per_page)
-        print("The response of DefaultApi->get_bowl_games:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->get_bowl_games: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
-
-### Return type
-
-[**BowlGameCollection**](BowlGameCollection.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Bowl games were found |  -  |
 **401** | Unauthorized |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -27215,6 +27232,82 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **get_foia_request_followup_sent_event_capabilities**
+> FoiaFollowupSentEventCapabilities get_foia_request_followup_sent_event_capabilities()
+
+Read the sent follow-up event protocol version
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.foia_followup_sent_event_capabilities import FoiaFollowupSentEventCapabilities
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.DefaultApi(api_client)
+
+    try:
+        # Read the sent follow-up event protocol version
+        api_response = api_instance.get_foia_request_followup_sent_event_capabilities()
+        print("The response of DefaultApi->get_foia_request_followup_sent_event_capabilities:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->get_foia_request_followup_sent_event_capabilities: %s\n" % e)
+```
+
+
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**FoiaFollowupSentEventCapabilities**](FoiaFollowupSentEventCapabilities.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Supported protocol; no writes |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **get_foia_requests**
 > FoiaRequestCollection get_foia_requests(page=page, per_page=per_page, q=q)
 
@@ -32743,7 +32836,10 @@ This endpoint does not need any parameter.
 # **get_schools**
 > SchoolCollection get_schools(page=page, per_page=per_page, q=q, sport_name=sport_name)
 
-Retrieve some or all schools
+Retrieve some or all schools. Each row carries `alternate_names`, so the whole alternate-name
+directory is read by paging through `GET /schools` with `page`/`per_page`. On this endpoint,
+`per_page` defaults to 100 and is not capped at 100; only the shared 2147483647 limit applies.
+
 
 ### Example
 
@@ -36655,10 +36751,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **list_admin_bowl_games**
-> AdminBowlGamesList list_admin_bowl_games(page=page, per_page=per_page, q_name_cont=q_name_cont, q_s=q_s)
+# **list_admin_archive_transfer_requests**
+> AdminArchiveTransferStatus list_admin_archive_transfer_requests()
 
-List bowl games (admin, super-admin only)
+Admin > Archive copies (super-admin only). The archive copy job's last check-in, each archive table's latest transfer run (progress, counts, copy speed, rows left behind, conflicts) and the 25 most recent copy requests.
 
 ### Example
 
@@ -36667,7 +36763,7 @@ List bowl games (admin, super-admin only)
 
 ```python
 import winthrop_client_python
-from winthrop_client_python.models.admin_bowl_games_list import AdminBowlGamesList
+from winthrop_client_python.models.admin_archive_transfer_status import AdminArchiveTransferStatus
 from winthrop_client_python.rest import ApiException
 from pprint import pprint
 
@@ -36694,34 +36790,24 @@ configuration.access_token = os.environ["ACCESS_TOKEN"]
 with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
-    page = 1 # int | results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with `Invalid pagination parameter: page`. (optional) (default to 1)
-    per_page = 20 # int | number of results per page. At most 2147483647 (a larger value is a 400 with `Invalid pagination parameter: per_page`); most endpoints also cap it at 100. (optional) (default to 20)
-    q_name_cont = 'q_name_cont_example' # str | Case-insensitive name search (optional)
-    q_s = 'q_s_example' # str | Name sort order (defaults to ascending) (optional)
 
     try:
-        api_response = api_instance.list_admin_bowl_games(page=page, per_page=per_page, q_name_cont=q_name_cont, q_s=q_s)
-        print("The response of DefaultApi->list_admin_bowl_games:\n")
+        api_response = api_instance.list_admin_archive_transfer_requests()
+        print("The response of DefaultApi->list_admin_archive_transfer_requests:\n")
         pprint(api_response)
     except Exception as e:
-        print("Exception when calling DefaultApi->list_admin_bowl_games: %s\n" % e)
+        print("Exception when calling DefaultApi->list_admin_archive_transfer_requests: %s\n" % e)
 ```
 
 
 
 ### Parameters
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **int**| results page to retrieve. At most 2147483647 (a signed 32-bit integer); a larger value, like 0 or a non-number, is a 400 with &#x60;Invalid pagination parameter: page&#x60;. | [optional] [default to 1]
- **per_page** | **int**| number of results per page. At most 2147483647 (a larger value is a 400 with &#x60;Invalid pagination parameter: per_page&#x60;); most endpoints also cap it at 100. | [optional] [default to 20]
- **q_name_cont** | **str**| Case-insensitive name search | [optional] 
- **q_s** | **str**| Name sort order (defaults to ascending) | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**AdminBowlGamesList**](AdminBowlGamesList.md)
+[**AdminArchiveTransferStatus**](AdminArchiveTransferStatus.md)
 
 ### Authorization
 
@@ -36736,8 +36822,7 @@ Name | Type | Description  | Notes
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Bowl games retrieved |  -  |
-**400** | A &#x60;q[...]&#x60; condition names an attribute, association path, predicate or scope the resource does not expose, or names an attribute without a predicate (&#x60;q[name]&#x3D;x&#x60; instead of &#x60;q[name_eq]&#x3D;x&#x60; or &#x60;q[name_cont]&#x3D;x&#x60;, and a &#x60;q[c]&#x60; list entry without &#x60;p&#x60;). The search is refused instead of silently ignoring the condition, which would return the unfiltered collection. &#x60;errors.q&#x60; has one entry per bad condition: &#x60;unknown condition: &lt;name&gt;&#x60;, or &#x60;condition has no predicate: &lt;name&gt; (use &lt;name&gt;_eq, &lt;name&gt;_cont, ...)&#x60;. Sorting (&#x60;q[s]&#x60;), the combinator (&#x60;q[m]&#x60;), groups (&#x60;q[g]&#x60;) and a condition whose value is blank are not refused. A 400 on these operations can also be an invalid pagination parameter, or a &#x60;q&#x60; of the wrong shape (&#x60;Unexpected format for q param: ...&#x60;: &#x60;q&#x60; must be a hash, a JSON object string, or absent, and &#x60;q[c]&#x60; and &#x60;q[g]&#x60; a hash or a list of hashes, so &#x60;q[]&#x3D;x&#x60; and &#x60;q[c]&#x3D;x&#x60; are refused instead of returning the unfiltered collection); for these &#x60;errors&#x60; is a list of messages. |  -  |
+**200** | Archive copy status |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden - user is not a super admin |  -  |
 
@@ -43138,9 +43223,9 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **mark_admin_foia_request_processed_followup**
-> mark_admin_foia_request_processed_followup(id)
+> mark_admin_foia_request_processed_followup(id, observed_cycle_key=observed_cycle_key)
 
-Mark a FOIA request as followed-up today (recomputes follow_up_date)
+Mark a FOIA request as followed-up today (recomputes follow_up_date). Pass observed_cycle_key (the follow_up_cycle_key from the follow-up report) to make the call write nothing when a mark has already consumed that follow-up cycle and the request has moved on.
 
 ### Example
 
@@ -43176,9 +43261,10 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.DefaultApi(api_client)
     id = 56 # int | 
+    observed_cycle_key = 'observed_cycle_key_example' # str | The follow_up_cycle_key the caller saw. When it no longer matches the request's current cycle and a mark already consumed the observed cycle, nothing is written and an already-processed response is returned. A key that differs only because of an unrelated edit does not block the call. May also be sent in a JSON body. (optional)
 
     try:
-        api_instance.mark_admin_foia_request_processed_followup(id)
+        api_instance.mark_admin_foia_request_processed_followup(id, observed_cycle_key=observed_cycle_key)
     except Exception as e:
         print("Exception when calling DefaultApi->mark_admin_foia_request_processed_followup: %s\n" % e)
 ```
@@ -43191,6 +43277,7 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**|  | 
+ **observed_cycle_key** | **str**| The follow_up_cycle_key the caller saw. When it no longer matches the request&#39;s current cycle and a mark already consumed the observed cycle, nothing is written and an already-processed response is returned. A key that differs only because of an unrelated edit does not block the call. May also be sent in a JSON body. | [optional] 
 
 ### Return type
 
@@ -43209,7 +43296,7 @@ void (empty response body)
 
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Marked as followed up (or already processed today) |  -  |
+**200** | Marked as followed up (or already processed, or the observed cycle key was stale) |  -  |
 **401** | Unauthorized |  -  |
 **403** | Forbidden - user is not a super admin |  -  |
 **404** | Not Found |  -  |
@@ -46951,92 +47038,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **update_admin_bowl_games**
-> AdminBowlGameDetail update_admin_bowl_games(id, create_admin_bowl_games_request)
-
-Update a bowl game (admin, super-admin only)
-
-### Example
-
-* Api Key Authentication (ApiKey):
-* OAuth Authentication (Oauth2):
-
-```python
-import winthrop_client_python
-from winthrop_client_python.models.admin_bowl_game_detail import AdminBowlGameDetail
-from winthrop_client_python.models.create_admin_bowl_games_request import CreateAdminBowlGamesRequest
-from winthrop_client_python.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
-# See configuration.py for a list of all supported configuration parameters.
-configuration = winthrop_client_python.Configuration(
-    host = "http://api-gateway.default.svc.cluster.local"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: ApiKey
-configuration.api_key['ApiKey'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['ApiKey'] = 'Bearer'
-
-configuration.access_token = os.environ["ACCESS_TOKEN"]
-
-# Enter a context with an instance of the API client
-with winthrop_client_python.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = winthrop_client_python.DefaultApi(api_client)
-    id = 56 # int | 
-    create_admin_bowl_games_request = winthrop_client_python.CreateAdminBowlGamesRequest() # CreateAdminBowlGamesRequest | 
-
-    try:
-        api_response = api_instance.update_admin_bowl_games(id, create_admin_bowl_games_request)
-        print("The response of DefaultApi->update_admin_bowl_games:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->update_admin_bowl_games: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **create_admin_bowl_games_request** | [**CreateAdminBowlGamesRequest**](CreateAdminBowlGamesRequest.md)|  | 
-
-### Return type
-
-[**AdminBowlGameDetail**](AdminBowlGameDetail.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Bowl game updated |  -  |
-**401** | Unauthorized |  -  |
-**403** | Forbidden - user is not a super admin |  -  |
-**404** | Not Found |  -  |
-**422** | Validation errors, or a text value is longer than its column (e.g. 255 characters) |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **update_admin_coach**
 > AdminCoach update_admin_coach(id, create_admin_coach_request)
 
@@ -50603,7 +50604,7 @@ Name | Type | Description  | Notes
 # **update_admin_vendors**
 > AdminVendorDetail update_admin_vendors(id, update_admin_vendors_request)
 
-Update a vendor (admin, super-admin only)
+Update a vendor (admin, super-admin only). Name is stored as sent with leading/trailing whitespace stripped and no titleizing. A name equivalent to an existing vendor's (same letters and digits ignoring case, spaces and punctuation, e.g. "Team-Works" vs "Teamworks") or with no letter or digit is refused with 422. Renaming to your own variant is allowed.
 
 ### Example
 

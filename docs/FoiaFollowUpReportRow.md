@@ -5,6 +5,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**updated_at** | **datetime** | Echo exactly in cycle.updated_at, including microseconds. | [optional] 
+**follow_up_date_explicit** | **bool** |  | [optional] 
 **foia_request_id** | **int** |  | [optional] 
 **foia_request_admin_url** | **str** |  | [optional] 
 **school_admin_url** | **str** |  | [optional] 

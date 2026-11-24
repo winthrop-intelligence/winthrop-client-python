@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create_pending_contract**](ContractsApi.md#create_pending_contract) | **POST** /api/v1/contracts | 
 [**delete_pending_contract**](ContractsApi.md#delete_pending_contract) | **DELETE** /api/v1/contracts/{contractId} | 
 [**get_compensation_verification_status**](ContractsApi.md#get_compensation_verification_status) | **GET** /api/v1/compensation_verification_status | Verification status of every compensation row of some schools in one season
+[**get_compensation_verification_status_counts**](ContractsApi.md#get_compensation_verification_status_counts) | **GET** /api/v1/compensation_verification_status/counts | Verification status counts for some schools in one season, no rows
 [**get_contract_history**](ContractsApi.md#get_contract_history) | **GET** /api/v1/contract_history | 
 [**list_contract_verifications**](ContractsApi.md#list_contract_verifications) | **GET** /api/v1/contract_verifications | List verification events across contracts
 [**publish_pending_contract**](ContractsApi.md#publish_pending_contract) | **POST** /api/v1/contracts/{contractId}/publish | 
@@ -19,7 +20,7 @@ Method | HTTP request | Description
 # **create_contract_direct_upload**
 > CreateContractDirectUpload200Response create_contract_direct_upload(create_contract_direct_upload_request)
 
-Step 1 of filing a pending contract PDF over the gateway's 1 MiB body limit. Creates the storage blob and returns the URL and headers to PUT the PDF bytes to, plus `signed_id` to send as `file_signed_id` to POST /contracts. Same payload as Active Storage's direct upload, behind the OAuth token. `winad_write` scope. Only application/pdf is accepted (422 otherwise), and byte_size must be 1 to 104857600 (100 MiB, the same limit as the Drive source). The returned `signed_id` is single-purpose and expires after 2 hours; filing it later is refused with 422 (errors.file_signed_id). When the contract is filed the stored bytes are checked against the declared byte_size and checksum (422, code checksum_mismatch) and then as a PDF (422, code invalid_pdf).
+Step 1 of filing a pending contract PDF over the gateway's 1 MiB body limit. Creates the storage blob and returns the URL and headers to PUT the PDF bytes to, plus `signed_id` to send as `file_signed_id` to POST /contracts (or to PUT /raw_contracts/{raw_contractId}/file, to replace a vendor deal's PDF, WINAD-10820). Same payload as Active Storage's direct upload, behind the OAuth token. `winad_write` scope. Only application/pdf is accepted (422 otherwise), and byte_size must be 1 to 104857600 (100 MiB, the same limit as the Drive source). The returned `signed_id` is single-purpose and expires after 2 hours; filing it later is refused with 422 (errors.file_signed_id). When the contract is filed the stored bytes are checked against the declared byte_size and checksum (422, code checksum_mismatch) and then as a PDF (422, code invalid_pdf).
 
 
 ### Example
@@ -436,6 +437,101 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | One page of rows |  -  |
 **400** | A &#x60;q[...]&#x60; condition names an attribute, association path, predicate or scope the resource does not expose, or names an attribute without a predicate (&#x60;q[name]&#x3D;x&#x60; instead of &#x60;q[name_eq]&#x3D;x&#x60; or &#x60;q[name_cont]&#x3D;x&#x60;, and a &#x60;q[c]&#x60; list entry without &#x60;p&#x60;). The search is refused instead of silently ignoring the condition, which would return the unfiltered collection. &#x60;errors.q&#x60; has one entry per bad condition: &#x60;unknown condition: &lt;name&gt;&#x60;, or &#x60;condition has no predicate: &lt;name&gt; (use &lt;name&gt;_eq, &lt;name&gt;_cont, ...)&#x60;. Sorting (&#x60;q[s]&#x60;), the combinator (&#x60;q[m]&#x60;), groups (&#x60;q[g]&#x60;) and a condition whose value is blank are not refused. A 400 on these operations can also be an invalid pagination parameter, or a &#x60;q&#x60; of the wrong shape (&#x60;Unexpected format for q param: ...&#x60;: &#x60;q&#x60; must be a hash, a JSON object string, or absent, and &#x60;q[c]&#x60; and &#x60;q[g]&#x60; a hash or a list of hashes, so &#x60;q[]&#x3D;x&#x60; and &#x60;q[c]&#x3D;x&#x60; are refused instead of returning the unfiltered collection); for these &#x60;errors&#x60; is a list of messages. |  -  |
+**401** | Unauthorized |  -  |
+**403** | Missing winad_read scope, or not permitted to update contracts (staff only) |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **get_compensation_verification_status_counts**
+> GetCompensationVerificationStatusCounts200Response get_compensation_verification_status_counts(season, school_ids=school_ids, conference_id=conference_id)
+
+Verification status counts for some schools in one season, no rows
+
+WINAD-10768. The `counts_by_status` of GET /compensation_verification_status for the same scope and the same
+status rules (the same code decides each row), without building the rows: only the rows whose latest covering
+event is `passed` have their edit history read, and the authors of the changes are not looked up. Computed on
+request; `meta.as_of` is the time the read started. `status[]`, `q` and paging do not apply (as they do not to
+`meta.counts_by_status` of the rows). A hidden coach's rows are left out for a caller who cannot manage coaches.
+Errors and authorization are those of GET /compensation_verification_status.
+
+
+### Example
+
+* Api Key Authentication (ApiKey):
+* OAuth Authentication (Oauth2):
+
+```python
+import winthrop_client_python
+from winthrop_client_python.models.get_compensation_verification_status_counts200_response import GetCompensationVerificationStatusCounts200Response
+from winthrop_client_python.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to http://api-gateway.default.svc.cluster.local
+# See configuration.py for a list of all supported configuration parameters.
+configuration = winthrop_client_python.Configuration(
+    host = "http://api-gateway.default.svc.cluster.local"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: ApiKey
+configuration.api_key['ApiKey'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['ApiKey'] = 'Bearer'
+
+configuration.access_token = os.environ["ACCESS_TOKEN"]
+
+# Enter a context with an instance of the API client
+with winthrop_client_python.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = winthrop_client_python.ContractsApi(api_client)
+    season = 56 # int | Season-ending year, a positive whole number.
+    school_ids = [56] # List[int] | The schools to read, as one comma separated list (school_ids=1,2; the form with explode false, because repeated school_ids=1&school_ids=2 keeps only the last) or school_ids[]=1&school_ids[]=2. At most 300. Give exactly one of school_ids and conference_id. (optional)
+    conference_id = 56 # int | The schools whose primary conference this is. At most 300 schools. (optional)
+
+    try:
+        # Verification status counts for some schools in one season, no rows
+        api_response = api_instance.get_compensation_verification_status_counts(season, school_ids=school_ids, conference_id=conference_id)
+        print("The response of ContractsApi->get_compensation_verification_status_counts:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling ContractsApi->get_compensation_verification_status_counts: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **season** | **int**| Season-ending year, a positive whole number. | 
+ **school_ids** | [**List[int]**](int.md)| The schools to read, as one comma separated list (school_ids&#x3D;1,2; the form with explode false, because repeated school_ids&#x3D;1&amp;school_ids&#x3D;2 keeps only the last) or school_ids[]&#x3D;1&amp;school_ids[]&#x3D;2. At most 300. Give exactly one of school_ids and conference_id. | [optional] 
+ **conference_id** | **int**| The schools whose primary conference this is. At most 300 schools. | [optional] 
+
+### Return type
+
+[**GetCompensationVerificationStatusCounts200Response**](GetCompensationVerificationStatusCounts200Response.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey), [Oauth2](../README.md#Oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Rows per status |  -  |
+**400** | A parameter is missing or invalid, keyed by its name |  -  |
 **401** | Unauthorized |  -  |
 **403** | Missing winad_read scope, or not permitted to update contracts (staff only) |  -  |
 
