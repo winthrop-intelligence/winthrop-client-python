@@ -537,9 +537,14 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **replace_raw_contract_file**
-> RawContract replace_raw_contract_file(raw_contract_id, file, change_note=change_note)
+> RawContract replace_raw_contract_file(raw_contract_id, file, file_signed_id, change_note=change_note)
 
-Replace the PDF of a vendor deal's RawContract (WINAD-10684). Send multipart/form-data with the new PDF as `file` and an optional `change_note`. The RawContract keeps its id and its `deal_id` link. The old file (and its OCR copy) is replaced, not kept as an attachment; the stored text is cleared and Mistral OCR is queued once, the way the admin's Re-extract does, so `text` (and GET /raw_contracts/{id}/ocr_text) reflect the new file once the extraction finishes. The structured `contract_terms` are not touched (they read as stale against the new text). `asset_file_name`, `asset_file_size` and `asset_content_type` are set from the new file and `updated_at` moves, so the response shows the new file name, size and time.
+Replace the PDF of a vendor deal's RawContract (WINAD-10684). Send multipart/form-data with the new PDF by EXACTLY ONE of `file` or `file_signed_id`, and an optional `change_note`. The RawContract keeps its id and its `deal_id` link. The old file (and its OCR copy) is replaced, not kept as an attachment; the stored text is cleared and Mistral OCR is queued once, the way the admin's Re-extract does, so `text` (and GET /raw_contracts/{id}/ocr_text) reflect the new file once the extraction finishes. The structured `contract_terms` are not touched (they read as stale against the new text). `asset_file_name`, `asset_file_size` and `asset_content_type` are set from the new file and `updated_at` moves, so the response shows the new file name, size and time.
+
+1. `file`: a multipart upload of the PDF. Larger bodies than the API gateway's request limit (1 MiB by default) cannot take this route (413).
+2. `file_signed_id` (WINAD-10820): the signed id returned by POST /contracts/direct_uploads, after the PDF bytes (up to 100 MiB) were PUT to the returned URL. The stored bytes are read back, checked against the declared size and checksum and as a PDF, and that stored file becomes the RawContract's file. The signed id expires after 2 hours and works once.
+
+A request with neither or with both is refused with 422 (errors.file and errors.file_signed_id, code invalid_input). A signed id that is unknown, expired, already in use or whose bytes were never uploaded is refused with 422 (errors.file_signed_id, code invalid_input); stored bytes that differ from what was declared are code checksum_mismatch, and bytes that are not a PDF or an invalid file name are code invalid_pdf. A refusal for the number of inputs or for change_note happens before the signed id is looked at, so the same signed id can be sent again. A request refused after the signed id was accepted (its bytes, its file name or the RawContract) removes the uploaded file, so ask for a new signed id before trying again. The server tolerates an empty field as "not sent".
 
 Vendor RawContracts only: a RawContract with no deal, one that belongs to a coach contract (use PUT /contracts/{contractId}/file) or one that a game contract, income report, termination agreement, subscription or system setting also uses is refused with 422 (errors.base) and nothing changes. The file must really be a PDF (its bytes are checked, not its name).
 
@@ -581,11 +586,12 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.RawContractsApi(api_client)
     raw_contract_id = 56 # int | ID of the vendor deal's RawContract whose PDF is replaced
-    file = None # bytearray | The new contract PDF
+    file = None # bytearray | The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required.
+    file_signed_id = 'file_signed_id_example' # str | Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required.
     change_note = 'change_note_example' # str | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. (optional)
 
     try:
-        api_response = api_instance.replace_raw_contract_file(raw_contract_id, file, change_note=change_note)
+        api_response = api_instance.replace_raw_contract_file(raw_contract_id, file, file_signed_id, change_note=change_note)
         print("The response of RawContractsApi->replace_raw_contract_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -600,7 +606,8 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **raw_contract_id** | **int**| ID of the vendor deal&#39;s RawContract whose PDF is replaced | 
- **file** | **bytearray**| The new contract PDF | 
+ **file** | **bytearray**| The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required. | 
+ **file_signed_id** | **str**| Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required. | 
  **change_note** | **str**| Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. | [optional] 
 
 ### Return type
@@ -624,7 +631,7 @@ Name | Type | Description  | Notes
 **401** | Unauthorized |  -  |
 **403** | Forbidden (missing winad_write scope, a client-credentials token with no user, or not permitted to update the RawContract) |  -  |
 **404** | Not Found (no such RawContract, or a coach contract&#39;s document the caller may not see, or the RawContract was deleted while the request ran). The body is a short &#x60;error&#x60; message naming the model and id; it never repeats the caller&#39;s visibility rule. |  -  |
-**422** | Missing or non-PDF file, a file name longer than 255 characters (counted after Active Storage&#39;s sanitiser; the legacy &#x60;asset_file_name&#x60; column holds 255) or with a NUL character or bytes that are not UTF-8 (all errors.file), a RawContract that is not a vendor deal&#39;s (errors.base), or an invalid change_note (errors.change_note). The old file is untouched and nothing is stored. |  -  |
+**422** | Neither or both of file and file_signed_id, a refused file_signed_id (errors.file_signed_id, with a code), a non-PDF file, a file name longer than 255 characters (counted after Active Storage&#39;s sanitiser; the legacy &#x60;asset_file_name&#x60; column holds 255) or with a NUL character or bytes that are not UTF-8 (all errors.file, or errors.file_signed_id for a direct upload), a RawContract that is not a vendor deal&#39;s (errors.base), or an invalid change_note (errors.change_note). The old file is untouched and nothing is attached. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **List[str]** |  | [optional] 
+**alternate_names** | **List[str]** | The school&#39;s alternate names in the order they were added; an empty array when it has none. | 
 
 ## Example
 
