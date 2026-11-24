@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **int** |  | [optional] 
 **name** | **str** |  | [optional] 
+**alternate_names** | **List[str]** | Every alternate name of the school, in the order they were added (same order as &#x60;GET /schools/{schoolId}/alternate_names&#x60;); an empty array when it has none. Included in every row of &#x60;GET /schools&#x60;; not included by &#x60;GET /schools/{schoolId}&#x60; or where a school is nested in another response.  | [optional] 
 **short_name** | **str** |  | [optional] 
 **location** | **str** |  | [optional] 
 **created_at** | **datetime** |  | [optional] 

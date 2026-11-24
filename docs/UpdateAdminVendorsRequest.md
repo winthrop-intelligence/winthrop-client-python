@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**change_note** | **str** | Optional reason, stored on every audit version; trimmed, blank means absent. | [optional] 
 **vendor** | [**UpdateAdminVendorsRequestVendor**](UpdateAdminVendorsRequestVendor.md) |  | 
 
 ## Example

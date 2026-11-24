@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **school_notes** | [**List[AdminFoiaRequestNote]**](AdminFoiaRequestNote.md) |  | [optional] 
 **follow_up_email_text** | **str** |  | [optional] 
 **already_processed_today** | **bool** |  | [optional] 
+**follow_up_cycle_key** | **str** | Current follow-up cycle key; send it back as observed_cycle_key when marking the request processed | [optional] 
 
 ## Example
 
