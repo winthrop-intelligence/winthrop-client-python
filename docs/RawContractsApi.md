@@ -537,7 +537,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **replace_raw_contract_file**
-> RawContract replace_raw_contract_file(raw_contract_id, file, file_signed_id, change_note=change_note)
+> RawContract replace_raw_contract_file(raw_contract_id, file=file, change_note=change_note, file_signed_id=file_signed_id)
 
 Replace the PDF of a vendor deal's RawContract (WINAD-10684). Send multipart/form-data with the new PDF by EXACTLY ONE of `file` or `file_signed_id`, and an optional `change_note`. The RawContract keeps its id and its `deal_id` link. The old file (and its OCR copy) is replaced, not kept as an attachment; the stored text is cleared and Mistral OCR is queued once, the way the admin's Re-extract does, so `text` (and GET /raw_contracts/{id}/ocr_text) reflect the new file once the extraction finishes. The structured `contract_terms` are not touched (they read as stale against the new text). `asset_file_name`, `asset_file_size` and `asset_content_type` are set from the new file and `updated_at` moves, so the response shows the new file name, size and time.
 
@@ -586,12 +586,12 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = winthrop_client_python.RawContractsApi(api_client)
     raw_contract_id = 56 # int | ID of the vendor deal's RawContract whose PDF is replaced
-    file = None # bytearray | The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required.
-    file_signed_id = 'file_signed_id_example' # str | Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required.
+    file = None # bytearray | The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required. (optional)
     change_note = 'change_note_example' # str | Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. (optional)
+    file_signed_id = 'file_signed_id_example' # str | Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required. (optional)
 
     try:
-        api_response = api_instance.replace_raw_contract_file(raw_contract_id, file, file_signed_id, change_note=change_note)
+        api_response = api_instance.replace_raw_contract_file(raw_contract_id, file=file, change_note=change_note, file_signed_id=file_signed_id)
         print("The response of RawContractsApi->replace_raw_contract_file:\n")
         pprint(api_response)
     except Exception as e:
@@ -606,9 +606,9 @@ with winthrop_client_python.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **raw_contract_id** | **int**| ID of the vendor deal&#39;s RawContract whose PDF is replaced | 
- **file** | **bytearray**| The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required. | 
- **file_signed_id** | **str**| Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required. | 
+ **file** | **bytearray**| The new contract PDF as a multipart upload. Exactly one of file and file_signed_id is required. | [optional] 
  **change_note** | **str**| Optional. Why this change is being made, for the internal audit history. It is stored on every audit version this write creates. At most 500 characters after trimming; blank is the same as omitted; a value that is not text or is longer is refused with 422 (errors.change_note) before anything is written. Never returned by the write. | [optional] 
+ **file_signed_id** | **str**| Signed id returned by POST /contracts/direct_uploads after the PDF bytes were PUT to the returned URL. Exactly one of file and file_signed_id is required. | [optional] 
 
 ### Return type
 
